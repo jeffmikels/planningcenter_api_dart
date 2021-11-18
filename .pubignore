@@ -1,5 +1,10 @@
 # JEFF FILES WITH SECRETS
 secrets.dart
+push-and-publish.sh
+quicktest.dart
+planningcenter_resource.template
+planningcenter_services.dart.old
+web_api_parser.dart
 
 # Files and directories created by pub.
 .dart_tool/

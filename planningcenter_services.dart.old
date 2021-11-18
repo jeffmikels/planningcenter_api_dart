@@ -1,0 +1,491 @@
+import 'pco_api_base.dart';
+import 'pco_resource_base.dart';
+
+/// TODO:
+/// make everything work more like firebase
+/// where an object can be instantiated with no data or with an id
+/// Then, when subsequent data is needed, issue a load command
+
+/// the services endpoint gives access to the following items
+// attachment_types
+// email_templates
+// folders
+// media
+// people
+// report_templates
+// series
+// service_types
+// tag_groups
+// teams
+// songs
+class ServicesApi {
+  final apiVersion = '2018-11-01';
+  late PlanningCenterApi api;
+
+  ServicesApi(this.api);
+
+  /// planning center will only return a maximum of 100 items
+  /// so if you want to get all songs, you need to call the api repeatedly
+  Future<List<Song>> getAllSongs({PlanningCenterApiQuery? query}) async {
+    var ep = Song.endpoint();
+    // force per page to 100
+    var realQuery = PlanningCenterApiQuery(perPage: 100, pageOffset: 0, where: query?.where ?? {}, order: query?.order);
+
+    var retval = <Song>[];
+    var needmore = true;
+    while (needmore) {
+      var res = await api.call(ep, query: realQuery, apiVersion: apiVersion);
+      if (res is PlanningCenterApiError) return [];
+      for (var songdata in res.data) {
+        var s = Song.fromData(songdata);
+        retval.add(s);
+      }
+      if (res.meta.containsKey('next')) {
+        needmore = true;
+        realQuery.pageOffset = res.meta['next']['offset'];
+      } else {
+        needmore = false;
+      }
+    }
+
+    return retval;
+  }
+
+  Future<List<Song>> getSongs({String? songId, PlanningCenterApiQuery? query}) async {
+    var ep = Song.endpoint();
+    if (songId != null) ep += '/$songId';
+    var res = await api.call(ep, query: query);
+    if (res is PlanningCenterApiError) return [];
+
+    var retval = <Song>[];
+    for (var songdata in res.data) {
+      var s = Song.fromData(songdata);
+      retval.add(s);
+    }
+    return retval;
+  }
+
+  Future<PlanningCenterApiResponse> saveSong(Song song) async {
+    // update or create?
+    var verb = 'post';
+    var endpoint = song.itemEndpoint();
+    if (song.id != null) {
+      verb = 'patch';
+    }
+
+    // first we update the song metadata
+    // print(song.apiEncoded);
+    var res = await api.call(endpoint, verb: verb, data: song.apiEncoded);
+    if (res.isError) {
+      return res;
+    }
+
+    // update the song because we now have an id!
+    song.updateFromData(res.data);
+    // print(song.apiEncoded);
+
+    return res;
+  }
+
+  Future<List<Arrangement>> getArrangements(String songId, [String? arrangementId]) async {
+    var ep = Arrangement.endpoint(songId);
+    if (arrangementId != null) ep += '/$arrangementId';
+    var res = await api.call(ep);
+
+    if (res is PlanningCenterApiError) return [];
+
+    var retval = <Arrangement>[];
+    for (var arrdata in res.data) {
+      var s = Arrangement.fromData(arrdata);
+      retval.add(s);
+    }
+    return retval;
+  }
+
+  Future<PlanningCenterApiResponse> saveArrangement(Arrangement arrangement) async {
+    // update or create?
+    var verb = 'post';
+    var endpoint = arrangement.itemEndpoint();
+    if (arrangement.id != null) {
+      verb = 'patch';
+    }
+
+    // print(arrangement.apiEncoded);
+    var res = await api.call(endpoint, verb: verb, data: arrangement.apiEncoded);
+    if (res.isError) {
+      return res;
+    }
+
+    // update the song because we now have an id!
+    arrangement.updateFromData(res.data);
+    // print(arrangement.apiEncoded);
+
+    return res;
+  }
+
+  Future<List<Plan>> getPlans(int serviceTypeId, {String? planId, PlanningCenterApiQuery? query}) async {
+    var ep = '/services/v2/service_types/$serviceTypeId/plans';
+    if (planId != null) ep += '/$planId';
+    var res = await api.call(ep, query: query);
+
+    if (res is PlanningCenterApiError) return [];
+
+    var retval = <Plan>[];
+    for (var item in res.data) {
+      var s = Plan.fromData(item);
+      retval.add(s);
+    }
+    return retval;
+  }
+
+  /// will always include songs and arrangements
+  Future<List<PlanItem>> getPlanItems(
+    String serviceTypeId,
+    String planId, {
+    bool withSongs = true,
+    bool withArrangements = true,
+    PlanningCenterApiQuery? query,
+  }) async {
+    var ep = PlanItem.endpoint(serviceTypeId, planId);
+    query ??= PlanningCenterApiQuery(
+      include: ['arrangement', 'song', ...query?.include ?? []],
+    );
+    var res = await api.call(ep, query: query);
+
+    if (res is PlanningCenterApiError) return [];
+
+    var retval = <PlanItem>[];
+
+    // first, we parse the included items
+    Map<String, Song> songs = {};
+    Map<String, Arrangement> arrangements = {};
+    for (var item in res.included) {
+      switch (item['type']) {
+        case 'Arrangement':
+          var a = Arrangement.fromData(item);
+          arrangements[a.id!] = a;
+          break;
+        case 'Song':
+          var s = Song.fromData(item);
+          songs[s.id!] = s;
+          break;
+      }
+    }
+
+    // now, we parse the plan items
+    for (var item in res.data) {
+      var pi = PlanItem.fromData(item);
+
+      // now add songs and arrangements to this item if we can
+      if (pi.itemType == 'song') {
+        pi.arrangement = arrangements[pi.arrangementId];
+        pi.song = songs[pi.songId];
+        if (pi.song != null && pi.arrangement != null) pi.song!.arrangements.add(pi.arrangement!);
+      }
+      retval.add(pi);
+    }
+    return retval;
+  }
+
+  // Future<PlanningCenterApiResponse> savePlanItem(Plan plan, PlanItem item) async {
+  //   // update or create?
+  //   var verb = 'post';
+  //   var endpoint = item.itemEndpoint();
+  //   if (item.id != null) {
+  //     verb = 'patch';
+  //   }
+
+  //   // print(arrangement.apiEncoded);
+  //   var res = await api.call(endpoint, verb: verb, data: arrangement.apiEncoded);
+  //   if (res.isError) {
+  //     return res;
+  //   }
+
+  //   // update the song because we now have an id!
+  //   arrangement.updateFromData(res.data);
+  //   // print(arrangement.apiEncoded);
+
+  //   return res;
+  // }
+}
+
+/// Song example
+// {
+//   "type": "Song",
+//   "id": "1",
+//   "attributes": {
+//     "title": "string",
+//     "created_at": "2000-01-01T12:00:00Z",
+//     "updated_at": "2000-01-01T12:00:00Z",
+//     "admin": "string",
+//     "author": "string",
+//     "copyright": "string",
+//     "hidden": true,
+//     "notes": "string",
+//     "themes": "string",
+//     "last_scheduled_short_dates": "string",
+//     "last_scheduled_at": "2000-01-01T12:00:00Z",
+//     "ccli_number": 1
+//   },
+//   "relationships": {}
+// }
+class Song extends PlanningCenterResource {
+  static const String pcoType = 'Song';
+  static const List apiAllowedAttributes = ['title', 'admin', 'author', 'copyright', 'ccli_number', 'hidden', 'themes'];
+
+  static String endpoint() => '/services/v2/songs/';
+  String itemEndpoint() => '${endpoint()}${id ?? ''}';
+
+  List<Arrangement> arrangements = [];
+
+  // fields
+  String get title => attributes.get('title') ?? '';
+  String get admin => attributes.get('admin') ?? '';
+  String get author => attributes.get('author') ?? '';
+  String get copyright => attributes.get('copyright') ?? '';
+  String get themes => attributes.get('themes') ?? '';
+
+  /// use [ccliNumber] for the setter
+  String get ccli => attributes.get('ccli_number')?.toString() ?? '';
+  int? get ccliNumber => attributes.get('ccli_number');
+  bool get hidden => attributes.get('hidden') ?? false;
+
+  set title(String s) => attributes.set('title', s);
+  set admin(String s) => attributes.set('admin', s);
+  set author(String s) => attributes.set('author', s);
+  set copyright(String s) => attributes.set('copyright', s);
+  set ccli(String s) => attributes.set('ccli_number', int.tryParse(s) ?? 0);
+  set hidden(bool b) => attributes.set('hidden', b);
+
+  Song() : super() {
+    setupData();
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  Song.fromData(Map<String, dynamic> data) : super.fromData(data) {
+    // make sure
+    data['type'] = pcoType;
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  // make sure new blank songs have at least these items
+  // (ignore admin and themes on new blank songs)
+  void setupData() {
+    set('type', pcoType);
+    title = '';
+    author = '';
+    copyright = '';
+    hidden = false;
+    ccli = '0';
+  }
+}
+
+class Arrangement extends PlanningCenterResource {
+  static const String pcoType = 'Arrangement';
+  static const List apiAllowedAttributes = [
+    'bpm',
+    'chord_chart',
+    'chord_chart_chord_color',
+    'chord_chart_columns',
+    'chord_chart_font',
+    'chord_chart_font_size',
+    'chord_chart_key',
+    'isrc',
+    'length',
+    'lyrics_enabled',
+    'meter',
+    'name',
+    'notes',
+    'number_chart_enabled',
+    'numeral_chart_enabled',
+    'print_margin',
+    'print_orientation',
+    'print_page_size',
+    'rehearsal_mix_id',
+    'sequence',
+  ];
+
+  static String endpoint(String songId) => '/services/v2/songs/$songId/arrangements/';
+  String itemEndpoint() => '${endpoint(songId)}${id ?? ''}';
+
+  Song? song;
+
+  // relationships fields
+  String get songId => relationships.get('song')?['data']?['id'] ?? '';
+
+  // fields
+  String get chordChart => attributes.get('chord_chart') ?? '';
+  String get chordChartKey => attributes.get('chord_chart_key') ?? '';
+  String get chordChartFont => attributes.get('chord_chart_font') ?? '';
+  double get bpm => attributes.get('bpm') ?? 0.0;
+  bool get numberChartEnabled => attributes.get('number_chart_enabled') ?? true;
+  bool get numeralChartEnabled => attributes.get('numeral_chart_enabled') ?? true;
+
+  set chordChart(String x) => attributes.set('chord_chart', x);
+  set chordChartKey(String x) => attributes.set('chord_chart_key', x);
+  set chordChartFont(String x) => attributes.set('chord_chart_font', x);
+  set bpm(double x) => attributes.set('bpm', x);
+  set numberChartEnabled(bool x) => attributes.set('number_chart_enabled', x);
+  set numeralChartEnabled(bool x) => attributes.set('numeral_chart_enabled', x);
+
+  /// you will need to manually set the song relationships before saving
+  Arrangement() : super() {
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+    setupData();
+  }
+
+  Arrangement.fromData(Map<String, dynamic> data) : super.fromData(data) {
+    // make sure
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+    data['type'] = pcoType;
+    data['relationships'] ??= <String, dynamic>{};
+    data['relationships']['song'] ??= <String, dynamic>{
+      'data': <String, String>{'type': 'Song'}
+    };
+
+    // always force these on
+    numberChartEnabled = true;
+    numeralChartEnabled = true;
+  }
+
+  // make sure new blank arrangements have at least these items
+  void setupData() {
+    set('type', pcoType);
+    bpm = 0.0;
+    chordChart = '';
+    chordChartKey = '';
+    numberChartEnabled = true;
+    numeralChartEnabled = true;
+  }
+}
+
+class Plan extends PlanningCenterResource {
+  static const String pcoType = 'Plan';
+  static const List apiAllowedAttributes = ['title', 'public', 'series_id', 'series_title', 'reminders_disabled'];
+
+  static String endpoint(String serviceTypeId) => '/services/v2/service_types/$serviceTypeId/plans';
+  String itemEndpoint() => '${endpoint(serviceTypeId)}${id ?? ''}';
+
+  // required relationships fields
+  String get serviceTypeId => relationships.get('service_type')?['data']?['id'] ?? '';
+
+  // fields exposed by this api
+  String get title => attributes.get('title') ?? '';
+  bool get public => attributes.get('public') ?? '';
+  bool get remindersDisabled => attributes.get('reminders_disabled') ?? '';
+  DateTime get lastTimeAt => DateTime.parse(attributes.get('last_time_at')!);
+
+  /// [seriesTitle] is technically settable, but we don't expose that in this api
+  String get seriesTitle => attributes.get('series_title') ?? '';
+
+  /// [seriesId] is technically settable, but we don't expose that in this api
+  String get seriesId => relationships.get('series')?['data']['id'];
+
+  // setters
+  set title(String s) => attributes.set('title', s);
+  set public(bool b) => attributes.set('public', b);
+  set remindersDisabled(bool b) => attributes.set('reminders_disabled', b);
+
+  Plan() : super() {
+    setupData();
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  Plan.fromData(Map<String, dynamic> data) : super.fromData(data) {
+    // make sure
+    data['type'] = pcoType;
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  // make sure new blank songs have at least these items
+  // (ignore admin and themes on new blank songs)
+  void setupData() {
+    set('type', pcoType);
+    // 'title', 'public', 'series_id', 'series_title', 'reminders_disabled'
+    title = '';
+    public = true;
+  }
+}
+
+class PlanItem extends PlanningCenterResource {
+  static const String pcoType = 'Item';
+  static const List apiAllowedAttributes = [
+    'arrangement_id',
+    'custom_arrangement_sequence',
+    'description',
+    'html_details',
+    'key_id',
+    'length',
+    'selected_layout_id',
+    'service_position',
+    'song_id',
+    'title',
+    'item_type',
+    'sequence',
+  ];
+
+  static String endpoint(String serviceTypeId, String planId) =>
+      '/services/v2/service_types/$serviceTypeId/plans/$planId/items/';
+
+  @override
+  String itemEndpoint() => '${endpoint(serviceTypeId, planId)}${id ?? ''}';
+
+  Song? song;
+  Arrangement? arrangement;
+
+  // relationships
+  String get planId => relationships.get('plan')?['data']?['id'] ?? '';
+  String get serviceTypeId => data['links']['self'].split('/')[6];
+  String? get songId => relationships.get('song')?['data']?['id'];
+  String? get arrangementId => relationships.get('arrangement')?['data']?['id'];
+
+  // fields exposed by this api
+  String get title => attributes.get('title') ?? '';
+  int get sequence => attributes.get('sequence') ?? 0;
+  int get length => attributes.get('length') ?? '';
+
+  /// song, header, media, item. Only set this when creating a header.
+  String get itemType => attributes.get('item_type') ?? '';
+  String get htmlDetails => attributes.get('html_details') ?? '';
+  String get servicePosition => attributes.get('service_position') ?? ''; // pre, post, during
+  String get description => attributes.get('description') ?? '';
+  String get keyName => attributes.get('key_name') ?? '';
+  List<String> get customArrangementSequence => attributes.get('custom_arrangement_sequence') ?? [];
+  List<String> get customArrangementSequenceShort => attributes.get('custom_arrangement_sequence_short') ?? [];
+  List<String> get customArrangementSequenceFull => attributes.get('custom_arrangement_sequence_full') ?? [];
+
+  // setters
+  set title(String s) => attributes.set('title', s);
+  set sequence(int n) => attributes.set('sequence', n);
+  set length(int n) => attributes.set('length', n);
+
+  /// song, header, media, item. Only set this when creating a header.
+  set itemType(String s) => attributes.set('item_type', s);
+
+  set htmlDetails(String s) => attributes.set('html_details', s);
+  set servicePosition(String s) => attributes.set('service_position', s); // pre, post, during
+  set description(String s) => attributes.set('description', s);
+  set keyName(String s) => attributes.set('key_name', s);
+  set customArrangementSequence(List<String> s) => attributes.set('custom_arrangement_sequence', s);
+  set customArrangementSequenceShort(List<String> s) => attributes.set('custom_arrangement_sequence_short', s);
+  set customArrangementSequenceFull(List<String> s) => attributes.set('custom_arrangement_sequence_full', s);
+
+  PlanItem() : super() {
+    setupData();
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  PlanItem.fromData(Map<String, dynamic> data) : super.fromData(data) {
+    // make sure
+    data['type'] = pcoType;
+    apiIncludedAttributes.addAll(apiAllowedAttributes);
+  }
+
+  // make sure new blank songs have at least these items
+  // (ignore admin and themes on new blank songs)
+  void setupData() {
+    set('type', pcoType);
+    // 'title', 'public', 'series_id', 'series_title', 'reminders_disabled'
+    title = '';
+  }
+}

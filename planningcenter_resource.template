@@ -1,0 +1,27 @@
+class PcoChildTemplate extends PcoResource {
+  static const String typeString = 'TYPESTRING';
+  static const String apiVersion = 'APIVERSION';
+
+  // field mapping constants
+  static const kFIELDCONSTANTDARTNAME = 'FIELDCONSTANTJSONNAME';
+
+  // getters and setters
+  @override
+  List<String> get createAllowed => CREATEALLOWEDLIST;
+  @override
+  List<String> get updateAllowed => UPDATEALLOWEDLIST;
+  @override
+  Map<String, dynamic> get defaultAttributes => DEFAULTATTRIBUTESMAP;
+
+  // foreach
+  TYPE get FIELDNAME => FIELDGETTER;
+
+  /// each implementation needs to override this;
+  @override
+  String itemEndpoint() => '${endpoint()}${id ?? ''}';
+  static String endpoint(ENDPOINTARGS) => 'ENDPOINTSTRINGTEMPLATE';
+
+  PARENTCODE
+
+  PcoChildTemplate(CLASSARGS, {id, required this.api}) : super(typeString, id:id, api:api);
+}

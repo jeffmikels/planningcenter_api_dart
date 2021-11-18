@@ -12,7 +12,7 @@ This package provides code to interact with every single Planning Center app thr
 
 Currently, the package depends on an organization level developer key and secret that you can generate here:
 
-(Planning Center Developer Console)[https://api.planningcenteronline.com/oauth/applications].
+[Planning Center Developer Console](https://api.planningcenteronline.com/oauth/applications).
 
 TODO: In the future, this library will support an OAuth authentication flow.
 

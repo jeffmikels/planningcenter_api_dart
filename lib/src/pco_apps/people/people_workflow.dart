@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.920579
+/// This file was generated on 2021-11-18T13:57:10.034780
 
 
 import '../../pco.dart';
@@ -149,7 +149,7 @@ Future<List<PcoPeopleWorkflowCard>> getWorkflowCardsCards({PlanningCenterApiQuer
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflowCard> retval = [];
   var url = '$apiEndpoint/cards';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflowCard.fromJson(itemData));
@@ -164,7 +164,7 @@ Future<List<PcoPeopleWorkflowCategory>> getWorkflowCategoriesCategory({PlanningC
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflowCategory> retval = [];
   var url = '$apiEndpoint/category';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflowCategory.fromJson(itemData));
@@ -179,7 +179,7 @@ Future<List<PcoPeoplePerson>> getPersonsSharedPeople({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/shared_people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePerson.fromJson(itemData));
@@ -194,7 +194,7 @@ Future<List<PcoPeopleWorkflowShare>> getWorkflowSharesShares({PlanningCenterApiQ
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflowShare> retval = [];
   var url = '$apiEndpoint/shares';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflowShare.fromJson(itemData));
@@ -209,7 +209,7 @@ Future<List<PcoPeopleWorkflowStep>> getWorkflowStepsSteps({PlanningCenterApiQuer
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflowStep> retval = [];
   var url = '$apiEndpoint/steps';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflowStep.fromJson(itemData));

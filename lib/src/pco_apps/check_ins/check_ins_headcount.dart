@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.197192
+/// This file was generated on 2021-11-18T13:57:09.862368
 
 
 import '../../pco.dart';
@@ -152,7 +152,7 @@ Future<List<PcoCheckInsAttendanceType>> getAttendanceTypes({PlanningCenterApiQue
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsAttendanceType> retval = [];
   var url = '$apiEndpoint/attendance_type';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsAttendanceType.fromJson(itemData));
@@ -167,7 +167,7 @@ Future<List<PcoCheckInsEventTime>> getEventTimes({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventTime> retval = [];
   var url = '$apiEndpoint/event_time';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventTime.fromJson(itemData));

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.028987
+/// This file was generated on 2021-11-18T13:57:10.164926
 
 
 import '../../pco.dart';
@@ -163,7 +163,7 @@ Future<List<PcoGivingBatch>> getBatchsBatches({PlanningCenterApiQuery? query}) a
   query ??= PlanningCenterApiQuery();
   List<PcoGivingBatch> retval = [];
   var url = '$apiEndpoint/batches';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingBatch.fromJson(itemData));
@@ -178,7 +178,7 @@ Future<List<PcoGivingPerson>> getPersonsOwner({PlanningCenterApiQuery? query}) a
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPerson> retval = [];
   var url = '$apiEndpoint/owner';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPerson.fromJson(itemData));

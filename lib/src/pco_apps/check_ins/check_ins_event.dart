@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.189579
+/// This file was generated on 2021-11-18T13:57:09.858675
 
 
 import '../../pco.dart';
@@ -348,7 +348,7 @@ Future<List<PcoCheckInsAttendanceType>> getAttendanceTypes({PlanningCenterApiQue
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsAttendanceType> retval = [];
   var url = '$apiEndpoint/attendance_types';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsAttendanceType.fromJson(itemData));
@@ -363,7 +363,7 @@ Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsCheckIn> retval = [];
   var url = '$apiEndpoint/check_ins';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsCheckIn.fromJson(itemData));
@@ -378,7 +378,7 @@ Future<List<PcoCheckInsEventTime>> getEventTimesCurrentEventTimes({PlanningCente
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventTime> retval = [];
   var url = '$apiEndpoint/current_event_times';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventTime.fromJson(itemData));
@@ -393,7 +393,7 @@ Future<List<PcoCheckInsEventLabel>> getEventLabels({PlanningCenterApiQuery? quer
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventLabel> retval = [];
   var url = '$apiEndpoint/event_labels';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventLabel.fromJson(itemData));
@@ -408,7 +408,7 @@ Future<List<PcoCheckInsEventPeriod>> getEventPeriods({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventPeriod> retval = [];
   var url = '$apiEndpoint/event_periods';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventPeriod.fromJson(itemData));
@@ -423,7 +423,7 @@ Future<List<PcoCheckInsLocation>> getLocations({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsLocation> retval = [];
   var url = '$apiEndpoint/locations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsLocation.fromJson(itemData));
@@ -438,7 +438,7 @@ Future<List<PcoCheckInsPersonEvent>> getPersonEvents({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsPersonEvent> retval = [];
   var url = '$apiEndpoint/person_events';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsPersonEvent.fromJson(itemData));

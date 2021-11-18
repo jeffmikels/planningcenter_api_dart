@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.075278
+/// This file was generated on 2021-11-18T13:57:10.283891
 
 
 import '../../pco.dart';
@@ -60,7 +60,7 @@ Future<List<PcoWebhooksAvailableEvent>> getAvailableEvents({PlanningCenterApiQue
   query ??= PlanningCenterApiQuery();
   List<PcoWebhooksAvailableEvent> retval = [];
   var url = '$apiEndpoint/available_events';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoWebhooksAvailableEvent.fromJson(itemData));
@@ -75,7 +75,7 @@ Future<List<PcoWebhooksSubscription>> getSubscriptions({PlanningCenterApiQuery? 
   query ??= PlanningCenterApiQuery();
   List<PcoWebhooksSubscription> retval = [];
   var url = '$apiEndpoint/subscriptions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoWebhooksSubscription.fromJson(itemData));

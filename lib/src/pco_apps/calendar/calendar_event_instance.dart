@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.990825
+/// This file was generated on 2021-11-18T13:57:10.111676
 
 
 import '../../pco.dart';
@@ -208,7 +208,7 @@ Future<List<PcoCalendarEvent>> getEvents({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarEvent> retval = [];
   var url = '$apiEndpoint/event';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarEvent.fromJson(itemData));
@@ -223,7 +223,7 @@ Future<List<PcoCalendarEventTime>> getEventTimes({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarEventTime> retval = [];
   var url = '$apiEndpoint/event_times';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarEventTime.fromJson(itemData));
@@ -238,7 +238,7 @@ Future<List<PcoCalendarResourceBooking>> getResourceBookings({PlanningCenterApiQ
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarResourceBooking> retval = [];
   var url = '$apiEndpoint/resource_bookings';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarResourceBooking.fromJson(itemData));
@@ -253,7 +253,7 @@ Future<List<PcoCalendarTag>> getTags({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarTag.fromJson(itemData));

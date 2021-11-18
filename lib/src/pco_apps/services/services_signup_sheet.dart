@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.139180
+/// This file was generated on 2021-11-18T13:57:09.751804
 
 
 import '../../pco.dart';
@@ -104,7 +104,7 @@ Future<List<PcoServicesScheduledPerson>> getScheduledPersonsScheduledPeople({Pla
   query ??= PlanningCenterApiQuery();
   List<PcoServicesScheduledPerson> retval = [];
   var url = '$apiEndpoint/scheduled_people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesScheduledPerson.fromJson(itemData));
@@ -119,7 +119,7 @@ Future<List<PcoServicesSignupSheetMetadata>> getSignupSheetMetadatas({PlanningCe
   query ??= PlanningCenterApiQuery();
   List<PcoServicesSignupSheetMetadata> retval = [];
   var url = '$apiEndpoint/signup_sheet_metadata';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesSignupSheetMetadata.fromJson(itemData));

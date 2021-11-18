@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.147450
+/// This file was generated on 2021-11-18T13:57:09.764070
 
 
 import '../../pco.dart';
@@ -126,7 +126,7 @@ Future<List<PcoServicesPerson>> getPersonsPeople({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoServicesPerson> retval = [];
   var url = '$apiEndpoint/people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesPerson.fromJson(itemData));
@@ -141,7 +141,7 @@ Future<List<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoServicesTeam> retval = [];
   var url = '$apiEndpoint/team';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesTeam.fromJson(itemData));

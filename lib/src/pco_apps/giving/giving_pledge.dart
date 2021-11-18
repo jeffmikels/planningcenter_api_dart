@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.037983
+/// This file was generated on 2021-11-18T13:57:10.215220
 
 
 import '../../pco.dart';
@@ -141,7 +141,7 @@ Future<List<PcoGivingPerson>> getPersonsJointGiver({PlanningCenterApiQuery? quer
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPerson> retval = [];
   var url = '$apiEndpoint/joint_giver';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPerson.fromJson(itemData));
@@ -156,7 +156,7 @@ Future<List<PcoGivingPledgeCampaign>> getPledgeCampaigns({PlanningCenterApiQuery
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPledgeCampaign> retval = [];
   var url = '$apiEndpoint/pledge_campaign';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPledgeCampaign.fromJson(itemData));

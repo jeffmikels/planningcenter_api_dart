@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.916076
+/// This file was generated on 2021-11-18T13:57:10.027001
 
 
 import '../../pco.dart';
@@ -92,7 +92,7 @@ Future<List<PcoPeopleCondition>> getConditions({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleCondition> retval = [];
   var url = '$apiEndpoint/conditions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleCondition.fromJson(itemData));

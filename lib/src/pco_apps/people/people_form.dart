@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.311075
+/// This file was generated on 2021-11-18T13:57:09.974117
 
 
 import '../../pco.dart';
@@ -108,7 +108,7 @@ Future<List<PcoPeopleCampu>> getCampus({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleCampu> retval = [];
   var url = '$apiEndpoint/campus';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleCampu.fromJson(itemData));
@@ -123,7 +123,7 @@ Future<List<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleFormField> retval = [];
   var url = '$apiEndpoint/fields';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleFormField.fromJson(itemData));
@@ -138,7 +138,7 @@ Future<List<PcoPeopleFormSubmission>> getFormSubmissions({PlanningCenterApiQuery
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleFormSubmission> retval = [];
   var url = '$apiEndpoint/form_submissions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleFormSubmission.fromJson(itemData));

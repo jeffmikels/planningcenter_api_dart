@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.202173
+/// This file was generated on 2021-11-18T13:57:09.865708
 
 
 import '../../pco.dart';
@@ -124,7 +124,7 @@ Future<List<PcoCheckInsLabel>> getLabels({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsLabel> retval = [];
   var url = '$apiEndpoint/label';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsLabel.fromJson(itemData));

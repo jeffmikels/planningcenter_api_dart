@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.200192
+/// This file was generated on 2021-11-18T13:57:09.864233
 
 
 import '../../pco.dart';
@@ -126,7 +126,7 @@ Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsCheckIn> retval = [];
   var url = '$apiEndpoint/check_ins';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsCheckIn.fromJson(itemData));
@@ -141,7 +141,7 @@ Future<List<PcoCheckInsEventPeriod>> getEventPeriods({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventPeriod> retval = [];
   var url = '$apiEndpoint/event_period';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventPeriod.fromJson(itemData));
@@ -156,7 +156,7 @@ Future<List<PcoCheckInsLocation>> getLocations({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsLocation> retval = [];
   var url = '$apiEndpoint/location';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsLocation.fromJson(itemData));

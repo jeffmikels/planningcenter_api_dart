@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.927812
+/// This file was generated on 2021-11-18T13:57:10.044251
 
 
 import '../../pco.dart';
@@ -144,7 +144,7 @@ Future<List<PcoPeopleWorkflowStepAssigneeSummary>> getWorkflowStepAssigneeSummar
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflowStepAssigneeSummary> retval = [];
   var url = '$apiEndpoint/assignee_summaries';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflowStepAssigneeSummary.fromJson(itemData));
@@ -159,7 +159,7 @@ Future<List<PcoPeoplePerson>> getPersonsDefaultAssignee({PlanningCenterApiQuery?
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/default_assignee';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePerson.fromJson(itemData));

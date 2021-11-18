@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.184181
+/// This file was generated on 2021-11-18T13:57:09.854091
 
 
 import '../../pco.dart';
@@ -126,7 +126,7 @@ Future<List<PcoCheckInsEvent>> getEvents({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEvent> retval = [];
   var url = '$apiEndpoint/event';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEvent.fromJson(itemData));
@@ -141,7 +141,7 @@ Future<List<PcoCheckInsHeadcount>> getHeadcounts({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsHeadcount> retval = [];
   var url = '$apiEndpoint/headcounts';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsHeadcount.fromJson(itemData));

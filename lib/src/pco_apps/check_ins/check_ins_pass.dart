@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.203917
+/// This file was generated on 2021-11-18T13:57:09.867038
 
 
 import '../../pco.dart';
@@ -127,7 +127,7 @@ Future<List<PcoCheckInsPerson>> getPersons({PlanningCenterApiQuery? query}) asyn
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsPerson> retval = [];
   var url = '$apiEndpoint/person';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsPerson.fromJson(itemData));

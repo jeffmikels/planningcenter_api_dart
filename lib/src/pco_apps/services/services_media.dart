@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.114380
+/// This file was generated on 2021-11-18T13:57:09.725018
 
 
 import '../../pco.dart';
@@ -184,7 +184,7 @@ Future<List<PcoServicesAttachment>> getAttachments({PlanningCenterApiQuery? quer
   query ??= PlanningCenterApiQuery();
   List<PcoServicesAttachment> retval = [];
   var url = '$apiEndpoint/attachments';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesAttachment.fromJson(itemData));
@@ -199,7 +199,7 @@ Future<List<PcoServicesMediaSchedule>> getMediaSchedules({PlanningCenterApiQuery
   query ??= PlanningCenterApiQuery();
   List<PcoServicesMediaSchedule> retval = [];
   var url = '$apiEndpoint/media_schedules';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesMediaSchedule.fromJson(itemData));
@@ -214,7 +214,7 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoServicesTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesTag.fromJson(itemData));

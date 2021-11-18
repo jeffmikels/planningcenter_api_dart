@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.905762
+/// This file was generated on 2021-11-18T13:57:10.010653
 
 
 import '../../pco.dart';
@@ -100,7 +100,7 @@ Future<List<PcoPeoplePeopleImportConflict>> getPeopleImportConflictsConflicts({P
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePeopleImportConflict> retval = [];
   var url = '$apiEndpoint/conflicts';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData));
@@ -115,7 +115,7 @@ Future<List<PcoPeoplePeopleImportHistory>> getPeopleImportHistoriesHistories({Pl
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePeopleImportHistory> retval = [];
   var url = '$apiEndpoint/histories';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePeopleImportHistory.fromJson(itemData));

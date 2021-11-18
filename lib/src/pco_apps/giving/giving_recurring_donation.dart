@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.041211
+/// This file was generated on 2021-11-18T13:57:10.218956
 
 
 import '../../pco.dart';
@@ -170,7 +170,7 @@ Future<List<PcoGivingPaymentMethod>> getPaymentMethods({PlanningCenterApiQuery? 
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPaymentMethod> retval = [];
   var url = '$apiEndpoint/payment_method';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPaymentMethod.fromJson(itemData));
@@ -185,7 +185,7 @@ Future<List<PcoGivingRecurringDonationDesignation>> getRecurringDonationDesignat
   query ??= PlanningCenterApiQuery();
   List<PcoGivingRecurringDonationDesignation> retval = [];
   var url = '$apiEndpoint/designations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingRecurringDonationDesignation.fromJson(itemData));

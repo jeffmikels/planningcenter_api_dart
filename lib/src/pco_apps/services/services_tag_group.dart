@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.145123
+/// This file was generated on 2021-11-18T13:57:09.758187
 
 
 import '../../pco.dart';
@@ -102,7 +102,7 @@ Future<List<PcoServicesFolder>> getFolders({PlanningCenterApiQuery? query}) asyn
   query ??= PlanningCenterApiQuery();
   List<PcoServicesFolder> retval = [];
   var url = '$apiEndpoint/folder';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesFolder.fromJson(itemData));
@@ -117,7 +117,7 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoServicesTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesTag.fromJson(itemData));

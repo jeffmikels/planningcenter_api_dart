@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.004497
+/// This file was generated on 2021-11-18T13:57:10.126349
 
 
 import '../../pco.dart';
@@ -172,7 +172,7 @@ Future<List<PcoCalendarResource>> getResourcesContainingResource({PlanningCenter
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarResource> retval = [];
   var url = '$apiEndpoint/containing_resource';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarResource.fromJson(itemData));
@@ -187,7 +187,7 @@ Future<List<PcoCalendarResourceSuggestion>> getResourceSuggestions({PlanningCent
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarResourceSuggestion> retval = [];
   var url = '$apiEndpoint/resource_suggestions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarResourceSuggestion.fromJson(itemData));

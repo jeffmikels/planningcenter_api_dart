@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.126633
+/// This file was generated on 2021-11-18T13:57:09.738539
 
 
 import '../../pco.dart';
@@ -125,7 +125,7 @@ Future<List<PcoServicesPlanNoteCategory>> getPlanNoteCategories({PlanningCenterA
   query ??= PlanningCenterApiQuery();
   List<PcoServicesPlanNoteCategory> retval = [];
   var url = '$apiEndpoint/plan_note_category';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesPlanNoteCategory.fromJson(itemData));

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.916906
+/// This file was generated on 2021-11-18T13:57:10.028703
 
 
 import '../../pco.dart';
@@ -165,7 +165,7 @@ Future<List<PcoPeopleSchoolOption>> getSchoolOptionsPromotesToSchool({PlanningCe
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleSchoolOption> retval = [];
   var url = '$apiEndpoint/promotes_to_school';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleSchoolOption.fromJson(itemData));

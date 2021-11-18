@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.074764
+/// This file was generated on 2021-11-18T13:57:10.283599
 
 
 import '../../pco.dart';
@@ -94,7 +94,7 @@ Future<List<PcoWebhooksDelivery>> getDeliveries({PlanningCenterApiQuery? query})
   query ??= PlanningCenterApiQuery();
   List<PcoWebhooksDelivery> retval = [];
   var url = '$apiEndpoint/deliveries';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoWebhooksDelivery.fromJson(itemData));

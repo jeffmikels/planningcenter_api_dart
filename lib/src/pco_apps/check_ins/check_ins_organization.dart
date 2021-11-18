@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.203137
+/// This file was generated on 2021-11-18T13:57:09.866423
 
 
 import '../../pco.dart';
@@ -102,7 +102,7 @@ Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsCheckIn> retval = [];
   var url = '$apiEndpoint/check_ins';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsCheckIn.fromJson(itemData));
@@ -117,7 +117,7 @@ Future<List<PcoCheckInsEventTime>> getEventTimes({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEventTime> retval = [];
   var url = '$apiEndpoint/event_times';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEventTime.fromJson(itemData));
@@ -132,7 +132,7 @@ Future<List<PcoCheckInsEvent>> getEvents({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsEvent> retval = [];
   var url = '$apiEndpoint/events';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsEvent.fromJson(itemData));
@@ -147,7 +147,7 @@ Future<List<PcoCheckInsHeadcount>> getHeadcounts({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsHeadcount> retval = [];
   var url = '$apiEndpoint/headcounts';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsHeadcount.fromJson(itemData));
@@ -162,7 +162,7 @@ Future<List<PcoCheckInsLabel>> getLabels({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsLabel> retval = [];
   var url = '$apiEndpoint/labels';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsLabel.fromJson(itemData));
@@ -177,7 +177,7 @@ Future<List<PcoCheckInsPas>> getPasesPasses({PlanningCenterApiQuery? query}) asy
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsPas> retval = [];
   var url = '$apiEndpoint/passes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsPas.fromJson(itemData));
@@ -192,7 +192,7 @@ Future<List<PcoCheckInsPerson>> getPersonsPeople({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsPerson> retval = [];
   var url = '$apiEndpoint/people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsPerson.fromJson(itemData));
@@ -207,7 +207,7 @@ Future<List<PcoCheckInsStation>> getStations({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsStation> retval = [];
   var url = '$apiEndpoint/stations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsStation.fromJson(itemData));
@@ -222,7 +222,7 @@ Future<List<PcoCheckInsTheme>> getThemes({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCheckInsTheme> retval = [];
   var url = '$apiEndpoint/themes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCheckInsTheme.fromJson(itemData));

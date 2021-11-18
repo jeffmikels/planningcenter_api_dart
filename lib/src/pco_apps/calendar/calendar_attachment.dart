@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.986291
+/// This file was generated on 2021-11-18T13:57:10.106599
 
 
 import '../../pco.dart';
@@ -140,7 +140,7 @@ Future<List<PcoCalendarEvent>> getEvents({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoCalendarEvent> retval = [];
   var url = '$apiEndpoint/event';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoCalendarEvent.fromJson(itemData));

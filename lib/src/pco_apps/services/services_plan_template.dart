@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.130675
+/// This file was generated on 2021-11-18T13:57:09.742812
 
 
 import '../../pco.dart';
@@ -106,7 +106,7 @@ Future<List<PcoServicesItem>> getItems({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoServicesItem> retval = [];
   var url = '$apiEndpoint/items';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesItem.fromJson(itemData));
@@ -121,7 +121,7 @@ Future<List<PcoServicesPlanNote>> getPlanNotesNotes({PlanningCenterApiQuery? que
   query ??= PlanningCenterApiQuery();
   List<PcoServicesPlanNote> retval = [];
   var url = '$apiEndpoint/notes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesPlanNote.fromJson(itemData));

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.097268
+/// This file was generated on 2021-11-18T13:57:09.706695
 
 
 import '../../pco.dart';
@@ -98,7 +98,7 @@ Future<List<PcoServicesSignupSheet>> getSignupSheets({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoServicesSignupSheet> retval = [];
   var url = '$apiEndpoint/signup_sheets';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesSignupSheet.fromJson(itemData));

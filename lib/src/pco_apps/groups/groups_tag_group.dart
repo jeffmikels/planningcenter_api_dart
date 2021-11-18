@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.065222
+/// This file was generated on 2021-11-18T13:57:10.274961
 
 
 import '../../pco.dart';
@@ -100,7 +100,7 @@ Future<List<PcoGroupsTag>> getTags({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsTag.fromJson(itemData));

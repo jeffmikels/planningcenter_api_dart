@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.035667
+/// This file was generated on 2021-11-18T13:57:10.210179
 
 
 import '../../pco.dart';
@@ -140,7 +140,7 @@ Future<List<PcoGivingRecurringDonation>> getRecurringDonations({PlanningCenterAp
   query ??= PlanningCenterApiQuery();
   List<PcoGivingRecurringDonation> retval = [];
   var url = '$apiEndpoint/recurring_donations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingRecurringDonation.fromJson(itemData));

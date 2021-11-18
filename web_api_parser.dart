@@ -401,7 +401,7 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<$childClass> retval = [];
   var url = '\$apiEndpoint/$pathSuffix';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add($childClass.fromJson(itemData));

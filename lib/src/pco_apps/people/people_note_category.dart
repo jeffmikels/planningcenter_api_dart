@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.899995
+/// This file was generated on 2021-11-18T13:57:10.001376
 
 
 import '../../pco.dart';
@@ -127,7 +127,7 @@ Future<List<PcoPeopleNoteCategoryShare>> getNoteCategorySharesShares({PlanningCe
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNoteCategoryShare> retval = [];
   var url = '$apiEndpoint/shares';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNoteCategoryShare.fromJson(itemData));
@@ -142,7 +142,7 @@ Future<List<PcoPeoplePerson>> getPersonsSubscribers({PlanningCenterApiQuery? que
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/subscribers';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePerson.fromJson(itemData));
@@ -157,7 +157,7 @@ Future<List<PcoPeopleNoteCategorySubscription>> getNoteCategorySubscriptionsSubs
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNoteCategorySubscription> retval = [];
   var url = '$apiEndpoint/subscriptions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNoteCategorySubscription.fromJson(itemData));

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:29.903867
+/// This file was generated on 2021-11-18T13:57:10.008144
 
 
 import '../../pco.dart';
@@ -102,7 +102,7 @@ Future<List<PcoPeopleAddres>> getAddresAddresses({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleAddres> retval = [];
   var url = '$apiEndpoint/addresses';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleAddres.fromJson(itemData));
@@ -117,7 +117,7 @@ Future<List<PcoPeopleAnniversaryCouple>> getAnniversaryCouples({PlanningCenterAp
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleAnniversaryCouple> retval = [];
   var url = '$apiEndpoint/anniversary_couples';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleAnniversaryCouple.fromJson(itemData));
@@ -132,7 +132,7 @@ Future<List<PcoPeopleApp>> getApps({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleApp> retval = [];
   var url = '$apiEndpoint/apps';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleApp.fromJson(itemData));
@@ -147,7 +147,7 @@ Future<List<PcoPeopleBirthdayPeople>> getBirthdayPeoples({PlanningCenterApiQuery
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleBirthdayPeople> retval = [];
   var url = '$apiEndpoint/birthday_people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleBirthdayPeople.fromJson(itemData));
@@ -162,7 +162,7 @@ Future<List<PcoPeopleCampu>> getCampusCampuses({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleCampu> retval = [];
   var url = '$apiEndpoint/campuses';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleCampu.fromJson(itemData));
@@ -177,7 +177,7 @@ Future<List<PcoPeopleCarrier>> getCarriers({PlanningCenterApiQuery? query}) asyn
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleCarrier> retval = [];
   var url = '$apiEndpoint/carriers';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleCarrier.fromJson(itemData));
@@ -192,7 +192,7 @@ Future<List<PcoPeopleEmail>> getEmails({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleEmail> retval = [];
   var url = '$apiEndpoint/emails';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleEmail.fromJson(itemData));
@@ -207,7 +207,7 @@ Future<List<PcoPeopleFieldDatum>> getFieldDatumsFieldData({PlanningCenterApiQuer
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleFieldDatum> retval = [];
   var url = '$apiEndpoint/field_data';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleFieldDatum.fromJson(itemData));
@@ -222,7 +222,7 @@ Future<List<PcoPeopleFieldDefinition>> getFieldDefinitions({PlanningCenterApiQue
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleFieldDefinition> retval = [];
   var url = '$apiEndpoint/field_definitions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleFieldDefinition.fromJson(itemData));
@@ -237,7 +237,7 @@ Future<List<PcoPeopleForm>> getForms({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleForm> retval = [];
   var url = '$apiEndpoint/forms';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleForm.fromJson(itemData));
@@ -252,7 +252,7 @@ Future<List<PcoPeopleHousehold>> getHouseholds({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleHousehold> retval = [];
   var url = '$apiEndpoint/households';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleHousehold.fromJson(itemData));
@@ -267,7 +267,7 @@ Future<List<PcoPeopleInactiveReason>> getInactiveReasons({PlanningCenterApiQuery
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleInactiveReason> retval = [];
   var url = '$apiEndpoint/inactive_reasons';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleInactiveReason.fromJson(itemData));
@@ -282,7 +282,7 @@ Future<List<PcoPeopleListCategory>> getListCategories({PlanningCenterApiQuery? q
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleListCategory> retval = [];
   var url = '$apiEndpoint/list_categories';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleListCategory.fromJson(itemData));
@@ -297,7 +297,7 @@ Future<List<PcoPeopleList>> getLists({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleList> retval = [];
   var url = '$apiEndpoint/lists';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleList.fromJson(itemData));
@@ -312,7 +312,7 @@ Future<List<PcoPeopleMaritalStatu>> getMaritalStatusMaritalStatuses({PlanningCen
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleMaritalStatu> retval = [];
   var url = '$apiEndpoint/marital_statuses';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleMaritalStatu.fromJson(itemData));
@@ -327,7 +327,7 @@ Future<List<PcoPeopleMessageGroup>> getMessageGroups({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleMessageGroup> retval = [];
   var url = '$apiEndpoint/message_groups';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleMessageGroup.fromJson(itemData));
@@ -342,7 +342,7 @@ Future<List<PcoPeopleMessage>> getMessages({PlanningCenterApiQuery? query}) asyn
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleMessage> retval = [];
   var url = '$apiEndpoint/messages';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleMessage.fromJson(itemData));
@@ -357,7 +357,7 @@ Future<List<PcoPeopleNamePrefix>> getNamePrefixes({PlanningCenterApiQuery? query
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNamePrefix> retval = [];
   var url = '$apiEndpoint/name_prefixes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNamePrefix.fromJson(itemData));
@@ -372,7 +372,7 @@ Future<List<PcoPeopleNameSuffix>> getNameSuffixes({PlanningCenterApiQuery? query
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNameSuffix> retval = [];
   var url = '$apiEndpoint/name_suffixes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNameSuffix.fromJson(itemData));
@@ -387,7 +387,7 @@ Future<List<PcoPeopleNoteCategory>> getNoteCategories({PlanningCenterApiQuery? q
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNoteCategory> retval = [];
   var url = '$apiEndpoint/note_categories';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNoteCategory.fromJson(itemData));
@@ -402,7 +402,7 @@ Future<List<PcoPeopleNoteCategorySubscription>> getNoteCategorySubscriptions({Pl
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNoteCategorySubscription> retval = [];
   var url = '$apiEndpoint/note_category_subscriptions';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNoteCategorySubscription.fromJson(itemData));
@@ -417,7 +417,7 @@ Future<List<PcoPeopleNote>> getNotes({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleNote> retval = [];
   var url = '$apiEndpoint/notes';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleNote.fromJson(itemData));
@@ -432,7 +432,7 @@ Future<List<PcoPeoplePerson>> getPersonsPeople({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePerson.fromJson(itemData));
@@ -447,7 +447,7 @@ Future<List<PcoPeoplePeopleImport>> getPeopleImports({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePeopleImport> retval = [];
   var url = '$apiEndpoint/people_imports';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePeopleImport.fromJson(itemData));
@@ -462,7 +462,7 @@ Future<List<PcoPeoplePersonMerger>> getPersonMergers({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeoplePersonMerger> retval = [];
   var url = '$apiEndpoint/person_mergers';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeoplePersonMerger.fromJson(itemData));
@@ -477,7 +477,7 @@ Future<List<PcoPeopleReport>> getReports({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleReport> retval = [];
   var url = '$apiEndpoint/reports';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleReport.fromJson(itemData));
@@ -492,7 +492,7 @@ Future<List<PcoPeopleSchoolOption>> getSchoolOptions({PlanningCenterApiQuery? qu
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleSchoolOption> retval = [];
   var url = '$apiEndpoint/school_options';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleSchoolOption.fromJson(itemData));
@@ -507,7 +507,7 @@ Future<List<PcoPeopleSocialProfile>> getSocialProfiles({PlanningCenterApiQuery? 
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleSocialProfile> retval = [];
   var url = '$apiEndpoint/social_profiles';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleSocialProfile.fromJson(itemData));
@@ -522,7 +522,7 @@ Future<List<PcoPeopleOrganizationStatistic>> getOrganizationStatisticsStats({Pla
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleOrganizationStatistic> retval = [];
   var url = '$apiEndpoint/stats';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleOrganizationStatistic.fromJson(itemData));
@@ -537,7 +537,7 @@ Future<List<PcoPeopleTab>> getTabs({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleTab> retval = [];
   var url = '$apiEndpoint/tabs';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleTab.fromJson(itemData));
@@ -552,7 +552,7 @@ Future<List<PcoPeopleWorkflow>> getWorkflows({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoPeopleWorkflow> retval = [];
   var url = '$apiEndpoint/workflows';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoPeopleWorkflow.fromJson(itemData));

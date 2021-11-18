@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:27.110495
+/// This file was generated on 2021-11-18T13:57:09.721416
 
 
 import '../../pco.dart';
@@ -168,7 +168,7 @@ Future<List<PcoServicesAttachment>> getAttachments({PlanningCenterApiQuery? quer
   query ??= PlanningCenterApiQuery();
   List<PcoServicesAttachment> retval = [];
   var url = '$apiEndpoint/attachments';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoServicesAttachment.fromJson(itemData));

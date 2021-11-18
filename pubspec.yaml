@@ -1,5 +1,5 @@
 name: planningcenter_api
-description: A starting point for Dart libraries or applications.
+description: Supports nearly 100% of the Planning Center public API.
 version: 1.0.0
 # homepage: https://www.example.com
 

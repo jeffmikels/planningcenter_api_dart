@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.037225
+/// This file was generated on 2021-11-18T13:57:10.213822
 
 
 import '../../pco.dart';
@@ -194,7 +194,7 @@ Future<List<PcoGivingBatchGroup>> getBatchGroups({PlanningCenterApiQuery? query}
   query ??= PlanningCenterApiQuery();
   List<PcoGivingBatchGroup> retval = [];
   var url = '$apiEndpoint/batch_groups';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingBatchGroup.fromJson(itemData));
@@ -209,7 +209,7 @@ Future<List<PcoGivingBatch>> getBatchsBatches({PlanningCenterApiQuery? query}) a
   query ??= PlanningCenterApiQuery();
   List<PcoGivingBatch> retval = [];
   var url = '$apiEndpoint/batches';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingBatch.fromJson(itemData));
@@ -224,7 +224,7 @@ Future<List<PcoGivingDonation>> getDonations({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoGivingDonation> retval = [];
   var url = '$apiEndpoint/donations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingDonation.fromJson(itemData));
@@ -239,7 +239,7 @@ Future<List<PcoGivingPaymentMethod>> getPaymentMethods({PlanningCenterApiQuery? 
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPaymentMethod> retval = [];
   var url = '$apiEndpoint/payment_methods';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPaymentMethod.fromJson(itemData));
@@ -254,7 +254,7 @@ Future<List<PcoGivingPledge>> getPledges({PlanningCenterApiQuery? query}) async 
   query ??= PlanningCenterApiQuery();
   List<PcoGivingPledge> retval = [];
   var url = '$apiEndpoint/pledges';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingPledge.fromJson(itemData));
@@ -269,7 +269,7 @@ Future<List<PcoGivingCampu>> getCampusPrimaryCampus({PlanningCenterApiQuery? que
   query ??= PlanningCenterApiQuery();
   List<PcoGivingCampu> retval = [];
   var url = '$apiEndpoint/primary_campus';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingCampu.fromJson(itemData));
@@ -284,7 +284,7 @@ Future<List<PcoGivingRecurringDonation>> getRecurringDonations({PlanningCenterAp
   query ??= PlanningCenterApiQuery();
   List<PcoGivingRecurringDonation> retval = [];
   var url = '$apiEndpoint/recurring_donations';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingRecurringDonation.fromJson(itemData));

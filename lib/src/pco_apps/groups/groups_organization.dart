@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.062611
+/// This file was generated on 2021-11-18T13:57:10.271810
 
 
 import '../../pco.dart';
@@ -62,7 +62,7 @@ Future<List<PcoGroupsEvent>> getEvents({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsEvent> retval = [];
   var url = '$apiEndpoint/events';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsEvent.fromJson(itemData));
@@ -77,7 +77,7 @@ Future<List<PcoGroupsGroupType>> getGroupTypes({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsGroupType> retval = [];
   var url = '$apiEndpoint/group_types';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsGroupType.fromJson(itemData));
@@ -92,7 +92,7 @@ Future<List<PcoGroupsGroup>> getGroups({PlanningCenterApiQuery? query}) async {
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsGroup> retval = [];
   var url = '$apiEndpoint/groups';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsGroup.fromJson(itemData));
@@ -107,7 +107,7 @@ Future<List<PcoGroupsPerson>> getPersonsPeople({PlanningCenterApiQuery? query}) 
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsPerson> retval = [];
   var url = '$apiEndpoint/people';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsPerson.fromJson(itemData));
@@ -122,7 +122,7 @@ Future<List<PcoGroupsTagGroup>> getTagGroups({PlanningCenterApiQuery? query}) as
   query ??= PlanningCenterApiQuery();
   List<PcoGroupsTagGroup> retval = [];
   var url = '$apiEndpoint/tag_groups';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGroupsTagGroup.fromJson(itemData));

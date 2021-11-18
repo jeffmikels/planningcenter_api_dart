@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-17T23:59:30.043101
+/// This file was generated on 2021-11-18T13:57:10.222517
 
 
 import '../../pco.dart';
@@ -100,7 +100,7 @@ Future<List<PcoGivingDesignationRefund>> getDesignationRefunds({PlanningCenterAp
   query ??= PlanningCenterApiQuery();
   List<PcoGivingDesignationRefund> retval = [];
   var url = '$apiEndpoint/designation_refunds';
-  var res = await api.call(url, apiVersion:apiVersion);
+  var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
       retval.add(PcoGivingDesignationRefund.fromJson(itemData));

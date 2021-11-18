@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.856654
+/// This file was generated on 2021-11-18T15:28:01.833896
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group
 /// 
 class PcoCheckInsCheckInGroup extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'CheckInGroup';
-  static const String typeId = 'check_in_group';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'checkingroup-station-check_in_groups';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'CheckInGroup';
+  static const String kTypeId = 'check_in_group';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'checkingroup-station-check_in_groups';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kNameLabelsCount = 'name_labels_count';
@@ -57,8 +61,8 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
 
 
-  PcoCheckInsCheckInGroup() : super(pcoApplication, typeString);
-  PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsCheckInGroup() : super(kPcoApplication, kTypeString);
+  PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsCheckInGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group;
@@ -66,7 +70,7 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     List<PcoCheckInsCheckInGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_group';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -82,7 +86,7 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     List<PcoCheckInsCheckInGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/check_in_groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -100,7 +104,7 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     PcoCheckInsCheckInGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_group' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -114,7 +118,7 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     PcoCheckInsCheckInGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/check_in_groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

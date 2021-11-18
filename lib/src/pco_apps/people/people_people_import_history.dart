@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.013292
+/// This file was generated on 2021-11-18T15:28:02.064799
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people_imports/1/histories
 /// 
 class PcoPeoplePeopleImportHistory extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'PeopleImportHistory';
-  static const String typeId = 'people_import_history';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'peopleimporthistory-peopleimport-histories';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/histories';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'PeopleImportHistory';
+  static const String kTypeId = 'people_import_history';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'peopleimporthistory-peopleimport-histories';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/histories';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -53,8 +57,8 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
 
 
 
-  PcoPeoplePeopleImportHistory() : super(pcoApplication, typeString);
-  PcoPeoplePeopleImportHistory.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePeopleImportHistory() : super(kPcoApplication, kTypeString);
+  PcoPeoplePeopleImportHistory.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePeopleImportHistory Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories;
@@ -62,7 +66,7 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
     List<PcoPeoplePeopleImportHistory> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/histories';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -80,7 +84,7 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
     PcoPeoplePeopleImportHistory?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/histories' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

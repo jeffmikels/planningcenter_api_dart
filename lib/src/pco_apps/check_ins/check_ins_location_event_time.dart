@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.864725
+/// This file was generated on 2021-11-18T15:28:01.848117
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times
 /// 
 class PcoCheckInsLocationEventTime extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'LocationEventTime';
-  static const String typeId = 'location_event_time';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'locationeventtime-eventtime-location_event_times';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'LocationEventTime';
+  static const String kTypeId = 'location_event_time';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'locationeventtime-eventtime-location_event_times';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kRegularCount = 'regular_count';
@@ -53,8 +57,8 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
 
 
-  PcoCheckInsLocationEventTime() : super(pcoApplication, typeString);
-  PcoCheckInsLocationEventTime.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsLocationEventTime() : super(kPcoApplication, kTypeString);
+  PcoCheckInsLocationEventTime.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsLocationEventTime Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times;
@@ -62,7 +66,7 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     List<PcoCheckInsLocationEventTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     List<PcoCheckInsLocationEventTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -96,7 +100,7 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     PcoCheckInsLocationEventTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -110,7 +114,7 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     PcoCheckInsLocationEventTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

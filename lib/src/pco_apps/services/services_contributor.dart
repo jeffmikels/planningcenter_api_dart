@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.711342
+/// This file was generated on 2021-11-18T15:28:01.688662
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors
 /// 
 class PcoServicesContributor extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Contributor';
-  static const String typeId = 'contributor';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'contributor-plan-contributors';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Contributor';
+  static const String kTypeId = 'contributor';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'contributor-plan-contributors';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kContributableAction = 'contributable_action';
@@ -57,8 +61,8 @@ class PcoServicesContributor extends PcoResource {
 
 
 
-  PcoServicesContributor() : super(pcoApplication, typeString);
-  PcoServicesContributor.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesContributor() : super(kPcoApplication, kTypeString);
+  PcoServicesContributor.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesContributor Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors;
@@ -66,7 +70,7 @@ class PcoServicesContributor extends PcoResource {
     List<PcoServicesContributor> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -84,7 +88,7 @@ class PcoServicesContributor extends PcoResource {
     PcoServicesContributor?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

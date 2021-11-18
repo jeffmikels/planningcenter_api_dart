@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.712566
+/// This file was generated on 2021-11-18T15:28:01.689833
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/email_templates
 /// 
 class PcoServicesEmailTemplate extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'EmailTemplate';
-  static const String typeId = 'email_template';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'emailtemplate-organization-email_templates';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'EmailTemplate';
+  static const String kTypeId = 'email_template';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'emailtemplate-organization-email_templates';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kKind = 'kind';
@@ -56,8 +60,8 @@ class PcoServicesEmailTemplate extends PcoResource {
   set subject(String s) => attributes[kSubject] = s;
 
 
-  PcoServicesEmailTemplate() : super(pcoApplication, typeString);
-  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesEmailTemplate() : super(kPcoApplication, kTypeString);
+  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesEmailTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates;
@@ -65,7 +69,7 @@ class PcoServicesEmailTemplate extends PcoResource {
     List<PcoServicesEmailTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/email_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -83,7 +87,7 @@ class PcoServicesEmailTemplate extends PcoResource {
     PcoServicesEmailTemplate?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/email_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

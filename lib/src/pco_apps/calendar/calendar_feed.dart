@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.115034
+/// This file was generated on 2021-11-18T15:28:02.150801
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/feeds
 /// 
 class PcoCalendarFeed extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'Feed';
-  static const String typeId = 'feed';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'feed-organization-feeds';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'Feed';
+  static const String kTypeId = 'feed';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'feed-organization-feeds';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDefaultChurchCenterVisibility = 'default_church_center_visibility';
@@ -67,8 +71,8 @@ class PcoCalendarFeed extends PcoResource {
   set feedType(String s) => attributes[kFeedType] = s;
 
 
-  PcoCalendarFeed() : super(pcoApplication, typeString);
-  PcoCalendarFeed.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarFeed() : super(kPcoApplication, kTypeString);
+  PcoCalendarFeed.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarFeed Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
@@ -76,7 +80,7 @@ class PcoCalendarFeed extends PcoResource {
     List<PcoCalendarFeed> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/feed';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoCalendarFeed extends PcoResource {
     List<PcoCalendarFeed> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/feeds';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -110,7 +114,7 @@ class PcoCalendarFeed extends PcoResource {
     PcoCalendarFeed?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/feed' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -124,7 +128,7 @@ class PcoCalendarFeed extends PcoResource {
     PcoCalendarFeed?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/feeds' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.710495
+/// This file was generated on 2021-11-18T15:28:01.687811
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/ccli_reporting
 /// 
 class PcoServicesCcliReporting extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'CcliReporting';
-  static const String typeId = 'ccli_reporting';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/ccli_reporting';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'CcliReporting';
+  static const String kTypeId = 'ccli_reporting';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/ccli_reporting';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDigital = 'digital';
@@ -55,8 +59,8 @@ class PcoServicesCcliReporting extends PcoResource {
 
 
 
-  PcoServicesCcliReporting() : super(pcoApplication, typeString);
-  PcoServicesCcliReporting.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesCcliReporting() : super(kPcoApplication, kTypeString);
+  PcoServicesCcliReporting.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesCcliReporting Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/ccli_reporting;
@@ -64,7 +68,7 @@ class PcoServicesCcliReporting extends PcoResource {
     List<PcoServicesCcliReporting> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/ccli_reporting';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -82,7 +86,7 @@ class PcoServicesCcliReporting extends PcoResource {
     PcoServicesCcliReporting?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/ccli_reporting' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

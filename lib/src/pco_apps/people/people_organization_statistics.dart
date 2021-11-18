@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.009823
+/// This file was generated on 2021-11-18T15:28:02.061715
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/organization_statistics
 /// 
 class PcoPeopleOrganizationStatistic extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'OrganizationStatistics';
-  static const String typeId = 'organization_statistics';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'organizationstatistics-organization-stats';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/stats';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'OrganizationStatistics';
+  static const String kTypeId = 'organization_statistics';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'organizationstatistics-organization-stats';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/stats';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
 
@@ -47,8 +51,8 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
 
 
 
-  PcoPeopleOrganizationStatistic() : super(pcoApplication, typeString);
-  PcoPeopleOrganizationStatistic.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleOrganizationStatistic() : super(kPcoApplication, kTypeString);
+  PcoPeopleOrganizationStatistic.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleOrganizationStatistic Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/stats;
@@ -56,7 +60,7 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
     List<PcoPeopleOrganizationStatistic> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/stats';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -74,7 +78,7 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
     PcoPeopleOrganizationStatistic?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/stats' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -31,6 +31,8 @@ class PlanningCenterApiQuery {
     this.where = const {},
   });
 
+  Map<String, dynamic> toJson() => asMap;
+
   Map<String, dynamic> get asMap {
     Map<String, dynamic> retval = {
       'per_page': perPage,
@@ -66,9 +68,10 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 class PlanningCenterApiResponse {
   bool get isError => this is PlanningCenterApiError;
 
-  final int statusCode;
   final Uri requestUri;
   final dynamic requestData;
+
+  final int statusCode;
   final dynamic responseBody;
 
   // successful queries only
@@ -76,6 +79,24 @@ class PlanningCenterApiResponse {
   final Map<String, dynamic> meta;
   final Map<String, dynamic> links;
   final List<dynamic> included;
+
+  Map<String, dynamic> toJson() {
+    return {
+      'error': isError,
+      'request': {
+        'uri': requestUri,
+        'body': requestData,
+      },
+      'response': {
+        'code': statusCode,
+        'body': responseBody,
+      },
+      'data': data,
+      'meta': meta,
+      'links': links,
+      'included': included,
+    };
+  }
 
   PlanningCenterApiResponse(
     this.statusCode,
@@ -118,7 +139,7 @@ class PlanningCenterApiResponse {
 /// example:
 ///
 /// ```dart
-/// // will return a singular PlanningCenter instance
+/// /// will return a singular [PlanningCenter] instance
 /// var pc1 = PlanningCenter.init(appId, secret);
 /// var pc2 = PlanningCenter.instance;
 /// assert(pc1 == pc2);
@@ -158,9 +179,10 @@ class PlanningCenter {
     initialized = true;
   }
 
-  /// Documentation is here: https://developer.planning.center/docs/#/overview/
-  /// [endpoint] should begin with a slash
+  /// Planning Center publishes their API documentation here:
+  /// https://developer.planning.center/docs/#/overview/
   ///
+  /// Some relevant points from the documentation:
   /// resources (sent and received) are wrapped in an object like this
   /// { "data": { "type": "Thing", "id": "1", "attributes": { ... } } }
   ///
@@ -172,7 +194,18 @@ class PlanningCenter {
   ///  ?where[date_field_name][operator]=2018-02-22
   /// the optional operator can be one of gt,gte,lt,lte for greater than, etc.
   ///
-  /// related resources can be included with ?include=something (not sure what that means)
+  /// related resources can be included with ?include=something
+  ///
+  /// This function executes an api request with appropriate authentication.
+  ///
+  /// Returns a [PlanningCenterApiResponse] object that decodes
+  /// response data into various mappings, but does not create objects.
+  ///
+  /// Real objects can be created with [PcoResponse.fromJson()]
+  ///
+  /// [endpoint] should begin with a slash, because
+  /// 'https://api.planningcenteronline.com' will be prepended automatically
+  ///
   ///
   Future<PlanningCenterApiResponse> call(
     String endpoint, {
@@ -195,6 +228,14 @@ class PlanningCenter {
     var uri = Uri.https(_baseUri.authority, _baseUri.path + endpoint, fixedParams);
     var headers = <String, String>{};
     if (apiVersion.isNotEmpty) headers['X-PCO-API-Version'] = apiVersion;
+
+    // print(endpoint);
+    // print(uri);
+    // print(verb);
+    // print(apiVersion);
+    // print(query.toJson());
+    // print(data);
+
     late http.Response res;
     switch (verb.toLowerCase()) {
       case 'get':

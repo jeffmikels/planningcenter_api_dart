@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.038381
+/// This file was generated on 2021-11-18T15:28:02.111072
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
 /// 
 class PcoPeopleWorkflowCardNote extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'WorkflowCardNote';
-  static const String typeId = 'workflow_card_note';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'workflowcardnote-workflowcard-notes';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'WorkflowCardNote';
+  static const String kTypeId = 'workflow_card_note';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'workflowcardnote-workflowcard-notes';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kNote = 'note';
@@ -50,8 +54,8 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   set note(String s) => attributes[kNote] = s;
 
 
-  PcoPeopleWorkflowCardNote() : super(pcoApplication, typeString);
-  PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleWorkflowCardNote() : super(kPcoApplication, kTypeString);
+  PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleWorkflowCardNote Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes;
@@ -59,7 +63,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
     List<PcoPeopleWorkflowCardNote> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -77,7 +81,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
     PcoPeopleWorkflowCardNote?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

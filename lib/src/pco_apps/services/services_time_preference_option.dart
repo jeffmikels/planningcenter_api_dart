@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.767738
+/// This file was generated on 2021-11-18T15:28:01.771106
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
 /// 
 class PcoServicesTimePreferenceOption extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'TimePreferenceOption';
-  static const String typeId = 'time_preference_option';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'timepreferenceoption-servicetype-time_preference_options';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'TimePreferenceOption';
+  static const String kTypeId = 'time_preference_option';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'timepreferenceoption-servicetype-time_preference_options';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDayOfWeek = 'day_of_week';
@@ -61,8 +65,8 @@ class PcoServicesTimePreferenceOption extends PcoResource {
 
 
 
-  PcoServicesTimePreferenceOption() : super(pcoApplication, typeString);
-  PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesTimePreferenceOption() : super(kPcoApplication, kTypeString);
+  PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesTimePreferenceOption Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options;
@@ -70,7 +74,7 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     List<PcoServicesTimePreferenceOption> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/time_preference_options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -88,7 +92,7 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     PcoServicesTimePreferenceOption?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/time_preference_options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

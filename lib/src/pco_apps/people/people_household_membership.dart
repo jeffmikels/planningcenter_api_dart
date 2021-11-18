@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.983671
+/// This file was generated on 2021-11-18T15:28:02.041103
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
 /// 
 class PcoPeopleHouseholdMembership extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'HouseholdMembership';
-  static const String typeId = 'household_membership';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'householdmembership-person-household_memberships';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/household_memberships';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'HouseholdMembership';
+  static const String kTypeId = 'household_membership';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'householdmembership-person-household_memberships';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/household_memberships';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPersonName = 'person_name';
@@ -56,8 +60,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   set isPending(bool b) => attributes[kPending] = b;
 
 
-  PcoPeopleHouseholdMembership() : super(pcoApplication, typeString);
-  PcoPeopleHouseholdMembership.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleHouseholdMembership() : super(kPcoApplication, kTypeString);
+  PcoPeopleHouseholdMembership.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleHouseholdMembership Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships;
@@ -65,7 +69,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     List<PcoPeopleHouseholdMembership> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/household_memberships';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -81,7 +85,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     List<PcoPeopleHouseholdMembership> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/household_memberships';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -99,7 +103,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     PcoPeopleHouseholdMembership?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/household_memberships' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -113,7 +117,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     PcoPeopleHouseholdMembership?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/household_memberships' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

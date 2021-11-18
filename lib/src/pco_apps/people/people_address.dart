@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.960321
+/// This file was generated on 2021-11-18T15:28:02.023933
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/addresses
 /// 
 class PcoPeopleAddres extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Address';
-  static const String typeId = 'address';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'address-organization-addresses';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/addresses';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Address';
+  static const String kTypeId = 'address';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'address-organization-addresses';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/addresses';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kCity = 'city';
@@ -65,8 +69,8 @@ class PcoPeopleAddres extends PcoResource {
   set isPrimary(bool b) => attributes[kPrimary] = b;
 
 
-  PcoPeopleAddres() : super(pcoApplication, typeString);
-  PcoPeopleAddres.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleAddres() : super(kPcoApplication, kTypeString);
+  PcoPeopleAddres.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleAddres Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/addresses;
@@ -74,7 +78,7 @@ class PcoPeopleAddres extends PcoResource {
     List<PcoPeopleAddres> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/addresses';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -90,7 +94,7 @@ class PcoPeopleAddres extends PcoResource {
     List<PcoPeopleAddres> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/addresses';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -108,7 +112,7 @@ class PcoPeopleAddres extends PcoResource {
     PcoPeopleAddres?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/addresses' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -122,7 +126,7 @@ class PcoPeopleAddres extends PcoResource {
     PcoPeopleAddres?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/addresses' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

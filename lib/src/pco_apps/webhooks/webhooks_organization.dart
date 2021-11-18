@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.283891
+/// This file was generated on 2021-11-18T15:28:02.251816
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/webhooks/v2
 /// 
 class PcoWebhooksOrganization extends PcoResource {
-  static const String pcoApplication = 'webhooks';
-  static const String typeString = 'Organization';
-  static const String typeId = 'organization';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
+  static const String kPcoApplication = 'webhooks';
+  static const String kTypeString = 'Organization';
+  static const String kTypeId = 'organization';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
 
@@ -47,8 +51,8 @@ class PcoWebhooksOrganization extends PcoResource {
 
 
 
-  PcoWebhooksOrganization() : super(pcoApplication, typeString);
-  PcoWebhooksOrganization.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoWebhooksOrganization() : super(kPcoApplication, kTypeString);
+  PcoWebhooksOrganization.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.735302
+/// This file was generated on 2021-11-18T15:28:01.712489
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments
 /// 
 class PcoServicesPersonTeamPositionAssignment extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'PersonTeamPositionAssignment';
-  static const String typeId = 'person_team_position_assignment';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'personteampositionassignment-team-person_team_position_assignments';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/person_team_position_assignments';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'PersonTeamPositionAssignment';
+  static const String kTypeId = 'person_team_position_assignment';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'personteampositionassignment-team-person_team_position_assignments';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/person_team_position_assignments';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSchedulePreference = 'schedule_preference';
@@ -85,8 +89,8 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   set preferredWeeks(List a) => attributes[kPreferredWeeks] = a;
 
 
-  PcoServicesPersonTeamPositionAssignment() : super(pcoApplication, typeString);
-  PcoServicesPersonTeamPositionAssignment.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesPersonTeamPositionAssignment() : super(kPcoApplication, kTypeString);
+  PcoServicesPersonTeamPositionAssignment.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesPersonTeamPositionAssignment Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/person_team_position_assignments;
@@ -94,7 +98,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     List<PcoServicesPersonTeamPositionAssignment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/person_team_position_assignments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -110,7 +114,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     List<PcoServicesPersonTeamPositionAssignment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/teams/$teamId/person_team_position_assignments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -126,7 +130,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     List<PcoServicesPersonTeamPositionAssignment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -144,7 +148,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     PcoServicesPersonTeamPositionAssignment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/person_team_position_assignments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -158,7 +162,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     PcoServicesPersonTeamPositionAssignment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/teams/$teamId/person_team_position_assignments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -172,7 +176,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
     PcoServicesPersonTeamPositionAssignment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

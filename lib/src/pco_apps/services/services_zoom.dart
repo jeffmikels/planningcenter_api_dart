@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.768529
+/// This file was generated on 2021-11-18T15:28:01.771940
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/attachments/1/zooms
 /// 
 class PcoServicesZoom extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Zoom';
-  static const String typeId = 'zoom';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'zoom-attachment-zooms';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Zoom';
+  static const String kTypeId = 'zoom';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'zoom-attachment-zooms';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kAspectRatio = 'aspect_ratio';
@@ -75,8 +79,8 @@ class PcoServicesZoom extends PcoResource {
   set yOffset(double n) => attributes[kYOffset] = n;
 
 
-  PcoServicesZoom() : super(pcoApplication, typeString);
-  PcoServicesZoom.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesZoom() : super(kPcoApplication, kTypeString);
+  PcoServicesZoom.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesZoom Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachments/1/zooms;
@@ -84,7 +88,7 @@ class PcoServicesZoom extends PcoResource {
     List<PcoServicesZoom> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/attachments/$attachmentId/zooms';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -102,7 +106,7 @@ class PcoServicesZoom extends PcoResource {
     PcoServicesZoom?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/attachments/$attachmentId/zooms' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

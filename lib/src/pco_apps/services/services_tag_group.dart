@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.758187
+/// This file was generated on 2021-11-18T15:28:01.762623
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/tag_groups
 /// 
 class PcoServicesTagGroup extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'TagGroup';
-  static const String typeId = 'tag_group';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'taggroup-organization-tag_groups';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/tag_groups';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'TagGroup';
+  static const String kTypeId = 'tag_group';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'taggroup-organization-tag_groups';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/tag_groups';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -59,8 +63,8 @@ class PcoServicesTagGroup extends PcoResource {
 
 
 
-  PcoServicesTagGroup() : super(pcoApplication, typeString);
-  PcoServicesTagGroup.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesTagGroup() : super(kPcoApplication, kTypeString);
+  PcoServicesTagGroup.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesTagGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups;
@@ -68,7 +72,7 @@ class PcoServicesTagGroup extends PcoResource {
     List<PcoServicesTagGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/tag_groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoServicesTagGroup extends PcoResource {
     PcoServicesTagGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/tag_groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

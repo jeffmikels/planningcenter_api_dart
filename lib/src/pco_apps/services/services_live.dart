@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.722996
+/// This file was generated on 2021-11-18T15:28:01.701130
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live
 /// 
 class PcoServicesLive extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Live';
-  static const String typeId = 'live';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'live-plan-live';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Live';
+  static const String kTypeId = 'live';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'live-plan-live';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSeriesTitle = 'series_title';
@@ -65,8 +69,8 @@ class PcoServicesLive extends PcoResource {
 
 
 
-  PcoServicesLive() : super(pcoApplication, typeString);
-  PcoServicesLive.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesLive() : super(kPcoApplication, kTypeString);
+  PcoServicesLive.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesLive Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live;
@@ -74,7 +78,7 @@ class PcoServicesLive extends PcoResource {
     List<PcoServicesLive> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/live';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoServicesLive extends PcoResource {
     PcoServicesLive?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/live' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

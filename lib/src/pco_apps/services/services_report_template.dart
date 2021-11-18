@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.745652
+/// This file was generated on 2021-11-18T15:28:01.743525
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/report_templates
 /// 
 class PcoServicesReportTemplate extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'ReportTemplate';
-  static const String typeId = 'report_template';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'reporttemplate-organization-report_templates';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'ReportTemplate';
+  static const String kTypeId = 'report_template';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kBody = 'body';
@@ -59,8 +63,8 @@ class PcoServicesReportTemplate extends PcoResource {
 
 
 
-  PcoServicesReportTemplate() : super(pcoApplication, typeString);
-  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesReportTemplate() : super(kPcoApplication, kTypeString);
+  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/report_templates;
@@ -68,7 +72,7 @@ class PcoServicesReportTemplate extends PcoResource {
     List<PcoServicesReportTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/report_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoServicesReportTemplate extends PcoResource {
     PcoServicesReportTemplate?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/report_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

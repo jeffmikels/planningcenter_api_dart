@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.003159
+/// This file was generated on 2021-11-18T15:28:02.057370
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/note_categories/1/shares
 /// 
 class PcoPeopleNoteCategoryShare extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'NoteCategoryShare';
-  static const String typeId = 'note_category_share';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'notecategoryshare-notecategory-shares';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'NoteCategoryShare';
+  static const String kTypeId = 'note_category_share';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'notecategoryshare-notecategory-shares';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kGroup = 'group';
@@ -57,8 +61,8 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   set personId(String s) => attributes[kPersonId] = s;
 
 
-  PcoPeopleNoteCategoryShare() : super(pcoApplication, typeString);
-  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleNoteCategoryShare() : super(kPcoApplication, kTypeString);
+  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleNoteCategoryShare Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/shares;
@@ -66,7 +70,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
     List<PcoPeopleNoteCategoryShare> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -84,7 +88,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
     PcoPeopleNoteCategoryShare?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/shares' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

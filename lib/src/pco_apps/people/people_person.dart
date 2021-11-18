@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.020255
+/// This file was generated on 2021-11-18T15:28:02.069813
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people
 /// 
 class PcoPeoplePerson extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Person';
-  static const String typeId = 'person';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'person-organization-people';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Person';
+  static const String kTypeId = 'person';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'person-organization-people';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kGivenName = 'given_name';
@@ -129,8 +133,8 @@ class PcoPeoplePerson extends PcoResource {
   set remoteId(int n) => attributes[kRemoteId] = n;
 
 
-  PcoPeoplePerson() : super(pcoApplication, typeString);
-  PcoPeoplePerson.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePerson() : super(kPcoApplication, kTypeString);
+  PcoPeoplePerson.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePerson Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by;
@@ -138,7 +142,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/rules/$ruleId/conditions/$conditionId/created_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -154,7 +158,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/emails/$emailId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -170,7 +174,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -186,7 +190,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -202,7 +206,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -218,7 +222,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -234,7 +238,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/created_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -250,7 +254,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -266,7 +270,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/shares/$shareId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -282,7 +286,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/updated_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -298,7 +302,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/message_groups/$messageGroupId/from';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -314,7 +318,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/messages/$messageId/to';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -330,7 +334,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/subscribers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -346,7 +350,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/notes/$noteId/created_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -362,7 +366,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/notes/$noteId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -378,7 +382,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -394,7 +398,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -410,7 +414,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/reports/$reportId/created_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -426,7 +430,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/reports/$reportId/updated_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -442,7 +446,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/social_profiles/$socialProfileId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -458,7 +462,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/assignee';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -474,7 +478,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -490,7 +494,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/workflow_shares/$workflowShareId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -506,7 +510,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/shared_people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -522,7 +526,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries/$assigneeSummaryId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -538,7 +542,7 @@ class PcoPeoplePerson extends PcoResource {
     List<PcoPeoplePerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/default_assignee';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -556,7 +560,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/rules/$ruleId/conditions/$conditionId/created_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -570,7 +574,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/emails/$emailId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -584,7 +588,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -598,7 +602,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -612,7 +616,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -626,7 +630,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/households/$householdId/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -640,7 +644,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/created_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -654,7 +658,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -668,7 +672,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/shares/$shareId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -682,7 +686,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/updated_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -696,7 +700,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/message_groups/$messageGroupId/from' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -710,7 +714,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/messages/$messageId/to' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -724,7 +728,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/subscribers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -738,7 +742,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/notes/$noteId/created_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -752,7 +756,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/notes/$noteId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -766,7 +770,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -780,7 +784,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -794,7 +798,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/reports/$reportId/created_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -808,7 +812,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/reports/$reportId/updated_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -822,7 +826,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/social_profiles/$socialProfileId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -836,7 +840,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/assignee' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -850,7 +854,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -864,7 +868,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/workflow_shares/$workflowShareId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -878,7 +882,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/shared_people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -892,7 +896,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries/$assigneeSummaryId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -906,7 +910,7 @@ class PcoPeoplePerson extends PcoResource {
     PcoPeoplePerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/default_assignee' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

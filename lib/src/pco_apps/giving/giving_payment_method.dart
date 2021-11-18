@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.210179
+/// This file was generated on 2021-11-18T15:28:02.203311
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods
 /// 
 class PcoGivingPaymentMethod extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'PaymentMethod';
-  static const String typeId = 'payment_method';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'paymentmethod-person-payment_methods';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/people/1/payment_methods';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'PaymentMethod';
+  static const String kTypeId = 'payment_method';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'paymentmethod-person-payment_methods';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/people/1/payment_methods';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kMethodType = 'method_type';
@@ -67,8 +71,8 @@ class PcoGivingPaymentMethod extends PcoResource {
 
 
 
-  PcoGivingPaymentMethod() : super(pcoApplication, typeString);
-  PcoGivingPaymentMethod.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingPaymentMethod() : super(kPcoApplication, kTypeString);
+  PcoGivingPaymentMethod.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingPaymentMethod Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods;
@@ -76,7 +80,7 @@ class PcoGivingPaymentMethod extends PcoResource {
     List<PcoGivingPaymentMethod> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/payment_methods';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoGivingPaymentMethod extends PcoResource {
     List<PcoGivingPaymentMethod> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/payment_method';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -110,7 +114,7 @@ class PcoGivingPaymentMethod extends PcoResource {
     PcoGivingPaymentMethod?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/payment_methods' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -124,7 +128,7 @@ class PcoGivingPaymentMethod extends PcoResource {
     PcoGivingPaymentMethod?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/payment_method' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

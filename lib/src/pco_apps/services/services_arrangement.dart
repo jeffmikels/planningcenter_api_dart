@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.684427
+/// This file was generated on 2021-11-18T15:28:01.658704
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/songs/1/arrangements
 /// 
 class PcoServicesArrangement extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Arrangement';
-  static const String typeId = 'arrangement';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'arrangement-song-arrangements';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Arrangement';
+  static const String kTypeId = 'arrangement';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'arrangement-song-arrangements';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kBpm = 'bpm';
@@ -206,8 +210,8 @@ class PcoServicesArrangement extends PcoResource {
   set rehearsalMixId(String s) => attributes[kRehearsalMixId] = s;
 
 
-  PcoServicesArrangement() : super(pcoApplication, typeString);
-  PcoServicesArrangement.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesArrangement() : super(kPcoApplication, kTypeString);
+  PcoServicesArrangement.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesArrangement Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/arrangement;
@@ -215,7 +219,7 @@ class PcoServicesArrangement extends PcoResource {
     List<PcoServicesArrangement> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -231,7 +235,7 @@ class PcoServicesArrangement extends PcoResource {
     List<PcoServicesArrangement> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -249,7 +253,7 @@ class PcoServicesArrangement extends PcoResource {
     PcoServicesArrangement?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -263,7 +267,7 @@ class PcoServicesArrangement extends PcoResource {
     PcoServicesArrangement?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

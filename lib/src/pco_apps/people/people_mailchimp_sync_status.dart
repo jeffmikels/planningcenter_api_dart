@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.990258
+/// This file was generated on 2021-11-18T15:28:02.047100
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
 /// 
 class PcoPeopleMailchimpSyncStatu extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'MailchimpSyncStatus';
-  static const String typeId = 'mailchimp_sync_status';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'mailchimpsyncstatus-list-mailchimp_sync_status';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'MailchimpSyncStatus';
+  static const String kTypeId = 'mailchimp_sync_status';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'mailchimpsyncstatus-list-mailchimp_sync_status';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kStatus = 'status';
@@ -57,8 +61,8 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
 
 
 
-  PcoPeopleMailchimpSyncStatu() : super(pcoApplication, typeString);
-  PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleMailchimpSyncStatu() : super(kPcoApplication, kTypeString);
+  PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleMailchimpSyncStatu Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status;
@@ -66,7 +70,7 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
     List<PcoPeopleMailchimpSyncStatu> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -84,7 +88,7 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
     PcoPeopleMailchimpSyncStatu?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/mailchimp_sync_status' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

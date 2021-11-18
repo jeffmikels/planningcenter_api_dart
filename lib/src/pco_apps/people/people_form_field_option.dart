@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.976236
+/// This file was generated on 2021-11-18T15:28:02.038105
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options
 /// 
 class PcoPeopleFormFieldOption extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'FormFieldOption';
-  static const String typeId = 'form_field_option';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'formfieldoption-formfield-options';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'FormFieldOption';
+  static const String kTypeId = 'form_field_option';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'formfieldoption-formfield-options';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kLabel = 'label';
@@ -51,8 +55,8 @@ class PcoPeopleFormFieldOption extends PcoResource {
 
 
 
-  PcoPeopleFormFieldOption() : super(pcoApplication, typeString);
-  PcoPeopleFormFieldOption.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleFormFieldOption() : super(kPcoApplication, kTypeString);
+  PcoPeopleFormFieldOption.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleFormFieldOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options;
@@ -60,7 +64,7 @@ class PcoPeopleFormFieldOption extends PcoResource {
     List<PcoPeopleFormFieldOption> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/fields/$fieldId/options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoPeopleFormFieldOption extends PcoResource {
     PcoPeopleFormFieldOption?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/fields/$fieldId/options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

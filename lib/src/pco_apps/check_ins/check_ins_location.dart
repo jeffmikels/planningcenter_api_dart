@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.863662
+/// This file was generated on 2021-11-18T15:28:01.845560
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
 /// 
 class PcoCheckInsLocation extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'Location';
-  static const String typeId = 'location';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'location-event-locations';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/events/1/locations';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'Location';
+  static const String kTypeId = 'location';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'location-event-locations';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/events/1/locations';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -81,8 +85,8 @@ class PcoCheckInsLocation extends PcoResource {
 
 
 
-  PcoCheckInsLocation() : super(pcoApplication, typeString);
-  PcoCheckInsLocation.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsLocation() : super(kPcoApplication, kTypeString);
+  PcoCheckInsLocation.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsLocation Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations;
@@ -90,7 +94,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -106,7 +110,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/locations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -122,7 +126,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/available_locations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -138,7 +142,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods/$locationEventPeriodId/location';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -154,7 +158,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times/$locationEventTimeId/location';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -170,7 +174,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/location';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -186,7 +190,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/locations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -202,7 +206,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/parent';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -218,7 +222,7 @@ class PcoCheckInsLocation extends PcoResource {
     List<PcoCheckInsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/location';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -236,7 +240,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -250,7 +254,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/locations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -264,7 +268,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/available_locations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -278,7 +282,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods/$locationEventPeriodId/location' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -292,7 +296,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times/$locationEventTimeId/location' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -306,7 +310,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/location' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -320,7 +324,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/locations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -334,7 +338,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/parent' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -348,7 +352,7 @@ class PcoCheckInsLocation extends PcoResource {
     PcoCheckInsLocation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/location' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

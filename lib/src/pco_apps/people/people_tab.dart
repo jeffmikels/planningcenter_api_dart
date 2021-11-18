@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.033227
+/// This file was generated on 2021-11-18T15:28:02.104021
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/tabs
 /// 
 class PcoPeopleTab extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Tab';
-  static const String typeId = 'tab';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'tab-organization-tabs';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Tab';
+  static const String kTypeId = 'tab';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'tab-organization-tabs';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -56,8 +60,8 @@ class PcoPeopleTab extends PcoResource {
   set slug(String s) => attributes[kSlug] = s;
 
 
-  PcoPeopleTab() : super(pcoApplication, typeString);
-  PcoPeopleTab.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleTab() : super(kPcoApplication, kTypeString);
+  PcoPeopleTab.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleTab Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_data/1/tab;
@@ -65,7 +69,7 @@ class PcoPeopleTab extends PcoResource {
     List<PcoPeopleTab> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/tab';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -81,7 +85,7 @@ class PcoPeopleTab extends PcoResource {
     List<PcoPeopleTab> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_definitions/$fieldDefinitionId/tab';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -97,7 +101,7 @@ class PcoPeopleTab extends PcoResource {
     List<PcoPeopleTab> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/tabs';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -115,7 +119,7 @@ class PcoPeopleTab extends PcoResource {
     PcoPeopleTab?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/tab' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -129,7 +133,7 @@ class PcoPeopleTab extends PcoResource {
     PcoPeopleTab?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_definitions/$fieldDefinitionId/tab' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -143,7 +147,7 @@ class PcoPeopleTab extends PcoResource {
     PcoPeopleTab?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/tabs' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

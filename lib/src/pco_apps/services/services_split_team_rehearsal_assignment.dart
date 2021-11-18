@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.756092
+/// This file was generated on 2021-11-18T15:28:01.759774
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
 /// 
 class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'SplitTeamRehearsalAssignment';
-  static const String typeId = 'split_team_rehearsal_assignment';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'SplitTeamRehearsalAssignment';
+  static const String kTypeId = 'split_team_rehearsal_assignment';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kScheduleSpecialServiceTimes = 'schedule_special_service_times';
@@ -54,8 +58,8 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   set isScheduleSpecialServiceTimes(bool b) => attributes[kScheduleSpecialServiceTimes] = b;
 
 
-  PcoServicesSplitTeamRehearsalAssignment() : super(pcoApplication, typeString);
-  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesSplitTeamRehearsalAssignment() : super(kPcoApplication, kTypeString);
+  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesSplitTeamRehearsalAssignment Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments;
@@ -63,7 +67,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
     List<PcoServicesSplitTeamRehearsalAssignment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -81,7 +85,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
     PcoServicesSplitTeamRehearsalAssignment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

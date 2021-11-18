@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.752583
+/// This file was generated on 2021-11-18T15:28:01.754821
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata
 /// 
 class PcoServicesSignupSheetMetadata extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'SignupSheetMetadata';
-  static const String typeId = 'signup_sheet_metadata';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'signupsheetmetadata-signupsheet-signup_sheet_metadata';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'SignupSheetMetadata';
+  static const String kTypeId = 'signup_sheet_metadata';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'signupsheetmetadata-signupsheet-signup_sheet_metadata';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kConflicts = 'conflicts';
@@ -55,8 +59,8 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
 
 
 
-  PcoServicesSignupSheetMetadata() : super(pcoApplication, typeString);
-  PcoServicesSignupSheetMetadata.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesSignupSheetMetadata() : super(kPcoApplication, kTypeString);
+  PcoServicesSignupSheetMetadata.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesSignupSheetMetadata Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata;
@@ -64,7 +68,7 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
     List<PcoServicesSignupSheetMetadata> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -82,7 +86,7 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
     PcoServicesSignupSheetMetadata?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

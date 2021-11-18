@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.124118
+/// This file was generated on 2021-11-18T15:28:02.157596
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/resource_folders
 /// 
 class PcoCalendarResourceFolder extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'ResourceFolder';
-  static const String typeId = 'resource_folder';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'resourcefolder-organization-resource_folders';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'ResourceFolder';
+  static const String kTypeId = 'resource_folder';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'resourcefolder-organization-resource_folders';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -63,8 +67,8 @@ class PcoCalendarResourceFolder extends PcoResource {
   set name(String s) => attributes[kName] = s;
 
 
-  PcoCalendarResourceFolder() : super(pcoApplication, typeString);
-  PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarResourceFolder() : super(kPcoApplication, kTypeString);
+  PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarResourceFolder Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resource_folders;
@@ -72,7 +76,7 @@ class PcoCalendarResourceFolder extends PcoResource {
     List<PcoCalendarResourceFolder> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_folders';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -88,7 +92,7 @@ class PcoCalendarResourceFolder extends PcoResource {
     List<PcoCalendarResourceFolder> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources/$resourceId/resource_folder';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -106,7 +110,7 @@ class PcoCalendarResourceFolder extends PcoResource {
     PcoCalendarResourceFolder?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_folders' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -120,7 +124,7 @@ class PcoCalendarResourceFolder extends PcoResource {
     PcoCalendarResourceFolder?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources/$resourceId/resource_folder' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

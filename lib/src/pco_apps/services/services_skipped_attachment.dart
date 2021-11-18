@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.753311
+/// This file was generated on 2021-11-18T15:28:01.755814
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2
 /// 
 class PcoServicesSkippedAttachment extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'SkippedAttachment';
-  static const String typeId = 'skipped_attachment';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'SkippedAttachment';
+  static const String kTypeId = 'skipped_attachment';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSkipped = 'skipped';
@@ -49,8 +53,8 @@ class PcoServicesSkippedAttachment extends PcoResource {
 
 
 
-  PcoServicesSkippedAttachment() : super(pcoApplication, typeString);
-  PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesSkippedAttachment() : super(kPcoApplication, kTypeString);
+  PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.865170
+/// This file was generated on 2021-11-18T15:28:01.848840
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels
 /// 
 class PcoCheckInsLocationLabel extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'LocationLabel';
-  static const String typeId = 'location_label';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'locationlabel-label-location_labels';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'LocationLabel';
+  static const String kTypeId = 'location_label';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'locationlabel-label-location_labels';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kQuantity = 'quantity';
@@ -55,8 +59,8 @@ class PcoCheckInsLocationLabel extends PcoResource {
 
 
 
-  PcoCheckInsLocationLabel() : super(pcoApplication, typeString);
-  PcoCheckInsLocationLabel.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsLocationLabel() : super(kPcoApplication, kTypeString);
+  PcoCheckInsLocationLabel.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsLocationLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels;
@@ -64,7 +68,7 @@ class PcoCheckInsLocationLabel extends PcoResource {
     List<PcoCheckInsLocationLabel> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/labels/$labelId/location_labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -80,7 +84,7 @@ class PcoCheckInsLocationLabel extends PcoResource {
     List<PcoCheckInsLocationLabel> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -98,7 +102,7 @@ class PcoCheckInsLocationLabel extends PcoResource {
     PcoCheckInsLocationLabel?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/labels/$labelId/location_labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -112,7 +116,7 @@ class PcoCheckInsLocationLabel extends PcoResource {
     PcoCheckInsLocationLabel?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

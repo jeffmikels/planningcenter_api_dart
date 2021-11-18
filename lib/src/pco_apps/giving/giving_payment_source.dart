@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.211452
+/// This file was generated on 2021-11-18T15:28:02.203814
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/payment_sources
 /// 
 class PcoGivingPaymentSource extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'PaymentSource';
-  static const String typeId = 'payment_source';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'paymentsource-organization-payment_sources';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'PaymentSource';
+  static const String kTypeId = 'payment_source';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'paymentsource-organization-payment_sources';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -50,8 +54,8 @@ class PcoGivingPaymentSource extends PcoResource {
   set name(String s) => attributes[kName] = s;
 
 
-  PcoGivingPaymentSource() : super(pcoApplication, typeString);
-  PcoGivingPaymentSource.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingPaymentSource() : super(kPcoApplication, kTypeString);
+  PcoGivingPaymentSource.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingPaymentSource Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources;
@@ -59,7 +63,7 @@ class PcoGivingPaymentSource extends PcoResource {
     List<PcoGivingPaymentSource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/payment_sources';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -77,7 +81,7 @@ class PcoGivingPaymentSource extends PcoResource {
     PcoGivingPaymentSource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/payment_sources' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.125606
+/// This file was generated on 2021-11-18T15:28:02.158744
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions
 /// 
 class PcoCalendarResourceSuggestion extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'ResourceSuggestion';
-  static const String typeId = 'resource_suggestion';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'resourcesuggestion-roomsetup-resource_suggestions';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'ResourceSuggestion';
+  static const String kTypeId = 'resource_suggestion';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'resourcesuggestion-roomsetup-resource_suggestions';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kQuantity = 'quantity';
@@ -51,8 +55,8 @@ class PcoCalendarResourceSuggestion extends PcoResource {
 
 
 
-  PcoCalendarResourceSuggestion() : super(pcoApplication, typeString);
-  PcoCalendarResourceSuggestion.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarResourceSuggestion() : super(kPcoApplication, kTypeString);
+  PcoCalendarResourceSuggestion.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarResourceSuggestion Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions;
@@ -60,7 +64,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
     List<PcoCalendarResourceSuggestion> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/resource_suggestions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
     PcoCalendarResourceSuggestion?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/resource_suggestions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

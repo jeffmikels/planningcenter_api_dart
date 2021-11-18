@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.284225
+/// This file was generated on 2021-11-18T15:28:02.252527
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/webhooks/v2/subscriptions
 /// 
 class PcoWebhooksSubscription extends PcoResource {
-  static const String pcoApplication = 'webhooks';
-  static const String typeString = 'Subscription';
-  static const String typeId = 'subscription';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'subscription-organization-subscriptions';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
+  static const String kPcoApplication = 'webhooks';
+  static const String kTypeString = 'Subscription';
+  static const String kTypeId = 'subscription';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'subscription-organization-subscriptions';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -65,8 +69,8 @@ class PcoWebhooksSubscription extends PcoResource {
   set isActive(bool b) => attributes[kActive] = b;
 
 
-  PcoWebhooksSubscription() : super(pcoApplication, typeString);
-  PcoWebhooksSubscription.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoWebhooksSubscription() : super(kPcoApplication, kTypeString);
+  PcoWebhooksSubscription.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoWebhooksSubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions;
@@ -74,7 +78,7 @@ class PcoWebhooksSubscription extends PcoResource {
     List<PcoWebhooksSubscription> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/webhooks/v2/subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoWebhooksSubscription extends PcoResource {
     PcoWebhooksSubscription?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/webhooks/v2/subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

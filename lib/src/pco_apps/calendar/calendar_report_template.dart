@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.117930
+/// This file was generated on 2021-11-18T15:28:02.152863
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/report_templates
 /// 
 class PcoCalendarReportTemplate extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'ReportTemplate';
-  static const String typeId = 'report_template';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'reporttemplate-organization-report_templates';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'ReportTemplate';
+  static const String kTypeId = 'report_template';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kBody = 'body';
@@ -68,8 +72,8 @@ class PcoCalendarReportTemplate extends PcoResource {
   set title(String s) => attributes[kTitle] = s;
 
 
-  PcoCalendarReportTemplate() : super(pcoApplication, typeString);
-  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarReportTemplate() : super(kPcoApplication, kTypeString);
+  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/report_templates;
@@ -77,7 +81,7 @@ class PcoCalendarReportTemplate extends PcoResource {
     List<PcoCalendarReportTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/report_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -95,7 +99,7 @@ class PcoCalendarReportTemplate extends PcoResource {
     PcoCalendarReportTemplate?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/report_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

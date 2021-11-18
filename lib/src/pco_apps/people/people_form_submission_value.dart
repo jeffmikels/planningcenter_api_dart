@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.978976
+/// This file was generated on 2021-11-18T15:28:02.039657
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values
 /// 
 class PcoPeopleFormSubmissionValue extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'FormSubmissionValue';
-  static const String typeId = 'form_submission_value';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'formsubmissionvalue-formsubmission-form_submission_values';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'FormSubmissionValue';
+  static const String kTypeId = 'form_submission_value';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'formsubmissionvalue-formsubmission-form_submission_values';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDisplayValue = 'display_value';
@@ -49,8 +53,8 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
 
 
 
-  PcoPeopleFormSubmissionValue() : super(pcoApplication, typeString);
-  PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleFormSubmissionValue() : super(kPcoApplication, kTypeString);
+  PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleFormSubmissionValue Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values;
@@ -58,7 +62,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
     List<PcoPeopleFormSubmissionValue> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -76,7 +80,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
     PcoPeopleFormSubmissionValue?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.027001
+/// This file was generated on 2021-11-18T15:28:02.074423
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/lists/1/rules
 /// 
 class PcoPeopleRule extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Rule';
-  static const String typeId = 'rule';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'rule-list-rules';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Rule';
+  static const String kTypeId = 'rule';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'rule-list-rules';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSubset = 'subset';
@@ -49,8 +53,8 @@ class PcoPeopleRule extends PcoResource {
 
 
 
-  PcoPeopleRule() : super(pcoApplication, typeString);
-  PcoPeopleRule.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleRule() : super(kPcoApplication, kTypeString);
+  PcoPeopleRule.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleRule Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/rules;
@@ -58,7 +62,7 @@ class PcoPeopleRule extends PcoResource {
     List<PcoPeopleRule> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/rules';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -76,7 +80,7 @@ class PcoPeopleRule extends PcoResource {
     PcoPeopleRule?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/rules' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

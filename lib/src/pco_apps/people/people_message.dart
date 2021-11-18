@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.994220
+/// This file was generated on 2021-11-18T15:28:02.048890
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/messages
 /// 
 class PcoPeopleMessage extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Message';
-  static const String typeId = 'message';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'message-organization-messages';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Message';
+  static const String kTypeId = 'message';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'message-organization-messages';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kKind = 'kind';
@@ -75,8 +79,8 @@ class PcoPeopleMessage extends PcoResource {
 
 
 
-  PcoPeopleMessage() : super(pcoApplication, typeString);
-  PcoPeopleMessage.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleMessage() : super(kPcoApplication, kTypeString);
+  PcoPeopleMessage.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleMessage Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/message_groups/1/messages;
@@ -84,7 +88,7 @@ class PcoPeopleMessage extends PcoResource {
     List<PcoPeopleMessage> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/message_groups/$messageGroupId/messages';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -100,7 +104,7 @@ class PcoPeopleMessage extends PcoResource {
     List<PcoPeopleMessage> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/messages';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -116,7 +120,7 @@ class PcoPeopleMessage extends PcoResource {
     List<PcoPeopleMessage> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/messages';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -134,7 +138,7 @@ class PcoPeopleMessage extends PcoResource {
     PcoPeopleMessage?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/message_groups/$messageGroupId/messages' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -148,7 +152,7 @@ class PcoPeopleMessage extends PcoResource {
     PcoPeopleMessage?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/messages' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -162,7 +166,7 @@ class PcoPeopleMessage extends PcoResource {
     PcoPeopleMessage?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/messages' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

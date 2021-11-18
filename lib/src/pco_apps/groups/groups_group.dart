@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.268967
+/// This file was generated on 2021-11-18T15:28:02.231837
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/groups/v2/groups
 /// 
 class PcoGroupsGroup extends PcoResource {
-  static const String pcoApplication = 'groups';
-  static const String typeString = 'Group';
-  static const String typeId = 'group';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'group-organization-groups';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups';
+  static const String kPcoApplication = 'groups';
+  static const String kTypeString = 'Group';
+  static const String kTypeId = 'group';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'group-organization-groups';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kArchiveStatus = 'archive_status';
@@ -87,8 +91,8 @@ class PcoGroupsGroup extends PcoResource {
 
 
 
-  PcoGroupsGroup() : super(pcoApplication, typeString);
-  PcoGroupsGroup.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGroupsGroup() : super(kPcoApplication, kTypeString);
+  PcoGroupsGroup.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGroupsGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/group;
@@ -96,7 +100,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/events/$eventId/group';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -112,7 +116,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/group_types/$groupTypeId/groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -128,7 +132,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/memberships/$membershipId/group';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -144,7 +148,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -160,7 +164,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/people/$peopleId/groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -176,7 +180,7 @@ class PcoGroupsGroup extends PcoResource {
     List<PcoGroupsGroup> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/tags/$tagId/groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -194,7 +198,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/events/$eventId/group' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -208,7 +212,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/group_types/$groupTypeId/groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -222,7 +226,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/memberships/$membershipId/group' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -236,7 +240,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -250,7 +254,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/people/$peopleId/groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -264,7 +268,7 @@ class PcoGroupsGroup extends PcoResource {
     PcoGroupsGroup?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/tags/$tagId/groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

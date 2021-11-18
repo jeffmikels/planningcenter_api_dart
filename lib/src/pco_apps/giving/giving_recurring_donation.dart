@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.218956
+/// This file was generated on 2021-11-18T15:28:02.208029
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/recurring_donations
 /// 
 class PcoGivingRecurringDonation extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'RecurringDonation';
-  static const String typeId = 'recurring_donation';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'recurringdonation-organization-recurring_donations';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'RecurringDonation';
+  static const String kTypeId = 'recurring_donation';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'recurringdonation-organization-recurring_donations';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kReleaseHoldAt = 'release_hold_at';
@@ -67,8 +71,8 @@ class PcoGivingRecurringDonation extends PcoResource {
 
 
 
-  PcoGivingRecurringDonation() : super(pcoApplication, typeString);
-  PcoGivingRecurringDonation.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingRecurringDonation() : super(kPcoApplication, kTypeString);
+  PcoGivingRecurringDonation.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingRecurringDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/recurring_donations;
@@ -76,7 +80,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     List<PcoGivingRecurringDonation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     List<PcoGivingRecurringDonation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -108,7 +112,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     List<PcoGivingRecurringDonation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/recurring_donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -126,7 +130,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     PcoGivingRecurringDonation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -140,7 +144,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     PcoGivingRecurringDonation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -154,7 +158,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     PcoGivingRecurringDonation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people/$peopleId/recurring_donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.206766
+/// This file was generated on 2021-11-18T15:28:02.202153
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/labels
 /// 
 class PcoGivingLabel extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'Label';
-  static const String typeId = 'label';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'label-organization-labels';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/labels';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'Label';
+  static const String kTypeId = 'label';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'label-organization-labels';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/labels';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSlug = 'slug';
@@ -49,8 +53,8 @@ class PcoGivingLabel extends PcoResource {
 
 
 
-  PcoGivingLabel() : super(pcoApplication, typeString);
-  PcoGivingLabel.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingLabel() : super(kPcoApplication, kTypeString);
+  PcoGivingLabel.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/labels;
@@ -58,7 +62,7 @@ class PcoGivingLabel extends PcoResource {
     List<PcoGivingLabel> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/donations/$donationId/labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -74,7 +78,7 @@ class PcoGivingLabel extends PcoResource {
     List<PcoGivingLabel> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoGivingLabel extends PcoResource {
     PcoGivingLabel?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/donations/$donationId/labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -106,7 +110,7 @@ class PcoGivingLabel extends PcoResource {
     PcoGivingLabel?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

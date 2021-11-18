@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.121290
+/// This file was generated on 2021-11-18T15:28:02.153578
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/resources
 /// 
 class PcoCalendarResource extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'Resource';
-  static const String typeId = 'resource';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'resource-organization-resources';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resources';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'Resource';
+  static const String kTypeId = 'resource';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'resource-organization-resources';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resources';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kKind = 'kind';
@@ -93,8 +97,8 @@ class PcoCalendarResource extends PcoResource {
   set quantity(int n) => attributes[kQuantity] = n;
 
 
-  PcoCalendarResource() : super(pcoApplication, typeString);
-  PcoCalendarResource.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarResource() : super(kPcoApplication, kTypeString);
+  PcoCalendarResource.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarResource Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource;
@@ -102,7 +106,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/conflicts/$conflictId/resource';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -118,7 +122,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/resource';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -134,7 +138,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -150,7 +154,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/resources';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -166,7 +170,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_bookings/$resourceBookingId/resource';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -182,7 +186,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_folders/$resourceFolderId/resources';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -198,7 +202,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/resource_suggestions/$resourceSuggestionId/resource';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -214,7 +218,7 @@ class PcoCalendarResource extends PcoResource {
     List<PcoCalendarResource> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/containing_resource';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -232,7 +236,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/conflicts/$conflictId/resource' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -246,7 +250,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/resource' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -260,7 +264,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -274,7 +278,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/resources' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -288,7 +292,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_bookings/$resourceBookingId/resource' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -302,7 +306,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_folders/$resourceFolderId/resources' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -316,7 +320,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/resource_suggestions/$resourceSuggestionId/resource' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -330,7 +334,7 @@ class PcoCalendarResource extends PcoResource {
     PcoCalendarResource?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/room_setups/$roomSetupId/containing_resource' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.023045
+/// This file was generated on 2021-11-18T15:28:02.071874
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/person_mergers
 /// 
 class PcoPeoplePersonMerger extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'PersonMerger';
-  static const String typeId = 'person_merger';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'personmerger-organization-person_mergers';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/person_mergers';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'PersonMerger';
+  static const String kTypeId = 'person_merger';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'personmerger-organization-person_mergers';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/person_mergers';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPersonToKeepId = 'person_to_keep_id';
@@ -51,8 +55,8 @@ class PcoPeoplePersonMerger extends PcoResource {
 
 
 
-  PcoPeoplePersonMerger() : super(pcoApplication, typeString);
-  PcoPeoplePersonMerger.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePersonMerger() : super(kPcoApplication, kTypeString);
+  PcoPeoplePersonMerger.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePersonMerger Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/person_mergers;
@@ -60,7 +64,7 @@ class PcoPeoplePersonMerger extends PcoResource {
     List<PcoPeoplePersonMerger> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/person_mergers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoPeoplePersonMerger extends PcoResource {
     PcoPeoplePersonMerger?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/person_mergers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

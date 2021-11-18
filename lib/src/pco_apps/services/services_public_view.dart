@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.745030
+/// This file was generated on 2021-11-18T15:28:01.742784
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/public_view
 /// 
 class PcoServicesPublicView extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'PublicView';
-  static const String typeId = 'public_view';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'publicview-servicetype-public_view';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/public_view';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'PublicView';
+  static const String kTypeId = 'public_view';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'publicview-servicetype-public_view';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/public_view';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSeriesAndPlanTitles = 'series_and_plan_titles';
@@ -71,8 +75,8 @@ class PcoServicesPublicView extends PcoResource {
 
 
 
-  PcoServicesPublicView() : super(pcoApplication, typeString);
-  PcoServicesPublicView.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesPublicView() : super(kPcoApplication, kTypeString);
+  PcoServicesPublicView.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesPublicView Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/public_view;
@@ -80,7 +84,7 @@ class PcoServicesPublicView extends PcoResource {
     List<PcoServicesPublicView> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/public_view';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -98,7 +102,7 @@ class PcoServicesPublicView extends PcoResource {
     PcoServicesPublicView?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/public_view' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

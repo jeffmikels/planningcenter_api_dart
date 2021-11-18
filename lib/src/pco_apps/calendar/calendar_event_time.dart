@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.114251
+/// This file was generated on 2021-11-18T15:28:02.150104
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
 /// 
 class PcoCalendarEventTime extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'EventTime';
-  static const String typeId = 'event_time';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'eventtime-eventinstance-event_times';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'EventTime';
+  static const String kTypeId = 'event_time';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'eventtime-eventinstance-event_times';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kEndsAt = 'ends_at';
@@ -67,8 +71,8 @@ class PcoCalendarEventTime extends PcoResource {
 
 
 
-  PcoCalendarEventTime() : super(pcoApplication, typeString);
-  PcoCalendarEventTime.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarEventTime() : super(kPcoApplication, kTypeString);
+  PcoCalendarEventTime.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarEventTime Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times;
@@ -76,7 +80,7 @@ class PcoCalendarEventTime extends PcoResource {
     List<PcoCalendarEventTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_instances/$eventInstanceId/event_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -94,7 +98,7 @@ class PcoCalendarEventTime extends PcoResource {
     PcoCalendarEventTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_instances/$eventInstanceId/event_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

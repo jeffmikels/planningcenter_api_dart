@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.726161
+/// This file was generated on 2021-11-18T15:28:01.704243
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/media/1/media_schedules
 /// 
 class PcoServicesMediaSchedule extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'MediaSchedule';
-  static const String typeId = 'media_schedule';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'mediaschedule-media-media_schedules';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'MediaSchedule';
+  static const String kTypeId = 'media_schedule';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'mediaschedule-media-media_schedules';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPlanDates = 'plan_dates';
@@ -55,8 +59,8 @@ class PcoServicesMediaSchedule extends PcoResource {
 
 
 
-  PcoServicesMediaSchedule() : super(pcoApplication, typeString);
-  PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesMediaSchedule() : super(kPcoApplication, kTypeString);
+  PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesMediaSchedule Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/media_schedules;
@@ -64,7 +68,7 @@ class PcoServicesMediaSchedule extends PcoResource {
     List<PcoServicesMediaSchedule> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media/$mediaId/media_schedules';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -82,7 +86,7 @@ class PcoServicesMediaSchedule extends PcoResource {
     PcoServicesMediaSchedule?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media/$mediaId/media_schedules' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

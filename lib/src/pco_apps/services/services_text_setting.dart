@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.767046
+/// This file was generated on 2021-11-18T15:28:01.770346
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/text_settings
 /// 
 class PcoServicesTextSetting extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'TextSetting';
-  static const String typeId = 'text_setting';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'textsetting-person-text_settings';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/text_settings';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'TextSetting';
+  static const String kTypeId = 'text_setting';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'textsetting-person-text_settings';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/text_settings';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSchedulingRequestsEnabled = 'scheduling_requests_enabled';
@@ -65,8 +69,8 @@ class PcoServicesTextSetting extends PcoResource {
   set isRemindersEnabled(bool b) => attributes[kRemindersEnabled] = b;
 
 
-  PcoServicesTextSetting() : super(pcoApplication, typeString);
-  PcoServicesTextSetting.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesTextSetting() : super(kPcoApplication, kTypeString);
+  PcoServicesTextSetting.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesTextSetting Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/text_settings;
@@ -74,7 +78,7 @@ class PcoServicesTextSetting extends PcoResource {
     List<PcoServicesTextSetting> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/text_settings';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoServicesTextSetting extends PcoResource {
     PcoServicesTextSetting?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/text_settings' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

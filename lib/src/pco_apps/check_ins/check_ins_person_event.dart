@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.869716
+/// This file was generated on 2021-11-18T15:28:01.853287
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events
 /// 
 class PcoCheckInsPersonEvent extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'PersonEvent';
-  static const String typeId = 'person_event';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'personevent-person-person_events';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/people/1/person_events';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'PersonEvent';
+  static const String kTypeId = 'person_event';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'personevent-person-person_events';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/people/1/person_events';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kCheckInCount = 'check_in_count';
@@ -49,8 +53,8 @@ class PcoCheckInsPersonEvent extends PcoResource {
 
 
 
-  PcoCheckInsPersonEvent() : super(pcoApplication, typeString);
-  PcoCheckInsPersonEvent.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsPersonEvent() : super(kPcoApplication, kTypeString);
+  PcoCheckInsPersonEvent.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsPersonEvent Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events;
@@ -58,7 +62,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
     List<PcoCheckInsPersonEvent> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/person_events';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -74,7 +78,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
     List<PcoCheckInsPersonEvent> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/people/$peopleId/person_events';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
     PcoCheckInsPersonEvent?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/person_events' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -106,7 +110,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
     PcoCheckInsPersonEvent?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/people/$peopleId/person_events' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

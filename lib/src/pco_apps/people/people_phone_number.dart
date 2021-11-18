@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.024025
+/// This file was generated on 2021-11-18T15:28:02.072800
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// 
 class PcoPeoplePhoneNumber extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'PhoneNumber';
-  static const String typeId = 'phone_number';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'phonenumber-person-phone_numbers';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'PhoneNumber';
+  static const String kTypeId = 'phone_number';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'phonenumber-person-phone_numbers';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kNumber = 'number';
@@ -67,8 +71,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   set isPrimary(bool b) => attributes[kPrimary] = b;
 
 
-  PcoPeoplePhoneNumber() : super(pcoApplication, typeString);
-  PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePhoneNumber() : super(kPcoApplication, kTypeString);
+  PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePhoneNumber Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers;
@@ -76,7 +80,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
     List<PcoPeoplePhoneNumber> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/phone_numbers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -94,7 +98,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
     PcoPeoplePhoneNumber?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/phone_numbers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

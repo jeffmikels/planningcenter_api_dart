@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.213822
+/// This file was generated on 2021-11-18T15:28:02.204568
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/people
 /// 
 class PcoGivingPerson extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'Person';
-  static const String typeId = 'person';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'person-organization-people';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/people';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'Person';
+  static const String kTypeId = 'person';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'person-organization-people';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/people';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPermissions = 'permissions';
@@ -61,8 +65,8 @@ class PcoGivingPerson extends PcoResource {
 
 
 
-  PcoGivingPerson() : super(pcoApplication, typeString);
-  PcoGivingPerson.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingPerson() : super(kPcoApplication, kTypeString);
+  PcoGivingPerson.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner;
@@ -70,7 +74,7 @@ class PcoGivingPerson extends PcoResource {
     List<PcoGivingPerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/batch_groups/$batchGroupId/owner';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoGivingPerson extends PcoResource {
     List<PcoGivingPerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/batches/$batcheId/owner';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -102,7 +106,7 @@ class PcoGivingPerson extends PcoResource {
     List<PcoGivingPerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -118,7 +122,7 @@ class PcoGivingPerson extends PcoResource {
     List<PcoGivingPerson> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledges/$pledgeId/joint_giver';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -136,7 +140,7 @@ class PcoGivingPerson extends PcoResource {
     PcoGivingPerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/batch_groups/$batchGroupId/owner' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -150,7 +154,7 @@ class PcoGivingPerson extends PcoResource {
     PcoGivingPerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/batches/$batcheId/owner' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -164,7 +168,7 @@ class PcoGivingPerson extends PcoResource {
     PcoGivingPerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -178,7 +182,7 @@ class PcoGivingPerson extends PcoResource {
     PcoGivingPerson?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledges/$pledgeId/joint_giver' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

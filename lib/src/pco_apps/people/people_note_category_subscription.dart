@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.004313
+/// This file was generated on 2021-11-18T15:28:02.058844
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/note_category_subscriptions
 /// 
 class PcoPeopleNoteCategorySubscription extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'NoteCategorySubscription';
-  static const String typeId = 'note_category_subscription';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'notecategorysubscription-person-';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'NoteCategorySubscription';
+  static const String kTypeId = 'note_category_subscription';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'notecategorysubscription-person-';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
 
@@ -47,8 +51,8 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
 
 
 
-  PcoPeopleNoteCategorySubscription() : super(pcoApplication, typeString);
-  PcoPeopleNoteCategorySubscription.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleNoteCategorySubscription() : super(kPcoApplication, kTypeString);
+  PcoPeopleNoteCategorySubscription.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleNoteCategorySubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/subscriptions;
@@ -56,7 +60,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
     List<PcoPeopleNoteCategorySubscription> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -72,7 +76,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
     List<PcoPeopleNoteCategorySubscription> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_category_subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -90,7 +94,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
     PcoPeopleNoteCategorySubscription?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_categories/$noteCategoryId/subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -104,7 +108,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
     PcoPeopleNoteCategorySubscription?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/note_category_subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

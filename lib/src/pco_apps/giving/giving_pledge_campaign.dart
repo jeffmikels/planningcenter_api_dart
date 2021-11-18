@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.217338
+/// This file was generated on 2021-11-18T15:28:02.206962
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/pledge_campaigns
 /// 
 class PcoGivingPledgeCampaign extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'PledgeCampaign';
-  static const String typeId = 'pledge_campaign';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'PledgeCampaign';
+  static const String kTypeId = 'pledge_campaign';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -79,8 +83,8 @@ class PcoGivingPledgeCampaign extends PcoResource {
   set isShowGoalInChurchCenter(bool b) => attributes[kShowGoalInChurchCenter] = b;
 
 
-  PcoGivingPledgeCampaign() : super(pcoApplication, typeString);
-  PcoGivingPledgeCampaign.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingPledgeCampaign() : super(kPcoApplication, kTypeString);
+  PcoGivingPledgeCampaign.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingPledgeCampaign Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/pledges/1/pledge_campaign;
@@ -88,7 +92,7 @@ class PcoGivingPledgeCampaign extends PcoResource {
     List<PcoGivingPledgeCampaign> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -106,7 +110,7 @@ class PcoGivingPledgeCampaign extends PcoResource {
     PcoGivingPledgeCampaign?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.271180
+/// This file was generated on 2021-11-18T15:28:02.236921
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
 /// 
 class PcoGroupsMembership extends PcoResource {
-  static const String pcoApplication = 'groups';
-  static const String typeString = 'Membership';
-  static const String typeId = 'membership';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'membership-person-memberships';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/people/1/memberships';
+  static const String kPcoApplication = 'groups';
+  static const String kTypeString = 'Membership';
+  static const String kTypeId = 'membership';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'membership-person-memberships';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/people/1/memberships';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kAccountCenterIdentifier = 'account_center_identifier';
@@ -73,8 +77,8 @@ class PcoGroupsMembership extends PcoResource {
   set role(String s) => attributes[kRole] = s;
 
 
-  PcoGroupsMembership() : super(pcoApplication, typeString);
-  PcoGroupsMembership.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGroupsMembership() : super(kPcoApplication, kTypeString);
+  PcoGroupsMembership.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGroupsMembership Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/memberships;
@@ -82,7 +86,7 @@ class PcoGroupsMembership extends PcoResource {
     List<PcoGroupsMembership> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/memberships';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -98,7 +102,7 @@ class PcoGroupsMembership extends PcoResource {
     List<PcoGroupsMembership> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/people/$peopleId/memberships';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -116,7 +120,7 @@ class PcoGroupsMembership extends PcoResource {
     PcoGroupsMembership?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/memberships' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -130,7 +134,7 @@ class PcoGroupsMembership extends PcoResource {
     PcoGroupsMembership?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/people/$peopleId/memberships' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

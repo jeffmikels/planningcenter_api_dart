@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.871309
+/// This file was generated on 2021-11-18T15:28:01.855526
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/themes
 /// 
 class PcoCheckInsTheme extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'Theme';
-  static const String typeId = 'theme';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = 'theme-organization-themes';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/themes';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'Theme';
+  static const String kTypeId = 'theme';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = 'theme-organization-themes';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/themes';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kImageThumbnail = 'image_thumbnail';
@@ -61,8 +65,8 @@ class PcoCheckInsTheme extends PcoResource {
 
 
 
-  PcoCheckInsTheme() : super(pcoApplication, typeString);
-  PcoCheckInsTheme.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsTheme() : super(kPcoApplication, kTypeString);
+  PcoCheckInsTheme.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsTheme Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/themes;
@@ -70,7 +74,7 @@ class PcoCheckInsTheme extends PcoResource {
     List<PcoCheckInsTheme> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/themes';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoCheckInsTheme extends PcoResource {
     List<PcoCheckInsTheme> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/theme';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -104,7 +108,7 @@ class PcoCheckInsTheme extends PcoResource {
     PcoCheckInsTheme?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/themes' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -118,7 +122,7 @@ class PcoCheckInsTheme extends PcoResource {
     PcoCheckInsTheme?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/stations/$stationId/theme' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.024957
+/// This file was generated on 2021-11-18T15:28:02.073302
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
 /// 
 class PcoPeoplePlatformNotification extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'PlatformNotification';
-  static const String typeId = 'platform_notification';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'platformnotification-person-platform_notifications';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'PlatformNotification';
+  static const String kTypeId = 'platform_notification';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'platformnotification-person-platform_notifications';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kHtml = 'html';
@@ -49,8 +53,8 @@ class PcoPeoplePlatformNotification extends PcoResource {
 
 
 
-  PcoPeoplePlatformNotification() : super(pcoApplication, typeString);
-  PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePlatformNotification() : super(kPcoApplication, kTypeString);
+  PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePlatformNotification Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications;
@@ -58,7 +62,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
     List<PcoPeoplePlatformNotification> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/platform_notifications';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -76,7 +80,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
     PcoPeoplePlatformNotification?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/platform_notifications' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

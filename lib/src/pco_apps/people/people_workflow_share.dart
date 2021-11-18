@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.040741
+/// This file was generated on 2021-11-18T15:28:02.112238
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares
 /// 
 class PcoPeopleWorkflowShare extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'WorkflowShare';
-  static const String typeId = 'workflow_share';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'workflowshare-workflow-shares';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/shares';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'WorkflowShare';
+  static const String kTypeId = 'workflow_share';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'workflowshare-workflow-shares';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/shares';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kGroup = 'group';
@@ -64,8 +68,8 @@ class PcoPeopleWorkflowShare extends PcoResource {
   set personId(String s) => attributes[kPersonId] = s;
 
 
-  PcoPeopleWorkflowShare() : super(pcoApplication, typeString);
-  PcoPeopleWorkflowShare.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleWorkflowShare() : super(kPcoApplication, kTypeString);
+  PcoPeopleWorkflowShare.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleWorkflowShare Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares;
@@ -73,7 +77,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
     List<PcoPeopleWorkflowShare> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/workflow_shares';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -89,7 +93,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
     List<PcoPeopleWorkflowShare> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/shares';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -107,7 +111,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
     PcoPeopleWorkflowShare?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/workflow_shares' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -121,7 +125,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
     PcoPeopleWorkflowShare?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/shares' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.764070
+/// This file was generated on 2021-11-18T15:28:01.766010
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders
 /// 
 class PcoServicesTeamLeader extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'TeamLeader';
-  static const String typeId = 'team_leader';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'teamleader-team-team_leaders';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/team_leaders';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'TeamLeader';
+  static const String kTypeId = 'team_leader';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'teamleader-team-team_leaders';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/team_leaders';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kSendResponsesForAccepts = 'send_responses_for_accepts';
@@ -53,8 +57,8 @@ class PcoServicesTeamLeader extends PcoResource {
 
 
 
-  PcoServicesTeamLeader() : super(pcoApplication, typeString);
-  PcoServicesTeamLeader.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesTeamLeader() : super(kPcoApplication, kTypeString);
+  PcoServicesTeamLeader.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesTeamLeader Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/team_leaders;
@@ -62,7 +66,7 @@ class PcoServicesTeamLeader extends PcoResource {
     List<PcoServicesTeamLeader> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/team_leaders';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoServicesTeamLeader extends PcoResource {
     List<PcoServicesTeamLeader> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/teams/$teamId/team_leaders';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -96,7 +100,7 @@ class PcoServicesTeamLeader extends PcoResource {
     PcoServicesTeamLeader?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/team_leaders' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -110,7 +114,7 @@ class PcoServicesTeamLeader extends PcoResource {
     PcoServicesTeamLeader?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/teams/$teamId/team_leaders' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

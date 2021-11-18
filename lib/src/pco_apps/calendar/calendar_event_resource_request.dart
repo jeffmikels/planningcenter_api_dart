@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.113100
+/// This file was generated on 2021-11-18T15:28:02.149264
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/event_resource_requests
 /// 
 class PcoCalendarEventResourceRequest extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'EventResourceRequest';
-  static const String typeId = 'event_resource_request';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'eventresourcerequest-organization-event_resource_requests';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_resource_requests';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'EventResourceRequest';
+  static const String kTypeId = 'event_resource_request';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'eventresourcerequest-organization-event_resource_requests';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_resource_requests';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kApprovalSent = 'approval_sent';
@@ -73,8 +77,8 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
 
 
-  PcoCalendarEventResourceRequest() : super(pcoApplication, typeString);
-  PcoCalendarEventResourceRequest.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarEventResourceRequest() : super(kPcoApplication, kTypeString);
+  PcoCalendarEventResourceRequest.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarEventResourceRequest Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/event_resource_requests;
@@ -82,7 +86,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/event_resource_requests';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -98,7 +102,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_resource_requests';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -114,7 +118,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/people/$peopleId/event_resource_requests';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -130,7 +134,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/event_resource_requests';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -146,7 +150,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_bookings/$resourceBookingId/event_resource_request';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -162,7 +166,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     List<PcoCalendarEventResourceRequest> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources/$resourceId/event_resource_requests';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -180,7 +184,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/event_resource_requests' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -194,7 +198,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_resource_requests' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -208,7 +212,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/people/$peopleId/event_resource_requests' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -222,7 +226,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/event_resource_requests' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -236,7 +240,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resource_bookings/$resourceBookingId/event_resource_request' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -250,7 +254,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     PcoCalendarEventResourceRequest?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/resources/$resourceId/event_resource_requests' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

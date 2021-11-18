@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.710030
+/// This file was generated on 2021-11-18T15:28:01.687122
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2
 /// 
 class PcoServicesBlockoutScheduleConflict extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'BlockoutScheduleConflict';
-  static const String typeId = 'blockout_schedule_conflict';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'BlockoutScheduleConflict';
+  static const String kTypeId = 'blockout_schedule_conflict';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDates = 'dates';
@@ -71,8 +75,8 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
 
 
 
-  PcoServicesBlockoutScheduleConflict() : super(pcoApplication, typeString);
-  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesBlockoutScheduleConflict() : super(kPcoApplication, kTypeString);
+  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

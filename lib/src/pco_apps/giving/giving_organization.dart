@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.207905
+/// This file was generated on 2021-11-18T15:28:02.202610
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2
 /// 
 class PcoGivingOrganization extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'Organization';
-  static const String typeId = 'organization';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'Organization';
+  static const String kTypeId = 'organization';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -49,8 +53,8 @@ class PcoGivingOrganization extends PcoResource {
 
 
 
-  PcoGivingOrganization() : super(pcoApplication, typeString);
-  PcoGivingOrganization.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingOrganization() : super(kPcoApplication, kTypeString);
+  PcoGivingOrganization.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.269662
+/// This file was generated on 2021-11-18T15:28:02.233100
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/groups/v2/group_types
 /// 
 class PcoGroupsGroupType extends PcoResource {
-  static const String pcoApplication = 'groups';
-  static const String typeString = 'GroupType';
-  static const String typeId = 'group_type';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'grouptype-organization-group_types';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types';
+  static const String kPcoApplication = 'groups';
+  static const String kTypeString = 'GroupType';
+  static const String kTypeId = 'group_type';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'grouptype-organization-group_types';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kChurchCenterVisible = 'church_center_visible';
@@ -61,8 +65,8 @@ class PcoGroupsGroupType extends PcoResource {
 
 
 
-  PcoGroupsGroupType() : super(pcoApplication, typeString);
-  PcoGroupsGroupType.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGroupsGroupType() : super(kPcoApplication, kTypeString);
+  PcoGroupsGroupType.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGroupsGroupType Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/group_type;
@@ -70,7 +74,7 @@ class PcoGroupsGroupType extends PcoResource {
     List<PcoGroupsGroupType> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/group_type';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoGroupsGroupType extends PcoResource {
     List<PcoGroupsGroupType> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/group_types';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -104,7 +108,7 @@ class PcoGroupsGroupType extends PcoResource {
     PcoGroupsGroupType?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/groups/$groupId/group_type' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -118,7 +122,7 @@ class PcoGroupsGroupType extends PcoResource {
     PcoGroupsGroupType?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/group_types' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

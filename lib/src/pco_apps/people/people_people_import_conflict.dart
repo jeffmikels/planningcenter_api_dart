@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.012767
+/// This file was generated on 2021-11-18T15:28:02.064162
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
 /// 
 class PcoPeoplePeopleImportConflict extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'PeopleImportConflict';
-  static const String typeId = 'people_import_conflict';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'peopleimportconflict-peopleimport-conflicts';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'PeopleImportConflict';
+  static const String kTypeId = 'people_import_conflict';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'peopleimportconflict-peopleimport-conflicts';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kKind = 'kind';
@@ -59,8 +63,8 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
 
 
 
-  PcoPeoplePeopleImportConflict() : super(pcoApplication, typeString);
-  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeoplePeopleImportConflict() : super(kPcoApplication, kTypeString);
+  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeoplePeopleImportConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts;
@@ -68,7 +72,7 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
     List<PcoPeoplePeopleImportConflict> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
     PcoPeoplePeopleImportConflict?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people_imports/$peopleImportId/conflicts' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

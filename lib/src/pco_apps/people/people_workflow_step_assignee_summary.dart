@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.045535
+/// This file was generated on 2021-11-18T15:28:02.113843
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
 /// 
 class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'WorkflowStepAssigneeSummary';
-  static const String typeId = 'workflow_step_assignee_summary';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'workflowstepassigneesummary-workflowstep-assignee_summaries';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'WorkflowStepAssigneeSummary';
+  static const String kTypeId = 'workflow_step_assignee_summary';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'workflowstepassigneesummary-workflowstep-assignee_summaries';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kReadyCount = 'ready_count';
@@ -51,8 +55,8 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
 
 
 
-  PcoPeopleWorkflowStepAssigneeSummary() : super(pcoApplication, typeString);
-  PcoPeopleWorkflowStepAssigneeSummary.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleWorkflowStepAssigneeSummary() : super(kPcoApplication, kTypeString);
+  PcoPeopleWorkflowStepAssigneeSummary.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleWorkflowStepAssigneeSummary Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries;
@@ -60,7 +64,7 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
     List<PcoPeopleWorkflowStepAssigneeSummary> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
     PcoPeopleWorkflowStepAssigneeSummary?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

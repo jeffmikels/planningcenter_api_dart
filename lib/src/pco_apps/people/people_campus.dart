@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.962275
+/// This file was generated on 2021-11-18T15:28:02.027640
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/campuses
 /// 
 class PcoPeopleCampu extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'Campus';
-  static const String typeId = 'campus';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'campus-organization-campuses';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'Campus';
+  static const String kTypeId = 'campus';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'campus-organization-campuses';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kLatitude = 'latitude';
@@ -100,8 +104,8 @@ class PcoPeopleCampu extends PcoResource {
   set name(String s) => attributes[kName] = s;
 
 
-  PcoPeopleCampu() : super(pcoApplication, typeString);
-  PcoPeopleCampu.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleCampu() : super(kPcoApplication, kTypeString);
+  PcoPeopleCampu.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleCampu Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/campus;
@@ -109,7 +113,7 @@ class PcoPeopleCampu extends PcoResource {
     List<PcoPeopleCampu> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/campus';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -125,7 +129,7 @@ class PcoPeopleCampu extends PcoResource {
     List<PcoPeopleCampu> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/campus';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -141,7 +145,7 @@ class PcoPeopleCampu extends PcoResource {
     List<PcoPeopleCampu> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/campuses';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -157,7 +161,7 @@ class PcoPeopleCampu extends PcoResource {
     List<PcoPeopleCampu> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/primary_campus';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -175,7 +179,7 @@ class PcoPeopleCampu extends PcoResource {
     PcoPeopleCampu?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/campus' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -189,7 +193,7 @@ class PcoPeopleCampu extends PcoResource {
     PcoPeopleCampu?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/lists/$listId/campus' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -203,7 +207,7 @@ class PcoPeopleCampu extends PcoResource {
     PcoPeopleCampu?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/campuses' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -217,7 +221,7 @@ class PcoPeopleCampu extends PcoResource {
     PcoPeopleCampu?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/people/$peopleId/primary_campus' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

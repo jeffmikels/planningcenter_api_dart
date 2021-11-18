@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.127113
+/// This file was generated on 2021-11-18T15:28:02.160349
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/tags
 /// 
 class PcoCalendarTag extends PcoResource {
-  static const String pcoApplication = 'calendar';
-  static const String typeString = 'Tag';
-  static const String typeId = 'tag';
-  static const String apiVersion = '2020-04-08';
-  static const String shortestEdgeId = 'tag-organization-tags';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tags';
+  static const String kPcoApplication = 'calendar';
+  static const String kTypeString = 'Tag';
+  static const String kTypeId = 'tag';
+  static const String kApiVersion = '2020-04-08';
+  static const String kShortestEdgeId = 'tag-organization-tags';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tags';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kColor = 'color';
@@ -62,8 +66,8 @@ class PcoCalendarTag extends PcoResource {
 
 
 
-  PcoCalendarTag() : super(pcoApplication, typeString);
-  PcoCalendarTag.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCalendarTag() : super(kPcoApplication, kTypeString);
+  PcoCalendarTag.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCalendarTag Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_instances/1/tags;
@@ -71,7 +75,7 @@ class PcoCalendarTag extends PcoResource {
     List<PcoCalendarTag> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_instances/$eventInstanceId/tags';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -87,7 +91,7 @@ class PcoCalendarTag extends PcoResource {
     List<PcoCalendarTag> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/tags';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -103,7 +107,7 @@ class PcoCalendarTag extends PcoResource {
     List<PcoCalendarTag> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/tags';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -119,7 +123,7 @@ class PcoCalendarTag extends PcoResource {
     List<PcoCalendarTag> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/tag_groups/$tagGroupId/tags';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -137,7 +141,7 @@ class PcoCalendarTag extends PcoResource {
     PcoCalendarTag?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/event_instances/$eventInstanceId/tags' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -151,7 +155,7 @@ class PcoCalendarTag extends PcoResource {
     PcoCalendarTag?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/events/$eventId/tags' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -165,7 +169,7 @@ class PcoCalendarTag extends PcoResource {
     PcoCalendarTag?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/tags' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -179,7 +183,7 @@ class PcoCalendarTag extends PcoResource {
     PcoCalendarTag?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/calendar/v2/tag_groups/$tagGroupId/tags' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

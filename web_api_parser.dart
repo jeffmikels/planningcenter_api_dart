@@ -1,3 +1,5 @@
+// ignore_for_file: slash_for_doc_comments
+
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -459,7 +461,7 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
     List<$className> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '$edgePathTemplate';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -479,7 +481,7 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
     $className?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '$edgePathTemplate' + '/\$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -523,15 +525,19 @@ import '../../pco.dart';
 /// Default Endpoint: ${vertex.path}
 /// 
 class $className extends PcoResource {
-  static const String pcoApplication = '${vertex.application}';
-  static const String typeString = '${vertex.name}';
-  static const String typeId = '${vertex.id}';
-  static const String apiVersion = '${vertex.version}';
-  static const String shortestEdgeId = '${vertex.shortestInboundEdge?.id ?? ""}';
-  static const String shortestEdgePathTemplate = '${vertex.shortestInboundEdge?.path ?? vertex.path}';
+  static const String kPcoApplication = '${vertex.application}';
+  static const String kTypeString = '${vertex.name}';
+  static const String kTypeId = '${vertex.id}';
+  static const String kApiVersion = '${vertex.version}';
+  static const String kShortestEdgeId = '${vertex.shortestInboundEdge?.id ?? ""}';
+  static const String kShortestEdgePathTemplate = '${vertex.shortestInboundEdge?.path ?? vertex.path}';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
 ${fieldConstantLines.join()}
@@ -546,8 +552,8 @@ ${fieldGetterLines.join()}
 
 ${fieldSetterLines.join()}
 
-  $className() : super(pcoApplication, typeString);
-  $className.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  $className() : super(kPcoApplication, kTypeString);
+  $className.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 ${staticCollectionConstructors.join()}
 
@@ -610,6 +616,11 @@ var applications = ['services', 'check-ins', 'people', 'calendar', 'giving', 'gr
 
 var constructorMap = <String, String>{};
 
+/**
+ * TODO:
+ * - Support for API "actions"
+ * - Support for the "include" query parameter
+ */
 void main(List<String> arguments) async {
   var reload = arguments.contains('reload');
   for (var app in applications) {

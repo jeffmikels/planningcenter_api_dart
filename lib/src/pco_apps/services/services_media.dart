@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.725018
+/// This file was generated on 2021-11-18T15:28:01.703558
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/media
 /// 
 class PcoServicesMedia extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Media';
-  static const String typeId = 'media';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'media-organization-media';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Media';
+  static const String kTypeId = 'media';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'media-organization-media';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kThemes = 'themes';
@@ -111,8 +115,8 @@ class PcoServicesMedia extends PcoResource {
   set creatorName(String s) => attributes[kCreatorName] = s;
 
 
-  PcoServicesMedia() : super(pcoApplication, typeString);
-  PcoServicesMedia.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesMedia() : super(kPcoApplication, kTypeString);
+  PcoServicesMedia.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesMedia Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/media;
@@ -120,7 +124,7 @@ class PcoServicesMedia extends PcoResource {
     List<PcoServicesMedia> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -136,7 +140,7 @@ class PcoServicesMedia extends PcoResource {
     List<PcoServicesMedia> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -154,7 +158,7 @@ class PcoServicesMedia extends PcoResource {
     PcoServicesMedia?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -168,7 +172,7 @@ class PcoServicesMedia extends PcoResource {
     PcoServicesMedia?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

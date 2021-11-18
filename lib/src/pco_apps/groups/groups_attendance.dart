@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.266830
+/// This file was generated on 2021-11-18T15:28:02.226901
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/groups/v2/events/1/attendances
 /// 
 class PcoGroupsAttendance extends PcoResource {
-  static const String pcoApplication = 'groups';
-  static const String typeString = 'Attendance';
-  static const String typeId = 'attendance';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'attendance-event-attendances';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/attendances';
+  static const String kPcoApplication = 'groups';
+  static const String kTypeString = 'Attendance';
+  static const String kTypeId = 'attendance';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'attendance-event-attendances';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/attendances';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kAttended = 'attended';
@@ -53,8 +57,8 @@ class PcoGroupsAttendance extends PcoResource {
 
 
 
-  PcoGroupsAttendance() : super(pcoApplication, typeString);
-  PcoGroupsAttendance.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGroupsAttendance() : super(kPcoApplication, kTypeString);
+  PcoGroupsAttendance.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGroupsAttendance Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/attendances;
@@ -62,7 +66,7 @@ class PcoGroupsAttendance extends PcoResource {
     List<PcoGroupsAttendance> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/events/$eventId/attendances';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -80,7 +84,7 @@ class PcoGroupsAttendance extends PcoResource {
     PcoGroupsAttendance?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/groups/v2/events/$eventId/attendances' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

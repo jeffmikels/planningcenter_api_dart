@@ -14,13 +14,14 @@ import 'pco_constructors.dart';
 /// Implementations should also have a static [typeEndpoint] and override [itemEndpoint]
 abstract class PcoResource {
   /// implementations should duplicate/override these
-  static const String pcoApplication = '';
-  static const String typeString = '';
-  static const String apiVersion = '';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = '';
+  static const String kPcoApplication = '';
+  static const String kTypeString = '';
+  static const String kApiVersion = '';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = '';
 
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get apiVersion => kApiVersion;
 
   // field mapping constants
   static const kCreatedAt = 'created_at';
@@ -86,8 +87,9 @@ abstract class PcoResource {
     fromJson(data);
   }
 
-  Future<bool> _call(path, verb, [data = '']) async {
-    var res = await api.call(path, verb: verb, apiVersion: apiVersion, data: data);
+  Future<bool> _call(verb, [String data = '']) async {
+    if (apiPath == null) return false;
+    var res = await api.call(apiPath!, verb: verb, apiVersion: apiVersion, data: data);
     if (!res.isError) {
       fromJson(res.data);
       return fetched = true;
@@ -96,8 +98,7 @@ abstract class PcoResource {
   }
 
   Future<bool> fetch() async {
-    if (id != null && apiPath != null) return _call('get', apiPath);
-    return false;
+    return _call('get');
   }
 
   Future<bool> save() async {
@@ -109,7 +110,7 @@ abstract class PcoResource {
   /// will clear and update [id], [apiPath], [attributes] and [_relationships]
   fromJson(Map<String, dynamic> data) {
     if (data['type'] != resourceType) {
-      throw FormatException('Incorrect data type: ${data['type']} given, but ${resourceType} expected.');
+      throw FormatException('Incorrect data type: ${data['type']} given, but $resourceType expected.');
     }
 
     // responses will always have an id, but we shouldn't update this data

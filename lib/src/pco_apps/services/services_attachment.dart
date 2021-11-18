@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.702887
+/// This file was generated on 2021-11-18T15:28:01.676526
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/attachments
 /// 
 class PcoServicesAttachment extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Attachment';
-  static const String typeId = 'attachment';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Attachment';
+  static const String kTypeId = 'attachment';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPageOrder = 'page_order';
@@ -93,8 +97,8 @@ class PcoServicesAttachment extends PcoResource {
   set fileUploadIdentifier(String s) => attributes[kFileUploadIdentifier] = s;
 
 
-  PcoServicesAttachment() : super(pcoApplication, typeString);
-  PcoServicesAttachment.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesAttachment() : super(kPcoApplication, kTypeString);
+  PcoServicesAttachment.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesAttachment Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments;
@@ -102,7 +106,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -118,7 +122,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -134,7 +138,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -150,7 +154,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -166,7 +170,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -182,7 +186,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media/$mediaId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -198,7 +202,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/all_attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -214,7 +218,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -230,7 +234,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -246,7 +250,7 @@ class PcoServicesAttachment extends PcoResource {
     List<PcoServicesAttachment> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/attachments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -264,7 +268,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -278,7 +282,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -292,7 +296,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -306,7 +310,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -320,7 +324,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -334,7 +338,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/media/$mediaId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -348,7 +352,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/all_attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -362,7 +366,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -376,7 +380,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -390,7 +394,7 @@ class PcoServicesAttachment extends PcoResource {
     PcoServicesAttachment?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/attachments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.975338
+/// This file was generated on 2021-11-18T15:28:02.037033
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/forms/1/fields
 /// 
 class PcoPeopleFormField extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'FormField';
-  static const String typeId = 'form_field';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'formfield-form-fields';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'FormField';
+  static const String kTypeId = 'form_field';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'formfield-form-fields';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kFieldType = 'field_type';
@@ -61,8 +65,8 @@ class PcoPeopleFormField extends PcoResource {
 
 
 
-  PcoPeopleFormField() : super(pcoApplication, typeString);
-  PcoPeopleFormField.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleFormField() : super(kPcoApplication, kTypeString);
+  PcoPeopleFormField.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleFormField Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields;
@@ -70,7 +74,7 @@ class PcoPeopleFormField extends PcoResource {
     List<PcoPeopleFormField> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/fields';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoPeopleFormField extends PcoResource {
     List<PcoPeopleFormField> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -104,7 +108,7 @@ class PcoPeopleFormField extends PcoResource {
     PcoPeopleFormField?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/fields' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -118,7 +122,7 @@ class PcoPeopleFormField extends PcoResource {
     PcoPeopleFormField?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

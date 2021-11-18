@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.854091
+/// This file was generated on 2021-11-18T15:28:01.830309
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/attendance_types
 /// 
 class PcoCheckInsAttendanceType extends PcoResource {
-  static const String pcoApplication = 'check-ins';
-  static const String typeString = 'AttendanceType';
-  static const String typeId = 'attendance_type';
-  static const String apiVersion = '2019-07-17';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/attendance_types';
+  static const String kPcoApplication = 'check-ins';
+  static const String kTypeString = 'AttendanceType';
+  static const String kTypeId = 'attendance_type';
+  static const String kApiVersion = '2019-07-17';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/attendance_types';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -53,8 +57,8 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
 
 
-  PcoCheckInsAttendanceType() : super(pcoApplication, typeString);
-  PcoCheckInsAttendanceType.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoCheckInsAttendanceType() : super(kPcoApplication, kTypeString);
+  PcoCheckInsAttendanceType.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoCheckInsAttendanceType Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/attendance_types;
@@ -62,7 +66,7 @@ class PcoCheckInsAttendanceType extends PcoResource {
     List<PcoCheckInsAttendanceType> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/attendance_types';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoCheckInsAttendanceType extends PcoResource {
     List<PcoCheckInsAttendanceType> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/headcounts/$headcountId/attendance_type';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -96,7 +100,7 @@ class PcoCheckInsAttendanceType extends PcoResource {
     PcoCheckInsAttendanceType?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/events/$eventId/attendance_types' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -110,7 +114,7 @@ class PcoCheckInsAttendanceType extends PcoResource {
     PcoCheckInsAttendanceType?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/check-ins/v2/headcounts/$headcountId/attendance_type' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

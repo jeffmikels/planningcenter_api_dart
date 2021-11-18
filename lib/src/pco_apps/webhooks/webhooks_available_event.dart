@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.282914
+/// This file was generated on 2021-11-18T15:28:02.250297
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/webhooks/v2/available_events
 /// 
 class PcoWebhooksAvailableEvent extends PcoResource {
-  static const String pcoApplication = 'webhooks';
-  static const String typeString = 'AvailableEvent';
-  static const String typeId = 'available_event';
-  static const String apiVersion = '2018-08-01';
-  static const String shortestEdgeId = 'availableevent-organization-available_events';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/available_events';
+  static const String kPcoApplication = 'webhooks';
+  static const String kTypeString = 'AvailableEvent';
+  static const String kTypeId = 'available_event';
+  static const String kApiVersion = '2018-08-01';
+  static const String kShortestEdgeId = 'availableevent-organization-available_events';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/available_events';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -59,8 +63,8 @@ class PcoWebhooksAvailableEvent extends PcoResource {
 
 
 
-  PcoWebhooksAvailableEvent() : super(pcoApplication, typeString);
-  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoWebhooksAvailableEvent() : super(kPcoApplication, kTypeString);
+  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoWebhooksAvailableEvent Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/available_events;
@@ -68,7 +72,7 @@ class PcoWebhooksAvailableEvent extends PcoResource {
     List<PcoWebhooksAvailableEvent> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/webhooks/v2/available_events';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -86,7 +90,7 @@ class PcoWebhooksAvailableEvent extends PcoResource {
     PcoWebhooksAvailableEvent?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/webhooks/v2/available_events' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

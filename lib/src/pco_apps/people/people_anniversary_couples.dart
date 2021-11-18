@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.960762
+/// This file was generated on 2021-11-18T15:28:02.024544
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/anniversary_couples
 /// 
 class PcoPeopleAnniversaryCouple extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'AnniversaryCouples';
-  static const String typeId = 'anniversary_couples';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'anniversarycouples-organization-anniversary_couples';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'AnniversaryCouples';
+  static const String kTypeId = 'anniversary_couples';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'anniversarycouples-organization-anniversary_couples';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
 
@@ -47,8 +51,8 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
 
 
 
-  PcoPeopleAnniversaryCouple() : super(pcoApplication, typeString);
-  PcoPeopleAnniversaryCouple.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleAnniversaryCouple() : super(kPcoApplication, kTypeString);
+  PcoPeopleAnniversaryCouple.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleAnniversaryCouple Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/anniversary_couples;
@@ -56,7 +60,7 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
     List<PcoPeopleAnniversaryCouple> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/anniversary_couples';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -74,7 +78,7 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
     PcoPeopleAnniversaryCouple?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/anniversary_couples' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

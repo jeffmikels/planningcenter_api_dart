@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.713113
+/// This file was generated on 2021-11-18T15:28:01.690218
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2
 /// 
 class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'EmailTemplateRenderedResponse';
-  static const String typeId = 'email_template_rendered_response';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'EmailTemplateRenderedResponse';
+  static const String kTypeId = 'email_template_rendered_response';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kBody = 'body';
@@ -51,8 +55,8 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
 
 
 
-  PcoServicesEmailTemplateRenderedResponse() : super(pcoApplication, typeString);
-  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesEmailTemplateRenderedResponse() : super(kPcoApplication, kTypeString);
+  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

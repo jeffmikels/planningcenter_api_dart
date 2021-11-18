@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.709348
+/// This file was generated on 2021-11-18T15:28:01.686265
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
 /// 
 class PcoServicesBlockoutException extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'BlockoutException';
-  static const String typeId = 'blockout_exception';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'blockoutexception-blockout-blockout_exceptions';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'BlockoutException';
+  static const String kTypeId = 'blockout_exception';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'blockoutexception-blockout-blockout_exceptions';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kDate = 'date';
@@ -50,8 +54,8 @@ class PcoServicesBlockoutException extends PcoResource {
   set date(String s) => attributes[kDate] = s;
 
 
-  PcoServicesBlockoutException() : super(pcoApplication, typeString);
-  PcoServicesBlockoutException.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesBlockoutException() : super(kPcoApplication, kTypeString);
+  PcoServicesBlockoutException.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesBlockoutException Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions;
@@ -59,7 +63,7 @@ class PcoServicesBlockoutException extends PcoResource {
     List<PcoServicesBlockoutException> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -77,7 +81,7 @@ class PcoServicesBlockoutException extends PcoResource {
     PcoServicesBlockoutException?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

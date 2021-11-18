@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.720565
+/// This file was generated on 2021-11-18T15:28:01.698486
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times
 /// 
 class PcoServicesItemTime extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'ItemTime';
-  static const String typeId = 'item_time';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'ItemTime';
+  static const String kTypeId = 'item_time';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kLiveStartAt = 'live_start_at';
@@ -57,8 +61,8 @@ class PcoServicesItemTime extends PcoResource {
 
 
 
-  PcoServicesItemTime() : super(pcoApplication, typeString);
-  PcoServicesItemTime.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesItemTime() : super(kPcoApplication, kTypeString);
+  PcoServicesItemTime.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesItemTime Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_times;
@@ -66,7 +70,7 @@ class PcoServicesItemTime extends PcoResource {
     List<PcoServicesItemTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -82,7 +86,7 @@ class PcoServicesItemTime extends PcoResource {
     List<PcoServicesItemTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -98,7 +102,7 @@ class PcoServicesItemTime extends PcoResource {
     List<PcoServicesItemTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -116,7 +120,7 @@ class PcoServicesItemTime extends PcoResource {
     PcoServicesItemTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -130,7 +134,7 @@ class PcoServicesItemTime extends PcoResource {
     PcoServicesItemTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -144,7 +148,7 @@ class PcoServicesItemTime extends PcoResource {
     PcoServicesItemTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

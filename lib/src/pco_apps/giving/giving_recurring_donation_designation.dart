@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.220653
+/// This file was generated on 2021-11-18T15:28:02.208614
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations
 /// 
 class PcoGivingRecurringDonationDesignation extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'RecurringDonationDesignation';
-  static const String typeId = 'recurring_donation_designation';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'recurringdonationdesignation-recurringdonation-designations';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'RecurringDonationDesignation';
+  static const String kTypeId = 'recurring_donation_designation';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'recurringdonationdesignation-recurringdonation-designations';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kAmountCents = 'amount_cents';
@@ -51,8 +55,8 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
 
 
 
-  PcoGivingRecurringDonationDesignation() : super(pcoApplication, typeString);
-  PcoGivingRecurringDonationDesignation.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingRecurringDonationDesignation() : super(kPcoApplication, kTypeString);
+  PcoGivingRecurringDonationDesignation.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingRecurringDonationDesignation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations;
@@ -60,7 +64,7 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
     List<PcoGivingRecurringDonationDesignation> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/designations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
     PcoGivingRecurringDonationDesignation?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/designations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

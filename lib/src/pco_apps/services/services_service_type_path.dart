@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.750614
+/// This file was generated on 2021-11-18T15:28:01.752082
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/path
 /// 
 class PcoServicesServiceTypePath extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'ServiceTypePath';
-  static const String typeId = 'service_type_path';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = '';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/path';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'ServiceTypePath';
+  static const String kTypeId = 'service_type_path';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = '';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/path';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kPath = 'path';
@@ -49,8 +53,8 @@ class PcoServicesServiceTypePath extends PcoResource {
 
 
 
-  PcoServicesServiceTypePath() : super(pcoApplication, typeString);
-  PcoServicesServiceTypePath.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesServiceTypePath() : super(kPcoApplication, kTypeString);
+  PcoServicesServiceTypePath.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
 
 

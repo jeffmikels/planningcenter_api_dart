@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.705153
+/// This file was generated on 2021-11-18T15:28:01.680822
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/attachment_types
 /// 
 class PcoServicesAttachmentType extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'AttachmentType';
-  static const String typeId = 'attachment_type';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'attachmenttype-organization-attachment_types';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'AttachmentType';
+  static const String kTypeId = 'attachment_type';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'attachmenttype-organization-attachment_types';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -65,8 +69,8 @@ class PcoServicesAttachmentType extends PcoResource {
 
 
 
-  PcoServicesAttachmentType() : super(pcoApplication, typeString);
-  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesAttachmentType() : super(kPcoApplication, kTypeString);
+  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesAttachmentType Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachment_types;
@@ -74,7 +78,7 @@ class PcoServicesAttachmentType extends PcoResource {
     List<PcoServicesAttachmentType> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/attachment_types';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -92,7 +96,7 @@ class PcoServicesAttachmentType extends PcoResource {
     PcoServicesAttachmentType?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/attachment_types' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

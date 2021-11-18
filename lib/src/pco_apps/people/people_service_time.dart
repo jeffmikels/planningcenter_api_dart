@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.030156
+/// This file was generated on 2021-11-18T15:28:02.096206
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/campuses/1/service_times
 /// 
 class PcoPeopleServiceTime extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'ServiceTime';
-  static const String typeId = 'service_time';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'servicetime-campus-service_times';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'ServiceTime';
+  static const String kTypeId = 'service_time';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'servicetime-campus-service_times';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kStartTime = 'start_time';
@@ -60,8 +64,8 @@ class PcoPeopleServiceTime extends PcoResource {
   set description(String s) => attributes[kDescription] = s;
 
 
-  PcoPeopleServiceTime() : super(pcoApplication, typeString);
-  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleServiceTime() : super(kPcoApplication, kTypeString);
+  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleServiceTime Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/campuses/1/service_times;
@@ -69,7 +73,7 @@ class PcoPeopleServiceTime extends PcoResource {
     List<PcoPeopleServiceTime> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/campuses/$campusId/service_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -87,7 +91,7 @@ class PcoPeopleServiceTime extends PcoResource {
     PcoPeopleServiceTime?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/campuses/$campusId/service_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

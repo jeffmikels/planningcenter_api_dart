@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.973257
+/// This file was generated on 2021-11-18T15:28:02.035576
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
 /// 
 class PcoPeopleFieldOption extends PcoResource {
-  static const String pcoApplication = 'people';
-  static const String typeString = 'FieldOption';
-  static const String typeId = 'field_option';
-  static const String apiVersion = '2021-08-17';
-  static const String shortestEdgeId = 'fieldoption-tab-field_options';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs/1/field_options';
+  static const String kPcoApplication = 'people';
+  static const String kTypeString = 'FieldOption';
+  static const String kTypeId = 'field_option';
+  static const String kApiVersion = '2021-08-17';
+  static const String kShortestEdgeId = 'fieldoption-tab-field_options';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs/1/field_options';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kValue = 'value';
@@ -53,8 +57,8 @@ class PcoPeopleFieldOption extends PcoResource {
   set sequence(int n) => attributes[kSequence] = n;
 
 
-  PcoPeopleFieldOption() : super(pcoApplication, typeString);
-  PcoPeopleFieldOption.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoPeopleFieldOption() : super(kPcoApplication, kTypeString);
+  PcoPeopleFieldOption.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoPeopleFieldOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_data/1/field_option;
@@ -62,7 +66,7 @@ class PcoPeopleFieldOption extends PcoResource {
     List<PcoPeopleFieldOption> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/field_option';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -78,7 +82,7 @@ class PcoPeopleFieldOption extends PcoResource {
     List<PcoPeopleFieldOption> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_definitions/$fieldDefinitionId/field_options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -94,7 +98,7 @@ class PcoPeopleFieldOption extends PcoResource {
     List<PcoPeopleFieldOption> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/tabs/$tabId/field_options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -112,7 +116,7 @@ class PcoPeopleFieldOption extends PcoResource {
     PcoPeopleFieldOption?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_data/$fieldDataId/field_option' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -126,7 +130,7 @@ class PcoPeopleFieldOption extends PcoResource {
     PcoPeopleFieldOption?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/field_definitions/$fieldDefinitionId/field_options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -140,7 +144,7 @@ class PcoPeopleFieldOption extends PcoResource {
     PcoPeopleFieldOption?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/people/v2/tabs/$tabId/field_options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

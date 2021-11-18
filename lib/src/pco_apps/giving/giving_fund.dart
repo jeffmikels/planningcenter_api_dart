@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:10.205056
+/// This file was generated on 2021-11-18T15:28:02.201629
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/funds
 /// 
 class PcoGivingFund extends PcoResource {
-  static const String pcoApplication = 'giving';
-  static const String typeString = 'Fund';
-  static const String typeId = 'fund';
-  static const String apiVersion = '2019-10-18';
-  static const String shortestEdgeId = 'fund-organization-funds';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/funds';
+  static const String kPcoApplication = 'giving';
+  static const String kTypeString = 'Fund';
+  static const String kTypeId = 'fund';
+  static const String kApiVersion = '2019-10-18';
+  static const String kShortestEdgeId = 'fund-organization-funds';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/funds';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kName = 'name';
@@ -76,8 +80,8 @@ class PcoGivingFund extends PcoResource {
   set colorIdentifier(int n) => attributes[kColorIdentifier] = n;
 
 
-  PcoGivingFund() : super(pcoApplication, typeString);
-  PcoGivingFund.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoGivingFund() : super(kPcoApplication, kTypeString);
+  PcoGivingFund.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoGivingFund Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/designations/1/fund;
@@ -85,7 +89,7 @@ class PcoGivingFund extends PcoResource {
     List<PcoGivingFund> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/donations/$donationId/designations/$designationId/fund';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -101,7 +105,7 @@ class PcoGivingFund extends PcoResource {
     List<PcoGivingFund> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/funds';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -117,7 +121,7 @@ class PcoGivingFund extends PcoResource {
     List<PcoGivingFund> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledge_campaigns/$pledgeCampaignId/fund';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -133,7 +137,7 @@ class PcoGivingFund extends PcoResource {
     List<PcoGivingFund> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/designations/$designationId/fund';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -151,7 +155,7 @@ class PcoGivingFund extends PcoResource {
     PcoGivingFund?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/donations/$donationId/designations/$designationId/fund' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -165,7 +169,7 @@ class PcoGivingFund extends PcoResource {
     PcoGivingFund?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/funds' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -179,7 +183,7 @@ class PcoGivingFund extends PcoResource {
     PcoGivingFund?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/pledge_campaigns/$pledgeCampaignId/fund' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -193,7 +197,7 @@ class PcoGivingFund extends PcoResource {
     PcoGivingFund?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/giving/v2/recurring_donations/$recurringDonationId/designations/$designationId/fund' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

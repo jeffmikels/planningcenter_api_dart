@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T13:57:09.716124
+/// This file was generated on 2021-11-18T15:28:01.693273
 
 
 import '../../pco.dart';
@@ -24,15 +24,19 @@ import '../../pco.dart';
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
 /// 
 class PcoServicesItem extends PcoResource {
-  static const String pcoApplication = 'services';
-  static const String typeString = 'Item';
-  static const String typeId = 'item';
-  static const String apiVersion = '2018-11-01';
-  static const String shortestEdgeId = 'item-song-last_scheduled_item';
-  static const String shortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item';
+  static const String kPcoApplication = 'services';
+  static const String kTypeString = 'Item';
+  static const String kTypeId = 'item';
+  static const String kApiVersion = '2018-11-01';
+  static const String kShortestEdgeId = 'item-song-last_scheduled_item';
+  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item';
 
   @override
-  String shortestEdgePath() => shortestEdgePathTemplate;
+  String shortestEdgePath() => kShortestEdgePathTemplate;
+
+  @override
+  String get apiVersion => kApiVersion;
+
 
   // field mapping constants
   static const kTitle = 'title';
@@ -107,8 +111,8 @@ class PcoServicesItem extends PcoResource {
   set customArrangementSequence(List a) => attributes[kCustomArrangementSequence] = a;
 
 
-  PcoServicesItem() : super(pcoApplication, typeString);
-  PcoServicesItem.fromJson(Map<String, dynamic> data): super.fromJson(pcoApplication, typeString, data);
+  PcoServicesItem() : super(kPcoApplication, kTypeString);
+  PcoServicesItem.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
 
   /// will get many PcoServicesItem Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/items;
@@ -116,7 +120,7 @@ class PcoServicesItem extends PcoResource {
     List<PcoServicesItem> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/items';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -132,7 +136,7 @@ class PcoServicesItem extends PcoResource {
     List<PcoServicesItem> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -148,7 +152,7 @@ class PcoServicesItem extends PcoResource {
     List<PcoServicesItem> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -164,7 +168,7 @@ class PcoServicesItem extends PcoResource {
     List<PcoServicesItem> retval = [];
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/last_scheduled_item';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
@@ -182,7 +186,7 @@ class PcoServicesItem extends PcoResource {
     PcoServicesItem?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/items' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -196,7 +200,7 @@ class PcoServicesItem extends PcoResource {
     PcoServicesItem?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -210,7 +214,7 @@ class PcoServicesItem extends PcoResource {
     PcoServicesItem?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
@@ -224,7 +228,7 @@ class PcoServicesItem extends PcoResource {
     PcoServicesItem?  retval;
     query ??= PlanningCenterApiQuery();
     var url = '/services/v2/songs/$songId/last_scheduled_item' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:apiVersion);
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {

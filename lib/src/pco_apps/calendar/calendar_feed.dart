@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.150801
+/// This file was generated on 2021-11-19T12:10:42.725120
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/feeds
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @feed_type (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
+/// possible orderings with parameter ?order=
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
 class PcoCalendarFeed extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Feed';
@@ -31,12 +39,26 @@ class PcoCalendarFeed extends PcoResource {
   static const String kShortestEdgeId = 'feed-organization-feeds';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @feed_type (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
+  static List<String> get canQuery => ['feed_type'];
+
+  /// possible orderings with parameter ?order=
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  static List<String> get canOrderBy => ['name'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kDefaultChurchCenterVisibility = 'default_church_center_visibility';
@@ -72,36 +94,38 @@ class PcoCalendarFeed extends PcoResource {
 
 
   PcoCalendarFeed() : super(kPcoApplication, kTypeString);
-  PcoCalendarFeed.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoCalendarFeed Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<List<PcoCalendarFeed>> getManyFromEventAndFeedIds(String eventId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarFeed>> getManyFromEventAndFeedIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarFeed> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/events/$eventId/feed';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarFeed.fromJson(itemData));
+        retval.add(PcoCalendarFeed.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoCalendarFeed Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<List<PcoCalendarFeed>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarFeed>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarFeed> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarFeed.fromJson(itemData));
+        retval.add(PcoCalendarFeed.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -110,29 +134,31 @@ class PcoCalendarFeed extends PcoResource {
 
   /// will get a single PcoCalendarFeed Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<PcoCalendarFeed?> getSingleFromEventAndFeedIds(String eventId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarFeed?> getSingleFromEventAndFeedIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarFeed?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/events/$eventId/feed' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarFeed.fromJson(res.data);
+      retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoCalendarFeed Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<PcoCalendarFeed?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarFeed?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarFeed?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarFeed.fromJson(res.data);
+      retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

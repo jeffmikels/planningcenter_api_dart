@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.036213
+/// This file was generated on 2021-11-19T12:10:42.507951
 
 
 import '../../pco.dart';
@@ -23,6 +23,20 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/forms
 /// 
+/// possible includes with parameter ?include=a,b
+/// @campus: include associated campus 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @active (URLParameter), query on a specific active, example: ?where[active]=true
+/// possible orderings with parameter ?order=
+/// @active (URLParameter), prefix with a hyphen (-active) to reverse the order
+/// @archived_at (URLParameter), prefix with a hyphen (-archived_at) to reverse the order
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @deleted_at (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
+/// @description (URLParameter), prefix with a hyphen (-description) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoPeopleForm extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Form';
@@ -31,12 +45,32 @@ class PcoPeopleForm extends PcoResource {
   static const String kShortestEdgeId = 'form-organization-forms';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms';
 
+  /// possible includes with parameter ?include=a,b
+  /// @campus: include associated campus 
+  static List<String> get canInclude => ['campus'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @active (URLParameter), query on a specific active, example: ?where[active]=true
+  static List<String> get canQuery => ['active'];
+
+  /// possible orderings with parameter ?order=
+  /// @active (URLParameter), prefix with a hyphen (-active) to reverse the order
+  /// @archived_at (URLParameter), prefix with a hyphen (-archived_at) to reverse the order
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @deleted_at (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
+  /// @description (URLParameter), prefix with a hyphen (-description) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['active','archived_at','created_at','deleted_at','description','name','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -70,20 +104,21 @@ class PcoPeopleForm extends PcoResource {
 
 
   PcoPeopleForm() : super(kPcoApplication, kTypeString);
-  PcoPeopleForm.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleForm.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleForm Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms;
-  static Future<List<PcoPeopleForm>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleForm>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleForm> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleForm.canInclude;
     var url = '/people/v2/forms';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleForm.fromJson(itemData));
+        retval.add(PcoPeopleForm.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -92,30 +127,32 @@ class PcoPeopleForm extends PcoResource {
 
   /// will get a single PcoPeopleForm Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms;
-  static Future<PcoPeopleForm?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleForm?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleForm?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleForm.canInclude;
     var url = '/people/v2/forms' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleForm.fromJson(res.data);
+      retval = PcoPeopleForm.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
 
 
-/// will get many PcoPeopleCampu objects
+/// will get many PcoPeopleCampus objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/campus
-Future<List<PcoPeopleCampu>> getCampus({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleCampus>> getCampuses({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
-  List<PcoPeopleCampu> retval = [];
+  if (allIncludes) query.include = PcoPeopleCampus.canInclude;
+  List<PcoPeopleCampus> retval = [];
   var url = '$apiEndpoint/campus';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleCampu.fromJson(itemData));
+      retval.add(PcoPeopleCampus.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -123,14 +160,15 @@ Future<List<PcoPeopleCampu>> getCampus({PlanningCenterApiQuery? query}) async {
     
 /// will get many PcoPeopleFormField objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields
-Future<List<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeopleFormField.canInclude;
   List<PcoPeopleFormField> retval = [];
   var url = '$apiEndpoint/fields';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleFormField.fromJson(itemData));
+      retval.add(PcoPeopleFormField.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -138,14 +176,15 @@ Future<List<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? qu
     
 /// will get many PcoPeopleFormSubmission objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
-Future<List<PcoPeopleFormSubmission>> getFormSubmissions({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleFormSubmission>> getFormSubmissions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeopleFormSubmission.canInclude;
   List<PcoPeopleFormSubmission> retval = [];
   var url = '$apiEndpoint/form_submissions';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleFormSubmission.fromJson(itemData));
+      retval.add(PcoPeopleFormSubmission.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

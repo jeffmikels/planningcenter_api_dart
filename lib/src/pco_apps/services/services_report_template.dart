@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.743525
+/// This file was generated on 2021-11-19T12:10:42.118198
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/report_templates
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesReportTemplate extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'ReportTemplate';
@@ -31,12 +39,26 @@ class PcoServicesReportTemplate extends PcoResource {
   static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kBody = 'body';
@@ -64,20 +86,21 @@ class PcoServicesReportTemplate extends PcoResource {
 
 
   PcoServicesReportTemplate() : super(kPcoApplication, kTypeString);
-  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/report_templates;
-  static Future<List<PcoServicesReportTemplate>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesReportTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesReportTemplate.canInclude;
     var url = '/services/v2/report_templates';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesReportTemplate.fromJson(itemData));
+        retval.add(PcoServicesReportTemplate.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -86,15 +109,16 @@ class PcoServicesReportTemplate extends PcoResource {
 
   /// will get a single PcoServicesReportTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/report_templates;
-  static Future<PcoServicesReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesReportTemplate?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesReportTemplate.canInclude;
     var url = '/services/v2/report_templates' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesReportTemplate.fromJson(res.data);
+      retval = PcoServicesReportTemplate.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

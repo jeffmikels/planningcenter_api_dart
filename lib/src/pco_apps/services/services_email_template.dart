@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.689833
+/// This file was generated on 2021-11-19T12:10:42.018565
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/email_templates
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesEmailTemplate extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'EmailTemplate';
@@ -31,12 +39,26 @@ class PcoServicesEmailTemplate extends PcoResource {
   static const String kShortestEdgeId = 'emailtemplate-organization-email_templates';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kKind = 'kind';
@@ -61,20 +83,21 @@ class PcoServicesEmailTemplate extends PcoResource {
 
 
   PcoServicesEmailTemplate() : super(kPcoApplication, kTypeString);
-  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesEmailTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates;
-  static Future<List<PcoServicesEmailTemplate>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesEmailTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesEmailTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
     var url = '/services/v2/email_templates';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesEmailTemplate.fromJson(itemData));
+        retval.add(PcoServicesEmailTemplate.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -83,15 +106,16 @@ class PcoServicesEmailTemplate extends PcoResource {
 
   /// will get a single PcoServicesEmailTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates;
-  static Future<PcoServicesEmailTemplate?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesEmailTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesEmailTemplate?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
     var url = '/services/v2/email_templates' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesEmailTemplate.fromJson(res.data);
+      retval = PcoServicesEmailTemplate.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

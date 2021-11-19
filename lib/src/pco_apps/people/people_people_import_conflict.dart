@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.064162
+/// This file was generated on 2021-11-19T12:10:42.579675
 
 
 import '../../pco.dart';
@@ -23,6 +23,15 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @kind (URLParameter), query on a specific kind, example: ?where[kind]=string
+/// @name (URLParameter), query on a specific name, example: ?where[name]=string
+/// possible orderings with parameter ?order=
+
+///
 class PcoPeoplePeopleImportConflict extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PeopleImportConflict';
@@ -31,12 +40,27 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   static const String kShortestEdgeId = 'peopleimportconflict-peopleimport-conflicts';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @kind (URLParameter), query on a specific kind, example: ?where[kind]=string
+  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
+  static List<String> get canQuery => ['kind','name'];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kKind = 'kind';
@@ -64,20 +88,21 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
 
 
   PcoPeoplePeopleImportConflict() : super(kPcoApplication, kTypeString);
-  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeoplePeopleImportConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts;
-  static Future<List<PcoPeoplePeopleImportConflict>> getManyFromPeopleImportAndConflictIds(String peopleImportId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeoplePeopleImportConflict>> getManyFromPeopleImportAndConflictIds(String peopleImportId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeoplePeopleImportConflict> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData));
+        retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -86,15 +111,16 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
 
   /// will get a single PcoPeoplePeopleImportConflict Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts;
-  static Future<PcoPeoplePeopleImportConflict?> getSingleFromPeopleImportAndConflictIds(String peopleImportId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeoplePeopleImportConflict?> getSingleFromPeopleImportAndConflictIds(String peopleImportId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeoplePeopleImportConflict?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/conflicts' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeoplePeopleImportConflict.fromJson(res.data);
+      retval = PcoPeoplePeopleImportConflict.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

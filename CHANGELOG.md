@@ -1,3 +1,10 @@
+## 0.1.2
+
+-   Now handles "included" items in API results
+-   Added flags to easily get all includable items
+-   added static class getters to expose `canInclude`, `canOrderBy`, and `canQuery` fields
+-   preliminary work under the hood for oauth2 authentication
+
 ## 0.1.1
 
 -   Fixed readme bug

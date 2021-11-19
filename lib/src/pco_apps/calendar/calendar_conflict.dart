@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.141051
+/// This file was generated on 2021-11-19T12:10:42.716936
 
 
 import '../../pco.dart';
@@ -23,6 +23,16 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/conflicts
 /// 
+/// possible includes with parameter ?include=a,b
+/// @resolved_by: include associated resolved_by 
+/// @resource: include associated resource 
+/// @winner: include associated winner 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @resolved_at (URLParameter), prefix with a hyphen (-resolved_at) to reverse the order
+///
 class PcoCalendarConflict extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Conflict';
@@ -31,12 +41,28 @@ class PcoCalendarConflict extends PcoResource {
   static const String kShortestEdgeId = 'conflict-organization-conflicts';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/conflicts';
 
+  /// possible includes with parameter ?include=a,b
+  /// @resolved_by: include associated resolved_by 
+  /// @resource: include associated resource 
+  /// @winner: include associated winner 
+  static List<String> get canInclude => ['resolved_by','resource','winner'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @resolved_at (URLParameter), prefix with a hyphen (-resolved_at) to reverse the order
+  static List<String> get canOrderBy => ['resolved_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kNote = 'note';
@@ -60,52 +86,55 @@ class PcoCalendarConflict extends PcoResource {
 
 
   PcoCalendarConflict() : super(kPcoApplication, kTypeString);
-  PcoCalendarConflict.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoCalendarConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoCalendarConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/conflicts;
-  static Future<List<PcoCalendarConflict>> getManyFromEventAndConflictIds(String eventId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarConflict>> getManyFromEventAndConflictIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarConflict> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/events/$eventId/conflicts';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarConflict.fromJson(itemData));
+        retval.add(PcoCalendarConflict.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoCalendarConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts;
-  static Future<List<PcoCalendarConflict>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarConflict>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarConflict> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/conflicts';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarConflict.fromJson(itemData));
+        retval.add(PcoCalendarConflict.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoCalendarConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resources/1/conflicts;
-  static Future<List<PcoCalendarConflict>> getManyFromResourceAndConflictIds(String resourceId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarConflict>> getManyFromResourceAndConflictIds(String resourceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarConflict> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/resources/$resourceId/conflicts';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarConflict.fromJson(itemData));
+        retval.add(PcoCalendarConflict.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -114,43 +143,46 @@ class PcoCalendarConflict extends PcoResource {
 
   /// will get a single PcoCalendarConflict Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/conflicts;
-  static Future<PcoCalendarConflict?> getSingleFromEventAndConflictIds(String eventId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarConflict?> getSingleFromEventAndConflictIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarConflict?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/events/$eventId/conflicts' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarConflict.fromJson(res.data);
+      retval = PcoCalendarConflict.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoCalendarConflict Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts;
-  static Future<PcoCalendarConflict?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarConflict?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarConflict?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/conflicts' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarConflict.fromJson(res.data);
+      retval = PcoCalendarConflict.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoCalendarConflict Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resources/1/conflicts;
-  static Future<PcoCalendarConflict?> getSingleFromResourceAndConflictIds(String resourceId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarConflict?> getSingleFromResourceAndConflictIds(String resourceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarConflict?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
     var url = '/calendar/v2/resources/$resourceId/conflicts' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarConflict.fromJson(res.data);
+      retval = PcoCalendarConflict.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -158,14 +190,15 @@ class PcoCalendarConflict extends PcoResource {
 
 /// will get many PcoCalendarPerson objects
 /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by
-Future<List<PcoCalendarPerson>> getPersonsResolvedBy({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCalendarPerson>> getPersonsResolvedBy({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCalendarPerson.canInclude;
   List<PcoCalendarPerson> retval = [];
   var url = '$apiEndpoint/resolved_by';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCalendarPerson.fromJson(itemData));
+      retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -173,14 +206,15 @@ Future<List<PcoCalendarPerson>> getPersonsResolvedBy({PlanningCenterApiQuery? qu
     
 /// will get many PcoCalendarResource objects
 /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource
-Future<List<PcoCalendarResource>> getResources({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCalendarResource>> getResources({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCalendarResource.canInclude;
   List<PcoCalendarResource> retval = [];
   var url = '$apiEndpoint/resource';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCalendarResource.fromJson(itemData));
+      retval.add(PcoCalendarResource.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -188,14 +222,15 @@ Future<List<PcoCalendarResource>> getResources({PlanningCenterApiQuery? query}) 
     
 /// will get many PcoCalendarEvent objects
 /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/winner
-Future<List<PcoCalendarEvent>> getEventsWinner({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCalendarEvent>> getEventsWinner({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCalendarEvent.canInclude;
   List<PcoCalendarEvent> retval = [];
   var url = '$apiEndpoint/winner';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCalendarEvent.fromJson(itemData));
+      retval.add(PcoCalendarEvent.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

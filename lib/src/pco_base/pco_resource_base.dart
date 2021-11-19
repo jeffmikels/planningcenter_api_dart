@@ -20,7 +20,9 @@ abstract class PcoResource {
   static const String kShortestEdgeId = '';
   static const String kShortestEdgePathTemplate = '';
 
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  /// child classes can override these getters which will allow
+  /// methods in this class to see static variables from child classes
+  String get shortestEdgePath => kShortestEdgePathTemplate;
   String get apiVersion => kApiVersion;
 
   // field mapping constants
@@ -41,7 +43,7 @@ abstract class PcoResource {
   /// PcoResources include their own path as a link object
   /// but this might be null if we haven't created/fetched the object yet
   String? _apiPath;
-  String? get apiPath => links['self'] ?? _apiPath ?? shortestEdgePath();
+  String? get apiPath => links['self'] ?? _apiPath ?? shortestEdgePath;
   String? get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
@@ -62,13 +64,11 @@ abstract class PcoResource {
   /// allow a user to access arbitrary data in the attributes by actual api name
   final Map<String, dynamic> attributes = {};
 
-  /// contains the relationships data returned by the api if present
-  Map<String, dynamic> get relationshipsData => _relationshipsData;
-  final Map<String, dynamic> _relationshipsData = {};
-
   /// contains relationships parsed into objects
-  Map<String, PcoResource> get relationships => _relationships;
-  final Map<String, PcoResource> _relationships = {};
+  /// even though the api sends relationship objects as Maps or Lists
+  /// we always put them into lists for consistency
+  Map<String, List<PcoResource>> get relationships => _relationships;
+  final Map<String, List<PcoResource>> _relationships = {};
 
   /// contains the links data returned by the api if present
   final Map<String, dynamic> _links = {};
@@ -79,12 +79,18 @@ abstract class PcoResource {
   DateTime get updatedAt => DateTime.parse(attributes[kUpdatedAt]!);
 
   PcoResource(this.application, this.resourceType);
-  PcoResource.fromJson(this.application, this.resourceType, Map<String, dynamic> data) {
+  PcoResource.fromJson(
+    this.application,
+    this.resourceType,
+    Map<String, dynamic> data, {
+    List<Map<String, dynamic>> withIncludes = const [],
+  }) {
     if (!data.containsKey('type')) {
       print(data);
       throw FormatException('data supplied does not meet JSON:API specs. No "type" field found');
     }
     fromJson(data);
+    handleIncludes(withIncludes);
   }
 
   Future<bool> _call(verb, [String data = '']) async {
@@ -132,26 +138,52 @@ abstract class PcoResource {
       links.addAll(data['links']);
     }
 
-    // TODO: parse the relationships into their proper objects
+    // process relationships, but first ensure
+    // all relationship objects are actually lists
     if (data.containsKey('relationships')) {
-      _relationshipsData
-        ..clear()
-        ..addAll(data['relationships']);
-
-      // parse each relationship into its relevant object
       relationships.clear();
-      if (data['relationships'] is Map) {
-        (data['relationships'] as Map).forEach((key, value) {
-          if (value['data'] == null || value['data'] is List) return;
-          try {
-            var res = buildResource(application, value['data']['type'], value['data']);
-            if (res != null) relationships[key] = res;
-          } on FormatException catch (e) {
-            print(e);
-          }
-        });
+      // parse each relationship into its relevant object
+      relationships.addAll(handleItems(data['relationships']));
+    }
+  }
+
+  /// this assumes that the relationship object has already been populated
+  /// because it updates the relationships objects with the included data
+  void handleIncludes(List<Map<String, dynamic>> included) {
+    // make a quick mapping for later reference into nested objects
+    Map<String, PcoResource> relDataMap = {};
+    relationships.forEach((key, items) {
+      for (var item in items) {
+        if (item.id == null) continue;
+        relDataMap[item.id! + '-' + item.resourceType] = item;
+      }
+    });
+
+    // walk the relationships tree to find a matching item id and type
+    for (var data in included) {
+      if (data['type'] == null || data['id'] == null) continue;
+      var key = data['id'] + '-' + data['type'];
+      relDataMap[key]?.fromJson(data);
+    }
+  }
+
+  Map<String, List<PcoResource>> handleItems(Map<String, dynamic> items) {
+    var retval = <String, List<PcoResource>>{};
+    for (var key in items.keys) {
+      retval[key] = <PcoResource>[];
+      var value = items[key];
+      if (value['data'] == null) continue; // no data, leave empty
+      if (value['data'] is! List) value['data'] = [value['data']];
+      for (var data in value['data']) {
+        try {
+          var res = buildResource(application, data['type'], data);
+          if (res != null) retval[key]?.add(res);
+        } on FormatException catch (e) {
+          print(e);
+        }
       }
     }
+    return retval;
   }
 
   Map<String, dynamic> toJson() {

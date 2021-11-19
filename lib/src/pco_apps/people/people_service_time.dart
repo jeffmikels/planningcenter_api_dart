@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.096206
+/// This file was generated on 2021-11-19T12:10:42.650997
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/campuses/1/service_times
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @time (URLParameter), prefix with a hyphen (-time) to reverse the order
+///
 class PcoPeopleServiceTime extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'ServiceTime';
@@ -31,12 +39,26 @@ class PcoPeopleServiceTime extends PcoResource {
   static const String kShortestEdgeId = 'servicetime-campus-service_times';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @time (URLParameter), prefix with a hyphen (-time) to reverse the order
+  static List<String> get canOrderBy => ['time'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kStartTime = 'start_time';
@@ -65,20 +87,21 @@ class PcoPeopleServiceTime extends PcoResource {
 
 
   PcoPeopleServiceTime() : super(kPcoApplication, kTypeString);
-  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleServiceTime Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/campuses/1/service_times;
-  static Future<List<PcoPeopleServiceTime>> getManyFromCampusAndServiceTimeIds(String campusId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleServiceTime>> getManyFromCampusAndServiceTimeIds(String campusId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleServiceTime> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
     var url = '/people/v2/campuses/$campusId/service_times';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleServiceTime.fromJson(itemData));
+        retval.add(PcoPeopleServiceTime.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -87,15 +110,16 @@ class PcoPeopleServiceTime extends PcoResource {
 
   /// will get a single PcoPeopleServiceTime Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/campuses/1/service_times;
-  static Future<PcoPeopleServiceTime?> getSingleFromCampusAndServiceTimeIds(String campusId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleServiceTime?> getSingleFromCampusAndServiceTimeIds(String campusId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleServiceTime?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
     var url = '/people/v2/campuses/$campusId/service_times' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleServiceTime.fromJson(res.data);
+      retval = PcoPeopleServiceTime.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

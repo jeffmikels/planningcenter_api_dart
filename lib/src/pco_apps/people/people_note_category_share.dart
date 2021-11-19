@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.057370
+/// This file was generated on 2021-11-19T12:10:42.568370
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/note_categories/1/shares
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoPeopleNoteCategoryShare extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'NoteCategoryShare';
@@ -31,12 +39,26 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   static const String kShortestEdgeId = 'notecategoryshare-notecategory-shares';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kGroup = 'group';
@@ -62,20 +84,21 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
 
   PcoPeopleNoteCategoryShare() : super(kPcoApplication, kTypeString);
-  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleNoteCategoryShare Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/shares;
-  static Future<List<PcoPeopleNoteCategoryShare>> getManyFromNoteCategoryAndShareIds(String noteCategoryId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleNoteCategoryShare>> getManyFromNoteCategoryAndShareIds(String noteCategoryId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleNoteCategoryShare> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNoteCategoryShare.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleNoteCategoryShare.fromJson(itemData));
+        retval.add(PcoPeopleNoteCategoryShare.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -84,15 +107,16 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
   /// will get a single PcoPeopleNoteCategoryShare Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/shares;
-  static Future<PcoPeopleNoteCategoryShare?> getSingleFromNoteCategoryAndShareIds(String noteCategoryId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleNoteCategoryShare?> getSingleFromNoteCategoryAndShareIds(String noteCategoryId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleNoteCategoryShare?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNoteCategoryShare.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/shares' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleNoteCategoryShare.fromJson(res.data);
+      retval = PcoPeopleNoteCategoryShare.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

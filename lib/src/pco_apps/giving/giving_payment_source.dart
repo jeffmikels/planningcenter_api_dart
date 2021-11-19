@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.203814
+/// This file was generated on 2021-11-19T12:10:42.779089
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/giving/v2/payment_sources
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoGivingPaymentSource extends PcoResource {
   static const String kPcoApplication = 'giving';
   static const String kTypeString = 'PaymentSource';
@@ -31,12 +39,26 @@ class PcoGivingPaymentSource extends PcoResource {
   static const String kShortestEdgeId = 'paymentsource-organization-payment_sources';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -55,20 +77,21 @@ class PcoGivingPaymentSource extends PcoResource {
 
 
   PcoGivingPaymentSource() : super(kPcoApplication, kTypeString);
-  PcoGivingPaymentSource.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoGivingPaymentSource.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoGivingPaymentSource Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources;
-  static Future<List<PcoGivingPaymentSource>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoGivingPaymentSource>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoGivingPaymentSource> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGivingPaymentSource.canInclude;
     var url = '/giving/v2/payment_sources';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoGivingPaymentSource.fromJson(itemData));
+        retval.add(PcoGivingPaymentSource.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -77,15 +100,16 @@ class PcoGivingPaymentSource extends PcoResource {
 
   /// will get a single PcoGivingPaymentSource Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources;
-  static Future<PcoGivingPaymentSource?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoGivingPaymentSource?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoGivingPaymentSource?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGivingPaymentSource.canInclude;
     var url = '/giving/v2/payment_sources' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoGivingPaymentSource.fromJson(res.data);
+      retval = PcoGivingPaymentSource.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -93,14 +117,15 @@ class PcoGivingPaymentSource extends PcoResource {
 
 /// will get many PcoGivingDonation objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations
-Future<List<PcoGivingDonation>> getDonations({PlanningCenterApiQuery? query}) async {
+Future<List<PcoGivingDonation>> getDonations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoGivingDonation.canInclude;
   List<PcoGivingDonation> retval = [];
   var url = '$apiEndpoint/donations';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoGivingDonation.fromJson(itemData));
+      retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

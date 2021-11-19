@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.152863
+/// This file was generated on 2021-11-19T12:10:42.729882
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/report_templates
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoCalendarReportTemplate extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ReportTemplate';
@@ -31,12 +39,26 @@ class PcoCalendarReportTemplate extends PcoResource {
   static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kBody = 'body';
@@ -73,20 +95,21 @@ class PcoCalendarReportTemplate extends PcoResource {
 
 
   PcoCalendarReportTemplate() : super(kPcoApplication, kTypeString);
-  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoCalendarReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/report_templates;
-  static Future<List<PcoCalendarReportTemplate>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCalendarReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCalendarReportTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarReportTemplate.canInclude;
     var url = '/calendar/v2/report_templates';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCalendarReportTemplate.fromJson(itemData));
+        retval.add(PcoCalendarReportTemplate.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -95,15 +118,16 @@ class PcoCalendarReportTemplate extends PcoResource {
 
   /// will get a single PcoCalendarReportTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/report_templates;
-  static Future<PcoCalendarReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCalendarReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCalendarReportTemplate?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCalendarReportTemplate.canInclude;
     var url = '/calendar/v2/report_templates' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCalendarReportTemplate.fromJson(res.data);
+      retval = PcoCalendarReportTemplate.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

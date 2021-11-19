@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.680822
+/// This file was generated on 2021-11-19T12:10:42.008942
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/attachment_types
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
 class PcoServicesAttachmentType extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'AttachmentType';
@@ -31,12 +39,26 @@ class PcoServicesAttachmentType extends PcoResource {
   static const String kShortestEdgeId = 'attachmenttype-organization-attachment_types';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  static List<String> get canOrderBy => ['name'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -70,20 +92,21 @@ class PcoServicesAttachmentType extends PcoResource {
 
 
   PcoServicesAttachmentType() : super(kPcoApplication, kTypeString);
-  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesAttachmentType Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachment_types;
-  static Future<List<PcoServicesAttachmentType>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesAttachmentType>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesAttachmentType> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesAttachmentType.canInclude;
     var url = '/services/v2/attachment_types';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesAttachmentType.fromJson(itemData));
+        retval.add(PcoServicesAttachmentType.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -92,15 +115,16 @@ class PcoServicesAttachmentType extends PcoResource {
 
   /// will get a single PcoServicesAttachmentType Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachment_types;
-  static Future<PcoServicesAttachmentType?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesAttachmentType?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesAttachmentType?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesAttachmentType.canInclude;
     var url = '/services/v2/attachment_types' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesAttachmentType.fromJson(res.data);
+      retval = PcoServicesAttachmentType.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

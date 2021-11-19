@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.050336
+/// This file was generated on 2021-11-19T12:10:42.554651
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/name_prefixes
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @value (URLParameter), query on a specific value, example: ?where[value]=string
+/// possible orderings with parameter ?order=
+/// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+///
 class PcoPeopleNamePrefix extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'NamePrefix';
@@ -31,12 +39,26 @@ class PcoPeopleNamePrefix extends PcoResource {
   static const String kShortestEdgeId = 'nameprefix-organization-name_prefixes';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @value (URLParameter), query on a specific value, example: ?where[value]=string
+  static List<String> get canQuery => ['value'];
+
+  /// possible orderings with parameter ?order=
+  /// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+  static List<String> get canOrderBy => ['value'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kValue = 'value';
@@ -55,36 +77,38 @@ class PcoPeopleNamePrefix extends PcoResource {
 
 
   PcoPeopleNamePrefix() : super(kPcoApplication, kTypeString);
-  PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleNamePrefix Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/name_prefixes;
-  static Future<List<PcoPeopleNamePrefix>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleNamePrefix>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleNamePrefix> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNamePrefix.canInclude;
     var url = '/people/v2/name_prefixes';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleNamePrefix.fromJson(itemData));
+        retval.add(PcoPeopleNamePrefix.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleNamePrefix Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/name_prefix;
-  static Future<List<PcoPeopleNamePrefix>> getManyFromPeopleAndNamePrefixIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleNamePrefix>> getManyFromPeopleAndNamePrefixIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleNamePrefix> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNamePrefix.canInclude;
     var url = '/people/v2/people/$peopleId/name_prefix';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleNamePrefix.fromJson(itemData));
+        retval.add(PcoPeopleNamePrefix.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -93,29 +117,31 @@ class PcoPeopleNamePrefix extends PcoResource {
 
   /// will get a single PcoPeopleNamePrefix Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/name_prefixes;
-  static Future<PcoPeopleNamePrefix?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleNamePrefix?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleNamePrefix?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNamePrefix.canInclude;
     var url = '/people/v2/name_prefixes' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleNamePrefix.fromJson(res.data);
+      retval = PcoPeopleNamePrefix.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleNamePrefix Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/name_prefix;
-  static Future<PcoPeopleNamePrefix?> getSingleFromPeopleAndNamePrefixIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleNamePrefix?> getSingleFromPeopleAndNamePrefixIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleNamePrefix?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleNamePrefix.canInclude;
     var url = '/people/v2/people/$peopleId/name_prefix' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleNamePrefix.fromJson(res.data);
+      retval = PcoPeopleNamePrefix.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

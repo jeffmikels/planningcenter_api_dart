@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.113091
+/// This file was generated on 2021-11-19T12:10:42.664333
 
 
 import '../../pco.dart';
@@ -23,6 +23,20 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/workflows/1/steps
 /// 
+/// possible includes with parameter ?include=a,b
+/// @default_assignee: include associated default_assignee 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// @name (URLParameter), query on a specific name, example: ?where[name]=string
+/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @sequence (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoPeopleWorkflowStep extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowStep';
@@ -31,12 +45,32 @@ class PcoPeopleWorkflowStep extends PcoResource {
   static const String kShortestEdgeId = 'workflowstep-workflow-steps';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
 
+  /// possible includes with parameter ?include=a,b
+  /// @default_assignee: include associated default_assignee 
+  static List<String> get canInclude => ['default_assignee'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
+  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  static List<String> get canQuery => ['created_at','name','updated_at'];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @sequence (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','name','name','sequence','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -76,36 +110,38 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
 
   PcoPeopleWorkflowStep() : super(kPcoApplication, kTypeString);
-  PcoPeopleWorkflowStep.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleWorkflowStep.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleWorkflowStep Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step;
-  static Future<List<PcoPeopleWorkflowStep>> getManyFromPeopleAndWorkflowCardAndCurrentStepIds(String peopleId,String workflowCardId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleWorkflowStep>> getManyFromPeopleAndWorkflowCardAndCurrentStepIds(String peopleId,String workflowCardId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleWorkflowStep> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleWorkflowStep.fromJson(itemData));
+        retval.add(PcoPeopleWorkflowStep.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleWorkflowStep Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/steps;
-  static Future<List<PcoPeopleWorkflowStep>> getManyFromWorkflowAndStepIds(String workflowId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleWorkflowStep>> getManyFromWorkflowAndStepIds(String workflowId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleWorkflowStep> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
     var url = '/people/v2/workflows/$workflowId/steps';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleWorkflowStep.fromJson(itemData));
+        retval.add(PcoPeopleWorkflowStep.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -114,29 +150,31 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
   /// will get a single PcoPeopleWorkflowStep Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step;
-  static Future<PcoPeopleWorkflowStep?> getSingleFromPeopleAndWorkflowCardAndCurrentStepIds(String peopleId,String workflowCardId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleWorkflowStep?> getSingleFromPeopleAndWorkflowCardAndCurrentStepIds(String peopleId,String workflowCardId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleWorkflowStep?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
     var url = '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleWorkflowStep.fromJson(res.data);
+      retval = PcoPeopleWorkflowStep.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleWorkflowStep Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/steps;
-  static Future<PcoPeopleWorkflowStep?> getSingleFromWorkflowAndStepIds(String workflowId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleWorkflowStep?> getSingleFromWorkflowAndStepIds(String workflowId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleWorkflowStep?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
     var url = '/people/v2/workflows/$workflowId/steps' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleWorkflowStep.fromJson(res.data);
+      retval = PcoPeopleWorkflowStep.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -144,14 +182,15 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
 /// will get many PcoPeopleWorkflowStepAssigneeSummary objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
-Future<List<PcoPeopleWorkflowStepAssigneeSummary>> getWorkflowStepAssigneeSummariesAssigneeSummaries({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleWorkflowStepAssigneeSummary>> getWorkflowStepAssigneeSummariesAssigneeSummaries({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeopleWorkflowStepAssigneeSummary.canInclude;
   List<PcoPeopleWorkflowStepAssigneeSummary> retval = [];
   var url = '$apiEndpoint/assignee_summaries';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleWorkflowStepAssigneeSummary.fromJson(itemData));
+      retval.add(PcoPeopleWorkflowStepAssigneeSummary.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -159,14 +198,15 @@ Future<List<PcoPeopleWorkflowStepAssigneeSummary>> getWorkflowStepAssigneeSummar
     
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/default_assignee
-Future<List<PcoPeoplePerson>> getPersonsDefaultAssignee({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeoplePerson>> getPersonsDefaultAssignee({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeoplePerson.canInclude;
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/default_assignee';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData));
+      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

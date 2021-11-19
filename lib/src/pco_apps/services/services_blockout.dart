@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.683160
+/// This file was generated on 2021-11-19T12:10:42.011016
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/blockouts
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @group_identifier (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesBlockout extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Blockout';
@@ -31,12 +39,26 @@ class PcoServicesBlockout extends PcoResource {
   static const String kShortestEdgeId = 'blockout-person-blockouts';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @group_identifier (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
+  static List<String> get canQuery => ['group_identifier'];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kDescription = 'description';
@@ -136,20 +158,21 @@ class PcoServicesBlockout extends PcoResource {
 
 
   PcoServicesBlockout() : super(kPcoApplication, kTypeString);
-  PcoServicesBlockout.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesBlockout.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesBlockout Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts;
-  static Future<List<PcoServicesBlockout>> getManyFromPeopleAndBlockoutIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesBlockout>> getManyFromPeopleAndBlockoutIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesBlockout> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesBlockout.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesBlockout.fromJson(itemData));
+        retval.add(PcoServicesBlockout.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -158,15 +181,16 @@ class PcoServicesBlockout extends PcoResource {
 
   /// will get a single PcoServicesBlockout Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts;
-  static Future<PcoServicesBlockout?> getSingleFromPeopleAndBlockoutIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesBlockout?> getSingleFromPeopleAndBlockoutIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesBlockout?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesBlockout.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesBlockout.fromJson(res.data);
+      retval = PcoServicesBlockout.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -174,14 +198,15 @@ class PcoServicesBlockout extends PcoResource {
 
 /// will get many PcoServicesBlockoutDate objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
-Future<List<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? query}) async {
+Future<List<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoServicesBlockoutDate.canInclude;
   List<PcoServicesBlockoutDate> retval = [];
   var url = '$apiEndpoint/blockout_dates';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoServicesBlockoutDate.fromJson(itemData));
+      retval.add(PcoServicesBlockoutDate.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -189,14 +214,15 @@ Future<List<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? 
     
 /// will get many PcoServicesBlockoutException objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-Future<List<PcoServicesBlockoutException>> getBlockoutExceptions({PlanningCenterApiQuery? query}) async {
+Future<List<PcoServicesBlockoutException>> getBlockoutExceptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
   List<PcoServicesBlockoutException> retval = [];
   var url = '$apiEndpoint/blockout_exceptions';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoServicesBlockoutException.fromJson(itemData));
+      retval.add(PcoServicesBlockoutException.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

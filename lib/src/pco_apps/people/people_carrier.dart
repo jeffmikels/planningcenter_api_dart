@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.029778
+/// This file was generated on 2021-11-19T12:10:42.497812
 
 
 import '../../pco.dart';
@@ -23,6 +23,15 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/carriers
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @international (URLParameter), prefix with a hyphen (-international) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
 class PcoPeopleCarrier extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Carrier';
@@ -31,12 +40,27 @@ class PcoPeopleCarrier extends PcoResource {
   static const String kShortestEdgeId = 'carrier-organization-carriers';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @international (URLParameter), prefix with a hyphen (-international) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  static List<String> get canOrderBy => ['international','name'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kValue = 'value';
@@ -58,20 +82,21 @@ class PcoPeopleCarrier extends PcoResource {
 
 
   PcoPeopleCarrier() : super(kPcoApplication, kTypeString);
-  PcoPeopleCarrier.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleCarrier.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleCarrier Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/carriers;
-  static Future<List<PcoPeopleCarrier>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleCarrier>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleCarrier> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleCarrier.canInclude;
     var url = '/people/v2/carriers';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleCarrier.fromJson(itemData));
+        retval.add(PcoPeopleCarrier.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -80,15 +105,16 @@ class PcoPeopleCarrier extends PcoResource {
 
   /// will get a single PcoPeopleCarrier Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/carriers;
-  static Future<PcoPeopleCarrier?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleCarrier?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleCarrier?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleCarrier.canInclude;
     var url = '/people/v2/carriers' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleCarrier.fromJson(res.data);
+      retval = PcoPeopleCarrier.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

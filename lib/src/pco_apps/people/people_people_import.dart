@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.063468
+/// This file was generated on 2021-11-19T12:10:42.578037
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people_imports
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @status (URLParameter), query on a specific status, example: ?where[status]=value
+/// possible orderings with parameter ?order=
+
+///
 class PcoPeoplePeopleImport extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PeopleImport';
@@ -31,12 +39,26 @@ class PcoPeoplePeopleImport extends PcoResource {
   static const String kShortestEdgeId = 'peopleimport-organization-people_imports';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @status (URLParameter), query on a specific status, example: ?where[status]=value
+  static List<String> get canQuery => ['status'];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kAttribs = 'attribs';
@@ -62,20 +84,21 @@ class PcoPeoplePeopleImport extends PcoResource {
 
 
   PcoPeoplePeopleImport() : super(kPcoApplication, kTypeString);
-  PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeoplePeopleImport Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports;
-  static Future<List<PcoPeoplePeopleImport>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeoplePeopleImport>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeoplePeopleImport> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeoplePeopleImport.canInclude;
     var url = '/people/v2/people_imports';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeoplePeopleImport.fromJson(itemData));
+        retval.add(PcoPeoplePeopleImport.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -84,15 +107,16 @@ class PcoPeoplePeopleImport extends PcoResource {
 
   /// will get a single PcoPeoplePeopleImport Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports;
-  static Future<PcoPeoplePeopleImport?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeoplePeopleImport?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeoplePeopleImport?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeoplePeopleImport.canInclude;
     var url = '/people/v2/people_imports' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeoplePeopleImport.fromJson(res.data);
+      retval = PcoPeoplePeopleImport.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -100,14 +124,15 @@ class PcoPeoplePeopleImport extends PcoResource {
 
 /// will get many PcoPeoplePeopleImportConflict objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
-Future<List<PcoPeoplePeopleImportConflict>> getPeopleImportConflictsConflicts({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeoplePeopleImportConflict>> getPeopleImportConflictsConflicts({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
   List<PcoPeoplePeopleImportConflict> retval = [];
   var url = '$apiEndpoint/conflicts';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData));
+      retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -115,14 +140,15 @@ Future<List<PcoPeoplePeopleImportConflict>> getPeopleImportConflictsConflicts({P
     
 /// will get many PcoPeoplePeopleImportHistory objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories
-Future<List<PcoPeoplePeopleImportHistory>> getPeopleImportHistoriesHistories({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeoplePeopleImportHistory>> getPeopleImportHistoriesHistories({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeoplePeopleImportHistory.canInclude;
   List<PcoPeoplePeopleImportHistory> retval = [];
   var url = '$apiEndpoint/histories';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeoplePeopleImportHistory.fromJson(itemData));
+      retval.add(PcoPeoplePeopleImportHistory.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

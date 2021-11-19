@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.235984
+/// This file was generated on 2021-11-19T12:10:42.814967
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/groups/v2/events/1/location
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoGroupsLocation extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Location';
@@ -31,12 +39,26 @@ class PcoGroupsLocation extends PcoResource {
   static const String kShortestEdgeId = 'location-group-location';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups/1/location';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kDisplayPreference = 'display_preference';
@@ -73,36 +95,38 @@ class PcoGroupsLocation extends PcoResource {
 
 
   PcoGroupsLocation() : super(kPcoApplication, kTypeString);
-  PcoGroupsLocation.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoGroupsLocation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoGroupsLocation Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/location;
-  static Future<List<PcoGroupsLocation>> getManyFromEventAndLocationIds(String eventId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoGroupsLocation>> getManyFromEventAndLocationIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoGroupsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/events/$eventId/location';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoGroupsLocation.fromJson(itemData));
+        retval.add(PcoGroupsLocation.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoGroupsLocation Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/location;
-  static Future<List<PcoGroupsLocation>> getManyFromGroupAndLocationIds(String groupId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoGroupsLocation>> getManyFromGroupAndLocationIds(String groupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoGroupsLocation> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/groups/$groupId/location';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoGroupsLocation.fromJson(itemData));
+        retval.add(PcoGroupsLocation.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -111,29 +135,31 @@ class PcoGroupsLocation extends PcoResource {
 
   /// will get a single PcoGroupsLocation Object
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/location;
-  static Future<PcoGroupsLocation?> getSingleFromEventAndLocationIds(String eventId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoGroupsLocation?> getSingleFromEventAndLocationIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoGroupsLocation?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/events/$eventId/location' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoGroupsLocation.fromJson(res.data);
+      retval = PcoGroupsLocation.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoGroupsLocation Object
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/location;
-  static Future<PcoGroupsLocation?> getSingleFromGroupAndLocationIds(String groupId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoGroupsLocation?> getSingleFromGroupAndLocationIds(String groupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoGroupsLocation?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/groups/$groupId/location' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoGroupsLocation.fromJson(res.data);
+      retval = PcoGroupsLocation.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

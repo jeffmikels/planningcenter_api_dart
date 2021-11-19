@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.833896
+/// This file was generated on 2021-11-19T12:10:42.242339
 
 
 import '../../pco.dart';
@@ -23,6 +23,16 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group
 /// 
+/// possible includes with parameter ?include=a,b
+/// @check_ins: include associated check_ins 
+/// @event_period: include associated event_period 
+/// @print_station: include associated print_station 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoCheckInsCheckInGroup extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'CheckInGroup';
@@ -31,12 +41,28 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   static const String kShortestEdgeId = 'checkingroup-station-check_in_groups';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups';
 
+  /// possible includes with parameter ?include=a,b
+  /// @check_ins: include associated check_ins 
+  /// @event_period: include associated event_period 
+  /// @print_station: include associated print_station 
+  static List<String> get canInclude => ['check_ins','event_period','print_station'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kNameLabelsCount = 'name_labels_count';
@@ -62,36 +88,38 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
 
   PcoCheckInsCheckInGroup() : super(kPcoApplication, kTypeString);
-  PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoCheckInsCheckInGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group;
-  static Future<List<PcoCheckInsCheckInGroup>> getManyFromCheckInAndCheckInGroupIds(String checkInId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCheckInsCheckInGroup>> getManyFromCheckInAndCheckInGroupIds(String checkInId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCheckInsCheckInGroup> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCheckInsCheckInGroup.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_group';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCheckInsCheckInGroup.fromJson(itemData));
+        retval.add(PcoCheckInsCheckInGroup.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoCheckInsCheckInGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups;
-  static Future<List<PcoCheckInsCheckInGroup>> getManyFromStationAndCheckInGroupIds(String stationId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoCheckInsCheckInGroup>> getManyFromStationAndCheckInGroupIds(String stationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoCheckInsCheckInGroup> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCheckInsCheckInGroup.canInclude;
     var url = '/check-ins/v2/stations/$stationId/check_in_groups';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoCheckInsCheckInGroup.fromJson(itemData));
+        retval.add(PcoCheckInsCheckInGroup.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -100,29 +128,31 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
   /// will get a single PcoCheckInsCheckInGroup Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group;
-  static Future<PcoCheckInsCheckInGroup?> getSingleFromCheckInAndCheckInGroupIds(String checkInId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCheckInsCheckInGroup?> getSingleFromCheckInAndCheckInGroupIds(String checkInId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCheckInsCheckInGroup?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCheckInsCheckInGroup.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_group' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCheckInsCheckInGroup.fromJson(res.data);
+      retval = PcoCheckInsCheckInGroup.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoCheckInsCheckInGroup Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups;
-  static Future<PcoCheckInsCheckInGroup?> getSingleFromStationAndCheckInGroupIds(String stationId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoCheckInsCheckInGroup?> getSingleFromStationAndCheckInGroupIds(String stationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoCheckInsCheckInGroup?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoCheckInsCheckInGroup.canInclude;
     var url = '/check-ins/v2/stations/$stationId/check_in_groups' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoCheckInsCheckInGroup.fromJson(res.data);
+      retval = PcoCheckInsCheckInGroup.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -130,14 +160,15 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
 /// will get many PcoCheckInsCheckIn objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/check_ins
-Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCheckInsCheckIn.canInclude;
   List<PcoCheckInsCheckIn> retval = [];
   var url = '$apiEndpoint/check_ins';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCheckInsCheckIn.fromJson(itemData));
+      retval.add(PcoCheckInsCheckIn.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -145,14 +176,15 @@ Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query}) as
     
 /// will get many PcoCheckInsEventPeriod objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/event_period
-Future<List<PcoCheckInsEventPeriod>> getEventPeriods({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCheckInsEventPeriod>> getEventPeriods({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCheckInsEventPeriod.canInclude;
   List<PcoCheckInsEventPeriod> retval = [];
   var url = '$apiEndpoint/event_period';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCheckInsEventPeriod.fromJson(itemData));
+      retval.add(PcoCheckInsEventPeriod.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -160,14 +192,15 @@ Future<List<PcoCheckInsEventPeriod>> getEventPeriods({PlanningCenterApiQuery? qu
     
 /// will get many PcoCheckInsStation objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/print_station
-Future<List<PcoCheckInsStation>> getStationsPrintStation({PlanningCenterApiQuery? query}) async {
+Future<List<PcoCheckInsStation>> getStationsPrintStation({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoCheckInsStation.canInclude;
   List<PcoCheckInsStation> retval = [];
   var url = '$apiEndpoint/print_station';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoCheckInsStation.fromJson(itemData));
+      retval.add(PcoCheckInsStation.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.252527
+/// This file was generated on 2021-11-19T12:10:42.836855
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/webhooks/v2/subscriptions
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @application_id (URLParameter), query on a specific application_id, example: ?where[application_id]=string
+/// possible orderings with parameter ?order=
+
+///
 class PcoWebhooksSubscription extends PcoResource {
   static const String kPcoApplication = 'webhooks';
   static const String kTypeString = 'Subscription';
@@ -31,12 +39,26 @@ class PcoWebhooksSubscription extends PcoResource {
   static const String kShortestEdgeId = 'subscription-organization-subscriptions';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @application_id (URLParameter), query on a specific application_id, example: ?where[application_id]=string
+  static List<String> get canQuery => ['application_id'];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -70,20 +92,21 @@ class PcoWebhooksSubscription extends PcoResource {
 
 
   PcoWebhooksSubscription() : super(kPcoApplication, kTypeString);
-  PcoWebhooksSubscription.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoWebhooksSubscription.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoWebhooksSubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions;
-  static Future<List<PcoWebhooksSubscription>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoWebhooksSubscription>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoWebhooksSubscription> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
     var url = '/webhooks/v2/subscriptions';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoWebhooksSubscription.fromJson(itemData));
+        retval.add(PcoWebhooksSubscription.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -92,15 +115,16 @@ class PcoWebhooksSubscription extends PcoResource {
 
   /// will get a single PcoWebhooksSubscription Object
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions;
-  static Future<PcoWebhooksSubscription?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoWebhooksSubscription?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoWebhooksSubscription?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
     var url = '/webhooks/v2/subscriptions' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoWebhooksSubscription.fromJson(res.data);
+      retval = PcoWebhooksSubscription.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -108,14 +132,15 @@ class PcoWebhooksSubscription extends PcoResource {
 
 /// will get many PcoWebhooksEvent objects
 /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events
-Future<List<PcoWebhooksEvent>> getEvents({PlanningCenterApiQuery? query}) async {
+Future<List<PcoWebhooksEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoWebhooksEvent.canInclude;
   List<PcoWebhooksEvent> retval = [];
   var url = '$apiEndpoint/events';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoWebhooksEvent.fromJson(itemData));
+      retval.add(PcoWebhooksEvent.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

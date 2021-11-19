@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.736403
+/// This file was generated on 2021-11-19T12:10:42.107246
 
 
 import '../../pco.dart';
@@ -23,6 +23,19 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @item_count (URLParameter), prefix with a hyphen (-item_count) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @note_count (URLParameter), prefix with a hyphen (-note_count) to reverse the order
+/// @team_count (URLParameter), prefix with a hyphen (-team_count) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoServicesPlanTemplate extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'PlanTemplate';
@@ -31,12 +44,31 @@ class PcoServicesPlanTemplate extends PcoResource {
   static const String kShortestEdgeId = 'plantemplate-servicetype-plan_templates';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @item_count (URLParameter), prefix with a hyphen (-item_count) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @note_count (URLParameter), prefix with a hyphen (-note_count) to reverse the order
+  /// @team_count (URLParameter), prefix with a hyphen (-team_count) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','item_count','name','note_count','team_count','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -68,20 +100,21 @@ class PcoServicesPlanTemplate extends PcoResource {
 
 
   PcoServicesPlanTemplate() : super(kPcoApplication, kTypeString);
-  PcoServicesPlanTemplate.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesPlanTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesPlanTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates;
-  static Future<List<PcoServicesPlanTemplate>> getManyFromServiceTypeAndPlanTemplateIds(String serviceTypeId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesPlanTemplate>> getManyFromServiceTypeAndPlanTemplateIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesPlanTemplate> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesPlanTemplate.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesPlanTemplate.fromJson(itemData));
+        retval.add(PcoServicesPlanTemplate.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -90,15 +123,16 @@ class PcoServicesPlanTemplate extends PcoResource {
 
   /// will get a single PcoServicesPlanTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates;
-  static Future<PcoServicesPlanTemplate?> getSingleFromServiceTypeAndPlanTemplateIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesPlanTemplate?> getSingleFromServiceTypeAndPlanTemplateIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesPlanTemplate?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesPlanTemplate.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesPlanTemplate.fromJson(res.data);
+      retval = PcoServicesPlanTemplate.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -106,14 +140,15 @@ class PcoServicesPlanTemplate extends PcoResource {
 
 /// will get many PcoServicesItem objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items
-Future<List<PcoServicesItem>> getItems({PlanningCenterApiQuery? query}) async {
+Future<List<PcoServicesItem>> getItems({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoServicesItem.canInclude;
   List<PcoServicesItem> retval = [];
   var url = '$apiEndpoint/items';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoServicesItem.fromJson(itemData));
+      retval.add(PcoServicesItem.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -121,14 +156,15 @@ Future<List<PcoServicesItem>> getItems({PlanningCenterApiQuery? query}) async {
     
 /// will get many PcoServicesPlanNote objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes
-Future<List<PcoServicesPlanNote>> getPlanNotesNotes({PlanningCenterApiQuery? query}) async {
+Future<List<PcoServicesPlanNote>> getPlanNotesNotes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoServicesPlanNote.canInclude;
   List<PcoServicesPlanNote> retval = [];
   var url = '$apiEndpoint/notes';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoServicesPlanNote.fromJson(itemData));
+      retval.add(PcoServicesPlanNote.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

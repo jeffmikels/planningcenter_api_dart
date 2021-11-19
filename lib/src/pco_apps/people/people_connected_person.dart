@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.031653
+/// This file was generated on 2021-11-19T12:10:42.501452
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/people/1/connected_people
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoPeopleConnectedPerson extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'ConnectedPerson';
@@ -31,12 +39,26 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const String kShortestEdgeId = 'connectedperson-person-connected_people';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kGivenName = 'given_name';
@@ -68,20 +90,21 @@ class PcoPeopleConnectedPerson extends PcoResource {
 
 
   PcoPeopleConnectedPerson() : super(kPcoApplication, kTypeString);
-  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleConnectedPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/connected_people;
-  static Future<List<PcoPeopleConnectedPerson>> getManyFromPeopleAndConnectedPeopleIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleConnectedPerson>> getManyFromPeopleAndConnectedPeopleIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleConnectedPerson> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleConnectedPerson.canInclude;
     var url = '/people/v2/people/$peopleId/connected_people';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleConnectedPerson.fromJson(itemData));
+        retval.add(PcoPeopleConnectedPerson.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -90,15 +113,16 @@ class PcoPeopleConnectedPerson extends PcoResource {
 
   /// will get a single PcoPeopleConnectedPerson Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/connected_people;
-  static Future<PcoPeopleConnectedPerson?> getSingleFromPeopleAndConnectedPeopleIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleConnectedPerson?> getSingleFromPeopleAndConnectedPeopleIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleConnectedPerson?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleConnectedPerson.canInclude;
     var url = '/people/v2/people/$peopleId/connected_people' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleConnectedPerson.fromJson(res.data);
+      retval = PcoPeopleConnectedPerson.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

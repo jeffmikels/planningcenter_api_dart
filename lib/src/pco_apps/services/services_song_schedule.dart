@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.758645
+/// This file was generated on 2021-11-19T12:10:42.136371
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @plan_sort_date (URLParameter), prefix with a hyphen (-plan_sort_date) to reverse the order
+///
 class PcoServicesSongSchedule extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'SongSchedule';
@@ -31,12 +39,26 @@ class PcoServicesSongSchedule extends PcoResource {
   static const String kShortestEdgeId = 'songschedule-song-song_schedules';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/song_schedules';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @plan_sort_date (URLParameter), prefix with a hyphen (-plan_sort_date) to reverse the order
+  static List<String> get canOrderBy => ['plan_sort_date'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kArrangementName = 'arrangement_name';
@@ -62,20 +84,21 @@ class PcoServicesSongSchedule extends PcoResource {
 
 
   PcoServicesSongSchedule() : super(kPcoApplication, kTypeString);
-  PcoServicesSongSchedule.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesSongSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesSongSchedule Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules;
-  static Future<List<PcoServicesSongSchedule>> getManyFromSongAndSongScheduleIds(String songId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesSongSchedule>> getManyFromSongAndSongScheduleIds(String songId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesSongSchedule> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesSongSchedule.canInclude;
     var url = '/services/v2/songs/$songId/song_schedules';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesSongSchedule.fromJson(itemData));
+        retval.add(PcoServicesSongSchedule.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -84,15 +107,16 @@ class PcoServicesSongSchedule extends PcoResource {
 
   /// will get a single PcoServicesSongSchedule Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules;
-  static Future<PcoServicesSongSchedule?> getSingleFromSongAndSongScheduleIds(String songId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesSongSchedule?> getSingleFromSongAndSongScheduleIds(String songId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesSongSchedule?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesSongSchedule.canInclude;
     var url = '/services/v2/songs/$songId/song_schedules' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesSongSchedule.fromJson(res.data);
+      retval = PcoServicesSongSchedule.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

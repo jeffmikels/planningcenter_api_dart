@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.771940
+/// This file was generated on 2021-11-19T12:10:42.162732
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/attachments/1/zooms
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesZoom extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Zoom';
@@ -31,12 +39,26 @@ class PcoServicesZoom extends PcoResource {
   static const String kShortestEdgeId = 'zoom-attachment-zooms';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kAspectRatio = 'aspect_ratio';
@@ -80,20 +102,21 @@ class PcoServicesZoom extends PcoResource {
 
 
   PcoServicesZoom() : super(kPcoApplication, kTypeString);
-  PcoServicesZoom.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesZoom.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesZoom Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachments/1/zooms;
-  static Future<List<PcoServicesZoom>> getManyFromAttachmentAndZoomIds(String attachmentId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesZoom>> getManyFromAttachmentAndZoomIds(String attachmentId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesZoom> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesZoom.canInclude;
     var url = '/services/v2/attachments/$attachmentId/zooms';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesZoom.fromJson(itemData));
+        retval.add(PcoServicesZoom.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -102,15 +125,16 @@ class PcoServicesZoom extends PcoResource {
 
   /// will get a single PcoServicesZoom Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachments/1/zooms;
-  static Future<PcoServicesZoom?> getSingleFromAttachmentAndZoomIds(String attachmentId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesZoom?> getSingleFromAttachmentAndZoomIds(String attachmentId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesZoom?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesZoom.canInclude;
     var url = '/services/v2/attachments/$attachmentId/zooms' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesZoom.fromJson(res.data);
+      retval = PcoServicesZoom.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

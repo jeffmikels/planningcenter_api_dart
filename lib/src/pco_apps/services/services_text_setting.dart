@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.770346
+/// This file was generated on 2021-11-19T12:10:42.155414
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/text_settings
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesTextSetting extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'TextSetting';
@@ -31,12 +39,26 @@ class PcoServicesTextSetting extends PcoResource {
   static const String kShortestEdgeId = 'textsetting-person-text_settings';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/text_settings';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kSchedulingRequestsEnabled = 'scheduling_requests_enabled';
@@ -70,20 +92,21 @@ class PcoServicesTextSetting extends PcoResource {
 
 
   PcoServicesTextSetting() : super(kPcoApplication, kTypeString);
-  PcoServicesTextSetting.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesTextSetting.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesTextSetting Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/text_settings;
-  static Future<List<PcoServicesTextSetting>> getManyFromPeopleAndTextSettingIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTextSetting>> getManyFromPeopleAndTextSettingIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTextSetting> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTextSetting.canInclude;
     var url = '/services/v2/people/$peopleId/text_settings';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTextSetting.fromJson(itemData));
+        retval.add(PcoServicesTextSetting.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -92,15 +115,16 @@ class PcoServicesTextSetting extends PcoResource {
 
   /// will get a single PcoServicesTextSetting Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/text_settings;
-  static Future<PcoServicesTextSetting?> getSingleFromPeopleAndTextSettingIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTextSetting?> getSingleFromPeopleAndTextSettingIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTextSetting?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTextSetting.canInclude;
     var url = '/services/v2/people/$peopleId/text_settings' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTextSetting.fromJson(res.data);
+      retval = PcoServicesTextSetting.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.040339
+/// This file was generated on 2021-11-19T12:10:42.511197
 
 
 import '../../pco.dart';
@@ -23,6 +23,22 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/households
 /// 
+/// possible includes with parameter ?include=a,b
+/// @people: include associated people 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// @member_count (URLParameter), query on a specific member_count, example: ?where[member_count]=1
+/// @name (URLParameter), query on a specific name, example: ?where[name]=string
+/// @primary_contact_name (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @member_count (URLParameter), prefix with a hyphen (-member_count) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @primary_contact_name (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoPeopleHousehold extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Household';
@@ -31,12 +47,34 @@ class PcoPeopleHousehold extends PcoResource {
   static const String kShortestEdgeId = 'household-organization-households';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
 
+  /// possible includes with parameter ?include=a,b
+  /// @people: include associated people 
+  static List<String> get canInclude => ['people'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// @member_count (URLParameter), query on a specific member_count, example: ?where[member_count]=1
+  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
+  /// @primary_contact_name (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  static List<String> get canQuery => ['created_at','member_count','name','primary_contact_name','updated_at'];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @member_count (URLParameter), prefix with a hyphen (-member_count) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @primary_contact_name (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','member_count','name','primary_contact_name','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -66,68 +104,72 @@ class PcoPeopleHousehold extends PcoResource {
 
 
   PcoPeopleHousehold() : super(kPcoApplication, kTypeString);
-  PcoPeopleHousehold.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleHousehold.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleHousehold Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household;
-  static Future<List<PcoPeopleHousehold>> getManyFromHouseholdAndHouseholdMembershipAndHouseholdIds(String householdId,String householdMembershipId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleHousehold>> getManyFromHouseholdAndHouseholdMembershipAndHouseholdIds(String householdId,String householdMembershipId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleHousehold> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/household';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleHousehold.fromJson(itemData));
+        retval.add(PcoPeopleHousehold.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleHousehold Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/households;
-  static Future<List<PcoPeopleHousehold>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleHousehold>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleHousehold> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/households';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleHousehold.fromJson(itemData));
+        retval.add(PcoPeopleHousehold.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleHousehold Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household;
-  static Future<List<PcoPeopleHousehold>> getManyFromPeopleImportAndHistoryAndHouseholdIds(String peopleImportId,String historyId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleHousehold>> getManyFromPeopleImportAndHistoryAndHouseholdIds(String peopleImportId,String historyId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleHousehold> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/household';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleHousehold.fromJson(itemData));
+        retval.add(PcoPeopleHousehold.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleHousehold Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/households;
-  static Future<List<PcoPeopleHousehold>> getManyFromPeopleAndHouseholdIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleHousehold>> getManyFromPeopleAndHouseholdIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleHousehold> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people/$peopleId/households';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleHousehold.fromJson(itemData));
+        retval.add(PcoPeopleHousehold.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -136,57 +178,61 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// will get a single PcoPeopleHousehold Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household;
-  static Future<PcoPeopleHousehold?> getSingleFromHouseholdAndHouseholdMembershipAndHouseholdIds(String householdId,String householdMembershipId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleHousehold?> getSingleFromHouseholdAndHouseholdMembershipAndHouseholdIds(String householdId,String householdMembershipId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleHousehold?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/household' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleHousehold.fromJson(res.data);
+      retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleHousehold Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/households;
-  static Future<PcoPeopleHousehold?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleHousehold?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleHousehold?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/households' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleHousehold.fromJson(res.data);
+      retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleHousehold Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household;
-  static Future<PcoPeopleHousehold?> getSingleFromPeopleImportAndHistoryAndHouseholdIds(String peopleImportId,String historyId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleHousehold?> getSingleFromPeopleImportAndHistoryAndHouseholdIds(String peopleImportId,String historyId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleHousehold?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/household' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleHousehold.fromJson(res.data);
+      retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleHousehold Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/households;
-  static Future<PcoPeopleHousehold?> getSingleFromPeopleAndHouseholdIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleHousehold?> getSingleFromPeopleAndHouseholdIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleHousehold?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people/$peopleId/households' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleHousehold.fromJson(res.data);
+      retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -194,14 +240,15 @@ class PcoPeopleHousehold extends PcoResource {
 
 /// will get many PcoPeopleHouseholdMembership objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
-Future<List<PcoPeopleHouseholdMembership>> getHouseholdMemberships({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleHouseholdMembership>> getHouseholdMemberships({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeopleHouseholdMembership.canInclude;
   List<PcoPeopleHouseholdMembership> retval = [];
   var url = '$apiEndpoint/household_memberships';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleHouseholdMembership.fromJson(itemData));
+      retval.add(PcoPeopleHouseholdMembership.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -209,14 +256,15 @@ Future<List<PcoPeopleHouseholdMembership>> getHouseholdMemberships({PlanningCent
     
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/people
-Future<List<PcoPeoplePerson>> getPersonsPeople({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeoplePerson>> getPersonsPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeoplePerson.canInclude;
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/people';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData));
+      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

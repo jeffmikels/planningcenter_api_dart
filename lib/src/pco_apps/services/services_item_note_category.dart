@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.697433
+/// This file was generated on 2021-11-19T12:10:42.030248
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesItemNoteCategory extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'ItemNoteCategory';
@@ -31,12 +39,26 @@ class PcoServicesItemNoteCategory extends PcoResource {
   static const String kShortestEdgeId = 'itemnotecategory-servicetype-item_note_categories';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kDeletedAt = 'deleted_at';
@@ -60,36 +82,38 @@ class PcoServicesItemNoteCategory extends PcoResource {
 
 
   PcoServicesItemNoteCategory() : super(kPcoApplication, kTypeString);
-  PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesItemNoteCategory Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category;
-  static Future<List<PcoServicesItemNoteCategory>> getManyFromSongAndScheduledItemAndItemNoteAndItemNoteCategoryIds(String songId,String scheduledItemId,String itemNoteId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesItemNoteCategory>> getManyFromSongAndScheduledItemAndItemNoteAndItemNoteCategoryIds(String songId,String scheduledItemId,String itemNoteId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesItemNoteCategory> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesItemNoteCategory.fromJson(itemData));
+        retval.add(PcoServicesItemNoteCategory.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoServicesItemNoteCategory Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories;
-  static Future<List<PcoServicesItemNoteCategory>> getManyFromServiceTypeAndItemNoteCategoryIds(String serviceTypeId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesItemNoteCategory>> getManyFromServiceTypeAndItemNoteCategoryIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesItemNoteCategory> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/item_note_categories';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesItemNoteCategory.fromJson(itemData));
+        retval.add(PcoServicesItemNoteCategory.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -98,29 +122,31 @@ class PcoServicesItemNoteCategory extends PcoResource {
 
   /// will get a single PcoServicesItemNoteCategory Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category;
-  static Future<PcoServicesItemNoteCategory?> getSingleFromSongAndScheduledItemAndItemNoteAndItemNoteCategoryIds(String songId,String scheduledItemId,String itemNoteId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesItemNoteCategory?> getSingleFromSongAndScheduledItemAndItemNoteAndItemNoteCategoryIds(String songId,String scheduledItemId,String itemNoteId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesItemNoteCategory?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesItemNoteCategory.fromJson(res.data);
+      retval = PcoServicesItemNoteCategory.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoServicesItemNoteCategory Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories;
-  static Future<PcoServicesItemNoteCategory?> getSingleFromServiceTypeAndItemNoteCategoryIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesItemNoteCategory?> getSingleFromServiceTypeAndItemNoteCategoryIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesItemNoteCategory?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/item_note_categories' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesItemNoteCategory.fromJson(res.data);
+      retval = PcoServicesItemNoteCategory.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

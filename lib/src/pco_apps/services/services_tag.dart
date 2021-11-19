@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.761105
+/// This file was generated on 2021-11-19T12:10:42.139790
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/media/1/tags
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesTag extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Tag';
@@ -31,12 +39,26 @@ class PcoServicesTag extends PcoResource {
   static const String kShortestEdgeId = 'tag-song-tags';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/tags';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -54,84 +76,89 @@ class PcoServicesTag extends PcoResource {
 
 
   PcoServicesTag() : super(kPcoApplication, kTypeString);
-  PcoServicesTag.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesTag.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesTag Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags;
-  static Future<List<PcoServicesTag>> getManyFromSongAndArrangementAndTagIds(String songId,String arrangementId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTag>> getManyFromSongAndArrangementAndTagIds(String songId,String arrangementId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTag> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/tags';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTag.fromJson(itemData));
+        retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoServicesTag Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/tags;
-  static Future<List<PcoServicesTag>> getManyFromMediaAndTagIds(String mediaId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTag>> getManyFromMediaAndTagIds(String mediaId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTag> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/media/$mediaId/tags';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTag.fromJson(itemData));
+        retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoServicesTag Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/tags;
-  static Future<List<PcoServicesTag>> getManyFromPeopleAndTagIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTag>> getManyFromPeopleAndTagIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTag> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/people/$peopleId/tags';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTag.fromJson(itemData));
+        retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoServicesTag Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/tags;
-  static Future<List<PcoServicesTag>> getManyFromSongAndTagIds(String songId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTag>> getManyFromSongAndTagIds(String songId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTag> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/songs/$songId/tags';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTag.fromJson(itemData));
+        retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoServicesTag Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags;
-  static Future<List<PcoServicesTag>> getManyFromTagGroupAndTagIds(String tagGroupId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesTag>> getManyFromTagGroupAndTagIds(String tagGroupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesTag> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/tag_groups/$tagGroupId/tags';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesTag.fromJson(itemData));
+        retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -140,71 +167,76 @@ class PcoServicesTag extends PcoResource {
 
   /// will get a single PcoServicesTag Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags;
-  static Future<PcoServicesTag?> getSingleFromSongAndArrangementAndTagIds(String songId,String arrangementId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTag?> getSingleFromSongAndArrangementAndTagIds(String songId,String arrangementId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTag?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/tags' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTag.fromJson(res.data);
+      retval = PcoServicesTag.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoServicesTag Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/tags;
-  static Future<PcoServicesTag?> getSingleFromMediaAndTagIds(String mediaId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTag?> getSingleFromMediaAndTagIds(String mediaId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTag?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/media/$mediaId/tags' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTag.fromJson(res.data);
+      retval = PcoServicesTag.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoServicesTag Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/tags;
-  static Future<PcoServicesTag?> getSingleFromPeopleAndTagIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTag?> getSingleFromPeopleAndTagIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTag?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/people/$peopleId/tags' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTag.fromJson(res.data);
+      retval = PcoServicesTag.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoServicesTag Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/tags;
-  static Future<PcoServicesTag?> getSingleFromSongAndTagIds(String songId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTag?> getSingleFromSongAndTagIds(String songId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTag?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/songs/$songId/tags' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTag.fromJson(res.data);
+      retval = PcoServicesTag.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoServicesTag Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags;
-  static Future<PcoServicesTag?> getSingleFromTagGroupAndTagIds(String tagGroupId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesTag?> getSingleFromTagGroupAndTagIds(String tagGroupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesTag?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesTag.canInclude;
     var url = '/services/v2/tag_groups/$tagGroupId/tags' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesTag.fromJson(res.data);
+      retval = PcoServicesTag.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

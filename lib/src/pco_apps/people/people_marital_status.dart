@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.047621
+/// This file was generated on 2021-11-19T12:10:42.546263
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/marital_statuses
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @value (URLParameter), query on a specific value, example: ?where[value]=string
+/// possible orderings with parameter ?order=
+/// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+///
 class PcoPeopleMaritalStatu extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'MaritalStatus';
@@ -31,12 +39,26 @@ class PcoPeopleMaritalStatu extends PcoResource {
   static const String kShortestEdgeId = 'maritalstatus-organization-marital_statuses';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @value (URLParameter), query on a specific value, example: ?where[value]=string
+  static List<String> get canQuery => ['value'];
+
+  /// possible orderings with parameter ?order=
+  /// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+  static List<String> get canOrderBy => ['value'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kValue = 'value';
@@ -55,36 +77,38 @@ class PcoPeopleMaritalStatu extends PcoResource {
 
 
   PcoPeopleMaritalStatu() : super(kPcoApplication, kTypeString);
-  PcoPeopleMaritalStatu.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleMaritalStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleMaritalStatu Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/marital_statuses;
-  static Future<List<PcoPeopleMaritalStatu>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleMaritalStatu>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleMaritalStatu> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleMaritalStatu.canInclude;
     var url = '/people/v2/marital_statuses';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleMaritalStatu.fromJson(itemData));
+        retval.add(PcoPeopleMaritalStatu.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleMaritalStatu Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/marital_status;
-  static Future<List<PcoPeopleMaritalStatu>> getManyFromPeopleAndMaritalStatuIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleMaritalStatu>> getManyFromPeopleAndMaritalStatuIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleMaritalStatu> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleMaritalStatu.canInclude;
     var url = '/people/v2/people/$peopleId/marital_status';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleMaritalStatu.fromJson(itemData));
+        retval.add(PcoPeopleMaritalStatu.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -93,29 +117,31 @@ class PcoPeopleMaritalStatu extends PcoResource {
 
   /// will get a single PcoPeopleMaritalStatu Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/marital_statuses;
-  static Future<PcoPeopleMaritalStatu?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleMaritalStatu?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleMaritalStatu?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleMaritalStatu.canInclude;
     var url = '/people/v2/marital_statuses' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleMaritalStatu.fromJson(res.data);
+      retval = PcoPeopleMaritalStatu.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleMaritalStatu Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/marital_status;
-  static Future<PcoPeopleMaritalStatu?> getSingleFromPeopleAndMaritalStatuIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleMaritalStatu?> getSingleFromPeopleAndMaritalStatuIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleMaritalStatu?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleMaritalStatu.canInclude;
     var url = '/people/v2/people/$peopleId/marital_status' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleMaritalStatu.fromJson(res.data);
+      retval = PcoPeopleMaritalStatu.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

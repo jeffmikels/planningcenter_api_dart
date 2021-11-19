@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.023933
+/// This file was generated on 2021-11-19T12:10:42.477622
 
 
 import '../../pco.dart';
@@ -23,6 +23,26 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/addresses
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @city (URLParameter), query on a specific city, example: ?where[city]=string
+/// @location (URLParameter), query on a specific location, example: ?where[location]=string
+/// @primary (URLParameter), query on a specific primary, example: ?where[primary]=true
+/// @state (URLParameter), query on a specific state, example: ?where[state]=string
+/// @street (URLParameter), query on a specific street, example: ?where[street]=string
+/// @zip (URLParameter), query on a specific zip, example: ?where[zip]=string
+/// possible orderings with parameter ?order=
+/// @city (URLParameter), prefix with a hyphen (-city) to reverse the order
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @location (URLParameter), prefix with a hyphen (-location) to reverse the order
+/// @primary (URLParameter), prefix with a hyphen (-primary) to reverse the order
+/// @state (URLParameter), prefix with a hyphen (-state) to reverse the order
+/// @street (URLParameter), prefix with a hyphen (-street) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+/// @zip (URLParameter), prefix with a hyphen (-zip) to reverse the order
+///
 class PcoPeopleAddres extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Address';
@@ -31,12 +51,38 @@ class PcoPeopleAddres extends PcoResource {
   static const String kShortestEdgeId = 'address-organization-addresses';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/addresses';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @city (URLParameter), query on a specific city, example: ?where[city]=string
+  /// @location (URLParameter), query on a specific location, example: ?where[location]=string
+  /// @primary (URLParameter), query on a specific primary, example: ?where[primary]=true
+  /// @state (URLParameter), query on a specific state, example: ?where[state]=string
+  /// @street (URLParameter), query on a specific street, example: ?where[street]=string
+  /// @zip (URLParameter), query on a specific zip, example: ?where[zip]=string
+  static List<String> get canQuery => ['city','location','primary','state','street','zip'];
+
+  /// possible orderings with parameter ?order=
+  /// @city (URLParameter), prefix with a hyphen (-city) to reverse the order
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @location (URLParameter), prefix with a hyphen (-location) to reverse the order
+  /// @primary (URLParameter), prefix with a hyphen (-primary) to reverse the order
+  /// @state (URLParameter), prefix with a hyphen (-state) to reverse the order
+  /// @street (URLParameter), prefix with a hyphen (-street) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  /// @zip (URLParameter), prefix with a hyphen (-zip) to reverse the order
+  static List<String> get canOrderBy => ['city','created_at','location','primary','state','street','updated_at','zip'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kCity = 'city';
@@ -70,36 +116,38 @@ class PcoPeopleAddres extends PcoResource {
 
 
   PcoPeopleAddres() : super(kPcoApplication, kTypeString);
-  PcoPeopleAddres.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleAddres.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleAddres Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/addresses;
-  static Future<List<PcoPeopleAddres>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleAddres>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleAddres> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleAddres.canInclude;
     var url = '/people/v2/addresses';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleAddres.fromJson(itemData));
+        retval.add(PcoPeopleAddres.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleAddres Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/addresses;
-  static Future<List<PcoPeopleAddres>> getManyFromPeopleAndAddresIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleAddres>> getManyFromPeopleAndAddresIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleAddres> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleAddres.canInclude;
     var url = '/people/v2/people/$peopleId/addresses';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleAddres.fromJson(itemData));
+        retval.add(PcoPeopleAddres.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -108,29 +156,31 @@ class PcoPeopleAddres extends PcoResource {
 
   /// will get a single PcoPeopleAddres Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/addresses;
-  static Future<PcoPeopleAddres?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleAddres?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleAddres?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleAddres.canInclude;
     var url = '/people/v2/addresses' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleAddres.fromJson(res.data);
+      retval = PcoPeopleAddres.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleAddres Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/addresses;
-  static Future<PcoPeopleAddres?> getSingleFromPeopleAndAddresIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleAddres?> getSingleFromPeopleAndAddresIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleAddres?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleAddres.canInclude;
     var url = '/people/v2/people/$peopleId/addresses' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleAddres.fromJson(res.data);
+      retval = PcoPeopleAddres.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

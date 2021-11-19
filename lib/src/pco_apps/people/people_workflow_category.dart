@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.111614
+/// This file was generated on 2021-11-19T12:10:42.661999
 
 
 import '../../pco.dart';
@@ -23,6 +23,18 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/workflow_categories
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// @name (URLParameter), query on a specific name, example: ?where[name]=string
+/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoPeopleWorkflowCategory extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowCategory';
@@ -31,12 +43,30 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   static const String kShortestEdgeId = '';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflow_categories';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
+  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  static List<String> get canQuery => ['created_at','name','updated_at'];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','name','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kName = 'name';
@@ -55,20 +85,21 @@ class PcoPeopleWorkflowCategory extends PcoResource {
 
 
   PcoPeopleWorkflowCategory() : super(kPcoApplication, kTypeString);
-  PcoPeopleWorkflowCategory.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleWorkflowCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleWorkflowCategory Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/category;
-  static Future<List<PcoPeopleWorkflowCategory>> getManyFromWorkflowAndCategoryIds(String workflowId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleWorkflowCategory>> getManyFromWorkflowAndCategoryIds(String workflowId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleWorkflowCategory> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowCategory.canInclude;
     var url = '/people/v2/workflows/$workflowId/category';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleWorkflowCategory.fromJson(itemData));
+        retval.add(PcoPeopleWorkflowCategory.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -77,15 +108,16 @@ class PcoPeopleWorkflowCategory extends PcoResource {
 
   /// will get a single PcoPeopleWorkflowCategory Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/category;
-  static Future<PcoPeopleWorkflowCategory?> getSingleFromWorkflowAndCategoryIds(String workflowId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleWorkflowCategory?> getSingleFromWorkflowAndCategoryIds(String workflowId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleWorkflowCategory?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleWorkflowCategory.canInclude;
     var url = '/people/v2/workflows/$workflowId/category' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleWorkflowCategory.fromJson(res.data);
+      retval = PcoPeopleWorkflowCategory.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

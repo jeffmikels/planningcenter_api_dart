@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.688662
+/// This file was generated on 2021-11-19T12:10:42.017084
 
 
 import '../../pco.dart';
@@ -23,6 +23,15 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoServicesContributor extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Contributor';
@@ -31,12 +40,27 @@ class PcoServicesContributor extends PcoResource {
   static const String kShortestEdgeId = 'contributor-plan-contributors';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kContributableAction = 'contributable_action';
@@ -62,20 +86,21 @@ class PcoServicesContributor extends PcoResource {
 
 
   PcoServicesContributor() : super(kPcoApplication, kTypeString);
-  PcoServicesContributor.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesContributor.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesContributor Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors;
-  static Future<List<PcoServicesContributor>> getManyFromServiceTypeAndPlanAndContributorIds(String serviceTypeId,String planId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesContributor>> getManyFromServiceTypeAndPlanAndContributorIds(String serviceTypeId,String planId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesContributor> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesContributor.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesContributor.fromJson(itemData));
+        retval.add(PcoServicesContributor.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -84,15 +109,16 @@ class PcoServicesContributor extends PcoResource {
 
   /// will get a single PcoServicesContributor Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors;
-  static Future<PcoServicesContributor?> getSingleFromServiceTypeAndPlanAndContributorIds(String serviceTypeId,String planId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesContributor?> getSingleFromServiceTypeAndPlanAndContributorIds(String serviceTypeId,String planId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesContributor?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesContributor.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesContributor.fromJson(res.data);
+      retval = PcoServicesContributor.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

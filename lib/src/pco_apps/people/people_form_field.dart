@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.037033
+/// This file was generated on 2021-11-19T12:10:42.509034
 
 
 import '../../pco.dart';
@@ -23,6 +23,16 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/forms/1/fields
 /// 
+/// possible includes with parameter ?include=a,b
+/// @options: include associated options 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @sequence (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
 class PcoPeopleFormField extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'FormField';
@@ -31,12 +41,28 @@ class PcoPeopleFormField extends PcoResource {
   static const String kShortestEdgeId = 'formfield-form-fields';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields';
 
+  /// possible includes with parameter ?include=a,b
+  /// @options: include associated options 
+  static List<String> get canInclude => ['options'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @sequence (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  static List<String> get canOrderBy => ['created_at','sequence','updated_at'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kFieldType = 'field_type';
@@ -66,36 +92,38 @@ class PcoPeopleFormField extends PcoResource {
 
 
   PcoPeopleFormField() : super(kPcoApplication, kTypeString);
-  PcoPeopleFormField.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleFormField.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleFormField Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields;
-  static Future<List<PcoPeopleFormField>> getManyFromFormAndFieldIds(String formId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleFormField>> getManyFromFormAndFieldIds(String formId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleFormField> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
     var url = '/people/v2/forms/$formId/fields';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleFormField.fromJson(itemData));
+        retval.add(PcoPeopleFormField.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleFormField Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_fields;
-  static Future<List<PcoPeopleFormField>> getManyFromFormAndFormSubmissionAndFormFieldIds(String formId,String formSubmissionId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleFormField>> getManyFromFormAndFormSubmissionAndFormFieldIds(String formId,String formSubmissionId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleFormField> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleFormField.fromJson(itemData));
+        retval.add(PcoPeopleFormField.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -104,29 +132,31 @@ class PcoPeopleFormField extends PcoResource {
 
   /// will get a single PcoPeopleFormField Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields;
-  static Future<PcoPeopleFormField?> getSingleFromFormAndFieldIds(String formId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleFormField?> getSingleFromFormAndFieldIds(String formId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleFormField?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
     var url = '/people/v2/forms/$formId/fields' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleFormField.fromJson(res.data);
+      retval = PcoPeopleFormField.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleFormField Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_fields;
-  static Future<PcoPeopleFormField?> getSingleFromFormAndFormSubmissionAndFormFieldIds(String formId,String formSubmissionId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleFormField?> getSingleFromFormAndFormSubmissionAndFormFieldIds(String formId,String formSubmissionId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleFormField?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
     var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleFormField.fromJson(res.data);
+      retval = PcoPeopleFormField.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -134,14 +164,15 @@ class PcoPeopleFormField extends PcoResource {
 
 /// will get many PcoPeopleFormFieldOption objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options
-Future<List<PcoPeopleFormFieldOption>> getFormFieldOptionsOptions({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeopleFormFieldOption>> getFormFieldOptionsOptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeopleFormFieldOption.canInclude;
   List<PcoPeopleFormFieldOption> retval = [];
   var url = '$apiEndpoint/options';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeopleFormFieldOption.fromJson(itemData));
+      retval.add(PcoPeopleFormFieldOption.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

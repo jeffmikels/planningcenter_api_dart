@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:01.742784
+/// This file was generated on 2021-11-19T12:10:42.115893
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/services/v2/service_types/1/public_view
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+/// possible orderings with parameter ?order=
+
+///
 class PcoServicesPublicView extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'PublicView';
@@ -31,12 +39,26 @@ class PcoServicesPublicView extends PcoResource {
   static const String kShortestEdgeId = 'publicview-servicetype-public_view';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/public_view';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+
+  static List<String> get canQuery => [];
+
+  /// possible orderings with parameter ?order=
+
+  static List<String> get canOrderBy => [];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kSeriesAndPlanTitles = 'series_and_plan_titles';
@@ -76,20 +98,21 @@ class PcoServicesPublicView extends PcoResource {
 
 
   PcoServicesPublicView() : super(kPcoApplication, kTypeString);
-  PcoServicesPublicView.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoServicesPublicView.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoServicesPublicView Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/public_view;
-  static Future<List<PcoServicesPublicView>> getManyFromServiceTypeAndPublicViewIds(String serviceTypeId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoServicesPublicView>> getManyFromServiceTypeAndPublicViewIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoServicesPublicView> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/public_view';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoServicesPublicView.fromJson(itemData));
+        retval.add(PcoServicesPublicView.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -98,15 +121,16 @@ class PcoServicesPublicView extends PcoResource {
 
   /// will get a single PcoServicesPublicView Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/public_view;
-  static Future<PcoServicesPublicView?> getSingleFromServiceTypeAndPublicViewIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoServicesPublicView?> getSingleFromServiceTypeAndPublicViewIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoServicesPublicView?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/public_view' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoServicesPublicView.fromJson(res.data);
+      retval = PcoServicesPublicView.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

@@ -10,6 +10,7 @@ extension CapExtension on String {
   String get titleCase => toLowerCase().split(" ").map((str) => str.capitalize).join(" ");
   String get singular {
     if (endsWith('eries')) return this;
+    if (endsWith('ampus')) return this;
     if (endsWith('ies')) return substring(0, length - 3) + 'y';
     if (endsWith('sses')) return substring(0, length - 3);
     if (endsWith('ses')) return substring(0, length - 2);
@@ -78,7 +79,7 @@ class Vertex extends JsonApiDoc {
   List<Edge> outboundEdges = []; // refers to the endpoints that come from this item
 
   List<URLParameter> canInclude = [];
-  List<URLParameter> canOrder = [];
+  List<URLParameter> canOrderBy = [];
   List<URLParameter> canQuery = [];
   late URLParameter perPage;
   late URLParameter offset;
@@ -120,7 +121,7 @@ class Vertex extends JsonApiDoc {
     canInclude = [
       for (var item in relationships!['can_include']['data']) URLParameter.fromJson(item),
     ];
-    canOrder = [
+    canOrderBy = [
       for (var item in relationships!['can_order']['data']) URLParameter.fromJson(item),
     ];
     canQuery = [
@@ -138,7 +139,7 @@ class Vertex extends JsonApiDoc {
     typedRelationships['permissions'] = vertexPermissions;
     typedRelationships['attributes'] = vertexAttributes;
     typedRelationships['can_include'] = canInclude;
-    typedRelationships['can_order'] = canOrder;
+    typedRelationships['can_order'] = canOrderBy;
     typedRelationships['can_query'] = canQuery;
     typedRelationships['inbound_edges'] = inboundEdges;
     typedRelationships['outbound_edges'] = outboundEdges;
@@ -399,14 +400,15 @@ String classTemplate(Vertex vertex) {
     childGetters.add('''
 /// will get many $childClass objects
 /// using a path like this: ${edge.path}
-Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
+Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = $childClass.canInclude;
   List<$childClass> retval = [];
   var url = '\$apiEndpoint/$pathSuffix';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add($childClass.fromJson(itemData));
+      retval.add($childClass.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;
@@ -457,16 +459,17 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
     staticCollectionConstructors.add('''
   /// will get many $className Objects
   /// using a path like this: ${edge.path};
-  static Future<List<$className>> getMany$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} {PlanningCenterApiQuery? query}) async {
+  static Future<List<$className>> getMany$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<$className> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = $className.canInclude;
     var url = '$edgePathTemplate';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add($className.fromJson(itemData));
+        retval.add($className.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -477,15 +480,16 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query}) async {
     staticSingleConstructors.add('''
   /// will get a single $className Object
   /// using a path like this: ${edge.path};
-  static Future<$className?> getSingle$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} String id, {PlanningCenterApiQuery? query}) async {
+  static Future<$className?> getSingle$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     $className?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = $className.canInclude;
     var url = '$edgePathTemplate' + '/\$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = $className.fromJson(res.data);
+      retval = $className.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -524,6 +528,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: ${vertex.path}
 /// 
+/// possible includes with parameter ?include=a,b
+${vertex.canInclude.map((e) => '/// @${e.value}: ${e.description} ').join('\n')}
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+${vertex.canQuery.map((e) => '/// @${e.name} (${e.type}), ${e.description}, example: ${e.example}').join('\n')}
+/// possible orderings with parameter ?order=
+${vertex.canOrderBy.map((e) => '/// @${e.value} (${e.type}), ${e.description}').join('\n')}
+///
 class $className extends PcoResource {
   static const String kPcoApplication = '${vertex.application}';
   static const String kTypeString = '${vertex.name}';
@@ -532,12 +544,26 @@ class $className extends PcoResource {
   static const String kShortestEdgeId = '${vertex.shortestInboundEdge?.id ?? ""}';
   static const String kShortestEdgePathTemplate = '${vertex.shortestInboundEdge?.path ?? vertex.path}';
 
+  /// possible includes with parameter ?include=a,b
+${vertex.canInclude.map((e) => '  /// @${e.value}: ${e.description} ').join('\n')}
+  static List<String> get canInclude => [${vertex.canInclude.map((e) => '\'${e.name}\'').join(',')}];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+${vertex.canQuery.map((e) => '  /// @${e.name} (${e.type}), ${e.description}, example: ${e.example}').join('\n')}
+  static List<String> get canQuery => [${vertex.canQuery.map((e) => '\'${e.name}\'').join(',')}];
+
+  /// possible orderings with parameter ?order=
+${vertex.canOrderBy.map((e) => '  /// @${e.value} (${e.type}), ${e.description}').join('\n')}
+  static List<String> get canOrderBy => [${vertex.canOrderBy.map((e) => '\'${e.name}\'').join(',')}];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
 ${fieldConstantLines.join()}
@@ -553,7 +579,7 @@ ${fieldGetterLines.join()}
 ${fieldSetterLines.join()}
 
   $className() : super(kPcoApplication, kTypeString);
-  $className.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 ${staticCollectionConstructors.join()}
 
@@ -620,6 +646,50 @@ var constructorMap = <String, String>{};
  * TODO:
  * - Support for API "actions"
  * - Support for the "include" query parameter
+ * 
+ * What about this?
+ * 
+ * - Adding app-level classes with getters for each edge?
+ *   so that edge 'item-plan-items'
+ *   will map to https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
+ *   through something like this: pco.services.service_types[id].plans[id].items.get()
+ *   or like:                     pco.services.getItemsFromServiceTypeAndPlan(serviceTypeId, planId)
+ *   To do the former, we need two classses like this (but it will only get us one level deep)
+ * 
+ * ```dart
+ * class PcoEdge<T> {
+ *  String _itemName = '';
+ *  PcoEdge? _parent;
+ *  List<String> get parts => [if (parent != null) ...parent!.parts, itemName];
+ *  String toString() => '/' + parts.join('/')
+ * 
+ *  operator [](int index) => PcoIdentifiedEdge(index, _parent);
+ * 
+ *  PcoEdge<T>(this.itemName, {this.parent})
+ * 
+ *  Future<List<T>> get({PlanningCenterApiQuery query}) {/*do the call, parse the results, return the correct object*/}
+ * }
+ * 
+ * class PcoIdentifiedEdge<T> {
+ *  String _id;
+ *  PcoEdge? _parent;
+ *  List<String> get parts => [if (parent != null) ...parent!.parts, itemName, id];
+ *  String toString() => '/' + parts.join('/')
+ * 
+ *  const PcoEdge<T>(id, parent):_id = id, _parent = parent;
+ * 
+ *  Future<T> get() {/*do the call, parse the results, return the correct object*/}
+ *  Future<T> post() {/*do the call, parse the results, return the correct object*/}
+ *  Future<T> patch() {/*do the call, parse the results, return the correct object*/}
+ *  Future<T> delete() {/*do the call, parse the results, return the correct object*/}
+ * }
+ * ```
+ * 
+ * Then, a PcoServices class can do something like this:
+ * 
+ *  PcoEdge get song => PcoEdge<PcoServicesSong>('songs');
+ *  PcoEdge get serviceTypes => PcoEdge<PcoServicesServiceType>('service_types');
+ * 
  */
 void main(List<String> arguments) async {
   var reload = arguments.contains('reload');

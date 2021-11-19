@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.100481
+/// This file was generated on 2021-11-19T12:10:42.651619
 
 
 import '../../pco.dart';
@@ -23,6 +23,22 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/social_profiles
 /// 
+/// possible includes with parameter ?include=a,b
+/// @person: include associated person 
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// @site (URLParameter), query on a specific site, example: ?where[site]=string
+/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// @url (URLParameter), query on a specific url, example: ?where[url]=string
+/// @verified (URLParameter), query on a specific verified, example: ?where[verified]=true
+/// possible orderings with parameter ?order=
+/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// @site (URLParameter), prefix with a hyphen (-site) to reverse the order
+/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+/// @url (URLParameter), prefix with a hyphen (-url) to reverse the order
+/// @verified (URLParameter), prefix with a hyphen (-verified) to reverse the order
+///
 class PcoPeopleSocialProfile extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'SocialProfile';
@@ -31,12 +47,34 @@ class PcoPeopleSocialProfile extends PcoResource {
   static const String kShortestEdgeId = 'socialprofile-organization-social_profiles';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/social_profiles';
 
+  /// possible includes with parameter ?include=a,b
+  /// @person: include associated person 
+  static List<String> get canInclude => ['person'];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// @site (URLParameter), query on a specific site, example: ?where[site]=string
+  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  /// @url (URLParameter), query on a specific url, example: ?where[url]=string
+  /// @verified (URLParameter), query on a specific verified, example: ?where[verified]=true
+  static List<String> get canQuery => ['created_at','site','updated_at','url','verified'];
+
+  /// possible orderings with parameter ?order=
+  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// @site (URLParameter), prefix with a hyphen (-site) to reverse the order
+  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  /// @url (URLParameter), prefix with a hyphen (-url) to reverse the order
+  /// @verified (URLParameter), prefix with a hyphen (-verified) to reverse the order
+  static List<String> get canOrderBy => ['created_at','site','updated_at','url','verified'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kSite = 'site';
@@ -61,36 +99,38 @@ class PcoPeopleSocialProfile extends PcoResource {
 
 
   PcoPeopleSocialProfile() : super(kPcoApplication, kTypeString);
-  PcoPeopleSocialProfile.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleSocialProfile.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleSocialProfile Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/social_profiles;
-  static Future<List<PcoPeopleSocialProfile>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleSocialProfile>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleSocialProfile> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleSocialProfile.canInclude;
     var url = '/people/v2/social_profiles';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleSocialProfile.fromJson(itemData));
+        retval.add(PcoPeopleSocialProfile.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleSocialProfile Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/social_profiles;
-  static Future<List<PcoPeopleSocialProfile>> getManyFromPeopleAndSocialProfileIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleSocialProfile>> getManyFromPeopleAndSocialProfileIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleSocialProfile> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleSocialProfile.canInclude;
     var url = '/people/v2/people/$peopleId/social_profiles';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleSocialProfile.fromJson(itemData));
+        retval.add(PcoPeopleSocialProfile.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -99,29 +139,31 @@ class PcoPeopleSocialProfile extends PcoResource {
 
   /// will get a single PcoPeopleSocialProfile Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/social_profiles;
-  static Future<PcoPeopleSocialProfile?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleSocialProfile?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleSocialProfile?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleSocialProfile.canInclude;
     var url = '/people/v2/social_profiles' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleSocialProfile.fromJson(res.data);
+      retval = PcoPeopleSocialProfile.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleSocialProfile Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/social_profiles;
-  static Future<PcoPeopleSocialProfile?> getSingleFromPeopleAndSocialProfileIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleSocialProfile?> getSingleFromPeopleAndSocialProfileIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleSocialProfile?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleSocialProfile.canInclude;
     var url = '/people/v2/people/$peopleId/social_profiles' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleSocialProfile.fromJson(res.data);
+      retval = PcoPeopleSocialProfile.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
@@ -129,14 +171,15 @@ class PcoPeopleSocialProfile extends PcoResource {
 
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
-Future<List<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query}) async {
+Future<List<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
+  if (allIncludes) query.include = PcoPeoplePerson.canInclude;
   List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/person';
   var res = await api.call(url, query: query, apiVersion:apiVersion);
   if (!res.isError) {
     for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData));
+      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
     }
   }
   return retval;

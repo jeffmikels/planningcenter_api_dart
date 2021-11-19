@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-18T15:28:02.041754
+/// This file was generated on 2021-11-19T12:10:42.512350
 
 
 import '../../pco.dart';
@@ -23,6 +23,14 @@ import '../../pco.dart';
 /// 
 /// Default Endpoint: https://api.planningcenteronline.com/people/v2/inactive_reasons
 /// 
+/// possible includes with parameter ?include=a,b
+
+///
+/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// @value (URLParameter), query on a specific value, example: ?where[value]=string
+/// possible orderings with parameter ?order=
+/// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+///
 class PcoPeopleInactiveReason extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'InactiveReason';
@@ -31,12 +39,26 @@ class PcoPeopleInactiveReason extends PcoResource {
   static const String kShortestEdgeId = 'inactivereason-organization-inactive_reasons';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/inactive_reasons';
 
+  /// possible includes with parameter ?include=a,b
+
+  static List<String> get canInclude => [];
+
+  /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// @value (URLParameter), query on a specific value, example: ?where[value]=string
+  static List<String> get canQuery => ['value'];
+
+  /// possible orderings with parameter ?order=
+  /// @value (URLParameter), prefix with a hyphen (-value) to reverse the order
+  static List<String> get canOrderBy => ['value'];
+
+  /// getters like the following allow parent class methods to know
+  /// the static variables of the child class
+
   @override
-  String shortestEdgePath() => kShortestEdgePathTemplate;
+  String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
-
 
   // field mapping constants
   static const kValue = 'value';
@@ -55,36 +77,38 @@ class PcoPeopleInactiveReason extends PcoResource {
 
 
   PcoPeopleInactiveReason() : super(kPcoApplication, kTypeString);
-  PcoPeopleInactiveReason.fromJson(Map<String, dynamic> data): super.fromJson(kPcoApplication, kTypeString, data);
+  PcoPeopleInactiveReason.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// will get many PcoPeopleInactiveReason Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/inactive_reasons;
-  static Future<List<PcoPeopleInactiveReason>> getMany( {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleInactiveReason>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleInactiveReason> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
     var url = '/people/v2/inactive_reasons';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleInactiveReason.fromJson(itemData));
+        retval.add(PcoPeopleInactiveReason.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
   }
   /// will get many PcoPeopleInactiveReason Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/inactive_reason;
-  static Future<List<PcoPeopleInactiveReason>> getManyFromPeopleAndInactiveReasonIds(String peopleId, {PlanningCenterApiQuery? query}) async {
+  static Future<List<PcoPeopleInactiveReason>> getManyFromPeopleAndInactiveReasonIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     List<PcoPeopleInactiveReason> retval = [];
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
     var url = '/people/v2/people/$peopleId/inactive_reason';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is List) {
       for (var itemData in res.data) {
-        retval.add(PcoPeopleInactiveReason.fromJson(itemData));
+        retval.add(PcoPeopleInactiveReason.fromJson(itemData, withIncludes: res.included));
       }
     }
     return retval;
@@ -93,29 +117,31 @@ class PcoPeopleInactiveReason extends PcoResource {
 
   /// will get a single PcoPeopleInactiveReason Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/inactive_reasons;
-  static Future<PcoPeopleInactiveReason?> getSingle( String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleInactiveReason?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleInactiveReason?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
     var url = '/people/v2/inactive_reasons' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleInactiveReason.fromJson(res.data);
+      retval = PcoPeopleInactiveReason.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }
   /// will get a single PcoPeopleInactiveReason Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/inactive_reason;
-  static Future<PcoPeopleInactiveReason?> getSingleFromPeopleAndInactiveReasonIds(String peopleId, String id, {PlanningCenterApiQuery? query}) async {
+  static Future<PcoPeopleInactiveReason?> getSingleFromPeopleAndInactiveReasonIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     PcoPeopleInactiveReason?  retval;
     query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
     var url = '/people/v2/people/$peopleId/inactive_reason' + '/$id';
     var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
     if (res.isError) return retval;
 
     if (res.data is! List) {
-      retval = PcoPeopleInactiveReason.fromJson(res.data);
+      retval = PcoPeopleInactiveReason.fromJson(res.data, withIncludes: res.included);
     }
     return retval;
   }

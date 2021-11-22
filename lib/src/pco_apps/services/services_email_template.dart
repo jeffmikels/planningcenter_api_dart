@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.769257
+/// This file was generated on 2021-11-22T16:57:41.068470
 
 
 import '../../pco.dart';
@@ -123,6 +123,7 @@ class PcoServicesEmailTemplate extends PcoResource {
 
 
 
+/// ACTION: render
 /// Render an email template and fill in the persons details
 /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates/1/render
 /// 

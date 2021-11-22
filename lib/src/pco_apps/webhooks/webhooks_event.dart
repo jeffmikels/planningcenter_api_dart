@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:09.451630
+/// This file was generated on 2021-11-22T16:57:41.922875
 
 
 import '../../pco.dart';
@@ -133,11 +133,12 @@ Future<List<PcoWebhooksDelivery>> getDeliveries({PlanningCenterApiQuery? query, 
 }
     
 
+/// ACTION: redeliver
 /// 
 /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/redeliver
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> redeliver(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/redeliver';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);

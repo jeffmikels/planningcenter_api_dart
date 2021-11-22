@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:09.349994
+/// This file was generated on 2021-11-22T16:57:41.821837
 
 
 import '../../pco.dart';
@@ -380,6 +380,7 @@ Future<List<PcoGivingRefund>> getRefunds({PlanningCenterApiQuery? query, bool al
 }
     
 
+/// ACTION: issue_refund
 /// Used to refund a batch donation
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/issue_refund
 /// 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:09.108113
+/// This file was generated on 2021-11-22T16:57:41.541012
 
 
 import '../../pco.dart';
@@ -407,21 +407,23 @@ Future<List<PcoPeoplePerson>> getPersonsUpdatedBy({PlanningCenterApiQuery? query
 }
     
 
+/// ACTION: mailchimp_sync
 /// Sync a List to Mailchimp. (Mailchimp integration must already be configured for this organization.)
 /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> mailchimpSync(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/mailchimp_sync';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: run
 /// Run a List to update its results.
 /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/run
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> run(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/run';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.812504
+/// This file was generated on 2021-11-22T16:57:41.149108
 
 
 import '../../pco.dart';
@@ -617,6 +617,7 @@ Future<List<PcoServicesPlanPerson>> getPlanPersonsTeamMembers({PlanningCenterApi
 }
     
 
+/// ACTION: import_template
 /// Import template to plan
 /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/import_template
 /// 
@@ -633,6 +634,7 @@ Future<PlanningCenterApiResponse> importTemplate(Map<String, dynamic> data) asyn
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: item_reorder
 /// Reorder plan items in one request.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/item_reorder
 /// 

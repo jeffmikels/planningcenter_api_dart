@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.827889
+/// This file was generated on 2021-11-22T16:57:41.193895
 
 
 import '../../pco.dart';
@@ -249,6 +249,7 @@ Future<List<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query, bool allI
 }
     
 
+/// ACTION: accept
 /// Accept a Schedule
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept
 /// 
@@ -282,6 +283,7 @@ Future<PlanningCenterApiResponse> accept(Map<String, dynamic> data) async {
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: decline
 /// Decline a Schedule
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline
 /// 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.916741
+/// This file was generated on 2021-11-22T16:57:41.390024
 
 
 import '../../pco.dart';
@@ -269,32 +269,35 @@ Future<List<PcoCheckInsTheme>> getThemes({PlanningCenterApiQuery? query, bool al
 }
     
 
+/// ACTION: build_check_in_times_for_prepared_check_in
 /// 
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2
 /// 
 /// Details:
-/// 
-Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+/// *PlanningCenter API Docs don't cover this action very well*
+Future<PlanningCenterApiResponse> buildCheckInTimesForPreparedCheckIn(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/v2';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: build_recommended_check_in_times
 /// 
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2
 /// 
 /// Details:
-/// 
-Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+/// *PlanningCenter API Docs don't cover this action very well*
+Future<PlanningCenterApiResponse> buildRecommendedCheckInTimes(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/v2';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: bulk_check_in
 /// 
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2
 /// 
 /// Details:
-/// 
-Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+/// *PlanningCenter API Docs don't cover this action very well*
+Future<PlanningCenterApiResponse> bulkCheckIn(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/v2';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }

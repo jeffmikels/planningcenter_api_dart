@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:09.344900
+/// This file was generated on 2021-11-22T16:57:41.815212
 
 
 import '../../pco.dart';
@@ -246,6 +246,7 @@ Future<List<PcoGivingPerson>> getPersonsOwner({PlanningCenterApiQuery? query, bo
 }
     
 
+/// ACTION: commit
 /// Used to commit an in progress batch.
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/batches/1/commit
 /// 

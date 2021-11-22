@@ -536,12 +536,16 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool all
 
     // the same vertices are returned from different requests
     var pathSuffix = action.path.split('/').last;
-    var functionName = pathSuffix.snakeToCamel();
+
+    var functionName = action.name.snakeToCamel();
+    var description =
+        action.description.replaceAll('\r', '\n').replaceAll('\n\n', '\n').split('\n').map((e) => '/// $e').join('\n');
     var details =
         action.details.replaceAll('\r', '\n').replaceAll('\n\n', '\n').split('\n').map((e) => '/// $e').join('\n');
+    if (action.details.isEmpty) details = '/// *PlanningCenter API Docs don\'t cover this action very well*';
     actionsLines.add('''
 /// ACTION: ${action.name}
-/// ${action.description}
+$description
 /// using a path like this: ${action.path}
 /// 
 /// Details:

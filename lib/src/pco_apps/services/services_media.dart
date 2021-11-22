@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.802526
+/// This file was generated on 2021-11-22T16:57:41.126568
 
 
 import '../../pco.dart';
@@ -267,6 +267,7 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allInc
 }
     
 
+/// ACTION: archive
 /// Archive a Media.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/archive
 /// 
@@ -288,6 +289,7 @@ Future<PlanningCenterApiResponse> archive(Map<String, dynamic> data) async {
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: assign_tags
 /// Used to assign tags to a media.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/assign_tags
 /// 
@@ -319,11 +321,12 @@ Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: unarchive
 /// Restore an archived Media.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/unarchive
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> unarchive(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/unarchive';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);

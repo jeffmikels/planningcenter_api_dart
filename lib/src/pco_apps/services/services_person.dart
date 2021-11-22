@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.809418
+/// This file was generated on 2021-11-22T16:57:41.139333
 
 
 import '../../pco.dart';
@@ -527,6 +527,7 @@ Future<List<PcoServicesTextSetting>> getTextSettings({PlanningCenterApiQuery? qu
 }
     
 
+/// ACTION: assign_tags
 /// Used to assign tags to a person.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/assign_tags
 /// 
@@ -558,6 +559,7 @@ Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: collapse_service_types
 /// Used to set Service Types as collapsed for the Person
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/collapse_service_types
 /// 
@@ -592,6 +594,7 @@ Future<PlanningCenterApiResponse> collapseServiceTypes(Map<String, dynamic> data
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: expand_service_types
 /// Used to set Service Types as expanded for the Person
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/expand_service_types
 /// 

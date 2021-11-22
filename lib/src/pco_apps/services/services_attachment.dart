@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.758307
+/// This file was generated on 2021-11-22T16:57:41.048896
 
 
 import '../../pco.dart';
@@ -471,29 +471,28 @@ Future<List<PcoServicesZoom>> getZooms({PlanningCenterApiQuery? query, bool allI
 }
     
 
+/// ACTION: open
 /// This action is used to get the attachment file URL.  It is accessed by `POST`ing to `.../attachments/1/open`
-
-This will generate the URL and return it in the `attachment_url` attribute of the `AttachmentActivity`.
-
+/// This will generate the URL and return it in the `attachment_url` attribute of the `AttachmentActivity`.
+/// 
 /// using a path like this: https://api.planningcenteronline.com/services/v2/attachments/1/open
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> open(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/open';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
 }
     
+/// ACTION: preview
 /// This action is used to get a reduced resolution (preview) version of the attachment.  It is accessed by `POST`ing to `.../attachments/1/preview`
-
-This will generate the URL and return it in the `attachment_url` attribute of the `AttachmentActivity`.
-
-The `has_preview` attribute of an `Attachment` indicates if a preview is available. When a preview is not available this action will return a `Not Found` error with a status code of `404`.
-
+/// This will generate the URL and return it in the `attachment_url` attribute of the `AttachmentActivity`.
+/// The `has_preview` attribute of an `Attachment` indicates if a preview is available. When a preview is not available this action will return a `Not Found` error with a status code of `404`.
+/// 
 /// using a path like this: https://api.planningcenteronline.com/services/v2/attachments/1/preview
 /// 
 /// Details:
-/// 
+/// *PlanningCenter API Docs don't cover this action very well*
 Future<PlanningCenterApiResponse> preview(Map<String, dynamic> data) async {
   var url = '$apiEndpoint/preview';
   return api.call(url, verb:'post', data: data, apiVersion:apiVersion);

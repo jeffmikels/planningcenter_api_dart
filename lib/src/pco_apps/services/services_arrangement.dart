@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:37:08.739335
+/// This file was generated on 2021-11-22T16:57:41.029662
 
 
 import '../../pco.dart';
@@ -370,6 +370,7 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allInc
 }
     
 
+/// ACTION: assign_tags
 /// Used to assign tags to an arrangement.
 /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/assign_tags
 /// 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.098169
+/// This file was generated on 2021-11-22T16:37:08.812504
 
 
 import '../../pco.dart';
@@ -617,4 +617,47 @@ Future<List<PcoServicesPlanPerson>> getPlanPersonsTeamMembers({PlanningCenterApi
 }
     
 
+/// Import template to plan
+/// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/import_template
+/// 
+/// Details:
+/// This action allows the importing of a template into a plan.
+/// Accepted attributes:
+/// - `plan_id` (Integer) ID of template to copying from
+/// - `copy_items` (Boolean) Copy Items from another plan. (default false)
+/// - `copy_people` (Boolean) Copy People from another plan. (default false)
+/// - `copy_notes` (Boolean) Copy Notes from another plan. (default false)
+/// 
+Future<PlanningCenterApiResponse> importTemplate(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/import_template';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Reorder plan items in one request.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/item_reorder
+/// 
+/// Details:
+/// This can be used to reorder all items in a plan in one request.
+/// It expects a `POST` body with a `sequence` of `Item` ids in order.  E.G.
+/// ```json
+/// {
+///   "data": {
+///     "type": "PlanItemReorder",
+///     "attributes": {
+///       "sequence": [
+///         "5",
+///         "1",
+///         "3"
+///       ]
+///     }
+///   }
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> itemReorder(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/item_reorder';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

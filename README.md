@@ -14,8 +14,6 @@ Currently, the package depends on an organization level developer key and secret
 
 [Planning Center Developer Console](https://api.planningcenteronline.com/oauth/applications).
 
-TODO: In the future, this library will support an OAuth authentication flow.
-
 ## Getting started
 
 Install the package:
@@ -170,6 +168,6 @@ void main() async {
 
 ## Unimplemented So Far
 
-[x] OAuth authentication
-[x] Support for the "include" query parameter
-[] Support for API "actions"
+-   [x] OAuth authentication
+-   [x] Support for the "include" query parameter
+-   [] Support for API "actions"

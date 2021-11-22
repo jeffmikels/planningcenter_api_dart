@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.107246
+/// This file was generated on 2021-11-22T16:37:08.817831
 
 
 import '../../pco.dart';
@@ -171,4 +171,31 @@ Future<List<PcoServicesPlanNote>> getPlanNotesNotes({PlanningCenterApiQuery? que
 }
     
 
+/// Reorder plan template items in one request.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/item_reorder
+/// 
+/// Details:
+/// This can be used to reorder all items in a plan template in one request.
+/// It expects a `POST` body with a `sequence` of `Item` ids in order.  E.G.
+/// ```json
+/// {
+///   "data": {
+///     "type": "PlanItemReorder",
+///     "attributes": {
+///       "sequence": [
+///         "5",
+///         "1",
+///         "3"
+///       ]
+///     }
+///   }
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> itemReorder(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/item_reorder';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

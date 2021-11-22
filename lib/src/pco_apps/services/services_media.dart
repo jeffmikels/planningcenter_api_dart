@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.043114
+/// This file was generated on 2021-11-22T16:37:08.802526
 
 
 import '../../pco.dart';
@@ -267,4 +267,66 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allInc
 }
     
 
+/// Archive a Media.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/archive
+/// 
+/// Details:
+/// Accepts an optional `time` attribute (ISO 8601) for scheduling archival for a future time.
+/// ```json
+/// {
+///   "data": {
+///     "type": "MediaArchive",
+///     "attributes": {
+///       "time": "2022-02-17T00:00:00Z"
+///     }
+///   }
+/// }
+/// ```
+/// 
+Future<PlanningCenterApiResponse> archive(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/archive';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Used to assign tags to a media.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/assign_tags
+/// 
+/// Details:
+/// All tags will be replaced so the full data set must be sent.
+/// It expects a body that looks like:
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "TagAssignment",
+/// 		"attributes": {},
+/// 		"relationships": {
+/// 			"tags": {
+/// 				"data": [
+/// 					{
+/// 						"type": "Tag",
+/// 						"id": "5"
+/// 					}
+/// 				]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/assign_tags';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Restore an archived Media.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/unarchive
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> unarchive(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/unarchive';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

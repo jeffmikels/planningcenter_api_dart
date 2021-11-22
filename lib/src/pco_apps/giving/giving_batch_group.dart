@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.771745
+/// This file was generated on 2021-11-22T16:37:09.345926
 
 
 import '../../pco.dart';
@@ -222,4 +222,19 @@ Future<List<PcoGivingPerson>> getPersonsOwner({PlanningCenterApiQuery? query, bo
 }
     
 
+/// Used to commit an in progress batch group.
+/// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit
+/// 
+/// Details:
+/// This action takes an uncommitted BatchGroup and commits it.
+/// It will respond with `unprocessable_entity` if the BatchGroup cannot be committed.
+/// It does not expect a body.
+/// Committing a BatchGroup happens asyncronously, so initially the BatchGroup's `status` will be `updating`.
+/// You can poll that BatchGroup's endpoint to see whether it's changed from `updating` to `committed`.
+/// 
+Future<PlanningCenterApiResponse> commit(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/commit';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

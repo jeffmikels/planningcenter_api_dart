@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.603652
+/// This file was generated on 2021-11-22T16:37:09.169234
 
 
 import '../../pco.dart';
@@ -112,6 +112,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
     }
     return retval;
   }
+
 
 
 

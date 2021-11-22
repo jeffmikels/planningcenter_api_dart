@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.268201
+/// This file was generated on 2021-11-22T16:37:08.913826
 
 
 import '../../pco.dart';
@@ -200,5 +200,6 @@ Future<List<PcoCheckInsLocation>> getLocations({PlanningCenterApiQuery? query, b
   return retval;
 }
     
+
 
 }

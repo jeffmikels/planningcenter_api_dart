@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.014685
+/// This file was generated on 2021-11-22T16:37:08.766757
 
 
 import '../../pco.dart';
@@ -99,6 +99,7 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
 
   PcoServicesBlockoutScheduleConflict() : super(kPcoApplication, kTypeString);
   PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+
 
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.018565
+/// This file was generated on 2021-11-22T16:37:08.769257
 
 
 import '../../pco.dart';
@@ -123,4 +123,32 @@ class PcoServicesEmailTemplate extends PcoResource {
 
 
 
+/// Render an email template and fill in the persons details
+/// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates/1/render
+/// 
+/// Details:
+/// Render the template with information from the person.
+/// ```json
+/// {
+///   "data": {
+///     "attributes": {
+///       "format": "html|text"
+///     },
+///     "relationships": {
+///       "person": {
+///         "data": {
+///           "type": "Person",
+///           "id": "1"
+///         }
+///       }
+///     }
+///   }
+/// }
+/// ```
+/// 
+Future<PlanningCenterApiResponse> render(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/render';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

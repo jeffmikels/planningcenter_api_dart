@@ -20,3 +20,4 @@ build/
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 pubspec.lock
 tmp
+credentials.json

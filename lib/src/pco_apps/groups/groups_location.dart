@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.814967
+/// This file was generated on 2021-11-22T16:37:09.388291
 
 
 import '../../pco.dart';
@@ -163,6 +163,7 @@ class PcoGroupsLocation extends PcoResource {
     }
     return retval;
   }
+
 
 
 

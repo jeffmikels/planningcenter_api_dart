@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.114838
+/// This file was generated on 2021-11-22T16:37:08.825396
 
 
 import '../../pco.dart';
@@ -367,5 +367,6 @@ Future<List<PcoServicesSplitTeamRehearsalAssignment>> getSplitTeamRehearsalAssig
   return retval;
 }
     
+
 
 }

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.021291
+/// This file was generated on 2021-11-22T16:37:08.771581
 
 
 import '../../pco.dart';
@@ -77,6 +77,7 @@ class PcoServicesFolderPath extends PcoResource {
 
   PcoServicesFolderPath() : super(kPcoApplication, kTypeString);
   PcoServicesFolderPath.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+
 
 
 

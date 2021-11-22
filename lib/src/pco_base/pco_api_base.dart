@@ -218,7 +218,7 @@ class PlanningCenter {
   Future<PlanningCenterApiResponse> call(
     String endpoint, {
     String verb = 'get',
-    String data = '',
+    Object? data,
     PlanningCenterApiQuery? query,
     String apiVersion = '',
   }) async {
@@ -236,6 +236,16 @@ class PlanningCenter {
     var uri = Uri.https(_baseUri.authority, _baseUri.path + endpoint, fixedParams);
     var headers = <String, String>{};
     if (apiVersion.isNotEmpty) headers['X-PCO-API-Version'] = apiVersion;
+
+    String jsonString = '';
+    if (data != null && verb != 'get') {
+      headers['Content-Type'] = 'application/json';
+      if (data is! String) {
+        jsonString = json.encode(data);
+      } else {
+        jsonString = data;
+      }
+    }
 
     // if we have oAuthCredentials, use them
     if (oAuthCredentials != null) {
@@ -283,10 +293,10 @@ class PlanningCenter {
         res = await _client.get(uri, headers: headers);
         break;
       case 'post':
-        res = await _client.post(uri, headers: headers, body: data);
+        res = await _client.post(uri, headers: headers, body: jsonString);
         break;
       case 'patch':
-        res = await _client.patch(uri, headers: headers, body: data);
+        res = await _client.patch(uri, headers: headers, body: jsonString);
         break;
       case 'put':
         res = await _client.put(uri, headers: headers);

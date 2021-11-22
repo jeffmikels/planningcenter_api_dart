@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.773434
+/// This file was generated on 2021-11-22T16:37:09.347808
 
 
 import '../../pco.dart';
@@ -164,5 +164,6 @@ Future<List<PcoGivingFund>> getFunds({PlanningCenterApiQuery? query, bool allInc
   return retval;
 }
     
+
 
 }

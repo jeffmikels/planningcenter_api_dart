@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.775723
+/// This file was generated on 2021-11-22T16:37:09.349994
 
 
 import '../../pco.dart';
@@ -380,4 +380,26 @@ Future<List<PcoGivingRefund>> getRefunds({PlanningCenterApiQuery? query, bool al
 }
     
 
+/// Used to refund a batch donation
+/// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/issue_refund
+/// 
+/// Details:
+/// This action refunds a batch donation.
+/// It will respond with `unprocessable_entity` if the donation cannot be refunded, or if the donation is not part of a batch.
+/// `refunded_at` is optional, but recommended for data accuracy.
+/// ```json
+/// {
+///   "data": {
+///     "attributes": {
+///       "refunded_at": "1959-02-03"
+///     }
+///   }
+/// }
+/// ```
+/// 
+Future<PlanningCenterApiResponse> issueRefund(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/issue_refund';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

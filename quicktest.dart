@@ -9,7 +9,7 @@ import 'secrets.dart';
 final authorizationEndpoint = Uri.parse('https://api.planningcenteronline.com/oauth/authorize');
 final tokenEndpoint = Uri.parse('https://api.planningcenteronline.com/oauth/token');
 final redirectUrl = Uri.parse('http://localhost:64738/pco_callback');
-final credentialsFile = File('~/tmp/credentials.json');
+final credentialsFile = File('tmp/credentials.json');
 
 Future<String> authRedirector(String url) async {
   var completer = Completer<String>();

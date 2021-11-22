@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:41.999280
+/// This file was generated on 2021-11-22T16:37:08.754096
 
 
 import '../../pco.dart';
@@ -132,6 +132,7 @@ class PcoServicesArrangementSection extends PcoResource {
     }
     return retval;
   }
+
 
 
 

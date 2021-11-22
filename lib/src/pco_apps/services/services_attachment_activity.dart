@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.005546
+/// This file was generated on 2021-11-22T16:37:08.760598
 
 
 import '../../pco.dart';
@@ -81,6 +81,7 @@ class PcoServicesAttachmentActivity extends PcoResource {
 
   PcoServicesAttachmentActivity() : super(kPcoApplication, kTypeString);
   PcoServicesAttachmentActivity.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+
 
 
 

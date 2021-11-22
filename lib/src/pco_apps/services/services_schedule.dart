@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.119481
+/// This file was generated on 2021-11-22T16:37:08.827889
 
 
 import '../../pco.dart';
@@ -249,4 +249,61 @@ Future<List<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query, bool allI
 }
     
 
+/// Accept a Schedule
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept
+/// 
+/// Details:
+/// If this isn't a split time schedule, or you want to accept all times, an empty JSON body is accepted.
+/// If the user wants to decline specific times you'll need to send the declined time IDs & a reason.
+/// A POST body should be formated...
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "ScheduleAccept",
+/// 		"attributes": {
+/// 			"reason": "Because reasons"
+/// 		},
+/// 		"relationships": {
+/// 			"declined_plan_times": {
+/// 				"data": [
+///           {
+/// 					  "type": "PlanTime",
+/// 					  "id": "1"
+/// 				  }
+///         ]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// 
+Future<PlanningCenterApiResponse> accept(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/accept';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Decline a Schedule
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline
+/// 
+/// Details:
+/// If this is a split time request, all times will be declined.
+/// If you want to decline specific times see ScheduleAcceptAction.
+/// A POST body should be formated...
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "ScheduleDecline",
+/// 		"attributes": {
+/// 			"reason": "A user supplied reason for declining the request or an empty string."
+/// 		},
+/// 		"relationships": null
+/// 	}
+/// }
+/// ```
+/// 
+Future<PlanningCenterApiResponse> decline(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/decline';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

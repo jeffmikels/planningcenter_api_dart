@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.738792
+/// This file was generated on 2021-11-22T16:37:09.283084
 
 
 import '../../pco.dart';
@@ -240,5 +240,6 @@ Future<List<PcoCalendarResourceSuggestion>> getResourceSuggestions({PlanningCent
   return retval;
 }
     
+
 
 }

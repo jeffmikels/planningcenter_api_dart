@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:41.978146
+/// This file was generated on 2021-11-22T16:37:08.739335
 
 
 import '../../pco.dart';
@@ -370,4 +370,35 @@ Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allInc
 }
     
 
+/// Used to assign tags to an arrangement.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/assign_tags
+/// 
+/// Details:
+/// All tags will be replaced so the full data set must be sent.
+/// It expects a body that looks like:
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "TagAssignment",
+/// 		"attributes": {},
+/// 		"relationships": {
+/// 			"tags": {
+/// 				"data": [
+/// 					{
+/// 						"type": "Tag",
+/// 						"id": "5"
+/// 					}
+/// 				]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/assign_tags';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

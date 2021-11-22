@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.835567
+/// This file was generated on 2021-11-22T16:37:09.451630
 
 
 import '../../pco.dart';
@@ -133,4 +133,14 @@ Future<List<PcoWebhooksDelivery>> getDeliveries({PlanningCenterApiQuery? query, 
 }
     
 
+/// 
+/// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/redeliver
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> redeliver(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/redeliver';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

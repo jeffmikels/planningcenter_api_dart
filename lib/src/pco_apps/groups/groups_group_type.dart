@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.814240
+/// This file was generated on 2021-11-22T16:37:09.387496
 
 
 import '../../pco.dart';
@@ -208,5 +208,6 @@ Future<List<PcoGroupsResource>> getResources({PlanningCenterApiQuery? query, boo
   return retval;
 }
     
+
 
 }

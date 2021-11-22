@@ -77,6 +77,7 @@ class Vertex extends JsonApiDoc {
   // List<Action> vertexActions;
   List<Edge> inboundEdges = []; // refers to the endpoints that lead to this item
   List<Edge> outboundEdges = []; // refers to the endpoints that come from this item
+  List<Action> actions = [];
 
   List<URLParameter> canInclude = [];
   List<URLParameter> canOrderBy = [];
@@ -133,6 +134,9 @@ class Vertex extends JsonApiDoc {
     outboundEdges = [
       for (var item in relationships!['outbound_edges']['data']) Edge.fromJson(application, version, item),
     ];
+    actions = [
+      for (var item in relationships!['actions']['data']) Action.fromJson(application, version, item),
+    ];
 
     typedRelationships['per_page'] = perPage;
     typedRelationships['offset'] = offset;
@@ -143,6 +147,7 @@ class Vertex extends JsonApiDoc {
     typedRelationships['can_query'] = canQuery;
     typedRelationships['inbound_edges'] = inboundEdges;
     typedRelationships['outbound_edges'] = outboundEdges;
+    typedRelationships['actions'] = actions;
   }
 }
 
@@ -210,6 +215,26 @@ class Edge extends JsonApiDoc {
 
   Edge.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
     head = Vertex.fromJson(application, version, relationships!['head']['data']);
+    tail = Vertex.fromJson(application, version, relationships!['tail']['data']);
+  }
+}
+
+class Action extends JsonApiDoc {
+  String application = '';
+  String version = '';
+
+  String get name => attributes['name'];
+  String get details => attributes['details'] ?? '';
+  String get description => attributes['description'] ?? '';
+  String get path => attributes['path'];
+  String get exampleBody => attributes['example_body'] ?? '';
+  String get returnType => attributes['return_type'] ?? '';
+  bool get deprecated => attributes['deprecated'] == true;
+  bool get canRun => attributes['can_run'] == true;
+
+  late Vertex tail;
+
+  Action.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
     tail = Vertex.fromJson(application, version, relationships!['tail']['data']);
   }
 }
@@ -494,13 +519,39 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool all
     return retval;
   }
 ''');
-
-    // create static constructors from a parent class object
-    // constructors for collections like this
-    // constructors for individual items
   }
 
   // TODO: handle "actions" from vertex.relationships['actions'];
+  // see https://api.planningcenteronline.com/services/v2/documentation/2018-11-01/vertices/song
+  // see https://developer.planning.center/docs/#/apps/services/2018-11-01/vertices/song for an example
+
+  // from `actions` create methods
+  var actionsLines = <String>[];
+  for (var action in vertex.actions) {
+    print('  handling action for: ${action.path}');
+    if (action.path.endsWith('/')) {
+      print(' -- skipping, unknown action format');
+      continue;
+    }
+
+    // the same vertices are returned from different requests
+    var pathSuffix = action.path.split('/').last;
+    var functionName = pathSuffix.snakeToCamel();
+    var details =
+        action.details.replaceAll('\r', '\n').replaceAll('\n\n', '\n').split('\n').map((e) => '/// $e').join('\n');
+    actionsLines.add('''
+/// ACTION: ${action.name}
+/// ${action.description}
+/// using a path like this: ${action.path}
+/// 
+/// Details:
+$details
+Future<PlanningCenterApiResponse> $functionName(Map<String, dynamic> data) async {
+  var url = '\$apiEndpoint/$pathSuffix';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    ''');
+  }
 
   /// HERE'S THE ACTUAL TEMPLATE ========================
   return '''/// This file was generated on ${DateTime.now().toIso8601String()}
@@ -587,6 +638,7 @@ ${staticSingleConstructors.join()}
 
 ${childGetters.join('\n')}
 
+${actionsLines.join('\n')}
 }
 ''';
 }

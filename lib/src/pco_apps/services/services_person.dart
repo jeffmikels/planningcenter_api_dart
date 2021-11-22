@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.092316
+/// This file was generated on 2021-11-22T16:37:08.809418
 
 
 import '../../pco.dart';
@@ -527,4 +527,103 @@ Future<List<PcoServicesTextSetting>> getTextSettings({PlanningCenterApiQuery? qu
 }
     
 
+/// Used to assign tags to a person.
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/assign_tags
+/// 
+/// Details:
+/// All tags will be replaced so the full data set must be sent.
+/// It expects a body that looks like:
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "TagAssignment",
+/// 		"attributes": {},
+/// 		"relationships": {
+/// 			"tags": {
+/// 				"data": [
+/// 					{
+/// 						"type": "Tag",
+/// 						"id": "5"
+/// 					}
+/// 				]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/assign_tags';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Used to set Service Types as collapsed for the Person
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/collapse_service_types
+/// 
+/// Details:
+/// It expects a body that looks like:
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "CollapseServiceTypes",
+/// 		"attributes": {},
+/// 		"relationships": {
+/// 			"service_type": {
+/// 				"data": [
+/// 					{
+/// 						"type": "ServiceType",
+/// 						"id": "1"
+/// 					},
+/// 					{
+/// 						"type": "ServiceType",
+/// 						"id": "2"
+/// 					}
+/// 				]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> collapseServiceTypes(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/collapse_service_types';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Used to set Service Types as expanded for the Person
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/expand_service_types
+/// 
+/// Details:
+/// It expects a body that looks like:
+/// ```json
+/// {
+/// 	"data": {
+/// 		"type": "ExpandServiceTypes",
+/// 		"attributes": {},
+/// 		"relationships": {
+/// 			"service_type": {
+/// 				"data": [
+/// 					{
+/// 						"type": "ServiceType",
+/// 						"id": "1"
+/// 					},
+/// 					{
+/// 						"type": "ServiceType",
+/// 						"id": "2"
+/// 					}
+/// 				]
+/// 			}
+/// 		}
+/// 	}
+/// }
+/// ```
+/// On success you will get back a `204 No Content`.
+/// 
+Future<PlanningCenterApiResponse> expandServiceTypes(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/expand_service_types';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.043946
+/// This file was generated on 2021-11-22T16:37:08.803397
 
 
 import '../../pco.dart';
@@ -118,6 +118,7 @@ class PcoServicesMediaSchedule extends PcoResource {
     }
     return retval;
   }
+
 
 
 

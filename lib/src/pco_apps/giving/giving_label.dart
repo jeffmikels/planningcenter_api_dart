@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.777390
+/// This file was generated on 2021-11-22T16:37:09.355081
 
 
 import '../../pco.dart';
@@ -144,6 +144,7 @@ class PcoGivingLabel extends PcoResource {
     }
     return retval;
   }
+
 
 
 

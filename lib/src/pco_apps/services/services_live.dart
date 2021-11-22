@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.033459
+/// This file was generated on 2021-11-22T16:37:08.796579
 
 
 import '../../pco.dart';
@@ -235,4 +235,34 @@ Future<List<PcoServicesPlan>> getPlansWatchablePlans({PlanningCenterApiQuery? qu
 }
     
 
+/// 
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_next_item
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> goToNextItem(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/go_to_next_item';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// 
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_previous_item
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> goToPreviousItem(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/go_to_previous_item';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// 
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/toggle_control
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> toggleControl(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/toggle_control';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

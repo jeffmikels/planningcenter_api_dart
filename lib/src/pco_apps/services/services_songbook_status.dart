@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.138064
+/// This file was generated on 2021-11-22T16:37:08.847252
 
 
 import '../../pco.dart';
@@ -83,6 +83,7 @@ class PcoServicesSongbookStatu extends PcoResource {
 
   PcoServicesSongbookStatu() : super(kPcoApplication, kTypeString);
   PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+
 
 
 

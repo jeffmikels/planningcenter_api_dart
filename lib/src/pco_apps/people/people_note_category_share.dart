@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.568370
+/// This file was generated on 2021-11-22T16:37:09.134032
 
 
 import '../../pco.dart';
@@ -120,6 +120,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
     }
     return retval;
   }
+
 
 
 

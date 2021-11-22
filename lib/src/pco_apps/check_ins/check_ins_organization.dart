@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.296104
+/// This file was generated on 2021-11-22T16:37:08.916741
 
 
 import '../../pco.dart';
@@ -269,4 +269,34 @@ Future<List<PcoCheckInsTheme>> getThemes({PlanningCenterApiQuery? query, bool al
 }
     
 
+/// 
+/// using a path like this: https://api.planningcenteronline.com/check-ins/v2
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/v2';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// 
+/// using a path like this: https://api.planningcenteronline.com/check-ins/v2
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/v2';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// 
+/// using a path like this: https://api.planningcenteronline.com/check-ins/v2
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> v2(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/v2';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

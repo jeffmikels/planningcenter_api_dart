@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.128408
+/// This file was generated on 2021-11-22T16:37:08.834481
 
 
 import '../../pco.dart';
@@ -478,4 +478,28 @@ Future<List<PcoServicesPlan>> getPlansUnscopedPlans({PlanningCenterApiQuery? que
 }
     
 
+/// Create multiple plans
+/// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/create_plans
+/// 
+/// Details:
+/// This action provides the abillity to create multiple plans with a single API request.
+/// Accepted attributes:
+/// - `count` (Integer) The number of plans to create. (max 12, default 1)
+/// - `copy_items` (Boolean) Copy Items from another plan. (default false)
+/// - `copy_people` (Boolean) Copy People from another plan. (default false)
+/// - `team_ids` (Array[Integer]) IDs of teams to copy people from when `copy_people` is set to true.
+///   If nil, `copy_people` copies from all teams. (default nil)
+/// - `copy_notes` (Boolean) Copy Notes from another plan. (default false)
+/// - `as_template` (Boolean) Create the new plans as templates (default false)
+/// - `base_date` (ISO 8601 Date) The date from which to start building the plans. (default false)
+/// Accepted Relationships
+/// - `plan` (optional) The plan from which to copy times, items, people, and notes
+/// - `template` (optional) Collection of templates from which to copy items, people, and notes (not times) for each new plan.
+///   Order dependant. Takes precedence over `plan`.
+/// 
+Future<PlanningCenterApiResponse> createPlans(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/create_plans';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

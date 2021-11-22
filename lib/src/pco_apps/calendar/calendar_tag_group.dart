@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.742794
+/// This file was generated on 2021-11-22T16:37:09.284967
 
 
 import '../../pco.dart';
@@ -190,5 +190,6 @@ Future<List<PcoCalendarTag>> getTags({PlanningCenterApiQuery? query, bool allInc
   return retval;
 }
     
+
 
 }

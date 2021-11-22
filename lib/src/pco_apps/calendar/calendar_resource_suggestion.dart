@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.736724
+/// This file was generated on 2021-11-22T16:37:09.282186
 
 
 import '../../pco.dart';
@@ -132,5 +132,6 @@ Future<List<PcoCalendarResource>> getResources({PlanningCenterApiQuery? query, b
   return retval;
 }
     
+
 
 }

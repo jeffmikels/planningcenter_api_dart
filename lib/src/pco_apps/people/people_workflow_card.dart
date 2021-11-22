@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.658830
+/// This file was generated on 2021-11-22T16:37:09.190526
 
 
 import '../../pco.dart';
@@ -278,4 +278,84 @@ Future<List<PcoPeopleWorkflow>> getWorkflows({PlanningCenterApiQuery? query, boo
 }
     
 
+/// Move a Workflow Card back to the previous step.
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/go_back
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> goBack(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/go_back';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Move a Workflow Card to the next step.
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/promote
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> promote(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/promote';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Removes a card
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/remove
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> remove(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/remove';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Restore a card
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/restore
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> restore(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/restore';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Sends an email to the subject of the card
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/send_email
+/// 
+/// Details:
+/// Pass in a subject and note.
+Future<PlanningCenterApiResponse> sendEmail(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/send_email';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Move a Workflow Card to the next step without completing the current step.
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/skip_step
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> skipStep(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/skip_step';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Snoozes a card for a specific duration
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/snooze
+/// 
+/// Details:
+/// Pass in a duration in days.
+Future<PlanningCenterApiResponse> snooze(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/snooze';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
+/// Unsnoozes a card
+/// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/unsnooze
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> unsnooze(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/unsnooze';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

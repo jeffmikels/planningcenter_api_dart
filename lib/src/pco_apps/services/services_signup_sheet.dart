@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.130008
+/// This file was generated on 2021-11-22T16:37:08.838582
 
 
 import '../../pco.dart';
@@ -161,4 +161,14 @@ Future<List<PcoServicesSignupSheetMetadata>> getSignupSheetMetadatas({PlanningCe
 }
     
 
+/// Accept a signup sheet
+/// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/accept
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> accept(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/accept';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

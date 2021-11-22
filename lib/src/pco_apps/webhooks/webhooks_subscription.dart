@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-19T12:10:42.836855
+/// This file was generated on 2021-11-22T16:37:09.452615
 
 
 import '../../pco.dart';
@@ -147,4 +147,14 @@ Future<List<PcoWebhooksEvent>> getEvents({PlanningCenterApiQuery? query, bool al
 }
     
 
+/// 
+/// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/rotate_secret
+/// 
+/// Details:
+/// 
+Future<PlanningCenterApiResponse> rotateSecret(Map<String, dynamic> data) async {
+  var url = '$apiEndpoint/rotate_secret';
+  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+}
+    
 }

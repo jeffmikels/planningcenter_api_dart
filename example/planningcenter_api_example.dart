@@ -106,5 +106,15 @@ void main() async {
   // to call the API directly, you can do this.
   var res = await PlanningCenter.instance.call('/services/v2/songs');
   print(pretty(res));
+
+  // Once we're done with the client, save the credentials file. This ensures
+  // that if the credentials were automatically refreshed while using the
+  // client, the new credentials are available for the next run of the
+  // program.
+  if (PlanningCenter.instance.oAuthCredentials != null) {
+    await credentialsFile.create(recursive: true);
+    await credentialsFile.writeAsString(json.encode(PlanningCenter.instance.oAuthCredentials));
+  }
+
   exit(0);
 }

@@ -26,20 +26,79 @@ class PlanningCenter {
   static const uploadsEndpoint = 'https://upload.planningcenteronline.com/v2/files';
   static const authEndpoint = 'https://api.planningcenteronline.com/oauth/authorize';
   static const tokenEndpoint = 'https://api.planningcenteronline.com/oauth/token';
-  static const oAuthCallbackPort = 64738;
-  static const oAuthCallbackUrl = 'http://localhost:${oAuthCallbackPort}/pco_callback';
+  static const oAuthScopes = [
+    'calendar',
+    'check_ins',
+    'giving',
+    'groups',
+    'people',
+    'services'
+  ]; // api and webhooks don't work for me
 
   static bool initialized = false;
   static late PlanningCenter instance;
-  static PlanningCenter init(appId, secret) => instance = PlanningCenter._http(appId, secret);
 
-  /// NOT YET IMPLEMENTED
-  /// Authorize by OAuth 2
+  /// initialize with an appId and a secret for basic authentication
+  static PlanningCenter init(String appId, String secret) => instance = PlanningCenter._(appId, secret);
+
+  /// initialize with an already configured client.
+  ///
+  /// This method is usually used with an oauth2.Client instance
+  /// such as with the oauth2 package, but it may be any object
+  /// that supports the same interface as http.Client
+  static PlanningCenter initWithCredentials(
+    String clientId,
+    String clientSecret,
+    PlanningCenterCredentials credentials,
+  ) =>
+      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+
+  /// Use OAuth2 to authorize
   /// Scopes should be one or more of the following: api, calendar, check_ins, giving, groups, people, services, webhooks
-  static Future<PlanningCenter> authorize(clientId, clientSecret, List<String> scopes, String credentialsJson) {
-    var completer = Completer<PlanningCenter>();
+  /// ... for some reason, the webhooks scope gives an error
+  ///
+  /// [redirectUri] must be registered on Planning Center's API dashboard for the client id and secret
+  /// example: 'http://localhost:64738/pco_callback'
+  /// example: 'myappcallback://pcocallback'
+  ///
+  /// [redirector] must be a function that takes a String and returns an auth token as a Future<String>
+  ///
+  /// ```dart
+  /// Future<String> oAuthCodeLocalhostRedirector(url) {
+  ///   // function to launch the url in a browser
+  ///   var completer = Completer<String>();
+  ///   print('Please open your browser to ${url} to authorize this app.');
+  ///
+  ///   // start a server to listen to the response
+  ///   var server = await HttpServer.bind('0.0.0.0', 64738);
+  ///   server.listen((HttpRequest req) async {
+  ///     req.response.write('Code received!');
+  ///     req.response.close();
+  ///     server.close();
+  ///     print(req.requestedUri);
+  ///     print(req.requestedUri.queryParameters);
+  ///     print(req.requestedUri.queryParameters);
+  ///     completer.complete(req.requestedUri.queryParameters['code']);
+  ///   });
+  ///   return completer.future;
+  /// }
+  /// var authorized = await PlanningCenter.authorize(id, secret, ['giving'], oAuthCodeLocalhostRedirector);
+  /// ```
+  static Future<bool> authorize(
+    clientId,
+    clientSecret,
+    redirectUri,
+    List<String> scopes,
+    Future<String> Function(String url) redirector,
+  ) async {
     var url =
-        '${authEndpoint}?client_id=${clientId}&redirect_uri=${oAuthCallbackUrl}&response_type=code&scope=${scopes.join('+')}';
+        '${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scopes.join('+')}';
+
+    // call the redirector and wait for a code response
+    var code = await redirector(url);
+    print('CODE IS: ' + code);
+
+    // now that we have a code
     // call the oauth client
     // with data like this:
     // {
@@ -49,6 +108,15 @@ class PlanningCenter {
     //   "client_secret": "CLIENT_SECRET",
     //   "redirect_uri": "https://example.com/auth/complete"
     // }
+    var res = await http.post(Uri.parse(tokenEndpoint),
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({
+          'grant_type': 'authorization_code',
+          'code': code,
+          'client_id': clientId,
+          'client_secret': clientSecret,
+          'redirect_uri': redirectUri,
+        }));
 
     /// the response will look like this:
     // {
@@ -59,6 +127,16 @@ class PlanningCenter {
     //   "scope": "people",
     //   "created_at": 1469553476
     // }
+    // create a credentials object
+    if (res.statusCode == 200) {
+      var data = json.decode(res.body);
+      var credentials = PlanningCenterCredentials.fromJson(data);
+      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+      return true;
+    }
+    print(res.statusCode);
+    print(res.body);
+    return false;
 
     // use the access token like this:
     // 'Authorization: Bearer 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
@@ -73,16 +151,20 @@ class PlanningCenter {
     // }
     // open simple web server
     // wait for the server to call back
-    return completer.future.then((p) => instance = p);
   }
 
   late Uri _baseUri;
-  late dynamic _client; // will be either http.Client or oauth2.Client
+  late http.Client _client;
+
+  // oauth credentials are optional
+  String? clientId;
+  String? clientSecret;
+  PlanningCenterCredentials? oAuthCredentials;
 
   /// used for throttling requests
   Future apiCanCall = Future.value(true);
 
-  PlanningCenter._http(_appId, _secret) {
+  PlanningCenter._(_appId, _secret) {
     _baseUri = Uri.parse(mainEndpoint);
     _baseUri = Uri(
       scheme: _baseUri.scheme,
@@ -94,7 +176,7 @@ class PlanningCenter {
     initialized = true;
   }
 
-  PlanningCenter._oauth(this._client) {
+  PlanningCenter._withCredentials(this.clientId, this.clientSecret, this.oAuthCredentials) {
     _baseUri = Uri.parse(mainEndpoint);
     _baseUri = Uri(
       scheme: _baseUri.scheme,
@@ -155,6 +237,39 @@ class PlanningCenter {
     var headers = <String, String>{};
     if (apiVersion.isNotEmpty) headers['X-PCO-API-Version'] = apiVersion;
 
+    // if we have oAuthCredentials, use them
+    if (oAuthCredentials != null) {
+      // do we need to refresh the token?
+      var now = DateTime.now();
+      var expiresAtSeconds = oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn;
+      var expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresAtSeconds * 1000);
+
+      // refresh tokens last 90 days
+      var refreshExpiresAt =
+          DateTime.fromMillisecondsSinceEpoch(oAuthCredentials!.createdAt + (90 * 24 * 60 * 60 * 1000));
+      if (now.isAfter(expiresAt)) {
+        if (now.isAfter(refreshExpiresAt)) {
+          return PlanningCenterApiError('Must Reauthorize', 401, '', '', '');
+        } else {
+          // attempt to refresh the token
+          var res = await _client.post(Uri.parse(tokenEndpoint),
+              headers: {'Content-Type': 'application/json'},
+              body: json.encode({
+                'client_id': clientId,
+                'client_secret': clientSecret,
+                'refresh_token': oAuthCredentials!.refreshToken,
+                'grant_type': 'refresh_token',
+              }));
+          if (res.statusCode == 200) {
+            oAuthCredentials = PlanningCenterCredentials.fromJson(json.decode(res.body));
+          } else {
+            return PlanningCenterApiError('Must Reauthorize', 401, '', '', '');
+          }
+        }
+      }
+      headers['Authorization'] = 'Bearer ${oAuthCredentials!.accessToken}';
+    }
+
     // print(endpoint);
     // print(uri);
     // print(verb);
@@ -206,6 +321,34 @@ class PlanningCenter {
       res.body,
     );
   }
+}
+
+class PlanningCenterCredentials {
+  String tokenType = '';
+  String accessToken = '';
+  String refreshToken = '';
+  String scope = '';
+  int createdAt = 0;
+  int expiresIn = 0;
+
+  PlanningCenterCredentials();
+  PlanningCenterCredentials.fromJson(Map data) {
+    tokenType = data['token_type'] ?? '';
+    accessToken = data['access_token'] ?? '';
+    refreshToken = data['refresh_token'] ?? '';
+    scope = data['scope'] ?? '';
+    createdAt = data['created_at'] ?? 0;
+    expiresIn = data['expires_in'] ?? 0;
+  }
+
+  Map toJson() => {
+        'token_type': tokenType,
+        'access_token': accessToken,
+        'refresh_token': refreshToken,
+        'scope': scope,
+        'created_at': createdAt,
+        'expires_in': expiresIn,
+      };
 }
 
 class PlanningCenterApiQuery {

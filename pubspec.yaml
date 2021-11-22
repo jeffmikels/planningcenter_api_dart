@@ -1,6 +1,6 @@
 name: planningcenter_api
 description: Supports nearly 100% of the Planning Center public API.
-version: 0.1.2
+version: 0.1.3
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 
@@ -13,7 +13,6 @@ environment:
 
 dependencies:
   http: ^0.13.3
-  oauth2: ^2.0.0
 
 dev_dependencies:
   lints: ^1.0.0

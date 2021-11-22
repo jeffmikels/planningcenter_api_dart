@@ -1,3 +1,7 @@
+## 0.1.3
+
+-   basic oauth2 implemented without any dependencies, see the readme for how to use.
+
 ## 0.1.2
 
 -   Now handles "included" items in API results

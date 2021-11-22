@@ -1,3 +1,7 @@
+## 0.2.0
+
+-   fixed the readme
+
 ## 0.1.5
 
 -   added 'actions' exposed by the API. Actions exist as methods on class instances. Each is documented.

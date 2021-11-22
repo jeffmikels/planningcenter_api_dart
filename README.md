@@ -165,9 +165,3 @@ void main() async {
 }
 
 ```
-
-## Unimplemented So Far
-
--   [x] OAuth authentication
--   [x] Support for the "include" query parameter
--   [] Support for API "actions"

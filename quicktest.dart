@@ -11,7 +11,7 @@ final tokenEndpoint = Uri.parse('https://api.planningcenteronline.com/oauth/toke
 final redirectUrl = Uri.parse('http://localhost:64738/pco_callback');
 final credentialsFile = File('~/tmp/credentials.json');
 
-Future<String> redirector(String url) async {
+Future<String> authRedirector(String url) async {
   var completer = Completer<String>();
   var server = await HttpServer.bind('0.0.0.0', 64738);
   server.listen((HttpRequest req) async {
@@ -43,7 +43,7 @@ void main() async {
       oAuthClientSecret,
       'http://localhost:64738/pco_callback',
       PlanningCenter.oAuthScopes,
-      redirector,
+      authRedirector,
     );
     if (!PlanningCenter.initialized) {
       print('Planning Center authentication failed.');

@@ -1,3 +1,7 @@
+## 0.1.4
+
+-   added 'include' functionality
+
 ## 0.1.3
 
 -   basic oauth2 implemented without any dependencies, see the readme for how to use.

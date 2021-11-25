@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.646979
+/// This file was generated on 2021-11-25T00:07:20.625761
 
 
 import '../../pco.dart';
@@ -115,166 +115,102 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// will get many PcoPeopleWorkflowCard Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards;
-  static Future<List<PcoPeopleWorkflowCard>> getManyFromPeopleAndWorkflowCardIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleWorkflowCard> retval = [];
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getManyFromPeopleAndWorkflowCard(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleWorkflowCard.canInclude;
     var url = '/people/v2/people/$peopleId/workflow_cards';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleWorkflowCard.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleWorkflowCard Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/cards;
-  static Future<List<PcoPeopleWorkflowCard>> getManyFromWorkflowAndCardIds(String workflowId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleWorkflowCard> retval = [];
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getManyFromWorkflowAndCard(String workflowId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleWorkflowCard.canInclude;
     var url = '/people/v2/workflows/$workflowId/cards';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleWorkflowCard.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleWorkflowCard Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards;
-  static Future<PcoPeopleWorkflowCard?> getSingleFromPeopleAndWorkflowCardIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleWorkflowCard?  retval;
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getSingleFromPeopleAndWorkflowCard(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleWorkflowCard.canInclude;
     var url = '/people/v2/people/$peopleId/workflow_cards' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleWorkflowCard.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleWorkflowCard.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleWorkflowCard Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/workflows/1/cards;
-  static Future<PcoPeopleWorkflowCard?> getSingleFromWorkflowAndCardIds(String workflowId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleWorkflowCard?  retval;
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getSingleFromWorkflowAndCard(String workflowId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleWorkflowCard.canInclude;
     var url = '/people/v2/workflows/$workflowId/cards' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleWorkflowCard.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleWorkflowCard.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleWorkflowCardActivity objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
-Future<List<PcoPeopleWorkflowCardActivity>> getWorkflowCardActivitiesActivities({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleWorkflowCardActivity>> getWorkflowCardActivitiesActivities({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleWorkflowCardActivity.canInclude;
-  List<PcoPeopleWorkflowCardActivity> retval = [];
   var url = '$apiEndpoint/activities';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleWorkflowCardActivity.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee
-Future<List<PcoPeoplePerson>> getPersonsAssignee({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeoplePerson>> getPersonsAssignee({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeoplePerson.canInclude;
-  List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/assignee';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleWorkflowStep objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step
-Future<List<PcoPeopleWorkflowStep>> getWorkflowStepsCurrentStep({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleWorkflowStep>> getWorkflowStepsCurrentStep({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
-  List<PcoPeopleWorkflowStep> retval = [];
   var url = '$apiEndpoint/current_step';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleWorkflowStep.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleWorkflowCardNote objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
-Future<List<PcoPeopleWorkflowCardNote>> getWorkflowCardNotesNotes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleWorkflowCardNote>> getWorkflowCardNotesNotes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleWorkflowCardNote.canInclude;
-  List<PcoPeopleWorkflowCardNote> retval = [];
   var url = '$apiEndpoint/notes';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleWorkflowCardNote.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person
-Future<List<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeoplePerson.canInclude;
-  List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/person';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleWorkflow objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/workflow
-Future<List<PcoPeopleWorkflow>> getWorkflows({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleWorkflow>> getWorkflows({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleWorkflow.canInclude;
-  List<PcoPeopleWorkflow> retval = [];
   var url = '$apiEndpoint/workflow';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleWorkflow.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url, query: query, apiVersion:apiVersion);
 }
     
 

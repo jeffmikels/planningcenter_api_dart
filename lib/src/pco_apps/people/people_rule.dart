@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.635930
+/// This file was generated on 2021-11-25T00:07:20.607550
 
 
 import '../../pco.dart';
@@ -88,54 +88,36 @@ class PcoPeopleRule extends PcoResource {
 
   /// will get many PcoPeopleRule Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/rules;
-  static Future<List<PcoPeopleRule>> getManyFromListAndRuleIds(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleRule> retval = [];
+  static Future<PcoCollection<PcoPeopleRule>> getManyFromListAndRule(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleRule.canInclude;
     var url = '/people/v2/lists/$listId/rules';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleRule.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleRule>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleRule Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/rules;
-  static Future<PcoPeopleRule?> getSingleFromListAndRuleIds(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleRule?  retval;
+  static Future<PcoCollection<PcoPeopleRule>> getSingleFromListAndRule(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleRule.canInclude;
     var url = '/people/v2/lists/$listId/rules' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleRule.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleRule>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleRule.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleCondition objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
-Future<List<PcoPeopleCondition>> getConditions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleCondition>> getConditions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleCondition.canInclude;
-  List<PcoPeopleCondition> retval = [];
   var url = '$apiEndpoint/conditions';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleCondition.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleCondition>(url, query: query, apiVersion:apiVersion);
 }
     
 

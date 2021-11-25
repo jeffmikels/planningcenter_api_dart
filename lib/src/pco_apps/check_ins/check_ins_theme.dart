@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.405215
+/// This file was generated on 2021-11-25T00:07:20.357158
 
 
 import '../../pco.dart';
@@ -92,69 +92,47 @@ class PcoCheckInsTheme extends PcoResource {
 
   /// will get many PcoCheckInsTheme Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/themes;
-  static Future<List<PcoCheckInsTheme>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsTheme> retval = [];
+  static Future<PcoCollection<PcoCheckInsTheme>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
     var url = '/check-ins/v2/themes';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsTheme.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCheckInsTheme Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/stations/1/theme;
-  static Future<List<PcoCheckInsTheme>> getManyFromStationAndThemeIds(String stationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsTheme> retval = [];
+  static Future<PcoCollection<PcoCheckInsTheme>> getManyFromStation(String stationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
     var url = '/check-ins/v2/stations/$stationId/theme';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsTheme.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCheckInsTheme Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/themes;
-  static Future<PcoCheckInsTheme?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsTheme?  retval;
+  static Future<PcoCollection<PcoCheckInsTheme>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
     var url = '/check-ins/v2/themes' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsTheme.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsTheme.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCheckInsTheme Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/stations/1/theme;
-  static Future<PcoCheckInsTheme?> getSingleFromStationAndThemeIds(String stationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsTheme?  retval;
+  static Future<PcoCollection<PcoCheckInsTheme>> getSingleFromStation(String stationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
     var url = '/check-ins/v2/stations/$stationId/theme' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsTheme.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsTheme.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.642962
+/// This file was generated on 2021-11-25T00:07:20.617718
 
 
 import '../../pco.dart';
@@ -97,134 +97,87 @@ class PcoPeopleTab extends PcoResource {
 
   /// will get many PcoPeopleTab Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_data/1/tab;
-  static Future<List<PcoPeopleTab>> getManyFromFieldDataAndTabIds(String fieldDataId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleTab> retval = [];
+  static Future<PcoCollection<PcoPeopleTab>> getManyFromFieldData(String fieldDataId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/field_data/$fieldDataId/tab';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleTab.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleTab Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab;
-  static Future<List<PcoPeopleTab>> getManyFromFieldDefinitionAndTabIds(String fieldDefinitionId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleTab> retval = [];
+  static Future<PcoCollection<PcoPeopleTab>> getManyFromFieldDefinition(String fieldDefinitionId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/field_definitions/$fieldDefinitionId/tab';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleTab.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleTab Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/tabs;
-  static Future<List<PcoPeopleTab>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleTab> retval = [];
+  static Future<PcoCollection<PcoPeopleTab>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/tabs';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleTab.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleTab Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_data/1/tab;
-  static Future<PcoPeopleTab?> getSingleFromFieldDataAndTabIds(String fieldDataId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleTab?  retval;
+  static Future<PcoCollection<PcoPeopleTab>> getSingleFromFieldData(String fieldDataId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/field_data/$fieldDataId/tab' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleTab Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab;
-  static Future<PcoPeopleTab?> getSingleFromFieldDefinitionAndTabIds(String fieldDefinitionId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleTab?  retval;
+  static Future<PcoCollection<PcoPeopleTab>> getSingleFromFieldDefinition(String fieldDefinitionId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/field_definitions/$fieldDefinitionId/tab' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleTab Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/tabs;
-  static Future<PcoPeopleTab?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleTab?  retval;
+  static Future<PcoCollection<PcoPeopleTab>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleTab.canInclude;
     var url = '/people/v2/tabs' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleTab.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleFieldDefinition objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
-Future<List<PcoPeopleFieldDefinition>> getFieldDefinitions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinitions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleFieldDefinition.canInclude;
-  List<PcoPeopleFieldDefinition> retval = [];
   var url = '$apiEndpoint/field_definitions';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleFieldDefinition.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleFieldDefinition>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleFieldOption objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/tabs/1/field_options
-Future<List<PcoPeopleFieldOption>> getFieldOptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleFieldOption>> getFieldOptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleFieldOption.canInclude;
-  List<PcoPeopleFieldOption> retval = [];
   var url = '$apiEndpoint/field_options';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleFieldOption.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url, query: query, apiVersion:apiVersion);
 }
     
 

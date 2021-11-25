@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.920211
+/// This file was generated on 2021-11-25T00:07:20.865538
 
 
 import '../../pco.dart';
@@ -90,37 +90,26 @@ class PcoWebhooksAvailableEvent extends PcoResource {
 
   /// will get many PcoWebhooksAvailableEvent Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/available_events;
-  static Future<List<PcoWebhooksAvailableEvent>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoWebhooksAvailableEvent> retval = [];
+  static Future<PcoCollection<PcoWebhooksAvailableEvent>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksAvailableEvent.canInclude;
     var url = '/webhooks/v2/available_events';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoWebhooksAvailableEvent.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoWebhooksAvailableEvent Object
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/available_events;
-  static Future<PcoWebhooksAvailableEvent?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoWebhooksAvailableEvent?  retval;
+  static Future<PcoCollection<PcoWebhooksAvailableEvent>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksAvailableEvent.canInclude;
     var url = '/webhooks/v2/available_events' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoWebhooksAvailableEvent.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoWebhooksAvailableEvent.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

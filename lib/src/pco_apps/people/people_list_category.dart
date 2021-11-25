@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.542269
+/// This file was generated on 2021-11-25T00:07:20.563196
 
 
 import '../../pco.dart';
@@ -95,86 +95,57 @@ class PcoPeopleListCategory extends PcoResource {
 
   /// will get many PcoPeopleListCategory Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/category;
-  static Future<List<PcoPeopleListCategory>> getManyFromListAndCategoryIds(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleListCategory> retval = [];
+  static Future<PcoCollection<PcoPeopleListCategory>> getManyFromListAndCategory(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListCategory.canInclude;
     var url = '/people/v2/lists/$listId/category';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleListCategory.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleListCategory Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/list_categories;
-  static Future<List<PcoPeopleListCategory>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleListCategory> retval = [];
+  static Future<PcoCollection<PcoPeopleListCategory>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListCategory.canInclude;
     var url = '/people/v2/list_categories';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleListCategory.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleListCategory Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/category;
-  static Future<PcoPeopleListCategory?> getSingleFromListAndCategoryIds(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleListCategory?  retval;
+  static Future<PcoCollection<PcoPeopleListCategory>> getSingleFromListAndCategory(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListCategory.canInclude;
     var url = '/people/v2/lists/$listId/category' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleListCategory.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleListCategory.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleListCategory Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/list_categories;
-  static Future<PcoPeopleListCategory?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleListCategory?  retval;
+  static Future<PcoCollection<PcoPeopleListCategory>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListCategory.canInclude;
     var url = '/people/v2/list_categories' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleListCategory.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleListCategory.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleList objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/list_categories/1/lists
-Future<List<PcoPeopleList>> getLists({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleList>> getLists({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleList.canInclude;
-  List<PcoPeopleList> retval = [];
   var url = '$apiEndpoint/lists';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleList.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleList>(url, query: query, apiVersion:apiVersion);
 }
     
 

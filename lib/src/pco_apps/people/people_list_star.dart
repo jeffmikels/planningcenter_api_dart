@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.545201
+/// This file was generated on 2021-11-25T00:07:20.564693
 
 
 import '../../pco.dart';
@@ -78,37 +78,26 @@ class PcoPeopleListStar extends PcoResource {
 
   /// will get many PcoPeopleListStar Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/star;
-  static Future<List<PcoPeopleListStar>> getManyFromListAndStarIds(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleListStar> retval = [];
+  static Future<PcoCollection<PcoPeopleListStar>> getManyFromListAndStar(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListStar.canInclude;
     var url = '/people/v2/lists/$listId/star';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleListStar.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListStar>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleListStar Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/star;
-  static Future<PcoPeopleListStar?> getSingleFromListAndStarIds(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleListStar?  retval;
+  static Future<PcoCollection<PcoPeopleListStar>> getSingleFromListAndStar(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListStar.canInclude;
     var url = '/people/v2/lists/$listId/star' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleListStar.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleListStar>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleListStar.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

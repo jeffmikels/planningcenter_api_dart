@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.385976
+/// This file was generated on 2021-11-25T00:07:20.351029
 
 
 import '../../pco.dart';
@@ -88,118 +88,75 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   /// will get many PcoCheckInsLocationEventTime Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times;
-  static Future<List<PcoCheckInsLocationEventTime>> getManyFromEventTimeAndLocationEventTimeIds(String eventTimeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsLocationEventTime> retval = [];
+  static Future<PcoCollection<PcoCheckInsLocationEventTime>> getManyFromEventTimeAndLocationEventTime(String eventTimeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationEventTime.canInclude;
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsLocationEventTime.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventTime>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCheckInsLocationEventTime Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_times;
-  static Future<List<PcoCheckInsLocationEventTime>> getManyFromCheckInAndLocationAndLocationEventTimeIds(String checkInId,String locationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsLocationEventTime> retval = [];
+  static Future<PcoCollection<PcoCheckInsLocationEventTime>> getManyFromCheckInAndLocationAndLocationEventTime(String checkInId,String locationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationEventTime.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsLocationEventTime.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventTime>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCheckInsLocationEventTime Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times;
-  static Future<PcoCheckInsLocationEventTime?> getSingleFromEventTimeAndLocationEventTimeIds(String eventTimeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsLocationEventTime?  retval;
+  static Future<PcoCollection<PcoCheckInsLocationEventTime>> getSingleFromEventTimeAndLocationEventTime(String eventTimeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationEventTime.canInclude;
     var url = '/check-ins/v2/event_times/$eventTimeId/location_event_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsLocationEventTime.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventTime>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsLocationEventTime.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCheckInsLocationEventTime Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_times;
-  static Future<PcoCheckInsLocationEventTime?> getSingleFromCheckInAndLocationAndLocationEventTimeIds(String checkInId,String locationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsLocationEventTime?  retval;
+  static Future<PcoCollection<PcoCheckInsLocationEventTime>> getSingleFromCheckInAndLocationAndLocationEventTime(String checkInId,String locationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationEventTime.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsLocationEventTime.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventTime>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsLocationEventTime.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoCheckInsCheckIn objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/check_ins
-Future<List<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCheckInsCheckIn.canInclude;
-  List<PcoCheckInsCheckIn> retval = [];
   var url = '$apiEndpoint/check_ins';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCheckInsCheckIn.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoCheckInsEventTime objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/event_time
-Future<List<PcoCheckInsEventTime>> getEventTimes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCheckInsEventTime>> getEventTimes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCheckInsEventTime.canInclude;
-  List<PcoCheckInsEventTime> retval = [];
   var url = '$apiEndpoint/event_time';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCheckInsEventTime.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCheckInsEventTime>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoCheckInsLocation objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/location
-Future<List<PcoCheckInsLocation>> getLocations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCheckInsLocation>> getLocations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCheckInsLocation.canInclude;
-  List<PcoCheckInsLocation> retval = [];
   var url = '$apiEndpoint/location';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCheckInsLocation.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCheckInsLocation>(url, query: query, apiVersion:apiVersion);
 }
     
 

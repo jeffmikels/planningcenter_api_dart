@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.924717
+/// This file was generated on 2021-11-25T00:07:20.867517
 
 
 import '../../pco.dart';
@@ -96,54 +96,36 @@ class PcoWebhooksSubscription extends PcoResource {
 
   /// will get many PcoWebhooksSubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions;
-  static Future<List<PcoWebhooksSubscription>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoWebhooksSubscription> retval = [];
+  static Future<PcoCollection<PcoWebhooksSubscription>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
     var url = '/webhooks/v2/subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoWebhooksSubscription.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoWebhooksSubscription Object
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions;
-  static Future<PcoWebhooksSubscription?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoWebhooksSubscription?  retval;
+  static Future<PcoCollection<PcoWebhooksSubscription>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
     var url = '/webhooks/v2/subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoWebhooksSubscription.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoWebhooksSubscription.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoWebhooksEvent objects
 /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events
-Future<List<PcoWebhooksEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoWebhooksEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoWebhooksEvent.canInclude;
-  List<PcoWebhooksEvent> retval = [];
   var url = '$apiEndpoint/events';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoWebhooksEvent.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoWebhooksEvent>(url, query: query, apiVersion:apiVersion);
 }
     
 

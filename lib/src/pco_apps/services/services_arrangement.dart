@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.029662
+/// This file was generated on 2021-11-25T00:07:20.208950
 
 
 import '../../pco.dart';
@@ -239,134 +239,84 @@ class PcoServicesArrangement extends PcoResource {
 
   /// will get many PcoServicesArrangement Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/arrangement;
-  static Future<List<PcoServicesArrangement>> getManyFromServiceTypeAndPlanAndItemAndArrangementIds(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesArrangement> retval = [];
+  static Future<PcoCollection<PcoServicesArrangement>> getManyFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesArrangement.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesArrangement.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoServicesArrangement Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements;
-  static Future<List<PcoServicesArrangement>> getManyFromSongAndArrangementIds(String songId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesArrangement> retval = [];
+  static Future<PcoCollection<PcoServicesArrangement>> getManyFromSongAndArrangement(String songId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesArrangement.canInclude;
     var url = '/services/v2/songs/$songId/arrangements';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesArrangement.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesArrangement Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/arrangement;
-  static Future<PcoServicesArrangement?> getSingleFromServiceTypeAndPlanAndItemAndArrangementIds(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesArrangement?  retval;
+  static Future<PcoCollection<PcoServicesArrangement>> getSingleFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesArrangement.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesArrangement.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesArrangement.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoServicesArrangement Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements;
-  static Future<PcoServicesArrangement?> getSingleFromSongAndArrangementIds(String songId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesArrangement?  retval;
+  static Future<PcoCollection<PcoServicesArrangement>> getSingleFromSongAndArrangement(String songId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesArrangement.canInclude;
     var url = '/services/v2/songs/$songId/arrangements' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesArrangement.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesArrangement.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoServicesAttachment objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
-Future<List<PcoServicesAttachment>> getAttachments({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesAttachment>> getAttachments({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesAttachment.canInclude;
-  List<PcoServicesAttachment> retval = [];
   var url = '$apiEndpoint/attachments';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesAttachment.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesAttachment>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoServicesKey objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
-Future<List<PcoServicesKey>> getKeys({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesKey>> getKeys({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesKey.canInclude;
-  List<PcoServicesKey> retval = [];
   var url = '$apiEndpoint/keys';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesKey.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesKey>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoServicesArrangementSection objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/sections
-Future<List<PcoServicesArrangementSection>> getArrangementSectionsSections({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesArrangementSection>> getArrangementSectionsSections({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesArrangementSection.canInclude;
-  List<PcoServicesArrangementSection> retval = [];
   var url = '$apiEndpoint/sections';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesArrangementSection.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoServicesTag objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags
-Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesTag.canInclude;
-  List<PcoServicesTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:apiVersion);
 }
     
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.894893
+/// This file was generated on 2021-11-25T00:07:20.852087
 
 
 import '../../pco.dart';
@@ -98,150 +98,96 @@ class PcoGroupsPerson extends PcoResource {
 
   /// will get many PcoGroupsPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person;
-  static Future<List<PcoGroupsPerson>> getManyFromEventAndAttendanceAndPersonIds(String eventId,String attendanceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGroupsPerson> retval = [];
+  static Future<PcoCollection<PcoGroupsPerson>> getManyFromEventAndAttendance(String eventId,String attendanceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/events/$eventId/attendances/$attendanceId/person';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGroupsPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGroupsPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/people;
-  static Future<List<PcoGroupsPerson>> getManyFromGroupAndPeopleIds(String groupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGroupsPerson> retval = [];
+  static Future<PcoCollection<PcoGroupsPerson>> getManyFromGroupAndPeople(String groupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/groups/$groupId/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGroupsPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGroupsPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/people;
-  static Future<List<PcoGroupsPerson>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGroupsPerson> retval = [];
+  static Future<PcoCollection<PcoGroupsPerson>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGroupsPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoGroupsPerson Object
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person;
-  static Future<PcoGroupsPerson?> getSingleFromEventAndAttendanceAndPersonIds(String eventId,String attendanceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGroupsPerson?  retval;
+  static Future<PcoCollection<PcoGroupsPerson>> getSingleFromEventAndAttendance(String eventId,String attendanceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/events/$eventId/attendances/$attendanceId/person' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGroupsPerson Object
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/groups/1/people;
-  static Future<PcoGroupsPerson?> getSingleFromGroupAndPeopleIds(String groupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGroupsPerson?  retval;
+  static Future<PcoCollection<PcoGroupsPerson>> getSingleFromGroupAndPeople(String groupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/groups/$groupId/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGroupsPerson Object
   /// using a path like this: https://api.planningcenteronline.com/groups/v2/people;
-  static Future<PcoGroupsPerson?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGroupsPerson?  retval;
+  static Future<PcoCollection<PcoGroupsPerson>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '/groups/v2/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGroupsPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoGroupsEvent objects
 /// using a path like this: https://api.planningcenteronline.com/groups/v2/people/1/events
-Future<List<PcoGroupsEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGroupsEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGroupsEvent.canInclude;
-  List<PcoGroupsEvent> retval = [];
   var url = '$apiEndpoint/events';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGroupsEvent.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGroupsEvent>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGroupsGroup objects
 /// using a path like this: https://api.planningcenteronline.com/groups/v2/people/1/groups
-Future<List<PcoGroupsGroup>> getGroups({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGroupsGroup>> getGroups({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGroupsGroup.canInclude;
-  List<PcoGroupsGroup> retval = [];
   var url = '$apiEndpoint/groups';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGroupsGroup.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGroupsGroup>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGroupsMembership objects
 /// using a path like this: https://api.planningcenteronline.com/groups/v2/people/1/memberships
-Future<List<PcoGroupsMembership>> getMemberships({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGroupsMembership>> getMemberships({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGroupsMembership.canInclude;
-  List<PcoGroupsMembership> retval = [];
   var url = '$apiEndpoint/memberships';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGroupsMembership.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGroupsMembership>(url, query: query, apiVersion:apiVersion);
 }
     
 

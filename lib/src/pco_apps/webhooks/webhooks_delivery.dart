@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.920871
+/// This file was generated on 2021-11-25T00:07:20.866398
 
 
 import '../../pco.dart';
@@ -90,37 +90,26 @@ class PcoWebhooksDelivery extends PcoResource {
 
   /// will get many PcoWebhooksDelivery Objects
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries;
-  static Future<List<PcoWebhooksDelivery>> getManyFromSubscriptionAndEventAndDeliveriesIds(String subscriptionId,String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoWebhooksDelivery> retval = [];
+  static Future<PcoCollection<PcoWebhooksDelivery>> getManyFromSubscriptionAndEventAndDeliveries(String subscriptionId,String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksDelivery.canInclude;
     var url = '/webhooks/v2/subscriptions/$subscriptionId/events/$eventId/deliveries';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoWebhooksDelivery.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoWebhooksDelivery Object
   /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries;
-  static Future<PcoWebhooksDelivery?> getSingleFromSubscriptionAndEventAndDeliveriesIds(String subscriptionId,String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoWebhooksDelivery?  retval;
+  static Future<PcoCollection<PcoWebhooksDelivery>> getSingleFromSubscriptionAndEventAndDeliveries(String subscriptionId,String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksDelivery.canInclude;
     var url = '/webhooks/v2/subscriptions/$subscriptionId/events/$eventId/deliveries' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoWebhooksDelivery.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoWebhooksDelivery.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

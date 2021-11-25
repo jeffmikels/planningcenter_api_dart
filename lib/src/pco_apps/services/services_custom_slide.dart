@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.067010
+/// This file was generated on 2021-11-25T00:07:20.242338
 
 
 import '../../pco.dart';
@@ -90,37 +90,26 @@ class PcoServicesCustomSlide extends PcoResource {
 
   /// will get many PcoServicesCustomSlide Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides;
-  static Future<List<PcoServicesCustomSlide>> getManyFromServiceTypeAndPlanAndItemAndCustomSlideIds(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesCustomSlide> retval = [];
+  static Future<PcoCollection<PcoServicesCustomSlide>> getManyFromServiceTypeAndPlanAndItemAndCustomSlide(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesCustomSlide.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesCustomSlide.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesCustomSlide>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesCustomSlide Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides;
-  static Future<PcoServicesCustomSlide?> getSingleFromServiceTypeAndPlanAndItemAndCustomSlideIds(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesCustomSlide?  retval;
+  static Future<PcoCollection<PcoServicesCustomSlide>> getSingleFromServiceTypeAndPlanAndItemAndCustomSlide(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesCustomSlide.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesCustomSlide.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesCustomSlide>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesCustomSlide.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

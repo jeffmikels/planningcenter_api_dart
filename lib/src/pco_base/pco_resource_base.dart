@@ -93,23 +93,31 @@ abstract class PcoResource {
     handleIncludes(withIncludes);
   }
 
-  Future<bool> _call(verb, [String data = '']) async {
-    if (apiPath == null) return false;
-    var res = await api.call(apiPath!, verb: verb, apiVersion: apiVersion, data: data);
-    if (!res.isError) {
-      fromJson(res.data);
-      return fetched = true;
+  Future<PlanningCenterApiResponse> _selfcall<T extends PcoResource>(verb, [String data = '']) async {
+    late PlanningCenterApiResponse res;
+    if (apiPath == null) {
+      res = PlanningCenterApiError(
+        'Cannot determine apiPath',
+        application,
+        Uri(),
+        '',
+        PlanningCenterApiQuery(),
+        0,
+        '',
+      );
+    } else {
+      res = await api.call(apiPath!, verb: verb, apiVersion: apiVersion, data: data);
+      if (!res.isError) {
+        // apiresponses now always give data as a list
+        fromJson(res.data.first);
+      }
     }
-    return false;
+    return res;
   }
 
-  Future<bool> fetch() async {
-    return _call('get');
-  }
-
-  Future<bool> save() async {
+  Future<PlanningCenterApiResponse> save() async {
     var jsonString = json.encode({'data': id == null ? toCreateResource() : toUpdateResource()});
-    return _call(id == null ? 'post' : 'patch', jsonString);
+    return _selfcall(id == null ? 'post' : 'patch', jsonString);
   }
 
   /// Takes a full JSON:API Response Object (the contents of a "data" field)
@@ -176,7 +184,7 @@ abstract class PcoResource {
       if (value['data'] is! List) value['data'] = [value['data']];
       for (var data in value['data']) {
         try {
-          var res = buildResource(application, data['type'], data);
+          var res = buildResource(application, data);
           if (res != null) retval[key]?.add(res);
         } on FormatException catch (e) {
           print(e);
@@ -209,6 +217,37 @@ abstract class PcoResource {
     retval['attributes'] = filteredAttributes(updateAllowed);
     return retval;
   }
+}
+
+/// preserves the meta information so we can remember the
+/// offsets and other metadata
+class PcoCollection<T extends PcoResource> {
+  PlanningCenterApiResponse response;
+  PlanningCenterApiQuery query;
+  PlanningCenterApiMeta meta;
+  List<T> data;
+  PcoCollection(this.data, this.meta, this.response, this.query);
+
+  /// url, query: query, apiVersion:kApiVersion
+  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(url,
+      {PlanningCenterApiQuery? query, required String apiVersion}) async {
+    var res = await PlanningCenter.instance.call(url, query: query, apiVersion: apiVersion);
+    return PcoCollection<T>.fromApiResponse(res);
+  }
+
+  factory PcoCollection.fromApiResponse(PlanningCenterApiResponse response) {
+    List<T> data = [];
+    var toProcess = response.data;
+    for (var item in toProcess) {
+      var res = buildResource<T>(response.application, item);
+      if (res != null) data.add(res as T);
+    }
+    return PcoCollection<T>(data, response.meta, response, response.query);
+  }
+
+  bool get isError => response.isError;
+  bool get hasMore => meta.nextOffset != null;
+  void getMore() {}
 }
 
 // class PcoChildTemplate extends PcoResource {

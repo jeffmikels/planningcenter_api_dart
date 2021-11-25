@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.639835
+/// This file was generated on 2021-11-25T00:07:20.613374
 
 
 import '../../pco.dart';
@@ -91,37 +91,26 @@ class PcoPeopleServiceTime extends PcoResource {
 
   /// will get many PcoPeopleServiceTime Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/campuses/1/service_times;
-  static Future<List<PcoPeopleServiceTime>> getManyFromCampusAndServiceTimeIds(String campusId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleServiceTime> retval = [];
+  static Future<PcoCollection<PcoPeopleServiceTime>> getManyFromCampusAndServiceTime(String campusId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
     var url = '/people/v2/campuses/$campusId/service_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleServiceTime.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleServiceTime Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/campuses/1/service_times;
-  static Future<PcoPeopleServiceTime?> getSingleFromCampusAndServiceTimeIds(String campusId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleServiceTime?  retval;
+  static Future<PcoCollection<PcoPeopleServiceTime>> getSingleFromCampusAndServiceTime(String campusId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
     var url = '/people/v2/campuses/$campusId/service_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleServiceTime.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleServiceTime.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

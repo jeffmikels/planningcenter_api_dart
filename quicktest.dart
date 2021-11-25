@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import './lib/planningcenter_api.dart';
-import 'package:http/http.dart' as http;
+import 'package:planningcenter_api/planningcenter_api.dart';
 
 import 'secrets.dart';
 
@@ -52,14 +51,14 @@ void main() async {
   }
 
   // PlanningCenter.init(appid, secret);
-  var result = await PcoPeoplePerson.getSingle('29166364', allIncludes: false);
-  if (result == null) return;
+  var collection = await PcoPeoplePerson.getSingle('29166364', allIncludes: false);
+  if (collection.isError) return;
 
   // print(result.toJson());
   // print(result.attributes);
   // print(result.links);
   // print(result.relationshipsData);
-  result.relationships.forEach((key, relationships) {
+  collection.data.first.relationships.forEach((key, relationships) {
     print('$key - ${relationships.length} relationships');
     for (var relationship in relationships) {
       print(relationship.toJson());

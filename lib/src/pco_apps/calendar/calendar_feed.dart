@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.691438
+/// This file was generated on 2021-11-25T00:07:20.695483
 
 
 import '../../pco.dart';
@@ -98,69 +98,47 @@ class PcoCalendarFeed extends PcoResource {
 
   /// will get many PcoCalendarFeed Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<List<PcoCalendarFeed>> getManyFromEventAndFeedIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarFeed> retval = [];
+  static Future<PcoCollection<PcoCalendarFeed>> getManyFromEvent(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/events/$eventId/feed';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarFeed.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarFeed Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<List<PcoCalendarFeed>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarFeed> retval = [];
+  static Future<PcoCollection<PcoCalendarFeed>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarFeed.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCalendarFeed Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<PcoCalendarFeed?> getSingleFromEventAndFeedIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarFeed?  retval;
+  static Future<PcoCollection<PcoCalendarFeed>> getSingleFromEvent(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/events/$eventId/feed' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarFeed Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<PcoCalendarFeed?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarFeed?  retval;
+  static Future<PcoCollection<PcoCalendarFeed>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

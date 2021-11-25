@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.633414
+/// This file was generated on 2021-11-25T00:07:20.603817
 
 
 import '../../pco.dart';
@@ -80,37 +80,26 @@ class PcoPeoplePlatformNotification extends PcoResource {
 
   /// will get many PcoPeoplePlatformNotification Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications;
-  static Future<List<PcoPeoplePlatformNotification>> getManyFromPeopleAndPlatformNotificationIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeoplePlatformNotification> retval = [];
+  static Future<PcoCollection<PcoPeoplePlatformNotification>> getManyFromPeopleAndPlatformNotification(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePlatformNotification.canInclude;
     var url = '/people/v2/people/$peopleId/platform_notifications';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeoplePlatformNotification.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeoplePlatformNotification Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications;
-  static Future<PcoPeoplePlatformNotification?> getSingleFromPeopleAndPlatformNotificationIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeoplePlatformNotification?  retval;
+  static Future<PcoCollection<PcoPeoplePlatformNotification>> getSingleFromPeopleAndPlatformNotification(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePlatformNotification.canInclude;
     var url = '/people/v2/people/$peopleId/platform_notifications' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeoplePlatformNotification.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeoplePlatformNotification.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

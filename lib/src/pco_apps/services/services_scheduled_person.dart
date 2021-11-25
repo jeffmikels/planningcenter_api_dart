@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.195398
+/// This file was generated on 2021-11-25T00:07:20.280209
 
 
 import '../../pco.dart';
@@ -84,37 +84,26 @@ class PcoServicesScheduledPerson extends PcoResource {
 
   /// will get many PcoServicesScheduledPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people;
-  static Future<List<PcoServicesScheduledPerson>> getManyFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeopleIds(String peopleId,String availableSignupId,String signupSheetId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesScheduledPerson> retval = [];
+  static Future<PcoCollection<PcoServicesScheduledPerson>> getManyFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeople(String peopleId,String availableSignupId,String signupSheetId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesScheduledPerson.canInclude;
     var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesScheduledPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesScheduledPerson Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people;
-  static Future<PcoServicesScheduledPerson?> getSingleFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeopleIds(String peopleId,String availableSignupId,String signupSheetId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesScheduledPerson?  retval;
+  static Future<PcoCollection<PcoServicesScheduledPerson>> getSingleFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeople(String peopleId,String availableSignupId,String signupSheetId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesScheduledPerson.canInclude;
     var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesScheduledPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesScheduledPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

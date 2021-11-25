@@ -13,9 +13,11 @@ void main() {
     });
 
     test('First Test', () async {
-      var songs = await PcoServicesSong.getMany();
-      for (var song in songs) {
-        print(song.attributes);
+      var collection = await PcoServicesSong.getMany();
+      if (!collection.isError) {
+        for (var song in collection.data) {
+          print(song.attributes);
+        }
       }
     });
   });

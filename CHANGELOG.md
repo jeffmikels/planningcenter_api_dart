@@ -1,3 +1,8 @@
+## 0.3.0
+
+-   Most class methods return a PcoCollection<T> object now
+-   PcoCollection<T> data items are coerced into lists even when the JSON:AP data was just a map
+
 ## 0.2.1
 
 -   fixed the readme

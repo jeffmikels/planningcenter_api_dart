@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.054479
+/// This file was generated on 2021-11-25T00:07:20.231283
 
 
 import '../../pco.dart';
@@ -96,37 +96,26 @@ class PcoServicesAttachmentType extends PcoResource {
 
   /// will get many PcoServicesAttachmentType Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachment_types;
-  static Future<List<PcoServicesAttachmentType>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesAttachmentType> retval = [];
+  static Future<PcoCollection<PcoServicesAttachmentType>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesAttachmentType.canInclude;
     var url = '/services/v2/attachment_types';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesAttachmentType.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesAttachmentType Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/attachment_types;
-  static Future<PcoServicesAttachmentType?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesAttachmentType?  retval;
+  static Future<PcoCollection<PcoServicesAttachmentType>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesAttachmentType.canInclude;
     var url = '/services/v2/attachment_types' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesAttachmentType.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesAttachmentType.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

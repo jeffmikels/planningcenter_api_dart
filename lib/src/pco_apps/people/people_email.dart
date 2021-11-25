@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.527794
+/// This file was generated on 2021-11-25T00:07:20.550034
 
 
 import '../../pco.dart';
@@ -107,86 +107,57 @@ class PcoPeopleEmail extends PcoResource {
 
   /// will get many PcoPeopleEmail Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/emails;
-  static Future<List<PcoPeopleEmail>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleEmail> retval = [];
+  static Future<PcoCollection<PcoPeopleEmail>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleEmail.canInclude;
     var url = '/people/v2/emails';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleEmail.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleEmail>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleEmail Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/emails;
-  static Future<List<PcoPeopleEmail>> getManyFromPeopleAndEmailIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleEmail> retval = [];
+  static Future<PcoCollection<PcoPeopleEmail>> getManyFromPeopleAndEmail(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleEmail.canInclude;
     var url = '/people/v2/people/$peopleId/emails';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleEmail.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleEmail>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleEmail Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/emails;
-  static Future<PcoPeopleEmail?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleEmail?  retval;
+  static Future<PcoCollection<PcoPeopleEmail>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleEmail.canInclude;
     var url = '/people/v2/emails' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleEmail.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleEmail>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleEmail.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleEmail Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/emails;
-  static Future<PcoPeopleEmail?> getSingleFromPeopleAndEmailIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleEmail?  retval;
+  static Future<PcoCollection<PcoPeopleEmail>> getSingleFromPeopleAndEmail(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleEmail.canInclude;
     var url = '/people/v2/people/$peopleId/emails' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleEmail.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleEmail>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleEmail.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeoplePerson objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/emails/1/person
-Future<List<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeoplePerson>> getPersons({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeoplePerson.canInclude;
-  List<PcoPeoplePerson> retval = [];
   var url = '$apiEndpoint/person';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeoplePerson.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:apiVersion);
 }
     
 

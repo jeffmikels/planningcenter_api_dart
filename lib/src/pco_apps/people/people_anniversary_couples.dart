@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.515421
+/// This file was generated on 2021-11-25T00:07:20.544295
 
 
 import '../../pco.dart';
@@ -78,37 +78,26 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
 
   /// will get many PcoPeopleAnniversaryCouple Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/anniversary_couples;
-  static Future<List<PcoPeopleAnniversaryCouple>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleAnniversaryCouple> retval = [];
+  static Future<PcoCollection<PcoPeopleAnniversaryCouple>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleAnniversaryCouple.canInclude;
     var url = '/people/v2/anniversary_couples';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleAnniversaryCouple.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleAnniversaryCouple Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/anniversary_couples;
-  static Future<PcoPeopleAnniversaryCouple?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleAnniversaryCouple?  retval;
+  static Future<PcoCollection<PcoPeopleAnniversaryCouple>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleAnniversaryCouple.canInclude;
     var url = '/people/v2/anniversary_couples' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleAnniversaryCouple.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleAnniversaryCouple.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.631532
+/// This file was generated on 2021-11-25T00:07:20.602069
 
 
 import '../../pco.dart';
@@ -118,37 +118,26 @@ class PcoPeoplePhoneNumber extends PcoResource {
 
   /// will get many PcoPeoplePhoneNumber Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers;
-  static Future<List<PcoPeoplePhoneNumber>> getManyFromPeopleAndPhoneNumberIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeoplePhoneNumber> retval = [];
+  static Future<PcoCollection<PcoPeoplePhoneNumber>> getManyFromPeopleAndPhoneNumber(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePhoneNumber.canInclude;
     var url = '/people/v2/people/$peopleId/phone_numbers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeoplePhoneNumber.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeoplePhoneNumber Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers;
-  static Future<PcoPeoplePhoneNumber?> getSingleFromPeopleAndPhoneNumberIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeoplePhoneNumber?  retval;
+  static Future<PcoCollection<PcoPeoplePhoneNumber>> getSingleFromPeopleAndPhoneNumber(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePhoneNumber.canInclude;
     var url = '/people/v2/people/$peopleId/phone_numbers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeoplePhoneNumber.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeoplePhoneNumber.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

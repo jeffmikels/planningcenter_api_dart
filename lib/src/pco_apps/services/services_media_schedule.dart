@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.129658
+/// This file was generated on 2021-11-25T00:07:20.261154
 
 
 import '../../pco.dart';
@@ -86,37 +86,26 @@ class PcoServicesMediaSchedule extends PcoResource {
 
   /// will get many PcoServicesMediaSchedule Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/media_schedules;
-  static Future<List<PcoServicesMediaSchedule>> getManyFromMediaAndMediaScheduleIds(String mediaId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesMediaSchedule> retval = [];
+  static Future<PcoCollection<PcoServicesMediaSchedule>> getManyFromMediaAndMediaSchedule(String mediaId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesMediaSchedule.canInclude;
     var url = '/services/v2/media/$mediaId/media_schedules';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesMediaSchedule.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesMediaSchedule Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/media/1/media_schedules;
-  static Future<PcoServicesMediaSchedule?> getSingleFromMediaAndMediaScheduleIds(String mediaId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesMediaSchedule?  retval;
+  static Future<PcoCollection<PcoServicesMediaSchedule>> getSingleFromMediaAndMediaSchedule(String mediaId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesMediaSchedule.canInclude;
     var url = '/services/v2/media/$mediaId/media_schedules' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesMediaSchedule.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesMediaSchedule.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

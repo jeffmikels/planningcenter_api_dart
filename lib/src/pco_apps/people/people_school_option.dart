@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.638550
+/// This file was generated on 2021-11-25T00:07:20.611614
 
 
 import '../../pco.dart';
@@ -107,118 +107,78 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// will get many PcoPeopleSchoolOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/school_options;
-  static Future<List<PcoPeopleSchoolOption>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleSchoolOption> retval = [];
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/school_options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleSchoolOption.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleSchoolOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/school;
-  static Future<List<PcoPeopleSchoolOption>> getManyFromPeopleAndSchoolIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleSchoolOption> retval = [];
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getManyFromPeopleAndSchool(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/people/$peopleId/school';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleSchoolOption.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleSchoolOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school;
-  static Future<List<PcoPeopleSchoolOption>> getManyFromSchoolOptionAndPromotesToSchoolIds(String schoolOptionId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleSchoolOption> retval = [];
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getManyFromSchoolOptionAndPromotesToSchool(String schoolOptionId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleSchoolOption.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleSchoolOption Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/school_options;
-  static Future<PcoPeopleSchoolOption?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleSchoolOption?  retval;
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/school_options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleSchoolOption Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/school;
-  static Future<PcoPeopleSchoolOption?> getSingleFromPeopleAndSchoolIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleSchoolOption?  retval;
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getSingleFromPeopleAndSchool(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/people/$peopleId/school' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleSchoolOption Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school;
-  static Future<PcoPeopleSchoolOption?> getSingleFromSchoolOptionAndPromotesToSchoolIds(String schoolOptionId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleSchoolOption?  retval;
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getSingleFromSchoolOptionAndPromotesToSchool(String schoolOptionId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleSchoolOption.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleSchoolOption objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
-Future<List<PcoPeopleSchoolOption>> getSchoolOptionsPromotesToSchool({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolOptionsPromotesToSchool({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
-  List<PcoPeopleSchoolOption> retval = [];
   var url = '$apiEndpoint/promotes_to_school';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleSchoolOption.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:apiVersion);
 }
     
 

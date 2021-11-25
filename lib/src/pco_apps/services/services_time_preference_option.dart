@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.250580
+/// This file was generated on 2021-11-25T00:07:20.310217
 
 
 import '../../pco.dart';
@@ -94,37 +94,26 @@ class PcoServicesTimePreferenceOption extends PcoResource {
 
   /// will get many PcoServicesTimePreferenceOption Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options;
-  static Future<List<PcoServicesTimePreferenceOption>> getManyFromServiceTypeAndTimePreferenceOptionIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesTimePreferenceOption> retval = [];
+  static Future<PcoCollection<PcoServicesTimePreferenceOption>> getManyFromServiceTypeAndTimePreferenceOption(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTimePreferenceOption.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/time_preference_options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesTimePreferenceOption.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesTimePreferenceOption Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options;
-  static Future<PcoServicesTimePreferenceOption?> getSingleFromServiceTypeAndTimePreferenceOptionIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesTimePreferenceOption?  retval;
+  static Future<PcoCollection<PcoServicesTimePreferenceOption>> getSingleFromServiceTypeAndTimePreferenceOption(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTimePreferenceOption.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/time_preference_options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesTimePreferenceOption.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesTimePreferenceOption.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

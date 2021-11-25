@@ -68,36 +68,38 @@ void main() async {
       PlanningCenter.oAuthScopes,
       authRedirector,
     );
-    if (!PlanningCenter.initialized) {
-      print('Planning Center authentication failed.');
-      exit(1);
-    }
+  }
+
+  if (!PlanningCenter.initialized) {
+    print('Planning Center authentication failed.');
+    exit(1);
   }
 
   // Now, all classes beginning with Pco are available for use
 
   /// Get the service types on the default organization (defaults to grabbing 25)
   /// will return List<PcoServicesServiceType>
-  var serviceTypes = await PcoServicesServiceType.getMany();
-  if (serviceTypes.isNotEmpty) {
-    var service = serviceTypes.first;
+  var collection = await PcoServicesServiceType.getMany();
+  print(collection.response);
+  if (!collection.isError) {
+    var service = collection.data.first;
     print('Found Service Type: ${service.name}');
 
     /// most class instances have methods allowing you to fetch related items
     /// this time, we also are using a query object to request plands in descending order
     /// of their sort date
     var plans = await service.getPlans(query: PlanningCenterApiQuery(order: '-sort_date'));
-    if (plans.isNotEmpty) {
-      var plan = plans.first;
+    if (!plans.isError) {
+      var plan = plans.data.first;
       print('Found Plan: ${plan.seriesTitle} - ${plan.title} - ${plan.lastTimeAt}');
-      var items = await plans.first.getItems();
-      for (var item in items) {
+      var items = await plan.getItems();
+      for (var item in items.data) {
         print('Plan Item: ${item.title}\n${item.description}\n');
         if (item.title == 'CHANGE ME') {
           print('attempting to update this item');
           item.title = 'CHANGED';
           var result = await item.save();
-          print(result ? 'successful' : 'not successful');
+          print(result.isError ? 'failed' : 'successful');
         }
       }
     }
@@ -105,6 +107,7 @@ void main() async {
 
   // to call the API directly, you can do this.
   var res = await PlanningCenter.instance.call('/services/v2/songs');
+  if (res is PlanningCenterApiError) print(res);
   print(pretty(res));
 
   // Once we're done with the client, save the credentials file. This ensures

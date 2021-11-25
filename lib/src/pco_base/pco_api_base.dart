@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:planningcenter_api/planningcenter_api.dart';
+import 'package:planningcenter_api/src/pco_base/pco_constructors.dart';
 
 const int apiInterval = 200; // 100 requests per 20 seconds in milliseconds
 
@@ -184,7 +186,16 @@ class PlanningCenter {
       path: _baseUri.path,
     );
     _client = http.Client();
-    initialized = true;
+    var now = DateTime.now();
+    var expiresAt =
+        DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+    var refreshExpiresAt =
+        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+    if (now.isAfter(expiresAt) && now.isAfter(refreshExpiresAt)) {
+      initialized = false;
+    } else {
+      initialized = true;
+    }
   }
 
   /// Planning Center publishes their API documentation here:
@@ -224,6 +235,8 @@ class PlanningCenter {
   }) async {
     if (endpoint.startsWith(mainEndpoint)) endpoint = endpoint.replaceFirst(mainEndpoint, '');
 
+    var application = endpoint.split('/')[1];
+
     // ensure query defaults
     query ??= PlanningCenterApiQuery();
 
@@ -251,15 +264,16 @@ class PlanningCenter {
     if (oAuthCredentials != null) {
       // do we need to refresh the token?
       var now = DateTime.now();
-      var expiresAtSeconds = oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn;
-      var expiresAt = DateTime.fromMillisecondsSinceEpoch(expiresAtSeconds * 1000);
-
-      // refresh tokens last 90 days
+      var expiresAt =
+          DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
       var refreshExpiresAt =
-          DateTime.fromMillisecondsSinceEpoch(oAuthCredentials!.createdAt + (90 * 24 * 60 * 60 * 1000));
+          DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+
       if (now.isAfter(expiresAt)) {
         if (now.isAfter(refreshExpiresAt)) {
-          return PlanningCenterApiError('Must Reauthorize', 401, '', '', '');
+          initialized = false;
+          return PlanningCenterApiError(
+              'Must Reauthorize, refresh token has expired.', application, uri, jsonString, query, 401, '');
         } else {
           // attempt to refresh the token
           var res = await _client.post(Uri.parse(tokenEndpoint),
@@ -273,7 +287,9 @@ class PlanningCenter {
           if (res.statusCode == 200) {
             oAuthCredentials = PlanningCenterCredentials.fromJson(json.decode(res.body));
           } else {
-            return PlanningCenterApiError('Must Reauthorize', 401, '', '', '');
+            initialized = false;
+            return PlanningCenterApiError(
+                'Must Reauthorize, failed to refresh token', application, uri, jsonString, query, 401, res.body);
           }
         }
       }
@@ -305,29 +321,24 @@ class PlanningCenter {
         res = await _client.delete(uri, headers: headers);
         break;
       default:
-        return PlanningCenterApiError(
-          'Unsupported http verb',
-          0,
-          uri,
-          {'query': query.asMap, 'data': data},
-          '',
-        );
+        return PlanningCenterApiError('Unsupported http verb', application, uri, jsonString, query, 400, '');
     }
     if (res.statusCode >= 200 && res.statusCode < 300) {
-      var retval = PlanningCenterApiResponse.fromMap(
-        res.statusCode,
-        uri,
-        {'query': query.asMap, 'data': data},
-        res.body,
-        json.decode(res.body),
+      var retval = PlanningCenterApiResponse.fromResponse(
+        application,
+        query,
+        jsonString,
+        res,
       );
       return retval;
     }
     return PlanningCenterApiError(
       'API Request Failed',
-      res.statusCode,
+      application,
       uri,
-      {'query': query.asMap, 'data': data},
+      jsonString,
+      query,
+      res.statusCode,
       res.body,
     );
   }
@@ -407,34 +418,73 @@ class PlanningCenterApiQuery {
   }
 }
 
+/// holds metadata for API requests
+class PlanningCenterApiMeta {
+  final Map<String, dynamic> _data = {};
+
+  int? get totalCount => _data['total_count'];
+  int? get count => _data['count'];
+  int? get nextOffset => _data['next']?['offset'];
+  List<String>? get canOrderBy => _data['can_order_by'] ?? 0;
+  List<String>? get canQueryBy => _data['can_query_by'] ?? 0;
+  Map<String, dynamic>? get parent => _data['parent'];
+
+  PlanningCenterApiMeta();
+  PlanningCenterApiMeta.fromJson(Map<String, dynamic> data) {
+    _data.addAll(data);
+  }
+
+  Map toJson() => _data;
+}
+
 class PlanningCenterApiError extends PlanningCenterApiResponse {
   final String errorMessage;
   PlanningCenterApiError(
     this.errorMessage,
-    statusCode,
-    requestUri,
-    requestData,
-    responseBody,
-  ) : super(statusCode, requestUri, requestData, responseBody, {}, {}, {}, []);
+    String application,
+    Uri requestUri,
+    String requestBody,
+    PlanningCenterApiQuery query,
+    int statusCode,
+    String responseBody,
+  ) : super(
+          application,
+          query,
+          requestUri,
+          requestBody,
+          statusCode,
+          responseBody,
+          [],
+          PlanningCenterApiMeta.fromJson({}),
+          {},
+          [],
+        );
+
+  @override
+  Map<String, dynamic> toJson() => super.toJson()..addAll({'message': errorMessage});
 
   @override
   String toString() {
-    return 'PCOERROR: $statusCode, $errorMessage\nURI: $requestUri\n\nRESPONSE: $responseBody\n\nREQUEST: ${json.encode(requestData)}\n\n';
+    return 'PCOERROR: $statusCode, $errorMessage\nURI: $requestUri\n\nRESPONSE: $responseBody\n\nREQUEST: ${json.encode(requestBody)}\n\n';
   }
 }
 
 class PlanningCenterApiResponse {
   bool get isError => this is PlanningCenterApiError;
 
+  // request items
+  final String application;
+  final PlanningCenterApiQuery query;
   final Uri requestUri;
-  final dynamic requestData;
+  final String requestBody;
 
+  // http response details
   final int statusCode;
-  final dynamic responseBody;
+  final String responseBody;
 
-  // successful queries only
-  final dynamic data; // might be a list or a map
-  final Map<String, dynamic> meta;
+  // JSON:API / PCO raw content
+  final List<Map<String, dynamic>> data; // always coerce into a list
+  final PlanningCenterApiMeta meta;
   final Map<String, dynamic> links;
   final List<Map<String, dynamic>> included;
 
@@ -443,7 +493,7 @@ class PlanningCenterApiResponse {
       'error': isError,
       'request': {
         'uri': requestUri,
-        'body': requestData,
+        'body': requestBody,
       },
       'response': {
         'code': statusCode,
@@ -453,13 +503,16 @@ class PlanningCenterApiResponse {
       'meta': meta,
       'links': links,
       'included': included,
+      'application': application,
     };
   }
 
   PlanningCenterApiResponse(
-    this.statusCode,
+    this.application,
+    this.query,
     this.requestUri,
-    this.requestData,
+    this.requestBody,
+    this.statusCode,
     this.responseBody,
     this.data,
     this.meta,
@@ -467,31 +520,42 @@ class PlanningCenterApiResponse {
     this.included,
   );
 
-  factory PlanningCenterApiResponse.fromMap(
-    statusCode,
-    requestUri,
-    requestData,
-    responseBody,
-    dynamic dataMap,
+  factory PlanningCenterApiResponse.fromResponse(
+    String application,
+    PlanningCenterApiQuery query,
+    String requestBody,
+    http.Response response,
   ) {
-    // print(dataMap);
-    var data = dataMap['data'] ?? {};
-    Map<String, dynamic> meta = dataMap['meta'] ?? {};
-    Map<String, dynamic> links = dataMap['links'] ?? {};
+    var body = json.decode(response.body);
+
+    PlanningCenterApiMeta meta = PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});
+    Map<String, dynamic> links = ((body['links'] ?? {}) as Map).map((key, value) => MapEntry(key.toString(), value));
+
+    // coerce the type of the data
+    List<Map<String, dynamic>> realData = [];
+    var data = body['data'] ?? [];
+    if (data is! List) data = [data];
+    for (var item in data) {
+      realData.add((item as Map).map((key, value) => MapEntry(key.toString(), value)));
+    }
+
+    // coerce the type of includes
     List<Map<String, dynamic>> included = [];
-    if (dataMap['included'] != null && dataMap['included'] is List) {
-      for (var inc in dataMap['included']) {
+    if (body['included'] != null && body['included'] is List) {
+      for (var inc in body['included']) {
         if (inc is Map) {
           included.add(inc.map((k, v) => MapEntry(k.toString(), v)));
         }
       }
     }
     return PlanningCenterApiResponse(
-      statusCode,
-      requestUri,
-      requestData,
-      responseBody,
-      data,
+      application,
+      query,
+      response.request!.url,
+      requestBody,
+      response.statusCode,
+      response.body,
+      realData,
       meta,
       links,
       included,

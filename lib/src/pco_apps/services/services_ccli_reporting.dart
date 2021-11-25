@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.064673
+/// This file was generated on 2021-11-25T00:07:20.240571
 
 
 import '../../pco.dart';
@@ -86,37 +86,26 @@ class PcoServicesCcliReporting extends PcoResource {
 
   /// will get many PcoServicesCcliReporting Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/ccli_reporting;
-  static Future<List<PcoServicesCcliReporting>> getManyFromServiceTypeAndPlanAndItemAndCcliReportingIds(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesCcliReporting> retval = [];
+  static Future<PcoCollection<PcoServicesCcliReporting>> getManyFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesCcliReporting.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/ccli_reporting';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesCcliReporting.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesCcliReporting>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesCcliReporting Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/ccli_reporting;
-  static Future<PcoServicesCcliReporting?> getSingleFromServiceTypeAndPlanAndItemAndCcliReportingIds(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesCcliReporting?  retval;
+  static Future<PcoCollection<PcoServicesCcliReporting>> getSingleFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesCcliReporting.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/ccli_reporting' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesCcliReporting.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesCcliReporting>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesCcliReporting.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

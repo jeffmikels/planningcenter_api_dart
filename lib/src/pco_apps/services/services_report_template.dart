@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.188311
+/// This file was generated on 2021-11-25T00:07:20.278611
 
 
 import '../../pco.dart';
@@ -90,37 +90,26 @@ class PcoServicesReportTemplate extends PcoResource {
 
   /// will get many PcoServicesReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/report_templates;
-  static Future<List<PcoServicesReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesReportTemplate> retval = [];
+  static Future<PcoCollection<PcoServicesReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesReportTemplate.canInclude;
     var url = '/services/v2/report_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesReportTemplate.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesReportTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/report_templates;
-  static Future<PcoServicesReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesReportTemplate?  retval;
+  static Future<PcoCollection<PcoServicesReportTemplate>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesReportTemplate.canInclude;
     var url = '/services/v2/report_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesReportTemplate.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesReportTemplate.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

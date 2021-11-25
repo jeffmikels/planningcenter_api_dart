@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.120552
+/// This file was generated on 2021-11-25T00:07:20.255260
 
 
 import '../../pco.dart';
@@ -84,37 +84,26 @@ class PcoServicesLiveController extends PcoResource {
 
   /// will get many PcoServicesLiveController Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers;
-  static Future<List<PcoServicesLiveController>> getManyFromServiceTypeAndLiveControllerIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesLiveController> retval = [];
+  static Future<PcoCollection<PcoServicesLiveController>> getManyFromServiceTypeAndLiveController(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLiveController.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/live_controllers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesLiveController.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesLiveController>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesLiveController Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers;
-  static Future<PcoServicesLiveController?> getSingleFromServiceTypeAndLiveControllerIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesLiveController?  retval;
+  static Future<PcoCollection<PcoServicesLiveController>> getSingleFromServiceTypeAndLiveController(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLiveController.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/live_controllers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesLiveController.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesLiveController>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesLiveController.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

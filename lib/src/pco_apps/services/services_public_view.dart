@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.180640
+/// This file was generated on 2021-11-25T00:07:20.277876
 
 
 import '../../pco.dart';
@@ -102,37 +102,26 @@ class PcoServicesPublicView extends PcoResource {
 
   /// will get many PcoServicesPublicView Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/public_view;
-  static Future<List<PcoServicesPublicView>> getManyFromServiceTypeAndPublicViewIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesPublicView> retval = [];
+  static Future<PcoCollection<PcoServicesPublicView>> getManyFromServiceType(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/public_view';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesPublicView.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesPublicView>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesPublicView Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/public_view;
-  static Future<PcoServicesPublicView?> getSingleFromServiceTypeAndPublicViewIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesPublicView?  retval;
+  static Future<PcoCollection<PcoServicesPublicView>> getSingleFromServiceType(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/public_view' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesPublicView.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesPublicView>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesPublicView.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

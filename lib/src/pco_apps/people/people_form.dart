@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.532152
+/// This file was generated on 2021-11-25T00:07:20.554878
 
 
 import '../../pco.dart';
@@ -108,86 +108,54 @@ class PcoPeopleForm extends PcoResource {
 
   /// will get many PcoPeopleForm Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms;
-  static Future<List<PcoPeopleForm>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleForm> retval = [];
+  static Future<PcoCollection<PcoPeopleForm>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleForm.canInclude;
     var url = '/people/v2/forms';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleForm.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleForm>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleForm Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms;
-  static Future<PcoPeopleForm?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleForm?  retval;
+  static Future<PcoCollection<PcoPeopleForm>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleForm.canInclude;
     var url = '/people/v2/forms' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleForm.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleForm>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleForm.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleCampus objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/campus
-Future<List<PcoPeopleCampus>> getCampuses({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleCampus>> getCampuses({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleCampus.canInclude;
-  List<PcoPeopleCampus> retval = [];
   var url = '$apiEndpoint/campus';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleCampus.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleCampus>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleFormField objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields
-Future<List<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleFormField>> getFormFieldsFields({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleFormField.canInclude;
-  List<PcoPeopleFormField> retval = [];
   var url = '$apiEndpoint/fields';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleFormField.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleFormField>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoPeopleFormSubmission objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
-Future<List<PcoPeopleFormSubmission>> getFormSubmissions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleFormSubmission>> getFormSubmissions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleFormSubmission.canInclude;
-  List<PcoPeopleFormSubmission> retval = [];
   var url = '$apiEndpoint/form_submissions';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleFormSubmission.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleFormSubmission>(url, query: query, apiVersion:apiVersion);
 }
     
 

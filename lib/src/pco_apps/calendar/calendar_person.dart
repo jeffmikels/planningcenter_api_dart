@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.693477
+/// This file was generated on 2021-11-25T00:07:20.703097
 
 
 import '../../pco.dart';
@@ -185,214 +185,141 @@ class PcoCalendarPerson extends PcoResource {
 
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by;
-  static Future<List<PcoCalendarPerson>> getManyFromConflictAndResolvedByIds(String conflictId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getManyFromConflictAndResolvedBy(String conflictId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/owner;
-  static Future<List<PcoCalendarPerson>> getManyFromEventAndOwnerIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getManyFromEventAndOwner(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/events/$eventId/owner';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/created_by;
-  static Future<List<PcoCalendarPerson>> getManyFromEventResourceRequestAndCreatedByIds(String eventResourceRequestId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getManyFromEventResourceRequestAndCreatedBy(String eventResourceRequestId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/updated_by;
-  static Future<List<PcoCalendarPerson>> getManyFromEventResourceRequestAndUpdatedByIds(String eventResourceRequestId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getManyFromEventResourceRequestAndUpdatedBy(String eventResourceRequestId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/people;
-  static Future<List<PcoCalendarPerson>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCalendarPerson Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/people;
-  static Future<List<PcoCalendarPerson>> getManyFromResourceApprovalGroupAndPeopleIds(String resourceApprovalGroupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarPerson> retval = [];
+  static Future<PcoCollection<PcoCalendarPerson>> getManyFromResourceApprovalGroupAndPeople(String resourceApprovalGroupId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarPerson.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by;
-  static Future<PcoCalendarPerson?> getSingleFromConflictAndResolvedByIds(String conflictId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingleFromConflictAndResolvedBy(String conflictId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/owner;
-  static Future<PcoCalendarPerson?> getSingleFromEventAndOwnerIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingleFromEventAndOwner(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/events/$eventId/owner' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/created_by;
-  static Future<PcoCalendarPerson?> getSingleFromEventResourceRequestAndCreatedByIds(String eventResourceRequestId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingleFromEventResourceRequestAndCreatedBy(String eventResourceRequestId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/updated_by;
-  static Future<PcoCalendarPerson?> getSingleFromEventResourceRequestAndUpdatedByIds(String eventResourceRequestId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingleFromEventResourceRequestAndUpdatedBy(String eventResourceRequestId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/people;
-  static Future<PcoCalendarPerson?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCalendarPerson Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/people;
-  static Future<PcoCalendarPerson?> getSingleFromResourceApprovalGroupAndPeopleIds(String resourceApprovalGroupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarPerson?  retval;
+  static Future<PcoCollection<PcoCalendarPerson>> getSingleFromResourceApprovalGroupAndPeople(String resourceApprovalGroupId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarPerson.canInclude;
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarPerson.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoCalendarEventResourceRequest objects
 /// using a path like this: https://api.planningcenteronline.com/calendar/v2/people/1/event_resource_requests
-Future<List<PcoCalendarEventResourceRequest>> getEventResourceRequests({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCalendarEventResourceRequest>> getEventResourceRequests({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCalendarEventResourceRequest.canInclude;
-  List<PcoCalendarEventResourceRequest> retval = [];
   var url = '$apiEndpoint/event_resource_requests';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCalendarEventResourceRequest.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url, query: query, apiVersion:apiVersion);
 }
     
 

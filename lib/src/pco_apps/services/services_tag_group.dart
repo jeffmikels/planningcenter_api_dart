@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.234565
+/// This file was generated on 2021-11-25T00:07:20.290857
 
 
 import '../../pco.dart';
@@ -94,70 +94,45 @@ class PcoServicesTagGroup extends PcoResource {
 
   /// will get many PcoServicesTagGroup Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups;
-  static Future<List<PcoServicesTagGroup>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesTagGroup> retval = [];
+  static Future<PcoCollection<PcoServicesTagGroup>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTagGroup.canInclude;
     var url = '/services/v2/tag_groups';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesTagGroup.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesTagGroup>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesTagGroup Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups;
-  static Future<PcoServicesTagGroup?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesTagGroup?  retval;
+  static Future<PcoCollection<PcoServicesTagGroup>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTagGroup.canInclude;
     var url = '/services/v2/tag_groups' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesTagGroup.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesTagGroup>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesTagGroup.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoServicesFolder objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
-Future<List<PcoServicesFolder>> getFolders({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesFolder>> getFolders({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesFolder.canInclude;
-  List<PcoServicesFolder> retval = [];
   var url = '$apiEndpoint/folder';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesFolder.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesFolder>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoServicesTag objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
-Future<List<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesTag.canInclude;
-  List<PcoServicesTag> retval = [];
   var url = '$apiEndpoint/tags';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesTag.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:apiVersion);
 }
     
 

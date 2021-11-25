@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.068470
+/// This file was generated on 2021-11-25T00:07:20.243202
 
 
 import '../../pco.dart';
@@ -87,37 +87,26 @@ class PcoServicesEmailTemplate extends PcoResource {
 
   /// will get many PcoServicesEmailTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates;
-  static Future<List<PcoServicesEmailTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesEmailTemplate> retval = [];
+  static Future<PcoCollection<PcoServicesEmailTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
     var url = '/services/v2/email_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesEmailTemplate.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesEmailTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/email_templates;
-  static Future<PcoServicesEmailTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesEmailTemplate?  retval;
+  static Future<PcoCollection<PcoServicesEmailTemplate>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
     var url = '/services/v2/email_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesEmailTemplate.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesEmailTemplate.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.821837
+/// This file was generated on 2021-11-25T00:07:20.787359
 
 
 import '../../pco.dart';
@@ -153,230 +153,147 @@ class PcoGivingDonation extends PcoResource {
 
   /// will get many PcoGivingDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/batches/1/donations;
-  static Future<List<PcoGivingDonation>> getManyFromBatcheAndDonationIds(String batcheId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingDonation> retval = [];
+  static Future<PcoCollection<PcoGivingDonation>> getManyFromBatcheAndDonation(String batcheId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/batches/$batcheId/donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/campuses/1/donations;
-  static Future<List<PcoGivingDonation>> getManyFromCampusAndDonationIds(String campusId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingDonation> retval = [];
+  static Future<PcoCollection<PcoGivingDonation>> getManyFromCampusAndDonation(String campusId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/campuses/$campusId/donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations;
-  static Future<List<PcoGivingDonation>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingDonation> retval = [];
+  static Future<PcoCollection<PcoGivingDonation>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations;
-  static Future<List<PcoGivingDonation>> getManyFromPaymentSourceAndDonationIds(String paymentSourceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingDonation> retval = [];
+  static Future<PcoCollection<PcoGivingDonation>> getManyFromPaymentSourceAndDonation(String paymentSourceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/payment_sources/$paymentSourceId/donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingDonation Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/donations;
-  static Future<List<PcoGivingDonation>> getManyFromPeopleAndDonationIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingDonation> retval = [];
+  static Future<PcoCollection<PcoGivingDonation>> getManyFromPeopleAndDonation(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/people/$peopleId/donations';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingDonation.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoGivingDonation Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/batches/1/donations;
-  static Future<PcoGivingDonation?> getSingleFromBatcheAndDonationIds(String batcheId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingDonation?  retval;
+  static Future<PcoCollection<PcoGivingDonation>> getSingleFromBatcheAndDonation(String batcheId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/batches/$batcheId/donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingDonation Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/campuses/1/donations;
-  static Future<PcoGivingDonation?> getSingleFromCampusAndDonationIds(String campusId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingDonation?  retval;
+  static Future<PcoCollection<PcoGivingDonation>> getSingleFromCampusAndDonation(String campusId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/campuses/$campusId/donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingDonation Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations;
-  static Future<PcoGivingDonation?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingDonation?  retval;
+  static Future<PcoCollection<PcoGivingDonation>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingDonation Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations;
-  static Future<PcoGivingDonation?> getSingleFromPaymentSourceAndDonationIds(String paymentSourceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingDonation?  retval;
+  static Future<PcoCollection<PcoGivingDonation>> getSingleFromPaymentSourceAndDonation(String paymentSourceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/payment_sources/$paymentSourceId/donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingDonation Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/donations;
-  static Future<PcoGivingDonation?> getSingleFromPeopleAndDonationIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingDonation?  retval;
+  static Future<PcoCollection<PcoGivingDonation>> getSingleFromPeopleAndDonation(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingDonation.canInclude;
     var url = '/giving/v2/people/$peopleId/donations' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingDonation.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoGivingCampus objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/campus
-Future<List<PcoGivingCampus>> getCampuses({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingCampus>> getCampuses({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingCampus.canInclude;
-  List<PcoGivingCampus> retval = [];
   var url = '$apiEndpoint/campus';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingCampus.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingCampus>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGivingDesignation objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/designations
-Future<List<PcoGivingDesignation>> getDesignations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingDesignation>> getDesignations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingDesignation.canInclude;
-  List<PcoGivingDesignation> retval = [];
   var url = '$apiEndpoint/designations';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingDesignation.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingDesignation>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGivingLabel objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/labels
-Future<List<PcoGivingLabel>> getLabels({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingLabel>> getLabels({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingLabel.canInclude;
-  List<PcoGivingLabel> retval = [];
   var url = '$apiEndpoint/labels';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingLabel.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGivingRefund objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/refund
-Future<List<PcoGivingRefund>> getRefunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingRefund>> getRefunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingRefund.canInclude;
-  List<PcoGivingRefund> retval = [];
   var url = '$apiEndpoint/refund';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingRefund.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingRefund>(url, query: query, apiVersion:apiVersion);
 }
     
 

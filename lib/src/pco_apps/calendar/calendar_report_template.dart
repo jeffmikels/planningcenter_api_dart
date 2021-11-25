@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.694306
+/// This file was generated on 2021-11-25T00:07:20.706734
 
 
 import '../../pco.dart';
@@ -99,37 +99,26 @@ class PcoCalendarReportTemplate extends PcoResource {
 
   /// will get many PcoCalendarReportTemplate Objects
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/report_templates;
-  static Future<List<PcoCalendarReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCalendarReportTemplate> retval = [];
+  static Future<PcoCollection<PcoCalendarReportTemplate>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarReportTemplate.canInclude;
     var url = '/calendar/v2/report_templates';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCalendarReportTemplate.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCalendarReportTemplate Object
   /// using a path like this: https://api.planningcenteronline.com/calendar/v2/report_templates;
-  static Future<PcoCalendarReportTemplate?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCalendarReportTemplate?  retval;
+  static Future<PcoCollection<PcoCalendarReportTemplate>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarReportTemplate.canInclude;
     var url = '/calendar/v2/report_templates' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCalendarReportTemplate.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCalendarReportTemplate.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

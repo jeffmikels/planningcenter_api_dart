@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.354791
+/// This file was generated on 2021-11-25T00:07:20.345542
 
 
 import '../../pco.dart';
@@ -88,102 +88,66 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// will get many PcoCheckInsEventLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels;
-  static Future<List<PcoCheckInsEventLabel>> getManyFromEventAndEventLabelIds(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsEventLabel> retval = [];
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getManyFromEventAndEventLabel(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
     var url = '/check-ins/v2/events/$eventId/event_labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsEventLabel.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoCheckInsEventLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/labels/1/event_labels;
-  static Future<List<PcoCheckInsEventLabel>> getManyFromLabelAndEventLabelIds(String labelId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsEventLabel> retval = [];
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getManyFromLabelAndEventLabel(String labelId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
     var url = '/check-ins/v2/labels/$labelId/event_labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsEventLabel.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCheckInsEventLabel Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels;
-  static Future<PcoCheckInsEventLabel?> getSingleFromEventAndEventLabelIds(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsEventLabel?  retval;
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getSingleFromEventAndEventLabel(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
     var url = '/check-ins/v2/events/$eventId/event_labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsEventLabel.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsEventLabel.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoCheckInsEventLabel Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/labels/1/event_labels;
-  static Future<PcoCheckInsEventLabel?> getSingleFromLabelAndEventLabelIds(String labelId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsEventLabel?  retval;
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getSingleFromLabelAndEventLabel(String labelId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
     var url = '/check-ins/v2/labels/$labelId/event_labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsEventLabel.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsEventLabel.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoCheckInsEvent objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/event
-Future<List<PcoCheckInsEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCheckInsEvent>> getEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCheckInsEvent.canInclude;
-  List<PcoCheckInsEvent> retval = [];
   var url = '$apiEndpoint/event';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCheckInsEvent.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCheckInsEvent>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoCheckInsLabel objects
 /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/label
-Future<List<PcoCheckInsLabel>> getLabels({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoCheckInsLabel>> getLabels({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoCheckInsLabel.canInclude;
-  List<PcoCheckInsLabel> retval = [];
   var url = '$apiEndpoint/label';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoCheckInsLabel.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoCheckInsLabel>(url, query: query, apiVersion:apiVersion);
 }
     
 

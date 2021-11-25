@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.832868
+/// This file was generated on 2021-11-25T00:07:20.790507
 
 
 import '../../pco.dart';
@@ -98,86 +98,57 @@ class PcoGivingPaymentMethod extends PcoResource {
 
   /// will get many PcoGivingPaymentMethod Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods;
-  static Future<List<PcoGivingPaymentMethod>> getManyFromPeopleAndPaymentMethodIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingPaymentMethod> retval = [];
+  static Future<PcoCollection<PcoGivingPaymentMethod>> getManyFromPeopleAndPaymentMethod(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPaymentMethod.canInclude;
     var url = '/giving/v2/people/$peopleId/payment_methods';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingPaymentMethod.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingPaymentMethod Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/recurring_donations/1/payment_method;
-  static Future<List<PcoGivingPaymentMethod>> getManyFromRecurringDonationAndPaymentMethodIds(String recurringDonationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingPaymentMethod> retval = [];
+  static Future<PcoCollection<PcoGivingPaymentMethod>> getManyFromRecurringDonation(String recurringDonationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPaymentMethod.canInclude;
     var url = '/giving/v2/recurring_donations/$recurringDonationId/payment_method';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingPaymentMethod.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoGivingPaymentMethod Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods;
-  static Future<PcoGivingPaymentMethod?> getSingleFromPeopleAndPaymentMethodIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingPaymentMethod?  retval;
+  static Future<PcoCollection<PcoGivingPaymentMethod>> getSingleFromPeopleAndPaymentMethod(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPaymentMethod.canInclude;
     var url = '/giving/v2/people/$peopleId/payment_methods' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingPaymentMethod.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingPaymentMethod.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingPaymentMethod Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/recurring_donations/1/payment_method;
-  static Future<PcoGivingPaymentMethod?> getSingleFromRecurringDonationAndPaymentMethodIds(String recurringDonationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingPaymentMethod?  retval;
+  static Future<PcoCollection<PcoGivingPaymentMethod>> getSingleFromRecurringDonation(String recurringDonationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPaymentMethod.canInclude;
     var url = '/giving/v2/recurring_donations/$recurringDonationId/payment_method' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingPaymentMethod.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingPaymentMethod.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoGivingRecurringDonation objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods/1/recurring_donations
-Future<List<PcoGivingRecurringDonation>> getRecurringDonations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingRecurringDonation>> getRecurringDonations({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingRecurringDonation.canInclude;
-  List<PcoGivingRecurringDonation> retval = [];
   var url = '$apiEndpoint/recurring_donations';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingRecurringDonation.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url, query: query, apiVersion:apiVersion);
 }
     
 

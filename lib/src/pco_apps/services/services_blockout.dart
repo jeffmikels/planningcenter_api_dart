@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.060129
+/// This file was generated on 2021-11-25T00:07:20.236725
 
 
 import '../../pco.dart';
@@ -162,70 +162,45 @@ class PcoServicesBlockout extends PcoResource {
 
   /// will get many PcoServicesBlockout Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts;
-  static Future<List<PcoServicesBlockout>> getManyFromPeopleAndBlockoutIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesBlockout> retval = [];
+  static Future<PcoCollection<PcoServicesBlockout>> getManyFromPeopleAndBlockout(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockout.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesBlockout.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesBlockout>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesBlockout Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts;
-  static Future<PcoServicesBlockout?> getSingleFromPeopleAndBlockoutIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesBlockout?  retval;
+  static Future<PcoCollection<PcoServicesBlockout>> getSingleFromPeopleAndBlockout(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockout.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesBlockout.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesBlockout>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesBlockout.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoServicesBlockoutDate objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
-Future<List<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesBlockoutDate.canInclude;
-  List<PcoServicesBlockoutDate> retval = [];
   var url = '$apiEndpoint/blockout_dates';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesBlockoutDate.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoServicesBlockoutException objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-Future<List<PcoServicesBlockoutException>> getBlockoutExceptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
-  List<PcoServicesBlockoutException> retval = [];
   var url = '$apiEndpoint/blockout_exceptions';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesBlockoutException.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url, query: query, apiVersion:apiVersion);
 }
     
 

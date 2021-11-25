@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.534222
+/// This file was generated on 2021-11-25T00:07:20.556905
 
 
 import '../../pco.dart';
@@ -86,37 +86,26 @@ class PcoPeopleFormFieldOption extends PcoResource {
 
   /// will get many PcoPeopleFormFieldOption Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options;
-  static Future<List<PcoPeopleFormFieldOption>> getManyFromFormAndFieldAndOptionIds(String formId,String fieldId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleFormFieldOption> retval = [];
+  static Future<PcoCollection<PcoPeopleFormFieldOption>> getManyFromFormAndFieldAndOption(String formId,String fieldId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormFieldOption.canInclude;
     var url = '/people/v2/forms/$formId/fields/$fieldId/options';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleFormFieldOption.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleFormFieldOption>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleFormFieldOption Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options;
-  static Future<PcoPeopleFormFieldOption?> getSingleFromFormAndFieldAndOptionIds(String formId,String fieldId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleFormFieldOption?  retval;
+  static Future<PcoCollection<PcoPeopleFormFieldOption>> getSingleFromFormAndFieldAndOption(String formId,String fieldId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormFieldOption.canInclude;
     var url = '/people/v2/forms/$formId/fields/$fieldId/options' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleFormFieldOption.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleFormFieldOption>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleFormFieldOption.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

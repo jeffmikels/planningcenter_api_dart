@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.115799
+/// This file was generated on 2021-11-25T00:07:20.253237
 
 
 import '../../pco.dart';
@@ -78,37 +78,26 @@ class PcoServicesLayout extends PcoResource {
 
   /// will get many PcoServicesLayout Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/layouts;
-  static Future<List<PcoServicesLayout>> getManyFromServiceTypeAndLayoutIds(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesLayout> retval = [];
+  static Future<PcoCollection<PcoServicesLayout>> getManyFromServiceTypeAndLayout(String serviceTypeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLayout.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/layouts';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesLayout.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesLayout>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesLayout Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/layouts;
-  static Future<PcoServicesLayout?> getSingleFromServiceTypeAndLayoutIds(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesLayout?  retval;
+  static Future<PcoCollection<PcoServicesLayout>> getSingleFromServiceTypeAndLayout(String serviceTypeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLayout.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/layouts' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesLayout.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesLayout>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesLayout.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

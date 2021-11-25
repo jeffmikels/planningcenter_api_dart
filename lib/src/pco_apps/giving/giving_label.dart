@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.828751
+/// This file was generated on 2021-11-25T00:07:20.789300
 
 
 import '../../pco.dart';
@@ -80,69 +80,47 @@ class PcoGivingLabel extends PcoResource {
 
   /// will get many PcoGivingLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/labels;
-  static Future<List<PcoGivingLabel>> getManyFromDonationAndLabelIds(String donationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingLabel> retval = [];
+  static Future<PcoCollection<PcoGivingLabel>> getManyFromDonationAndLabel(String donationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingLabel.canInclude;
     var url = '/giving/v2/donations/$donationId/labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingLabel.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoGivingLabel Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/labels;
-  static Future<List<PcoGivingLabel>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingLabel> retval = [];
+  static Future<PcoCollection<PcoGivingLabel>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingLabel.canInclude;
     var url = '/giving/v2/labels';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingLabel.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoGivingLabel Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/labels;
-  static Future<PcoGivingLabel?> getSingleFromDonationAndLabelIds(String donationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingLabel?  retval;
+  static Future<PcoCollection<PcoGivingLabel>> getSingleFromDonationAndLabel(String donationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingLabel.canInclude;
     var url = '/giving/v2/donations/$donationId/labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingLabel.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingLabel.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoGivingLabel Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/labels;
-  static Future<PcoGivingLabel?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingLabel?  retval;
+  static Future<PcoCollection<PcoGivingLabel>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingLabel.canInclude;
     var url = '/giving/v2/labels' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingLabel.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingLabel.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

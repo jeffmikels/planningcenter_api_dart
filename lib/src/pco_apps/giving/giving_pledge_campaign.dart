@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.841357
+/// This file was generated on 2021-11-25T00:07:20.794549
 
 
 import '../../pco.dart';
@@ -114,70 +114,45 @@ class PcoGivingPledgeCampaign extends PcoResource {
 
   /// will get many PcoGivingPledgeCampaign Objects
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/pledges/1/pledge_campaign;
-  static Future<List<PcoGivingPledgeCampaign>> getManyFromPledgeAndPledgeCampaignIds(String pledgeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoGivingPledgeCampaign> retval = [];
+  static Future<PcoCollection<PcoGivingPledgeCampaign>> getManyFromPledge(String pledgeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPledgeCampaign.canInclude;
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoGivingPledgeCampaign.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPledgeCampaign>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoGivingPledgeCampaign Object
   /// using a path like this: https://api.planningcenteronline.com/giving/v2/pledges/1/pledge_campaign;
-  static Future<PcoGivingPledgeCampaign?> getSingleFromPledgeAndPledgeCampaignIds(String pledgeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoGivingPledgeCampaign?  retval;
+  static Future<PcoCollection<PcoGivingPledgeCampaign>> getSingleFromPledge(String pledgeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingPledgeCampaign.canInclude;
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoGivingPledgeCampaign.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoGivingPledgeCampaign>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoGivingPledgeCampaign.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoGivingFund objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/pledge_campaigns/1/fund
-Future<List<PcoGivingFund>> getFunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingFund>> getFunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingFund.canInclude;
-  List<PcoGivingFund> retval = [];
   var url = '$apiEndpoint/fund';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingFund.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingFund>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoGivingPledge objects
 /// using a path like this: https://api.planningcenteronline.com/giving/v2/pledge_campaigns/1/pledges
-Future<List<PcoGivingPledge>> getPledges({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoGivingPledge>> getPledges({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoGivingPledge.canInclude;
-  List<PcoGivingPledge> retval = [];
   var url = '$apiEndpoint/pledges';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoGivingPledge.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoGivingPledge>(url, query: query, apiVersion:apiVersion);
 }
     
 

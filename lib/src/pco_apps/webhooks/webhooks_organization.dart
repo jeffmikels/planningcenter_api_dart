@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.923637
+/// This file was generated on 2021-11-25T00:07:20.867181
 
 
 import '../../pco.dart';
@@ -82,34 +82,20 @@ class PcoWebhooksOrganization extends PcoResource {
 
 /// will get many PcoWebhooksAvailableEvent objects
 /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/available_events
-Future<List<PcoWebhooksAvailableEvent>> getAvailableEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoWebhooksAvailableEvent>> getAvailableEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoWebhooksAvailableEvent.canInclude;
-  List<PcoWebhooksAvailableEvent> retval = [];
   var url = '$apiEndpoint/available_events';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoWebhooksAvailableEvent.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:apiVersion);
 }
     
 /// will get many PcoWebhooksSubscription objects
 /// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions
-Future<List<PcoWebhooksSubscription>> getSubscriptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoWebhooksSubscription>> getSubscriptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
-  List<PcoWebhooksSubscription> retval = [];
   var url = '$apiEndpoint/subscriptions';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoWebhooksSubscription.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion:apiVersion);
 }
     
 

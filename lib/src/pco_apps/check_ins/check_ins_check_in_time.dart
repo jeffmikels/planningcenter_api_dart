@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.350395
+/// This file was generated on 2021-11-25T00:07:20.343891
 
 
 import '../../pco.dart';
@@ -86,37 +86,26 @@ class PcoCheckInsCheckInTime extends PcoResource {
 
   /// will get many PcoCheckInsCheckInTime Objects
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times;
-  static Future<List<PcoCheckInsCheckInTime>> getManyFromCheckInAndCheckInTimeIds(String checkInId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoCheckInsCheckInTime> retval = [];
+  static Future<PcoCollection<PcoCheckInsCheckInTime>> getManyFromCheckInAndCheckInTime(String checkInId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsCheckInTime.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_times';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoCheckInsCheckInTime.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoCheckInsCheckInTime Object
   /// using a path like this: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times;
-  static Future<PcoCheckInsCheckInTime?> getSingleFromCheckInAndCheckInTimeIds(String checkInId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoCheckInsCheckInTime?  retval;
+  static Future<PcoCollection<PcoCheckInsCheckInTime>> getSingleFromCheckInAndCheckInTime(String checkInId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsCheckInTime.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_times' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoCheckInsCheckInTime.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoCheckInsCheckInTime.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

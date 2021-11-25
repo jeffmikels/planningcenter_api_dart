@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.597379
+/// This file was generated on 2021-11-25T00:07:20.579715
 
 
 import '../../pco.dart';
@@ -82,69 +82,47 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
 
   /// will get many PcoPeopleNoteCategorySubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/subscriptions;
-  static Future<List<PcoPeopleNoteCategorySubscription>> getManyFromNoteCategoryAndSubscriptionIds(String noteCategoryId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleNoteCategorySubscription> retval = [];
+  static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getManyFromNoteCategoryAndSubscription(String noteCategoryId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategorySubscription.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleNoteCategorySubscription.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url, query: query, apiVersion:kApiVersion);
   }
   /// will get many PcoPeopleNoteCategorySubscription Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_category_subscriptions;
-  static Future<List<PcoPeopleNoteCategorySubscription>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleNoteCategorySubscription> retval = [];
+  static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategorySubscription.canInclude;
     var url = '/people/v2/note_category_subscriptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleNoteCategorySubscription.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleNoteCategorySubscription Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/subscriptions;
-  static Future<PcoPeopleNoteCategorySubscription?> getSingleFromNoteCategoryAndSubscriptionIds(String noteCategoryId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleNoteCategorySubscription?  retval;
+  static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getSingleFromNoteCategoryAndSubscription(String noteCategoryId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategorySubscription.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleNoteCategorySubscription.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleNoteCategorySubscription.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
   /// will get a single PcoPeopleNoteCategorySubscription Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_category_subscriptions;
-  static Future<PcoPeopleNoteCategorySubscription?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleNoteCategorySubscription?  retval;
+  static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategorySubscription.canInclude;
     var url = '/people/v2/note_category_subscriptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleNoteCategorySubscription.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleNoteCategorySubscription.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

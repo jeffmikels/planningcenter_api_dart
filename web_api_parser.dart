@@ -425,18 +425,11 @@ String classTemplate(Vertex vertex) {
     childGetters.add('''
 /// will get many $childClass objects
 /// using a path like this: ${edge.path}
-Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<$childClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = $childClass.canInclude;
-  List<$childClass> retval = [];
   var url = '\$apiEndpoint/$pathSuffix';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add($childClass.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<$childClass>(url, query: query, apiVersion:apiVersion);
 }
     ''');
   }
@@ -471,7 +464,13 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool all
     }
     var edgePathTemplate = '/' + pathParts.join('/');
     var functionPrefix = 'From';
-    var functionSuffix = 'Ids';
+    var functionSuffix = '';
+    var finalName = edgePascalNames.removeLast();
+
+    // if the final part of the path is a special endpoint (path doesn't match object)
+    if (pathParts.last != edge.head.id) {
+      edgePascalNames.add(finalName);
+    }
 
     // special consideration for root level edges
     if (edge.tail.id == 'organization') {
@@ -484,20 +483,11 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool all
     staticCollectionConstructors.add('''
   /// will get many $className Objects
   /// using a path like this: ${edge.path};
-  static Future<List<$className>> getMany$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<$className> retval = [];
+  static Future<PcoCollection<$className>> getMany$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = $className.canInclude;
     var url = '$edgePathTemplate';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add($className.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
   }
 ''');
 
@@ -505,18 +495,16 @@ Future<List<$childClass>> $functionName({PlanningCenterApiQuery? query, bool all
     staticSingleConstructors.add('''
   /// will get a single $className Object
   /// using a path like this: ${edge.path};
-  static Future<$className?> getSingle$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    $className?  retval;
+  static Future<PcoCollection<$className>> getSingle$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = $className.canInclude;
     var url = '$edgePathTemplate' + '/\$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = $className.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = $className.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 ''');
   }
@@ -661,8 +649,8 @@ Map<String, PcoResource Function(Map<String, dynamic>)> _constructors = {
 ${lines.join('\n')}
 };
 
-PcoResource? buildResource(String application, String pcoType, Map<String, dynamic> data) {
-  var key = application + '-' + pcoType;
+PcoResource? buildResource(String application, Map<String, dynamic> data) {
+  var key = application + '-' + (data['type'] ?? 'null');
   if (_constructors.containsKey(key)) {
     return _constructors[key]!(data);
   }

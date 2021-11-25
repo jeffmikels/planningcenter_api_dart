@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.231454
+/// This file was generated on 2021-11-25T00:07:20.288851
 
 
 import '../../pco.dart';
@@ -85,54 +85,36 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
   /// will get many PcoServicesSplitTeamRehearsalAssignment Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments;
-  static Future<List<PcoServicesSplitTeamRehearsalAssignment>> getManyFromPeopleAndPlanTimeAndSplitTeamRehearsalAssignmentIds(String peopleId,String planTimeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesSplitTeamRehearsalAssignment> retval = [];
+  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getManyFromPeopleAndPlanTimeAndSplitTeamRehearsalAssignment(String peopleId,String planTimeId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSplitTeamRehearsalAssignment.canInclude;
     var url = '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesSplitTeamRehearsalAssignment.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesSplitTeamRehearsalAssignment Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments;
-  static Future<PcoServicesSplitTeamRehearsalAssignment?> getSingleFromPeopleAndPlanTimeAndSplitTeamRehearsalAssignmentIds(String peopleId,String planTimeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesSplitTeamRehearsalAssignment?  retval;
+  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getSingleFromPeopleAndPlanTimeAndSplitTeamRehearsalAssignment(String peopleId,String planTimeId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSplitTeamRehearsalAssignment.canInclude;
     var url = '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesSplitTeamRehearsalAssignment.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesSplitTeamRehearsalAssignment.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoServicesTeam objects
 /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team
-Future<List<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoServicesTeam.canInclude;
-  List<PcoServicesTeam> retval = [];
   var url = '$apiEndpoint/team';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoServicesTeam.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion:apiVersion);
 }
     
 

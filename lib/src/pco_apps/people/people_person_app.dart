@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.627588
+/// This file was generated on 2021-11-25T00:07:20.598369
 
 
 import '../../pco.dart';
@@ -84,54 +84,36 @@ class PcoPeoplePersonApp extends PcoResource {
 
   /// will get many PcoPeoplePersonApp Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/person_apps;
-  static Future<List<PcoPeoplePersonApp>> getManyFromPeopleAndPersonAppIds(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeoplePersonApp> retval = [];
+  static Future<PcoCollection<PcoPeoplePersonApp>> getManyFromPeopleAndPersonApp(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePersonApp.canInclude;
     var url = '/people/v2/people/$peopleId/person_apps';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeoplePersonApp.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeoplePersonApp Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/person_apps;
-  static Future<PcoPeoplePersonApp?> getSingleFromPeopleAndPersonAppIds(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeoplePersonApp?  retval;
+  static Future<PcoCollection<PcoPeoplePersonApp>> getSingleFromPeopleAndPersonApp(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePersonApp.canInclude;
     var url = '/people/v2/people/$peopleId/person_apps' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeoplePersonApp.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeoplePersonApp.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 
 /// will get many PcoPeopleApp objects
 /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app
-Future<List<PcoPeopleApp>> getApps({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+Future<PcoCollection<PcoPeopleApp>> getApps({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
   query ??= PlanningCenterApiQuery();
   if (allIncludes) query.include = PcoPeopleApp.canInclude;
-  List<PcoPeopleApp> retval = [];
   var url = '$apiEndpoint/app';
-  var res = await api.call(url, query: query, apiVersion:apiVersion);
-  if (!res.isError) {
-    for (var itemData in res.data) {
-      retval.add(PcoPeopleApp.fromJson(itemData, withIncludes: res.included));
-    }
-  }
-  return retval;
+  return PcoCollection.fromApiCall<PcoPeopleApp>(url, query: query, apiVersion:apiVersion);
 }
     
 

@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.629764
+/// This file was generated on 2021-11-25T00:07:20.599797
 
 
 import '../../pco.dart';
@@ -86,37 +86,26 @@ class PcoPeoplePersonMerger extends PcoResource {
 
   /// will get many PcoPeoplePersonMerger Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/person_mergers;
-  static Future<List<PcoPeoplePersonMerger>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeoplePersonMerger> retval = [];
+  static Future<PcoCollection<PcoPeoplePersonMerger>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePersonMerger.canInclude;
     var url = '/people/v2/person_mergers';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeoplePersonMerger.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeoplePersonMerger Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/person_mergers;
-  static Future<PcoPeoplePersonMerger?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeoplePersonMerger?  retval;
+  static Future<PcoCollection<PcoPeoplePersonMerger>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePersonMerger.canInclude;
     var url = '/people/v2/person_mergers' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeoplePersonMerger.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeoplePersonMerger.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

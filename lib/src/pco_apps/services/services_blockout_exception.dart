@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.062706
+/// This file was generated on 2021-11-25T00:07:20.238736
 
 
 import '../../pco.dart';
@@ -81,37 +81,26 @@ class PcoServicesBlockoutException extends PcoResource {
 
   /// will get many PcoServicesBlockoutException Objects
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions;
-  static Future<List<PcoServicesBlockoutException>> getManyFromPeopleAndBlockoutAndBlockoutExceptionIds(String peopleId,String blockoutId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoServicesBlockoutException> retval = [];
+  static Future<PcoCollection<PcoServicesBlockoutException>> getManyFromPeopleAndBlockoutAndBlockoutException(String peopleId,String blockoutId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoServicesBlockoutException.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoServicesBlockoutException Object
   /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions;
-  static Future<PcoServicesBlockoutException?> getSingleFromPeopleAndBlockoutAndBlockoutExceptionIds(String peopleId,String blockoutId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoServicesBlockoutException?  retval;
+  static Future<PcoCollection<PcoServicesBlockoutException>> getSingleFromPeopleAndBlockoutAndBlockoutException(String peopleId,String blockoutId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoServicesBlockoutException.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoServicesBlockoutException.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

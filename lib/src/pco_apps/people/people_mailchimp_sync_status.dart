@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.546774
+/// This file was generated on 2021-11-25T00:07:20.565296
 
 
 import '../../pco.dart';
@@ -88,37 +88,26 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
 
   /// will get many PcoPeopleMailchimpSyncStatu Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status;
-  static Future<List<PcoPeopleMailchimpSyncStatu>> getManyFromListAndMailchimpSyncStatuIds(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleMailchimpSyncStatu> retval = [];
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getManyFromList(String listId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleMailchimpSyncStatu.canInclude;
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleMailchimpSyncStatu.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleMailchimpSyncStatu Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status;
-  static Future<PcoPeopleMailchimpSyncStatu?> getSingleFromListAndMailchimpSyncStatuIds(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleMailchimpSyncStatu?  retval;
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getSingleFromList(String listId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleMailchimpSyncStatu.canInclude;
     var url = '/people/v2/lists/$listId/mailchimp_sync_status' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleMailchimpSyncStatu.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleMailchimpSyncStatu.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

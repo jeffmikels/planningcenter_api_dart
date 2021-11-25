@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.595318
+/// This file was generated on 2021-11-25T00:07:20.578579
 
 
 import '../../pco.dart';
@@ -88,37 +88,26 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
   /// will get many PcoPeopleNoteCategoryShare Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/shares;
-  static Future<List<PcoPeopleNoteCategoryShare>> getManyFromNoteCategoryAndShareIds(String noteCategoryId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleNoteCategoryShare> retval = [];
+  static Future<PcoCollection<PcoPeopleNoteCategoryShare>> getManyFromNoteCategoryAndShare(String noteCategoryId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategoryShare.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleNoteCategoryShare.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleNoteCategoryShare Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/note_categories/1/shares;
-  static Future<PcoPeopleNoteCategoryShare?> getSingleFromNoteCategoryAndShareIds(String noteCategoryId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleNoteCategoryShare?  retval;
+  static Future<PcoCollection<PcoPeopleNoteCategoryShare>> getSingleFromNoteCategoryAndShare(String noteCategoryId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleNoteCategoryShare.canInclude;
     var url = '/people/v2/note_categories/$noteCategoryId/shares' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleNoteCategoryShare.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleNoteCategoryShare.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

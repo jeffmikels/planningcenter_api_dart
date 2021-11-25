@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.516915
+/// This file was generated on 2021-11-25T00:07:20.545731
 
 
 import '../../pco.dart';
@@ -78,37 +78,26 @@ class PcoPeopleBirthdayPeople extends PcoResource {
 
   /// will get many PcoPeopleBirthdayPeople Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/birthday_people;
-  static Future<List<PcoPeopleBirthdayPeople>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleBirthdayPeople> retval = [];
+  static Future<PcoCollection<PcoPeopleBirthdayPeople>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleBirthdayPeople.canInclude;
     var url = '/people/v2/birthday_people';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleBirthdayPeople.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleBirthdayPeople>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleBirthdayPeople Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/birthday_people;
-  static Future<PcoPeopleBirthdayPeople?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleBirthdayPeople?  retval;
+  static Future<PcoCollection<PcoPeopleBirthdayPeople>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleBirthdayPeople.canInclude;
     var url = '/people/v2/birthday_people' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleBirthdayPeople.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleBirthdayPeople>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleBirthdayPeople.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

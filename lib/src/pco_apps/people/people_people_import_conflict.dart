@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.604609
+/// This file was generated on 2021-11-25T00:07:20.586023
 
 
 import '../../pco.dart';
@@ -92,37 +92,26 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
 
   /// will get many PcoPeoplePeopleImportConflict Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts;
-  static Future<List<PcoPeoplePeopleImportConflict>> getManyFromPeopleImportAndConflictIds(String peopleImportId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeoplePeopleImportConflict> retval = [];
+  static Future<PcoCollection<PcoPeoplePeopleImportConflict>> getManyFromPeopleImportAndConflict(String peopleImportId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeoplePeopleImportConflict.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeoplePeopleImportConflict Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts;
-  static Future<PcoPeoplePeopleImportConflict?> getSingleFromPeopleImportAndConflictIds(String peopleImportId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeoplePeopleImportConflict?  retval;
+  static Future<PcoCollection<PcoPeoplePeopleImportConflict>> getSingleFromPeopleImportAndConflict(String peopleImportId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/conflicts' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeoplePeopleImportConflict.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeoplePeopleImportConflict.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

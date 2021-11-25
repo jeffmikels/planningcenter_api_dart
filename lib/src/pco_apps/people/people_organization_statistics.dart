@@ -1,4 +1,4 @@
-/// This file was generated on 2021-11-22T16:57:41.602032
+/// This file was generated on 2021-11-25T00:07:20.583705
 
 
 import '../../pco.dart';
@@ -78,37 +78,26 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
 
   /// will get many PcoPeopleOrganizationStatistic Objects
   /// using a path like this: https://api.planningcenteronline.com/people/v2/stats;
-  static Future<List<PcoPeopleOrganizationStatistic>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    List<PcoPeopleOrganizationStatistic> retval = [];
+  static Future<PcoCollection<PcoPeopleOrganizationStatistic>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleOrganizationStatistic.canInclude;
     var url = '/people/v2/stats';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is List) {
-      for (var itemData in res.data) {
-        retval.add(PcoPeopleOrganizationStatistic.fromJson(itemData, withIncludes: res.included));
-      }
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleOrganizationStatistic>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// will get a single PcoPeopleOrganizationStatistic Object
   /// using a path like this: https://api.planningcenteronline.com/people/v2/stats;
-  static Future<PcoPeopleOrganizationStatistic?> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    PcoPeopleOrganizationStatistic?  retval;
+  static Future<PcoCollection<PcoPeopleOrganizationStatistic>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleOrganizationStatistic.canInclude;
     var url = '/people/v2/stats' + '/$id';
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion:kApiVersion);
-    if (res.isError) return retval;
-
-    if (res.data is! List) {
-      retval = PcoPeopleOrganizationStatistic.fromJson(res.data, withIncludes: res.included);
-    }
-    return retval;
+    return PcoCollection.fromApiCall<PcoPeopleOrganizationStatistic>(url, query: query, apiVersion:kApiVersion);
+    // if (res.isError) return retval;
+    // if (res.data is! List) {
+    //   retval = PcoPeopleOrganizationStatistic.fromJson(res.data, withIncludes: res.included);
+    // }
+    // return retval;
   }
 
 

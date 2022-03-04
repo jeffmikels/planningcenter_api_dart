@@ -1,3 +1,7 @@
+## 0.4.1
+
+-   Removing old references to `DataClass` and `PlanningCenterResource` classes
+
 ## 0.4.0
 
 -   Massive refactoring of the code generation methods and therefore massive changes to the function definitions all around.

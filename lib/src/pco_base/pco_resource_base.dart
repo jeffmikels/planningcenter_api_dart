@@ -291,104 +291,104 @@ class PcoCollection<T extends PcoResource> {
 
 // --- the old way ---
 /* -- DATA CLASSES -- */
-class DataClass {
-  Map<String, dynamic> data = {};
+// class DataClass {
+//   Map<String, dynamic> data = {};
 
-  DataClass();
+//   DataClass();
 
-  DataClass.fromData(this.data);
+//   DataClass.fromData(this.data);
 
-  dynamic get(String key) => data[key];
-  set(String key, dynamic value) => data[key] = value;
+//   dynamic get(String key) => data[key];
+//   set(String key, dynamic value) => data[key] = value;
 
-  Object toJson() => data;
-}
+//   Object toJson() => data;
+// }
 
-abstract class PlanningCenterResource extends DataClass {
-  final List apiIncludedAttributes = [];
+// abstract class PlanningCenterResource extends DataClass {
+//   final List apiIncludedAttributes = [];
 
-  String itemEndpoint();
+//   String itemEndpoint();
 
-  String? id; // will not show up in json fields
-  String get type => get('type');
-  DateTime get createdAt => DateTime.parse(attributes.get('created_at')!);
-  DateTime get updatedAt => DateTime.parse(attributes.get('updated_at')!);
+//   String? id; // will not show up in json fields
+//   String get type => get('type');
+//   DateTime get createdAt => DateTime.parse(attributes.get('created_at')!);
+//   DateTime get updatedAt => DateTime.parse(attributes.get('updated_at')!);
 
-  late DataClass attributes;
-  late DataClass relationships;
-  // Map<String, String> get attributes => _get('attributes') ?? {};
+//   late DataClass attributes;
+//   late DataClass relationships;
+//   // Map<String, String> get attributes => _get('attributes') ?? {};
 
-  Map<String, String> links = {};
+//   Map<String, String> links = {};
 
-  /// returns a string ready for the api wrapped in a "data" object
-  /// {"data": ...}
-  /// never includes relationships
-  String get apiEncoded {
-    var filteredAttributes = <String, dynamic>{};
-    attributes.data.forEach((key, value) {
-      if (apiIncludedAttributes.contains(key) && value != null) filteredAttributes[key] = value;
-    });
-    return json.encode({
-      'data': {
-        'type': type,
-        'attributes': filteredAttributes,
-      }
-    });
-  }
+//   /// returns a string ready for the api wrapped in a "data" object
+//   /// {"data": ...}
+//   /// never includes relationships
+//   String get apiEncoded {
+//     var filteredAttributes = <String, dynamic>{};
+//     attributes.data.forEach((key, value) {
+//       if (apiIncludedAttributes.contains(key) && value != null) filteredAttributes[key] = value;
+//     });
+//     return json.encode({
+//       'data': {
+//         'type': type,
+//         'attributes': filteredAttributes,
+//       }
+//     });
+//   }
 
-  // ensure there is an "attributes" item in the data
-  PlanningCenterResource() : super() {
-    attributes = DataClass();
-    relationships = DataClass();
-    finishSetup();
-  }
+//   // ensure there is an "attributes" item in the data
+//   PlanningCenterResource() : super() {
+//     attributes = DataClass();
+//     relationships = DataClass();
+//     finishSetup();
+//   }
 
-  PlanningCenterResource.fromData(Map<String, dynamic> data) : super.fromData(data) {
-    id = data['id']; // might be null
-    attributes = DataClass.fromData(this.data['attributes']);
-    relationships = DataClass.fromData(this.data['relationships'] ?? {});
-    finishSetup();
-  }
+//   PlanningCenterResource.fromData(Map<String, dynamic> data) : super.fromData(data) {
+//     id = data['id']; // might be null
+//     attributes = DataClass.fromData(this.data['attributes']);
+//     relationships = DataClass.fromData(this.data['relationships'] ?? {});
+//     finishSetup();
+//   }
 
-  /// by doing things this way, we update the underlying data objects
-  /// inside the dataclasses
-  void updateFromData(Map<String, dynamic> data) {
-    data.forEach((key, value) {
-      if (key == 'attributes') {
-        (value as Map).forEach((key, value) {
-          data['attributes'][key] = value;
-        });
-      } else if (key == 'links') {
-        (value as Map).forEach((key, value) {
-          data['links'][key] = value;
-        });
-      } else if (key == 'relationships') {
-        (value as Map).forEach((key, value) {
-          data['relationships'][key] = value;
-        });
-      } else if (key == 'id') {
-        id = value;
-      } else {
-        data[key] = value;
-      }
-    });
-  }
+//   /// by doing things this way, we update the underlying data objects
+//   /// inside the dataclasses
+//   void updateFromData(Map<String, dynamic> data) {
+//     data.forEach((key, value) {
+//       if (key == 'attributes') {
+//         (value as Map).forEach((key, value) {
+//           data['attributes'][key] = value;
+//         });
+//       } else if (key == 'links') {
+//         (value as Map).forEach((key, value) {
+//           data['links'][key] = value;
+//         });
+//       } else if (key == 'relationships') {
+//         (value as Map).forEach((key, value) {
+//           data['relationships'][key] = value;
+//         });
+//       } else if (key == 'id') {
+//         id = value;
+//       } else {
+//         data[key] = value;
+//       }
+//     });
+//   }
 
-  /// just to make sure our local data object
-  /// is properly referencing the real data
-  void finishSetup() {
-    // make sure we import all the proper 'links' if there are any
-    if (data.containsKey('links') && data['links'] is Map) {
-      (data['links'] as Map).forEach((k, v) {
-        links[k.toString()] = v.toString();
-      });
-    }
-    // properly associate the data
-    data['links'] = links;
+//   /// just to make sure our local data object
+//   /// is properly referencing the real data
+//   void finishSetup() {
+//     // make sure we import all the proper 'links' if there are any
+//     if (data.containsKey('links') && data['links'] is Map) {
+//       (data['links'] as Map).forEach((k, v) {
+//         links[k.toString()] = v.toString();
+//       });
+//     }
+//     // properly associate the data
+//     data['links'] = links;
 
-    // also make sure to associate the data classes
-    // with their root data
-    data['attributes'] = attributes.data;
-    data['relationships'] = relationships.data;
-  }
-}
+//     // also make sure to associate the data classes
+//     // with their root data
+//     data['attributes'] = attributes.data;
+//     data['relationships'] = relationships.data;
+//   }
+// }

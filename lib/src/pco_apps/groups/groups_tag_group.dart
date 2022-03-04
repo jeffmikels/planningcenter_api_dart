@@ -1,36 +1,54 @@
-/// This file was generated on 2021-11-25T00:07:20.853906
+/// This file was generated on 2022-03-04T15:29:14.812321
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Groups TagGroup Object
 /// 
-/// Application: groups
-/// Id:          tag_group
-/// Type:        TagGroup
-/// ApiVersion:  2018-08-01
+/// - Application:        groups
+/// - Id:                 tag_group
+/// - Type:               TagGroup
+/// - ApiVersion:         2018-08-01
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/tag_groups
 /// 
 /// Description:
 /// 
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "TagGroup",
+///   "id": "1",
+///   "attributes": {
+///     "display_publicly": true,
+///     "multiple_options_enabled": true,
+///     "name": "string",
+///     "position": 1
+///   },
+///   "relationships": {}
+/// }
+/// ```
 /// 
-/// {"type":"TagGroup","id":"1","attributes":{"display_publicly":true,"multiple_options_enabled":true,"name":"string","position":1},"relationships":{}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/groups/v2/tag_groups
-/// 
-/// possible includes with parameter ?include=a,b
-
+/// Possible includes with parameter ?include=a,b
+/// NONE
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// @name (URLParameter), query on a specific name, example: ?where[name]=string
-/// possible orderings with parameter ?order=
-/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// @position (URLParameter), prefix with a hyphen (-position) to reverse the order
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// 
+/// Possible orderings with parameter ?order=
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
+///
+/// All Outbound Edges:
+/// - `tag-taggroup-tags`: https://api.planningcenteronline.com/groups/v2/tag_groups/1/tags
+/// 
+/// All Inbound Edges:
+/// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/groups/v2/tag_groups
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoGroupsTagGroup extends PcoResource {
   static const String kPcoApplication = 'groups';
@@ -39,30 +57,35 @@ class PcoGroupsTagGroup extends PcoResource {
   static const String kApiVersion = '2018-08-01';
   static const String kShortestEdgeId = 'taggroup-organization-tag_groups';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/tag_groups';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/tag_groups';
 
   /// possible includes with parameter ?include=a,b
-
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
+  /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   static List<String> get canQuery => ['name'];
 
   /// possible orderings with parameter ?order=
-  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
-  /// @position (URLParameter), prefix with a hyphen (-position) to reverse the order
+  /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
   static List<String> get canOrderBy => ['name','position'];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
   static const kDisplayPublicly = 'display_publicly';
   static const kMultipleOptionsEnabled = 'multiple_options_enabled';
   static const kName = 'name';
@@ -72,56 +95,85 @@ class PcoGroupsTagGroup extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => [];
+
   @override
   List<String> get updateAllowed => [];
 
-  bool get isDisplayPublicly => attributes[kDisplayPublicly] == true;
+  @override
+  bool get canCreate => false;
 
-  /// Whether or not a group can belong to many tags within this tag group
+  @override
+  bool get canUpdate => false;
+
+  @override
+  bool get canDestroy => false;
+
+  // getters for object attributes
+
+  bool get isDisplayPublicly => attributes[kDisplayPublicly] == true;
   bool get isMultipleOptionsEnabled => attributes[kMultipleOptionsEnabled] == true;
   String get name => attributes[kName] ?? '';
   int get position => attributes[kPosition] ?? 0;
+  
+
+  // setters for object attributes
+
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
 
-
+  // Class Constructors
   PcoGroupsTagGroup() : super(kPcoApplication, kTypeString);
   PcoGroupsTagGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoGroupsTagGroup Objects
-  /// using a path like this: https://api.planningcenteronline.com/groups/v2/tag_groups;
-  static Future<PcoCollection<PcoGroupsTagGroup>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoGroupsTagGroup] objects (expecting many)
+  /// using a path like this: `/groups/v2/tag_groups`
+  /// 
+  /// Available Query Filters:
+  /// - `public`
+  /// Filter tag groups that are visible on public pages
+  /// 
+  static Future<PcoCollection<PcoGroupsTagGroup>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsTagGroup.canInclude;
     var url = '/groups/v2/tag_groups';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsTagGroup>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoGroupsTagGroup Object
-  /// using a path like this: https://api.planningcenteronline.com/groups/v2/tag_groups;
-  static Future<PcoCollection<PcoGroupsTagGroup>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoGroupsTag] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/groups/v2/tag_groups/1/tags`
+  Future<PcoCollection<PcoGroupsTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsTagGroup.canInclude;
-    var url = '/groups/v2/tag_groups' + '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsTagGroup>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoGroupsTagGroup.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoGroupsTag.canInclude;
+    var url = '$apiEndpoint/tags';
+    return PcoCollection.fromApiCall<PcoGroupsTag>(url, query: query, apiVersion: apiVersion);
   }
 
 
-/// will get many PcoGroupsTag objects
-/// using a path like this: https://api.planningcenteronline.com/groups/v2/tag_groups/1/tags
-Future<PcoCollection<PcoGroupsTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoGroupsTag.canInclude;
-  var url = '$apiEndpoint/tags';
-  return PcoCollection.fromApiCall<PcoGroupsTag>(url, query: query, apiVersion:apiVersion);
-}
-    
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
+
 
 
 }

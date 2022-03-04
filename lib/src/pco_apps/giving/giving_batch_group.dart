@@ -1,35 +1,59 @@
-/// This file was generated on 2021-11-25T00:07:20.784378
+/// This file was generated on 2022-03-04T15:29:14.760298
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Giving BatchGroup Object
 /// 
-/// Application: giving
-/// Id:          batch_group
-/// Type:        BatchGroup
-/// ApiVersion:  2019-10-18
+/// - Application:        giving
+/// - Id:                 batch_group
+/// - Type:               BatchGroup
+/// - ApiVersion:         2019-10-18
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/batch_groups
 /// 
 /// Description:
 /// 
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "BatchGroup",
+///   "id": "1",
+///   "attributes": {
+///     "created_at": "2000-01-01T12:00:00Z",
+///     "updated_at": "2000-01-01T12:00:00Z",
+///     "description": "string",
+///     "committed": true,
+///     "total_cents": 1,
+///     "total_currency": "string",
+///     "status": "string"
+///   },
+///   "relationships": {}
+/// }
+/// ```
 /// 
-/// {"type":"BatchGroup","id":"1","attributes":{"created_at":"2000-01-01T12:00:00Z","updated_at":"2000-01-01T12:00:00Z","description":"string","committed":true,"total_cents":1,"total_currency":"string","status":"string"},"relationships":{}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/giving/v2/batch_groups
-/// 
-/// possible includes with parameter ?include=a,b
-/// @owner: include associated owner 
+/// Possible includes with parameter ?include=a,b
+/// - owner: include associated owner 
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
-/// possible orderings with parameter ?order=
-
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// NONE
+/// 
+/// Possible orderings with parameter ?order=
+/// NONE
+///
+/// All Outbound Edges:
+/// - `batch-batchgroup-batches`: https://api.planningcenteronline.com/giving/v2/batch_groups/1/batches
+/// - `person-batchgroup-owner`: https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner
+/// 
+/// All Inbound Edges:
+/// - `batchgroup-batch-batch_group`: https://api.planningcenteronline.com/giving/v2/batches/1/batch_group
+/// - `batchgroup-organization-batch_groups`: https://api.planningcenteronline.com/giving/v2/batch_groups
+/// - `batchgroup-person-batch_groups`: https://api.planningcenteronline.com/giving/v2/people/1/batch_groups
+/// 
+/// All Actions:
+/// - `commit`: https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit
 ///
 class PcoGivingBatchGroup extends PcoResource {
   static const String kPcoApplication = 'giving';
@@ -38,29 +62,36 @@ class PcoGivingBatchGroup extends PcoResource {
   static const String kApiVersion = '2019-10-18';
   static const String kShortestEdgeId = 'batchgroup-organization-batch_groups';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
 
   /// possible includes with parameter ?include=a,b
-  /// @owner: include associated owner 
+  /// - `owner`: include associated owner 
   static List<String> get canInclude => ['owner'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-
+  /// 
   static List<String> get canOrderBy => [];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
+  static const kCreatedAt = 'created_at';
+  static const kUpdatedAt = 'updated_at';
   static const kDescription = 'description';
   static const kCommitted = 'committed';
   static const kTotalCents = 'total_cents';
@@ -71,124 +102,139 @@ class PcoGivingBatchGroup extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => ['description'];
+
   @override
   List<String> get updateAllowed => ['description'];
+
+  @override
+  bool get canCreate => true;
+
+  @override
+  bool get canUpdate => true;
+
+  @override
+  bool get canDestroy => true;
+
+  // getters for object attributes
 
   String get description => attributes[kDescription] ?? '';
   bool get isCommitted => attributes[kCommitted] == true;
   int get totalCents => attributes[kTotalCents] ?? 0;
   String get totalCurrency => attributes[kTotalCurrency] ?? '';
-
-  /// One of `in_progress`, `updating`, or `committed`.The `updating` state is temporary and describe's a BatchGroup that is currently being changed in some way (e.g. moving from `in_progress` to `committed`).Certain changes to BatchGroups in this state (or their Batches or Donations) will be restricted until the BatchGroup has finished updating.
   String get status => attributes[kStatus] ?? '';
+  
 
+  // setters for object attributes
 
   set description(String s) => attributes[kDescription] = s;
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
+
+  // Class Constructors
   PcoGivingBatchGroup() : super(kPcoApplication, kTypeString);
   PcoGivingBatchGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoGivingBatchGroup Objects
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/batches/1/batch_group;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getManyFromBatche(String batcheId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
-    var url = '/giving/v2/batches/$batcheId/batch_group';
-    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
-  }
-  /// will get many PcoGivingBatchGroup Objects
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/batch_groups`
+  static Future<PcoCollection<PcoGivingBatchGroup>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
     var url = '/giving/v2/batch_groups';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
   }
-  /// will get many PcoGivingBatchGroup Objects
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/batch_groups;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getManyFromPeopleAndBatchGroup(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/batches/$batcheId/batch_group`
+  static Future<PcoCollection<PcoGivingBatchGroup>> getFromBatche(String batcheId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
+    var url = '/giving/v2/batches/$batcheId/batch_group';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$peopleId/batch_groups`
+  static Future<PcoCollection<PcoGivingBatchGroup>> getFromPeople(String peopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
     var url = '/giving/v2/people/$peopleId/batch_groups';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoGivingBatchGroup Object
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/batches/1/batch_group;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getSingleFromBatche(String batcheId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoGivingBatch] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups/1/batches`
+  /// 
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  Future<PcoCollection<PcoGivingBatch>> getBatches({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
-    var url = '/giving/v2/batches/$batcheId/batch_group' + '/$id';
-    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoGivingBatchGroup.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoGivingBatch.canInclude;
+    var url = '$apiEndpoint/batches';
+    return PcoCollection.fromApiCall<PcoGivingBatch>(url, query: query, apiVersion: apiVersion);
   }
-  /// will get a single PcoGivingBatchGroup Object
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+  /// Will get a collection of [PcoGivingPerson] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner`
+  Future<PcoCollection<PcoGivingPerson>> getOwner({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
-    var url = '/giving/v2/batch_groups' + '/$id';
-    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoGivingBatchGroup.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-  /// will get a single PcoGivingBatchGroup Object
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/people/1/batch_groups;
-  static Future<PcoCollection<PcoGivingBatchGroup>> getSingleFromPeopleAndBatchGroup(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
-    var url = '/giving/v2/people/$peopleId/batch_groups' + '/$id';
-    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoGivingBatchGroup.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoGivingPerson.canInclude;
+    var url = '$apiEndpoint/owner';
+    return PcoCollection.fromApiCall<PcoGivingPerson>(url, query: query, apiVersion: apiVersion);
   }
 
 
-/// will get many PcoGivingBatch objects
-/// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups/1/batches
-Future<PcoCollection<PcoGivingBatch>> getBatchsBatches({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoGivingBatch.canInclude;
-  var url = '$apiEndpoint/batches';
-  return PcoCollection.fromApiCall<PcoGivingBatch>(url, query: query, apiVersion:apiVersion);
-}
-    
-/// will get many PcoGivingPerson objects
-/// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner
-Future<PcoCollection<PcoGivingPerson>> getPersonsOwner({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoGivingPerson.canInclude;
-  var url = '$apiEndpoint/owner';
-  return PcoCollection.fromApiCall<PcoGivingPerson>(url, query: query, apiVersion:apiVersion);
-}
-    
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
 
-/// ACTION: commit
-/// Used to commit an in progress batch group.
-/// using a path like this: https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit
-/// 
-/// Details:
-/// This action takes an uncommitted BatchGroup and commits it.
-/// It will respond with `unprocessable_entity` if the BatchGroup cannot be committed.
-/// It does not expect a body.
-/// Committing a BatchGroup happens asyncronously, so initially the BatchGroup's `status` will be `updating`.
-/// You can poll that BatchGroup's endpoint to see whether it's changed from `updating` to `committed`.
-/// 
-Future<PlanningCenterApiResponse> commit(Map<String, dynamic> data) async {
-  var url = '$apiEndpoint/commit';
-  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
-}
-    
+  /// ACTION: `commit`
+  /// 
+  /// Used to commit an in progress batch group.
+  /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit`
+  /// 
+  /// Details:
+  /// This action takes an uncommitted BatchGroup and commits it.
+  /// It will respond with `unprocessable_entity` if the BatchGroup cannot be committed.
+  /// 
+  /// It does not expect a body.
+  /// 
+  /// Committing a BatchGroup happens asyncronously, so initially the BatchGroup's `status` will be `updating`.
+  /// You can poll that BatchGroup's endpoint to see whether it's changed from `updating` to `committed`.
+  Future<PlanningCenterApiResponse> commit(Map<String, dynamic> data) async {
+    if (id == null) {
+      return PlanningCenterApiError.messageOnly(
+        'Actions must be called on items that already exist on the remote server',
+      );
+    }
+    var url = '$apiEndpoint/commit';
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+  }
+
+
 }

@@ -44,16 +44,30 @@ Once any of these initializers completes, then, you may access the API object di
 You can determine if the library is initialized through checking the `initialized` static member like so:
 
 ```dart
-if (PlanningCenter.initialized) ...
+if (PlanningCenter.initialized) {
+  // YOUR CODE HERE
+}
 ```
 
-Once initialized, you can access all the different applications by static methods on their classes directly or by calling methods on existing objects.
+Although you can issue calls to the API directly using `PlanningCenter.instance` the preferred mechanism is to
+use the Dart objects provided for you in the library.
 
-As a rule of thumb remember that if you want to grab some planning center data from scratch, call a static method on a class representing the data you want. If you already have some data and you want to get related data, call a method on the object itself. The code should be well documented. If you have questions, please create a github issue.
+Each Planning Center resource that can be accessed is available to you through static methods on the relevant class itself.
+
+Each Planning Center resource that depends on another resource can be accessed through instance methods on the other resource.
+
+Each action that can be done through the Planning Center API is exposed as one of the following:
+
+-   the `save` method on each Planning Center Resource object
+-   the `delete` method on each Planning Center Resource object
+-   various actions exposed as instance methods on the relevant classes.
+
+As a rule of thumb remember that if you want to grab some Planning Center data from scratch, call a static method on a class representing the data you want. If you already have some data and you want to get related data, call a method on the object itself. The code should be well documented. If you have questions, please create a github issue.
 
 ## Example
 
 ```dart
+import 'dart:async';
 import 'dart:io'; // to exit the script faster
 import 'dart:convert'; // for the pretty printing of json
 
@@ -62,16 +76,13 @@ import 'package:planningcenter_api/planningcenter_api.dart';
 /// this is where I store my [appid], [secret], [oAuthClientId], and [oAuthClientSecret] constants
 import '../secrets.dart';
 
-/// This function might come in handy for you sometime :-)
-String pretty(Object obj) {
-  JsonEncoder encoder = JsonEncoder.withIndent('  ', (obj) {
-    try {
-      return obj.toJson();
-    } catch (_) {
-      return obj.toString();
-    }
-  });
-  return encoder.convert(obj);
+void debug(Object o) {
+  try {
+    print(JsonEncoder.withIndent('  ').convert(o));
+  } on JsonUnsupportedObjectError catch (e) {
+    print('DEBUG AS STRING BECAUSE: $e');
+    print(o);
+  }
 }
 
 Future<String> authRedirector(String url) async {
@@ -123,44 +134,61 @@ void main() async {
       PlanningCenter.oAuthScopes,
       authRedirector,
     );
-    if (!PlanningCenter.initialized) {
-      print('Planning Center authentication failed.');
-      exit(1);
-    }
+  }
+
+  if (!PlanningCenter.initialized) {
+    print('Planning Center authentication failed.');
+    exit(1);
   }
 
   // Now, all classes beginning with Pco are available for use
 
   /// Get the service types on the default organization (defaults to grabbing 25)
   /// will return List<PcoServicesServiceType>
-  var serviceTypes = await PcoServicesServiceType.getMany();
-  if (serviceTypes.isNotEmpty) {
-    var service = serviceTypes.first;
+  var collection = await PcoServicesServiceType.get();
+  debug(collection.response);
+  if (!collection.isError) {
+    var service = collection.data.first;
     print('Found Service Type: ${service.name}');
 
     /// most class instances have methods allowing you to fetch related items
-    /// this time, we also are using a query object to request plands in descending order
+    /// this time, we also are using a query object to request plans in descending order
     /// of their sort date
     var plans = await service.getPlans(query: PlanningCenterApiQuery(order: '-sort_date'));
-    if (plans.isNotEmpty) {
-      var plan = plans.first;
+    if (!plans.isError) {
+      var plan = plans.data.first;
       print('Found Plan: ${plan.seriesTitle} - ${plan.title} - ${plan.lastTimeAt}');
-      var items = await plans.first.getItems();
-      for (var item in items) {
+      var items = await plan.getItems();
+      for (var item in items.data) {
         print('Plan Item: ${item.title}\n${item.description}\n');
         if (item.title == 'CHANGE ME') {
           print('attempting to update this item');
           item.title = 'CHANGED';
           var result = await item.save();
-          print(result ? 'successful' : 'not successful');
+          print(result.isError ? 'failed' : 'successful');
         }
       }
     }
   }
 
-  // to call the API directly, you can do this.
+  // to call the API directly, you can do this, but it will not return
+  // typed data... just a moderately parsed PlanningCenterApiResponse object
   var res = await PlanningCenter.instance.call('/services/v2/songs');
-  print(pretty(res));
+  if (res is PlanningCenterApiError) {
+    debug(res.errorMessage);
+    debug(res.responseBody);
+  }
+  debug(res.toJson());
+
+  // Once we're done with the client, save the credentials file. This ensures
+  // that if the credentials were automatically refreshed while using the
+  // client, the new credentials are available for the next run of the
+  // program.
+  if (PlanningCenter.instance.oAuthCredentials != null) {
+    await credentialsFile.create(recursive: true);
+    await credentialsFile.writeAsString(json.encode(PlanningCenter.instance.oAuthCredentials));
+  }
+
   exit(0);
 }
 

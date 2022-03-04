@@ -1,35 +1,49 @@
-/// This file was generated on 2021-11-25T00:07:20.867181
+/// This file was generated on 2022-03-04T15:29:14.823484
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Webhooks Organization Object
 /// 
-/// Application: webhooks
-/// Id:          organization
-/// Type:        Organization
-/// ApiVersion:  2018-08-01
+/// - Application:        webhooks
+/// - Id:                 organization
+/// - Type:               Organization
+/// - ApiVersion:         2018-08-01
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2
 /// 
 /// Description:
 /// 
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "Organization",
+///   "id": "1",
+///   "attributes": {},
+///   "relationships": {}
+/// }
+/// ```
 /// 
-/// {"type":"Organization","id":"1","attributes":{},"relationships":{}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/webhooks/v2
-/// 
-/// possible includes with parameter ?include=a,b
-
+/// Possible includes with parameter ?include=a,b
+/// NONE
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
-/// possible orderings with parameter ?order=
-
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// NONE
+/// 
+/// Possible orderings with parameter ?order=
+/// NONE
+///
+/// All Outbound Edges:
+/// - `availableevent-organization-available_events`: https://api.planningcenteronline.com/webhooks/v2/available_events
+/// - `subscription-organization-subscriptions`: https://api.planningcenteronline.com/webhooks/v2/subscriptions
+/// 
+/// All Inbound Edges:
+/// NONE
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoWebhooksOrganization extends PcoResource {
   static const String kPcoApplication = 'webhooks';
@@ -38,66 +52,107 @@ class PcoWebhooksOrganization extends PcoResource {
   static const String kApiVersion = '2018-08-01';
   static const String kShortestEdgeId = '';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
 
   /// possible includes with parameter ?include=a,b
-
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-
+  /// 
   static List<String> get canOrderBy => [];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
 
 
   // getters and setters
   @override
   List<String> get createAllowed => [];
+
   @override
   List<String> get updateAllowed => [];
 
+  @override
+  bool get canCreate => false;
+
+  @override
+  bool get canUpdate => false;
+
+  @override
+  bool get canDestroy => false;
+
+  // getters for object attributes
+
+  
+
+  // setters for object attributes
+
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
 
-
+  // Class Constructors
   PcoWebhooksOrganization() : super(kPcoApplication, kTypeString);
   PcoWebhooksOrganization.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 
 
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
 
 
-/// will get many PcoWebhooksAvailableEvent objects
-/// using a path like this: https://api.planningcenteronline.com/webhooks/v2/available_events
-Future<PcoCollection<PcoWebhooksAvailableEvent>> getAvailableEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoWebhooksAvailableEvent.canInclude;
-  var url = '$apiEndpoint/available_events';
-  return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:apiVersion);
-}
-    
-/// will get many PcoWebhooksSubscription objects
-/// using a path like this: https://api.planningcenteronline.com/webhooks/v2/subscriptions
-Future<PcoCollection<PcoWebhooksSubscription>> getSubscriptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
-  var url = '$apiEndpoint/subscriptions';
-  return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion:apiVersion);
-}
-    
+
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/available_events`
+  Future<PcoCollection<PcoWebhooksAvailableEvent>> getAvailableEvents({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoWebhooksAvailableEvent.canInclude;
+    var url = '$apiEndpoint/available_events';
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoWebhooksSubscription] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions`
+  Future<PcoCollection<PcoWebhooksSubscription>> getSubscriptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
+    var url = '$apiEndpoint/subscriptions';
+    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion: apiVersion);
+  }
+
+
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
+
 
 
 }

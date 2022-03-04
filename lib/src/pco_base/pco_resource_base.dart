@@ -19,11 +19,13 @@ abstract class PcoResource {
   static const String kApiVersion = '';
   static const String kShortestEdgeId = '';
   static const String kShortestEdgePathTemplate = '';
+  static const String kDefaultPathTemplate = '';
 
   /// child classes can override these getters which will allow
   /// methods in this class to see static variables from child classes
-  String get shortestEdgePath => kShortestEdgePathTemplate;
   String get apiVersion => kApiVersion;
+  String get defaultPathTemplate => kDefaultPathTemplate;
+  String get shortestEdgePathTemplate => kShortestEdgePathTemplate;
 
   // field mapping constants
   static const kCreatedAt = 'created_at';
@@ -43,7 +45,7 @@ abstract class PcoResource {
   /// PcoResources include their own path as a link object
   /// but this might be null if we haven't created/fetched the object yet
   String? _apiPath;
-  String? get apiPath => links['self'] ?? _apiPath ?? shortestEdgePath;
+  String? get apiPath => links['self'] ?? _apiPath ?? defaultPathTemplate ?? shortestEdgePathTemplate;
   String? get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
@@ -57,6 +59,11 @@ abstract class PcoResource {
   // will accept on certain operations
   List<String> get createAllowed => [];
   List<String> get updateAllowed => [];
+
+  // permissions getters
+  bool get canDestroy => true;
+  bool get canCreate => true;
+  bool get canUpdate => true;
 
   // -- DATA FIELDS WITH GETTERS AND SETTERS --
 
@@ -116,8 +123,16 @@ abstract class PcoResource {
   }
 
   Future<PlanningCenterApiResponse> save() async {
+    if (id == null && !canCreate) return PlanningCenterApiError.messageOnly('cannot create object');
+    if (id != null && !canUpdate) return PlanningCenterApiError.messageOnly('cannot update object');
+
     var jsonString = json.encode({'data': id == null ? toCreateResource() : toUpdateResource()});
     return _selfcall(id == null ? 'post' : 'patch', jsonString);
+  }
+
+  Future<PlanningCenterApiResponse> delete() async {
+    if (canDestroy) return _selfcall('delete');
+    return PlanningCenterApiError.messageOnly('delete not allowed');
   }
 
   /// Takes a full JSON:API Response Object (the contents of a "data" field)
@@ -209,6 +224,8 @@ abstract class PcoResource {
   Map<String, dynamic> toCreateResource() {
     var retval = toJson();
     retval['attributes'] = filteredAttributes(createAllowed);
+    // never allow an id on a 'create' resource
+    retval.remove('id');
     return retval;
   }
 

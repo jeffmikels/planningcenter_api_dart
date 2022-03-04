@@ -1,35 +1,65 @@
-/// This file was generated on 2021-11-25T00:07:20.280209
+/// This file was generated on 2022-03-04T15:29:14.075847
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services ScheduledPerson Object
 /// 
-/// Application: services
-/// Id:          scheduled_person
-/// Type:        ScheduledPerson
-/// ApiVersion:  2018-11-01
+/// - Application:        services
+/// - Id:                 scheduled_person
+/// - Type:               ScheduledPerson
+/// - ApiVersion:         2018-11-01
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people
 /// 
 /// Description:
 /// A person already scheduled to a SignupSheet
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "ScheduledPerson",
+///   "id": "1",
+///   "attributes": {
+///     "full_name": "string",
+///     "status": "string",
+///     "thumbnail": "string"
+///   },
+///   "relationships": {
+///     "person": {
+///       "data": {
+///         "type": "Person",
+///         "id": "1"
+///       }
+///     },
+///     "signup_sheet": {
+///       "data": {
+///         "type": "SignupSheet",
+///         "id": "1"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// 
-/// {"type":"ScheduledPerson","id":"1","attributes":{"full_name":"string","status":"string","thumbnail":"string"},"relationships":{"person":{"data":{"type":"Person","id":"1"}},"signup_sheet":{"data":{"type":"SignupSheet","id":"1"}}}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people
-/// 
-/// possible includes with parameter ?include=a,b
-
+/// Possible includes with parameter ?include=a,b
+/// NONE
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
-/// possible orderings with parameter ?order=
-
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// NONE
+/// 
+/// Possible orderings with parameter ?order=
+/// NONE
+///
+/// All Outbound Edges:
+/// NONE
+/// 
+/// All Inbound Edges:
+/// - `scheduledperson-signupsheet-scheduled_people`: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoServicesScheduledPerson extends PcoResource {
   static const String kPcoApplication = 'services';
@@ -38,29 +68,34 @@ class PcoServicesScheduledPerson extends PcoResource {
   static const String kApiVersion = '2018-11-01';
   static const String kShortestEdgeId = 'scheduledperson-signupsheet-scheduled_people';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people';
 
   /// possible includes with parameter ?include=a,b
-
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-
+  /// 
   static List<String> get canOrderBy => [];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
   static const kFullName = 'full_name';
   static const kStatus = 'status';
   static const kThumbnail = 'thumbnail';
@@ -69,44 +104,70 @@ class PcoServicesScheduledPerson extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => [];
+
   @override
   List<String> get updateAllowed => [];
+
+  @override
+  bool get canCreate => false;
+
+  @override
+  bool get canUpdate => false;
+
+  @override
+  bool get canDestroy => false;
+
+  // getters for object attributes
 
   String get fullName => attributes[kFullName] ?? '';
   String get status => attributes[kStatus] ?? '';
   String get thumbnail => attributes[kThumbnail] ?? '';
+  
+
+  // setters for object attributes
+
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
 
-
+  // Class Constructors
   PcoServicesScheduledPerson() : super(kPcoApplication, kTypeString);
   PcoServicesScheduledPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoServicesScheduledPerson Objects
-  /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people;
-  static Future<PcoCollection<PcoServicesScheduledPerson>> getManyFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeople(String peopleId,String availableSignupId,String signupSheetId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoServicesScheduledPerson] objects (expecting one)
+  /// using a path like this: `/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people`
+  static Future<PcoCollection<PcoServicesScheduledPerson>> getScheduledPeopleFromPeopleAndAvailableSignupAndSignupSheet(String peopleId,String availableSignupId,String signupSheetId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesScheduledPerson.canInclude;
     var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people';
+    
     return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoServicesScheduledPerson Object
-  /// using a path like this: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people;
-  static Future<PcoCollection<PcoServicesScheduledPerson>> getSingleFromPeopleAndAvailableSignupAndSignupSheetAndScheduledPeople(String peopleId,String availableSignupId,String signupSheetId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesScheduledPerson.canInclude;
-    var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people' + '/$id';
-    return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoServicesScheduledPerson.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
 
 
+
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
 
 
 

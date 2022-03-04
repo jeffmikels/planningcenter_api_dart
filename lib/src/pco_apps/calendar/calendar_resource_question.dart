@@ -1,37 +1,68 @@
-/// This file was generated on 2021-11-25T00:07:20.716181
+/// This file was generated on 2022-03-04T15:29:14.682907
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Calendar ResourceQuestion Object
 /// 
-/// Application: calendar
-/// Id:          resource_question
-/// Type:        ResourceQuestion
-/// ApiVersion:  2020-04-08
+/// - Application:        calendar
+/// - Id:                 resource_question
+/// - Type:               ResourceQuestion
+/// - ApiVersion:         2020-04-08
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_questions
 /// 
 /// Description:
-/// A question to answer when requesting to book a room or resource.\n
+/// A question to answer when requesting to book a room or resource.
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "ResourceQuestion",
+///   "id": "1",
+///   "attributes": {
+///     "created_at": "2000-01-01T12:00:00Z",
+///     "kind": "string",
+///     "updated_at": "2000-01-01T12:00:00Z",
+///     "choices": "string",
+///     "description": "string",
+///     "multiple_select": true,
+///     "optional": true,
+///     "position": 1,
+///     "question": "string"
+///   },
+///   "relationships": {
+///     "resource": {
+///       "data": {
+///         "type": "Resource",
+///         "id": "1"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// 
-/// {"type":"ResourceQuestion","id":"1","attributes":{"created_at":"2000-01-01T12:00:00Z","kind":"string","updated_at":"2000-01-01T12:00:00Z","choices":"string","description":"string","multiple_select":true,"optional":true,"position":1,"question":"string"},"relationships":{"resource":{"data":{"type":"Resource","id":"1"}}}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/resource_questions
-/// 
-/// possible includes with parameter ?include=a,b
-
+/// Possible includes with parameter ?include=a,b
+/// NONE
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// @kind (URLParameter), query on a specific kind, example: ?where[kind]=string
-/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// possible orderings with parameter ?order=
-
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// Possible orderings with parameter ?order=
+/// NONE
+///
+/// All Outbound Edges:
+/// NONE
+/// 
+/// All Inbound Edges:
+/// - `resourcequestion-organization-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resource_questions
+/// - `resourcequestion-resource-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoCalendarResourceQuestion extends PcoResource {
   static const String kPcoApplication = 'calendar';
@@ -40,32 +71,39 @@ class PcoCalendarResourceQuestion extends PcoResource {
   static const String kApiVersion = '2020-04-08';
   static const String kShortestEdgeId = 'resourcequestion-organization-resource_questions';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_questions';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_questions';
 
   /// possible includes with parameter ?include=a,b
-
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-  /// @kind (URLParameter), query on a specific kind, example: ?where[kind]=string
-  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
+  /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
   static List<String> get canQuery => ['created_at','kind','updated_at'];
 
   /// possible orderings with parameter ?order=
-
+  /// 
   static List<String> get canOrderBy => [];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
+  static const kCreatedAt = 'created_at';
   static const kKind = 'kind';
+  static const kUpdatedAt = 'updated_at';
   static const kChoices = 'choices';
   static const kDescription = 'description';
   static const kMultipleSelect = 'multiple_select';
@@ -77,91 +115,85 @@ class PcoCalendarResourceQuestion extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => [];
+
   @override
   List<String> get updateAllowed => [];
 
+  @override
+  bool get canCreate => false;
 
-  /// Possible values:
-  ///- `dropdown`: predefined list of choices as an answer
-  ///- `paragraph`: expected answer is a paragraph
-  ///- `text`: expected answer is a sentence
-  ///- `yesno`: expected answer is 'Yes' or 'No'
-  ///- `section_header`: used to separate questions in the UI, no expected answer
+  @override
+  bool get canUpdate => false;
+
+  @override
+  bool get canDestroy => false;
+
+  // getters for object attributes
+
   String get kind => attributes[kKind] ?? '';
-
-  /// If `kind` is `dropdown`, represents a string of dropdown choices
-  ///seperated by the `|` character
   String get choices => attributes[kChoices] ?? '';
-
-  /// Optional description of the question
   String get description => attributes[kDescription] ?? '';
-
-  /// If `kind` is `dropdown`,
-  ///`true` indicates that more than one selection is permitted
   bool get isMultipleSelect => attributes[kMultipleSelect] == true;
-
-  /// - `true` indicates answering the question is not required when booking
-  ///- `false` indicates answering the question is required when booking
   bool get isOptional => attributes[kOptional] == true;
-
-  /// Position of question in list in the UI
   int get position => attributes[kPosition] ?? 0;
-
-  /// The question to be answered
   String get question => attributes[kQuestion] ?? '';
+  
+
+  // setters for object attributes
+
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
 
-
+  // Class Constructors
   PcoCalendarResourceQuestion() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoCalendarResourceQuestion Objects
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resource_questions;
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resource_questions`
+  static Future<PcoCollection<PcoCalendarResourceQuestion>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
     var url = '/calendar/v2/resource_questions';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
   }
-  /// will get many PcoCalendarResourceQuestion Objects
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions;
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> getManyFromResourceAndResourceQuestion(String resourceId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resources/$resourceId/resource_questions`
+  static Future<PcoCollection<PcoCalendarResourceQuestion>> getFromResource(String resourceId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
     var url = '/calendar/v2/resources/$resourceId/resource_questions';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoCalendarResourceQuestion Object
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resource_questions;
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
-    var url = '/calendar/v2/resource_questions' + '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoCalendarResourceQuestion.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-  /// will get a single PcoCalendarResourceQuestion Object
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions;
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> getSingleFromResourceAndResourceQuestion(String resourceId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
-    var url = '/calendar/v2/resources/$resourceId/resource_questions' + '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoCalendarResourceQuestion.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
 
 
+
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
 
 
 

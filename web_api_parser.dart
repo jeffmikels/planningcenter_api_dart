@@ -4,10 +4,10 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-/// CLASSES ======================
-extension CapExtension on String {
-  String get capitalize => length == 0 ? this : this[0].toUpperCase() + substring(1);
-  String get titleCase => toLowerCase().split(" ").map((str) => str.capitalize).join(" ");
+/// HELPER CLASS EXTENSIONS
+extension MyStringExtensions on String {
+  String get capitalized => length == 0 ? this : this[0].toUpperCase() + substring(1);
+  String get titleCase => toLowerCase().split(" ").map((str) => str.capitalized).join(" ");
   String get singular {
     if (endsWith('eries')) return this;
     if (endsWith('ampus')) return this;
@@ -30,30 +30,55 @@ extension CapExtension on String {
 
   String get singularWithPeople => singular.replaceAll('people', 'person').replaceAll('People', 'Person');
 
-  String snakeToPascal() => replaceAll('-', '_').split('_').map((s) => s.capitalize).join();
+  String snakeToPascal() => replaceAll('-', '_').split('_').map((s) => s.capitalized).join();
   String snakeToCamel() {
     var s = snakeToPascal();
     return s[0].toLowerCase() + s.substring(1);
   }
+
+  String cleanLines() => replaceAll('\r\n', '\n').replaceAll('\n\r', '\n').replaceAll('\r', '\n');
+
+  String prefixLines(String linePrefix) {
+    return linePrefix + split('\n').join('\n$linePrefix');
+  }
+
+  String decodeEncodeIndent() {
+    try {
+      var decoded = json.decode(this);
+      return (JsonEncoder.withIndent('  ')).convert(decoded);
+    } catch (_) {
+      return this;
+    }
+  }
 }
 
-// generic JsonApiDoc
-// planning center employs the json-api standard
-// every response is formatted as {data: {response_data}}
-// JSON-API objects have a data field at the top level
+/// CLASSES REPRESENTING JSON-API DOCUMENTATION OBJECTS
+///
+/// generic JsonApiDoc
+/// planning center employs the json-api standard
+/// every response is formatted as {data: {response_data}}
+/// JSON-API objects have a data field at the top level
 class JsonApiDoc {
   String? id;
   String type = '';
-  Map<String, dynamic> attributes = {};
-  Map<String, dynamic>? relationships = {};
-  Map<String, dynamic> typedRelationships = {};
+  Map<String, dynamic> attributes = {}; // grabbed directly from the response JSON
+  Map<String, dynamic> relationships = {}; // grabbed directly from the response JSON
+  Map<String, dynamic> typedRelationships = {}; // will be parsed from the response JSON into typed objects
+  List<JsonApiDoc> relatedDocs = []; // parsed from the relationships if we can do so
+
+  JsonApiDoc();
 
   /// include the CONTENTS of the data field
   JsonApiDoc.fromJson(Map<String, dynamic> data) {
     type = data['type'];
     id = data['id'];
     attributes = data['attributes'];
-    relationships = data['relationships'];
+    relationships = data['relationships'] ?? {};
+    if (relationships.containsKey('data')) {
+      for (Map<String, dynamic> rel in relationships['data']) {
+        relatedDocs.add(JsonApiDoc.fromJson(rel));
+      }
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -68,11 +93,15 @@ class JsonApiDoc {
   }
 }
 
+/// represents a single "[Vertex]" from a JsonApiDoc specification document
+/// a [Vertex] describes an endpoint where a single resource can be obtained from the API.
 class Vertex extends JsonApiDoc {
   String application = '';
   String version = '';
 
   List<Attribute> vertexAttributes = [];
+  List<Relationship> vertexRelationships = [];
+
   // List<Relationship> vertexRelationships = []; // allow for filters
   // List<Action> vertexActions;
   List<Edge> inboundEdges = []; // refers to the endpoints that lead to this item
@@ -111,57 +140,125 @@ class Vertex extends JsonApiDoc {
   }
 
   Vertex.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
-    if (relationships == null) return;
+    if (relationships.isEmpty) return;
 
-    perPage = URLParameter.fromJson(relationships!['per_page']['data']);
-    offset = URLParameter.fromJson(relationships!['offset']['data']);
-    vertexPermissions = Permission.fromJson(relationships!['permissions']['data']);
+    perPage = URLParameter.fromJson(relationships['per_page']?['data']);
+    offset = URLParameter.fromJson(relationships['offset']?['data']);
+    vertexPermissions = Permission.fromJson(relationships['permissions']?['data']);
     vertexAttributes = [
-      for (var item in relationships!['attributes']['data']) Attribute.fromJson(item),
+      for (var item in relationships['attributes']?['data']) Attribute.fromJson(item),
+    ];
+    vertexRelationships = [
+      for (var item in relationships['relationships']?['data']) Relationship.fromJson(item),
     ];
     canInclude = [
-      for (var item in relationships!['can_include']['data']) URLParameter.fromJson(item),
+      for (var item in relationships['can_include']?['data']) URLParameter.fromJson(item),
     ];
     canOrderBy = [
-      for (var item in relationships!['can_order']['data']) URLParameter.fromJson(item),
+      for (var item in relationships['can_order']?['data']) URLParameter.fromJson(item),
     ];
     canQuery = [
-      for (var item in relationships!['can_query']['data']) URLParameter.fromJson(item),
-    ];
-    inboundEdges = [
-      for (var item in relationships!['inbound_edges']['data']) Edge.fromJson(application, version, item),
-    ];
-    outboundEdges = [
-      for (var item in relationships!['outbound_edges']['data']) Edge.fromJson(application, version, item),
+      for (var item in relationships['can_query']?['data']) URLParameter.fromJson(item),
     ];
     actions = [
-      for (var item in relationships!['actions']['data']) Action.fromJson(application, version, item),
+      for (var item in relationships['actions']?['data']) Action.fromJson(application, version, item),
+    ];
+    inboundEdges = [
+      for (var item in relationships['inbound_edges']?['data']) Edge.fromJson(application, version, item),
+    ];
+    outboundEdges = [
+      for (var item in relationships['outbound_edges']?['data']) Edge.fromJson(application, version, item),
     ];
 
     typedRelationships['per_page'] = perPage;
     typedRelationships['offset'] = offset;
     typedRelationships['permissions'] = vertexPermissions;
     typedRelationships['attributes'] = vertexAttributes;
+    typedRelationships['relationships'] = vertexRelationships;
     typedRelationships['can_include'] = canInclude;
     typedRelationships['can_order'] = canOrderBy;
     typedRelationships['can_query'] = canQuery;
-    typedRelationships['inbound_edges'] = inboundEdges;
-    typedRelationships['outbound_edges'] = outboundEdges;
     typedRelationships['actions'] = actions;
+
+    /// the [Edge]s that when traversed will lead to this [Vertex]
+    typedRelationships['inbound_edges'] = inboundEdges;
+
+    /// the [Edge]s that lead away from this [Vertex]
+    typedRelationships['outbound_edges'] = outboundEdges;
   }
 }
 
-class Attribute extends JsonApiDoc {
-  String get name => attributes['name'];
-  String get note => attributes['note'];
-  String get permissionLevel => attributes['permission_level'];
-  String get description => attributes['description'] ?? '';
-  String get typeString => attributes['type_annotation']!['name'];
-  String get typeExample => attributes['type_annotation']!['example'];
+/// an "[Edge]" describes the paths linking two resources on the server
+/// An [Edge] will have a [head] and a [tail] that may or may not
+/// point to [Vertex] objects.
+/// Also note, the [id] is constructed by the server like this:
+/// [head.name]-[tail.name]-[name]
+class Edge extends JsonApiDoc {
+  String application = '';
+  String version = '';
+  List<EdgeFilter> availableFilters = [];
 
-  Attribute.fromJson(Map<String, dynamic> data) : super.fromJson(data) {}
+  String get name => attributes['name'];
+  String get details => attributes['details'];
+  String get path => attributes['path'];
+  List<String> get filters => attributes['filters'] ?? [];
+  List<dynamic> get scopes => attributes['scopes'] ?? [];
+  bool get deprecated => attributes['deprecated'] == true;
+
+  // found in the relationships field
+  late Vertex head;
+  late Vertex tail;
+
+  Edge.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
+    head = Vertex.fromJson(application, version, relationships['head']?['data']);
+    tail = Vertex.fromJson(application, version, relationships['tail']?['data']);
+
+    // for every filter, there should be a corresponding scope with that filter string as its name
+    // as a result, we only need to parse the scopes to get the filter information
+    for (var scope in scopes) {
+      if (scope['name'] == null) continue;
+      availableFilters.add(EdgeFilter(scope['name'], scope['scope_help']));
+    }
+  }
 }
 
+class EdgeFilter {
+  String name;
+  String? help;
+  EdgeFilter(this.name, this.help);
+}
+
+/// represents a "Relationship" from a JsonApiDoc specification document
+class Relationship extends JsonApiDoc {
+  String get name => attributes['name'];
+  String get association => attributes['association'];
+  String get authorizationLevel => attributes['authorization_level'];
+  String get graphType => attributes['graph_type'] ?? '';
+  String? get polymorphic => attributes['polymorphic'];
+  String? get note => attributes['note'];
+
+  bool get isMany => association == 'to_many';
+
+  Relationship.fromJson(Map<String, dynamic> data) : super.fromJson(data) {}
+}
+
+/// represents an "Attribute" from a JsonApiDoc specification document
+class Attribute extends JsonApiDoc {
+  String get name => attributes['name'];
+  String? get note => attributes['note'];
+  String get permissionLevel => attributes['permission_level'];
+  String get description => attributes['description'] ?? '';
+  String get typeString => attributes['type_annotation']?['name'] ?? 'string';
+  String get typeExample => attributes['type_annotation']?['example'] ?? typeString;
+
+  Attribute.nameOnly(String name) : super() {
+    attributes['name'] = name;
+  }
+
+  Attribute.fromJson(Map<String, dynamic> data) : super.fromJson(data);
+}
+
+/// represents a "Permission" from a JsonApiDoc specification document
 class Permission extends JsonApiDoc {
   bool get canCreate => attributes['can_create'] == true;
   bool get canUpdate => attributes['can_update'] == true;
@@ -199,26 +296,7 @@ class URLParameter extends JsonApiDoc {
   URLParameter.fromJson(Map<String, dynamic> data) : super.fromJson(data) {}
 }
 
-class Edge extends JsonApiDoc {
-  String application = '';
-  String version = '';
-
-  String get name => attributes['name'];
-  String get details => attributes['details'];
-  String get path => attributes['path'];
-  List<String> get filters => attributes['filters'] ?? [];
-  List<String> get scopes => attributes['scopes'] ?? [];
-  bool get deprecated => attributes['deprecated'] == true;
-
-  late Vertex head;
-  late Vertex tail;
-
-  Edge.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
-    head = Vertex.fromJson(application, version, relationships!['head']['data']);
-    tail = Vertex.fromJson(application, version, relationships!['tail']['data']);
-  }
-}
-
+/// an [Action] describes the methods allowed on a resource identified by [tail]
 class Action extends JsonApiDoc {
   String application = '';
   String version = '';
@@ -235,12 +313,13 @@ class Action extends JsonApiDoc {
   late Vertex tail;
 
   Action.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
-    tail = Vertex.fromJson(application, version, relationships!['tail']['data']);
+    tail = Vertex.fromJson(application, version, relationships['tail']?['data']);
   }
 }
 
 /// FUNCTIONS =================================
 
+/// will get a resource from the cache or from the url
 Future<String> get(Uri uri, {recache = false, throttle = true}) async {
   var cacheDir = './docCache';
   var cachefile = cacheDir + uri.path + '.json';
@@ -261,6 +340,7 @@ Future<String> get(Uri uri, {recache = false, throttle = true}) async {
   }
 }
 
+/// will generate a URL to a planningcenter api documentation page
 Uri docUri(String application, [String? version, String? vertexId]) {
   var url = 'https://api.planningcenteronline.com/${application}/v2/documentation';
   if (version != null) url += '/$version';
@@ -268,6 +348,9 @@ Uri docUri(String application, [String? version, String? vertexId]) {
   return Uri.parse(url);
 }
 
+/// CODE GENERATION HELPER FUNCTIONS ================================
+
+/// some edges will have names that don't correlate directly to a vertex
 String edgeToVertexId(String s) {
   // remove next and last
   s = s.replaceAll('next_', '');
@@ -276,6 +359,8 @@ String edgeToVertexId(String s) {
   return s;
 }
 
+/// some vertex names don't maintain the other naming conventions or result in duplicate
+/// class names, so we do a little modification of them here
 String classNameFromVertex(String appName, String vertexName) {
   return ('Pco' + appName.snakeToPascal() + vertexName.singular)
       // .replaceAll('PcoPeopleField', 'PcoPeopleFormField')
@@ -285,125 +370,137 @@ String classNameFromVertex(String appName, String vertexName) {
 
 /// CODE GENERATION FUNCTIONS ================================
 
+/// this function helps to generate the "static" fields for the class
 String fieldConstantTemplate(String pcoName) => '  static const k${pcoName.snakeToPascal()} = \'$pcoName\';\n';
-String fieldGetterLine(Attribute attribute) {
+
+/// this function helps to generate the getters for a specific [Vertex] - [Attribute]
+/// [mode] can be 'get' 'set' or 'both'
+/// if 'both' it will do a get first and then call itself again with 'set'
+String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttributeNameAsKey = false}) {
   var camelName = attribute.name.snakeToCamel();
   var pascalName = attribute.name.snakeToPascal();
-  var targetName = 'attributes[k$pascalName]';
-  switch (camelName) {
-    case 'default':
-      camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
-      break;
+  var targetName = useAttributeNameAsKey ? 'attributes[\'${attribute.name}\']' : 'attributes[k$pascalName]';
+  if (camelName == 'default') {
+    camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
   }
 
   var output = '';
-  if (attribute.description.isNotEmpty) {
-    var description =
-        attribute.description.replaceAll('\r', '\n').replaceAll('\n\n', '\n').trim().split('\n').join('\n  ///');
-    output += '\n  /// $description\n';
+  if (mode == 'set' && attribute.description.isNotEmpty) {
+    output += '\n' + attribute.description.cleanLines().trim().prefixLines('/// ') + '\n';
   }
   switch (attribute.typeString) {
     case 'boolean':
-      output += '  bool get is$pascalName => $targetName == true;\n';
+      output += mode == 'set'
+          ? 'set is$pascalName(bool b) => $targetName = b;\n'
+          : 'bool get is$pascalName => $targetName == true;\n';
       break;
     case 'float':
-      output += '  double get $camelName => $targetName ?? 0;\n';
+      output += mode == 'set'
+          ? 'set $camelName(double n) => $targetName = n;\n'
+          : 'double get $camelName => $targetName ?? 0;\n';
       break;
     case 'integer':
-      output += '  int get $camelName => $targetName ?? 0;\n';
+      output +=
+          mode == 'set' ? 'set $camelName(int n) => $targetName = n;\n' : 'int get $camelName => $targetName ?? 0;\n';
       break;
     case 'date_time':
-      output += '  DateTime get $camelName => DateTime.parse($targetName ?? \'\');\n';
+      output += mode == 'set'
+          ? 'set $camelName(DateTime d) => $targetName = d.toIso8601String();\n'
+          : 'DateTime get $camelName => DateTime.parse($targetName ?? \'\');\n';
       break;
     case 'array':
-      output += '  List get $camelName => $targetName ?? [];\n';
+      output += mode == 'set'
+          ? 'set $camelName(List a) => $targetName = a;\n'
+          : 'List get $camelName => $targetName ?? [];\n';
       break;
     default:
-      output += '  String get $camelName => $targetName ?? \'\';\n';
+      output += mode == 'set'
+          ? 'set $camelName(String s) => $targetName = s;\n'
+          : 'String get $camelName => $targetName ?? \'\';\n';
       break;
+  }
+  if (mode == 'both') {
+    output += fieldSetterOrGetterLine('set', attribute, useAttributeNameAsKey: useAttributeNameAsKey);
   }
   return output;
 }
 
-String fieldSetterLine(Attribute attribute) {
-  var camelName = attribute.name.snakeToCamel();
-  var pascalName = attribute.name.snakeToPascal();
-  var targetName = 'attributes[k$pascalName]';
-  switch (camelName) {
-    case 'default':
-      camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
-      break;
+String queryFilterFormatter(EdgeFilter e) {
+  var retval = '- `${e.name}`';
+  if (e.help != null) {
+    // add an extra newline to separate the filter help from subsequent filter items
+    retval += '\n' + e.help!.trim() + '\n';
   }
-
-  var output = '';
-  if (attribute.description.isNotEmpty) {
-    var description =
-        attribute.description.replaceAll('\r', '\n').replaceAll('\n\n', '\n').trim().split('\n').join('\n  ///');
-    output += '\n  /// $description\n';
-  }
-  switch (attribute.typeString) {
-    case 'boolean':
-      output += '  set is$pascalName(bool b) => $targetName = b;\n';
-      break;
-    case 'float':
-      output += '  set $camelName(double n) => $targetName = n;\n';
-      break;
-    case 'integer':
-      output += '  set $camelName(int n) => $targetName = n;\n';
-      break;
-    case 'date_time':
-      output += '  set $camelName(DateTime d) => $targetName = d.toIso8601String();\n';
-      break;
-    case 'array':
-      output += '  set $camelName(List a) => $targetName = a;\n';
-      break;
-    default:
-      output += '  set $camelName(String s) => $targetName = s;\n';
-      break;
-  }
-  return output;
+  return retval;
 }
 
+String makeMetaDoc(Edge edge, String linePrefix) {
+  var metaDoc = '';
+  if (edge.availableFilters.isNotEmpty) {
+    metaDoc = '''\nAvailable Query Filters:
+${edge.availableFilters.map(queryFilterFormatter).join('\n')}''';
+    if (edge.deprecated) metaDoc += '\n\n';
+  }
+  if (edge.deprecated) metaDoc += '@DEPRECATED';
+  if (metaDoc.isNotEmpty) metaDoc = '\n' + metaDoc.prefixLines(linePrefix);
+  return metaDoc;
+}
+
+/// this function generates a Dart class from a given [Vertex]
 String classTemplate(Vertex vertex) {
   var className = classNameFromVertex(vertex.application, vertex.name);
 
-  // ignore attributes that are always present
-  var ignore = ['created_at', 'updated_at', 'id'];
-
-  Set<String> setterAllowed = {
+  Set<String> setterNeeded = {
     ...vertex.vertexPermissions.createAssignable,
     ...vertex.vertexPermissions.updateAssignable
   };
 
+  // do not make getters for items handled by the parent [PcoResource] class
+  var getterIgnore = ['created_at', 'updated_at', 'id'];
+
   // walk through the attributes and generate constants, getters and setters for attributes
-  // NOTE: sometimes the documentation has attribute duplicates
+  // NOTE: sometimes the documentation has attribute duplicates, so keep track of what's been seen
   Set<String> seen = {};
 
   var fieldConstantLines = <String>[];
   var fieldGetterLines = <String>[];
   var fieldSetterLines = <String>[];
+  var additionalAssignableLines = <String>[];
 
   print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(',')}');
   for (var attribute in vertex.vertexAttributes) {
-    if (ignore.contains(attribute.name)) continue;
-    if (seen.add(attribute.name) == false) continue; // true when we added, false when already there
+    if (seen.add(attribute.name) == false) continue; // true when it was added, false when already there
 
     fieldConstantLines.add(fieldConstantTemplate(attribute.name));
 
     // make a getter line
-    fieldGetterLines.add(fieldGetterLine(attribute));
+    if (!getterIgnore.contains(attribute.name)) fieldGetterLines.add(fieldSetterOrGetterLine('get', attribute));
 
     // maybe make a setter line
-    if (setterAllowed.contains(attribute.name)) {
-      fieldSetterLines.add(fieldSetterLine(attribute));
+    if (setterNeeded.contains(attribute.name)) {
+      fieldSetterLines.add(fieldSetterOrGetterLine('set', attribute));
+      setterNeeded.remove(attribute.name);
     }
   }
 
-  // let's ignore the concept of a parent
-  // in favor of the concept of relationships (based on edges)
+  if (setterNeeded.isNotEmpty) {
+    print('  handling additional assignables: ${setterNeeded.join(',')}');
+  }
+  for (var item in setterNeeded) {
+    fieldConstantLines.add(fieldConstantTemplate(item));
+    var attribute = Attribute.nameOnly(item);
+    additionalAssignableLines.add(fieldSetterOrGetterLine('both', attribute));
+  }
 
-  // from outbound_edges, create instance functions to get other items from this one
-  List<String> childGetters = [];
+  /// HANDLING EDGES...
+  /// the documentation describes edges leading to and from this [Vertex]
+  /// we want to create a function to traverse each [Edge]
+
+  Set<String> existingFunctions = {};
+
+  /// OUTBOUND EDGES:
+  /// from outbound_edges, create instance functions to get other items from this one
+  List<String> targetGetters = [];
   for (var edge in vertex.outboundEdges) {
     print('  handling outbound edge: ${edge.path}');
     if (edge.path.endsWith('/')) {
@@ -411,33 +508,42 @@ String classTemplate(Vertex vertex) {
       continue;
     }
 
-    // TODO: Can the outbound path have a different structure from the apiPath?
-
-    // the same vertices are returned from different requests
+    /// from a path like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
+    /// we want to construct an instance function named `getAllAttachments()`
     var pathSuffix = edge.path.split('/').last;
     var functionSuffix = pathSuffix.snakeToPascal();
-    var childVertexName = edge.head.name;
-    var childClass = classNameFromVertex(vertex.application, childVertexName);
-    var childDescription = childVertexName.singular.plural.capitalize;
-    if (pathSuffix == edge.head.id || functionSuffix == childDescription) functionSuffix = '';
-    var functionName = 'get$childDescription$functionSuffix';
+    var targetVertexName = edge.head.name; // with outbound edges, tail is where we are, head is where we are going
+    var targetClass = classNameFromVertex(vertex.application, targetVertexName);
+    var targetDescription = targetVertexName.singular.plural.capitalized;
 
-    childGetters.add('''
-/// will get many $childClass objects
-/// using a path like this: ${edge.path}
-Future<PcoCollection<$childClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = $childClass.canInclude;
-  var url = '\$apiEndpoint/$pathSuffix';
-  return PcoCollection.fromApiCall<$childClass>(url, query: query, apiVersion:apiVersion);
-}
-    ''');
+    /// is this edge a to_one edge or a to_many edge?
+    var toMany = true;
+    for (var r in vertex.vertexRelationships) {
+      if ((r.name == edge.name) && !r.isMany) toMany = false;
+    }
+
+    var functionName = 'get$functionSuffix';
+    if (existingFunctions.contains(functionName)) {
+      functionName = 'get$targetDescription$functionSuffix';
+    }
+    existingFunctions.add(functionName);
+
+    targetGetters.add('''
+  /// Will get a collection of [$targetClass] objects (expecting ${toMany ? 'many' : 'one'})
+  /// using a path like this: `${edge.path}`${makeMetaDoc(edge, '  /// ')}
+  Future<PcoCollection<$targetClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = $targetClass.canInclude;
+    var url = '\$apiEndpoint/$pathSuffix';
+    return PcoCollection.fromApiCall<$targetClass>(url, query: query, apiVersion: apiVersion);
+  }
+''');
   }
 
-  // from inbound_edges, create static constructors to return objects of this type
-  // static constructors that only require id values
-  var staticSingleConstructors = [];
-  var staticCollectionConstructors = [];
+  /// INBOUND EDGES:
+  /// from inbound_edges, create static constructors to return objects of this type from various arguments
+  var staticInboundFunctions = [];
+  var ignoreInboundFromSameType = false;
   for (var edge in vertex.inboundEdges) {
     print('  handling inbound edge: ${edge.path}');
     if (edge.path.endsWith('/')) {
@@ -445,75 +551,131 @@ Future<PcoCollection<$childClass>> $functionName({PlanningCenterApiQuery? query,
       continue;
     }
 
-    // create static constructors from the edge path
-    var pathParts = edge.path.split('/').sublist(3); // ignore https://api.planningcenteronline.com/
+    /// Consider ignoring inbound edges that come from an existing item of this type
+    /// If we have one item of this type, just use an outbound edge to get the next desired item
+    if (ignoreInboundFromSameType && edge.head.type == edge.tail.type) {
+      print('  ignoring inbound edge from item of same type');
+      continue;
+    }
+
+    /// is this edge a to_one edge or a to_many edge?
+    /// only really useful for the documentation strings
+    var toMany = false;
+    bool foundRelationship = false;
+    for (var r in vertex.vertexRelationships) {
+      if (r.name == edge.name && r.isMany) toMany = true;
+      foundRelationship = true;
+    }
+    if (!foundRelationship) toMany = true;
+
+    /// split the path into parts that will be descriptive names or id values
+    /// for a url like this: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
+    /// ignore https://api.planningcenteronline.com/services/v2/
+    /// all_attachments -> parsed for quantifier 'all', then discarded
+    /// service_types -> arg name
+    /// plans -> arg name
+    ///
+    /// for a url like this: https://api.planningcenteronline.com/calendar/v2/event_instances
+    /// ignore https://api.planningcenteronline.com/calendar/v2/
+    /// event_instances -> parsed for quantifier (none) then discarded
+    /// no args to parse
+    /// final function should be getAllFromServiceTypeAndPlan
+    /// NOTE: as a static function, the resource type is already mentioned in the name of the class
+    ///       so it is redundant in the function name and we don't want to mention it again
+    var pathParts = edge.path.split('/').sublist(3);
+
+    // compute the function "target" name and the quantifier
+    // based on the final part of the path
+    var pathEnd = pathParts.last;
+
+    var functionTarget = pathEnd.snakeToPascal();
+
+    // should we remove a redundant class name from this function target?
+    if (pathEnd == edge.head.id!.plural) {
+      functionTarget = '';
+      toMany = true;
+    } else if (pathEnd == edge.head.id!.singular) {
+      functionTarget = '';
+    }
+
+    // should the function signature allow for an optional id field?
+    bool allowIdQueries = foundRelationship ? toMany : true;
+
+    // parse the remaining path parts for function argument variables
     var idArgs = [];
-    var edgeCamelNames = <String>[];
-    var edgePascalNames = <String>[];
-    // ignore the first two items because they come from /appname/v2
-    for (var i = 2; i < pathParts.length; i++) {
+    var inboundArgumentNames = <String>[];
+    var inboundFunctionNames = <String>[];
+
+    // start at 2 to ignore /appname/v2, end at length - 1 to ignore last string too
+    for (var i = 2; i < pathParts.length - 1; i++) {
       if (pathParts[i] == '1') {
-        var varname = edgeCamelNames.last + 'Id';
-        pathParts[i] = '\$$varname';
+        var varname = inboundArgumentNames.last + 'Id';
+        pathParts[i] = '\$$varname'; // modify the pathParts for the template string
         idArgs.add('String $varname');
       } else {
         var camelName = edgeToVertexId(pathParts[i]).snakeToCamel().singular;
-        edgeCamelNames.add(camelName);
-        edgePascalNames.add(camelName.capitalize);
+        inboundArgumentNames.add(camelName);
+        inboundFunctionNames.add(camelName.capitalized);
       }
     }
+    // reassemble path template to include `$varname` modifications
     var edgePathTemplate = '/' + pathParts.join('/');
-    var functionPrefix = 'From';
-    var functionSuffix = '';
-    var finalName = edgePascalNames.removeLast();
 
-    // if the final part of the path is a special endpoint (path doesn't match object)
-    if (pathParts.last != edge.head.id) {
-      edgePascalNames.add(finalName);
-    }
+    // -- I don't think this ever worked the way I wanted it to --
+    // // if the final part of the path is a special endpoint (path doesn't match object)
+    // if (pathParts.last != edge.head.id) {
+    //   inboundFunctionNames.add(finalName);
+    // }
 
-    // special consideration for root level edges
-    if (edge.tail.id == 'organization') {
-      edgePascalNames = [];
+    var functionParts = ['get', functionTarget];
+    if (inboundFunctionNames.isNotEmpty) functionParts.add('From');
+    functionParts.add(inboundFunctionNames.join('And'));
+    var functionName = functionParts.join();
+
+    // special case of the organizational inbound edge that shows up
+    // for some reason as `/services/v2/plans` (with edge id: `organization-organization-plans`)
+    // and should be at `/services/v2`
+    if (edge.head.id == 'organization' && edge.tail.id == 'organization') {
+      toMany = false;
+      functionName = 'getSelf';
       idArgs = [];
-      functionPrefix = functionSuffix = '';
+      edgePathTemplate = '/' + pathParts.sublist(0, 2).join('/');
     }
 
-    // constructors for collections
-    staticCollectionConstructors.add('''
-  /// will get many $className Objects
-  /// using a path like this: ${edge.path};
-  static Future<PcoCollection<$className>> getMany$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    // special consideration for root level edges that come right from the organization
+    if (edge.tail.id == 'organization') {
+      functionName = 'get';
+      toMany = true;
+      allowIdQueries = true;
+      idArgs = [];
+    }
+
+    // if (functionName == 'getMany' || functionName == 'getSingle') functionName = 'get';
+
+    var toAdd = '''\n
+  /// Will get a collection of [$className] objects (expecting ${toMany ? 'many' : 'one'})
+  /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
+  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = $className.canInclude;
     var url = '$edgePathTemplate';
+    ${allowIdQueries ? 'if (id != null) url += \'/\$id\';' : ''}
     return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
   }
-''');
-
-    // constructors for individual items
-    staticSingleConstructors.add('''
-  /// will get a single $className Object
-  /// using a path like this: ${edge.path};
-  static Future<PcoCollection<$className>> getSingle$functionPrefix${edgePascalNames.join('And')}$functionSuffix(${idArgs.map((e) => '$e,').join()} String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = $className.canInclude;
-    var url = '$edgePathTemplate' + '/\$id';
-    return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = $className.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-''');
+''';
+    if (functionName == 'get') {
+      staticInboundFunctions.insert(0, toAdd);
+    } else {
+      staticInboundFunctions.add(toAdd);
+    }
   }
 
-  // TODO: handle "actions" from vertex.relationships['actions'];
-  // see https://api.planningcenteronline.com/services/v2/documentation/2018-11-01/vertices/song
-  // see https://developer.planning.center/docs/#/apps/services/2018-11-01/vertices/song for an example
-
-  // from `actions` create methods
+  /// PROCESS VERTEX ACTIONS:
+  /// see https://api.planningcenteronline.com/services/v2/documentation/2018-11-01/vertices/song
+  /// see https://developer.planning.center/docs/#/apps/services/2018-11-01/vertices/song for an example
+  /// `actions` should manifest as *instance* methods
+  /// also, since each action is only documented in the `details` field
+  /// we can't automatically generate code for them, so we simplify.
   var actionsLines = <String>[];
   for (var action in vertex.actions) {
     print('  handling action for: ${action.path}');
@@ -522,28 +684,34 @@ Future<PcoCollection<$childClass>> $functionName({PlanningCenterApiQuery? query,
       continue;
     }
 
-    // the same vertices are returned from different requests
     var pathSuffix = action.path.split('/').last;
 
     var functionName = action.name.snakeToCamel();
-    var description =
-        action.description.replaceAll('\r', '\n').replaceAll('\n\n', '\n').split('\n').map((e) => '/// $e').join('\n');
-    var details =
-        action.details.replaceAll('\r', '\n').replaceAll('\n\n', '\n').split('\n').map((e) => '/// $e').join('\n');
-    if (action.details.isEmpty) details = '/// *PlanningCenter API Docs don\'t cover this action very well*';
+    var description = action.description.cleanLines().trim().prefixLines('  /// ');
+    var details = action.details.cleanLines().trim().prefixLines('  /// ');
+    if (action.details.isEmpty) details = '  /// *PlanningCenter API docs do not have a description for this action.*';
     actionsLines.add('''
-/// ACTION: ${action.name}
+  /// ACTION: `${action.name}`
+  /// 
 $description
-/// using a path like this: ${action.path}
-/// 
-/// Details:
+  /// using a path like this: `${action.path}`
+  /// 
+  /// Details:
 $details
-Future<PlanningCenterApiResponse> $functionName(Map<String, dynamic> data) async {
-  var url = '\$apiEndpoint/$pathSuffix';
-  return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
-}
-    ''');
+  Future<PlanningCenterApiResponse> $functionName(Map<String, dynamic> data) async {
+    if (id == null) {
+      return PlanningCenterApiError.messageOnly(
+        'Actions must be called on items that already exist on the remote server',
+      );
+    }
+    var url = '\$apiEndpoint/$pathSuffix';
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
   }
+''');
+  }
+
+  /// NOW
+  var additionalConstructors = [];
 
   /// HERE'S THE ACTUAL TEMPLATE ========================
   return '''/// This file was generated on ${DateTime.now().toIso8601String()}
@@ -553,31 +721,39 @@ import '../../pco.dart';
 
 /// This class represents a PCO ${vertex.application.snakeToPascal()} ${vertex.name} Object
 /// 
-/// Application: ${vertex.application}
-/// Id:          ${vertex.id}
-/// Type:        ${vertex.name}
-/// ApiVersion:  ${vertex.version}
+/// - Application:        ${vertex.application}
+/// - Id:                 ${vertex.id}
+/// - Type:               ${vertex.name}
+/// - ApiVersion:         ${vertex.version}
+/// - Is Deprecated:      ${vertex.deprecated}
+/// - Is Collection Only: ${vertex.collectionOnly}
+/// - Default Endpoint:   ${vertex.path}
 /// 
 /// Description:
-/// ${vertex.description.replaceAll(RegExp(r'[\r\n]'), r'\n').split('\n').join('\n/// ')}
+${vertex.description.cleanLines().trim().prefixLines('/// ')}
 /// 
 /// Example:
+/// ```json
+${vertex.example.decodeEncodeIndent().trim().prefixLines('/// ')}
+/// ```
 /// 
-/// ${vertex.example}
-/// 
-/// Collection Only: ${vertex.collectionOnly}
-/// 
-/// Deprecated: ${vertex.deprecated}
-/// 
-/// Default Endpoint: ${vertex.path}
-/// 
-/// possible includes with parameter ?include=a,b
-${vertex.canInclude.map((e) => '/// @${e.value}: ${e.description} ').join('\n')}
+/// Possible includes with parameter ?include=a,b
+/// ${vertex.canInclude.isEmpty ? 'NONE' : vertex.canInclude.map((e) => '- ${e.value}: ${e.description} ').join('\n/// ')}
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-${vertex.canQuery.map((e) => '/// @${e.name} (${e.type}), ${e.description}, example: ${e.example}').join('\n')}
-/// possible orderings with parameter ?order=
-${vertex.canOrderBy.map((e) => '/// @${e.value} (${e.type}), ${e.description}').join('\n')}
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// ${vertex.canQuery.isEmpty ? 'NONE' : vertex.canQuery.map((e) => '- `${e.name}`: (${e.type}), ${e.description}, example: ${e.example}').join('\n/// ')}
+/// 
+/// Possible orderings with parameter ?order=
+/// ${vertex.canOrderBy.isEmpty ? 'NONE' : vertex.canOrderBy.map((e) => '- `${e.value}`: (${e.type}), ${e.description}').join('\n/// ')}
+///
+/// All Outbound Edges:
+/// ${vertex.outboundEdges.isEmpty ? 'NONE' : vertex.outboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
+/// 
+/// All Inbound Edges:
+/// ${vertex.inboundEdges.isEmpty ? 'NONE' : vertex.inboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
+/// 
+/// All Actions:
+/// ${vertex.actions.isEmpty ? 'NONE' : vertex.actions.map((e) => '- `${e.name}`: ${e.path}').join('\n/// ')}
 ///
 class $className extends PcoResource {
   static const String kPcoApplication = '${vertex.application}';
@@ -586,24 +762,28 @@ class $className extends PcoResource {
   static const String kApiVersion = '${vertex.version}';
   static const String kShortestEdgeId = '${vertex.shortestInboundEdge?.id ?? ""}';
   static const String kShortestEdgePathTemplate = '${vertex.shortestInboundEdge?.path ?? vertex.path}';
+  static const String kDefaultPathTemplate = '${vertex.path}';
 
   /// possible includes with parameter ?include=a,b
-${vertex.canInclude.map((e) => '  /// @${e.value}: ${e.description} ').join('\n')}
+  /// ${vertex.canInclude.map((e) => '- `${e.value}`: ${e.description} ').join('\n  /// ')}
   static List<String> get canInclude => [${vertex.canInclude.map((e) => '\'${e.name}\'').join(',')}];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-${vertex.canQuery.map((e) => '  /// @${e.name} (${e.type}), ${e.description}, example: ${e.example}').join('\n')}
+  /// ${vertex.canQuery.map((e) => '- `${e.name}`: (${e.type}), ${e.description}, example: ${e.example}').join('\n  /// ')}
   static List<String> get canQuery => [${vertex.canQuery.map((e) => '\'${e.name}\'').join(',')}];
 
   /// possible orderings with parameter ?order=
-${vertex.canOrderBy.map((e) => '  /// @${e.value} (${e.type}), ${e.description}').join('\n')}
+  /// ${vertex.canOrderBy.map((e) => '- `${e.value}`: (${e.type}), ${e.description}').join('\n  /// ')}
   static List<String> get canOrderBy => [${vertex.canOrderBy.map((e) => '\'${e.name}\'').join(',')}];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
+
+  @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
 
   @override
   String get apiVersion => kApiVersion;
@@ -614,23 +794,59 @@ ${fieldConstantLines.join()}
   // getters and setters
   @override
   List<String> get createAllowed => [${vertex.vertexPermissions.createAssignable.map((e) => '\'$e\'').join(',')}];
+
   @override
   List<String> get updateAllowed => [${vertex.vertexPermissions.updateAssignable.map((e) => '\'$e\'').join(',')}];
 
-${fieldGetterLines.join()}
+  @override
+  bool get canCreate => ${vertex.vertexPermissions.canCreate};
 
-${fieldSetterLines.join()}
+  @override
+  bool get canUpdate => ${vertex.vertexPermissions.canUpdate};
 
+  @override
+  bool get canDestroy => ${vertex.vertexPermissions.canDestroy};
+
+  // getters for object attributes
+
+${fieldGetterLines.join().prefixLines('  ')}
+
+  // setters for object attributes
+
+${fieldSetterLines.join().prefixLines('  ')}
+
+  // additional setters and getters for assignable values
+
+${additionalAssignableLines.join().prefixLines('  ')}
+
+
+
+  // Class Constructors
   $className() : super(kPcoApplication, kTypeString);
   $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-${staticCollectionConstructors.join()}
+${additionalConstructors.join()}
 
-${staticSingleConstructors.join()}
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
 
-${childGetters.join('\n')}
+${staticInboundFunctions.join()}
+
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+${targetGetters.join('\n')}
+
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
 
 ${actionsLines.join('\n')}
+
 }
 ''';
 }
@@ -649,7 +865,7 @@ Map<String, PcoResource Function(Map<String, dynamic>)> _constructors = {
 ${lines.join('\n')}
 };
 
-PcoResource? buildResource(String application, Map<String, dynamic> data) {
+PcoResource? buildResource<T extends PcoResource>(String application, Map<String, dynamic> data) {
   var key = application + '-' + (data['type'] ?? 'null');
   if (_constructors.containsKey(key)) {
     return _constructors[key]!(data);
@@ -756,8 +972,8 @@ void main(List<String> arguments) async {
     }
 
     // create vertices and edges for this app
-    print('Loading Data for ${app} Version: ${version.id}');
-    for (var v in version.relationships?['vertices']['data']) {
+    print('Loading Data for $app Version: ${version.id}');
+    for (var v in version.relationships['vertices']?['data']) {
       var vertex = Vertex.fromJson(app, version.id!, v);
       print('\n\nLoading Vertex and Edge data for Vertex: ${vertex.name} (${vertex.id})');
       uri = docUri(app, version.id, vertex.id!);
@@ -777,12 +993,6 @@ void main(List<String> arguments) async {
     var exportsFile = '$dirName/$app.dart'.replaceAll('-', '_');
 
     for (var vertex in vertices.values) {
-      // determine the inbound path to use for fetch
-      // based on the shortest inbound edge path to this vertex
-      for (var ie in vertex.inboundEdges) {
-        if (ie.path.length < vertex.path.length) vertex.path = ie.path;
-      }
-
       var className = classNameFromVertex(app, vertex.name);
       var constructorKey = '${vertex.application}-${vertex.name}';
       constructorMap[constructorKey] = className;

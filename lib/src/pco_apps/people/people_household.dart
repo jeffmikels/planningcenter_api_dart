@@ -1,43 +1,83 @@
-/// This file was generated on 2021-11-25T00:07:20.559821
+/// This file was generated on 2022-03-04T15:29:14.436036
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO People Household Object
 /// 
-/// Application: people
-/// Id:          household
-/// Type:        Household
-/// ApiVersion:  2021-08-17
+/// - Application:        people
+/// - Id:                 household
+/// - Type:               Household
+/// - ApiVersion:         2021-08-17
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/households
 /// 
 /// Description:
 /// A household links people together and can have a primary contact. To add a person to an existing household, use the HouseholdMemberships endpoint.
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "Household",
+///   "id": "1",
+///   "attributes": {
+///     "name": "string",
+///     "member_count": 1,
+///     "primary_contact_name": "string",
+///     "created_at": "2000-01-01T12:00:00Z",
+///     "updated_at": "2000-01-01T12:00:00Z",
+///     "avatar": "string",
+///     "primary_contact_id": "primary_key"
+///   },
+///   "relationships": {
+///     "primary_contact": {
+///       "data": {
+///         "type": "Person",
+///         "id": "1"
+///       }
+///     },
+///     "people": {
+///       "data": [
+///         {
+///           "type": "Person",
+///           "id": "1"
+///         }
+///       ]
+///     }
+///   }
+/// }
+/// ```
 /// 
-/// {"type":"Household","id":"1","attributes":{"name":"string","member_count":1,"primary_contact_name":"string","created_at":"2000-01-01T12:00:00Z","updated_at":"2000-01-01T12:00:00Z","avatar":"string","primary_contact_id":"primary_key"},"relationships":{"primary_contact":{"data":{"type":"Person","id":"1"}},"people":{"data":[{"type":"Person","id":"1"}]}}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/people/v2/households
-/// 
-/// possible includes with parameter ?include=a,b
-/// @people: include associated people 
+/// Possible includes with parameter ?include=a,b
+/// - people: include associated people 
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// @member_count (URLParameter), query on a specific member_count, example: ?where[member_count]=1
-/// @name (URLParameter), query on a specific name, example: ?where[name]=string
-/// @primary_contact_name (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
-/// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// possible orderings with parameter ?order=
-/// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// @member_count (URLParameter), prefix with a hyphen (-member_count) to reverse the order
-/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// @primary_contact_name (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
-/// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `member_count`: (URLParameter), query on a specific member_count, example: ?where[member_count]=1
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `primary_contact_name`: (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// Possible orderings with parameter ?order=
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `member_count`: (URLParameter), prefix with a hyphen (-member_count) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `primary_contact_name`: (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// All Outbound Edges:
+/// - `householdmembership-household-household_memberships`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
+/// - `person-household-people`: https://api.planningcenteronline.com/people/v2/households/1/people
+/// 
+/// All Inbound Edges:
+/// - `household-householdmembership-household`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household
+/// - `household-organization-households`: https://api.planningcenteronline.com/people/v2/households
+/// - `household-peopleimporthistory-household`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household
+/// - `household-person-households`: https://api.planningcenteronline.com/people/v2/people/1/households
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoPeopleHousehold extends PcoResource {
   static const String kPcoApplication = 'people';
@@ -46,40 +86,47 @@ class PcoPeopleHousehold extends PcoResource {
   static const String kApiVersion = '2021-08-17';
   static const String kShortestEdgeId = 'household-organization-households';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
 
   /// possible includes with parameter ?include=a,b
-  /// @people: include associated people 
+  /// - `people`: include associated people 
   static List<String> get canInclude => ['people'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// @created_at (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-  /// @member_count (URLParameter), query on a specific member_count, example: ?where[member_count]=1
-  /// @name (URLParameter), query on a specific name, example: ?where[name]=string
-  /// @primary_contact_name (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
-  /// @updated_at (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+  /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+  /// - `member_count`: (URLParameter), query on a specific member_count, example: ?where[member_count]=1
+  /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+  /// - `primary_contact_name`: (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+  /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
   static List<String> get canQuery => ['created_at','member_count','name','primary_contact_name','updated_at'];
 
   /// possible orderings with parameter ?order=
-  /// @created_at (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-  /// @member_count (URLParameter), prefix with a hyphen (-member_count) to reverse the order
-  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
-  /// @primary_contact_name (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
-  /// @updated_at (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+  /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+  /// - `member_count`: (URLParameter), prefix with a hyphen (-member_count) to reverse the order
+  /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// - `primary_contact_name`: (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
+  /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
   static List<String> get canOrderBy => ['created_at','member_count','name','primary_contact_name','updated_at'];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
   static const kName = 'name';
   static const kMemberCount = 'member_count';
   static const kPrimaryContactName = 'primary_contact_name';
+  static const kCreatedAt = 'created_at';
+  static const kUpdatedAt = 'updated_at';
   static const kAvatar = 'avatar';
   static const kPrimaryContactId = 'primary_contact_id';
 
@@ -87,131 +134,131 @@ class PcoPeopleHousehold extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => ['name','member_count','avatar','primary_contact_id'];
+
   @override
   List<String> get updateAllowed => ['name','member_count','avatar','primary_contact_id'];
+
+  @override
+  bool get canCreate => true;
+
+  @override
+  bool get canUpdate => true;
+
+  @override
+  bool get canDestroy => true;
+
+  // getters for object attributes
 
   String get name => attributes[kName] ?? '';
   int get memberCount => attributes[kMemberCount] ?? 0;
   String get primaryContactName => attributes[kPrimaryContactName] ?? '';
   String get avatar => attributes[kAvatar] ?? '';
   String get primaryContactId => attributes[kPrimaryContactId] ?? '';
+  
 
+  // setters for object attributes
 
   set name(String s) => attributes[kName] = s;
   set memberCount(int n) => attributes[kMemberCount] = n;
   set avatar(String s) => attributes[kAvatar] = s;
   set primaryContactId(String s) => attributes[kPrimaryContactId] = s;
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
+
+  // Class Constructors
   PcoPeopleHousehold() : super(kPcoApplication, kTypeString);
   PcoPeopleHousehold.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoPeopleHousehold Objects
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household;
-  static Future<PcoCollection<PcoPeopleHousehold>> getManyFromHouseholdAndHouseholdMembership(String householdId,String householdMembershipId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
-    var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/household';
-    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
-  }
-  /// will get many PcoPeopleHousehold Objects
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/households;
-  static Future<PcoCollection<PcoPeopleHousehold>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
+  /// using a path like this: `/people/v2/households`
+  static Future<PcoCollection<PcoPeopleHousehold>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/households';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
   }
-  /// will get many PcoPeopleHousehold Objects
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household;
-  static Future<PcoCollection<PcoPeopleHousehold>> getManyFromPeopleImportAndHistory(String peopleImportId,String historyId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  /// Will get a collection of [PcoPeopleHousehold] objects (expecting one)
+  /// using a path like this: `/people/v2/households/$householdId/household_memberships/$householdMembershipId/household`
+  static Future<PcoCollection<PcoPeopleHousehold>> getFromHouseholdAndHouseholdMembership(String householdId,String householdMembershipId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    query ??= PlanningCenterApiQuery();
+    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
+    var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/household';
+    
+    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoPeopleHousehold] objects (expecting one)
+  /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories/$historyId/household`
+  static Future<PcoCollection<PcoPeopleHousehold>> getFromPeopleImportAndHistory(String peopleImportId,String historyId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/household';
+    
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
   }
-  /// will get many PcoPeopleHousehold Objects
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/households;
-  static Future<PcoCollection<PcoPeopleHousehold>> getManyFromPeopleAndHousehold(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$peopleId/households`
+  static Future<PcoCollection<PcoPeopleHousehold>> getFromPeople(String peopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
     var url = '/people/v2/people/$peopleId/households';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoPeopleHousehold Object
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household;
-  static Future<PcoCollection<PcoPeopleHousehold>> getSingleFromHouseholdAndHouseholdMembership(String householdId,String householdMembershipId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/households/1/household_memberships`
+  Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
-    var url = '/people/v2/households/$householdId/household_memberships/$householdMembershipId/household' + '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoPeopleHouseholdMembership.canInclude;
+    var url = '$apiEndpoint/household_memberships';
+    return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url, query: query, apiVersion: apiVersion);
   }
-  /// will get a single PcoPeopleHousehold Object
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/households;
-  static Future<PcoCollection<PcoPeopleHousehold>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/households/1/people`
+  /// 
+  /// Available Query Filters:
+  /// - `non_pending`
+  /// - `without_deceased`
+  Future<PcoCollection<PcoPeoplePerson>> getPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
-    var url = '/people/v2/households' + '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-  /// will get a single PcoPeopleHousehold Object
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household;
-  static Future<PcoCollection<PcoPeopleHousehold>> getSingleFromPeopleImportAndHistory(String peopleImportId,String historyId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
-    var url = '/people/v2/people_imports/$peopleImportId/histories/$historyId/household' + '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-  /// will get a single PcoPeopleHousehold Object
-  /// using a path like this: https://api.planningcenteronline.com/people/v2/people/1/households;
-  static Future<PcoCollection<PcoPeopleHousehold>> getSingleFromPeopleAndHousehold(String peopleId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
-    var url = '/people/v2/people/$peopleId/households' + '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleHousehold>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoPeopleHousehold.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    var url = '$apiEndpoint/people';
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
   }
 
 
-/// will get many PcoPeopleHouseholdMembership objects
-/// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
-Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoPeopleHouseholdMembership.canInclude;
-  var url = '$apiEndpoint/household_memberships';
-  return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url, query: query, apiVersion:apiVersion);
-}
-    
-/// will get many PcoPeoplePerson objects
-/// using a path like this: https://api.planningcenteronline.com/people/v2/households/1/people
-Future<PcoCollection<PcoPeoplePerson>> getPersonsPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoPeoplePerson.canInclude;
-  var url = '$apiEndpoint/people';
-  return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:apiVersion);
-}
-    
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
+
 
 
 }

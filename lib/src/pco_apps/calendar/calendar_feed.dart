@@ -1,35 +1,62 @@
-/// This file was generated on 2021-11-25T00:07:20.695483
+/// This file was generated on 2022-03-04T15:29:14.665954
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Calendar Feed Object
 /// 
-/// Application: calendar
-/// Id:          feed
-/// Type:        Feed
-/// ApiVersion:  2020-04-08
+/// - Application:        calendar
+/// - Id:                 feed
+/// - Type:               Feed
+/// - ApiVersion:         2020-04-08
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/feeds
 /// 
 /// Description:
-/// A feed belonging to an organization.\n
+/// A feed belonging to an organization.
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "Feed",
+///   "id": "1",
+///   "attributes": {
+///     "default_church_center_visibility": "value",
+///     "feed_type": "value",
+///     "name": "string",
+///     "imported_at": "2000-01-01T12:00:00Z",
+///     "can_delete": true
+///   },
+///   "relationships": {
+///     "event_owner": {
+///       "data": {
+///         "type": "Person",
+///         "id": "1"
+///       }
+///     }
+///   }
+/// }
+/// ```
 /// 
-/// {"type":"Feed","id":"1","attributes":{"default_church_center_visibility":"value","feed_type":"value","name":"string","imported_at":"2000-01-01T12:00:00Z","can_delete":true},"relationships":{"event_owner":{"data":{"type":"Person","id":"1"}}}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/calendar/v2/feeds
-/// 
-/// possible includes with parameter ?include=a,b
-
+/// Possible includes with parameter ?include=a,b
+/// NONE
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// @feed_type (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
-/// possible orderings with parameter ?order=
-/// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// - `feed_type`: (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
+/// 
+/// Possible orderings with parameter ?order=
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
+/// All Outbound Edges:
+/// NONE
+/// 
+/// All Inbound Edges:
+/// - `feed-event-feed`: https://api.planningcenteronline.com/calendar/v2/events/1/feed
+/// - `feed-organization-feeds`: https://api.planningcenteronline.com/calendar/v2/feeds
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoCalendarFeed extends PcoResource {
   static const String kPcoApplication = 'calendar';
@@ -38,110 +65,130 @@ class PcoCalendarFeed extends PcoResource {
   static const String kApiVersion = '2020-04-08';
   static const String kShortestEdgeId = 'feed-organization-feeds';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
 
   /// possible includes with parameter ?include=a,b
-
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// @feed_type (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
+  /// - `feed_type`: (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
   static List<String> get canQuery => ['feed_type'];
 
   /// possible orderings with parameter ?order=
-  /// @name (URLParameter), prefix with a hyphen (-name) to reverse the order
+  /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   static List<String> get canOrderBy => ['name'];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
   static const kDefaultChurchCenterVisibility = 'default_church_center_visibility';
   static const kFeedType = 'feed_type';
   static const kName = 'name';
   static const kImportedAt = 'imported_at';
   static const kCanDelete = 'can_delete';
+  static const kEventOwnerId = 'event_owner_id';
 
 
   // getters and setters
   @override
   List<String> get createAllowed => ['feed_type','event_owner_id','default_church_center_visibility'];
+
   @override
   List<String> get updateAllowed => ['event_owner_id','default_church_center_visibility'];
 
+  @override
+  bool get canCreate => true;
 
-  /// Possible values: `hidden` or `published`
+  @override
+  bool get canUpdate => true;
+
+  @override
+  bool get canDestroy => true;
+
+  // getters for object attributes
+
   String get defaultChurchCenterVisibility => attributes[kDefaultChurchCenterVisibility] ?? '';
-
-  /// Possible values: `registrations`, `groups`, or `ical`
   String get feedType => attributes[kFeedType] ?? '';
   String get name => attributes[kName] ?? '';
   DateTime get importedAt => DateTime.parse(attributes[kImportedAt] ?? '');
   bool get isCanDelete => attributes[kCanDelete] == true;
+  
 
+  // setters for object attributes
 
-
+  
   /// Possible values: `hidden` or `published`
   set defaultChurchCenterVisibility(String s) => attributes[kDefaultChurchCenterVisibility] = s;
-
+  
   /// Possible values: `registrations`, `groups`, or `ical`
   set feedType(String s) => attributes[kFeedType] = s;
+  
+
+  // additional setters and getters for assignable values
+
+  String get eventOwnerId => attributes[kEventOwnerId] ?? '';
+  set eventOwnerId(String s) => attributes[kEventOwnerId] = s;
+  
 
 
+
+  // Class Constructors
   PcoCalendarFeed() : super(kPcoApplication, kTypeString);
   PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoCalendarFeed Objects
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<PcoCollection<PcoCalendarFeed>> getManyFromEvent(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
-    var url = '/calendar/v2/events/$eventId/feed';
-    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
-  }
-  /// will get many PcoCalendarFeed Objects
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<PcoCollection<PcoCalendarFeed>> getMany( {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoCalendarFeed] objects (expecting many)
+  /// using a path like this: `/calendar/v2/feeds`
+  static Future<PcoCollection<PcoCalendarFeed>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoCalendarFeed Object
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/events/1/feed;
-  static Future<PcoCollection<PcoCalendarFeed>> getSingleFromEvent(String eventId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  /// Will get a collection of [PcoCalendarFeed] objects (expecting one)
+  /// using a path like this: `/calendar/v2/events/$eventId/feed`
+  static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
-    var url = '/calendar/v2/events/$eventId/feed' + '/$id';
+    var url = '/calendar/v2/events/$eventId/feed';
+    
     return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
-  }
-  /// will get a single PcoCalendarFeed Object
-  /// using a path like this: https://api.planningcenteronline.com/calendar/v2/feeds;
-  static Future<PcoCollection<PcoCalendarFeed>> getSingle( String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-    query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
-    var url = '/calendar/v2/feeds' + '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoCalendarFeed.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
   }
 
 
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+
+
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
 
 
 

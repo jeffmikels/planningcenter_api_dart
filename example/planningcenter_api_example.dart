@@ -7,16 +7,13 @@ import 'package:planningcenter_api/planningcenter_api.dart';
 /// this is where I store my [appid], [secret], [oAuthClientId], and [oAuthClientSecret] constants
 import '../secrets.dart';
 
-/// This function might come in handy for you sometime :-)
-String pretty(Object obj) {
-  JsonEncoder encoder = JsonEncoder.withIndent('  ', (obj) {
-    try {
-      return obj.toJson();
-    } catch (_) {
-      return obj.toString();
-    }
-  });
-  return encoder.convert(obj);
+void debug(Object o) {
+  try {
+    print(JsonEncoder.withIndent('  ').convert(o));
+  } on JsonUnsupportedObjectError catch (e) {
+    print('DEBUG AS STRING BECAUSE: $e');
+    print(o);
+  }
 }
 
 Future<String> authRedirector(String url) async {
@@ -79,14 +76,14 @@ void main() async {
 
   /// Get the service types on the default organization (defaults to grabbing 25)
   /// will return List<PcoServicesServiceType>
-  var collection = await PcoServicesServiceType.getMany();
-  print(collection.response);
+  var collection = await PcoServicesServiceType.get();
+  debug(collection.response);
   if (!collection.isError) {
     var service = collection.data.first;
     print('Found Service Type: ${service.name}');
 
     /// most class instances have methods allowing you to fetch related items
-    /// this time, we also are using a query object to request plands in descending order
+    /// this time, we also are using a query object to request plans in descending order
     /// of their sort date
     var plans = await service.getPlans(query: PlanningCenterApiQuery(order: '-sort_date'));
     if (!plans.isError) {
@@ -105,10 +102,14 @@ void main() async {
     }
   }
 
-  // to call the API directly, you can do this.
+  // to call the API directly, you can do this, but it will not return
+  // typed data... just a moderately parsed PlanningCenterApiResponse object
   var res = await PlanningCenter.instance.call('/services/v2/songs');
-  if (res is PlanningCenterApiError) print(res);
-  print(pretty(res));
+  if (res is PlanningCenterApiError) {
+    debug(res.errorMessage);
+    debug(res.responseBody);
+  }
+  debug(res.toJson());
 
   // Once we're done with the client, save the credentials file. This ensures
   // that if the credentials were automatically refreshed while using the

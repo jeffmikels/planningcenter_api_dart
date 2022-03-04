@@ -10,6 +10,14 @@ final tokenEndpoint = Uri.parse('https://api.planningcenteronline.com/oauth/toke
 final redirectUrl = Uri.parse('http://localhost:64738/pco_callback');
 final credentialsFile = File('tmp/credentials.json');
 
+void debug(Object o) {
+  try {
+    print(JsonEncoder.withIndent('  ').convert(o));
+  } on JsonUnsupportedObjectError catch (_) {
+    print(o);
+  }
+}
+
 Future<String> authRedirector(String url) async {
   var completer = Completer<String>();
   var server = await HttpServer.bind('0.0.0.0', 64738);
@@ -32,11 +40,18 @@ Future<String> authRedirector(String url) async {
 }
 
 void main() async {
+  print('checking credentials');
   if (await credentialsFile.exists()) {
+    print('authenticating with saved credentials');
     var credentials = json.decode(await credentialsFile.readAsString());
     var creds = PlanningCenterCredentials.fromJson(credentials);
     PlanningCenter.initWithCredentials(oAuthClientId, oAuthClientSecret, creds);
-  } else {
+  }
+
+  /// TODO: refactor authorize so that it manages its own http server
+  /// unless the user supplies their own
+  if (!PlanningCenter.initialized) {
+    print('initiating oAuth workflow');
     var authorized = await PlanningCenter.authorize(
       oAuthClientId,
       oAuthClientSecret,
@@ -51,19 +66,26 @@ void main() async {
   }
 
   // PlanningCenter.init(appid, secret);
-  var collection = await PcoPeoplePerson.getSingle('29166364', allIncludes: false);
-  if (collection.isError) return;
+  var collection = await PcoPeoplePerson.get(id: '29166364', allIncludes: false);
+  if (collection.isError) {
+    debug(collection.query.asMap);
+    debug(collection.response.responseBody);
+  }
 
-  // print(result.toJson());
-  // print(result.attributes);
-  // print(result.links);
-  // print(result.relationshipsData);
-  collection.data.first.relationships.forEach((key, relationships) {
-    print('$key - ${relationships.length} relationships');
-    for (var relationship in relationships) {
-      print(relationship.toJson());
-    }
-  });
+  var result = collection.data.first;
+
+  print('\nRESULT:');
+  debug(result);
+  print('\nLINKS:');
+  debug(result.links);
+  print('\nRELATIONSHIPS:');
+  debug(result.relationships);
+  // result.relationships.forEach((key, relationships) {
+  //   print('$key - ${relationships.length} relationships');
+  //   for (var relationship in relationships) {
+  //     print(relationship.toJson());
+  //   }
+  // });
 
   // Once we're done with the client, save the credentials file. This ensures
   // that if the credentials were automatically refreshed while using the

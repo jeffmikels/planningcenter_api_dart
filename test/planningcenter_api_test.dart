@@ -13,7 +13,7 @@ void main() {
     });
 
     test('First Test', () async {
-      var collection = await PcoServicesSong.getMany();
+      var collection = await PcoServicesSong.get();
       if (!collection.isError) {
         for (var song in collection.data) {
           print(song.attributes);

@@ -1,7 +1,14 @@
+## 0.4.0
+
+-   Massive refactoring of the code generation methods and therefore massive changes to the function definitions all around.
+-   Much better documentation for each class and function
+-   Special attributes used only for create / update functions are now supported (i.e. setting a `songId` attribute on a `PcoServicesItem` object)
+-   `PcoResource` objects now have a `delete` method.
+
 ## 0.3.0
 
 -   Most class methods return a PcoCollection<T> object now
--   PcoCollection<T> data items are coerced into lists even when the JSON:AP data was just a map
+-   PcoCollection<T> data items are coerced into lists even when the JSON:API data was just a map
 
 ## 0.2.1
 

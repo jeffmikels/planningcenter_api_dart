@@ -1,35 +1,56 @@
-/// This file was generated on 2021-11-25T00:07:20.804084
+/// This file was generated on 2022-03-04T15:29:14.780088
 
 
 import '../../pco.dart';
 
 /// This class represents a PCO Giving Refund Object
 /// 
-/// Application: giving
-/// Id:          refund
-/// Type:        Refund
-/// ApiVersion:  2019-10-18
+/// - Application:        giving
+/// - Id:                 refund
+/// - Type:               Refund
+/// - ApiVersion:         2019-10-18
+/// - Is Deprecated:      false
+/// - Is Collection Only: false
+/// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations/1/refund
 /// 
 /// Description:
 /// 
 /// 
 /// Example:
+/// ```json
+/// {
+///   "type": "Refund",
+///   "id": "1",
+///   "attributes": {
+///     "created_at": "2000-01-01T12:00:00Z",
+///     "updated_at": "2000-01-01T12:00:00Z",
+///     "amount_cents": 1,
+///     "amount_currency": "string",
+///     "fee_cents": 1,
+///     "refunded_at": "2000-01-01T12:00:00Z",
+///     "fee_currency": "USD"
+///   },
+///   "relationships": {}
+/// }
+/// ```
 /// 
-/// {"type":"Refund","id":"1","attributes":{"created_at":"2000-01-01T12:00:00Z","updated_at":"2000-01-01T12:00:00Z","amount_cents":1,"amount_currency":"string","fee_cents":1,"refunded_at":"2000-01-01T12:00:00Z","fee_currency":"USD"},"relationships":{}}
-/// 
-/// Collection Only: false
-/// 
-/// Deprecated: false
-/// 
-/// Default Endpoint: https://api.planningcenteronline.com/giving/v2/donations/1/refund
-/// 
-/// possible includes with parameter ?include=a,b
-/// @designation_refunds: include associated designation_refunds 
+/// Possible includes with parameter ?include=a,b
+/// - designation_refunds: include associated designation_refunds 
 ///
-/// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
-/// possible orderings with parameter ?order=
-
+/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// NONE
+/// 
+/// Possible orderings with parameter ?order=
+/// NONE
+///
+/// All Outbound Edges:
+/// - `designationrefund-refund-designation_refunds`: https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds
+/// 
+/// All Inbound Edges:
+/// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
+/// 
+/// All Actions:
+/// NONE
 ///
 class PcoGivingRefund extends PcoResource {
   static const String kPcoApplication = 'giving';
@@ -38,29 +59,36 @@ class PcoGivingRefund extends PcoResource {
   static const String kApiVersion = '2019-10-18';
   static const String kShortestEdgeId = 'refund-donation-refund';
   static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations/1/refund';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations/1/refund';
 
   /// possible includes with parameter ?include=a,b
-  /// @designation_refunds: include associated designation_refunds 
+  /// - `designation_refunds`: include associated designation_refunds 
   static List<String> get canInclude => ['designation_refunds'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-
+  /// 
   static List<String> get canOrderBy => [];
 
-  /// getters like the following allow parent class methods to know
-  /// the static variables of the child class
+  // By using overridden getters, the parent class can call the getter and will get the results from the
+  // child class. This lets the parent access the static variables of the child class.
 
   @override
   String get shortestEdgePath => kShortestEdgePathTemplate;
 
   @override
+  String get defaultPathTemplate => kDefaultPathTemplate;
+
+  @override
   String get apiVersion => kApiVersion;
 
   // field mapping constants
+  static const kId = 'id';
+  static const kCreatedAt = 'created_at';
+  static const kUpdatedAt = 'updated_at';
   static const kAmountCents = 'amount_cents';
   static const kAmountCurrency = 'amount_currency';
   static const kFeeCents = 'fee_cents';
@@ -71,55 +99,81 @@ class PcoGivingRefund extends PcoResource {
   // getters and setters
   @override
   List<String> get createAllowed => [];
+
   @override
   List<String> get updateAllowed => [];
+
+  @override
+  bool get canCreate => false;
+
+  @override
+  bool get canUpdate => false;
+
+  @override
+  bool get canDestroy => false;
+
+  // getters for object attributes
 
   int get amountCents => attributes[kAmountCents] ?? 0;
   String get amountCurrency => attributes[kAmountCurrency] ?? '';
   int get feeCents => attributes[kFeeCents] ?? 0;
   DateTime get refundedAt => DateTime.parse(attributes[kRefundedAt] ?? '');
   String get feeCurrency => attributes[kFeeCurrency] ?? '';
+  
+
+  // setters for object attributes
+
+  
+
+  // additional setters and getters for assignable values
+
+  
 
 
 
-
+  // Class Constructors
   PcoGivingRefund() : super(kPcoApplication, kTypeString);
   PcoGivingRefund.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// will get many PcoGivingRefund Objects
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/refund;
-  static Future<PcoCollection<PcoGivingRefund>> getManyFromDonation(String donationId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+
+
+
+  /// Will get a collection of [PcoGivingRefund] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations/$donationId/refund`
+  static Future<PcoCollection<PcoGivingRefund>> getFromDonation(String donationId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGivingRefund.canInclude;
     var url = '/giving/v2/donations/$donationId/refund';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingRefund>(url, query: query, apiVersion:kApiVersion);
   }
 
 
-  /// will get a single PcoGivingRefund Object
-  /// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/refund;
-  static Future<PcoCollection<PcoGivingRefund>> getSingleFromDonation(String donationId, String id, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  // --------------------------------
+  // Outbound Edges
+  // --------------------------------
+  // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoGivingDesignationRefund] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds`
+  Future<PcoCollection<PcoGivingDesignationRefund>> getDesignationRefunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRefund.canInclude;
-    var url = '/giving/v2/donations/$donationId/refund' + '/$id';
-    return PcoCollection.fromApiCall<PcoGivingRefund>(url, query: query, apiVersion:kApiVersion);
-    // if (res.isError) return retval;
-    // if (res.data is! List) {
-    //   retval = PcoGivingRefund.fromJson(res.data, withIncludes: res.included);
-    // }
-    // return retval;
+    if (allIncludes) query.include = PcoGivingDesignationRefund.canInclude;
+    var url = '$apiEndpoint/designation_refunds';
+    return PcoCollection.fromApiCall<PcoGivingDesignationRefund>(url, query: query, apiVersion: apiVersion);
   }
 
 
-/// will get many PcoGivingDesignationRefund objects
-/// using a path like this: https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds
-Future<PcoCollection<PcoGivingDesignationRefund>> getDesignationRefunds({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
-  query ??= PlanningCenterApiQuery();
-  if (allIncludes) query.include = PcoGivingDesignationRefund.canInclude;
-  var url = '$apiEndpoint/designation_refunds';
-  return PcoCollection.fromApiCall<PcoGivingDesignationRefund>(url, query: query, apiVersion:apiVersion);
-}
-    
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
+
 
 
 }

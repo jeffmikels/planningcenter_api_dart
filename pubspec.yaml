@@ -4,9 +4,6 @@ version: 0.3.0
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 
-# remove appid and secret from test before publishing
-# publish_to: none
-
 environment:
   sdk: '>=2.14.2 <3.0.0'
 

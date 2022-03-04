@@ -372,6 +372,8 @@ class PlanningCenterCredentials {
       };
 }
 
+/// [PlanningCenterApiQuery] objects handle all the additional API parameters
+/// accepted by the Planning Center API.
 class PlanningCenterApiQuery {
   /// [order] can usually be one of created_at, updated_at, title, sort_date, but may be others
   /// prefix with a hyphen to reverse the order
@@ -439,6 +441,20 @@ class PlanningCenterApiMeta {
 
 class PlanningCenterApiError extends PlanningCenterApiResponse {
   final String errorMessage;
+  PlanningCenterApiError.messageOnly(this.errorMessage)
+      : super(
+          '',
+          PlanningCenterApiQuery(),
+          Uri(),
+          '',
+          0,
+          '',
+          [],
+          PlanningCenterApiMeta.fromJson({}),
+          {},
+          [],
+        );
+
   PlanningCenterApiError(
     this.errorMessage,
     String application,
@@ -461,7 +477,8 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
         );
 
   @override
-  Map<String, dynamic> toJson() => super.toJson()..addAll({'message': errorMessage});
+  Map<String, dynamic> toJson({bool includeRawResponseBody = false}) =>
+      super.toJson(includeRawResponseBody: includeRawResponseBody)..addAll({'message': errorMessage});
 
   @override
   String toString() {
@@ -483,21 +500,21 @@ class PlanningCenterApiResponse {
   final String responseBody;
 
   // JSON:API / PCO raw content
-  final List<Map<String, dynamic>> data; // always coerce into a list
+  final List<Map<String, dynamic>> data; // always coerced into a list
   final PlanningCenterApiMeta meta;
   final Map<String, dynamic> links;
   final List<Map<String, dynamic>> included;
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toJson({bool includeRawResponseBody = false}) {
     return {
       'error': isError,
       'request': {
-        'uri': requestUri,
+        'uri': requestUri.toString(),
         'body': requestBody,
       },
       'response': {
         'code': statusCode,
-        'body': responseBody,
+        if (includeRawResponseBody) 'body': responseBody,
       },
       'data': data,
       'meta': meta,

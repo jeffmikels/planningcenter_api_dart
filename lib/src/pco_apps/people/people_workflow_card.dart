@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.542980
+/// This file was generated on 2022-03-04T20:00:53.765296
 
 
 import '../../pco.dart';
@@ -145,6 +145,11 @@ class PcoPeopleWorkflowCard extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kSnoozeUntil = 'snooze_until';
@@ -210,6 +215,15 @@ class PcoPeopleWorkflowCard extends PcoResource {
   PcoPeopleWorkflowCard() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCard.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoPeopleWorkflowCard] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoPeopleWorkflowCard.create(String peopleId) {
+    return PcoPeopleWorkflowCard()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards';
+  }
 
 
   // ---------------------------------

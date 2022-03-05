@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.442162
+/// This file was generated on 2022-03-04T20:00:53.707457
 
 
 import '../../pco.dart';
@@ -102,6 +102,11 @@ class PcoPeopleListCategory extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kName = 'name';
@@ -147,6 +152,15 @@ class PcoPeopleListCategory extends PcoResource {
   PcoPeopleListCategory() : super(kPcoApplication, kTypeString);
   PcoPeopleListCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoPeopleListCategory] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/people/v2/list_categories`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoPeopleListCategory.create() {
+    return PcoPeopleListCategory()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/list_categories';
+  }
 
 
   // ---------------------------------

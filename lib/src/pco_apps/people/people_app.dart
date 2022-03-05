@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.415719
+/// This file was generated on 2022-03-04T20:00:53.691645
 
 
 import '../../pco.dart';
@@ -86,6 +86,11 @@ class PcoPeopleApp extends PcoResource {
 
   @override
   String get apiVersion => kApiVersion;
+
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
 
   // field mapping constants
   static const kId = 'id';

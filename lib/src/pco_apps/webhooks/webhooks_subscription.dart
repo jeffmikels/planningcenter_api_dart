@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.823987
+/// This file was generated on 2022-03-04T20:00:54.076067
 
 
 import '../../pco.dart';
@@ -85,6 +85,11 @@ class PcoWebhooksSubscription extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kName = 'name';
@@ -138,6 +143,15 @@ class PcoWebhooksSubscription extends PcoResource {
   PcoWebhooksSubscription() : super(kPcoApplication, kTypeString);
   PcoWebhooksSubscription.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoWebhooksSubscription] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/webhooks/v2/subscriptions`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoWebhooksSubscription.create() {
+    return PcoWebhooksSubscription()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
+  }
 
 
   // ---------------------------------

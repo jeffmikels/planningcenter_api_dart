@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.773632
+/// This file was generated on 2022-03-04T20:00:53.941131
 
 
 import '../../pco.dart';
@@ -106,6 +106,11 @@ class PcoGivingPledge extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kCreatedAt = 'created_at';
@@ -165,6 +170,15 @@ class PcoGivingPledge extends PcoResource {
   PcoGivingPledge() : super(kPcoApplication, kTypeString);
   PcoGivingPledge.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoGivingPledge] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/giving/v2/pledges`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoGivingPledge.create() {
+    return PcoGivingPledge()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/pledges';
+  }
 
 
   // ---------------------------------

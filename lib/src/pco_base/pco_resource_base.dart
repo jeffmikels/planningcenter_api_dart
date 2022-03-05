@@ -44,9 +44,8 @@ abstract class PcoResource {
 
   /// PcoResources include their own path as a link object
   /// but this might be null if we haven't created/fetched the object yet
-  String? _apiPath;
-  String? get apiPath => links['self'] ?? _apiPath ?? defaultPathTemplate ?? shortestEdgePathTemplate;
-  String? get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
+  String? get apiPath => links['self'] ?? defaultPathTemplate;
+  String get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
   bool fetched = false;
@@ -113,7 +112,7 @@ abstract class PcoResource {
         '',
       );
     } else {
-      res = await api.call(apiPath!, verb: verb, apiVersion: apiVersion, data: data);
+      res = await api.call(apiEndpoint, verb: verb, apiVersion: apiVersion, data: data);
       if (!res.isError) {
         // apiresponses now always give data as a list
         fromJson(res.data.first);

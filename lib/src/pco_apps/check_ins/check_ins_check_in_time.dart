@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.149630
+/// This file was generated on 2022-03-04T20:00:53.533817
 
 
 import '../../pco.dart';
@@ -101,6 +101,11 @@ class PcoCheckInsCheckInTime extends PcoResource {
 
   @override
   String get apiVersion => kApiVersion;
+
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
 
   // field mapping constants
   static const kId = 'id';

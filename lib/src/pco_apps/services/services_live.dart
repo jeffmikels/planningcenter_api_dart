@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.050883
+/// This file was generated on 2022-03-04T20:00:53.370401
 
 
 import '../../pco.dart';
@@ -102,6 +102,11 @@ class PcoServicesLive extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kSeriesTitle = 'series_title';
@@ -158,6 +163,15 @@ class PcoServicesLive extends PcoResource {
   PcoServicesLive() : super(kPcoApplication, kTypeString);
   PcoServicesLive.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoServicesLive] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/recent_plans/$recentPlanId/live`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoServicesLive.create(String peopleId,String recentPlanId) {
+    return PcoServicesLive()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/recent_plans/$recentPlanId/live';
+  }
 
 
   // ---------------------------------

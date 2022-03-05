@@ -1,3 +1,8 @@
+## 0.5.0
+
+-   Added `create` factory constructors to classes that represent assets that can be created
+    through the API. NOTE: Creating an object does not create it on the server until `save` is called.
+
 ## 0.4.1
 
 -   Removing old references to `DataClass` and `PlanningCenterResource` classes

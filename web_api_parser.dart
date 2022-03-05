@@ -710,8 +710,41 @@ $details
 ''');
   }
 
-  /// NOW
+  /// NOW ASSEMBLE FACTORY CONSTRUCTORS
   var additionalConstructors = [];
+
+  if (vertex.vertexPermissions.canCreate) {
+    // ignore everything up through /appname/v2
+    var pathParts = vertex.path.split('/');
+    var idArgs = <String>[];
+    var functionName = 'create';
+    var pathNames = [];
+    var varNames = [];
+
+    for (var i = 5; i < pathParts.length - 1; i++) {
+      if (pathParts[i] == '1') {
+        var varname = pathNames.last + 'Id';
+        varNames.add(varname);
+        pathParts[i] = '\$$varname'; // modify the pathParts for the template string
+        idArgs.add('String $varname');
+      } else {
+        var camelName = edgeToVertexId(pathParts[i]).snakeToCamel().singular;
+        pathNames.add(camelName);
+      }
+    }
+    var createPath = pathParts.join('/');
+    additionalConstructors.add('''
+  /// Create a new [$className] object based on this request endpoint:
+  /// `$createPath`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory $className.create(${idArgs.join(',')}) {
+    return $className()
+      .._apiPathOverride = '$createPath';
+  }
+''');
+  }
 
   /// HERE'S THE ACTUAL TEMPLATE ========================
   return '''/// This file was generated on ${DateTime.now().toIso8601String()}
@@ -787,6 +820,11 @@ class $className extends PcoResource {
 
   @override
   String get apiVersion => kApiVersion;
+
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
 
   // field mapping constants
 ${fieldConstantLines.join()}

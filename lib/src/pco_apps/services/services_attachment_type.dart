@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.025976
+/// This file was generated on 2022-03-04T20:00:53.347517
 
 
 import '../../pco.dart';
@@ -93,6 +93,11 @@ class PcoServicesAttachmentType extends PcoResource {
 
   @override
   String get apiVersion => kApiVersion;
+
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
 
   // field mapping constants
   static const kId = 'id';

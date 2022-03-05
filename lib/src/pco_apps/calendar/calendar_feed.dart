@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.665954
+/// This file was generated on 2022-03-04T20:00:53.837600
 
 
 import '../../pco.dart';
@@ -91,6 +91,11 @@ class PcoCalendarFeed extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kDefaultChurchCenterVisibility = 'default_church_center_visibility';
@@ -148,6 +153,15 @@ class PcoCalendarFeed extends PcoResource {
   PcoCalendarFeed() : super(kPcoApplication, kTypeString);
   PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoCalendarFeed] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/calendar/v2/feeds`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoCalendarFeed.create() {
+    return PcoCalendarFeed()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/feeds';
+  }
 
 
   // ---------------------------------

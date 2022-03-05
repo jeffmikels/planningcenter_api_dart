@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.037203
+/// This file was generated on 2022-03-04T20:00:53.358390
 
 
 import '../../pco.dart';
@@ -104,6 +104,11 @@ class PcoServicesFolder extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kCreatedAt = 'created_at';
@@ -155,6 +160,15 @@ class PcoServicesFolder extends PcoResource {
   PcoServicesFolder() : super(kPcoApplication, kTypeString);
   PcoServicesFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoServicesFolder] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/services/v2/folders`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoServicesFolder.create() {
+    return PcoServicesFolder()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/folders';
+  }
 
 
   // ---------------------------------

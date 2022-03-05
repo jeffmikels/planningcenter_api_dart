@@ -1,4 +1,4 @@
-/// This file was generated on 2022-03-04T15:29:14.457548
+/// This file was generated on 2022-03-04T20:00:53.714404
 
 
 import '../../pco.dart';
@@ -80,6 +80,11 @@ class PcoPeopleNameSuffix extends PcoResource {
   @override
   String get apiVersion => kApiVersion;
 
+  String? _apiPathOverride;
+
+  @override
+  String get apiPath => links['self'] ?? _apiPathOverride ?? super.apiPath;
+
   // field mapping constants
   static const kId = 'id';
   static const kValue = 'value';
@@ -121,6 +126,15 @@ class PcoPeopleNameSuffix extends PcoResource {
   PcoPeopleNameSuffix() : super(kPcoApplication, kTypeString);
   PcoPeopleNameSuffix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
+  /// Create a new [PcoPeopleNameSuffix] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/people/v2/name_suffixes`
+  /// 
+  /// NOTE: Creating an instance of a class this way does not save it on the server
+  /// until `save()` is called on the object.
+  factory PcoPeopleNameSuffix.create() {
+    return PcoPeopleNameSuffix()
+      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_suffixes';
+  }
 
 
   // ---------------------------------

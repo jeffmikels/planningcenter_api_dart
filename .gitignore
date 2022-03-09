@@ -2,6 +2,8 @@
 secrets.dart
 credentials.json
 tmp
+js_out/example.js
+js_out/node_modules
 
 # Files and directories created by pub.
 .dart_tool/

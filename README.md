@@ -30,7 +30,7 @@ Before you can access the Planning Center API, you need to initialize the librar
 /// use a developer level authentication by specifying an `appId` and a `secret`.
 PlanningCenter.init(appId, secret);
 
-/// use a PlanningCenterCredentials object (perhaps loaded from a file)
+/// use a [PlanningCenterCredentials] object (perhaps loaded from a file)
 PlanningCenter.initWithCredentials(credentials);
 
 /// await the oAuth authorization flow
@@ -39,7 +39,7 @@ PlanningCenter.initWithCredentials(credentials);
 await PlanningCenter.authorize(clientId, clientSecret, redirectUrl, scopesList, redirector);
 ```
 
-Once any of these initializers completes, then, you may access the API object directly with the static member `PlanningCenter.instance` from which you can make API calls through `PlanningCenter.instance.call(endpoint, HTTPverb, queryObject)`.
+Once any of these initializers completes, then, you may access the API object directly with the static member `PlanningCenter.instance` from which you can make API calls through `PlanningCenter.instance.call(String endpoint, String HTTPverb, Map<String, dynamic> queryObject)`.
 
 You can determine if the library is initialized through checking the `initialized` static member like so:
 
@@ -49,10 +49,9 @@ if (PlanningCenter.initialized) {
 }
 ```
 
-Although you can issue calls to the API directly using `PlanningCenter.instance` the preferred mechanism is to
-use the Dart objects provided for you in the library.
+Although you can issue calls to the API directly using `PlanningCenter.instance` the preferred mechanism is to use the methods associated with the classes provided in the library. This way, you will get access to code suggestions (Intellisense) and documentation in your IDE.
 
-Each Planning Center resource that can be accessed is available to you through static methods on the relevant class itself.
+Each Planning Center resource that can be retrieved is available to you through static methods on the relevant class itself.
 
 Each Planning Center resource that depends on another resource can be accessed through instance methods on the other resource.
 

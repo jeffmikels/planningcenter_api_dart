@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.713896
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.294990
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -123,7 +127,7 @@ class PcoPeopleNamePrefix extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleNamePrefix() : super(kPcoApplication, kTypeString);
+  PcoPeopleNamePrefix._() : super(kPcoApplication, kTypeString);
   PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleNamePrefix] object based on this request endpoint:
@@ -131,8 +135,8 @@ class PcoPeopleNamePrefix extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNamePrefix.create() {
-    return PcoPeopleNamePrefix()
+  factory PcoPeopleNamePrefix() {
+    return PcoPeopleNamePrefix._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
   }
 

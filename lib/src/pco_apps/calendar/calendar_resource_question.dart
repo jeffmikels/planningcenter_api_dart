@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.868492
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.451016
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -155,7 +159,7 @@ class PcoCalendarResourceQuestion extends PcoResource {
 
 
   // Class Constructors
-  PcoCalendarResourceQuestion() : super(kPcoApplication, kTypeString);
+  PcoCalendarResourceQuestion._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

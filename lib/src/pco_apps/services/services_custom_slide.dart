@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.355523
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.897055
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -147,7 +151,7 @@ class PcoServicesCustomSlide extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesCustomSlide() : super(kPcoApplication, kTypeString);
+  PcoServicesCustomSlide._() : super(kPcoApplication, kTypeString);
   PcoServicesCustomSlide.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesCustomSlide] object based on this request endpoint:
@@ -155,8 +159,8 @@ class PcoServicesCustomSlide extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesCustomSlide.create(String songId,String scheduledItemId) {
-    return PcoServicesCustomSlide()
+  factory PcoServicesCustomSlide(String songId,String scheduledItemId) {
+    return PcoServicesCustomSlide._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/custom_slides';
   }
 

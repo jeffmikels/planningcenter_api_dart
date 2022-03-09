@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.408014
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.949438
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -130,7 +134,7 @@ class PcoServicesSongbookStatu extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesSongbookStatu() : super(kPcoApplication, kTypeString);
+  PcoServicesSongbookStatu._() : super(kPcoApplication, kTypeString);
   PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

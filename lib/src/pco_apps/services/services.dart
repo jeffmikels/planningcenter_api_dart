@@ -1,3 +1,9 @@
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.960719
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
+
 export "./services_arrangement.dart";
 export "./services_arrangement_sections.dart";
 export "./services_attachment.dart";

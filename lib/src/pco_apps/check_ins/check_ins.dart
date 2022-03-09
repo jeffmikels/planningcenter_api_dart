@@ -1,3 +1,9 @@
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.064092
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
+
 export "./check_ins_attendance_type.dart";
 export "./check_ins_check_in.dart";
 export "./check_ins_check_in_group.dart";

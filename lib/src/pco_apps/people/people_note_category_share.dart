@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.724732
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.307506
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -141,7 +145,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleNoteCategoryShare() : super(kPcoApplication, kTypeString);
+  PcoPeopleNoteCategoryShare._() : super(kPcoApplication, kTypeString);
   PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleNoteCategoryShare] object based on this request endpoint:
@@ -149,8 +153,8 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNoteCategoryShare.create(String noteCategoryId) {
-    return PcoPeopleNoteCategoryShare()
+  factory PcoPeopleNoteCategoryShare(String noteCategoryId) {
+    return PcoPeopleNoteCategoryShare._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
   }
 

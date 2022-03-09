@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.403550
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.945667
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -137,7 +141,7 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesSignupSheetMetadata() : super(kPcoApplication, kTypeString);
+  PcoServicesSignupSheetMetadata._() : super(kPcoApplication, kTypeString);
   PcoServicesSignupSheetMetadata.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

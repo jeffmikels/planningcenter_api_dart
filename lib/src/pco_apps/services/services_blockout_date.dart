@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.351253
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.890809
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -155,7 +159,7 @@ class PcoServicesBlockoutDate extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesBlockoutDate() : super(kPcoApplication, kTypeString);
+  PcoServicesBlockoutDate._() : super(kPcoApplication, kTypeString);
   PcoServicesBlockoutDate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

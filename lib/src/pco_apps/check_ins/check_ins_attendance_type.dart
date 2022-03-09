@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.529922
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.028212
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -142,7 +146,7 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
 
   // Class Constructors
-  PcoCheckInsAttendanceType() : super(kPcoApplication, kTypeString);
+  PcoCheckInsAttendanceType._() : super(kPcoApplication, kTypeString);
   PcoCheckInsAttendanceType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

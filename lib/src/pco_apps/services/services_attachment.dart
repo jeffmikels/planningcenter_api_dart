@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.343995
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.883205
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -242,7 +246,7 @@ class PcoServicesAttachment extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesAttachment() : super(kPcoApplication, kTypeString);
+  PcoServicesAttachment._() : super(kPcoApplication, kTypeString);
   PcoServicesAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesAttachment] object based on this request endpoint:
@@ -250,8 +254,8 @@ class PcoServicesAttachment extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesAttachment.create() {
-    return PcoServicesAttachment()
+  factory PcoServicesAttachment() {
+    return PcoServicesAttachment._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments';
   }
 

@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.549448
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.056419
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -131,7 +135,7 @@ class PcoCheckInsOption extends PcoResource {
 
 
   // Class Constructors
-  PcoCheckInsOption() : super(kPcoApplication, kTypeString);
+  PcoCheckInsOption._() : super(kPcoApplication, kTypeString);
   PcoCheckInsOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

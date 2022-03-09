@@ -1,6 +1,6 @@
 name: planningcenter_api
 description: Supports nearly 100% of the Planning Center public API.
-version: 0.5.0
+version: 0.6.0
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 

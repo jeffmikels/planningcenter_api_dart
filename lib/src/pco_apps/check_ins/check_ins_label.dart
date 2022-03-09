@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.541918
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.044427
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -142,7 +146,7 @@ class PcoCheckInsLabel extends PcoResource {
 
 
   // Class Constructors
-  PcoCheckInsLabel() : super(kPcoApplication, kTypeString);
+  PcoCheckInsLabel._() : super(kPcoApplication, kTypeString);
   PcoCheckInsLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

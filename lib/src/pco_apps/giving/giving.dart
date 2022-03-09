@@ -1,3 +1,9 @@
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.503171
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
+
 export "./giving_batch.dart";
 export "./giving_batch_group.dart";
 export "./giving_campus.dart";

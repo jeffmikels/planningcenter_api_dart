@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.384572
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.929356
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -139,7 +143,7 @@ class PcoServicesPlanNoteCategory extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesPlanNoteCategory() : super(kPcoApplication, kTypeString);
+  PcoServicesPlanNoteCategory._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

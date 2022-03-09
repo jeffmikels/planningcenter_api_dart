@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.943430
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.498513
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -174,7 +178,7 @@ class PcoGivingPledgeCampaign extends PcoResource {
 
 
   // Class Constructors
-  PcoGivingPledgeCampaign() : super(kPcoApplication, kTypeString);
+  PcoGivingPledgeCampaign._() : super(kPcoApplication, kTypeString);
   PcoGivingPledgeCampaign.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoGivingPledgeCampaign] object based on this request endpoint:
@@ -182,8 +186,8 @@ class PcoGivingPledgeCampaign extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingPledgeCampaign.create() {
-    return PcoGivingPledgeCampaign()
+  factory PcoGivingPledgeCampaign() {
+    return PcoGivingPledgeCampaign._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
   }
 

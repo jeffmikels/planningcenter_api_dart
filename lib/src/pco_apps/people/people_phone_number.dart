@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.747014
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.337751
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -177,7 +181,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
 
 
   // Class Constructors
-  PcoPeoplePhoneNumber() : super(kPcoApplication, kTypeString);
+  PcoPeoplePhoneNumber._() : super(kPcoApplication, kTypeString);
   PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeoplePhoneNumber] object based on this request endpoint:
@@ -185,8 +189,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeoplePhoneNumber.create(String peopleId) {
-    return PcoPeoplePhoneNumber()
+  factory PcoPeoplePhoneNumber(String peopleId) {
+    return PcoPeoplePhoneNumber._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers';
   }
 

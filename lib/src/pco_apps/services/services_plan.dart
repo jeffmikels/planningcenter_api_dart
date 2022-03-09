@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.382421
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.927201
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -291,7 +295,7 @@ class PcoServicesPlan extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesPlan() : super(kPcoApplication, kTypeString);
+  PcoServicesPlan._() : super(kPcoApplication, kTypeString);
   PcoServicesPlan.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesPlan] object based on this request endpoint:
@@ -299,8 +303,8 @@ class PcoServicesPlan extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPlan.create(String serviceTypeId) {
-    return PcoServicesPlan()
+  factory PcoServicesPlan(String serviceTypeId) {
+    return PcoServicesPlan._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans';
   }
 

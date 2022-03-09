@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.837600
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.434664
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -150,7 +154,7 @@ class PcoCalendarFeed extends PcoResource {
 
 
   // Class Constructors
-  PcoCalendarFeed() : super(kPcoApplication, kTypeString);
+  PcoCalendarFeed._() : super(kPcoApplication, kTypeString);
   PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoCalendarFeed] object based on this request endpoint:
@@ -158,8 +162,8 @@ class PcoCalendarFeed extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoCalendarFeed.create() {
-    return PcoCalendarFeed()
+  factory PcoCalendarFeed() {
+    return PcoCalendarFeed._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/feeds';
   }
 

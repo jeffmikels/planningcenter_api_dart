@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.705200
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.283594
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -123,7 +127,7 @@ class PcoPeopleInactiveReason extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleInactiveReason() : super(kPcoApplication, kTypeString);
+  PcoPeopleInactiveReason._() : super(kPcoApplication, kTypeString);
   PcoPeopleInactiveReason.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleInactiveReason] object based on this request endpoint:
@@ -131,8 +135,8 @@ class PcoPeopleInactiveReason extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleInactiveReason.create() {
-    return PcoPeopleInactiveReason()
+  factory PcoPeopleInactiveReason() {
+    return PcoPeopleInactiveReason._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/inactive_reasons';
   }
 

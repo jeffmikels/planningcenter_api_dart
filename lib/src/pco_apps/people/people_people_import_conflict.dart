@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.733856
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.317128
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -142,7 +146,7 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
 
 
   // Class Constructors
-  PcoPeoplePeopleImportConflict() : super(kPcoApplication, kTypeString);
+  PcoPeoplePeopleImportConflict._() : super(kPcoApplication, kTypeString);
   PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

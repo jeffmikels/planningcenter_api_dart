@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.418605
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.959861
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -161,7 +165,7 @@ class PcoServicesZoom extends PcoResource {
 
 
   // Class Constructors
-  PcoServicesZoom() : super(kPcoApplication, kTypeString);
+  PcoServicesZoom._() : super(kPcoApplication, kTypeString);
   PcoServicesZoom.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesZoom] object based on this request endpoint:
@@ -169,8 +173,8 @@ class PcoServicesZoom extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesZoom.create(String attachmentId) {
-    return PcoServicesZoom()
+  factory PcoServicesZoom(String attachmentId) {
+    return PcoServicesZoom._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments/$attachmentId/zooms';
   }
 

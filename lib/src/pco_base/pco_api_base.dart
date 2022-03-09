@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:planningcenter_api/planningcenter_api.dart';
-import 'package:planningcenter_api/src/pco_base/pco_constructors.dart';
 
-const int apiInterval = 200; // 100 requests per 20 seconds in milliseconds
+/// Planning Center limits requests to 100 requests per 20 seconds
+/// That's 200 milliseconds per request, so we force every request
+/// to wait 201 milliseconds after the previous request before execution.
+const int apiInterval = 201;
 
 /// PlanningCenter
 ///
@@ -166,6 +167,7 @@ class PlanningCenter {
   /// used for throttling requests
   Future apiCanCall = Future.value(true);
 
+  // private constructor prevents instantiating without proper credentials
   PlanningCenter._(_appId, _secret) {
     _baseUri = Uri.parse(mainEndpoint);
     _baseUri = Uri(
@@ -296,13 +298,6 @@ class PlanningCenter {
       headers['Authorization'] = 'Bearer ${oAuthCredentials!.accessToken}';
     }
 
-    // print(endpoint);
-    // print(uri);
-    // print(verb);
-    // print(apiVersion);
-    // print(query.toJson());
-    // print(data);
-
     late http.Response res;
     switch (verb.toLowerCase()) {
       case 'get':
@@ -389,7 +384,7 @@ class PlanningCenterApiQuery {
   /// [include] automatically includes related items
   List<String> include;
 
-  // Pagination we default to 25
+  /// Pagination defaults to 25, maximum allowed seems to be 100
   final int perPage;
   int pageOffset;
 
@@ -401,6 +396,14 @@ class PlanningCenterApiQuery {
     this.order,
     this.where = const {},
   });
+
+  PlanningCenterApiQuery.fromJson(Map<String, dynamic> data)
+      : filter = data['filter'] ?? [],
+        include = data['include'] ?? [],
+        perPage = data['per_page'] ?? 25,
+        pageOffset = data['offset'] ?? 0,
+        order = data['order'],
+        where = data['where'] ?? {};
 
   Map<String, dynamic> toJson() => asMap;
 
@@ -418,17 +421,27 @@ class PlanningCenterApiQuery {
 
     return retval;
   }
+
+  /// returns a copy of this query as a new object
+  PlanningCenterApiQuery copy() {
+    return PlanningCenterApiQuery.fromJson(asMap);
+  }
+
+  /// returns a new query only modifying the offset value
+  PlanningCenterApiQuery withOffset(int offset) {
+    return copy()..pageOffset = offset;
+  }
 }
 
 /// holds metadata for API requests
 class PlanningCenterApiMeta {
   final Map<String, dynamic> _data = {};
 
-  int? get totalCount => _data['total_count'];
-  int? get count => _data['count'];
+  int get totalCount => _data['total_count'] ?? 0;
+  int get count => _data['count'] ?? 0;
   int? get nextOffset => _data['next']?['offset'];
-  List<String>? get canOrderBy => _data['can_order_by'] ?? 0;
-  List<String>? get canQueryBy => _data['can_query_by'] ?? 0;
+  List<String>? get canOrderBy => _data['can_order_by'];
+  List<String>? get canQueryBy => _data['can_query_by'];
   Map<String, dynamic>? get parent => _data['parent'];
 
   PlanningCenterApiMeta();
@@ -543,6 +556,22 @@ class PlanningCenterApiResponse {
     String requestBody,
     http.Response response,
   ) {
+    // handle 'DELETE' responses
+    if (response.statusCode == 204) {
+      return PlanningCenterApiResponse(
+        application,
+        query,
+        response.request!.url,
+        requestBody,
+        response.statusCode,
+        response.body,
+        [],
+        PlanningCenterApiMeta(),
+        {},
+        [],
+      );
+    }
+
     var body = json.decode(response.body);
 
     PlanningCenterApiMeta meta = PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});

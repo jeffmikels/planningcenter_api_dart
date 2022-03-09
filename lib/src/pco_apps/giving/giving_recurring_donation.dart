@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.953684
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.500056
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -157,7 +161,7 @@ class PcoGivingRecurringDonation extends PcoResource {
 
 
   // Class Constructors
-  PcoGivingRecurringDonation() : super(kPcoApplication, kTypeString);
+  PcoGivingRecurringDonation._() : super(kPcoApplication, kTypeString);
   PcoGivingRecurringDonation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

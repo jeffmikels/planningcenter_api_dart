@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.765296
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.355110
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -212,7 +216,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleWorkflowCard() : super(kPcoApplication, kTypeString);
+  PcoPeopleWorkflowCard._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCard.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleWorkflowCard] object based on this request endpoint:
@@ -220,8 +224,8 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowCard.create(String peopleId) {
-    return PcoPeopleWorkflowCard()
+  factory PcoPeopleWorkflowCard(String peopleId) {
+    return PcoPeopleWorkflowCard._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards';
   }
 

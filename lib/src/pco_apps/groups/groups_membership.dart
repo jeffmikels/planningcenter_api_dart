@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:54.055543
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.554280
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -172,7 +176,7 @@ class PcoGroupsMembership extends PcoResource {
 
 
   // Class Constructors
-  PcoGroupsMembership() : super(kPcoApplication, kTypeString);
+  PcoGroupsMembership._() : super(kPcoApplication, kTypeString);
   PcoGroupsMembership.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoGroupsMembership] object based on this request endpoint:
@@ -180,8 +184,8 @@ class PcoGroupsMembership extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGroupsMembership.create(String groupId) {
-    return PcoGroupsMembership()
+  factory PcoGroupsMembership(String groupId) {
+    return PcoGroupsMembership._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
   }
 

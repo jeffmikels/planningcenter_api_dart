@@ -1,3 +1,9 @@
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.370770
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
+
 export "./people_address.dart";
 export "./people_anniversary_couples.dart";
 export "./people_app.dart";

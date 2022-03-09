@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.722716
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.305474
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -162,7 +166,7 @@ class PcoPeopleNoteCategory extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleNoteCategory() : super(kPcoApplication, kTypeString);
+  PcoPeopleNoteCategory._() : super(kPcoApplication, kTypeString);
   PcoPeopleNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleNoteCategory] object based on this request endpoint:
@@ -170,8 +174,8 @@ class PcoPeopleNoteCategory extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNoteCategory.create() {
-    return PcoPeopleNoteCategory()
+  factory PcoPeopleNoteCategory() {
+    return PcoPeopleNoteCategory._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories';
   }
 

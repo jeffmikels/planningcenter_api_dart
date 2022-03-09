@@ -41,18 +41,16 @@ abstract class PcoResource {
   /// will be null if resource is new and not yet created
   String? _id;
   String? get id => _id;
+  bool get needsSave => id == null;
 
   /// PcoResources include their own path as a link object
   /// but this might be null if we haven't created/fetched the object yet
+  /// Child classes should redefine this getter to allow for manual path overrides
   String? get apiPath => links['self'] ?? defaultPathTemplate;
   String get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
   bool fetched = false;
-
-  /// -- DEPRECATED -- I don't think this is needed.
-  /// each implementation needs to override this;
-  // String itemEndpoint() => '${collectionEndpoint()}${id ?? ''}';
 
   // these getters allow us to define which fields planning center
   // will accept on certain operations
@@ -235,35 +233,88 @@ abstract class PcoResource {
   }
 }
 
-/// preserves the meta information so we can remember the
-/// offsets and other metadata
+/// [PcoCollection] represents any response that has one or more
+/// items of data from the server. Most requests will return a PcoCollection.
+///
+/// Information like [endpoint] and [apiVersion] will be preserved so future
+/// queries can be generated from existing collections.
+/// Also, [meta] preserves the `meta` section of the ApiResponse,
+/// [query] preserves the original `query` for the collection, and
+/// [response] preserves the full response from the API Request.
+/// Finally [data] is a typed list of the response data encapsulated by the appropriate class.
 class PcoCollection<T extends PcoResource> {
+  final String endpoint;
+  final String apiVersion;
+
   PlanningCenterApiResponse response;
   PlanningCenterApiQuery query;
   PlanningCenterApiMeta meta;
   List<T> data;
-  PcoCollection(this.data, this.meta, this.response, this.query);
+
+  bool get isError => response.isError;
+  bool get hasMore => meta.nextOffset != null;
+
+  PcoCollection(this.data, this.meta, this.response, this.query, this.endpoint, this.apiVersion);
 
   /// url, query: query, apiVersion:kApiVersion
-  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(url,
+  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(String endpoint,
       {PlanningCenterApiQuery? query, required String apiVersion}) async {
-    var res = await PlanningCenter.instance.call(url, query: query, apiVersion: apiVersion);
-    return PcoCollection<T>.fromApiResponse(res);
+    var res = await PlanningCenter.instance.call(endpoint, query: query, apiVersion: apiVersion);
+    return PcoCollection<T>.fromApiResponse(res, endpoint, apiVersion);
   }
 
-  factory PcoCollection.fromApiResponse(PlanningCenterApiResponse response) {
+  /// we also require the original endpoint and the apiversion so that subsequent
+  /// requests like [getMore] and [nextPage] can be built easily off of this one.
+  factory PcoCollection.fromApiResponse(PlanningCenterApiResponse response, endpoint, apiVersion) {
     List<T> data = [];
     var toProcess = response.data;
     for (var item in toProcess) {
       var res = buildResource<T>(response.application, item);
       if (res != null) data.add(res as T);
     }
-    return PcoCollection<T>(data, response.meta, response, response.query);
+    return PcoCollection<T>(data, response.meta, response, response.query, endpoint, apiVersion);
   }
 
-  bool get isError => response.isError;
-  bool get hasMore => meta.nextOffset != null;
-  void getMore() {}
+  /// [nextPage] will return a *new collection* representing the next page of data from
+  /// the server. The page offset is stored in the metadata of the previous response.
+  /// If the server has no more items, the API will be called with an offset equal to the
+  /// total count of items as reported by the server on the previous request.
+  ///
+  /// You should not call this function unless you first check [hasMore] or you expect
+  /// new resources have been added on the server. Otherwise it might be a wasted request.
+  Future<PcoCollection<T>> nextPage() {
+    return PcoCollection.fromApiCall<T>(endpoint,
+        query: query.withOffset(meta.nextOffset ?? meta.totalCount), apiVersion: apiVersion);
+  }
+
+  /// If a collection has more items available on the server
+  /// [getMore] will call [nextPage] internally, will extend the current
+  /// data with the the new data and then will update
+  /// this collection with new [query], [meta], and [response] values.
+  ///
+  /// It returns `true` if new items were fetched or `false` otherwise
+  ///
+  /// You should not call this function unless you first check [hasMore] or you expect
+  /// new resources have been added on the server. Otherwise it might be a wasted request.
+  ///
+  /// ```dart
+  /// while (res.hasMore) {
+  ///   await res.getMore();
+  /// }
+  /// // -- your code that saves a new item on the server --
+  /// await res.getMore();
+  /// ```
+  Future<bool> getMore() async {
+    var newCollection = await nextPage();
+    if (newCollection.data.isNotEmpty) {
+      query = newCollection.query;
+      meta = newCollection.meta;
+      response = newCollection.response;
+      data.addAll(newCollection.data);
+      return true;
+    }
+    return false;
+  }
 }
 
 // class PcoChildTemplate extends PcoResource {

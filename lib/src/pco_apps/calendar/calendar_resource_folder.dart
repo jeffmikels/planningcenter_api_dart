@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.866462
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.445900
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -145,7 +149,7 @@ class PcoCalendarResourceFolder extends PcoResource {
 
 
   // Class Constructors
-  PcoCalendarResourceFolder() : super(kPcoApplication, kTypeString);
+  PcoCalendarResourceFolder._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoCalendarResourceFolder] object based on this request endpoint:
@@ -153,8 +157,8 @@ class PcoCalendarResourceFolder extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoCalendarResourceFolder.create() {
-    return PcoCalendarResourceFolder()
+  factory PcoCalendarResourceFolder() {
+    return PcoCalendarResourceFolder._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
   }
 

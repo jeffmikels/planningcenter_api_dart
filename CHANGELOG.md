@@ -1,3 +1,9 @@
+## 0.6.0
+
+-   Added `next` and `getMore` methods on the `PcoCollection` class.
+-   Removed `create` factory constructors. Now, the default constructors for each class operate
+    the way those `create` constructors did, and only exist if an object can be created through the API on the server.
+
 ## 0.5.0
 
 -   Added `create` factory constructors to classes that represent assets that can be created

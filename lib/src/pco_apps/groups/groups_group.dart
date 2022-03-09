@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:54.049667
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.546021
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -189,7 +193,7 @@ class PcoGroupsGroup extends PcoResource {
 
 
   // Class Constructors
-  PcoGroupsGroup() : super(kPcoApplication, kTypeString);
+  PcoGroupsGroup._() : super(kPcoApplication, kTypeString);
   PcoGroupsGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

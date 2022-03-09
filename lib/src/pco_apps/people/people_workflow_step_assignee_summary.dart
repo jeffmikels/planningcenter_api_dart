@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.776624
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.369118
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -137,7 +141,7 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleWorkflowStepAssigneeSummary() : super(kPcoApplication, kTypeString);
+  PcoPeopleWorkflowStepAssigneeSummary._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowStepAssigneeSummary.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

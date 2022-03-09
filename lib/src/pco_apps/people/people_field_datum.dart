@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.696826
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.270820
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -174,7 +178,7 @@ class PcoPeopleFieldDatum extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleFieldDatum() : super(kPcoApplication, kTypeString);
+  PcoPeopleFieldDatum._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldDatum.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleFieldDatum] object based on this request endpoint:
@@ -182,8 +186,8 @@ class PcoPeopleFieldDatum extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleFieldDatum.create() {
-    return PcoPeopleFieldDatum()
+  factory PcoPeopleFieldDatum() {
+    return PcoPeopleFieldDatum._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_data';
   }
 

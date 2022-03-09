@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.854835
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.438933
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -140,7 +144,7 @@ class PcoCalendarReportTemplate extends PcoResource {
 
 
   // Class Constructors
-  PcoCalendarReportTemplate() : super(kPcoApplication, kTypeString);
+  PcoCalendarReportTemplate._() : super(kPcoApplication, kTypeString);
   PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoCalendarReportTemplate] object based on this request endpoint:
@@ -148,8 +152,8 @@ class PcoCalendarReportTemplate extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoCalendarReportTemplate.create() {
-    return PcoCalendarReportTemplate()
+  factory PcoCalendarReportTemplate() {
+    return PcoCalendarReportTemplate._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
   }
 

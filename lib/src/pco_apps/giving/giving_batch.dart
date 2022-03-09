@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.906293
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.480545
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -153,7 +157,7 @@ class PcoGivingBatch extends PcoResource {
 
 
   // Class Constructors
-  PcoGivingBatch() : super(kPcoApplication, kTypeString);
+  PcoGivingBatch._() : super(kPcoApplication, kTypeString);
   PcoGivingBatch.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoGivingBatch] object based on this request endpoint:
@@ -161,8 +165,8 @@ class PcoGivingBatch extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingBatch.create() {
-    return PcoGivingBatch()
+  factory PcoGivingBatch() {
+    return PcoGivingBatch._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batches';
   }
 

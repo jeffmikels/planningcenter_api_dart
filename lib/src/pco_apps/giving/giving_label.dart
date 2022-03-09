@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.931840
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.491047
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -122,7 +126,7 @@ class PcoGivingLabel extends PcoResource {
 
 
   // Class Constructors
-  PcoGivingLabel() : super(kPcoApplication, kTypeString);
+  PcoGivingLabel._() : super(kPcoApplication, kTypeString);
   PcoGivingLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

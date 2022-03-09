@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.913054
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.484653
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -132,7 +136,7 @@ class PcoGivingDesignation extends PcoResource {
 
 
   // Class Constructors
-  PcoGivingDesignation() : super(kPcoApplication, kTypeString);
+  PcoGivingDesignation._() : super(kPcoApplication, kTypeString);
   PcoGivingDesignation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
 

@@ -1,4 +1,8 @@
-/// This file was generated on 2022-03-04T20:00:53.704760
+/// =========================================================================
+/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.282805
+/// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
+/// =========================================================================
+
 
 
 import '../../pco.dart';
@@ -145,7 +149,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
 
 
   // Class Constructors
-  PcoPeopleHouseholdMembership() : super(kPcoApplication, kTypeString);
+  PcoPeopleHouseholdMembership._() : super(kPcoApplication, kTypeString);
   PcoPeopleHouseholdMembership.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleHouseholdMembership] object based on this request endpoint:
@@ -153,8 +157,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleHouseholdMembership.create(String householdId) {
-    return PcoPeopleHouseholdMembership()
+  factory PcoPeopleHouseholdMembership(String householdId) {
+    return PcoPeopleHouseholdMembership._()
       .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households/$householdId/household_memberships';
   }
 

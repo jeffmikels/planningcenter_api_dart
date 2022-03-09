@@ -3,6 +3,9 @@ secrets.dart
 credentials.json
 tmp
 
+# JEFF JAVASCRIPT (NODE) CODE
+js_out
+
 # -- MORE RESTRICTIVE FOR DART PUB PUBLISH
 push-and-publish.sh
 quicktest.dart

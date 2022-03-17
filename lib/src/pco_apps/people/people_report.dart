@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.079798
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.006017
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,17 +17,55 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/reports
 /// 
-/// Description:
+/// ## Description
 /// A report is editable liquid syntax that provides  a powerful tool for presenting your Lists however you want.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (rw) -> PCO: `name`
 /// - `body` (rw) -> PCO: `body`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `created_by`: include associated created_by 
+/// - `updated_by`: include associated updated_by 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `body`: (URLParameter), query on a specific body, example: ?where[body]=string
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `body`: (URLParameter), prefix with a hyphen (-body) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-report-created_by`: https://api.planningcenteronline.com/people/v2/reports/1/created_by
+/// - `person-report-updated_by`: https://api.planningcenteronline.com/people/v2/reports/1/updated_by
+/// 
+/// Inbound Edges:
+/// - `report-organization-reports`: https://api.planningcenteronline.com/people/v2/reports
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Report",
@@ -41,33 +79,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - created_by: include associated created_by 
-/// - updated_by: include associated updated_by 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `body`: (URLParameter), query on a specific body, example: ?where[body]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `body`: (URLParameter), prefix with a hyphen (-body) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `person-report-created_by`: https://api.planningcenteronline.com/people/v2/reports/1/created_by
-/// - `person-report-updated_by`: https://api.planningcenteronline.com/people/v2/reports/1/updated_by
-/// 
-/// All Inbound Edges:
-/// - `report-organization-reports`: https://api.planningcenteronline.com/people/v2/reports
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleReport extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Report';

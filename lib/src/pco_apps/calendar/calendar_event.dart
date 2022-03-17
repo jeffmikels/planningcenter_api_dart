@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.210989
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.087633
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,13 +17,13 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/events
 /// 
-/// Description:
+/// ## Description
 /// An event.
 /// 
 /// May contain information such as who owns
 /// the event, visibility on Church Center and a public-facing summary.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `approvalStatus` (ro) -> PCO: `approval_status`
 /// - `archivedAt` (ro) -> PCO: `archived_at`
@@ -37,7 +37,59 @@ import '../../pco.dart';
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isVisibleInChurchCenter` (ro) -> PCO: `visible_in_church_center`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `attachments`: include associated attachments 
+/// - `owner`: include associated owner 
+/// - `tags`: include associated tags 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `approval_status`: (URLParameter), query on a specific approval_status, example: ?where[approval_status]=string
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `percent_approved`: (URLParameter), query on a specific percent_approved, example: ?where[percent_approved]=1
+/// - `percent_rejected`: (URLParameter), query on a specific percent_rejected, example: ?where[percent_rejected]=1
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// - `visible_in_church_center`: (URLParameter), query on a specific visible_in_church_center, example: ?where[visible_in_church_center]=true
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attachment-event-attachments`: https://api.planningcenteronline.com/calendar/v2/events/1/attachments
+/// - `conflict-event-conflicts`: https://api.planningcenteronline.com/calendar/v2/events/1/conflicts
+/// - `eventinstance-event-event_instances`: https://api.planningcenteronline.com/calendar/v2/events/1/event_instances
+/// - `eventresourcerequest-event-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/events/1/event_resource_requests
+/// - `feed-event-feed`: https://api.planningcenteronline.com/calendar/v2/events/1/feed
+/// - `person-event-owner`: https://api.planningcenteronline.com/calendar/v2/events/1/owner
+/// - `resourcebooking-event-resource_bookings`: https://api.planningcenteronline.com/calendar/v2/events/1/resource_bookings
+/// - `tag-event-tags`: https://api.planningcenteronline.com/calendar/v2/events/1/tags
+/// 
+/// Inbound Edges:
+/// - `event-attachment-event`: https://api.planningcenteronline.com/calendar/v2/attachments/1/event
+/// - `event-conflict-winner`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/winner
+/// - `event-eventinstance-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event
+/// - `event-eventresourcerequest-event`: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/event
+/// - `event-eventtime-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times/1/event
+/// - `event-organization-events`: https://api.planningcenteronline.com/calendar/v2/events
+/// - `event-tag-events`: https://api.planningcenteronline.com/calendar/v2/tags/1/events
+/// - `event-taggroup-events`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/events
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Event",
@@ -65,47 +117,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - attachments: include associated attachments 
-/// - owner: include associated owner 
-/// - tags: include associated tags 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `approval_status`: (URLParameter), query on a specific approval_status, example: ?where[approval_status]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `percent_approved`: (URLParameter), query on a specific percent_approved, example: ?where[percent_approved]=1
-/// - `percent_rejected`: (URLParameter), query on a specific percent_rejected, example: ?where[percent_rejected]=1
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// - `visible_in_church_center`: (URLParameter), query on a specific visible_in_church_center, example: ?where[visible_in_church_center]=true
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `attachment-event-attachments`: https://api.planningcenteronline.com/calendar/v2/events/1/attachments
-/// - `conflict-event-conflicts`: https://api.planningcenteronline.com/calendar/v2/events/1/conflicts
-/// - `eventinstance-event-event_instances`: https://api.planningcenteronline.com/calendar/v2/events/1/event_instances
-/// - `eventresourcerequest-event-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/events/1/event_resource_requests
-/// - `feed-event-feed`: https://api.planningcenteronline.com/calendar/v2/events/1/feed
-/// - `person-event-owner`: https://api.planningcenteronline.com/calendar/v2/events/1/owner
-/// - `resourcebooking-event-resource_bookings`: https://api.planningcenteronline.com/calendar/v2/events/1/resource_bookings
-/// - `tag-event-tags`: https://api.planningcenteronline.com/calendar/v2/events/1/tags
-/// 
-/// All Inbound Edges:
-/// - `event-attachment-event`: https://api.planningcenteronline.com/calendar/v2/attachments/1/event
-/// - `event-conflict-winner`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/winner
-/// - `event-eventinstance-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event
-/// - `event-eventresourcerequest-event`: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/event
-/// - `event-eventtime-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times/1/event
-/// - `event-organization-events`: https://api.planningcenteronline.com/calendar/v2/events
-/// - `event-tag-events`: https://api.planningcenteronline.com/calendar/v2/tags/1/events
-/// - `event-taggroup-events`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/events
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCalendarEvent extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Event';

@@ -370,19 +370,21 @@ class PlanningCenterCredentials {
 /// [PlanningCenterApiQuery] objects handle all the additional API parameters
 /// accepted by the Planning Center API.
 class PlanningCenterApiQuery {
-  /// [order] can usually be one of created_at, updated_at, title, sort_date, but may be others
-  /// prefix with a hyphen to reverse the order
+  /// [order] can usually be one of created_at, updated_at, title, sort_date, but may be others.
+  ///
+  /// Each class has a static field named `canOrderBy` that indicates which fields may be used.
+  /// Prefix with a hyphen (`-`) to reverse the sort order.
   String? order;
 
   /// [where] should be a map of query parameters.
   ///
-  /// The API usually supports `id` and the same items as `order`
+  /// Each class has a static field named `canQuery` with the list of fields that can be used.
   ///
   /// The API supports url params like this:
-  /// - `?where[key]=value`
-  /// - `?where[key][gt|lt]=value`
+  /// - `?where[field_name]=value`
+  /// - `?where[field_name][gt|lt]=value`
   ///
-  /// For our purposes, use a comparison suffix (=, <, >) for your keys.
+  /// However, for this library use a comparison suffix (=, <, >) appended to field_name for the key.
   ///
   /// - `{ 'created_at<': '2022-01-01' }` -> `?where[created_at][lt]=2022-01-01`  (finds items before that date)
   /// - `{ 'created_at>': '2022-01-01' }` -> `?where[created_at][gt]=2022-01-01`  (finds items after that date)
@@ -391,22 +393,27 @@ class PlanningCenterApiQuery {
   Map<String, String> where;
 
   /// [filter] should be something like `future`, `past`, `after`, `before`, `no_dates`
+  ///
   /// Classes and methods that can accept a `filter` in their API calls will specify
-  /// those filters in the documentation for that specific class or method.
+  /// those filters in the documentation for that specific class or method. See
+  /// [PcoServicesPlan.getFromServiceType()] for an example.
   ///
   /// Note: some filters require additional data that can be supplied with
   /// the [extraParams] property.
   List<String> filter;
 
   /// [extraParams] allows you to specify arbitrary url parameters to the API.
+  ///
   /// This is important because some filters require additional information
-  /// (e.g. the `after` filter also requires an `after` parameter with a date string)
+  /// (e.g. [PcoServicesPlan.getFromServiceType()] supports `after` as a filter
+  /// but then requires an `after` parameter supplying a date string)
   Map<String, String> extraParams;
 
   /// [include] specifies which related items should be included.
+  ///
   /// Each class has a static variable called `canInclude` that lists
   /// what can be included here, and each class also describes the possible
-  /// includes in the class documentation.
+  /// includes in its class documentation.
   List<String> include;
 
   /// Pagination defaults to 25, maximum allowed seems to be 100

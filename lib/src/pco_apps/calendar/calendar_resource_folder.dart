@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.221946
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.099683
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_folders
 /// 
-/// Description:
+/// ## Description
 /// An organizational folder containing rooms or resources.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (rw) -> PCO: `name`
@@ -28,7 +28,43 @@ import '../../pco.dart';
 /// - `kind` (ro) -> PCO: `kind`
 /// - `pathName` (ro) -> PCO: `path_name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `resources`: include associated resources 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `path_name`: (URLParameter), query on a specific path_name, example: ?where[path_name]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `resource-resourcefolder-resources`: https://api.planningcenteronline.com/calendar/v2/resource_folders/1/resources
+/// 
+/// Inbound Edges:
+/// - `resourcefolder-organization-resource_folders`: https://api.planningcenteronline.com/calendar/v2/resource_folders
+/// - `resourcefolder-resource-resource_folder`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_folder
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "ResourceFolder",
@@ -43,31 +79,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - resources: include associated resources 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `path_name`: (URLParameter), query on a specific path_name, example: ?where[path_name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `resource-resourcefolder-resources`: https://api.planningcenteronline.com/calendar/v2/resource_folders/1/resources
-/// 
-/// All Inbound Edges:
-/// - `resourcefolder-organization-resource_folders`: https://api.planningcenteronline.com/calendar/v2/resource_folders
-/// - `resourcefolder-resource-resource_folder`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_folder
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCalendarResourceFolder extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ResourceFolder';

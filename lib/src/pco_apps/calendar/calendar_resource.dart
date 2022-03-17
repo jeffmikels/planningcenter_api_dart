@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.219263
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.096523
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,11 +17,11 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resources
 /// 
-/// Description:
+/// ## Description
 /// A room or resource that can be requested for use as part of
 /// an event.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `kind` (ro) -> PCO: `kind`
@@ -35,7 +35,61 @@ import '../../pco.dart';
 /// - `quantity` (rw) -> PCO: `quantity`
 /// - `pathName` (ro) -> PCO: `path_name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `resource_approval_groups`: include associated resource_approval_groups 
+/// - `resource_folder`: include associated resource_folder 
+/// - `resource_questions`: include associated resource_questions 
+/// - `room_setups`: include associated room_setups 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `path_name`: (URLParameter), query on a specific path_name, example: ?where[path_name]=string
+/// - `serial_number`: (URLParameter), query on a specific serial_number, example: ?where[serial_number]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `expires_at`: (URLParameter), prefix with a hyphen (-expires_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `conflict-resource-conflicts`: https://api.planningcenteronline.com/calendar/v2/resources/1/conflicts
+/// - `eventresourcerequest-resource-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/resources/1/event_resource_requests
+/// - `resourceapprovalgroup-resource-resource_approval_groups`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_approval_groups
+/// - `resourcebooking-resource-resource_bookings`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_bookings
+/// - `resourcefolder-resource-resource_folder`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_folder
+/// - `resourcequestion-resource-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions
+/// - `roomsetup-resource-room_setups`: https://api.planningcenteronline.com/calendar/v2/resources/1/room_setups
+/// 
+/// Inbound Edges:
+/// - `resource-conflict-resource`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource
+/// - `resource-eventresourcerequest-resource`: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/resource
+/// - `resource-organization-resources`: https://api.planningcenteronline.com/calendar/v2/resources
+/// - `resource-resourceapprovalgroup-resources`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/resources
+/// - `resource-resourcebooking-resource`: https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/resource
+/// - `resource-resourcefolder-resources`: https://api.planningcenteronline.com/calendar/v2/resource_folders/1/resources
+/// - `resource-resourcesuggestion-resource`: https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions/1/resource
+/// - `resource-roomsetup-containing_resource`: https://api.planningcenteronline.com/calendar/v2/room_setups/1/containing_resource
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Resource",
@@ -56,49 +110,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - resource_approval_groups: include associated resource_approval_groups 
-/// - resource_folder: include associated resource_folder 
-/// - resource_questions: include associated resource_questions 
-/// - room_setups: include associated room_setups 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `path_name`: (URLParameter), query on a specific path_name, example: ?where[path_name]=string
-/// - `serial_number`: (URLParameter), query on a specific serial_number, example: ?where[serial_number]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `expires_at`: (URLParameter), prefix with a hyphen (-expires_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `conflict-resource-conflicts`: https://api.planningcenteronline.com/calendar/v2/resources/1/conflicts
-/// - `eventresourcerequest-resource-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/resources/1/event_resource_requests
-/// - `resourceapprovalgroup-resource-resource_approval_groups`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_approval_groups
-/// - `resourcebooking-resource-resource_bookings`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_bookings
-/// - `resourcefolder-resource-resource_folder`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_folder
-/// - `resourcequestion-resource-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions
-/// - `roomsetup-resource-room_setups`: https://api.planningcenteronline.com/calendar/v2/resources/1/room_setups
-/// 
-/// All Inbound Edges:
-/// - `resource-conflict-resource`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource
-/// - `resource-eventresourcerequest-resource`: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/resource
-/// - `resource-organization-resources`: https://api.planningcenteronline.com/calendar/v2/resources
-/// - `resource-resourceapprovalgroup-resources`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/resources
-/// - `resource-resourcebooking-resource`: https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/resource
-/// - `resource-resourcefolder-resources`: https://api.planningcenteronline.com/calendar/v2/resource_folders/1/resources
-/// - `resource-resourcesuggestion-resource`: https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions/1/resource
-/// - `resource-roomsetup-containing_resource`: https://api.planningcenteronline.com/calendar/v2/room_setups/1/containing_resource
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCalendarResource extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Resource';

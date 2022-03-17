@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.112590
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.031319
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,15 +17,45 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
 /// 
-/// Description:
+/// ## Description
 /// The ready and snoozed count for an assignee & step
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `readyCount` (ro) -> PCO: `ready_count`
 /// - `snoozedCount` (ro) -> PCO: `snoozed_count`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-workflowstepassigneesummary-person`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person
+/// 
+/// Inbound Edges:
+/// - `workflowstepassigneesummary-workflowstep-assignee_summaries`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "WorkflowStepAssigneeSummary",
@@ -50,25 +80,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `person-workflowstepassigneesummary-person`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person
-/// 
-/// All Inbound Edges:
-/// - `workflowstepassigneesummary-workflowstep-assignee_summaries`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowStepAssigneeSummary';

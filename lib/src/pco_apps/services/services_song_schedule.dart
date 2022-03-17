@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.611919
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.569280
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
 /// 
-/// Description:
+/// ## Description
 /// A upcoming schedule for a song
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `arrangementName` (ro) -> PCO: `arrangement_name`
 /// - `keyName` (ro) -> PCO: `key_name`
@@ -28,7 +28,37 @@ import '../../pco.dart';
 /// - `serviceTypeName` (ro) -> PCO: `service_type_name`
 /// - `planSortDate` (ro) -> PCO: `plan_sort_date`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `plan_sort_date`: (URLParameter), prefix with a hyphen (-plan_sort_date) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `songschedule-song-song_schedules`: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "SongSchedule",
@@ -74,25 +104,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `plan_sort_date`: (URLParameter), prefix with a hyphen (-plan_sort_date) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `songschedule-song-song_schedules`: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesSongSchedule extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'SongSchedule';

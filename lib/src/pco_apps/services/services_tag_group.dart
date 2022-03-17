@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.627157
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.574004
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/tag_groups
 /// 
-/// Description:
+/// ## Description
 /// A tag group contains tags
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `isRequired` (ro) -> PCO: `required`
@@ -28,7 +28,40 @@ import '../../pco.dart';
 /// - `tagsFor` (ro) -> PCO: `tags_for`
 /// - `serviceTypeFolderName` (ro) -> PCO: `service_type_folder_name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `folder`: include associated folder 
+/// - `tags`: include associated tags 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `tags_for`: (URLParameter), query on a specific tags_for, example: ?where[tags_for]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `folder-taggroup-folder`: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
+/// - `tag-taggroup-tags`: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
+/// 
+/// Inbound Edges:
+/// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/services/v2/tag_groups
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "TagGroup",
@@ -43,28 +76,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - folder: include associated folder 
-/// - tags: include associated tags 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `tags_for`: (URLParameter), query on a specific tags_for, example: ?where[tags_for]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `folder-taggroup-folder`: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
-/// - `tag-taggroup-tags`: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
-/// 
-/// All Inbound Edges:
-/// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/services/v2/tag_groups
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesTagGroup extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'TagGroup';

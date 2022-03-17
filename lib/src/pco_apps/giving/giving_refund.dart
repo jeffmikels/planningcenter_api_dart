@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.273802
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.211434
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations/1/refund
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
@@ -30,7 +30,37 @@ import '../../pco.dart';
 /// - `refundedAt` (ro) -> PCO: `refunded_at`
 /// - `feeCurrency` (ro) -> PCO: `fee_currency`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `designation_refunds`: include associated designation_refunds 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `designationrefund-refund-designation_refunds`: https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds
+/// 
+/// Inbound Edges:
+/// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Refund",
@@ -47,25 +77,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - designation_refunds: include associated designation_refunds 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `designationrefund-refund-designation_refunds`: https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds
-/// 
-/// All Inbound Edges:
-/// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGivingRefund extends PcoResource {
   static const String kPcoApplication = 'giving';
   static const String kTypeString = 'Refund';

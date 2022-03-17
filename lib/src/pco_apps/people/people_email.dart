@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.986981
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.939360
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/emails
 /// 
-/// Description:
+/// ## Description
 /// An email represents an email address and location.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `address` (rw) -> PCO: `address`
 /// - `location` (rw) -> PCO: `location`
@@ -29,7 +29,47 @@ import '../../pco.dart';
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isBlocked` (ro) -> PCO: `blocked`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `address`: (URLParameter), query on a specific address, example: ?where[address]=string
+/// - `blocked`: (URLParameter), query on a specific blocked, example: ?where[blocked]=true
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
+/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `address`: (URLParameter), prefix with a hyphen (-address) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
+/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-email-person`: https://api.planningcenteronline.com/people/v2/emails/1/person
+/// 
+/// Inbound Edges:
+/// - `email-organization-emails`: https://api.planningcenteronline.com/people/v2/emails
+/// - `email-person-emails`: https://api.planningcenteronline.com/people/v2/people/1/emails
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Email",
@@ -52,35 +92,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `address`: (URLParameter), query on a specific address, example: ?where[address]=string
-/// - `blocked`: (URLParameter), query on a specific blocked, example: ?where[blocked]=true
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
-/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `address`: (URLParameter), prefix with a hyphen (-address) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
-/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `person-email-person`: https://api.planningcenteronline.com/people/v2/emails/1/person
-/// 
-/// All Inbound Edges:
-/// - `email-organization-emails`: https://api.planningcenteronline.com/people/v2/emails
-/// - `email-person-emails`: https://api.planningcenteronline.com/people/v2/people/1/emails
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleEmail extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Email';

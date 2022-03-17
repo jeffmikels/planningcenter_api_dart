@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.421035
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.481052
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts
 /// 
-/// Description:
+/// ## Description
 /// An object representing a blockout date, and an optional recurrence pattern
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `description` (ro) -> PCO: `description`
 /// - `groupIdentifier` (ro) -> PCO: `group_identifier`
@@ -38,7 +38,38 @@ import '../../pco.dart';
 /// - `endsAt` (rw) -> PCO: `ends_at`
 /// - `isShare` (rw) -> PCO: `share`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `group_identifier`: (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `blockoutdate-blockout-blockout_dates`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
+/// - `blockoutexception-blockout-blockout_exceptions`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
+/// 
+/// Inbound Edges:
+/// - `blockout-person-blockouts`: https://api.planningcenteronline.com/services/v2/people/1/blockouts
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Blockout",
@@ -76,26 +107,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `group_identifier`: (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `blockoutdate-blockout-blockout_dates`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
-/// - `blockoutexception-blockout-blockout_exceptions`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-/// 
-/// All Inbound Edges:
-/// - `blockout-person-blockouts`: https://api.planningcenteronline.com/services/v2/people/1/blockouts
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesBlockout extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Blockout';

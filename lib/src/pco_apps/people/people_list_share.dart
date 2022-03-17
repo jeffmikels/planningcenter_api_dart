@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.008263
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.961616
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,17 +17,51 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/shares
 /// 
-/// Description:
+/// ## Description
 /// A list share indicates who has access to edit a list.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `permission` (ro) -> PCO: `permission`
 /// - `group` (ro) -> PCO: `group`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (ro) -> PCO: `name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `group`: (URLParameter), query on a specific group, example: ?where[group]=value
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=value
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `group`: (URLParameter), prefix with a hyphen (-group) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-listshare-person`: https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person
+/// 
+/// Inbound Edges:
+/// - `listshare-list-shares`: https://api.planningcenteronline.com/people/v2/lists/1/shares
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "ListShare",
@@ -48,29 +82,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `group`: (URLParameter), query on a specific group, example: ?where[group]=value
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=value
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `group`: (URLParameter), prefix with a hyphen (-group) to reverse the order
-///
-/// All Outbound Edges:
-/// - `person-listshare-person`: https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person
-/// 
-/// All Inbound Edges:
-/// - `listshare-list-shares`: https://api.planningcenteronline.com/people/v2/lists/1/shares
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleListShare extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'ListShare';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.262362
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.193653
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
@@ -43,7 +43,53 @@ import '../../pco.dart';
 /// - `paymentSourceId` (wo) -> PCO: `payment_source_id`
 /// - `campusId` (wo) -> PCO: `campus_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `designations`: include associated designations 
+/// - `labels`: include associated labels 
+/// - `refund`: include associated refund 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `completed_at`: (URLParameter), query on a specific completed_at, example: ?where[completed_at]=2000-01-01T12:00:00Z
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `payment_method`: (URLParameter), query on a specific payment_method, example: ?where[payment_method]=value
+/// - `received_at`: (URLParameter), query on a specific received_at, example: ?where[received_at]=2000-01-01T12:00:00Z
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `completed_at`: (URLParameter), prefix with a hyphen (-completed_at) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `received_at`: (URLParameter), prefix with a hyphen (-received_at) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `campus-donation-campus`: https://api.planningcenteronline.com/giving/v2/donations/1/campus
+/// - `designation-donation-designations`: https://api.planningcenteronline.com/giving/v2/donations/1/designations
+/// - `label-donation-labels`: https://api.planningcenteronline.com/giving/v2/donations/1/labels
+/// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
+/// 
+/// Inbound Edges:
+/// - `donation-batch-donations`: https://api.planningcenteronline.com/giving/v2/batches/1/donations
+/// - `donation-campus-donations`: https://api.planningcenteronline.com/giving/v2/campuses/1/donations
+/// - `donation-organization-donations`: https://api.planningcenteronline.com/giving/v2/donations
+/// - `donation-paymentsource-donations`: https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations
+/// - `donation-person-donations`: https://api.planningcenteronline.com/giving/v2/people/1/donations
+/// 
+/// Actions:
+/// - `issue_refund`: https://api.planningcenteronline.com/giving/v2/donations/1/issue_refund
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Donation",
@@ -109,41 +155,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - designations: include associated designations 
-/// - labels: include associated labels 
-/// - refund: include associated refund 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `completed_at`: (URLParameter), query on a specific completed_at, example: ?where[completed_at]=2000-01-01T12:00:00Z
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `payment_method`: (URLParameter), query on a specific payment_method, example: ?where[payment_method]=value
-/// - `received_at`: (URLParameter), query on a specific received_at, example: ?where[received_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `completed_at`: (URLParameter), prefix with a hyphen (-completed_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `received_at`: (URLParameter), prefix with a hyphen (-received_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `campus-donation-campus`: https://api.planningcenteronline.com/giving/v2/donations/1/campus
-/// - `designation-donation-designations`: https://api.planningcenteronline.com/giving/v2/donations/1/designations
-/// - `label-donation-labels`: https://api.planningcenteronline.com/giving/v2/donations/1/labels
-/// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
-/// 
-/// All Inbound Edges:
-/// - `donation-batch-donations`: https://api.planningcenteronline.com/giving/v2/batches/1/donations
-/// - `donation-campus-donations`: https://api.planningcenteronline.com/giving/v2/campuses/1/donations
-/// - `donation-organization-donations`: https://api.planningcenteronline.com/giving/v2/donations
-/// - `donation-paymentsource-donations`: https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations
-/// - `donation-person-donations`: https://api.planningcenteronline.com/giving/v2/people/1/donations
-/// 
-/// All Actions:
-/// - `issue_refund`: https://api.planningcenteronline.com/giving/v2/donations/1/issue_refund
-///
 class PcoGivingDonation extends PcoResource {
   static const String kPcoApplication = 'giving';
   static const String kTypeString = 'Donation';

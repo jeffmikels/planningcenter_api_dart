@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.097203
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.011957
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,16 +17,54 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/tabs
 /// 
-/// Description:
+/// ## Description
 /// A tab is a custom tab and groups like field definitions.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (rw) -> PCO: `name`
 /// - `sequence` (rw) -> PCO: `sequence`
 /// - `slug` (rw) -> PCO: `slug`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `field_definitions`: include associated field_definitions 
+/// - `field_options`: include associated field_options 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
+/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+/// - `slug`: (URLParameter), prefix with a hyphen (-slug) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `fielddefinition-tab-field_definitions`: https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
+/// - `fieldoption-tab-field_options`: https://api.planningcenteronline.com/people/v2/tabs/1/field_options
+/// 
+/// Inbound Edges:
+/// - `tab-fielddatum-tab`: https://api.planningcenteronline.com/people/v2/field_data/1/tab
+/// - `tab-fielddefinition-tab`: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab
+/// - `tab-organization-tabs`: https://api.planningcenteronline.com/people/v2/tabs
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Tab",
@@ -39,33 +77,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - field_definitions: include associated field_definitions 
-/// - field_options: include associated field_options 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `slug`: (URLParameter), prefix with a hyphen (-slug) to reverse the order
-///
-/// All Outbound Edges:
-/// - `fielddefinition-tab-field_definitions`: https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
-/// - `fieldoption-tab-field_options`: https://api.planningcenteronline.com/people/v2/tabs/1/field_options
-/// 
-/// All Inbound Edges:
-/// - `tab-fielddatum-tab`: https://api.planningcenteronline.com/people/v2/field_data/1/tab
-/// - `tab-fielddefinition-tab`: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab
-/// - `tab-organization-tabs`: https://api.planningcenteronline.com/people/v2/tabs
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleTab extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Tab';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.990165
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.942262
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_definitions
 /// 
-/// Description:
+/// ## Description
 /// A field definition represents a custom field -- its name, data type, etc.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dataType` (rw) -> PCO: `data_type`
 /// - `name` (rw) -> PCO: `name`
@@ -30,7 +30,53 @@ import '../../pco.dart';
 /// - `deletedAt` (rw) -> PCO: `deleted_at`
 /// - `tabId` (ro) -> PCO: `tab_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `field_options`: include associated field_options 
+/// - `tab`: include associated tab 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `config`: (URLParameter), query on a specific config, example: ?where[config]=string
+/// - `data_type`: (URLParameter), query on a specific data_type, example: ?where[data_type]=string
+/// - `deleted_at`: (URLParameter), query on a specific deleted_at, example: ?where[deleted_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
+/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
+/// - `tab_id`: (URLParameter), query on a specific tab_id, example: ?where[tab_id]=primary_key
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `config`: (URLParameter), prefix with a hyphen (-config) to reverse the order
+/// - `data_type`: (URLParameter), prefix with a hyphen (-data_type) to reverse the order
+/// - `deleted_at`: (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+/// - `slug`: (URLParameter), prefix with a hyphen (-slug) to reverse the order
+/// - `tab_id`: (URLParameter), prefix with a hyphen (-tab_id) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `fieldoption-fielddefinition-field_options`: https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
+/// - `tab-fielddefinition-tab`: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab
+/// 
+/// Inbound Edges:
+/// - `fielddefinition-fielddatum-field_definition`: https://api.planningcenteronline.com/people/v2/field_data/1/field_definition
+/// - `fielddefinition-organization-field_definitions`: https://api.planningcenteronline.com/people/v2/field_definitions
+/// - `fielddefinition-tab-field_definitions`: https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "FieldDefinition",
@@ -54,41 +100,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - field_options: include associated field_options 
-/// - tab: include associated tab 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `config`: (URLParameter), query on a specific config, example: ?where[config]=string
-/// - `data_type`: (URLParameter), query on a specific data_type, example: ?where[data_type]=string
-/// - `deleted_at`: (URLParameter), query on a specific deleted_at, example: ?where[deleted_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
-/// - `tab_id`: (URLParameter), query on a specific tab_id, example: ?where[tab_id]=primary_key
-/// 
-/// Possible orderings with parameter ?order=
-/// - `config`: (URLParameter), prefix with a hyphen (-config) to reverse the order
-/// - `data_type`: (URLParameter), prefix with a hyphen (-data_type) to reverse the order
-/// - `deleted_at`: (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `slug`: (URLParameter), prefix with a hyphen (-slug) to reverse the order
-/// - `tab_id`: (URLParameter), prefix with a hyphen (-tab_id) to reverse the order
-///
-/// All Outbound Edges:
-/// - `fieldoption-fielddefinition-field_options`: https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
-/// - `tab-fielddefinition-tab`: https://api.planningcenteronline.com/people/v2/field_definitions/1/tab
-/// 
-/// All Inbound Edges:
-/// - `fielddefinition-fielddatum-field_definition`: https://api.planningcenteronline.com/people/v2/field_data/1/field_definition
-/// - `fielddefinition-organization-field_definitions`: https://api.planningcenteronline.com/people/v2/field_definitions
-/// - `fielddefinition-tab-field_definitions`: https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleFieldDefinition extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'FieldDefinition';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.216152
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.092731
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,42 +17,39 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2
 /// 
-/// Description:
+/// ## Description
 /// An administrative structure, usually representing a single church.
 /// Contains date/time formatting and time zone preferences.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `timeZone` (ro) -> PCO: `time_zone`
 /// - `isTwentyFourHourTime` (ro) -> PCO: `twenty_four_hour_time`
 /// - `dateFormat` (ro) -> PCO: `date_format`
 /// 
-/// Example:
-/// ```json
-/// {
-///   "type": "Organization",
-///   "id": "1",
-///   "attributes": {
-///     "name": "string",
-///     "time_zone": "string",
-///     "twenty_four_hour_time": true,
-///     "date_format": "string"
-///   },
-///   "relationships": {}
-/// }
-/// ```
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
 /// 
-/// Possible includes with parameter ?include=a,b
 /// NONE
 ///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
 /// NONE
 /// 
-/// Possible orderings with parameter ?order=
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
 /// NONE
 ///
-/// All Outbound Edges:
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
 /// - `attachment-organization-attachments`: https://api.planningcenteronline.com/calendar/v2/attachments
 /// - `conflict-organization-conflicts`: https://api.planningcenteronline.com/calendar/v2/conflicts
 /// - `eventinstance-organization-event_instances`: https://api.planningcenteronline.com/calendar/v2/event_instances
@@ -70,12 +67,26 @@ import '../../pco.dart';
 /// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/calendar/v2/tag_groups
 /// - `tag-organization-tags`: https://api.planningcenteronline.com/calendar/v2/tags
 /// 
-/// All Inbound Edges:
+/// Inbound Edges:
 /// NONE
 /// 
-/// All Actions:
+/// Actions:
 /// NONE
 ///
+/// ## Raw Data Object Example
+/// ```json
+/// {
+///   "type": "Organization",
+///   "id": "1",
+///   "attributes": {
+///     "name": "string",
+///     "time_zone": "string",
+///     "twenty_four_hour_time": true,
+///     "date_format": "string"
+///   },
+///   "relationships": {}
+/// }
+/// ```
 class PcoCalendarOrganization extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Organization';

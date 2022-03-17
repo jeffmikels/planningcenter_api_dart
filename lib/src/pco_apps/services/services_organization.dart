@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.489559
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.518724
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// 
-/// Description:
+/// ## Description
 /// The root level of an organization where account-level settings are applied.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `ccli` (ro) -> PCO: `ccli`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -50,7 +50,48 @@ import '../../pco.dart';
 /// - `peopleRemaining` (ro) -> PCO: `people_remaining`
 /// - `isBeta` (ro) -> PCO: `beta`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attachmenttype-organization-attachment_types`: https://api.planningcenteronline.com/services/v2/attachment_types
+/// - `emailtemplate-organization-email_templates`: https://api.planningcenteronline.com/services/v2/email_templates
+/// - `folder-organization-folders`: https://api.planningcenteronline.com/services/v2/folders
+/// - `media-organization-media`: https://api.planningcenteronline.com/services/v2/media
+/// - `person-organization-people`: https://api.planningcenteronline.com/services/v2/people
+/// - `organization-organization-plans`: https://api.planningcenteronline.com/services/v2/plans
+/// - `reporttemplate-organization-report_templates`: https://api.planningcenteronline.com/services/v2/report_templates
+/// - `series-organization-series`: https://api.planningcenteronline.com/services/v2/series
+/// - `servicetype-organization-service_types`: https://api.planningcenteronline.com/services/v2/service_types
+/// - `song-organization-songs`: https://api.planningcenteronline.com/services/v2/songs
+/// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/services/v2/tag_groups
+/// - `team-organization-teams`: https://api.planningcenteronline.com/services/v2/teams
+/// 
+/// Inbound Edges:
+/// - `organization-organization-plans`: https://api.planningcenteronline.com/services/v2/plans
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Organization",
@@ -87,36 +128,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `attachmenttype-organization-attachment_types`: https://api.planningcenteronline.com/services/v2/attachment_types
-/// - `emailtemplate-organization-email_templates`: https://api.planningcenteronline.com/services/v2/email_templates
-/// - `folder-organization-folders`: https://api.planningcenteronline.com/services/v2/folders
-/// - `media-organization-media`: https://api.planningcenteronline.com/services/v2/media
-/// - `person-organization-people`: https://api.planningcenteronline.com/services/v2/people
-/// - `organization-organization-plans`: https://api.planningcenteronline.com/services/v2/plans
-/// - `reporttemplate-organization-report_templates`: https://api.planningcenteronline.com/services/v2/report_templates
-/// - `series-organization-series`: https://api.planningcenteronline.com/services/v2/series
-/// - `servicetype-organization-service_types`: https://api.planningcenteronline.com/services/v2/service_types
-/// - `song-organization-songs`: https://api.planningcenteronline.com/services/v2/songs
-/// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/services/v2/tag_groups
-/// - `team-organization-teams`: https://api.planningcenteronline.com/services/v2/teams
-/// 
-/// All Inbound Edges:
-/// - `organization-organization-plans`: https://api.planningcenteronline.com/services/v2/plans
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesOrganization extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Organization';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.214296
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.090756
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,13 +17,13 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
 /// 
-/// Description:
+/// ## Description
 /// Start and end times for each event instance.
 /// 
 /// In the Calendar UI, these are represented under the "Schedule" section and
 /// may include "Setup" and "Teardown" times for the instance.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `endsAt` (ro) -> PCO: `ends_at`
 /// - `startsAt` (ro) -> PCO: `starts_at`
@@ -31,7 +31,42 @@ import '../../pco.dart';
 /// - `isVisibleOnKiosks` (ro) -> PCO: `visible_on_kiosks`
 /// - `isVisibleOnWidgetAndIcal` (ro) -> PCO: `visible_on_widget_and_ical`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `event`: include associated event 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=2000-01-01T12:00:00Z
+/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
+/// - `visible_on_kiosks`: (URLParameter), query on a specific visible_on_kiosks, example: ?where[visible_on_kiosks]=true
+/// - `visible_on_widget_and_ical`: (URLParameter), query on a specific visible_on_widget_and_ical, example: ?where[visible_on_widget_and_ical]=true
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
+/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `event-eventtime-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times/1/event
+/// 
+/// Inbound Edges:
+/// - `eventtime-eventinstance-event_times`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "EventTime",
@@ -53,30 +88,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - event: include associated event 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=2000-01-01T12:00:00Z
-/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
-/// - `visible_on_kiosks`: (URLParameter), query on a specific visible_on_kiosks, example: ?where[visible_on_kiosks]=true
-/// - `visible_on_widget_and_ical`: (URLParameter), query on a specific visible_on_widget_and_ical, example: ?where[visible_on_widget_and_ical]=true
-/// 
-/// Possible orderings with parameter ?order=
-/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `event-eventtime-event`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times/1/event
-/// 
-/// All Inbound Edges:
-/// - `eventtime-eventinstance-event_times`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCalendarEventTime extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'EventTime';

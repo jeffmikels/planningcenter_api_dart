@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.288427
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.309252
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isAttendanceRequestsEnabled` (ro) -> PCO: `attendance_requests_enabled`
 /// - `isAutomatedReminderEnabled` (ro) -> PCO: `automated_reminder_enabled`
@@ -37,7 +37,47 @@ import '../../pco.dart';
 /// - `startsAt` (ro) -> PCO: `starts_at`
 /// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `group`: include associated group 
+/// - `location`: include associated location 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attendance-event-attendances`: https://api.planningcenteronline.com/groups/v2/events/1/attendances
+/// - `group-event-group`: https://api.planningcenteronline.com/groups/v2/events/1/group
+/// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
+/// 
+/// Inbound Edges:
+/// - `event-group-events`: https://api.planningcenteronline.com/groups/v2/groups/1/events
+/// - `event-grouptype-events`: https://api.planningcenteronline.com/groups/v2/group_types/1/events
+/// - `event-organization-events`: https://api.planningcenteronline.com/groups/v2/events
+/// - `event-person-events`: https://api.planningcenteronline.com/groups/v2/people/1/events
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Event",
@@ -86,35 +126,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - group: include associated group 
-/// - location: include associated location 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `attendance-event-attendances`: https://api.planningcenteronline.com/groups/v2/events/1/attendances
-/// - `group-event-group`: https://api.planningcenteronline.com/groups/v2/events/1/group
-/// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
-/// 
-/// All Inbound Edges:
-/// - `event-group-events`: https://api.planningcenteronline.com/groups/v2/groups/1/events
-/// - `event-grouptype-events`: https://api.planningcenteronline.com/groups/v2/group_types/1/events
-/// - `event-organization-events`: https://api.planningcenteronline.com/groups/v2/events
-/// - `event-person-events`: https://api.planningcenteronline.com/groups/v2/people/1/events
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGroupsEvent extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Event';

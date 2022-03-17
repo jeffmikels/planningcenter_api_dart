@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.645675
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.581752
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
 /// 
-/// Description:
+/// ## Description
 /// A Service Time a person prefers to be scheduled to.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dayOfWeek` (ro) -> PCO: `day_of_week`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -31,7 +31,38 @@ import '../../pco.dart';
 /// - `minuteOfDay` (ro) -> PCO: `minute_of_day`
 /// - `startsAt` (ro) -> PCO: `starts_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `day_of_week`: (URLParameter), prefix with a hyphen (-day_of_week) to reverse the order
+/// - `hour_of_day`: (URLParameter), prefix with a hyphen (-hour_of_day) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `timepreferenceoption-servicetype-time_preference_options`: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "TimePreferenceOption",
@@ -49,26 +80,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `day_of_week`: (URLParameter), prefix with a hyphen (-day_of_week) to reverse the order
-/// - `hour_of_day`: (URLParameter), prefix with a hyphen (-hour_of_day) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `timepreferenceoption-servicetype-time_preference_options`: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesTimePreferenceOption extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'TimePreferenceOption';

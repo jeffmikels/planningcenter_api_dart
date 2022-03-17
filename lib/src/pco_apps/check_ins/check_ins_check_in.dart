@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.790176
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.626792
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins
 /// 
-/// Description:
+/// ## Description
 /// An attendance record for an event.
 /// 
 /// If someone was checked out, `checked_out_at` will be present.
@@ -31,7 +31,7 @@ import '../../pco.dart';
 /// - `checked_out` are check-ins where `checked_out_at` is present (meaning they were checked out from a station).
 /// - `first_time`s are check-ins which are the person's first for a given event. (Label-only visitors are not included here.)
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `firstName` (ro) -> PCO: `first_name`
 /// - `lastName` (ro) -> PCO: `last_name`
@@ -45,7 +45,74 @@ import '../../pco.dart';
 /// - `emergencyContactName` (ro) -> PCO: `emergency_contact_name`
 /// - `emergencyContactPhoneNumber` (ro) -> PCO: `emergency_contact_phone_number`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `check_in_times`: include associated check_in_times 
+/// - `checked_in_at`: include associated checked_in_at 
+/// - `checked_in_by`: include associated checked_in_by 
+/// - `checked_out_by`: include associated checked_out_by 
+/// - `event`: include associated event 
+/// - `event_period`: include associated event_period 
+/// - `event_times`: include associated event_times 
+/// - `locations`: include associated locations 
+/// - `options`: include associated options 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `security_code`: (URLParameter), query on a specific security_code, example: ?where[security_code]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `checked_out_at`: (URLParameter), prefix with a hyphen (-checked_out_at) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+/// - `number`: (URLParameter), prefix with a hyphen (-number) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `checkingroup-checkin-check_in_group`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group
+/// - `checkintime-checkin-check_in_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
+/// - `station-checkin-checked_in_at`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_at
+/// - `person-checkin-checked_in_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_by
+/// - `person-checkin-checked_out_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_out_by
+/// - `event-checkin-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event
+/// - `eventperiod-checkin-event_period`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period
+/// - `eventtime-checkin-event_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_times
+/// - `location-checkin-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
+/// - `option-checkin-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/options
+/// - `person-checkin-person`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/person
+/// 
+/// Inbound Edges:
+/// - `checkin-checkingroup-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/check_ins
+/// - `checkin-event-check_ins`: https://api.planningcenteronline.com/check-ins/v2/events/1/check_ins
+/// - `checkin-eventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/check_ins
+/// - `checkin-eventtime-check_ins`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/check_ins
+/// - `checkin-location-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/check_ins
+/// - `checkin-locationeventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/check_ins
+/// - `checkin-locationeventtime-check_ins`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/check_ins
+/// - `checkin-organization-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins
+/// - `checkin-person-check_ins`: https://api.planningcenteronline.com/check-ins/v2/people/1/check_ins
+/// - `checkin-personevent-first_check_in`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/first_check_in
+/// - `checkin-personevent-last_check_in`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/last_check_in
+/// - `checkin-station-checked_in_at_check_ins`: https://api.planningcenteronline.com/check-ins/v2/stations/1/checked_in_at_check_ins
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "CheckIn",
@@ -79,62 +146,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - check_in_times: include associated check_in_times 
-/// - checked_in_at: include associated checked_in_at 
-/// - checked_in_by: include associated checked_in_by 
-/// - checked_out_by: include associated checked_out_by 
-/// - event: include associated event 
-/// - event_period: include associated event_period 
-/// - event_times: include associated event_times 
-/// - locations: include associated locations 
-/// - options: include associated options 
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `security_code`: (URLParameter), query on a specific security_code, example: ?where[security_code]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `checked_out_at`: (URLParameter), prefix with a hyphen (-checked_out_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `number`: (URLParameter), prefix with a hyphen (-number) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `checkingroup-checkin-check_in_group`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group
-/// - `checkintime-checkin-check_in_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
-/// - `station-checkin-checked_in_at`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_at
-/// - `person-checkin-checked_in_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_by
-/// - `person-checkin-checked_out_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_out_by
-/// - `event-checkin-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event
-/// - `eventperiod-checkin-event_period`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period
-/// - `eventtime-checkin-event_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_times
-/// - `location-checkin-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
-/// - `option-checkin-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/options
-/// - `person-checkin-person`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/person
-/// 
-/// All Inbound Edges:
-/// - `checkin-checkingroup-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/check_ins
-/// - `checkin-event-check_ins`: https://api.planningcenteronline.com/check-ins/v2/events/1/check_ins
-/// - `checkin-eventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/check_ins
-/// - `checkin-eventtime-check_ins`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/check_ins
-/// - `checkin-location-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/check_ins
-/// - `checkin-locationeventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/check_ins
-/// - `checkin-locationeventtime-check_ins`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/check_ins
-/// - `checkin-organization-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins
-/// - `checkin-person-check_ins`: https://api.planningcenteronline.com/check-ins/v2/people/1/check_ins
-/// - `checkin-personevent-first_check_in`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/first_check_in
-/// - `checkin-personevent-last_check_in`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/last_check_in
-/// - `checkin-station-checked_in_at_check_ins`: https://api.planningcenteronline.com/check-ins/v2/stations/1/checked_in_at_check_ins
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsCheckIn extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'CheckIn';

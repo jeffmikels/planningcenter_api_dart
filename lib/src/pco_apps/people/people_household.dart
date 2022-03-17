@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.998712
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.953747
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/households
 /// 
-/// Description:
+/// ## Description
 /// A household links people together and can have a primary contact. To add a person to an existing household, use the HouseholdMemberships endpoint.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (rw) -> PCO: `name`
 /// - `memberCount` (rw) -> PCO: `member_count`
@@ -30,7 +30,49 @@ import '../../pco.dart';
 /// - `avatar` (rw) -> PCO: `avatar`
 /// - `primaryContactId` (rw) -> PCO: `primary_contact_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `people`: include associated people 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `member_count`: (URLParameter), query on a specific member_count, example: ?where[member_count]=1
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `primary_contact_name`: (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `member_count`: (URLParameter), prefix with a hyphen (-member_count) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `primary_contact_name`: (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `householdmembership-household-household_memberships`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
+/// - `person-household-people`: https://api.planningcenteronline.com/people/v2/households/1/people
+/// 
+/// Inbound Edges:
+/// - `household-householdmembership-household`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household
+/// - `household-organization-households`: https://api.planningcenteronline.com/people/v2/households
+/// - `household-peopleimporthistory-household`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household
+/// - `household-person-households`: https://api.planningcenteronline.com/people/v2/people/1/households
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Household",
@@ -62,37 +104,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - people: include associated people 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `member_count`: (URLParameter), query on a specific member_count, example: ?where[member_count]=1
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `primary_contact_name`: (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `member_count`: (URLParameter), prefix with a hyphen (-member_count) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `primary_contact_name`: (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `householdmembership-household-household_memberships`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships
-/// - `person-household-people`: https://api.planningcenteronline.com/people/v2/households/1/people
-/// 
-/// All Inbound Edges:
-/// - `household-householdmembership-household`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/household
-/// - `household-organization-households`: https://api.planningcenteronline.com/people/v2/households
-/// - `household-peopleimporthistory-household`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household
-/// - `household-person-households`: https://api.planningcenteronline.com/people/v2/people/1/households
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleHousehold extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Household';

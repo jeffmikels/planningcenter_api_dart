@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.034569
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.989744
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports
 /// 
-/// Description:
+/// ## Description
 /// A PeopleImport is a record of an ongoing or previous import from a CSV file.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `attribs` (ro) -> PCO: `attribs`
 /// - `status` (ro) -> PCO: `status`
@@ -29,7 +29,38 @@ import '../../pco.dart';
 /// - `processedAt` (ro) -> PCO: `processed_at`
 /// - `undoneAt` (ro) -> PCO: `undone_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `status`: (URLParameter), query on a specific status, example: ?where[status]=value
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `peopleimportconflict-peopleimport-conflicts`: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
+/// - `peopleimporthistory-peopleimport-histories`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories
+/// 
+/// Inbound Edges:
+/// - `peopleimport-organization-people_imports`: https://api.planningcenteronline.com/people/v2/people_imports
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "PeopleImport",
@@ -45,26 +76,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `status`: (URLParameter), query on a specific status, example: ?where[status]=value
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `peopleimportconflict-peopleimport-conflicts`: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
-/// - `peopleimporthistory-peopleimport-histories`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories
-/// 
-/// All Inbound Edges:
-/// - `peopleimport-organization-people_imports`: https://api.planningcenteronline.com/people/v2/people_imports
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeoplePeopleImport extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PeopleImport';

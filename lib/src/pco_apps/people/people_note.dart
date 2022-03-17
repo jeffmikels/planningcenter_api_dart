@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.019136
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.970680
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/notes
 /// 
-/// Description:
+/// ## Description
 /// A note is text with a category connected to a person’s profile.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `note` (rw) -> PCO: `note`
 /// - `createdAt` (rw) -> PCO: `created_at`
@@ -31,7 +31,48 @@ import '../../pco.dart';
 /// - `personId` (ro) -> PCO: `person_id`
 /// - `createdById` (ro) -> PCO: `created_by_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `category`: include associated category 
+/// - `created_by`: include associated created_by 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `note`: (URLParameter), query on a specific note, example: ?where[note]=string
+/// - `note_category_id`: (URLParameter), query on a specific note_category_id, example: ?where[note_category_id]=primary_key
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `display_date`: (URLParameter), prefix with a hyphen (-display_date) to reverse the order
+/// - `id`: (URLParameter), prefix with a hyphen (-id) to reverse the order
+/// - `note`: (URLParameter), prefix with a hyphen (-note) to reverse the order
+/// - `note_category_id`: (URLParameter), prefix with a hyphen (-note_category_id) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `notecategory-note-category`: https://api.planningcenteronline.com/people/v2/notes/1/category
+/// - `person-note-created_by`: https://api.planningcenteronline.com/people/v2/notes/1/created_by
+/// - `person-note-person`: https://api.planningcenteronline.com/people/v2/notes/1/person
+/// 
+/// Inbound Edges:
+/// - `note-organization-notes`: https://api.planningcenteronline.com/people/v2/notes
+/// - `note-person-notes`: https://api.planningcenteronline.com/people/v2/people/1/notes
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Note",
@@ -74,36 +115,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - category: include associated category 
-/// - created_by: include associated created_by 
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `note`: (URLParameter), query on a specific note, example: ?where[note]=string
-/// - `note_category_id`: (URLParameter), query on a specific note_category_id, example: ?where[note_category_id]=primary_key
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `display_date`: (URLParameter), prefix with a hyphen (-display_date) to reverse the order
-/// - `id`: (URLParameter), prefix with a hyphen (-id) to reverse the order
-/// - `note`: (URLParameter), prefix with a hyphen (-note) to reverse the order
-/// - `note_category_id`: (URLParameter), prefix with a hyphen (-note_category_id) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `notecategory-note-category`: https://api.planningcenteronline.com/people/v2/notes/1/category
-/// - `person-note-created_by`: https://api.planningcenteronline.com/people/v2/notes/1/created_by
-/// - `person-note-person`: https://api.planningcenteronline.com/people/v2/notes/1/person
-/// 
-/// All Inbound Edges:
-/// - `note-organization-notes`: https://api.planningcenteronline.com/people/v2/notes
-/// - `note-person-notes`: https://api.planningcenteronline.com/people/v2/people/1/notes
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleNote extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Note';

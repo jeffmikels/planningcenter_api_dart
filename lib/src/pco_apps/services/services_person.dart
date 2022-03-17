@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.493323
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.528175
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people
 /// 
-/// Description:
+/// ## Description
 /// A person added to Planning Center Services.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `photoUrl` (ro) -> PCO: `photo_url`
 /// - `photoThumbnailUrl` (ro) -> PCO: `photo_thumbnail_url`
@@ -64,7 +64,56 @@ import '../../pco.dart';
 /// - `onboardings` (rw) -> PCO: `onboardings`
 /// - `currentFolderId` (wo) -> PCO: `current_folder_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `assigned_to_rehearsal_team`: (URLParameter), query on a specific assigned_to_rehearsal_team, example: ?where[assigned_to_rehearsal_team]=true
+/// - `legacy_id`: (URLParameter), query on a specific legacy_id, example: ?where[legacy_id]=primary_key
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `availablesignup-person-available_signups`: https://api.planningcenteronline.com/services/v2/people/1/available_signups
+/// - `blockout-person-blockouts`: https://api.planningcenteronline.com/services/v2/people/1/blockouts
+/// - `personteampositionassignment-person-person_team_position_assignments`: https://api.planningcenteronline.com/services/v2/people/1/person_team_position_assignments
+/// - `planperson-person-plan_people`: https://api.planningcenteronline.com/services/v2/people/1/plan_people
+/// - `schedule-person-schedules`: https://api.planningcenteronline.com/services/v2/people/1/schedules
+/// - `tag-person-tags`: https://api.planningcenteronline.com/services/v2/people/1/tags
+/// - `teamleader-person-team_leaders`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders
+/// - `textsetting-person-text_settings`: https://api.planningcenteronline.com/services/v2/people/1/text_settings
+/// 
+/// Inbound Edges:
+/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/controller
+/// - `person-organization-people`: https://api.planningcenteronline.com/services/v2/people
+/// - `person-personteampositionassignment-person`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments/1/person
+/// - `person-planperson-person`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/person
+/// - `person-schedule-respond_to`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to
+/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people
+/// - `person-team-people`: https://api.planningcenteronline.com/services/v2/teams/1/people
+/// 
+/// Actions:
+/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/people/1/assign_tags
+/// - `collapse_service_types`: https://api.planningcenteronline.com/services/v2/people/1/collapse_service_types
+/// - `expand_service_types`: https://api.planningcenteronline.com/services/v2/people/1/expand_service_types
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Person",
@@ -133,44 +182,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `assigned_to_rehearsal_team`: (URLParameter), query on a specific assigned_to_rehearsal_team, example: ?where[assigned_to_rehearsal_team]=true
-/// - `legacy_id`: (URLParameter), query on a specific legacy_id, example: ?where[legacy_id]=primary_key
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `availablesignup-person-available_signups`: https://api.planningcenteronline.com/services/v2/people/1/available_signups
-/// - `blockout-person-blockouts`: https://api.planningcenteronline.com/services/v2/people/1/blockouts
-/// - `personteampositionassignment-person-person_team_position_assignments`: https://api.planningcenteronline.com/services/v2/people/1/person_team_position_assignments
-/// - `planperson-person-plan_people`: https://api.planningcenteronline.com/services/v2/people/1/plan_people
-/// - `schedule-person-schedules`: https://api.planningcenteronline.com/services/v2/people/1/schedules
-/// - `tag-person-tags`: https://api.planningcenteronline.com/services/v2/people/1/tags
-/// - `teamleader-person-team_leaders`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders
-/// - `textsetting-person-text_settings`: https://api.planningcenteronline.com/services/v2/people/1/text_settings
-/// 
-/// All Inbound Edges:
-/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/controller
-/// - `person-organization-people`: https://api.planningcenteronline.com/services/v2/people
-/// - `person-personteampositionassignment-person`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments/1/person
-/// - `person-planperson-person`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/person
-/// - `person-schedule-respond_to`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to
-/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people
-/// - `person-team-people`: https://api.planningcenteronline.com/services/v2/teams/1/people
-/// 
-/// All Actions:
-/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/people/1/assign_tags
-/// - `collapse_service_types`: https://api.planningcenteronline.com/services/v2/people/1/collapse_service_types
-/// - `expand_service_types`: https://api.planningcenteronline.com/services/v2/people/1/expand_service_types
-///
 class PcoServicesPerson extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Person';

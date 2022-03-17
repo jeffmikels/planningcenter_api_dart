@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.268308
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.201696
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/people
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `permissions` (ro) -> PCO: `permissions`
 /// - `emailAddresses` (ro) -> PCO: `email_addresses`
@@ -30,7 +30,47 @@ import '../../pco.dart';
 /// - `lastName` (ro) -> PCO: `last_name`
 /// - `donorNumber` (ro) -> PCO: `donor_number`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
+/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `batchgroup-person-batch_groups`: https://api.planningcenteronline.com/giving/v2/people/1/batch_groups
+/// - `batch-person-batches`: https://api.planningcenteronline.com/giving/v2/people/1/batches
+/// - `donation-person-donations`: https://api.planningcenteronline.com/giving/v2/people/1/donations
+/// - `paymentmethod-person-payment_methods`: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods
+/// - `pledge-person-pledges`: https://api.planningcenteronline.com/giving/v2/people/1/pledges
+/// - `campus-person-primary_campus`: https://api.planningcenteronline.com/giving/v2/people/1/primary_campus
+/// - `recurringdonation-person-recurring_donations`: https://api.planningcenteronline.com/giving/v2/people/1/recurring_donations
+/// 
+/// Inbound Edges:
+/// - `person-batchgroup-owner`: https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner
+/// - `person-batch-owner`: https://api.planningcenteronline.com/giving/v2/batches/1/owner
+/// - `person-organization-people`: https://api.planningcenteronline.com/giving/v2/people
+/// - `person-pledge-joint_giver`: https://api.planningcenteronline.com/giving/v2/pledges/1/joint_giver
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Person",
@@ -54,35 +94,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `batchgroup-person-batch_groups`: https://api.planningcenteronline.com/giving/v2/people/1/batch_groups
-/// - `batch-person-batches`: https://api.planningcenteronline.com/giving/v2/people/1/batches
-/// - `donation-person-donations`: https://api.planningcenteronline.com/giving/v2/people/1/donations
-/// - `paymentmethod-person-payment_methods`: https://api.planningcenteronline.com/giving/v2/people/1/payment_methods
-/// - `pledge-person-pledges`: https://api.planningcenteronline.com/giving/v2/people/1/pledges
-/// - `campus-person-primary_campus`: https://api.planningcenteronline.com/giving/v2/people/1/primary_campus
-/// - `recurringdonation-person-recurring_donations`: https://api.planningcenteronline.com/giving/v2/people/1/recurring_donations
-/// 
-/// All Inbound Edges:
-/// - `person-batchgroup-owner`: https://api.planningcenteronline.com/giving/v2/batch_groups/1/owner
-/// - `person-batch-owner`: https://api.planningcenteronline.com/giving/v2/batches/1/owner
-/// - `person-organization-people`: https://api.planningcenteronline.com/giving/v2/people
-/// - `person-pledge-joint_giver`: https://api.planningcenteronline.com/giving/v2/pledges/1/joint_giver
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGivingPerson extends PcoResource {
   static const String kPcoApplication = 'giving';
   static const String kTypeString = 'Person';

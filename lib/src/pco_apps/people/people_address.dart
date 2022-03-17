@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.977644
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.929838
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/addresses
 /// 
-/// Description:
+/// ## Description
 /// An address represents a physical and/or mailing address for a person.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `city` (rw) -> PCO: `city`
 /// - `state` (rw) -> PCO: `state`
@@ -31,7 +31,50 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `city`: (URLParameter), query on a specific city, example: ?where[city]=string
+/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
+/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
+/// - `state`: (URLParameter), query on a specific state, example: ?where[state]=string
+/// - `street`: (URLParameter), query on a specific street, example: ?where[street]=string
+/// - `zip`: (URLParameter), query on a specific zip, example: ?where[zip]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `city`: (URLParameter), prefix with a hyphen (-city) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
+/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
+/// - `state`: (URLParameter), prefix with a hyphen (-state) to reverse the order
+/// - `street`: (URLParameter), prefix with a hyphen (-street) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+/// - `zip`: (URLParameter), prefix with a hyphen (-zip) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `address-organization-addresses`: https://api.planningcenteronline.com/people/v2/addresses
+/// - `address-person-addresses`: https://api.planningcenteronline.com/people/v2/people/1/addresses
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Address",
@@ -56,38 +99,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `city`: (URLParameter), query on a specific city, example: ?where[city]=string
-/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
-/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
-/// - `state`: (URLParameter), query on a specific state, example: ?where[state]=string
-/// - `street`: (URLParameter), query on a specific street, example: ?where[street]=string
-/// - `zip`: (URLParameter), query on a specific zip, example: ?where[zip]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `city`: (URLParameter), prefix with a hyphen (-city) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
-/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
-/// - `state`: (URLParameter), prefix with a hyphen (-state) to reverse the order
-/// - `street`: (URLParameter), prefix with a hyphen (-street) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-/// - `zip`: (URLParameter), prefix with a hyphen (-zip) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `address-organization-addresses`: https://api.planningcenteronline.com/people/v2/addresses
-/// - `address-person-addresses`: https://api.planningcenteronline.com/people/v2/people/1/addresses
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleAddres extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Address';

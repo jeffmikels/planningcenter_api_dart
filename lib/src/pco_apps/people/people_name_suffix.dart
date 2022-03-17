@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.016589
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.969595
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,14 +17,45 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/name_suffixes
 /// 
-/// Description:
+/// ## Description
 /// A name suffix is one of Sr., Jr., etc.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `namesuffix-organization-name_suffixes`: https://api.planningcenteronline.com/people/v2/name_suffixes
+/// - `namesuffix-person-name_suffix`: https://api.planningcenteronline.com/people/v2/people/1/name_suffix
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "NameSuffix",
@@ -35,26 +66,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `namesuffix-organization-name_suffixes`: https://api.planningcenteronline.com/people/v2/name_suffixes
-/// - `namesuffix-person-name_suffix`: https://api.planningcenteronline.com/people/v2/people/1/name_suffix
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleNameSuffix extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'NameSuffix';

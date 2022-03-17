@@ -1,3 +1,7 @@
+## 0.7.1
+
+-   Improved documentation for the `PlanningCenterApiQuery` class and all the classes that use it.
+
 ## 0.7.0
 
 -   Added an `extraParams` field to the `PlanningCenterApiQuery` class so that some filters can properly be utilized. For example, `PcoServicesPlan` can be filtered with an `after` filter, but to use the `after` filter, the API must also include an `after` url parameter. These additional parameters cannot be automatically generated from the API documentation, and so it is up to the end user to include them in the `extraParams` field of the `PlanningCenterApiQuery` object.

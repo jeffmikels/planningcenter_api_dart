@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.483152
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.508775
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media
 /// 
-/// Description:
+/// ## Description
 /// A piece of media
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
@@ -42,7 +42,47 @@ import '../../pco.dart';
 /// - `previewUrl` (ro) -> PCO: `preview_url`
 /// - `imageUrl` (ro) -> PCO: `image_url`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `attachments`: include associated attachments 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `creator_name`: (URLParameter), query on a specific creator_name, example: ?where[creator_name]=string
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
+/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attachment-media-attachments`: https://api.planningcenteronline.com/services/v2/media/1/attachments
+/// - `mediaschedule-media-media_schedules`: https://api.planningcenteronline.com/services/v2/media/1/media_schedules
+/// - `tag-media-tags`: https://api.planningcenteronline.com/services/v2/media/1/tags
+/// 
+/// Inbound Edges:
+/// - `media-item-media`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/media
+/// - `media-organization-media`: https://api.planningcenteronline.com/services/v2/media
+/// 
+/// Actions:
+/// - `archive`: https://api.planningcenteronline.com/services/v2/media/1/archive
+/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/media/1/assign_tags
+/// - `unarchive`: https://api.planningcenteronline.com/services/v2/media/1/unarchive
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Media",
@@ -71,35 +111,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - attachments: include associated attachments 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `creator_name`: (URLParameter), query on a specific creator_name, example: ?where[creator_name]=string
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
-/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `attachment-media-attachments`: https://api.planningcenteronline.com/services/v2/media/1/attachments
-/// - `mediaschedule-media-media_schedules`: https://api.planningcenteronline.com/services/v2/media/1/media_schedules
-/// - `tag-media-tags`: https://api.planningcenteronline.com/services/v2/media/1/tags
-/// 
-/// All Inbound Edges:
-/// - `media-item-media`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/media
-/// - `media-organization-media`: https://api.planningcenteronline.com/services/v2/media
-/// 
-/// All Actions:
-/// - `archive`: https://api.planningcenteronline.com/services/v2/media/1/archive
-/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/media/1/assign_tags
-/// - `unarchive`: https://api.planningcenteronline.com/services/v2/media/1/unarchive
-///
 class PcoServicesMedia extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Media';

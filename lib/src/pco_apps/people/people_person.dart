@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.042990
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.997389
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people
 /// 
-/// Description:
+/// ## Description
 /// A person record represents a single member/user of the application. Each person has different permissions that determine how the user can use this app (if at all).
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `givenName` (rw) -> PCO: `given_name`
 /// - `firstName` (rw) -> PCO: `first_name`
@@ -57,7 +57,144 @@ import '../../pco.dart';
 /// - `searchNameOrEmailOrPhoneNumber` (ro) -> PCO: `search_name_or_email_or_phone_number`
 /// - `primaryCampusId` (wo) -> PCO: `primary_campus_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `addresses`: include associated addresses 
+/// - `emails`: include associated emails 
+/// - `field_data`: include associated field_data 
+/// - `households`: include associated households 
+/// - `inactive_reason`: include associated inactive_reason 
+/// - `marital_status`: include associated marital_status 
+/// - `name_prefix`: include associated name_prefix 
+/// - `name_suffix`: include associated name_suffix 
+/// - `organization`: include associated organization 
+/// - `person_apps`: include associated person_apps 
+/// - `phone_numbers`: include associated phone_numbers 
+/// - `platform_notifications`: include associated platform_notifications 
+/// - `primary_campus`: include associated primary_campus 
+/// - `school`: include associated school 
+/// - `social_profiles`: include associated social_profiles 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `accounting_administrator`: (URLParameter), query on a specific accounting_administrator, example: ?where[accounting_administrator]=true
+/// - `anniversary`: (URLParameter), query on a specific anniversary, example: ?where[anniversary]=2000-01-01
+/// - `birthdate`: (URLParameter), query on a specific birthdate, example: ?where[birthdate]=2000-01-01
+/// - `child`: (URLParameter), query on a specific child, example: ?where[child]=true
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
+/// - `gender`: (URLParameter), query on a specific gender, example: ?where[gender]=string
+/// - `given_name`: (URLParameter), query on a specific given_name, example: ?where[given_name]=string
+/// - `grade`: (URLParameter), query on a specific grade, example: ?where[grade]=1
+/// - `graduation_year`: (URLParameter), query on a specific graduation_year, example: ?where[graduation_year]=1
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `inactivated_at`: (URLParameter), Set to an ISO 8601 date or time to make the profile inactive. Set to "null" to reactivate the profile., example: ?where[inactivated_at]=2000-01-01T12:00:00Z
+/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
+/// - `medical_notes`: (URLParameter), query on a specific medical_notes, example: ?where[medical_notes]=string
+/// - `membership`: (URLParameter), query on a specific membership, example: ?where[membership]=string
+/// - `middle_name`: (URLParameter), query on a specific middle_name, example: ?where[middle_name]=string
+/// - `nickname`: (URLParameter), query on a specific nickname, example: ?where[nickname]=string
+/// - `people_permissions`: (URLParameter), query on a specific people_permissions, example: ?where[people_permissions]=string
+/// - `remote_id`: (URLParameter), query on a specific remote_id, example: ?where[remote_id]=1
+/// - `search_name`: (URLParameter), Search by Name (first, last, combination), example: ?where[search_name]=string
+/// - `search_name_or_email`: (URLParameter), Search by Name (first, last, combination) or Email, example: ?where[search_name_or_email]=string
+/// - `search_name_or_email_or_phone_number`: (URLParameter), Search by Name (first, last, combination), Email, or Phone Number, example: ?where[search_name_or_email_or_phone_number]=string
+/// - `search_phone_number`: (URLParameter), Search by Phone Number, example: ?where[search_phone_number]=string
+/// - `search_phone_number_e164`: (URLParameter), Search by Phone Number E164, example: ?where[search_phone_number_e164]=string
+/// - `site_administrator`: (URLParameter), query on a specific site_administrator, example: ?where[site_administrator]=true
+/// - `status`: (URLParameter), Set to "inactive" to set "inactivated_at" to the current time and make the profile inactive. Set to anything else to clear "inactivated_at" and reactivate the profile., example: ?where[status]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `accounting_administrator`: (URLParameter), prefix with a hyphen (-accounting_administrator) to reverse the order
+/// - `anniversary`: (URLParameter), prefix with a hyphen (-anniversary) to reverse the order
+/// - `birthdate`: (URLParameter), prefix with a hyphen (-birthdate) to reverse the order
+/// - `child`: (URLParameter), prefix with a hyphen (-child) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `gender`: (URLParameter), prefix with a hyphen (-gender) to reverse the order
+/// - `given_name`: (URLParameter), prefix with a hyphen (-given_name) to reverse the order
+/// - `grade`: (URLParameter), prefix with a hyphen (-grade) to reverse the order
+/// - `graduation_year`: (URLParameter), prefix with a hyphen (-graduation_year) to reverse the order
+/// - `inactivated_at`: (URLParameter), prefix with a hyphen (-inactivated_at) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+/// - `membership`: (URLParameter), prefix with a hyphen (-membership) to reverse the order
+/// - `middle_name`: (URLParameter), prefix with a hyphen (-middle_name) to reverse the order
+/// - `nickname`: (URLParameter), prefix with a hyphen (-nickname) to reverse the order
+/// - `people_permissions`: (URLParameter), prefix with a hyphen (-people_permissions) to reverse the order
+/// - `remote_id`: (URLParameter), prefix with a hyphen (-remote_id) to reverse the order
+/// - `site_administrator`: (URLParameter), prefix with a hyphen (-site_administrator) to reverse the order
+/// - `status`: (URLParameter), prefix with a hyphen (-status) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `notecategorysubscription-person-`: https://api.planningcenteronline.com/people/v2/people/1/
+/// - `address-person-addresses`: https://api.planningcenteronline.com/people/v2/people/1/addresses
+/// - `app-person-apps`: https://api.planningcenteronline.com/people/v2/people/1/apps
+/// - `connectedperson-person-connected_people`: https://api.planningcenteronline.com/people/v2/people/1/connected_people
+/// - `email-person-emails`: https://api.planningcenteronline.com/people/v2/people/1/emails
+/// - `fielddatum-person-field_data`: https://api.planningcenteronline.com/people/v2/people/1/field_data
+/// - `householdmembership-person-household_memberships`: https://api.planningcenteronline.com/people/v2/people/1/household_memberships
+/// - `household-person-households`: https://api.planningcenteronline.com/people/v2/people/1/households
+/// - `inactivereason-person-inactive_reason`: https://api.planningcenteronline.com/people/v2/people/1/inactive_reason
+/// - `maritalstatus-person-marital_status`: https://api.planningcenteronline.com/people/v2/people/1/marital_status
+/// - `messagegroup-person-message_groups`: https://api.planningcenteronline.com/people/v2/people/1/message_groups
+/// - `message-person-messages`: https://api.planningcenteronline.com/people/v2/people/1/messages
+/// - `nameprefix-person-name_prefix`: https://api.planningcenteronline.com/people/v2/people/1/name_prefix
+/// - `namesuffix-person-name_suffix`: https://api.planningcenteronline.com/people/v2/people/1/name_suffix
+/// - `note-person-notes`: https://api.planningcenteronline.com/people/v2/people/1/notes
+/// - `organization-person-organization`: https://api.planningcenteronline.com/people/v2/people/1/organization
+/// - `personapp-person-person_apps`: https://api.planningcenteronline.com/people/v2/people/1/person_apps
+/// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
+/// - `platformnotification-person-platform_notifications`: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
+/// - `campus-person-primary_campus`: https://api.planningcenteronline.com/people/v2/people/1/primary_campus
+/// - `schooloption-person-school`: https://api.planningcenteronline.com/people/v2/people/1/school
+/// - `socialprofile-person-social_profiles`: https://api.planningcenteronline.com/people/v2/people/1/social_profiles
+/// - `workflowcard-person-workflow_cards`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards
+/// - `workflowshare-person-workflow_shares`: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares
+/// 
+/// Inbound Edges:
+/// - `person-condition-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by
+/// - `person-email-person`: https://api.planningcenteronline.com/people/v2/emails/1/person
+/// - `person-fielddatum-person`: https://api.planningcenteronline.com/people/v2/field_data/1/person
+/// - `person-formsubmission-person`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/person
+/// - `person-householdmembership-person`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/person
+/// - `person-household-people`: https://api.planningcenteronline.com/people/v2/households/1/people
+/// - `person-list-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/created_by
+/// - `person-list-people`: https://api.planningcenteronline.com/people/v2/lists/1/people
+/// - `person-listshare-person`: https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person
+/// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
+/// - `person-messagegroup-from`: https://api.planningcenteronline.com/people/v2/message_groups/1/from
+/// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
+/// - `person-notecategory-subscribers`: https://api.planningcenteronline.com/people/v2/note_categories/1/subscribers
+/// - `person-note-created_by`: https://api.planningcenteronline.com/people/v2/notes/1/created_by
+/// - `person-note-person`: https://api.planningcenteronline.com/people/v2/notes/1/person
+/// - `person-organization-people`: https://api.planningcenteronline.com/people/v2/people
+/// - `person-peopleimporthistory-person`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/person
+/// - `person-report-created_by`: https://api.planningcenteronline.com/people/v2/reports/1/created_by
+/// - `person-report-updated_by`: https://api.planningcenteronline.com/people/v2/reports/1/updated_by
+/// - `person-socialprofile-person`: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
+/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee
+/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person
+/// - `person-workflowshare-person`: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares/1/person
+/// - `person-workflow-shared_people`: https://api.planningcenteronline.com/people/v2/workflows/1/shared_people
+/// - `person-workflowstepassigneesummary-person`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person
+/// - `person-workflowstep-default_assignee`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/default_assignee
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Person",
@@ -102,132 +239,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - addresses: include associated addresses 
-/// - emails: include associated emails 
-/// - field_data: include associated field_data 
-/// - households: include associated households 
-/// - inactive_reason: include associated inactive_reason 
-/// - marital_status: include associated marital_status 
-/// - name_prefix: include associated name_prefix 
-/// - name_suffix: include associated name_suffix 
-/// - organization: include associated organization 
-/// - person_apps: include associated person_apps 
-/// - phone_numbers: include associated phone_numbers 
-/// - platform_notifications: include associated platform_notifications 
-/// - primary_campus: include associated primary_campus 
-/// - school: include associated school 
-/// - social_profiles: include associated social_profiles 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `accounting_administrator`: (URLParameter), query on a specific accounting_administrator, example: ?where[accounting_administrator]=true
-/// - `anniversary`: (URLParameter), query on a specific anniversary, example: ?where[anniversary]=2000-01-01
-/// - `birthdate`: (URLParameter), query on a specific birthdate, example: ?where[birthdate]=2000-01-01
-/// - `child`: (URLParameter), query on a specific child, example: ?where[child]=true
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `gender`: (URLParameter), query on a specific gender, example: ?where[gender]=string
-/// - `given_name`: (URLParameter), query on a specific given_name, example: ?where[given_name]=string
-/// - `grade`: (URLParameter), query on a specific grade, example: ?where[grade]=1
-/// - `graduation_year`: (URLParameter), query on a specific graduation_year, example: ?where[graduation_year]=1
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `inactivated_at`: (URLParameter), Set to an ISO 8601 date or time to make the profile inactive. Set to "null" to reactivate the profile., example: ?where[inactivated_at]=2000-01-01T12:00:00Z
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-/// - `medical_notes`: (URLParameter), query on a specific medical_notes, example: ?where[medical_notes]=string
-/// - `membership`: (URLParameter), query on a specific membership, example: ?where[membership]=string
-/// - `middle_name`: (URLParameter), query on a specific middle_name, example: ?where[middle_name]=string
-/// - `nickname`: (URLParameter), query on a specific nickname, example: ?where[nickname]=string
-/// - `people_permissions`: (URLParameter), query on a specific people_permissions, example: ?where[people_permissions]=string
-/// - `remote_id`: (URLParameter), query on a specific remote_id, example: ?where[remote_id]=1
-/// - `search_name`: (URLParameter), Search by Name (first, last, combination), example: ?where[search_name]=string
-/// - `search_name_or_email`: (URLParameter), Search by Name (first, last, combination) or Email, example: ?where[search_name_or_email]=string
-/// - `search_name_or_email_or_phone_number`: (URLParameter), Search by Name (first, last, combination), Email, or Phone Number, example: ?where[search_name_or_email_or_phone_number]=string
-/// - `search_phone_number`: (URLParameter), Search by Phone Number, example: ?where[search_phone_number]=string
-/// - `search_phone_number_e164`: (URLParameter), Search by Phone Number E164, example: ?where[search_phone_number_e164]=string
-/// - `site_administrator`: (URLParameter), query on a specific site_administrator, example: ?where[site_administrator]=true
-/// - `status`: (URLParameter), Set to "inactive" to set "inactivated_at" to the current time and make the profile inactive. Set to anything else to clear "inactivated_at" and reactivate the profile., example: ?where[status]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `accounting_administrator`: (URLParameter), prefix with a hyphen (-accounting_administrator) to reverse the order
-/// - `anniversary`: (URLParameter), prefix with a hyphen (-anniversary) to reverse the order
-/// - `birthdate`: (URLParameter), prefix with a hyphen (-birthdate) to reverse the order
-/// - `child`: (URLParameter), prefix with a hyphen (-child) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `gender`: (URLParameter), prefix with a hyphen (-gender) to reverse the order
-/// - `given_name`: (URLParameter), prefix with a hyphen (-given_name) to reverse the order
-/// - `grade`: (URLParameter), prefix with a hyphen (-grade) to reverse the order
-/// - `graduation_year`: (URLParameter), prefix with a hyphen (-graduation_year) to reverse the order
-/// - `inactivated_at`: (URLParameter), prefix with a hyphen (-inactivated_at) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `membership`: (URLParameter), prefix with a hyphen (-membership) to reverse the order
-/// - `middle_name`: (URLParameter), prefix with a hyphen (-middle_name) to reverse the order
-/// - `nickname`: (URLParameter), prefix with a hyphen (-nickname) to reverse the order
-/// - `people_permissions`: (URLParameter), prefix with a hyphen (-people_permissions) to reverse the order
-/// - `remote_id`: (URLParameter), prefix with a hyphen (-remote_id) to reverse the order
-/// - `site_administrator`: (URLParameter), prefix with a hyphen (-site_administrator) to reverse the order
-/// - `status`: (URLParameter), prefix with a hyphen (-status) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `notecategorysubscription-person-`: https://api.planningcenteronline.com/people/v2/people/1/
-/// - `address-person-addresses`: https://api.planningcenteronline.com/people/v2/people/1/addresses
-/// - `app-person-apps`: https://api.planningcenteronline.com/people/v2/people/1/apps
-/// - `connectedperson-person-connected_people`: https://api.planningcenteronline.com/people/v2/people/1/connected_people
-/// - `email-person-emails`: https://api.planningcenteronline.com/people/v2/people/1/emails
-/// - `fielddatum-person-field_data`: https://api.planningcenteronline.com/people/v2/people/1/field_data
-/// - `householdmembership-person-household_memberships`: https://api.planningcenteronline.com/people/v2/people/1/household_memberships
-/// - `household-person-households`: https://api.planningcenteronline.com/people/v2/people/1/households
-/// - `inactivereason-person-inactive_reason`: https://api.planningcenteronline.com/people/v2/people/1/inactive_reason
-/// - `maritalstatus-person-marital_status`: https://api.planningcenteronline.com/people/v2/people/1/marital_status
-/// - `messagegroup-person-message_groups`: https://api.planningcenteronline.com/people/v2/people/1/message_groups
-/// - `message-person-messages`: https://api.planningcenteronline.com/people/v2/people/1/messages
-/// - `nameprefix-person-name_prefix`: https://api.planningcenteronline.com/people/v2/people/1/name_prefix
-/// - `namesuffix-person-name_suffix`: https://api.planningcenteronline.com/people/v2/people/1/name_suffix
-/// - `note-person-notes`: https://api.planningcenteronline.com/people/v2/people/1/notes
-/// - `organization-person-organization`: https://api.planningcenteronline.com/people/v2/people/1/organization
-/// - `personapp-person-person_apps`: https://api.planningcenteronline.com/people/v2/people/1/person_apps
-/// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
-/// - `platformnotification-person-platform_notifications`: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
-/// - `campus-person-primary_campus`: https://api.planningcenteronline.com/people/v2/people/1/primary_campus
-/// - `schooloption-person-school`: https://api.planningcenteronline.com/people/v2/people/1/school
-/// - `socialprofile-person-social_profiles`: https://api.planningcenteronline.com/people/v2/people/1/social_profiles
-/// - `workflowcard-person-workflow_cards`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards
-/// - `workflowshare-person-workflow_shares`: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares
-/// 
-/// All Inbound Edges:
-/// - `person-condition-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by
-/// - `person-email-person`: https://api.planningcenteronline.com/people/v2/emails/1/person
-/// - `person-fielddatum-person`: https://api.planningcenteronline.com/people/v2/field_data/1/person
-/// - `person-formsubmission-person`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/person
-/// - `person-householdmembership-person`: https://api.planningcenteronline.com/people/v2/households/1/household_memberships/1/person
-/// - `person-household-people`: https://api.planningcenteronline.com/people/v2/households/1/people
-/// - `person-list-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/created_by
-/// - `person-list-people`: https://api.planningcenteronline.com/people/v2/lists/1/people
-/// - `person-listshare-person`: https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person
-/// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
-/// - `person-messagegroup-from`: https://api.planningcenteronline.com/people/v2/message_groups/1/from
-/// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
-/// - `person-notecategory-subscribers`: https://api.planningcenteronline.com/people/v2/note_categories/1/subscribers
-/// - `person-note-created_by`: https://api.planningcenteronline.com/people/v2/notes/1/created_by
-/// - `person-note-person`: https://api.planningcenteronline.com/people/v2/notes/1/person
-/// - `person-organization-people`: https://api.planningcenteronline.com/people/v2/people
-/// - `person-peopleimporthistory-person`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/person
-/// - `person-report-created_by`: https://api.planningcenteronline.com/people/v2/reports/1/created_by
-/// - `person-report-updated_by`: https://api.planningcenteronline.com/people/v2/reports/1/updated_by
-/// - `person-socialprofile-person`: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
-/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee
-/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person
-/// - `person-workflowshare-person`: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares/1/person
-/// - `person-workflow-shared_people`: https://api.planningcenteronline.com/people/v2/workflows/1/shared_people
-/// - `person-workflowstepassigneesummary-person`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person
-/// - `person-workflowstep-default_assignee`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/default_assignee
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeoplePerson extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Person';

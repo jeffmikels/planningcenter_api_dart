@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.031946
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.987145
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2
 /// 
-/// Description:
+/// ## Description
 /// The organization represents a single church. Every other resource is scoped to this record.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `countryCode` (ro) -> PCO: `country_code`
@@ -29,33 +29,28 @@ import '../../pco.dart';
 /// - `contactWebsite` (ro) -> PCO: `contact_website`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
 /// 
-/// Example:
-/// ```json
-/// {
-///   "type": "Organization",
-///   "id": "1",
-///   "attributes": {
-///     "name": "string",
-///     "country_code": "string",
-///     "date_format": 1,
-///     "time_zone": "string",
-///     "contact_website": "string",
-///     "avatar_url": "string"
-///   },
-///   "relationships": {}
-/// }
-/// ```
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
 /// 
-/// Possible includes with parameter ?include=a,b
 /// NONE
 ///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
 /// NONE
 /// 
-/// Possible orderings with parameter ?order=
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
 /// NONE
 ///
-/// All Outbound Edges:
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
 /// - `address-organization-addresses`: https://api.planningcenteronline.com/people/v2/addresses
 /// - `anniversarycouples-organization-anniversary_couples`: https://api.planningcenteronline.com/people/v2/anniversary_couples
 /// - `app-organization-apps`: https://api.planningcenteronline.com/people/v2/apps
@@ -88,12 +83,28 @@ import '../../pco.dart';
 /// - `tab-organization-tabs`: https://api.planningcenteronline.com/people/v2/tabs
 /// - `workflow-organization-workflows`: https://api.planningcenteronline.com/people/v2/workflows
 /// 
-/// All Inbound Edges:
+/// Inbound Edges:
 /// - `organization-person-organization`: https://api.planningcenteronline.com/people/v2/people/1/organization
 /// 
-/// All Actions:
+/// Actions:
 /// NONE
 ///
+/// ## Raw Data Object Example
+/// ```json
+/// {
+///   "type": "Organization",
+///   "id": "1",
+///   "attributes": {
+///     "name": "string",
+///     "country_code": "string",
+///     "date_format": 1,
+///     "time_zone": "string",
+///     "contact_website": "string",
+///     "avatar_url": "string"
+///   },
+///   "relationships": {}
+/// }
+/// ```
 class PcoPeopleOrganization extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Organization';

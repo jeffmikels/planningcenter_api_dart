@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.816062
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.691153
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,19 +17,50 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/options
 /// 
-/// Description:
+/// ## Description
 /// An option which an attendee may select when checking in.
 /// 
 /// Options may have extra labels associated with them, denoted by `label` and `quantity`.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
 /// - `quantity` (ro) -> PCO: `quantity`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `label`: include associated label 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `label-option-label`: https://api.planningcenteronline.com/check-ins/v2/options/1/label
+/// 
+/// Inbound Edges:
+/// - `option-checkin-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/options
+/// - `option-location-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/options
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Option",
@@ -43,26 +74,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - label: include associated label 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `label-option-label`: https://api.planningcenteronline.com/check-ins/v2/options/1/label
-/// 
-/// All Inbound Edges:
-/// - `option-checkin-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/options
-/// - `option-location-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/options
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsOption extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Option';

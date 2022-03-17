@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.396235
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.472902
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments
 /// 
-/// Description:
+/// ## Description
 /// A file, whether it's stored on Planning Center or linked from another location.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `pageOrder` (rw) -> PCO: `page_order`
@@ -47,7 +47,51 @@ import '../../pco.dart';
 /// - `fileUploadIdentifier` (rw) -> PCO: `file_upload_identifier`
 /// - `attachmentTypeIds` (wo) -> PCO: `attachment_type_ids`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `zooms`: include associated zooms 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `licenses_purchased`: (URLParameter), query on a specific licenses_purchased, example: ?where[licenses_purchased]=1
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `attachable_type`: (URLParameter), prefix with a hyphen (-attachable_type) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `filename`: (URLParameter), prefix with a hyphen (-filename) to reverse the order
+/// - `filetype`: (URLParameter), prefix with a hyphen (-filetype) to reverse the order
+/// - `size`: (URLParameter), prefix with a hyphen (-size) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `zoom-attachment-zooms`: https://api.planningcenteronline.com/services/v2/attachments/1/zooms
+/// 
+/// Inbound Edges:
+/// - `attachment-arrangement-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
+/// - `attachment-item-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/attachments
+/// - `attachment-item-selected_attachment`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/selected_attachment
+/// - `attachment-item-selected_background`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/selected_background
+/// - `attachment-key-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys/1/attachments
+/// - `attachment-media-attachments`: https://api.planningcenteronline.com/services/v2/media/1/attachments
+/// - `attachment-plan-all_attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
+/// - `attachment-plan-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/attachments
+/// - `attachment-servicetype-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/attachments
+/// - `attachment-song-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/attachments
+/// 
+/// Actions:
+/// - `open`: https://api.planningcenteronline.com/services/v2/attachments/1/open
+/// - `preview`: https://api.planningcenteronline.com/services/v2/attachments/1/preview
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Attachment",
@@ -112,39 +156,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - zooms: include associated zooms 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `licenses_purchased`: (URLParameter), query on a specific licenses_purchased, example: ?where[licenses_purchased]=1
-/// 
-/// Possible orderings with parameter ?order=
-/// - `attachable_type`: (URLParameter), prefix with a hyphen (-attachable_type) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `filename`: (URLParameter), prefix with a hyphen (-filename) to reverse the order
-/// - `filetype`: (URLParameter), prefix with a hyphen (-filetype) to reverse the order
-/// - `size`: (URLParameter), prefix with a hyphen (-size) to reverse the order
-///
-/// All Outbound Edges:
-/// - `zoom-attachment-zooms`: https://api.planningcenteronline.com/services/v2/attachments/1/zooms
-/// 
-/// All Inbound Edges:
-/// - `attachment-arrangement-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
-/// - `attachment-item-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/attachments
-/// - `attachment-item-selected_attachment`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/selected_attachment
-/// - `attachment-item-selected_background`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/selected_background
-/// - `attachment-key-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys/1/attachments
-/// - `attachment-media-attachments`: https://api.planningcenteronline.com/services/v2/media/1/attachments
-/// - `attachment-plan-all_attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
-/// - `attachment-plan-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/attachments
-/// - `attachment-servicetype-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/attachments
-/// - `attachment-song-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/attachments
-/// 
-/// All Actions:
-/// - `open`: https://api.planningcenteronline.com/services/v2/attachments/1/open
-/// - `preview`: https://api.planningcenteronline.com/services/v2/attachments/1/preview
-///
 class PcoServicesAttachment extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Attachment';

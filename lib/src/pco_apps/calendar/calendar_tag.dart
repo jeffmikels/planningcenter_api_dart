@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.225349
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.103130
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,13 +17,13 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/tags
 /// 
-/// Description:
+/// ## Description
 /// An organizational tag that can be applied to events.
 /// 
 /// Applied tags can be used to filter events on the calendar or
 /// filter events for reports, iCal feeds, kiosk, and the widget.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `color` (ro) -> PCO: `color`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -31,7 +31,48 @@ import '../../pco.dart';
 /// - `position` (ro) -> PCO: `position`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `tag_group`: include associated tag_group 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `color`: (URLParameter), query on a specific color, example: ?where[color]=string
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `position`: (URLParameter), query on a specific position, example: ?where[position]=1.42
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `eventinstance-tag-event_instances`: https://api.planningcenteronline.com/calendar/v2/tags/1/event_instances
+/// - `event-tag-events`: https://api.planningcenteronline.com/calendar/v2/tags/1/events
+/// - `taggroup-tag-tag_group`: https://api.planningcenteronline.com/calendar/v2/tags/1/tag_group
+/// 
+/// Inbound Edges:
+/// - `tag-eventinstance-tags`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/tags
+/// - `tag-event-tags`: https://api.planningcenteronline.com/calendar/v2/events/1/tags
+/// - `tag-organization-tags`: https://api.planningcenteronline.com/calendar/v2/tags
+/// - `tag-taggroup-tags`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/tags
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Tag",
@@ -46,36 +87,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - tag_group: include associated tag_group 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `color`: (URLParameter), query on a specific color, example: ?where[color]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `position`: (URLParameter), query on a specific position, example: ?where[position]=1.42
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
-///
-/// All Outbound Edges:
-/// - `eventinstance-tag-event_instances`: https://api.planningcenteronline.com/calendar/v2/tags/1/event_instances
-/// - `event-tag-events`: https://api.planningcenteronline.com/calendar/v2/tags/1/events
-/// - `taggroup-tag-tag_group`: https://api.planningcenteronline.com/calendar/v2/tags/1/tag_group
-/// 
-/// All Inbound Edges:
-/// - `tag-eventinstance-tags`: https://api.planningcenteronline.com/calendar/v2/event_instances/1/tags
-/// - `tag-event-tags`: https://api.planningcenteronline.com/calendar/v2/events/1/tags
-/// - `tag-organization-tags`: https://api.planningcenteronline.com/calendar/v2/tags
-/// - `tag-taggroup-tags`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/tags
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCalendarTag extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Tag';

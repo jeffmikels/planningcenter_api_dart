@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.294347
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.315245
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/people
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `addresses` (ro) -> PCO: `addresses`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
@@ -31,7 +31,43 @@ import '../../pco.dart';
 /// - `permissions` (ro) -> PCO: `permissions`
 /// - `phoneNumbers` (ro) -> PCO: `phone_numbers`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
+/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `event-person-events`: https://api.planningcenteronline.com/groups/v2/people/1/events
+/// - `group-person-groups`: https://api.planningcenteronline.com/groups/v2/people/1/groups
+/// - `membership-person-memberships`: https://api.planningcenteronline.com/groups/v2/people/1/memberships
+/// 
+/// Inbound Edges:
+/// - `person-attendance-person`: https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person
+/// - `person-group-people`: https://api.planningcenteronline.com/groups/v2/groups/1/people
+/// - `person-organization-people`: https://api.planningcenteronline.com/groups/v2/people
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Person",
@@ -49,31 +85,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `event-person-events`: https://api.planningcenteronline.com/groups/v2/people/1/events
-/// - `group-person-groups`: https://api.planningcenteronline.com/groups/v2/people/1/groups
-/// - `membership-person-memberships`: https://api.planningcenteronline.com/groups/v2/people/1/memberships
-/// 
-/// All Inbound Edges:
-/// - `person-attendance-person`: https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person
-/// - `person-group-people`: https://api.planningcenteronline.com/groups/v2/groups/1/people
-/// - `person-organization-people`: https://api.planningcenteronline.com/groups/v2/people
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGroupsPerson extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Person';

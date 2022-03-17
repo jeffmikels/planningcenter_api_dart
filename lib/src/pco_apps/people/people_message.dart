@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.012928
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.966344
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/messages
 /// 
-/// Description:
+/// ## Description
 /// A message is an individual email or sms text sent to a member. Every message has a parent message group.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `toAddresses` (ro) -> PCO: `to_addresses`
@@ -37,7 +37,64 @@ import '../../pco.dart';
 /// - `readAt` (ro) -> PCO: `read_at`
 /// - `appName` (ro) -> PCO: `app_name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `message_group`: include associated message_group 
+/// - `to`: include associated to 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `app_name`: (URLParameter), query on a specific app_name, example: ?where[app_name]=string
+/// - `bounced_at`: (URLParameter), query on a specific bounced_at, example: ?where[bounced_at]=2000-01-01T12:00:00Z
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `delivery_status`: (URLParameter), query on a specific delivery_status, example: ?where[delivery_status]=string
+/// - `file`: (URLParameter), query on a specific file, example: ?where[file]=string
+/// - `from_address`: (URLParameter), query on a specific from_address, example: ?where[from_address]=string
+/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=value
+/// - `reject_reason`: (URLParameter), query on a specific reject_reason, example: ?where[reject_reason]=string
+/// - `rejection_notification_sent_at`: (URLParameter), query on a specific rejection_notification_sent_at, example: ?where[rejection_notification_sent_at]=2000-01-01T12:00:00Z
+/// - `sent_at`: (URLParameter), query on a specific sent_at, example: ?where[sent_at]=2000-01-01T12:00:00Z
+/// - `subject`: (URLParameter), query on a specific subject, example: ?where[subject]=string
+/// - `to_addresses`: (URLParameter), query on a specific to_addresses, example: ?where[to_addresses]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `app_name`: (URLParameter), prefix with a hyphen (-app_name) to reverse the order
+/// - `bounced_at`: (URLParameter), prefix with a hyphen (-bounced_at) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `delivery_status`: (URLParameter), prefix with a hyphen (-delivery_status) to reverse the order
+/// - `file`: (URLParameter), prefix with a hyphen (-file) to reverse the order
+/// - `from_address`: (URLParameter), prefix with a hyphen (-from_address) to reverse the order
+/// - `from_name`: (URLParameter), prefix with a hyphen (-from_name) to reverse the order
+/// - `kind`: (URLParameter), prefix with a hyphen (-kind) to reverse the order
+/// - `reject_reason`: (URLParameter), prefix with a hyphen (-reject_reason) to reverse the order
+/// - `rejection_notification_sent_at`: (URLParameter), prefix with a hyphen (-rejection_notification_sent_at) to reverse the order
+/// - `sent_at`: (URLParameter), prefix with a hyphen (-sent_at) to reverse the order
+/// - `subject`: (URLParameter), prefix with a hyphen (-subject) to reverse the order
+/// - `to_addresses`: (URLParameter), prefix with a hyphen (-to_addresses) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `messagegroup-message-message_group`: https://api.planningcenteronline.com/people/v2/messages/1/message_group
+/// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
+/// 
+/// Inbound Edges:
+/// - `message-messagegroup-messages`: https://api.planningcenteronline.com/people/v2/message_groups/1/messages
+/// - `message-organization-messages`: https://api.planningcenteronline.com/people/v2/messages
+/// - `message-person-messages`: https://api.planningcenteronline.com/people/v2/people/1/messages
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Message",
@@ -61,52 +118,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - message_group: include associated message_group 
-/// - to: include associated to 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `app_name`: (URLParameter), query on a specific app_name, example: ?where[app_name]=string
-/// - `bounced_at`: (URLParameter), query on a specific bounced_at, example: ?where[bounced_at]=2000-01-01T12:00:00Z
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `delivery_status`: (URLParameter), query on a specific delivery_status, example: ?where[delivery_status]=string
-/// - `file`: (URLParameter), query on a specific file, example: ?where[file]=string
-/// - `from_address`: (URLParameter), query on a specific from_address, example: ?where[from_address]=string
-/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=value
-/// - `reject_reason`: (URLParameter), query on a specific reject_reason, example: ?where[reject_reason]=string
-/// - `rejection_notification_sent_at`: (URLParameter), query on a specific rejection_notification_sent_at, example: ?where[rejection_notification_sent_at]=2000-01-01T12:00:00Z
-/// - `sent_at`: (URLParameter), query on a specific sent_at, example: ?where[sent_at]=2000-01-01T12:00:00Z
-/// - `subject`: (URLParameter), query on a specific subject, example: ?where[subject]=string
-/// - `to_addresses`: (URLParameter), query on a specific to_addresses, example: ?where[to_addresses]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `app_name`: (URLParameter), prefix with a hyphen (-app_name) to reverse the order
-/// - `bounced_at`: (URLParameter), prefix with a hyphen (-bounced_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `delivery_status`: (URLParameter), prefix with a hyphen (-delivery_status) to reverse the order
-/// - `file`: (URLParameter), prefix with a hyphen (-file) to reverse the order
-/// - `from_address`: (URLParameter), prefix with a hyphen (-from_address) to reverse the order
-/// - `from_name`: (URLParameter), prefix with a hyphen (-from_name) to reverse the order
-/// - `kind`: (URLParameter), prefix with a hyphen (-kind) to reverse the order
-/// - `reject_reason`: (URLParameter), prefix with a hyphen (-reject_reason) to reverse the order
-/// - `rejection_notification_sent_at`: (URLParameter), prefix with a hyphen (-rejection_notification_sent_at) to reverse the order
-/// - `sent_at`: (URLParameter), prefix with a hyphen (-sent_at) to reverse the order
-/// - `subject`: (URLParameter), prefix with a hyphen (-subject) to reverse the order
-/// - `to_addresses`: (URLParameter), prefix with a hyphen (-to_addresses) to reverse the order
-///
-/// All Outbound Edges:
-/// - `messagegroup-message-message_group`: https://api.planningcenteronline.com/people/v2/messages/1/message_group
-/// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
-/// 
-/// All Inbound Edges:
-/// - `message-messagegroup-messages`: https://api.planningcenteronline.com/people/v2/message_groups/1/messages
-/// - `message-organization-messages`: https://api.planningcenteronline.com/people/v2/messages
-/// - `message-person-messages`: https://api.planningcenteronline.com/people/v2/people/1/messages
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleMessage extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Message';

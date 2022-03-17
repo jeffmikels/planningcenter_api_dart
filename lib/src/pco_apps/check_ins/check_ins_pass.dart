@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.820081
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.693059
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,17 +17,48 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/passes
 /// 
-/// Description:
+/// ## Description
 /// Enables quick lookup of a person via barcode reader.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `code` (ro) -> PCO: `code`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `code`: (URLParameter), query on a specific code, example: ?where[code]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-pass-person`: https://api.planningcenteronline.com/check-ins/v2/passes/1/person
+/// 
+/// Inbound Edges:
+/// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
+/// - `pass-person-passes`: https://api.planningcenteronline.com/check-ins/v2/people/1/passes
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Pass",
@@ -41,26 +72,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `code`: (URLParameter), query on a specific code, example: ?where[code]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `person-pass-person`: https://api.planningcenteronline.com/check-ins/v2/passes/1/person
-/// 
-/// All Inbound Edges:
-/// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
-/// - `pass-person-passes`: https://api.planningcenteronline.com/check-ins/v2/people/1/passes
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsPas extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Pass';

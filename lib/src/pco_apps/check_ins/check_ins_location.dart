@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.809368
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.687346
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
 /// 
-/// Description:
+/// ## Description
 /// A place where people may check in to for a given event.
 /// Some locations have `kind="Folder"`, which means that people
 /// can't check-in here, but this location contains other locations.
@@ -25,7 +25,7 @@ import '../../pco.dart';
 /// You can get a location's parent folder from the `parent` attribute.
 /// (If it's not in a folder, `parent` will be empty.)
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `kind` (ro) -> PCO: `kind`
@@ -47,7 +47,56 @@ import '../../pco.dart';
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `event`: include associated event 
+/// - `locations`: include associated locations 
+/// - `options`: include associated options 
+/// - `parent`: include associated parent 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `kind`: (URLParameter), prefix with a hyphen (-kind) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `checkin-location-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/check_ins
+/// - `event-location-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/event
+/// - `locationeventperiod-location-location_event_periods`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_periods
+/// - `locationeventtime-location-location_event_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_times
+/// - `locationlabel-location-location_labels`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_labels
+/// - `location-location-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/locations
+/// - `option-location-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/options
+/// - `location-location-parent`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/parent
+/// 
+/// Inbound Edges:
+/// - `location-checkin-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
+/// - `location-event-locations`: https://api.planningcenteronline.com/check-ins/v2/events/1/locations
+/// - `location-eventtime-available_locations`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/available_locations
+/// - `location-locationeventperiod-location`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/location
+/// - `location-locationeventtime-location`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/location
+/// - `location-locationlabel-location`: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/location
+/// - `location-location-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/locations
+/// - `location-location-parent`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/parent
+/// - `location-station-location`: https://api.planningcenteronline.com/check-ins/v2/stations/1/location
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Location",
@@ -83,44 +132,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - event: include associated event 
-/// - locations: include associated locations 
-/// - options: include associated options 
-/// - parent: include associated parent 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `kind`: (URLParameter), prefix with a hyphen (-kind) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `checkin-location-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/check_ins
-/// - `event-location-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/event
-/// - `locationeventperiod-location-location_event_periods`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_periods
-/// - `locationeventtime-location-location_event_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_times
-/// - `locationlabel-location-location_labels`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_labels
-/// - `location-location-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/locations
-/// - `option-location-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/options
-/// - `location-location-parent`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/parent
-/// 
-/// All Inbound Edges:
-/// - `location-checkin-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations
-/// - `location-event-locations`: https://api.planningcenteronline.com/check-ins/v2/events/1/locations
-/// - `location-eventtime-available_locations`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/available_locations
-/// - `location-locationeventperiod-location`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/location
-/// - `location-locationeventtime-location`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/location
-/// - `location-locationlabel-location`: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/location
-/// - `location-location-locations`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/locations
-/// - `location-location-parent`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/parent
-/// - `location-station-location`: https://api.planningcenteronline.com/check-ins/v2/stations/1/location
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsLocation extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Location';

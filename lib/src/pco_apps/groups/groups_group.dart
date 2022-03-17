@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.289546
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.310803
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/groups
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `archiveStatus` (ro) -> PCO: `archive_status`
 /// - `archivedAt` (ro) -> PCO: `archived_at`
@@ -39,7 +39,49 @@ import '../../pco.dart';
 /// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
 /// - `widgetStatus` (ro) -> PCO: `widget_status`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `group_type`: include associated group_type 
+/// - `location`: include associated location 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `archive_status`: (URLParameter), Used for querying only. Defaults to `not_archived`., example: ?where[archive_status]=value
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `event-group-events`: https://api.planningcenteronline.com/groups/v2/groups/1/events
+/// - `grouptype-group-group_type`: https://api.planningcenteronline.com/groups/v2/groups/1/group_type
+/// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
+/// - `membership-group-memberships`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
+/// - `person-group-people`: https://api.planningcenteronline.com/groups/v2/groups/1/people
+/// - `resource-group-resources`: https://api.planningcenteronline.com/groups/v2/groups/1/resources
+/// - `tag-group-tags`: https://api.planningcenteronline.com/groups/v2/groups/1/tags
+/// 
+/// Inbound Edges:
+/// - `group-event-group`: https://api.planningcenteronline.com/groups/v2/events/1/group
+/// - `group-grouptype-groups`: https://api.planningcenteronline.com/groups/v2/group_types/1/groups
+/// - `group-membership-group`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group
+/// - `group-organization-groups`: https://api.planningcenteronline.com/groups/v2/groups
+/// - `group-person-groups`: https://api.planningcenteronline.com/groups/v2/people/1/groups
+/// - `group-tag-groups`: https://api.planningcenteronline.com/groups/v2/tags/1/groups
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Group",
@@ -76,37 +118,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - group_type: include associated group_type 
-/// - location: include associated location 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `archive_status`: (URLParameter), Used for querying only. Defaults to `not_archived`., example: ?where[archive_status]=value
-/// 
-/// Possible orderings with parameter ?order=
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `event-group-events`: https://api.planningcenteronline.com/groups/v2/groups/1/events
-/// - `grouptype-group-group_type`: https://api.planningcenteronline.com/groups/v2/groups/1/group_type
-/// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
-/// - `membership-group-memberships`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
-/// - `person-group-people`: https://api.planningcenteronline.com/groups/v2/groups/1/people
-/// - `resource-group-resources`: https://api.planningcenteronline.com/groups/v2/groups/1/resources
-/// - `tag-group-tags`: https://api.planningcenteronline.com/groups/v2/groups/1/tags
-/// 
-/// All Inbound Edges:
-/// - `group-event-group`: https://api.planningcenteronline.com/groups/v2/events/1/group
-/// - `group-grouptype-groups`: https://api.planningcenteronline.com/groups/v2/group_types/1/groups
-/// - `group-membership-group`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group
-/// - `group-organization-groups`: https://api.planningcenteronline.com/groups/v2/groups
-/// - `group-person-groups`: https://api.planningcenteronline.com/groups/v2/people/1/groups
-/// - `group-tag-groups`: https://api.planningcenteronline.com/groups/v2/tags/1/groups
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGroupsGroup extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Group';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.442026
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.492247
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/folders
 /// 
-/// Description:
+/// ## Description
 /// A folder is a container used to organize multiple Service Types or other Folders.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (rw) -> PCO: `name`
@@ -29,7 +29,40 @@ import '../../pco.dart';
 /// - `parentId` (wo) -> PCO: `parent_id`
 /// - `campusId` (wo) -> PCO: `campus_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `service_types`: include associated service_types 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `folder-folder-folders`: https://api.planningcenteronline.com/services/v2/folders/1/folders
+/// - `servicetype-folder-service_types`: https://api.planningcenteronline.com/services/v2/folders/1/service_types
+/// 
+/// Inbound Edges:
+/// - `folder-folder-folders`: https://api.planningcenteronline.com/services/v2/folders/1/folders
+/// - `folder-organization-folders`: https://api.planningcenteronline.com/services/v2/folders
+/// - `folder-taggroup-folder`: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Folder",
@@ -62,28 +95,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - service_types: include associated service_types 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `folder-folder-folders`: https://api.planningcenteronline.com/services/v2/folders/1/folders
-/// - `servicetype-folder-service_types`: https://api.planningcenteronline.com/services/v2/folders/1/service_types
-/// 
-/// All Inbound Edges:
-/// - `folder-folder-folders`: https://api.planningcenteronline.com/services/v2/folders/1/folders
-/// - `folder-organization-folders`: https://api.planningcenteronline.com/services/v2/folders
-/// - `folder-taggroup-folder`: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoServicesFolder extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Folder';

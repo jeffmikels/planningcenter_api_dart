@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.291677
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.312634
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/location
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayPreference` (ro) -> PCO: `display_preference`
 /// - `fullFormattedAddress` (ro) -> PCO: `full_formatted_address`
@@ -30,7 +30,38 @@ import '../../pco.dart';
 /// - `radius` (ro) -> PCO: `radius`
 /// - `strategy` (ro) -> PCO: `strategy`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
+/// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Location",
@@ -47,26 +78,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
-/// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGroupsLocation extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Location';

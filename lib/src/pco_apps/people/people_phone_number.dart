@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.076090
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.003491
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// 
-/// Description:
+/// ## Description
 /// A phone number represents a single telephone number and location.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `number` (rw) -> PCO: `number`
 /// - `carrier` (rw) -> PCO: `carrier`
@@ -33,7 +33,47 @@ import '../../pco.dart';
 /// - `national` (ro) -> PCO: `national`
 /// - `countryCode` (ro) -> PCO: `country_code`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `carrier`: (URLParameter), query on a specific carrier, example: ?where[carrier]=string
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
+/// - `number`: (URLParameter), query on a specific number, example: ?where[number]=string
+/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `carrier`: (URLParameter), prefix with a hyphen (-carrier) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
+/// - `number`: (URLParameter), prefix with a hyphen (-number) to reverse the order
+/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "PhoneNumber",
@@ -60,35 +100,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `carrier`: (URLParameter), query on a specific carrier, example: ?where[carrier]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
-/// - `number`: (URLParameter), query on a specific number, example: ?where[number]=string
-/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `carrier`: (URLParameter), prefix with a hyphen (-carrier) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
-/// - `number`: (URLParameter), prefix with a hyphen (-number) to reverse the order
-/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeoplePhoneNumber extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PhoneNumber';

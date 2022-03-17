@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.265452
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.196073
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,35 +17,35 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// 
-/// Example:
-/// ```json
-/// {
-///   "type": "Organization",
-///   "id": "1",
-///   "attributes": {
-///     "name": "string"
-///   },
-///   "relationships": {}
-/// }
-/// ```
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
 /// 
-/// Possible includes with parameter ?include=a,b
 /// NONE
 ///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
 /// NONE
 /// 
-/// Possible orderings with parameter ?order=
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
 /// NONE
 ///
-/// All Outbound Edges:
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
 /// - `batchgroup-organization-batch_groups`: https://api.planningcenteronline.com/giving/v2/batch_groups
 /// - `batch-organization-batches`: https://api.planningcenteronline.com/giving/v2/batches
 /// - `campus-organization-campuses`: https://api.planningcenteronline.com/giving/v2/campuses
@@ -56,12 +56,23 @@ import '../../pco.dart';
 /// - `person-organization-people`: https://api.planningcenteronline.com/giving/v2/people
 /// - `recurringdonation-organization-recurring_donations`: https://api.planningcenteronline.com/giving/v2/recurring_donations
 /// 
-/// All Inbound Edges:
+/// Inbound Edges:
 /// NONE
 /// 
-/// All Actions:
+/// Actions:
 /// NONE
 ///
+/// ## Raw Data Object Example
+/// ```json
+/// {
+///   "type": "Organization",
+///   "id": "1",
+///   "attributes": {
+///     "name": "string"
+///   },
+///   "relationships": {}
+/// }
+/// ```
 class PcoGivingOrganization extends PcoResource {
   static const String kPcoApplication = 'giving';
   static const String kTypeString = 'Organization';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.980019
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.931881
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,15 +17,50 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/apps
 /// 
-/// Description:
+/// ## Description
 /// An app is one of the handful of apps that Planning Center offers that organizations can subscribe to, e.g. Services, Registrations, etc.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `url` (ro) -> PCO: `url`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `url`: (URLParameter), query on a specific url, example: ?where[url]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `url`: (URLParameter), prefix with a hyphen (-url) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// NONE
+/// 
+/// Inbound Edges:
+/// - `app-messagegroup-app`: https://api.planningcenteronline.com/people/v2/message_groups/1/app
+/// - `app-organization-apps`: https://api.planningcenteronline.com/people/v2/apps
+/// - `app-personapp-app`: https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app
+/// - `app-person-apps`: https://api.planningcenteronline.com/people/v2/people/1/apps
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "App",
@@ -37,30 +72,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `url`: (URLParameter), query on a specific url, example: ?where[url]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `url`: (URLParameter), prefix with a hyphen (-url) to reverse the order
-///
-/// All Outbound Edges:
-/// NONE
-/// 
-/// All Inbound Edges:
-/// - `app-messagegroup-app`: https://api.planningcenteronline.com/people/v2/message_groups/1/app
-/// - `app-organization-apps`: https://api.planningcenteronline.com/people/v2/apps
-/// - `app-personapp-app`: https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app
-/// - `app-person-apps`: https://api.planningcenteronline.com/people/v2/people/1/apps
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleApp extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'App';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.821989
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.694384
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,14 +17,14 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/people
 /// 
-/// Description:
+/// ## Description
 /// An attendee, volunteer or administrator.
 /// 
 /// _Usually_, a person who checked in will be present as a `Person`. In some cases, they may not be present:
 /// - The person was manually deleted from the admin interface
 /// - The check-in was created as a "Visitor - Label Only" (which doesn't create a corresponding person record)
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `addresses` (ro) -> PCO: `addresses`
 /// - `emailAddresses` (ro) -> PCO: `email_addresses`
@@ -51,7 +51,50 @@ import '../../pco.dart';
 /// - `topPermission` (ro) -> PCO: `top_permission`
 /// - `searchName` (ro) -> PCO: `search_name`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `organization`: include associated organization 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `headcounter`: (URLParameter), query on a specific headcounter, example: ?where[headcounter]=true
+/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=string
+/// - `search_name`: (URLParameter), Search by person name (first, last, combination), example: ?where[search_name]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `check_in_count`: (URLParameter), prefix with a hyphen (-check_in_count) to reverse the order
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `last_checked_in_at`: (URLParameter), prefix with a hyphen (-last_checked_in_at) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `checkin-person-check_ins`: https://api.planningcenteronline.com/check-ins/v2/people/1/check_ins
+/// - `organization-person-organization`: https://api.planningcenteronline.com/check-ins/v2/people/1/organization
+/// - `pass-person-passes`: https://api.planningcenteronline.com/check-ins/v2/people/1/passes
+/// - `personevent-person-person_events`: https://api.planningcenteronline.com/check-ins/v2/people/1/person_events
+/// 
+/// Inbound Edges:
+/// - `person-checkin-checked_in_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_by
+/// - `person-checkin-checked_out_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_out_by
+/// - `person-checkin-person`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/person
+/// - `person-organization-people`: https://api.planningcenteronline.com/check-ins/v2/people
+/// - `person-pass-person`: https://api.planningcenteronline.com/check-ins/v2/passes/1/person
+/// - `person-personevent-person`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/person
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Person",
@@ -84,38 +127,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - organization: include associated organization 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `headcounter`: (URLParameter), query on a specific headcounter, example: ?where[headcounter]=true
-/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=string
-/// - `search_name`: (URLParameter), Search by person name (first, last, combination), example: ?where[search_name]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `check_in_count`: (URLParameter), prefix with a hyphen (-check_in_count) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_checked_in_at`: (URLParameter), prefix with a hyphen (-last_checked_in_at) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `checkin-person-check_ins`: https://api.planningcenteronline.com/check-ins/v2/people/1/check_ins
-/// - `organization-person-organization`: https://api.planningcenteronline.com/check-ins/v2/people/1/organization
-/// - `pass-person-passes`: https://api.planningcenteronline.com/check-ins/v2/people/1/passes
-/// - `personevent-person-person_events`: https://api.planningcenteronline.com/check-ins/v2/people/1/person_events
-/// 
-/// All Inbound Edges:
-/// - `person-checkin-checked_in_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_by
-/// - `person-checkin-checked_out_by`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_out_by
-/// - `person-checkin-person`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/person
-/// - `person-organization-people`: https://api.planningcenteronline.com/check-ins/v2/people
-/// - `person-pass-person`: https://api.planningcenteronline.com/check-ins/v2/passes/1/person
-/// - `person-personevent-person`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/person
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsPerson extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Person';

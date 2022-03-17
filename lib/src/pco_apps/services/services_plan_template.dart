@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.516703
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.548446
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
 /// 
-/// Description:
+/// ## Description
 /// A PlanTemplate Resource
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -33,7 +33,43 @@ import '../../pco.dart';
 /// - `isPrefersOrderView` (ro) -> PCO: `prefers_order_view`
 /// - `isRehearsable` (ro) -> PCO: `rehearsable`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `item_count`: (URLParameter), prefix with a hyphen (-item_count) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `note_count`: (URLParameter), prefix with a hyphen (-note_count) to reverse the order
+/// - `team_count`: (URLParameter), prefix with a hyphen (-team_count) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `item-plantemplate-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items
+/// - `plannote-plantemplate-notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes
+/// 
+/// Inbound Edges:
+/// - `plantemplate-servicetype-plan_templates`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
+/// 
+/// Actions:
+/// - `item_reorder`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/item_reorder
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "PlanTemplate",
@@ -72,31 +108,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `item_count`: (URLParameter), prefix with a hyphen (-item_count) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `note_count`: (URLParameter), prefix with a hyphen (-note_count) to reverse the order
-/// - `team_count`: (URLParameter), prefix with a hyphen (-team_count) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `item-plantemplate-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items
-/// - `plannote-plantemplate-notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes
-/// 
-/// All Inbound Edges:
-/// - `plantemplate-servicetype-plan_templates`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
-/// 
-/// All Actions:
-/// - `item_reorder`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/item_reorder
-///
 class PcoServicesPlanTemplate extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'PlanTemplate';

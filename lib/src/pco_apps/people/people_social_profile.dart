@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.095893
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.010559
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/social_profiles
 /// 
-/// Description:
+/// ## Description
 /// A social profile represents a members's Twitter, Facebook, or other social media account.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `site` (rw) -> PCO: `site`
 /// - `url` (rw) -> PCO: `url`
@@ -28,7 +28,46 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `person`: include associated person 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `site`: (URLParameter), query on a specific site, example: ?where[site]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// - `url`: (URLParameter), query on a specific url, example: ?where[url]=string
+/// - `verified`: (URLParameter), query on a specific verified, example: ?where[verified]=true
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `site`: (URLParameter), prefix with a hyphen (-site) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+/// - `url`: (URLParameter), prefix with a hyphen (-url) to reverse the order
+/// - `verified`: (URLParameter), prefix with a hyphen (-verified) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-socialprofile-person`: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
+/// 
+/// Inbound Edges:
+/// - `socialprofile-organization-social_profiles`: https://api.planningcenteronline.com/people/v2/social_profiles
+/// - `socialprofile-person-social_profiles`: https://api.planningcenteronline.com/people/v2/people/1/social_profiles
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "SocialProfile",
@@ -43,34 +82,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - person: include associated person 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `site`: (URLParameter), query on a specific site, example: ?where[site]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// - `url`: (URLParameter), query on a specific url, example: ?where[url]=string
-/// - `verified`: (URLParameter), query on a specific verified, example: ?where[verified]=true
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `site`: (URLParameter), prefix with a hyphen (-site) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-/// - `url`: (URLParameter), prefix with a hyphen (-url) to reverse the order
-/// - `verified`: (URLParameter), prefix with a hyphen (-verified) to reverse the order
-///
-/// All Outbound Edges:
-/// - `person-socialprofile-person`: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
-/// 
-/// All Inbound Edges:
-/// - `socialprofile-organization-social_profiles`: https://api.planningcenteronline.com/people/v2/social_profiles
-/// - `socialprofile-person-social_profiles`: https://api.planningcenteronline.com/people/v2/people/1/social_profiles
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleSocialProfile extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'SocialProfile';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.992079
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.945705
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms
 /// 
-/// Description:
+/// ## Description
 /// A custom form for people to fill out.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `description` (ro) -> PCO: `description`
@@ -34,7 +34,45 @@ import '../../pco.dart';
 /// - `isRecentlyViewed` (ro) -> PCO: `recently_viewed`
 /// - `isArchived` (ro) -> PCO: `archived`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `campus`: include associated campus 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `active`: (URLParameter), query on a specific active, example: ?where[active]=true
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `active`: (URLParameter), prefix with a hyphen (-active) to reverse the order
+/// - `archived_at`: (URLParameter), prefix with a hyphen (-archived_at) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `deleted_at`: (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
+/// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `campus-form-campus`: https://api.planningcenteronline.com/people/v2/forms/1/campus
+/// - `formfield-form-fields`: https://api.planningcenteronline.com/people/v2/forms/1/fields
+/// - `formsubmission-form-form_submissions`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
+/// 
+/// Inbound Edges:
+/// - `form-organization-forms`: https://api.planningcenteronline.com/people/v2/forms
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Form",
@@ -68,33 +106,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - campus: include associated campus 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `active`: (URLParameter), query on a specific active, example: ?where[active]=true
-/// 
-/// Possible orderings with parameter ?order=
-/// - `active`: (URLParameter), prefix with a hyphen (-active) to reverse the order
-/// - `archived_at`: (URLParameter), prefix with a hyphen (-archived_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `deleted_at`: (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
-/// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `campus-form-campus`: https://api.planningcenteronline.com/people/v2/forms/1/campus
-/// - `formfield-form-fields`: https://api.planningcenteronline.com/people/v2/forms/1/fields
-/// - `formsubmission-form-form_submissions`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
-/// 
-/// All Inbound Edges:
-/// - `form-organization-forms`: https://api.planningcenteronline.com/people/v2/forms
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleForm extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Form';

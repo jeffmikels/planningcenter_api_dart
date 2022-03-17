@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.292649
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.313498
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/groups/1/memberships
 /// 
-/// Description:
+/// ## Description
 /// 
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `accountCenterIdentifier` (ro) -> PCO: `account_center_identifier`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
@@ -33,7 +33,41 @@ import '../../pco.dart';
 /// - `role` (rw) -> PCO: `role`
 /// - `personId` (wo) -> PCO: `person_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `role`: (URLParameter), query on a specific role, example: ?where[role]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
+/// - `joined_at`: (URLParameter), prefix with a hyphen (-joined_at) to reverse the order
+/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+/// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `group-membership-group`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group
+/// 
+/// Inbound Edges:
+/// - `membership-group-memberships`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
+/// - `membership-person-memberships`: https://api.planningcenteronline.com/groups/v2/people/1/memberships
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Membership",
@@ -65,29 +99,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `role`: (URLParameter), query on a specific role, example: ?where[role]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `joined_at`: (URLParameter), prefix with a hyphen (-joined_at) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
-///
-/// All Outbound Edges:
-/// - `group-membership-group`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group
-/// 
-/// All Inbound Edges:
-/// - `membership-group-memberships`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
-/// - `membership-person-memberships`: https://api.planningcenteronline.com/groups/v2/people/1/memberships
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoGroupsMembership extends PcoResource {
   static const String kPcoApplication = 'groups';
   static const String kTypeString = 'Membership';

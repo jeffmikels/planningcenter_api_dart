@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.818546
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.692226
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,11 +17,11 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2
 /// 
-/// Description:
+/// ## Description
 /// An organization which has people and events.
 /// This contains its date format & time zone preferences.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dateFormatPattern` (ro) -> PCO: `date_format_pattern`
 /// - `timeZoneOlson` (ro) -> PCO: `time_zone_olson`
@@ -32,7 +32,47 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// NONE
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `checkin-organization-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins
+/// - `eventtime-organization-event_times`: https://api.planningcenteronline.com/check-ins/v2/event_times
+/// - `event-organization-events`: https://api.planningcenteronline.com/check-ins/v2/events
+/// - `headcount-organization-headcounts`: https://api.planningcenteronline.com/check-ins/v2/headcounts
+/// - `label-organization-labels`: https://api.planningcenteronline.com/check-ins/v2/labels
+/// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
+/// - `person-organization-people`: https://api.planningcenteronline.com/check-ins/v2/people
+/// - `station-organization-stations`: https://api.planningcenteronline.com/check-ins/v2/stations
+/// - `theme-organization-themes`: https://api.planningcenteronline.com/check-ins/v2/themes
+/// 
+/// Inbound Edges:
+/// - `organization-person-organization`: https://api.planningcenteronline.com/check-ins/v2/people/1/organization
+/// 
+/// Actions:
+/// - `build_check_in_times_for_prepared_check_in`: https://api.planningcenteronline.com/check-ins/v2
+/// - `build_recommended_check_in_times`: https://api.planningcenteronline.com/check-ins/v2
+/// - `bulk_check_in`: https://api.planningcenteronline.com/check-ins/v2
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Organization",
@@ -50,35 +90,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// NONE
-///
-/// All Outbound Edges:
-/// - `checkin-organization-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins
-/// - `eventtime-organization-event_times`: https://api.planningcenteronline.com/check-ins/v2/event_times
-/// - `event-organization-events`: https://api.planningcenteronline.com/check-ins/v2/events
-/// - `headcount-organization-headcounts`: https://api.planningcenteronline.com/check-ins/v2/headcounts
-/// - `label-organization-labels`: https://api.planningcenteronline.com/check-ins/v2/labels
-/// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
-/// - `person-organization-people`: https://api.planningcenteronline.com/check-ins/v2/people
-/// - `station-organization-stations`: https://api.planningcenteronline.com/check-ins/v2/stations
-/// - `theme-organization-themes`: https://api.planningcenteronline.com/check-ins/v2/themes
-/// 
-/// All Inbound Edges:
-/// - `organization-person-organization`: https://api.planningcenteronline.com/check-ins/v2/people/1/organization
-/// 
-/// All Actions:
-/// - `build_check_in_times_for_prepared_check_in`: https://api.planningcenteronline.com/check-ins/v2
-/// - `build_recommended_check_in_times`: https://api.planningcenteronline.com/check-ins/v2
-/// - `bulk_check_in`: https://api.planningcenteronline.com/check-ins/v2
-///
 class PcoCheckInsOrganization extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Organization';

@@ -775,35 +775,46 @@ import '../../pco.dart';
 /// - Is Collection Only: ${vertex.collectionOnly}
 /// - Default Endpoint:   ${vertex.path}
 /// 
-/// Description:
+/// ## Description
 ${vertex.description.cleanLines().trim().prefixLines('/// ')}
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 ${attributeDocLines.join('\n').prefixLines('/// ')}
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// ${vertex.canInclude.isEmpty ? 'NONE' : vertex.canInclude.map((e) => '- `${e.value}`: ${e.description} ').join('\n/// ')}
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// ${vertex.canQuery.isEmpty ? 'NONE' : vertex.canQuery.map((e) => '- `${e.name}`: (${e.type}), ${e.description}, example: ${e.example}').join('\n/// ')}
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// ${vertex.canOrderBy.isEmpty ? 'NONE' : vertex.canOrderBy.map((e) => '- `${e.value}`: (${e.type}), ${e.description}').join('\n/// ')}
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// ${vertex.outboundEdges.isEmpty ? 'NONE' : vertex.outboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
+/// 
+/// Inbound Edges:
+/// ${vertex.inboundEdges.isEmpty ? 'NONE' : vertex.inboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
+/// 
+/// Actions:
+/// ${vertex.actions.isEmpty ? 'NONE' : vertex.actions.map((e) => '- `${e.name}`: ${e.path}').join('\n/// ')}
+///
+/// ## Raw Data Object Example
 /// ```json
 ${vertex.example.decodeEncodeIndent().trim().prefixLines('/// ')}
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// ${vertex.canInclude.isEmpty ? 'NONE' : vertex.canInclude.map((e) => '- ${e.value}: ${e.description} ').join('\n/// ')}
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// ${vertex.canQuery.isEmpty ? 'NONE' : vertex.canQuery.map((e) => '- `${e.name}`: (${e.type}), ${e.description}, example: ${e.example}').join('\n/// ')}
-/// 
-/// Possible orderings with parameter ?order=
-/// ${vertex.canOrderBy.isEmpty ? 'NONE' : vertex.canOrderBy.map((e) => '- `${e.value}`: (${e.type}), ${e.description}').join('\n/// ')}
-///
-/// All Outbound Edges:
-/// ${vertex.outboundEdges.isEmpty ? 'NONE' : vertex.outboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
-/// 
-/// All Inbound Edges:
-/// ${vertex.inboundEdges.isEmpty ? 'NONE' : vertex.inboundEdges.map((e) => '- `${e.id}`: ${e.path}').join('\n/// ')}
-/// 
-/// All Actions:
-/// ${vertex.actions.isEmpty ? 'NONE' : vertex.actions.map((e) => '- `${e.name}`: ${e.path}').join('\n/// ')}
-///
 class $className extends PcoResource {
   static const String kPcoApplication = '${vertex.application}';
   static const String kTypeString = '${vertex.name}';

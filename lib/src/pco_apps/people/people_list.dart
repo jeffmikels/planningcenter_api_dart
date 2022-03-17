@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.004278
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.958203
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists
 /// 
-/// Description:
+/// ## Description
 /// A list is a powerful tool for finding and grouping people together using any criteria imaginable.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `isAutoRefresh` (ro) -> PCO: `auto_refresh`
@@ -43,7 +43,66 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `campus`: include associated campus 
+/// - `category`: include associated category 
+/// - `created_by`: include associated created_by 
+/// - `mailchimp_sync_status`: include associated mailchimp_sync_status 
+/// - `people`: include associated people 
+/// - `rules`: include associated rules 
+/// - `shares`: include associated shares 
+/// - `updated_by`: include associated updated_by 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `batch_completed_at`: (URLParameter), query on a specific batch_completed_at, example: ?where[batch_completed_at]=2000-01-01T12:00:00Z
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `batch_completed_at`: (URLParameter), prefix with a hyphen (-batch_completed_at) to reverse the order
+/// - `campus_id`: (URLParameter), prefix with a hyphen (-campus_id) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `list_category_id`: (URLParameter), prefix with a hyphen (-list_category_id) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+/// - `name_or_description`: (URLParameter), prefix with a hyphen (-name_or_description) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `campus-list-campus`: https://api.planningcenteronline.com/people/v2/lists/1/campus
+/// - `listcategory-list-category`: https://api.planningcenteronline.com/people/v2/lists/1/category
+/// - `person-list-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/created_by
+/// - `listresult-list-list_results`: https://api.planningcenteronline.com/people/v2/lists/1/list_results
+/// - `mailchimpsyncstatus-list-mailchimp_sync_status`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
+/// - `person-list-people`: https://api.planningcenteronline.com/people/v2/lists/1/people
+/// - `rule-list-rules`: https://api.planningcenteronline.com/people/v2/lists/1/rules
+/// - `listshare-list-shares`: https://api.planningcenteronline.com/people/v2/lists/1/shares
+/// - `liststar-list-star`: https://api.planningcenteronline.com/people/v2/lists/1/star
+/// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
+/// 
+/// Inbound Edges:
+/// - `list-campus-lists`: https://api.planningcenteronline.com/people/v2/campuses/1/lists
+/// - `list-listcategory-lists`: https://api.planningcenteronline.com/people/v2/list_categories/1/lists
+/// - `list-organization-lists`: https://api.planningcenteronline.com/people/v2/lists
+/// 
+/// Actions:
+/// - `mailchimp_sync`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync
+/// - `run`: https://api.planningcenteronline.com/people/v2/lists/1/run
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "List",
@@ -73,54 +132,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - campus: include associated campus 
-/// - category: include associated category 
-/// - created_by: include associated created_by 
-/// - mailchimp_sync_status: include associated mailchimp_sync_status 
-/// - people: include associated people 
-/// - rules: include associated rules 
-/// - shares: include associated shares 
-/// - updated_by: include associated updated_by 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `batch_completed_at`: (URLParameter), query on a specific batch_completed_at, example: ?where[batch_completed_at]=2000-01-01T12:00:00Z
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `batch_completed_at`: (URLParameter), prefix with a hyphen (-batch_completed_at) to reverse the order
-/// - `campus_id`: (URLParameter), prefix with a hyphen (-campus_id) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `list_category_id`: (URLParameter), prefix with a hyphen (-list_category_id) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `name_or_description`: (URLParameter), prefix with a hyphen (-name_or_description) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `campus-list-campus`: https://api.planningcenteronline.com/people/v2/lists/1/campus
-/// - `listcategory-list-category`: https://api.planningcenteronline.com/people/v2/lists/1/category
-/// - `person-list-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/created_by
-/// - `listresult-list-list_results`: https://api.planningcenteronline.com/people/v2/lists/1/list_results
-/// - `mailchimpsyncstatus-list-mailchimp_sync_status`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
-/// - `person-list-people`: https://api.planningcenteronline.com/people/v2/lists/1/people
-/// - `rule-list-rules`: https://api.planningcenteronline.com/people/v2/lists/1/rules
-/// - `listshare-list-shares`: https://api.planningcenteronline.com/people/v2/lists/1/shares
-/// - `liststar-list-star`: https://api.planningcenteronline.com/people/v2/lists/1/star
-/// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
-/// 
-/// All Inbound Edges:
-/// - `list-campus-lists`: https://api.planningcenteronline.com/people/v2/campuses/1/lists
-/// - `list-listcategory-lists`: https://api.planningcenteronline.com/people/v2/list_categories/1/lists
-/// - `list-organization-lists`: https://api.planningcenteronline.com/people/v2/lists
-/// 
-/// All Actions:
-/// - `mailchimp_sync`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync
-/// - `run`: https://api.planningcenteronline.com/people/v2/lists/1/run
-///
 class PcoPeopleList extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'List';

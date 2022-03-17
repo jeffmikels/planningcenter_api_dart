@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.610118
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.568677
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs
 /// 
-/// Description:
+/// ## Description
 /// A song
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `title` (rw) -> PCO: `title`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -35,7 +35,49 @@ import '../../pco.dart';
 /// - `lastScheduledAt` (ro) -> PCO: `last_scheduled_at`
 /// - `ccliNumber` (rw) -> PCO: `ccli_number`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `author`: (URLParameter), query on a specific author, example: ?where[author]=string
+/// - `ccli_number`: (URLParameter), query on a specific ccli_number, example: ?where[ccli_number]=1
+/// - `hidden`: (URLParameter), query on a specific hidden, example: ?where[hidden]=true
+/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
+/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `last_scheduled_at`: (URLParameter), prefix with a hyphen (-last_scheduled_at) to reverse the order
+/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `arrangement-song-arrangements`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements
+/// - `attachment-song-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/attachments
+/// - `item-song-last_scheduled_item`: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item
+/// - `songschedule-song-song_schedules`: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
+/// - `tag-song-tags`: https://api.planningcenteronline.com/services/v2/songs/1/tags
+/// 
+/// Inbound Edges:
+/// - `song-item-song`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/song
+/// - `song-organization-songs`: https://api.planningcenteronline.com/services/v2/songs
+/// 
+/// Actions:
+/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/songs/1/assign_tags
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Song",
@@ -57,37 +99,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `author`: (URLParameter), query on a specific author, example: ?where[author]=string
-/// - `ccli_number`: (URLParameter), query on a specific ccli_number, example: ?where[ccli_number]=1
-/// - `hidden`: (URLParameter), query on a specific hidden, example: ?where[hidden]=true
-/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
-/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `last_scheduled_at`: (URLParameter), prefix with a hyphen (-last_scheduled_at) to reverse the order
-/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `arrangement-song-arrangements`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements
-/// - `attachment-song-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/attachments
-/// - `item-song-last_scheduled_item`: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item
-/// - `songschedule-song-song_schedules`: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
-/// - `tag-song-tags`: https://api.planningcenteronline.com/services/v2/songs/1/tags
-/// 
-/// All Inbound Edges:
-/// - `song-item-song`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/song
-/// - `song-organization-songs`: https://api.planningcenteronline.com/services/v2/songs
-/// 
-/// All Actions:
-/// - `assign_tags`: https://api.planningcenteronline.com/services/v2/songs/1/assign_tags
-///
 class PcoServicesSong extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Song';

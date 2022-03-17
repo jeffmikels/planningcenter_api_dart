@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.795880
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.631158
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,14 +17,14 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/events
 /// 
-/// Description:
+/// ## Description
 /// A recurring event which people may attend.
 /// 
 /// Each recurrence is an _event period_ (which often corresponds to a week).
 /// 
 /// Event periods have _event times_ where people may actually check in.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `frequency` (ro) -> PCO: `frequency`
@@ -37,7 +37,54 @@ import '../../pco.dart';
 /// - `isPreSelectEnabled` (ro) -> PCO: `pre_select_enabled`
 /// - `appSource` (ro) -> PCO: `app_source`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `attendance_types`: include associated attendance_types 
+/// - `event_periods`: include associated event_periods 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attendancetype-event-attendance_types`: https://api.planningcenteronline.com/check-ins/v2/events/1/attendance_types
+/// - `checkin-event-check_ins`: https://api.planningcenteronline.com/check-ins/v2/events/1/check_ins
+/// - `eventtime-event-current_event_times`: https://api.planningcenteronline.com/check-ins/v2/events/1/current_event_times
+/// - `eventlabel-event-event_labels`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels
+/// - `eventperiod-event-event_periods`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_periods
+/// - `location-event-locations`: https://api.planningcenteronline.com/check-ins/v2/events/1/locations
+/// - `personevent-event-person_events`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events
+/// 
+/// Inbound Edges:
+/// - `event-attendancetype-event`: https://api.planningcenteronline.com/check-ins/v2/attendance_types/1/event
+/// - `event-checkin-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event
+/// - `event-eventlabel-event`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/event
+/// - `event-eventperiod-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/event
+/// - `event-eventtime-event`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/event
+/// - `event-location-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/event
+/// - `event-organization-events`: https://api.planningcenteronline.com/check-ins/v2/events
+/// - `event-personevent-event`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/event
+/// - `event-station-event`: https://api.planningcenteronline.com/check-ins/v2/stations/1/event
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Event",
@@ -56,42 +103,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - attendance_types: include associated attendance_types 
-/// - event_periods: include associated event_periods 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-///
-/// All Outbound Edges:
-/// - `attendancetype-event-attendance_types`: https://api.planningcenteronline.com/check-ins/v2/events/1/attendance_types
-/// - `checkin-event-check_ins`: https://api.planningcenteronline.com/check-ins/v2/events/1/check_ins
-/// - `eventtime-event-current_event_times`: https://api.planningcenteronline.com/check-ins/v2/events/1/current_event_times
-/// - `eventlabel-event-event_labels`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels
-/// - `eventperiod-event-event_periods`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_periods
-/// - `location-event-locations`: https://api.planningcenteronline.com/check-ins/v2/events/1/locations
-/// - `personevent-event-person_events`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events
-/// 
-/// All Inbound Edges:
-/// - `event-attendancetype-event`: https://api.planningcenteronline.com/check-ins/v2/attendance_types/1/event
-/// - `event-checkin-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event
-/// - `event-eventlabel-event`: https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/event
-/// - `event-eventperiod-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/event
-/// - `event-eventtime-event`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/event
-/// - `event-location-event`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/event
-/// - `event-organization-events`: https://api.planningcenteronline.com/check-ins/v2/events
-/// - `event-personevent-event`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/event
-/// - `event-station-event`: https://api.planningcenteronline.com/check-ins/v2/stations/1/event
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoCheckInsEvent extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Event';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.091030
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.008323
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/school_options
 /// 
-/// Description:
+/// ## Description
 /// A school option represents a school name, school type, grades, etc. and can be selected for a person.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
 /// - `sequence` (rw) -> PCO: `sequence`
@@ -28,7 +28,46 @@ import '../../pco.dart';
 /// - `endingGrade` (rw) -> PCO: `ending_grade`
 /// - `schoolTypes` (rw) -> PCO: `school_types`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// NONE
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `beginning_grade`: (URLParameter), query on a specific beginning_grade, example: ?where[beginning_grade]=string
+/// - `ending_grade`: (URLParameter), query on a specific ending_grade, example: ?where[ending_grade]=string
+/// - `school_types`: (URLParameter), query on a specific school_types, example: ?where[school_types]=[]
+/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
+/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `beginning_grade`: (URLParameter), prefix with a hyphen (-beginning_grade) to reverse the order
+/// - `ending_grade`: (URLParameter), prefix with a hyphen (-ending_grade) to reverse the order
+/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
+/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
+/// 
+/// Inbound Edges:
+/// - `schooloption-organization-school_options`: https://api.planningcenteronline.com/people/v2/school_options
+/// - `schooloption-person-school`: https://api.planningcenteronline.com/people/v2/people/1/school
+/// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "SchoolOption",
@@ -43,34 +82,6 @@ import '../../pco.dart';
 ///   "relationships": {}
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// NONE
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `beginning_grade`: (URLParameter), query on a specific beginning_grade, example: ?where[beginning_grade]=string
-/// - `ending_grade`: (URLParameter), query on a specific ending_grade, example: ?where[ending_grade]=string
-/// - `school_types`: (URLParameter), query on a specific school_types, example: ?where[school_types]=[]
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-/// 
-/// Possible orderings with parameter ?order=
-/// - `beginning_grade`: (URLParameter), prefix with a hyphen (-beginning_grade) to reverse the order
-/// - `ending_grade`: (URLParameter), prefix with a hyphen (-ending_grade) to reverse the order
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
-///
-/// All Outbound Edges:
-/// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
-/// 
-/// All Inbound Edges:
-/// - `schooloption-organization-school_options`: https://api.planningcenteronline.com/people/v2/school_options
-/// - `schooloption-person-school`: https://api.planningcenteronline.com/people/v2/people/1/school
-/// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleSchoolOption extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'SchoolOption';

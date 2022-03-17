@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.984837
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.937432
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
 /// 
-/// Description:
+/// ## Description
 /// A condition is an individual criterion used by a List Rule.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `application` (ro) -> PCO: `application`
 /// - `definitionClass` (ro) -> PCO: `definition_class`
@@ -31,7 +31,51 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `created_by`: include associated created_by 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `application`: (URLParameter), query on a specific application, example: ?where[application]=string
+/// - `comparison`: (URLParameter), query on a specific comparison, example: ?where[comparison]=string
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `definition_class`: (URLParameter), query on a specific definition_class, example: ?where[definition_class]=string
+/// - `definition_identifier`: (URLParameter), query on a specific definition_identifier, example: ?where[definition_identifier]=string
+/// - `description`: (URLParameter), query on a specific description, example: ?where[description]=string
+/// - `settings`: (URLParameter), query on a specific settings, example: ?where[settings]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `application`: (URLParameter), prefix with a hyphen (-application) to reverse the order
+/// - `comparison`: (URLParameter), prefix with a hyphen (-comparison) to reverse the order
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `definition_class`: (URLParameter), prefix with a hyphen (-definition_class) to reverse the order
+/// - `definition_identifier`: (URLParameter), prefix with a hyphen (-definition_identifier) to reverse the order
+/// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
+/// - `settings`: (URLParameter), prefix with a hyphen (-settings) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `person-condition-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by
+/// 
+/// Inbound Edges:
+/// - `condition-rule-conditions`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
+/// 
+/// Actions:
+/// NONE
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Condition",
@@ -56,39 +100,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - created_by: include associated created_by 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `application`: (URLParameter), query on a specific application, example: ?where[application]=string
-/// - `comparison`: (URLParameter), query on a specific comparison, example: ?where[comparison]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `definition_class`: (URLParameter), query on a specific definition_class, example: ?where[definition_class]=string
-/// - `definition_identifier`: (URLParameter), query on a specific definition_identifier, example: ?where[definition_identifier]=string
-/// - `description`: (URLParameter), query on a specific description, example: ?where[description]=string
-/// - `settings`: (URLParameter), query on a specific settings, example: ?where[settings]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `application`: (URLParameter), prefix with a hyphen (-application) to reverse the order
-/// - `comparison`: (URLParameter), prefix with a hyphen (-comparison) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `definition_class`: (URLParameter), prefix with a hyphen (-definition_class) to reverse the order
-/// - `definition_identifier`: (URLParameter), prefix with a hyphen (-definition_identifier) to reverse the order
-/// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
-/// - `settings`: (URLParameter), prefix with a hyphen (-settings) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `person-condition-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by
-/// 
-/// All Inbound Edges:
-/// - `condition-rule-conditions`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
-/// 
-/// All Actions:
-/// NONE
-///
 class PcoPeopleCondition extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Condition';

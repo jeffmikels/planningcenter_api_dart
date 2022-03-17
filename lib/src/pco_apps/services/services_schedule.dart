@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.584126
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.557306
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/schedules
 /// 
-/// Description:
+/// ## Description
 /// An instance of a PlanPerson with included data for displaying in a user's schedule
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `sortDate` (ro) -> PCO: `sort_date`
 /// - `dates` (ro) -> PCO: `dates`
@@ -41,7 +41,42 @@ import '../../pco.dart';
 /// - `isPlanVisible` (ro) -> PCO: `plan_visible`
 /// - `isPlanVisibleToMe` (ro) -> PCO: `plan_visible_to_me`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `plan_times`: include associated plan_times 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// NONE
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `plantime-schedule-declined_plan_times`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/declined_plan_times
+/// - `plantime-schedule-plan_times`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/plan_times
+/// - `person-schedule-respond_to`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to
+/// - `team-schedule-team`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/team
+/// 
+/// Inbound Edges:
+/// - `schedule-person-schedules`: https://api.planningcenteronline.com/services/v2/people/1/schedules
+/// - `schedule-plan-my_schedules`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/my_schedules
+/// 
+/// Actions:
+/// - `accept`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept
+/// - `decline`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Schedule",
@@ -120,30 +155,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - plan_times: include associated plan_times 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// NONE
-/// 
-/// Possible orderings with parameter ?order=
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `plantime-schedule-declined_plan_times`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/declined_plan_times
-/// - `plantime-schedule-plan_times`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/plan_times
-/// - `person-schedule-respond_to`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to
-/// - `team-schedule-team`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/team
-/// 
-/// All Inbound Edges:
-/// - `schedule-person-schedules`: https://api.planningcenteronline.com/services/v2/people/1/schedules
-/// - `schedule-plan-my_schedules`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/my_schedules
-/// 
-/// All Actions:
-/// - `accept`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept
-/// - `decline`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline
-///
 class PcoServicesSchedule extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Schedule';

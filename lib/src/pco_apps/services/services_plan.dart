@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.503371
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.541809
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,10 +17,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plans
 /// 
-/// Description:
+/// ## Description
 /// A single plan within a Service Type.
 /// 
-/// Attributes:
+/// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `title` (rw) -> PCO: `title`
@@ -49,7 +49,67 @@ import '../../pco.dart';
 /// - `isRemindersDisabled` (rw) -> PCO: `reminders_disabled`
 /// - `seriesId` (wo) -> PCO: `series_id`
 /// 
-/// Example:
+/// ## Possible Includes
+/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
+/// (translates to url parameter: `?include=a,b` )
+/// 
+/// - `contributors`: include associated contributors 
+/// - `my_schedules`: include associated my_schedules 
+/// - `plan_times`: include associated plan_times 
+/// - `series`: include associated series 
+///
+/// ## Possible Query Fields
+/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+/// 
+/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
+/// - `series_title`: (URLParameter), query on a specific series_title, example: ?where[series_title]=string
+/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
+/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+/// 
+/// ## Possible Ordering
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
+/// - `sort_date`: (URLParameter), prefix with a hyphen (-sort_date) to reverse the order
+/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
+/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
+///
+/// ## Edges and Actions
+/// 
+/// Outbound Edges:
+/// - `attachment-plan-all_attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
+/// - `attachment-plan-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/attachments
+/// - `contributor-plan-contributors`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors
+/// - `item-plan-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
+/// - `live-plan-live`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live
+/// - `schedule-plan-my_schedules`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/my_schedules
+/// - `neededposition-plan-needed_positions`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
+/// - `plan-plan-next_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/next_plan
+/// - `plannote-plan-notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/notes
+/// - `plantime-plan-plan_times`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times
+/// - `plan-plan-previous_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/previous_plan
+/// - `series-plan-series`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/series
+/// - `team-plan-signup_teams`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/signup_teams
+/// - `planperson-plan-team_members`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members
+/// 
+/// Inbound Edges:
+/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/watchable_plans
+/// - `plan-plan-next_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/next_plan
+/// - `plan-planperson-plan`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan
+/// - `plan-plan-previous_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/previous_plan
+/// - `plan-series-plans`: https://api.planningcenteronline.com/services/v2/series/1/plans
+/// - `plan-servicetype-plans`: https://api.planningcenteronline.com/services/v2/service_types/1/plans
+/// - `plan-servicetype-unscoped_plans`: https://api.planningcenteronline.com/services/v2/service_types/1/unscoped_plans
+/// 
+/// Actions:
+/// - `import_template`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/import_template
+/// - `item_reorder`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/item_reorder
+///
+/// ## Raw Data Object Example
 /// ```json
 /// {
 ///   "type": "Plan",
@@ -135,55 +195,6 @@ import '../../pco.dart';
 ///   }
 /// }
 /// ```
-/// 
-/// Possible includes with parameter ?include=a,b
-/// - contributors: include associated contributors 
-/// - my_schedules: include associated my_schedules 
-/// - plan_times: include associated plan_times 
-/// - series: include associated series 
-///
-/// Possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `series_title`: (URLParameter), query on a specific series_title, example: ?where[series_title]=string
-/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
-/// Possible orderings with parameter ?order=
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `sort_date`: (URLParameter), prefix with a hyphen (-sort_date) to reverse the order
-/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-///
-/// All Outbound Edges:
-/// - `attachment-plan-all_attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/all_attachments
-/// - `attachment-plan-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/attachments
-/// - `contributor-plan-contributors`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors
-/// - `item-plan-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
-/// - `live-plan-live`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live
-/// - `schedule-plan-my_schedules`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/my_schedules
-/// - `neededposition-plan-needed_positions`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
-/// - `plan-plan-next_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/next_plan
-/// - `plannote-plan-notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/notes
-/// - `plantime-plan-plan_times`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times
-/// - `plan-plan-previous_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/previous_plan
-/// - `series-plan-series`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/series
-/// - `team-plan-signup_teams`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/signup_teams
-/// - `planperson-plan-team_members`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members
-/// 
-/// All Inbound Edges:
-/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/watchable_plans
-/// - `plan-plan-next_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/next_plan
-/// - `plan-planperson-plan`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan
-/// - `plan-plan-previous_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/previous_plan
-/// - `plan-series-plans`: https://api.planningcenteronline.com/services/v2/series/1/plans
-/// - `plan-servicetype-plans`: https://api.planningcenteronline.com/services/v2/service_types/1/plans
-/// - `plan-servicetype-unscoped_plans`: https://api.planningcenteronline.com/services/v2/service_types/1/unscoped_plans
-/// 
-/// All Actions:
-/// - `import_template`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/import_template
-/// - `item_reorder`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/item_reorder
-///
 class PcoServicesPlan extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'Plan';

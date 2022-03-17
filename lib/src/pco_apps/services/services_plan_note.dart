@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.928487
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.506203
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A specific plan note within a single plan.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `categoryName` (ro) -> PCO: `category_name`
+/// - `content` (rw) -> PCO: `content`
 /// 
 /// Example:
 /// ```json

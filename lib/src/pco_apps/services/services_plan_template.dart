@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.932946
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.516703
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,19 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A PlanTemplate Resource
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `itemCount` (ro) -> PCO: `item_count`
+/// - `teamCount` (ro) -> PCO: `team_count`
+/// - `noteCount` (ro) -> PCO: `note_count`
+/// - `isCanViewOrder` (ro) -> PCO: `can_view_order`
+/// - `isMultiDay` (ro) -> PCO: `multi_day`
+/// - `isPrefersOrderView` (ro) -> PCO: `prefers_order_view`
+/// - `isRehearsable` (ro) -> PCO: `rehearsable`
 /// 
 /// Example:
 /// ```json

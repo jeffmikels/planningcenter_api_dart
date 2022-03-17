@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.296352
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.019136
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A note is text with a category connected to a person’s profile.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `note` (rw) -> PCO: `note`
+/// - `createdAt` (rw) -> PCO: `created_at`
+/// - `updatedAt` (rw) -> PCO: `updated_at`
+/// - `displayDate` (rw) -> PCO: `display_date`
+/// - `noteCategoryId` (rw) -> PCO: `note_category_id`
+/// - `organizationId` (ro) -> PCO: `organization_id`
+/// - `personId` (ro) -> PCO: `person_id`
+/// - `createdById` (ro) -> PCO: `created_by_id`
 /// 
 /// Example:
 /// ```json

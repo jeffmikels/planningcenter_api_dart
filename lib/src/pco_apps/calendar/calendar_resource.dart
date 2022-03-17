@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.440620
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.219263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,20 @@ import '../../pco.dart';
 /// Description:
 /// A room or resource that can be requested for use as part of
 /// an event.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `name` (rw) -> PCO: `name`
+/// - `serialNumber` (ro) -> PCO: `serial_number`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `expiresAt` (ro) -> PCO: `expires_at`
+/// - `homeLocation` (rw) -> PCO: `home_location`
+/// - `image` (ro) -> PCO: `image`
+/// - `quantity` (rw) -> PCO: `quantity`
+/// - `pathName` (ro) -> PCO: `path_name`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.454190
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.225349
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,6 +22,14 @@ import '../../pco.dart';
 /// 
 /// Applied tags can be used to filter events on the calendar or
 /// filter events for reports, iCal feeds, kiosk, and the widget.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `color` (ro) -> PCO: `color`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (ro) -> PCO: `name`
+/// - `position` (ro) -> PCO: `position`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

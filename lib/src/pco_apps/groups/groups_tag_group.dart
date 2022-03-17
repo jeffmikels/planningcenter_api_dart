@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.561346
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.296822
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isDisplayPublicly` (ro) -> PCO: `display_publicly`
+/// - `isMultipleOptionsEnabled` (ro) -> PCO: `multiple_options_enabled`
+/// - `name` (ro) -> PCO: `name`
+/// - `position` (ro) -> PCO: `position`
 /// 
 /// Example:
 /// ```json

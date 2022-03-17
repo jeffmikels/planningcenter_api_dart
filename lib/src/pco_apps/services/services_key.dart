@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.911581
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.461924
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Each song arrangement can have multiple keys. A key is the pitch center of the song.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `alternateKeys` (rw) -> PCO: `alternate_keys`
+/// - `endingKey` (rw) -> PCO: `ending_key`
+/// - `startingKey` (rw) -> PCO: `starting_key`
+/// - `isStartingMinor` (ro) -> PCO: `starting_minor`
+/// - `isEndingMinor` (ro) -> PCO: `ending_minor`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.441992
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.220263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,14 @@ import '../../pco.dart';
 /// Description:
 /// A group of people that can be attached to a room or resource
 /// in order to require their approval for booking.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `resourceCount` (ro) -> PCO: `resource_count`
+/// - `roomCount` (ro) -> PCO: `room_count`
 /// 
 /// Example:
 /// ```json

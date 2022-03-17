@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.488039
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.262362
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,29 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `paymentMethodSub` (rw) -> PCO: `payment_method_sub`
+/// - `paymentLast4` (rw) -> PCO: `payment_last4`
+/// - `paymentBrand` (rw) -> PCO: `payment_brand`
+/// - `paymentCheckNumber` (rw) -> PCO: `payment_check_number`
+/// - `paymentCheckDatedAt` (rw) -> PCO: `payment_check_dated_at`
+/// - `feeCents` (rw) -> PCO: `fee_cents`
+/// - `paymentMethod` (rw) -> PCO: `payment_method`
+/// - `receivedAt` (rw) -> PCO: `received_at`
+/// - `amountCents` (ro) -> PCO: `amount_cents`
+/// - `paymentStatus` (ro) -> PCO: `payment_status`
+/// - `completedAt` (ro) -> PCO: `completed_at`
+/// - `amountCurrency` (ro) -> PCO: `amount_currency`
+/// - `feeCurrency` (ro) -> PCO: `fee_currency`
+/// - `isRefunded` (ro) -> PCO: `refunded`
+/// - `isRefundable` (ro) -> PCO: `refundable`
+/// - `personId` (wo) -> PCO: `person_id`
+/// - `paymentSourceId` (wo) -> PCO: `payment_source_id`
+/// - `campusId` (wo) -> PCO: `campus_id`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.956250
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.640659
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A position within a team.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `tags` (ro) -> PCO: `tags`
+/// - `negativeTagGroups` (ro) -> PCO: `negative_tag_groups`
+/// - `tagGroups` (ro) -> PCO: `tag_groups`
 /// 
 /// Example:
 /// ```json

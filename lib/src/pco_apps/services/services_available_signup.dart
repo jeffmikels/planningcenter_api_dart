@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.888042
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.415163
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Signups that are available.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `organizationName` (ro) -> PCO: `organization_name`
+/// - `planningCenterUrl` (ro) -> PCO: `planning_center_url`
+/// - `serviceTypeName` (ro) -> PCO: `service_type_name`
+/// - `isSignupsAvailable` (ro) -> PCO: `signups_available`
 /// 
 /// Example:
 /// ```json

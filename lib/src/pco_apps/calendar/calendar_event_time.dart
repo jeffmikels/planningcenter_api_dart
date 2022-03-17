@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.429560
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.214296
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,6 +22,14 @@ import '../../pco.dart';
 /// 
 /// In the Calendar UI, these are represented under the "Schedule" section and
 /// may include "Setup" and "Teardown" times for the instance.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `endsAt` (ro) -> PCO: `ends_at`
+/// - `startsAt` (ro) -> PCO: `starts_at`
+/// - `name` (ro) -> PCO: `name`
+/// - `isVisibleOnKiosks` (ro) -> PCO: `visible_on_kiosks`
+/// - `isVisibleOnWidgetAndIcal` (ro) -> PCO: `visible_on_widget_and_ical`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.944040
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.602395
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Available positions to sign up for
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `sortDate` (ro) -> PCO: `sort_date`
+/// - `groupKey` (ro) -> PCO: `group_key`
+/// - `teamName` (ro) -> PCO: `team_name`
+/// - `displayTimes` (ro) -> PCO: `display_times`
+/// - `positionName` (ro) -> PCO: `position_name`
+/// - `title` (ro) -> PCO: `title`
+/// - `sortIndex` (ro) -> PCO: `sort_index`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.919076
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.485016
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An amount of unfilled positions needed within a team in a plan.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `quantity` (rw) -> PCO: `quantity`
+/// - `teamPositionName` (ro) -> PCO: `team_position_name`
+/// - `scheduledTo` (ro) -> PCO: `scheduled_to`
+/// - `timeId` (wo) -> PCO: `time_id`
+/// - `timePreferenceOptionId` (wo) -> PCO: `time_preference_option_id`
 /// 
 /// Example:
 /// ```json

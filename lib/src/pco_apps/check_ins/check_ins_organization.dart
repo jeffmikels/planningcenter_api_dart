@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.057478
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.818546
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,17 @@ import '../../pco.dart';
 /// Description:
 /// An organization which has people and events.
 /// This contains its date format & time zone preferences.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `dateFormatPattern` (ro) -> PCO: `date_format_pattern`
+/// - `timeZoneOlson` (ro) -> PCO: `time_zone_olson`
+/// - `name` (ro) -> PCO: `name`
+/// - `dailyCheckIns` (ro) -> PCO: `daily_check_ins`
+/// - `timeZone` (ro) -> PCO: `time_zone`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

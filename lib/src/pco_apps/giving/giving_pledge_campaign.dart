@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.498513
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.270820
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,21 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `description` (rw) -> PCO: `description`
+/// - `startsAt` (rw) -> PCO: `starts_at`
+/// - `endsAt` (rw) -> PCO: `ends_at`
+/// - `goalCents` (rw) -> PCO: `goal_cents`
+/// - `goalCurrency` (ro) -> PCO: `goal_currency`
+/// - `isShowGoalInChurchCenter` (rw) -> PCO: `show_goal_in_church_center`
+/// - `receivedTotalFromPledgesCents` (ro) -> PCO: `received_total_from_pledges_cents`
+/// - `receivedTotalOutsideOfPledgesCents` (ro) -> PCO: `received_total_outside_of_pledges_cents`
+/// - `fundId` (wo) -> PCO: `fund_id`
 /// 
 /// Example:
 /// ```json

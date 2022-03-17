@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.935995
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.529328
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A template for generating reports
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `body` (ro) -> PCO: `body`
+/// - `title` (ro) -> PCO: `title`
+/// - `type` (ro) -> PCO: `type`
+/// - `isDefault` (ro) -> PCO: `default`
 /// 
 /// Example:
 /// ```json

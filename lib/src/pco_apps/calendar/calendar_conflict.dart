@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.424330
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.209910
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,6 +22,13 @@ import '../../pco.dart';
 /// requests.
 /// 
 /// If the conflict has been resolved, `resolved_at` will be present.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `note` (ro) -> PCO: `note`
+/// - `resolvedAt` (ro) -> PCO: `resolved_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

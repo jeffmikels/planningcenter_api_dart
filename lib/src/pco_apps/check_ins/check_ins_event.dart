@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.035360
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.795880
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,6 +23,19 @@ import '../../pco.dart';
 /// Each recurrence is an _event period_ (which often corresponds to a week).
 /// 
 /// Event periods have _event times_ where people may actually check in.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `frequency` (ro) -> PCO: `frequency`
+/// - `isEnableServicesIntegration` (ro) -> PCO: `enable_services_integration`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `integrationKey` (ro) -> PCO: `integration_key`
+/// - `isLocationTimesEnabled` (ro) -> PCO: `location_times_enabled`
+/// - `isPreSelectEnabled` (ro) -> PCO: `pre_select_enabled`
+/// - `appSource` (ro) -> PCO: `app_source`
 /// 
 /// Example:
 /// ```json

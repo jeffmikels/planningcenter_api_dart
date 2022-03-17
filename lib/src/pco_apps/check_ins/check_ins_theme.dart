@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.063409
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.831767
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A custom style which may be applied to stations.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `imageThumbnail` (ro) -> PCO: `image_thumbnail`
+/// - `name` (ro) -> PCO: `name`
+/// - `color` (ro) -> PCO: `color`
+/// - `textColor` (ro) -> PCO: `text_color`
+/// - `image` (ro) -> PCO: `image`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `backgroundColor` (ro) -> PCO: `background_color`
+/// - `mode` (ro) -> PCO: `mode`
 /// 
 /// Example:
 /// ```json

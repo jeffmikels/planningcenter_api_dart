@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.037801
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.800916
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,6 +23,17 @@ import '../../pco.dart';
 /// An event period has event times, which is what people select
 /// when they actually check in. When new sessions are created, times
 /// are copied from one session to the next.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `startsAt` (ro) -> PCO: `starts_at`
+/// - `endsAt` (ro) -> PCO: `ends_at`
+/// - `regularCount` (ro) -> PCO: `regular_count`
+/// - `guestCount` (ro) -> PCO: `guest_count`
+/// - `volunteerCount` (ro) -> PCO: `volunteer_count`
+/// - `note` (ro) -> PCO: `note`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.260036
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.979091
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,9 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Returns upcoming anniversary couples for the organization.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
 /// 
 /// Example:
 /// ```json

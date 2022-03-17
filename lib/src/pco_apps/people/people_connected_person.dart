@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.267755
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.986059
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Connected Person is an account from a different organization linked to an account in this organization.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `givenName` (ro) -> PCO: `given_name`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `nickname` (ro) -> PCO: `nickname`
+/// - `middleName` (ro) -> PCO: `middle_name`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `gender` (ro) -> PCO: `gender`
+/// - `organizationName` (ro) -> PCO: `organization_name`
+/// - `organizationId` (ro) -> PCO: `organization_id`
 /// 
 /// Example:
 /// ```json

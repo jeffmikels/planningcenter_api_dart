@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.344828
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.091030
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A school option represents a school name, school type, grades, etc. and can be selected for a person.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `value` (rw) -> PCO: `value`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `beginningGrade` (rw) -> PCO: `beginning_grade`
+/// - `endingGrade` (rw) -> PCO: `ending_grade`
+/// - `schoolTypes` (rw) -> PCO: `school_types`
 /// 
 /// Example:
 /// ```json

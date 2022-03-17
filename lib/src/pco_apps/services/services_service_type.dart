@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.941532
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.593539
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,24 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Service Type is a container for plans.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `deletedAt` (ro) -> PCO: `deleted_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `isAttachmentTypesEnabled` (rw) -> PCO: `attachment_types_enabled`
+/// - `backgroundCheckPermissions` (rw) -> PCO: `background_check_permissions`
+/// - `commentPermissions` (rw) -> PCO: `comment_permissions`
+/// - `customItemTypes` (rw) -> PCO: `custom_item_types`
+/// - `frequency` (rw) -> PCO: `frequency`
+/// - `lastPlanFrom` (rw) -> PCO: `last_plan_from`
+/// - `permissions` (ro) -> PCO: `permissions`
+/// - `standardItemTypes` (rw) -> PCO: `standard_item_types`
+/// - `parentId` (wo) -> PCO: `parent_id`
 /// 
 /// Example:
 /// ```json

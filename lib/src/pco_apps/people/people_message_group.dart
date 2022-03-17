@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.294218
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.014311
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A message group represents one or more emails or text messages sent from one of the Planning Center apps. The message group indicates the from person, app, etc.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `uuid` (ro) -> PCO: `uuid`
+/// - `messageType` (ro) -> PCO: `message_type`
+/// - `fromAddress` (ro) -> PCO: `from_address`
+/// - `subject` (ro) -> PCO: `subject`
+/// - `messageCount` (ro) -> PCO: `message_count`
+/// - `isSystemMessage` (ro) -> PCO: `system_message`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// 
 /// Example:
 /// ```json

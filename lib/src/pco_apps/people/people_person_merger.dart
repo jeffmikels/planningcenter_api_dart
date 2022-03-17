@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.335643
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.047638
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Person Merger is the history of profiles that were merged into other profiles.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `personToKeepId` (ro) -> PCO: `person_to_keep_id`
+/// - `personToRemoveId` (ro) -> PCO: `person_to_remove_id`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.334346
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.045923
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Person App is the relationship between a Person and an App.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isAllowPcoLogin` (ro) -> PCO: `allow_pco_login`
+/// - `peoplePermissions` (ro) -> PCO: `people_permissions`
+/// - `appId` (wo) -> PCO: `app_id`
 /// 
 /// Example:
 /// ```json

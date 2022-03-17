@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.957567
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.643066
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isSchedulingRequestsEnabled` (rw) -> PCO: `scheduling_requests_enabled`
+/// - `isGeneralEmailsEnabled` (rw) -> PCO: `general_emails_enabled`
+/// - `isSchedulingRepliesEnabled` (rw) -> PCO: `scheduling_replies_enabled`
+/// - `isRemindersEnabled` (rw) -> PCO: `reminders_enabled`
+/// - `carrier` (ro) -> PCO: `carrier`
+/// - `displayNumber` (ro) -> PCO: `display_number`
+/// - `normalizedNumber` (ro) -> PCO: `normalized_number`
 /// 
 /// Example:
 /// ```json

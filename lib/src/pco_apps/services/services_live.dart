@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.914125
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.472235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `seriesTitle` (ro) -> PCO: `series_title`
+/// - `title` (ro) -> PCO: `title`
+/// - `dates` (ro) -> PCO: `dates`
+/// - `liveChannel` (ro) -> PCO: `live_channel`
+/// - `chatRoomChannel` (ro) -> PCO: `chat_room_channel`
+/// - `isCanControl` (ro) -> PCO: `can_control`
+/// - `isCanTakeControl` (ro) -> PCO: `can_take_control`
+/// - `isCanChat` (ro) -> PCO: `can_chat`
+/// - `isCanControlVideoFeed` (ro) -> PCO: `can_control_video_feed`
 /// 
 /// Example:
 /// ```json

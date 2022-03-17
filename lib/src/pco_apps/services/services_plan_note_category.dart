@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.929356
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.508212
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A category of plan notes for an entire Service Type.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `deletedAt` (ro) -> PCO: `deleted_at`
+/// - `name` (ro) -> PCO: `name`
+/// - `sequence` (ro) -> PCO: `sequence`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

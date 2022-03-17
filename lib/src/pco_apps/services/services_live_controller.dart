@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.915245
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.476909
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person who can control Services LIVE without the required permissions
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `fullName` (ro) -> PCO: `full_name`
+/// - `photoThumbnailUrl` (ro) -> PCO: `photo_thumbnail_url`
 /// 
 /// Example:
 /// ```json

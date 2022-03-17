@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.280502
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.996453
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,10 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A form submission value.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `displayValue` (ro) -> PCO: `display_value`
 /// 
 /// Example:
 /// ```json

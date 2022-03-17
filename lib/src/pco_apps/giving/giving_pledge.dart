@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.497315
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.269604
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `amountCents` (rw) -> PCO: `amount_cents`
+/// - `amountCurrency` (ro) -> PCO: `amount_currency`
+/// - `jointGiverAmountCents` (ro) -> PCO: `joint_giver_amount_cents`
+/// - `donatedTotalCents` (ro) -> PCO: `donated_total_cents`
+/// - `jointGiverDonatedTotalCents` (ro) -> PCO: `joint_giver_donated_total_cents`
+/// - `personId` (wo) -> PCO: `person_id`
+/// - `pledgeCampaignId` (wo) -> PCO: `pledge_campaign_id`
 /// 
 /// Example:
 /// ```json

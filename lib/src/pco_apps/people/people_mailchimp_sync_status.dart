@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.291041
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.010710
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The status of syncing a List with Mailchimp.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `status` (ro) -> PCO: `status`
+/// - `error` (ro) -> PCO: `error`
+/// - `progress` (ro) -> PCO: `progress`
+/// - `completedAt` (ro) -> PCO: `completed_at`
+/// - `segmentId` (ro) -> PCO: `segment_id`
 /// 
 /// Example:
 /// ```json

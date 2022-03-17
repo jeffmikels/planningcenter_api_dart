@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.258866
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.977644
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An address represents a physical and/or mailing address for a person.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `city` (rw) -> PCO: `city`
+/// - `state` (rw) -> PCO: `state`
+/// - `zip` (rw) -> PCO: `zip`
+/// - `street` (rw) -> PCO: `street`
+/// - `location` (rw) -> PCO: `location`
+/// - `isPrimary` (rw) -> PCO: `primary`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

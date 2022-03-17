@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.437836
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.217435
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,30 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The people in your organization with access to Calendar.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `middleName` (ro) -> PCO: `middle_name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
+/// - `isChild` (ro) -> PCO: `child`
+/// - `contactData` (ro) -> PCO: `contact_data`
+/// - `gender` (ro) -> PCO: `gender`
+/// - `isHasAccess` (ro) -> PCO: `has_access`
+/// - `namePrefix` (ro) -> PCO: `name_prefix`
+/// - `nameSuffix` (ro) -> PCO: `name_suffix`
+/// - `pendingRequestCount` (ro) -> PCO: `pending_request_count`
+/// - `permissions` (ro) -> PCO: `permissions`
+/// - `isResolvesConflicts` (ro) -> PCO: `resolves_conflicts`
+/// - `isSiteAdministrator` (ro) -> PCO: `site_administrator`
+/// - `status` (ro) -> PCO: `status`
+/// - `eventPermissionsType` (ro) -> PCO: `event_permissions_type`
+/// - `peoplePermissionsType` (ro) -> PCO: `people_permissions_type`
+/// - `roomPermissionsType` (ro) -> PCO: `room_permissions_type`
+/// - `resourcesPermissionsType` (ro) -> PCO: `resources_permissions_type`
 /// 
 /// Example:
 /// ```json

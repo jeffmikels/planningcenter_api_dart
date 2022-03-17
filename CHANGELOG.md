@@ -1,3 +1,7 @@
+## 0.6.1
+
+-   Improved documentation by adding class attributes to the docstrings.
+
 ## 0.6.0
 
 -   Added `next` and `getMore` methods on the `PcoCollection` class.

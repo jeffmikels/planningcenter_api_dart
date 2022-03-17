@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.898329
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.440459
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A EmailTemplateRenderedResponse Resource
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `body` (ro) -> PCO: `body`
+/// - `subject` (ro) -> PCO: `subject`
 /// 
 /// Example:
 /// ```json

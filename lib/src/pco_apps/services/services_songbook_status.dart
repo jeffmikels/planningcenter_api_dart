@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.949438
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.615053
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Used to get the status of an in progress songbook action. When FINISHED, will contain the url of the songbook.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `status` (ro) -> PCO: `status`
+/// - `statusCode` (ro) -> PCO: `status_code`
+/// - `statusToken` (ro) -> PCO: `status_token`
+/// - `url` (ro) -> PCO: `url`
 /// 
 /// Example:
 /// ```json

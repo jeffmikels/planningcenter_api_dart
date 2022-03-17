@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.032510
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.792952
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -28,6 +28,15 @@ import '../../pco.dart';
 /// - `printed`: This group was successfully printed at a station
 /// - `canceled`: This group was canceled at a station
 /// - `skipped`: This group had no labels to print, so it was never printed.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `nameLabelsCount` (ro) -> PCO: `name_labels_count`
+/// - `securityLabelsCount` (ro) -> PCO: `security_labels_count`
+/// - `checkInsCount` (ro) -> PCO: `check_ins_count`
+/// - `printStatus` (ro) -> PCO: `print_status`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

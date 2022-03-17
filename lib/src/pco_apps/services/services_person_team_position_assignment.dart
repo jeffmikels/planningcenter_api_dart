@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.924741
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.498122
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person's assignment to a position within a team.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `schedulePreference` (rw) -> PCO: `schedule_preference`
+/// - `preferredWeeks` (rw) -> PCO: `preferred_weeks`
+/// - `timePreferenceOptionIds` (wo) -> PCO: `time_preference_option_ids`
+/// - `personId` (wo) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

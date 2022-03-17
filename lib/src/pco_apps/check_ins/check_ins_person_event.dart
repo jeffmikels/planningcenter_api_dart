@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.061030
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.823208
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Counts a person's attendence for a given event.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `checkInCount` (ro) -> PCO: `check_in_count`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// 
 /// Example:
 /// ```json

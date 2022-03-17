@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.905517
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.456630
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,6 +21,13 @@ import '../../pco.dart';
 /// A plan item note that belongs to a category.
 /// 
 /// Note: You can only assign the category on create. If you want to change category; delete the current note, and create a new one passing in the `item_note_category_id` then.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `content` (rw) -> PCO: `content`
+/// - `categoryName` (ro) -> PCO: `category_name`
 /// 
 /// Example:
 /// ```json

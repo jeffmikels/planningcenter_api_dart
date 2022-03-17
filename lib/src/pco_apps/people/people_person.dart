@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.327566
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.042990
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,43 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person record represents a single member/user of the application. Each person has different permissions that determine how the user can use this app (if at all).
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `givenName` (rw) -> PCO: `given_name`
+/// - `firstName` (rw) -> PCO: `first_name`
+/// - `nickname` (rw) -> PCO: `nickname`
+/// - `middleName` (rw) -> PCO: `middle_name`
+/// - `lastName` (rw) -> PCO: `last_name`
+/// - `birthdate` (rw) -> PCO: `birthdate`
+/// - `anniversary` (rw) -> PCO: `anniversary`
+/// - `gender` (rw) -> PCO: `gender`
+/// - `grade` (rw) -> PCO: `grade`
+/// - `isChild` (rw) -> PCO: `child`
+/// - `graduationYear` (rw) -> PCO: `graduation_year`
+/// - `isSiteAdministrator` (rw) -> PCO: `site_administrator`
+/// - `isAccountingAdministrator` (rw) -> PCO: `accounting_administrator`
+/// - `peoplePermissions` (rw) -> PCO: `people_permissions`
+/// - `membership` (rw) -> PCO: `membership`
+/// - `inactivatedAt` (rw) -> PCO: `inactivated_at`
+/// - `status` (rw) -> PCO: `status`
+/// - `medicalNotes` (rw) -> PCO: `medical_notes`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `avatar` (rw) -> PCO: `avatar`
+/// - `name` (ro) -> PCO: `name`
+/// - `demographicAvatarUrl` (ro) -> PCO: `demographic_avatar_url`
+/// - `directoryStatus` (ro) -> PCO: `directory_status`
+/// - `isPassedBackgroundCheck` (ro) -> PCO: `passed_background_check`
+/// - `isCanCreateForms` (ro) -> PCO: `can_create_forms`
+/// - `schoolType` (ro) -> PCO: `school_type`
+/// - `remoteId` (rw) -> PCO: `remote_id`
+/// - `searchName` (ro) -> PCO: `search_name`
+/// - `searchPhoneNumber` (ro) -> PCO: `search_phone_number`
+/// - `searchPhoneNumberE164` (ro) -> PCO: `search_phone_number_e164`
+/// - `searchNameOrEmail` (ro) -> PCO: `search_name_or_email`
+/// - `searchNameOrEmailOrPhoneNumber` (ro) -> PCO: `search_name_or_email_or_phone_number`
+/// - `primaryCampusId` (wo) -> PCO: `primary_campus_id`
 /// 
 /// Example:
 /// ```json

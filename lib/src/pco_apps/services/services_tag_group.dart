@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.952330
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.627157
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A tag group contains tags
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `isRequired` (ro) -> PCO: `required`
+/// - `isAllowMultipleSelections` (ro) -> PCO: `allow_multiple_selections`
+/// - `tagsFor` (ro) -> PCO: `tags_for`
+/// - `serviceTypeFolderName` (ro) -> PCO: `service_type_folder_name`
 /// 
 /// Example:
 /// ```json

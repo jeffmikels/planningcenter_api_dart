@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.339820
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.077029
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,10 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Platform Notification is a suite-wide notification that shows at the top of each application's screen until dismissed by the user.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `html` (ro) -> PCO: `html`
 /// 
 /// Example:
 /// ```json

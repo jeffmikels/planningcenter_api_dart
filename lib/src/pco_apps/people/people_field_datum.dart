@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.270820
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.988434
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A field datum is an individual piece of data for a custom field.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `value` (rw) -> PCO: `value`
+/// - `file` (ro) -> PCO: `file`
+/// - `fileSize` (ro) -> PCO: `file_size`
+/// - `fileContentType` (ro) -> PCO: `file_content_type`
+/// - `fileName` (ro) -> PCO: `file_name`
+/// - `fieldDefinitionId` (wo) -> PCO: `field_definition_id`
 /// 
 /// Example:
 /// ```json

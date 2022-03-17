@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.500056
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.272105
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `releaseHoldAt` (ro) -> PCO: `release_hold_at`
+/// - `amountCents` (ro) -> PCO: `amount_cents`
+/// - `status` (ro) -> PCO: `status`
+/// - `lastDonationReceivedAt` (ro) -> PCO: `last_donation_received_at`
+/// - `nextOccurrence` (ro) -> PCO: `next_occurrence`
+/// - `schedule` (ro) -> PCO: `schedule`
+/// - `amountCurrency` (ro) -> PCO: `amount_currency`
 /// 
 /// Example:
 /// ```json

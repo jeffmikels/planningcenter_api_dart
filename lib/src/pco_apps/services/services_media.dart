@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.916764
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.483152
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,28 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A piece of media
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `themes` (rw) -> PCO: `themes`
+/// - `title` (rw) -> PCO: `title`
+/// - `thumbnailFileName` (ro) -> PCO: `thumbnail_file_name`
+/// - `thumbnailContentType` (ro) -> PCO: `thumbnail_content_type`
+/// - `thumbnailFileSize` (ro) -> PCO: `thumbnail_file_size`
+/// - `thumbnailUpdatedAt` (ro) -> PCO: `thumbnail_updated_at`
+/// - `previewFileName` (ro) -> PCO: `preview_file_name`
+/// - `previewContentType` (ro) -> PCO: `preview_content_type`
+/// - `previewFileSize` (ro) -> PCO: `preview_file_size`
+/// - `previewUpdatedAt` (ro) -> PCO: `preview_updated_at`
+/// - `length` (ro) -> PCO: `length`
+/// - `mediaType` (rw) -> PCO: `media_type`
+/// - `mediaTypeName` (ro) -> PCO: `media_type_name`
+/// - `thumbnailUrl` (ro) -> PCO: `thumbnail_url`
+/// - `creatorName` (rw) -> PCO: `creator_name`
+/// - `previewUrl` (ro) -> PCO: `preview_url`
+/// - `imageUrl` (ro) -> PCO: `image_url`
 /// 
 /// Example:
 /// ```json

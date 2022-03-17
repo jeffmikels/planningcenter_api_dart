@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.049465
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.809368
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -24,6 +24,28 @@ import '../../pco.dart';
 /// You can get its contents from the `locations` attribute.
 /// You can get a location's parent folder from the `parent` attribute.
 /// (If it's not in a folder, `parent` will be empty.)
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `isOpened` (ro) -> PCO: `opened`
+/// - `questions` (ro) -> PCO: `questions`
+/// - `ageMinInMonths` (ro) -> PCO: `age_min_in_months`
+/// - `ageMaxInMonths` (ro) -> PCO: `age_max_in_months`
+/// - `ageRangeBy` (ro) -> PCO: `age_range_by`
+/// - `ageOn` (ro) -> PCO: `age_on`
+/// - `childOrAdult` (ro) -> PCO: `child_or_adult`
+/// - `effectiveDate` (ro) -> PCO: `effective_date`
+/// - `gender` (ro) -> PCO: `gender`
+/// - `gradeMin` (ro) -> PCO: `grade_min`
+/// - `gradeMax` (ro) -> PCO: `grade_max`
+/// - `maxOccupancy` (ro) -> PCO: `max_occupancy`
+/// - `minVolunteers` (ro) -> PCO: `min_volunteers`
+/// - `attendeesPerVolunteer` (ro) -> PCO: `attendees_per_volunteer`
+/// - `position` (ro) -> PCO: `position`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// 
 /// Example:
 /// ```json

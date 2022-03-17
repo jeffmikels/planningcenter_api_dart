@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.958677
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.645675
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Service Time a person prefers to be scheduled to.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `dayOfWeek` (ro) -> PCO: `day_of_week`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `sortIndex` (ro) -> PCO: `sort_index`
+/// - `timeType` (ro) -> PCO: `time_type`
+/// - `minuteOfDay` (ro) -> PCO: `minute_of_day`
+/// - `startsAt` (ro) -> PCO: `starts_at`
 /// 
 /// Example:
 /// ```json

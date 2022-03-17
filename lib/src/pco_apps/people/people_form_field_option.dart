@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.278310
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.994817
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A field option on a custom form field.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `label` (ro) -> PCO: `label`
+/// - `sequence` (ro) -> PCO: `sequence`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

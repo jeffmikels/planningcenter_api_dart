@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.337751
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.076090
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,19 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A phone number represents a single telephone number and location.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `number` (rw) -> PCO: `number`
+/// - `carrier` (rw) -> PCO: `carrier`
+/// - `location` (rw) -> PCO: `location`
+/// - `isPrimary` (rw) -> PCO: `primary`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `e164` (ro) -> PCO: `e164`
+/// - `international` (ro) -> PCO: `international`
+/// - `national` (ro) -> PCO: `national`
+/// - `countryCode` (ro) -> PCO: `country_code`
 /// 
 /// Example:
 /// ```json

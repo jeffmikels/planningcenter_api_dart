@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.274192
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.991133
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A field option represents an individual option for a custom field of type "select" or "checkboxes".
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `value` (rw) -> PCO: `value`
+/// - `sequence` (rw) -> PCO: `sequence`
 /// 
 /// Example:
 /// ```json

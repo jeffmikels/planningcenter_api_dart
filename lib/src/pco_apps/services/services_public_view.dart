@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.935282
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.527283
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,21 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Manage options for a public plan
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isSeriesAndPlanTitles` (ro) -> PCO: `series_and_plan_titles`
+/// - `isItemLengths` (ro) -> PCO: `item_lengths`
+/// - `isServiceTimes` (ro) -> PCO: `service_times`
+/// - `isSongItems` (ro) -> PCO: `song_items`
+/// - `isMediaItems` (ro) -> PCO: `media_items`
+/// - `isRegularItems` (ro) -> PCO: `regular_items`
+/// - `isHeaders` (ro) -> PCO: `headers`
+/// - `isItunes` (ro) -> PCO: `itunes`
+/// - `isAmazon` (ro) -> PCO: `amazon`
+/// - `isSpotify` (ro) -> PCO: `spotify`
+/// - `isYoutube` (ro) -> PCO: `youtube`
+/// - `isVimeo` (ro) -> PCO: `vimeo`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.920562
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.489559
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,36 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The root level of an organization where account-level settings are applied.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `ccli` (ro) -> PCO: `ccli`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `dateFormat` (ro) -> PCO: `date_format`
+/// - `isMusicStandEnabled` (ro) -> PCO: `music_stand_enabled`
+/// - `name` (ro) -> PCO: `name`
+/// - `isProjectorEnabled` (ro) -> PCO: `projector_enabled`
+/// - `timeZone` (ro) -> PCO: `time_zone`
+/// - `isTwentyFourHourTime` (ro) -> PCO: `twenty_four_hour_time`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `ownerName` (ro) -> PCO: `owner_name`
+/// - `requiredToSetDownloadPermission` (ro) -> PCO: `required_to_set_download_permission`
+/// - `secret` (ro) -> PCO: `secret`
+/// - `isAllowMp3Download` (ro) -> PCO: `allow_mp3_download`
+/// - `isCalendarStartsOnSunday` (ro) -> PCO: `calendar_starts_on_sunday`
+/// - `isCcliConnected` (ro) -> PCO: `ccli_connected`
+/// - `isCcliReportingEnabled` (ro) -> PCO: `ccli_reporting_enabled`
+/// - `isExtraFileStorageAllowed` (ro) -> PCO: `extra_file_storage_allowed`
+/// - `isFileStorageExceeded` (ro) -> PCO: `file_storage_exceeded`
+/// - `isFileStorageSize` (ro) -> PCO: `file_storage_size`
+/// - `isFileStorageSizeUsed` (ro) -> PCO: `file_storage_size_used`
+/// - `isFileStorageExtraEnabled` (ro) -> PCO: `file_storage_extra_enabled`
+/// - `isRehearsalMixEnabled` (ro) -> PCO: `rehearsal_mix_enabled`
+/// - `legacyId` (ro) -> PCO: `legacy_id`
+/// - `fileStorageExtraCharges` (ro) -> PCO: `file_storage_extra_charges`
+/// - `peopleAllowed` (ro) -> PCO: `people_allowed`
+/// - `peopleRemaining` (ro) -> PCO: `people_remaining`
+/// - `isBeta` (ro) -> PCO: `beta`
 /// 
 /// Example:
 /// ```json

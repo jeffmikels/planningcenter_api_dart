@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.427274
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.212136
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,6 +22,18 @@ import '../../pco.dart';
 /// 
 /// If the event is recurring, `recurrence` will be set and
 /// `recurrence_description` will provide an overview of the recurrence pattern.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isAllDayEvent` (ro) -> PCO: `all_day_event`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `endsAt` (ro) -> PCO: `ends_at`
+/// - `location` (ro) -> PCO: `location`
+/// - `recurrence` (ro) -> PCO: `recurrence`
+/// - `recurrenceDescription` (ro) -> PCO: `recurrence_description`
+/// - `startsAt` (ro) -> PCO: `starts_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `churchCenterUrl` (ro) -> PCO: `church_center_url`
 /// 
 /// Example:
 /// ```json

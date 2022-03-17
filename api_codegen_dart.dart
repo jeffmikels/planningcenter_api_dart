@@ -373,16 +373,24 @@ String classNameFromVertex(String appName, String vertexName) {
 /// this function helps to generate the "static" fields for the class
 String fieldConstantTemplate(String pcoName) => '  static const k${pcoName.snakeToPascal()} = \'$pcoName\';\n';
 
+/// this function generates a consistant getter/setter varname for an attribute
+String fieldVarName(Attribute attribute) {
+  var camelName = attribute.name.snakeToCamel();
+  var pascalName = attribute.name.snakeToPascal();
+  if (camelName == 'default') {
+    camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
+  }
+  if (attribute.typeString == 'boolean') return 'is$pascalName';
+  return camelName;
+}
+
 /// this function helps to generate the getters for a specific [Vertex] - [Attribute]
 /// [mode] can be 'get' 'set' or 'both'
 /// if 'both' it will do a get first and then call itself again with 'set'
 String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttributeNameAsKey = false}) {
-  var camelName = attribute.name.snakeToCamel();
-  var pascalName = attribute.name.snakeToPascal();
-  var targetName = useAttributeNameAsKey ? 'attributes[\'${attribute.name}\']' : 'attributes[k$pascalName]';
-  if (camelName == 'default') {
-    camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
-  }
+  var targetName =
+      useAttributeNameAsKey ? 'attributes[\'${attribute.name}\']' : 'attributes[k${attribute.name.snakeToPascal()}]';
+  var varName = fieldVarName(attribute);
 
   var output = '';
   if (mode == 'set' && attribute.description.isNotEmpty) {
@@ -390,33 +398,29 @@ String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttrib
   }
   switch (attribute.typeString) {
     case 'boolean':
-      output += mode == 'set'
-          ? 'set is$pascalName(bool b) => $targetName = b;\n'
-          : 'bool get is$pascalName => $targetName == true;\n';
+      output +=
+          mode == 'set' ? 'set $varName(bool b) => $targetName = b;\n' : 'bool get $varName => $targetName == true;\n';
       break;
     case 'float':
-      output += mode == 'set'
-          ? 'set $camelName(double n) => $targetName = n;\n'
-          : 'double get $camelName => $targetName ?? 0;\n';
+      output +=
+          mode == 'set' ? 'set $varName(double n) => $targetName = n;\n' : 'double get $varName => $targetName ?? 0;\n';
       break;
     case 'integer':
-      output +=
-          mode == 'set' ? 'set $camelName(int n) => $targetName = n;\n' : 'int get $camelName => $targetName ?? 0;\n';
+      output += mode == 'set' ? 'set $varName(int n) => $targetName = n;\n' : 'int get $varName => $targetName ?? 0;\n';
       break;
     case 'date_time':
       output += mode == 'set'
-          ? 'set $camelName(DateTime d) => $targetName = d.toIso8601String();\n'
-          : 'DateTime get $camelName => DateTime.parse($targetName ?? \'\');\n';
+          ? 'set $varName(DateTime d) => $targetName = d.toIso8601String();\n'
+          : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');\n';
       break;
     case 'array':
-      output += mode == 'set'
-          ? 'set $camelName(List a) => $targetName = a;\n'
-          : 'List get $camelName => $targetName ?? [];\n';
+      output +=
+          mode == 'set' ? 'set $varName(List a) => $targetName = a;\n' : 'List get $varName => $targetName ?? [];\n';
       break;
     default:
       output += mode == 'set'
-          ? 'set $camelName(String s) => $targetName = s;\n'
-          : 'String get $camelName => $targetName ?? \'\';\n';
+          ? 'set $varName(String s) => $targetName = s;\n'
+          : 'String get $varName => $targetName ?? \'\';\n';
       break;
   }
   if (mode == 'both') {
@@ -466,23 +470,33 @@ String classTemplate(Vertex vertex) {
   var fieldGetterLines = <String>[];
   var fieldSetterLines = <String>[];
   var additionalAssignableLines = <String>[];
+  var attributeDocLines = <String>[];
 
   print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(',')}');
   for (var attribute in vertex.vertexAttributes) {
     if (seen.add(attribute.name) == false) continue; // true when it was added, false when already there
 
+    var canwrite = false;
+
+    // add this attribute to the lines defining static field consants
     fieldConstantLines.add(fieldConstantTemplate(attribute.name));
 
     // make a getter line
-    if (!getterIgnore.contains(attribute.name)) fieldGetterLines.add(fieldSetterOrGetterLine('get', attribute));
+    if (!getterIgnore.contains(attribute.name)) {
+      fieldGetterLines.add(fieldSetterOrGetterLine('get', attribute));
+    }
 
     // maybe make a setter line
     if (setterNeeded.contains(attribute.name)) {
       fieldSetterLines.add(fieldSetterOrGetterLine('set', attribute));
       setterNeeded.remove(attribute.name);
+      canwrite = true;
     }
+    var perm = canwrite ? 'rw' : 'ro';
+    attributeDocLines.add('- `${fieldVarName(attribute)}` ($perm) -> PCO: `${attribute.name}`');
   }
 
+  // for fields that can be set in the api, but don't exist as attributes in the object
   if (setterNeeded.isNotEmpty) {
     print('  handling additional assignables: ${setterNeeded.join(',')}');
   }
@@ -490,6 +504,7 @@ String classTemplate(Vertex vertex) {
     fieldConstantLines.add(fieldConstantTemplate(item));
     var attribute = Attribute.nameOnly(item);
     additionalAssignableLines.add(fieldSetterOrGetterLine('both', attribute));
+    attributeDocLines.add('- `${fieldVarName(attribute)}` (wo) -> PCO: `${attribute.name}`');
   }
 
   /// HANDLING EDGES...
@@ -762,6 +777,9 @@ import '../../pco.dart';
 /// 
 /// Description:
 ${vertex.description.cleanLines().trim().prefixLines('/// ')}
+/// 
+/// Attributes:
+${attributeDocLines.join('\n').prefixLines('/// ')}
 /// 
 /// Example:
 /// ```json

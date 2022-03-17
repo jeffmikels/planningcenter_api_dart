@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.294990
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.015792
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,10 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A name prefix is one of Mr., Mrs., etc.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `value` (rw) -> PCO: `value`
 /// 
 /// Example:
 /// ```json

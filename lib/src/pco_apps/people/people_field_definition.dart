@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.272542
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.990165
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A field definition represents a custom field -- its name, data type, etc.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `dataType` (rw) -> PCO: `data_type`
+/// - `name` (rw) -> PCO: `name`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `slug` (rw) -> PCO: `slug`
+/// - `config` (rw) -> PCO: `config`
+/// - `deletedAt` (rw) -> PCO: `deleted_at`
+/// - `tabId` (ro) -> PCO: `tab_id`
 /// 
 /// Example:
 /// ```json

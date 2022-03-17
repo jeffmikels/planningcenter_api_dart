@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.369118
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.112590
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The ready and snoozed count for an assignee & step
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `readyCount` (ro) -> PCO: `ready_count`
+/// - `snoozedCount` (ro) -> PCO: `snoozed_count`
 /// 
 /// Example:
 /// ```json

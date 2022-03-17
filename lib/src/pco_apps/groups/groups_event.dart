@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.519441
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.288427
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,23 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isAttendanceRequestsEnabled` (ro) -> PCO: `attendance_requests_enabled`
+/// - `isAutomatedReminderEnabled` (ro) -> PCO: `automated_reminder_enabled`
+/// - `isCanceled` (ro) -> PCO: `canceled`
+/// - `canceledAt` (ro) -> PCO: `canceled_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `endsAt` (ro) -> PCO: `ends_at`
+/// - `locationTypePreference` (ro) -> PCO: `location_type_preference`
+/// - `isMultiDay` (ro) -> PCO: `multi_day`
+/// - `name` (ro) -> PCO: `name`
+/// - `isRemindersSent` (ro) -> PCO: `reminders_sent`
+/// - `remindersSentAt` (ro) -> PCO: `reminders_sent_at`
+/// - `isRepeating` (ro) -> PCO: `repeating`
+/// - `startsAt` (ro) -> PCO: `starts_at`
+/// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
 /// 
 /// Example:
 /// ```json

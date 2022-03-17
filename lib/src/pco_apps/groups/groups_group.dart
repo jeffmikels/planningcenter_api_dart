@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.546021
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.289546
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,25 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `archiveStatus` (ro) -> PCO: `archive_status`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `contactEmail` (ro) -> PCO: `contact_email`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `isEnrollmentOpen` (ro) -> PCO: `enrollment_open`
+/// - `enrollmentStrategy` (ro) -> PCO: `enrollment_strategy`
+/// - `eventsVisibility` (ro) -> PCO: `events_visibility`
+/// - `headerImage` (ro) -> PCO: `header_image`
+/// - `locationTypePreference` (ro) -> PCO: `location_type_preference`
+/// - `membershipsCount` (ro) -> PCO: `memberships_count`
+/// - `name` (ro) -> PCO: `name`
+/// - `publicChurchCenterWebUrl` (ro) -> PCO: `public_church_center_web_url`
+/// - `schedule` (ro) -> PCO: `schedule`
+/// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
+/// - `widgetStatus` (ro) -> PCO: `widget_status`
 /// 
 /// Example:
 /// ```json

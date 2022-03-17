@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.939801
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.586381
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,6 +21,19 @@ import '../../pco.dart';
 /// A Series can be specified for each plan to tie plans with similar messages together, even across Service Types.
 /// 
 /// *Note*: A series is not created until artwork is added from the plan.  You can use `series_title` included in `Plan` attributes to get titles for series without artwork.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `artworkFileName` (ro) -> PCO: `artwork_file_name`
+/// - `artworkContentType` (ro) -> PCO: `artwork_content_type`
+/// - `artworkFileSize` (ro) -> PCO: `artwork_file_size`
+/// - `title` (ro) -> PCO: `title`
+/// - `artworkForDashboard` (ro) -> PCO: `artwork_for_dashboard`
+/// - `artworkForMobile` (ro) -> PCO: `artwork_for_mobile`
+/// - `artworkForPlan` (ro) -> PCO: `artwork_for_plan`
+/// - `artworkOriginal` (ro) -> PCO: `artwork_original`
 /// 
 /// Example:
 /// ```json

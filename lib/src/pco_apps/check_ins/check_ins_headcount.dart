@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.043295
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.803659
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,12 @@ import '../../pco.dart';
 /// Description:
 /// A tally of attendees for a given event time and attendance type.
 /// If one does not exist, the count may have been zero.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `total` (ro) -> PCO: `total`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// 
 /// Example:
 /// ```json

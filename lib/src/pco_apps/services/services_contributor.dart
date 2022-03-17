@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.895353
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.432066
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Contributor Resource
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `contributableAction` (ro) -> PCO: `contributable_action`
+/// - `contributableCategory` (ro) -> PCO: `contributable_category`
+/// - `contributableType` (ro) -> PCO: `contributable_type`
+/// - `fullName` (ro) -> PCO: `full_name`
+/// - `photoThumbnailUrl` (ro) -> PCO: `photo_thumbnail_url`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.036253
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.797597
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,15 @@ import '../../pco.dart';
 /// Description:
 /// Says how many of a given label to print for this event and
 /// whether to print it for regulars, guests, and/or volunteers.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `quantity` (ro) -> PCO: `quantity`
+/// - `isForRegular` (ro) -> PCO: `for_regular`
+/// - `isForGuest` (ro) -> PCO: `for_guest`
+/// - `isForVolunteer` (ro) -> PCO: `for_volunteer`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

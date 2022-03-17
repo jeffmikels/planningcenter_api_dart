@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.927201
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.503371
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,35 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A single plan within a Service Type.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `title` (rw) -> PCO: `title`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `isPublic` (rw) -> PCO: `public`
+/// - `seriesTitle` (rw) -> PCO: `series_title`
+/// - `planNotesCount` (ro) -> PCO: `plan_notes_count`
+/// - `otherTimeCount` (ro) -> PCO: `other_time_count`
+/// - `rehearsalTimeCount` (ro) -> PCO: `rehearsal_time_count`
+/// - `serviceTimeCount` (ro) -> PCO: `service_time_count`
+/// - `planPeopleCount` (ro) -> PCO: `plan_people_count`
+/// - `neededPositionsCount` (ro) -> PCO: `needed_positions_count`
+/// - `itemsCount` (ro) -> PCO: `items_count`
+/// - `totalLength` (ro) -> PCO: `total_length`
+/// - `isCanViewOrder` (ro) -> PCO: `can_view_order`
+/// - `isMultiDay` (ro) -> PCO: `multi_day`
+/// - `isPrefersOrderView` (ro) -> PCO: `prefers_order_view`
+/// - `isRehearsable` (ro) -> PCO: `rehearsable`
+/// - `filesExpireAt` (ro) -> PCO: `files_expire_at`
+/// - `sortDate` (ro) -> PCO: `sort_date`
+/// - `lastTimeAt` (ro) -> PCO: `last_time_at`
+/// - `permissions` (ro) -> PCO: `permissions`
+/// - `dates` (ro) -> PCO: `dates`
+/// - `shortDates` (ro) -> PCO: `short_dates`
+/// - `planningCenterUrl` (ro) -> PCO: `planning_center_url`
+/// - `isRemindersDisabled` (rw) -> PCO: `reminders_disabled`
+/// - `seriesId` (wo) -> PCO: `series_id`
 /// 
 /// Example:
 /// ```json

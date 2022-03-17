@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.281523
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.998712
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A household links people together and can have a primary contact. To add a person to an existing household, use the HouseholdMemberships endpoint.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (rw) -> PCO: `name`
+/// - `memberCount` (rw) -> PCO: `member_count`
+/// - `primaryContactName` (ro) -> PCO: `primary_contact_name`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `avatar` (rw) -> PCO: `avatar`
+/// - `primaryContactId` (rw) -> PCO: `primary_contact_id`
 /// 
 /// Example:
 /// ```json

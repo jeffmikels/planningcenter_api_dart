@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.364142
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.107235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A workflow share defines who can access a workflow.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `group` (rw) -> PCO: `group`
+/// - `permission` (rw) -> PCO: `permission`
+/// - `personId` (rw) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

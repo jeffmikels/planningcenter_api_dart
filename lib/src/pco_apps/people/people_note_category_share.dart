@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.307506
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.028652
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A note category share defines who can view notes in a category.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `group` (rw) -> PCO: `group`
+/// - `personId` (rw) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.311724
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.031946
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The organization represents a single church. Every other resource is scoped to this record.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `countryCode` (ro) -> PCO: `country_code`
+/// - `dateFormat` (ro) -> PCO: `date_format`
+/// - `timeZone` (ro) -> PCO: `time_zone`
+/// - `contactWebsite` (ro) -> PCO: `contact_website`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
 /// 
 /// Example:
 /// ```json

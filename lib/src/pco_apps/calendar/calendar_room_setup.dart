@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.453257
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.224513
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A diagram and list of suggested resources useful for predefined room setups.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (ro) -> PCO: `name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `diagram` (ro) -> PCO: `diagram`
+/// - `diagramUrl` (ro) -> PCO: `diagram_url`
+/// - `diagramThumbnailUrl` (ro) -> PCO: `diagram_thumbnail_url`
 /// 
 /// Example:
 /// ```json

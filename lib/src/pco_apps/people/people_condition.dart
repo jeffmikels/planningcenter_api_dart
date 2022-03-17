@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.266514
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.984837
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A condition is an individual criterion used by a List Rule.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `application` (ro) -> PCO: `application`
+/// - `definitionClass` (ro) -> PCO: `definition_class`
+/// - `comparison` (ro) -> PCO: `comparison`
+/// - `settings` (ro) -> PCO: `settings`
+/// - `definitionIdentifier` (ro) -> PCO: `definition_identifier`
+/// - `description` (ro) -> PCO: `description`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.366906
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.111277
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,21 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Step
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (rw) -> PCO: `name`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `description` (ro) -> PCO: `description`
+/// - `autoSnoozeDays` (ro) -> PCO: `auto_snooze_days`
+/// - `autoSnoozeValue` (ro) -> PCO: `auto_snooze_value`
+/// - `autoSnoozeInterval` (ro) -> PCO: `auto_snooze_interval`
+/// - `expectedResponseTimeInDays` (ro) -> PCO: `expected_response_time_in_days`
+/// - `myReadyCardCount` (ro) -> PCO: `my_ready_card_count`
+/// - `totalReadyCardCount` (ro) -> PCO: `total_ready_card_count`
+/// - `defaultAssigneeId` (ro) -> PCO: `default_assignee_id`
 /// 
 /// Example:
 /// ```json

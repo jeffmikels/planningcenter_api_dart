@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.900796
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.443660
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,10 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// The Folder path of a Folder
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `path` (ro) -> PCO: `path`
 /// 
 /// Example:
 /// ```json

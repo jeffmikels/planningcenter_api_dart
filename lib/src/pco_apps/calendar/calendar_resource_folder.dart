@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.445900
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.221946
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An organizational folder containing rooms or resources.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `pathName` (ro) -> PCO: `path_name`
 /// 
 /// Example:
 /// ```json

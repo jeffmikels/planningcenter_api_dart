@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.554280
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.292649
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,19 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `accountCenterIdentifier` (ro) -> PCO: `account_center_identifier`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
+/// - `colorIdentifier` (ro) -> PCO: `color_identifier`
+/// - `emailAddress` (ro) -> PCO: `email_address`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `joinedAt` (rw) -> PCO: `joined_at`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `phoneNumber` (ro) -> PCO: `phone_number`
+/// - `role` (rw) -> PCO: `role`
+/// - `personId` (wo) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

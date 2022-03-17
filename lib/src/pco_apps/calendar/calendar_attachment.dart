@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.422939
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.209031
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An uploaded file attached to an event.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `contentType` (ro) -> PCO: `content_type`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `description` (ro) -> PCO: `description`
+/// - `fileSize` (ro) -> PCO: `file_size`
+/// - `name` (ro) -> PCO: `name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `url` (ro) -> PCO: `url`
 /// 
 /// Example:
 /// ```json

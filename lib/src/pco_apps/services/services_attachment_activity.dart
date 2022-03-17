@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.885442
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.410227
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Returned from the `open` attachment action.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `date` (ro) -> PCO: `date`
+/// - `attachmentUrl` (ro) -> PCO: `attachment_url`
+/// - `activityType` (ro) -> PCO: `activity_type`
 /// 
 /// Example:
 /// ```json

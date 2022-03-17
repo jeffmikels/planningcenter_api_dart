@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.950204
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.620479
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,10 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// For Rehearsal/Other Times, maps a Split Team to selected Time Preference Options. For example, used to assign 8am Ushers to 7:30am call time, and 11am Ushers to 10:30am call time.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isScheduleSpecialServiceTimes` (rw) -> PCO: `schedule_special_service_times`
 /// 
 /// Example:
 /// ```json

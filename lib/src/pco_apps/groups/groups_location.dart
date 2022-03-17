@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.552589
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.291677
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `displayPreference` (ro) -> PCO: `display_preference`
+/// - `fullFormattedAddress` (ro) -> PCO: `full_formatted_address`
+/// - `latitude` (ro) -> PCO: `latitude`
+/// - `longitude` (ro) -> PCO: `longitude`
+/// - `name` (ro) -> PCO: `name`
+/// - `radius` (ro) -> PCO: `radius`
+/// - `strategy` (ro) -> PCO: `strategy`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.904604
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.453323
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,26 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An item in a plan.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `title` (rw) -> PCO: `title`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `length` (rw) -> PCO: `length`
+/// - `itemType` (rw) -> PCO: `item_type`
+/// - `htmlDetails` (rw) -> PCO: `html_details`
+/// - `servicePosition` (rw) -> PCO: `service_position`
+/// - `description` (rw) -> PCO: `description`
+/// - `keyName` (ro) -> PCO: `key_name`
+/// - `customArrangementSequence` (rw) -> PCO: `custom_arrangement_sequence`
+/// - `customArrangementSequenceShort` (ro) -> PCO: `custom_arrangement_sequence_short`
+/// - `customArrangementSequenceFull` (ro) -> PCO: `custom_arrangement_sequence_full`
+/// - `arrangementId` (wo) -> PCO: `arrangement_id`
+/// - `keyId` (wo) -> PCO: `key_id`
+/// - `selectedLayoutId` (wo) -> PCO: `selected_layout_id`
+/// - `songId` (wo) -> PCO: `song_id`
 /// 
 /// Example:
 /// ```json

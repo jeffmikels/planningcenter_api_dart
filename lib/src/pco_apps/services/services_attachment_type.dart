@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.886684
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.412562
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Create an Attachment Type for each type of file you might want only specific people to see. When you attach a file, you can specify an attachment type to then be able to link the file to a position.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `aliases` (ro) -> PCO: `aliases`
+/// - `isCapoedChordCharts` (ro) -> PCO: `capoed_chord_charts`
+/// - `isChordCharts` (ro) -> PCO: `chord_charts`
+/// - `exclusions` (ro) -> PCO: `exclusions`
+/// - `isLyrics` (ro) -> PCO: `lyrics`
+/// - `isNumberCharts` (ro) -> PCO: `number_charts`
+/// - `isNumeralCharts` (ro) -> PCO: `numeral_charts`
+/// - `isBuiltIn` (ro) -> PCO: `built_in`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.953950
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.633939
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,23 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Team within a Service Type.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (rw) -> PCO: `name`
+/// - `isRehearsalTeam` (rw) -> PCO: `rehearsal_team`
+/// - `sequence` (ro) -> PCO: `sequence`
+/// - `scheduleTo` (rw) -> PCO: `schedule_to`
+/// - `defaultStatus` (ro) -> PCO: `default_status`
+/// - `isDefaultPrepareNotifications` (ro) -> PCO: `default_prepare_notifications`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `archivedAt` (rw) -> PCO: `archived_at`
+/// - `isAssignedDirectly` (rw) -> PCO: `assigned_directly`
+/// - `isSecureTeam` (ro) -> PCO: `secure_team`
+/// - `lastPlanFrom` (ro) -> PCO: `last_plan_from`
+/// - `stageColor` (rw) -> PCO: `stage_color`
+/// - `stageVariant` (rw) -> PCO: `stage_variant`
 /// 
 /// Example:
 /// ```json

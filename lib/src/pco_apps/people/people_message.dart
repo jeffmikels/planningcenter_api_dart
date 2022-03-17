@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.292918
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.012928
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,23 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A message is an individual email or sms text sent to a member. Every message has a parent message group.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `toAddresses` (ro) -> PCO: `to_addresses`
+/// - `subject` (ro) -> PCO: `subject`
+/// - `file` (ro) -> PCO: `file`
+/// - `deliveryStatus` (ro) -> PCO: `delivery_status`
+/// - `rejectReason` (ro) -> PCO: `reject_reason`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `sentAt` (ro) -> PCO: `sent_at`
+/// - `bouncedAt` (ro) -> PCO: `bounced_at`
+/// - `rejectionNotificationSentAt` (ro) -> PCO: `rejection_notification_sent_at`
+/// - `fromName` (ro) -> PCO: `from_name`
+/// - `fromAddress` (ro) -> PCO: `from_address`
+/// - `readAt` (ro) -> PCO: `read_at`
+/// - `appName` (ro) -> PCO: `app_name`
 /// 
 /// Example:
 /// ```json

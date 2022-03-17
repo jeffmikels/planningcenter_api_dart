@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.031253
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.790176
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -30,6 +30,20 @@ import '../../pco.dart';
 /// - `not_one_time_guest`s are check-ins which had a corresponding person record when they were created.
 /// - `checked_out` are check-ins where `checked_out_at` is present (meaning they were checked out from a station).
 /// - `first_time`s are check-ins which are the person's first for a given event. (Label-only visitors are not included here.)
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `medicalNotes` (ro) -> PCO: `medical_notes`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `number` (ro) -> PCO: `number`
+/// - `securityCode` (ro) -> PCO: `security_code`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `checkedOutAt` (ro) -> PCO: `checked_out_at`
+/// - `emergencyContactName` (ro) -> PCO: `emergency_contact_name`
+/// - `emergencyContactPhoneNumber` (ro) -> PCO: `emergency_contact_phone_number`
 /// 
 /// Example:
 /// ```json

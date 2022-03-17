@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.889565
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.421035
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,24 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An object representing a blockout date, and an optional recurrence pattern
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `description` (ro) -> PCO: `description`
+/// - `groupIdentifier` (ro) -> PCO: `group_identifier`
+/// - `organizationName` (ro) -> PCO: `organization_name`
+/// - `reason` (rw) -> PCO: `reason`
+/// - `repeatFrequency` (rw) -> PCO: `repeat_frequency`
+/// - `repeatInterval` (rw) -> PCO: `repeat_interval`
+/// - `repeatPeriod` (rw) -> PCO: `repeat_period`
+/// - `settings` (ro) -> PCO: `settings`
+/// - `timeZone` (ro) -> PCO: `time_zone`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `repeatUntil` (rw) -> PCO: `repeat_until`
+/// - `startsAt` (rw) -> PCO: `starts_at`
+/// - `endsAt` (rw) -> PCO: `ends_at`
+/// - `isShare` (rw) -> PCO: `share`
 /// 
 /// Example:
 /// ```json

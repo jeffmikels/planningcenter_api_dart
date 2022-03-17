@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.425546
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.210989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,6 +22,20 @@ import '../../pco.dart';
 /// 
 /// May contain information such as who owns
 /// the event, visibility on Church Center and a public-facing summary.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `approvalStatus` (ro) -> PCO: `approval_status`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `details` (ro) -> PCO: `details`
+/// - `imageUrl` (ro) -> PCO: `image_url`
+/// - `name` (ro) -> PCO: `name`
+/// - `percentApproved` (ro) -> PCO: `percent_approved`
+/// - `percentRejected` (ro) -> PCO: `percent_rejected`
+/// - `registrationUrl` (ro) -> PCO: `registration_url`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `isVisibleInChurchCenter` (ro) -> PCO: `visible_in_church_center`
 /// 
 /// Example:
 /// ```json

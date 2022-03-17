@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.044427
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.807558
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,6 +23,15 @@ import '../../pco.dart';
 /// Label type (security label / name label) is expressed with the
 /// `prints_for` attribute. `prints_for="Person"` is a name label,
 /// `prints_for="Group"` is a security label.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `xml` (ro) -> PCO: `xml`
+/// - `printsFor` (ro) -> PCO: `prints_for`
+/// - `roll` (ro) -> PCO: `roll`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

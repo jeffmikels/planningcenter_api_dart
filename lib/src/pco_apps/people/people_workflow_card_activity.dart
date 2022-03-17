@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.358060
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.103194
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,20 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Workflow Card Activity is a record of an action performed on a card
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `comment` (ro) -> PCO: `comment`
+/// - `content` (ro) -> PCO: `content`
+/// - `formSubmissionUrl` (ro) -> PCO: `form_submission_url`
+/// - `personAvatarUrl` (ro) -> PCO: `person_avatar_url`
+/// - `personName` (ro) -> PCO: `person_name`
+/// - `reassignedToAvatarUrl` (ro) -> PCO: `reassigned_to_avatar_url`
+/// - `reassignedToName` (ro) -> PCO: `reassigned_to_name`
+/// - `subject` (ro) -> PCO: `subject`
+/// - `type` (ro) -> PCO: `type`
+/// - `isContentIsHtml` (ro) -> PCO: `content_is_html`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.954938
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.636989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A leader of a specific Team in a Service Type.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isSendResponsesForAccepts` (ro) -> PCO: `send_responses_for_accepts`
+/// - `isSendResponsesForDeclines` (ro) -> PCO: `send_responses_for_declines`
+/// - `isSendResponsesForBlockouts` (ro) -> PCO: `send_responses_for_blockouts`
 /// 
 /// Example:
 /// ```json

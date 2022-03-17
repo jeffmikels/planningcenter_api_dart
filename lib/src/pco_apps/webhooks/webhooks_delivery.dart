@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.570655
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.304749
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `status` (ro) -> PCO: `status`
+/// - `requestHeaders` (ro) -> PCO: `request_headers`
+/// - `requestBody` (ro) -> PCO: `request_body`
+/// - `responseHeaders` (ro) -> PCO: `response_headers`
+/// - `responseBody` (ro) -> PCO: `response_body`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `timing` (ro) -> PCO: `timing`
 /// 
 /// Example:
 /// ```json

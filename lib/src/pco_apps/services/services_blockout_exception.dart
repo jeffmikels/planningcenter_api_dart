@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.891622
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.425023
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A single exception for the dates generated from the blockout
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `date` (rw) -> PCO: `date`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

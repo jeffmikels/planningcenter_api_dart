@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.346592
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.094031
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A ServiceTime Resource
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `startTime` (rw) -> PCO: `start_time`
+/// - `day` (rw) -> PCO: `day`
+/// - `description` (rw) -> PCO: `description`
 /// 
 /// Example:
 /// ```json

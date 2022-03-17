@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.923306
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.493323
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,50 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person added to Planning Center Services.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `photoUrl` (ro) -> PCO: `photo_url`
+/// - `photoThumbnailUrl` (ro) -> PCO: `photo_thumbnail_url`
+/// - `preferredApp` (rw) -> PCO: `preferred_app`
+/// - `isAssignedToRehearsalTeam` (ro) -> PCO: `assigned_to_rehearsal_team`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `namePrefix` (ro) -> PCO: `name_prefix`
+/// - `nameSuffix` (ro) -> PCO: `name_suffix`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `facebookId` (ro) -> PCO: `facebook_id`
+/// - `legacyId` (ro) -> PCO: `legacy_id`
+/// - `fullName` (ro) -> PCO: `full_name`
+/// - `maxPermissions` (ro) -> PCO: `max_permissions`
+/// - `permissions` (rw) -> PCO: `permissions`
+/// - `status` (ro) -> PCO: `status`
+/// - `anniversary` (ro) -> PCO: `anniversary`
+/// - `birthdate` (ro) -> PCO: `birthdate`
+/// - `givenName` (ro) -> PCO: `given_name`
+/// - `middleName` (ro) -> PCO: `middle_name`
+/// - `nickname` (ro) -> PCO: `nickname`
+/// - `isAccessMediaAttachments` (rw) -> PCO: `access_media_attachments`
+/// - `isAccessPlanAttachments` (rw) -> PCO: `access_plan_attachments`
+/// - `isAccessSongAttachments` (rw) -> PCO: `access_song_attachments`
+/// - `isArchived` (ro) -> PCO: `archived`
+/// - `isSiteAdministrator` (ro) -> PCO: `site_administrator`
+/// - `loggedInAt` (ro) -> PCO: `logged_in_at`
+/// - `notes` (ro) -> PCO: `notes`
+/// - `isPassedBackgroundCheck` (ro) -> PCO: `passed_background_check`
+/// - `icalCode` (ro) -> PCO: `ical_code`
+/// - `isPraiseChartsEnabled` (ro) -> PCO: `praise_charts_enabled`
+/// - `meTab` (ro) -> PCO: `me_tab`
+/// - `plansTab` (ro) -> PCO: `plans_tab`
+/// - `songsTab` (ro) -> PCO: `songs_tab`
+/// - `mediaTab` (ro) -> PCO: `media_tab`
+/// - `peopleTab` (ro) -> PCO: `people_tab`
+/// - `isCanEditAllPeople` (ro) -> PCO: `can_edit_all_people`
+/// - `isCanViewAllPeople` (ro) -> PCO: `can_view_all_people`
+/// - `onboardings` (rw) -> PCO: `onboardings`
+/// - `currentFolderId` (wo) -> PCO: `current_folder_id`
 /// 
 /// Example:
 /// ```json

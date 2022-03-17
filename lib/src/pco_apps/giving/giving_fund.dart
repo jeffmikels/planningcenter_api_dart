@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.490029
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.263729
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,19 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `ledgerCode` (rw) -> PCO: `ledger_code`
+/// - `description` (rw) -> PCO: `description`
+/// - `visibility` (rw) -> PCO: `visibility`
+/// - `colorIdentifier` (rw) -> PCO: `color_identifier`
+/// - `isDefault` (ro) -> PCO: `default`
+/// - `color` (ro) -> PCO: `color`
+/// - `isDeletable` (ro) -> PCO: `deletable`
 /// 
 /// Example:
 /// ```json

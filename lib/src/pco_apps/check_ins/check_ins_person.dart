@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.059834
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.821989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,6 +23,33 @@ import '../../pco.dart';
 /// _Usually_, a person who checked in will be present as a `Person`. In some cases, they may not be present:
 /// - The person was manually deleted from the admin interface
 /// - The check-in was created as a "Visitor - Label Only" (which doesn't create a corresponding person record)
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `addresses` (ro) -> PCO: `addresses`
+/// - `emailAddresses` (ro) -> PCO: `email_addresses`
+/// - `phoneNumbers` (ro) -> PCO: `phone_numbers`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
+/// - `namePrefix` (ro) -> PCO: `name_prefix`
+/// - `firstName` (ro) -> PCO: `first_name`
+/// - `middleName` (ro) -> PCO: `middle_name`
+/// - `lastName` (ro) -> PCO: `last_name`
+/// - `nameSuffix` (ro) -> PCO: `name_suffix`
+/// - `birthdate` (ro) -> PCO: `birthdate`
+/// - `grade` (ro) -> PCO: `grade`
+/// - `gender` (ro) -> PCO: `gender`
+/// - `medicalNotes` (ro) -> PCO: `medical_notes`
+/// - `isChild` (ro) -> PCO: `child`
+/// - `permission` (ro) -> PCO: `permission`
+/// - `isHeadcounter` (ro) -> PCO: `headcounter`
+/// - `lastCheckedInAt` (ro) -> PCO: `last_checked_in_at`
+/// - `checkInCount` (ro) -> PCO: `check_in_count`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `demographicAvatarUrl` (ro) -> PCO: `demographic_avatar_url`
+/// - `name` (ro) -> PCO: `name`
+/// - `topPermission` (ro) -> PCO: `top_permission`
+/// - `searchName` (ro) -> PCO: `search_name`
 /// 
 /// Example:
 /// ```json

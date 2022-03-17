@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.052591
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.813801
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,14 @@ import '../../pco.dart';
 /// Description:
 /// Counts check-ins for a location for a given event time.
 /// This is useful for checking occupancy.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `regularCount` (ro) -> PCO: `regular_count`
+/// - `guestCount` (ro) -> PCO: `guest_count`
+/// - `volunteerCount` (ro) -> PCO: `volunteer_count`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

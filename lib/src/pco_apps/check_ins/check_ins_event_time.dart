@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.039278
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.802659
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,22 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A time that someone may check in. Times are copied from session to session.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `totalCount` (ro) -> PCO: `total_count`
+/// - `startsAt` (ro) -> PCO: `starts_at`
+/// - `showsAt` (ro) -> PCO: `shows_at`
+/// - `hidesAt` (ro) -> PCO: `hides_at`
+/// - `regularCount` (ro) -> PCO: `regular_count`
+/// - `guestCount` (ro) -> PCO: `guest_count`
+/// - `volunteerCount` (ro) -> PCO: `volunteer_count`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `name` (ro) -> PCO: `name`
+/// - `hour` (ro) -> PCO: `hour`
+/// - `minute` (ro) -> PCO: `minute`
+/// - `dayOfWeek` (ro) -> PCO: `day_of_week`
 /// 
 /// Example:
 /// ```json

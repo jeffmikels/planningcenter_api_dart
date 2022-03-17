@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.451016
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.222875
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,18 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A question to answer when requesting to book a room or resource.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `choices` (ro) -> PCO: `choices`
+/// - `description` (ro) -> PCO: `description`
+/// - `isMultipleSelect` (ro) -> PCO: `multiple_select`
+/// - `isOptional` (ro) -> PCO: `optional`
+/// - `position` (ro) -> PCO: `position`
+/// - `question` (ro) -> PCO: `question`
 /// 
 /// Example:
 /// ```json

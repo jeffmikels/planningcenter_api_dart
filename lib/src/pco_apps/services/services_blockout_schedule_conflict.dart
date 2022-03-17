@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.892483
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.427829
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,21 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `dates` (ro) -> PCO: `dates`
+/// - `organizationName` (ro) -> PCO: `organization_name`
+/// - `personAvatar` (ro) -> PCO: `person_avatar`
+/// - `personName` (ro) -> PCO: `person_name`
+/// - `positionDisplayTimes` (ro) -> PCO: `position_display_times`
+/// - `serviceTypeName` (ro) -> PCO: `service_type_name`
+/// - `shortDates` (ro) -> PCO: `short_dates`
+/// - `status` (ro) -> PCO: `status`
+/// - `teamName` (ro) -> PCO: `team_name`
+/// - `teamPositionName` (ro) -> PCO: `team_position_name`
+/// - `sortDate` (ro) -> PCO: `sort_date`
+/// - `isCanAcceptPartial` (ro) -> PCO: `can_accept_partial`
 /// 
 /// Example:
 /// ```json

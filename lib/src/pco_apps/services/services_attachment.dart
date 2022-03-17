@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.883205
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.396235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,33 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A file, whether it's stored on Planning Center or linked from another location.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `pageOrder` (rw) -> PCO: `page_order`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `filename` (rw) -> PCO: `filename`
+/// - `fileSize` (ro) -> PCO: `file_size`
+/// - `licensesPurchased` (ro) -> PCO: `licenses_purchased`
+/// - `licensesRemaining` (ro) -> PCO: `licenses_remaining`
+/// - `licensesUsed` (ro) -> PCO: `licenses_used`
+/// - `contentType` (ro) -> PCO: `content_type`
+/// - `displayName` (ro) -> PCO: `display_name`
+/// - `filetype` (ro) -> PCO: `filetype`
+/// - `linkedUrl` (ro) -> PCO: `linked_url`
+/// - `pcoType` (ro) -> PCO: `pco_type`
+/// - `remoteLink` (rw) -> PCO: `remote_link`
+/// - `thumbnailUrl` (ro) -> PCO: `thumbnail_url`
+/// - `url` (ro) -> PCO: `url`
+/// - `isAllowMp3Download` (ro) -> PCO: `allow_mp3_download`
+/// - `isWebStreamable` (ro) -> PCO: `web_streamable`
+/// - `isDownloadable` (ro) -> PCO: `downloadable`
+/// - `isTransposable` (ro) -> PCO: `transposable`
+/// - `isStreamable` (ro) -> PCO: `streamable`
+/// - `isHasPreview` (ro) -> PCO: `has_preview`
+/// - `fileUploadIdentifier` (rw) -> PCO: `file_upload_identifier`
+/// - `attachmentTypeIds` (wo) -> PCO: `attachment_type_ids`
 /// 
 /// Example:
 /// ```json

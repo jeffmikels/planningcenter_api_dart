@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.959861
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.650933
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Describes a zoom level for an attachment
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `aspectRatio` (rw) -> PCO: `aspect_ratio`
+/// - `zoomLevel` (rw) -> PCO: `zoom_level`
+/// - `xOffset` (rw) -> PCO: `x_offset`
+/// - `yOffset` (rw) -> PCO: `y_offset`
 /// 
 /// Example:
 /// ```json

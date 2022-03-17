@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.899766
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.442026
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A folder is a container used to organize multiple Service Types or other Folders.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (rw) -> PCO: `name`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `container` (ro) -> PCO: `container`
+/// - `parentId` (wo) -> PCO: `parent_id`
+/// - `campusId` (wo) -> PCO: `campus_id`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.938100
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.585378
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person already scheduled to a SignupSheet
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `fullName` (ro) -> PCO: `full_name`
+/// - `status` (ro) -> PCO: `status`
+/// - `thumbnail` (ro) -> PCO: `thumbnail`
 /// 
 /// Example:
 /// ```json

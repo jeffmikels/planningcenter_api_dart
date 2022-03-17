@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.501248
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.272888
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `amountCents` (ro) -> PCO: `amount_cents`
+/// - `amountCurrency` (ro) -> PCO: `amount_currency`
 /// 
 /// Example:
 /// ```json

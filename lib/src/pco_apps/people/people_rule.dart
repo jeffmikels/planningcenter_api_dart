@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.343247
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.088016
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A rule belongs to a List and groups conditions together.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `subset` (ro) -> PCO: `subset`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

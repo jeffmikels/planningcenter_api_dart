@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.282805
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.001926
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A household membership is the linking record between a household and a person.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `personName` (ro) -> PCO: `person_name`
+/// - `isPending` (rw) -> PCO: `pending`
+/// - `personId` (wo) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

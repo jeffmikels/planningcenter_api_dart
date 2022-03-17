@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.863030
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.357371
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,38 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Each arrangement belongs to a song and is a different version of that song.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `bpm` (rw) -> PCO: `bpm`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `isrc` (rw) -> PCO: `isrc`
+/// - `isHasChords` (ro) -> PCO: `has_chords`
+/// - `length` (rw) -> PCO: `length`
+/// - `meter` (rw) -> PCO: `meter`
+/// - `name` (rw) -> PCO: `name`
+/// - `notes` (rw) -> PCO: `notes`
+/// - `printMargin` (rw) -> PCO: `print_margin`
+/// - `printOrientation` (rw) -> PCO: `print_orientation`
+/// - `printPageSize` (rw) -> PCO: `print_page_size`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `chordChart` (rw) -> PCO: `chord_chart`
+/// - `chordChartFont` (rw) -> PCO: `chord_chart_font`
+/// - `chordChartKey` (rw) -> PCO: `chord_chart_key`
+/// - `chordChartColumns` (rw) -> PCO: `chord_chart_columns`
+/// - `chordChartFontSize` (rw) -> PCO: `chord_chart_font_size`
+/// - `isHasChordChart` (ro) -> PCO: `has_chord_chart`
+/// - `isLyricsEnabled` (rw) -> PCO: `lyrics_enabled`
+/// - `isNumberChartEnabled` (rw) -> PCO: `number_chart_enabled`
+/// - `isNumeralChartEnabled` (rw) -> PCO: `numeral_chart_enabled`
+/// - `sequence` (rw) -> PCO: `sequence`
+/// - `sequenceShort` (ro) -> PCO: `sequence_short`
+/// - `sequenceFull` (ro) -> PCO: `sequence_full`
+/// - `chordChartChordColor` (rw) -> PCO: `chord_chart_chord_color`
+/// - `archivedAt` (ro) -> PCO: `archived_at`
+/// - `lyrics` (ro) -> PCO: `lyrics`
+/// - `mtid` (rw) -> PCO: `mtid`
+/// - `rehearsalMixId` (rw) -> PCO: `rehearsal_mix_id`
 /// 
 /// Example:
 /// ```json

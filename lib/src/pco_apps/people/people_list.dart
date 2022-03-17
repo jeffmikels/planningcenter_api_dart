@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.284922
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.004278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,29 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A list is a powerful tool for finding and grouping people together using any criteria imaginable.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `isAutoRefresh` (ro) -> PCO: `auto_refresh`
+/// - `status` (ro) -> PCO: `status`
+/// - `isHasInactiveResults` (ro) -> PCO: `has_inactive_results`
+/// - `isIncludeInactive` (ro) -> PCO: `include_inactive`
+/// - `returns` (ro) -> PCO: `returns`
+/// - `isReturnOriginalIfNone` (ro) -> PCO: `return_original_if_none`
+/// - `subset` (ro) -> PCO: `subset`
+/// - `isAutomationsActive` (ro) -> PCO: `automations_active`
+/// - `automationsCount` (ro) -> PCO: `automations_count`
+/// - `description` (ro) -> PCO: `description`
+/// - `isInvalid` (ro) -> PCO: `invalid`
+/// - `nameOrDescription` (ro) -> PCO: `name_or_description`
+/// - `isRecentlyViewed` (ro) -> PCO: `recently_viewed`
+/// - `refreshedAt` (ro) -> PCO: `refreshed_at`
+/// - `isStarred` (ro) -> PCO: `starred`
+/// - `totalPeople` (ro) -> PCO: `total_people`
+/// - `batchCompletedAt` (ro) -> PCO: `batch_completed_at`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.517735
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.287172
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,11 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isAttended` (ro) -> PCO: `attended`
+/// - `role` (ro) -> PCO: `role`
 /// 
 /// Example:
 /// ```json

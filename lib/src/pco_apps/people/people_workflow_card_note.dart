@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.360435
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.104103
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,12 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// Workflow Note is a note that has been made on a Workflow Card
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `note` (rw) -> PCO: `note`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `noteCategoryId` (wo) -> PCO: `note_category_id`
 /// 
 /// Example:
 /// ```json

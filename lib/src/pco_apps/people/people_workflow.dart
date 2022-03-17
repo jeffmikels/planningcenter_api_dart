@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.352480
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.099185
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,22 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Workflow
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (rw) -> PCO: `name`
+/// - `myReadyCardCount` (ro) -> PCO: `my_ready_card_count`
+/// - `totalReadyCardCount` (ro) -> PCO: `total_ready_card_count`
+/// - `completedCardCount` (ro) -> PCO: `completed_card_count`
+/// - `totalCardsCount` (ro) -> PCO: `total_cards_count`
+/// - `totalReadyAndSnoozedCardCount` (ro) -> PCO: `total_ready_and_snoozed_card_count`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `deletedAt` (ro) -> PCO: `deleted_at`
+/// - `campusId` (rw) -> PCO: `campus_id`
+/// - `workflowCategoryId` (rw) -> PCO: `workflow_category_id`
+/// - `myOverdueCardCount` (ro) -> PCO: `my_overdue_card_count`
+/// - `myDueSoonCardCount` (ro) -> PCO: `my_due_soon_card_count`
 /// 
 /// Example:
 /// ```json

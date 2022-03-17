@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.493613
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.266783
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,17 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `methodType` (ro) -> PCO: `method_type`
+/// - `methodSubtype` (ro) -> PCO: `method_subtype`
+/// - `last4` (ro) -> PCO: `last4`
+/// - `brand` (ro) -> PCO: `brand`
+/// - `expiration` (ro) -> PCO: `expiration`
+/// - `isVerified` (ro) -> PCO: `verified`
 /// 
 /// Example:
 /// ```json

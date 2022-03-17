@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.056419
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.816062
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,6 +21,13 @@ import '../../pco.dart';
 /// An option which an attendee may select when checking in.
 /// 
 /// Options may have extra labels associated with them, denoted by `label` and `quantity`.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `body` (ro) -> PCO: `body`
+/// - `quantity` (ro) -> PCO: `quantity`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
 /// 
 /// Example:
 /// ```json

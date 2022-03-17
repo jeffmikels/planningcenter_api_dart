@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.319083
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.037594
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A PeopleImportHistory is a record of change that occurred when the parent PeopleImport was completed.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `conflictingChanges` (ro) -> PCO: `conflicting_changes`
+/// - `kind` (ro) -> PCO: `kind`
 /// 
 /// Example:
 /// ```json

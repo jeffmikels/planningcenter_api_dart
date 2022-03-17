@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.434664
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.215093
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A feed belonging to an organization.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `defaultChurchCenterVisibility` (rw) -> PCO: `default_church_center_visibility`
+/// - `feedType` (rw) -> PCO: `feed_type`
+/// - `name` (ro) -> PCO: `name`
+/// - `importedAt` (ro) -> PCO: `imported_at`
+/// - `isCanDelete` (ro) -> PCO: `can_delete`
+/// - `eventOwnerId` (wo) -> PCO: `event_owner_id`
 /// 
 /// Example:
 /// ```json

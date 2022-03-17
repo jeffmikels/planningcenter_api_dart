@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.945667
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.603347
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A SignupSheetMetadata Resource
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `conflicts` (ro) -> PCO: `conflicts`
+/// - `timeType` (ro) -> PCO: `time_type`
+/// - `timeName` (ro) -> PCO: `time_name`
+/// - `startsAt` (ro) -> PCO: `starts_at`
 /// 
 /// Example:
 /// ```json

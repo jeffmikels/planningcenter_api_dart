@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.436517
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.216152
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,6 +20,13 @@ import '../../pco.dart';
 /// Description:
 /// An administrative structure, usually representing a single church.
 /// Contains date/time formatting and time zone preferences.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `name` (ro) -> PCO: `name`
+/// - `timeZone` (ro) -> PCO: `time_zone`
+/// - `isTwentyFourHourTime` (ro) -> PCO: `twenty_four_hour_time`
+/// - `dateFormat` (ro) -> PCO: `date_format`
 /// 
 /// Example:
 /// ```json

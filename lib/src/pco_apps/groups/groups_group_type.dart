@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.550895
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.290813
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,16 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `isChurchCenterVisible` (ro) -> PCO: `church_center_visible`
+/// - `isChurchCenterMapVisible` (ro) -> PCO: `church_center_map_visible`
+/// - `color` (ro) -> PCO: `color`
+/// - `defaultGroupSettings` (ro) -> PCO: `default_group_settings`
+/// - `description` (ro) -> PCO: `description`
+/// - `name` (ro) -> PCO: `name`
+/// - `position` (ro) -> PCO: `position`
 /// 
 /// Example:
 /// ```json

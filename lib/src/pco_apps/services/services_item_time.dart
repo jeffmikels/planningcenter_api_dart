@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.910373
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.460885
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,14 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// 
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `liveStartAt` (ro) -> PCO: `live_start_at`
+/// - `liveEndAt` (ro) -> PCO: `live_end_at`
+/// - `isExclude` (ro) -> PCO: `exclude`
+/// - `length` (ro) -> PCO: `length`
+/// - `lengthOffset` (ro) -> PCO: `length_offset`
 /// 
 /// Example:
 /// ```json

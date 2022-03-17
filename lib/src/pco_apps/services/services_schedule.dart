@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.937354
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.584126
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,27 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// An instance of a PlanPerson with included data for displaying in a user's schedule
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `sortDate` (ro) -> PCO: `sort_date`
+/// - `dates` (ro) -> PCO: `dates`
+/// - `declineReason` (ro) -> PCO: `decline_reason`
+/// - `organizationName` (ro) -> PCO: `organization_name`
+/// - `organizationTimeZone` (ro) -> PCO: `organization_time_zone`
+/// - `organizationTwentyFourHourTime` (ro) -> PCO: `organization_twenty_four_hour_time`
+/// - `personName` (ro) -> PCO: `person_name`
+/// - `positionDisplayTimes` (ro) -> PCO: `position_display_times`
+/// - `respondsToName` (ro) -> PCO: `responds_to_name`
+/// - `serviceTypeName` (ro) -> PCO: `service_type_name`
+/// - `shortDates` (ro) -> PCO: `short_dates`
+/// - `status` (ro) -> PCO: `status`
+/// - `teamName` (ro) -> PCO: `team_name`
+/// - `teamPositionName` (ro) -> PCO: `team_position_name`
+/// - `isCanAcceptPartial` (ro) -> PCO: `can_accept_partial`
+/// - `isCanAcceptPartialOneTime` (ro) -> PCO: `can_accept_partial_one_time`
+/// - `isPlanVisible` (ro) -> PCO: `plan_visible`
+/// - `isPlanVisibleToMe` (ro) -> PCO: `plan_visible_to_me`
 /// 
 /// Example:
 /// ```json

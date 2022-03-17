@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.355110
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.101102
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,22 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Card
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `snoozeUntil` (ro) -> PCO: `snooze_until`
+/// - `isOverdue` (ro) -> PCO: `overdue`
+/// - `stage` (ro) -> PCO: `stage`
+/// - `calculatedDueAtInDaysAgo` (ro) -> PCO: `calculated_due_at_in_days_ago`
+/// - `isStickyAssignment` (rw) -> PCO: `sticky_assignment`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `completedAt` (ro) -> PCO: `completed_at`
+/// - `flaggedForNotificationAt` (ro) -> PCO: `flagged_for_notification_at`
+/// - `removedAt` (ro) -> PCO: `removed_at`
+/// - `movedToStepAt` (ro) -> PCO: `moved_to_step_at`
+/// - `assigneeId` (wo) -> PCO: `assignee_id`
+/// - `personId` (wo) -> PCO: `person_id`
 /// 
 /// Example:
 /// ```json

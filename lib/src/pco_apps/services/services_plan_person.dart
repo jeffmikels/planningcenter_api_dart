@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:47.930815
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.511766
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,28 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A person scheduled within a specific plan.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `status` (rw) -> PCO: `status`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `notes` (rw) -> PCO: `notes`
+/// - `declineReason` (rw) -> PCO: `decline_reason`
+/// - `name` (ro) -> PCO: `name`
+/// - `notificationChangedByName` (ro) -> PCO: `notification_changed_by_name`
+/// - `notificationSenderName` (ro) -> PCO: `notification_sender_name`
+/// - `teamPositionName` (rw) -> PCO: `team_position_name`
+/// - `photoThumbnail` (ro) -> PCO: `photo_thumbnail`
+/// - `statusUpdatedAt` (ro) -> PCO: `status_updated_at`
+/// - `notificationChangedAt` (ro) -> PCO: `notification_changed_at`
+/// - `notificationPreparedAt` (rw) -> PCO: `notification_prepared_at`
+/// - `notificationReadAt` (ro) -> PCO: `notification_read_at`
+/// - `notificationSentAt` (ro) -> PCO: `notification_sent_at`
+/// - `isPrepareNotification` (rw) -> PCO: `prepare_notification`
+/// - `isCanAcceptPartial` (ro) -> PCO: `can_accept_partial`
+/// - `personId` (wo) -> PCO: `person_id`
+/// - `respondsToId` (wo) -> PCO: `responds_to_id`
 /// 
 /// Example:
 /// ```json

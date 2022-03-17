@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.315746
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.034569
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,15 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A PeopleImport is a record of an ongoing or previous import from a CSV file.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `attribs` (ro) -> PCO: `attribs`
+/// - `status` (ro) -> PCO: `status`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `processedAt` (ro) -> PCO: `processed_at`
+/// - `undoneAt` (ro) -> PCO: `undone_at`
 /// 
 /// Example:
 /// ```json

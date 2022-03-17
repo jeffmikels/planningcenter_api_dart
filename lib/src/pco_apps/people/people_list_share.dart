@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.289021
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:22.008263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,13 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A list share indicates who has access to edit a list.
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `permission` (ro) -> PCO: `permission`
+/// - `group` (ro) -> PCO: `group`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `name` (ro) -> PCO: `name`
 /// 
 /// Example:
 /// ```json

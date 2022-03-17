@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-07T15:35:48.264158
+/// AUTO-GENERATED FILE CREATED ON 2022-03-17T13:08:21.982789
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,6 +19,29 @@ import '../../pco.dart';
 /// 
 /// Description:
 /// A Campus is a location belonging to an Organization
+/// 
+/// Attributes:
+/// - `id` (ro) -> PCO: `id`
+/// - `latitude` (rw) -> PCO: `latitude`
+/// - `longitude` (rw) -> PCO: `longitude`
+/// - `description` (rw) -> PCO: `description`
+/// - `street` (rw) -> PCO: `street`
+/// - `city` (rw) -> PCO: `city`
+/// - `state` (rw) -> PCO: `state`
+/// - `zip` (rw) -> PCO: `zip`
+/// - `country` (rw) -> PCO: `country`
+/// - `phoneNumber` (rw) -> PCO: `phone_number`
+/// - `website` (rw) -> PCO: `website`
+/// - `isTwentyFourHourTime` (rw) -> PCO: `twenty_four_hour_time`
+/// - `dateFormat` (rw) -> PCO: `date_format`
+/// - `isChurchCenterEnabled` (rw) -> PCO: `church_center_enabled`
+/// - `contactEmailAddress` (rw) -> PCO: `contact_email_address`
+/// - `timeZone` (rw) -> PCO: `time_zone`
+/// - `isGeolocationSetManually` (rw) -> PCO: `geolocation_set_manually`
+/// - `name` (rw) -> PCO: `name`
+/// - `createdAt` (ro) -> PCO: `created_at`
+/// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `avatarUrl` (ro) -> PCO: `avatar_url`
 /// 
 /// Example:
 /// ```json

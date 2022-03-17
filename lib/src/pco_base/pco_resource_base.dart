@@ -251,8 +251,10 @@ class PcoCollection<T extends PcoResource> {
   PlanningCenterApiMeta meta;
   List<T> data;
 
-  bool get isError => response.isError;
   bool get hasMore => meta.nextOffset != null;
+
+  bool get isError => response.isError;
+  PlanningCenterApiError? get error => isError ? (response as PlanningCenterApiError) : null;
 
   PcoCollection(this.data, this.meta, this.response, this.query, this.endpoint, this.apiVersion);
 

@@ -1,3 +1,12 @@
+## 0.6.2
+
+-   Added an `error` getter to both `PcoCollection` and to `PlanningCenterApiResponse` classes to more easily access the error values.
+
+```dart
+PcoCollection items = await plan.getItems();
+if (items.isError) print(items.error!.errorMessage);
+```
+
 ## 0.6.1
 
 -   Improved documentation by adding class attributes to the docstrings.

@@ -501,6 +501,7 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 
 class PlanningCenterApiResponse {
   bool get isError => this is PlanningCenterApiError;
+  PlanningCenterApiError? get error => isError ? (this as PlanningCenterApiError) : null;
 
   // request items
   final String application;

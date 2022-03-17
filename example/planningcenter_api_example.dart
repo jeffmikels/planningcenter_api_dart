@@ -100,6 +100,8 @@ void main() async {
         }
       }
     }
+  } else {
+    print(collection.error!.errorMessage);
   }
 
   // to call the API directly, you can do this, but it will not return

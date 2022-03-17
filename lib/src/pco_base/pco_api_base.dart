@@ -374,14 +374,39 @@ class PlanningCenterApiQuery {
   /// prefix with a hyphen to reverse the order
   String? order;
 
-  /// [where] should be a map of query parameters
-  /// usually supports id and the same items as the order
+  /// [where] should be a map of query parameters.
+  ///
+  /// The API usually supports `id` and the same items as `order`
+  ///
+  /// The API supports url params like this:
+  /// - `?where[key]=value`
+  /// - `?where[key][gt|lt]=value`
+  ///
+  /// For our purposes, use a comparison suffix (=, <, >) for your keys.
+  ///
+  /// - `{ 'created_at<': '2022-01-01' }` -> `?where[created_at][lt]=2022-01-01`  (finds items before that date)
+  /// - `{ 'created_at>': '2022-01-01' }` -> `?where[created_at][gt]=2022-01-01`  (finds items after that date)
+  /// - `{ 'created_at=': '2022-01-01' }` -> `?where[created_at]=2022-01-01`      (finds items on that date)
+  /// - `{ 'created_at':  '2022-01-01' }` -> same as using `=`
   Map<String, String> where;
 
-  /// [filter] is something like future, past, after, before, no_dates
+  /// [filter] should be something like `future`, `past`, `after`, `before`, `no_dates`
+  /// Classes and methods that can accept a `filter` in their API calls will specify
+  /// those filters in the documentation for that specific class or method.
+  ///
+  /// Note: some filters require additional data that can be supplied with
+  /// the [extraParams] property.
   List<String> filter;
 
-  /// [include] automatically includes related items
+  /// [extraParams] allows you to specify arbitrary url parameters to the API.
+  /// This is important because some filters require additional information
+  /// (e.g. the `after` filter also requires an `after` parameter with a date string)
+  Map<String, String> extraParams;
+
+  /// [include] specifies which related items should be included.
+  /// Each class has a static variable called `canInclude` that lists
+  /// what can be included here, and each class also describes the possible
+  /// includes in the class documentation.
   List<String> include;
 
   /// Pagination defaults to 25, maximum allowed seems to be 100
@@ -395,15 +420,8 @@ class PlanningCenterApiQuery {
     this.pageOffset = 0,
     this.order,
     this.where = const {},
+    this.extraParams = const {},
   });
-
-  PlanningCenterApiQuery.fromJson(Map<String, dynamic> data)
-      : filter = data['filter'] ?? [],
-        include = data['include'] ?? [],
-        perPage = data['per_page'] ?? 25,
-        pageOffset = data['offset'] ?? 0,
-        order = data['order'],
-        where = data['where'] ?? {};
 
   Map<String, dynamic> toJson() => asMap;
 
@@ -413,18 +431,49 @@ class PlanningCenterApiQuery {
       'offset': pageOffset,
     };
     if (order != null) retval['order'] = order;
-    where.forEach((key, value) {
-      retval['where[$key]'] = value;
-    });
+
     if (include.isNotEmpty) retval['include'] = include.join(',');
     if (filter.isNotEmpty) retval['filter'] = filter.join(',');
+
+    // unlike the API, we handle where keys using a comparison suffix
+    // where keys will be transformed like this
+    where.forEach((key, value) {
+      // sanity check
+      if (key.isEmpty) return;
+      var suffix = '';
+      if (key.contains(RegExp(r'[=<>]$'))) {
+        var endchar = key.substring(key.length - 1);
+        key = key.substring(0, key.length - 1);
+        if (endchar != '=') {
+          suffix = endchar == '<' ? '[lt]' : '[gt]';
+        }
+      }
+      retval['where[$key]$suffix'] = value;
+    });
+
+    // if the user specified extra params, we add them now
+    if (extraParams.isNotEmpty) {
+      extraParams.forEach((key, value) {
+        retval[key] = value;
+      });
+    }
 
     return retval;
   }
 
   /// returns a copy of this query as a new object
+  /// this method works because Strings and ints are
+  /// always copied by value
   PlanningCenterApiQuery copy() {
-    return PlanningCenterApiQuery.fromJson(asMap);
+    return PlanningCenterApiQuery(
+      filter: [...filter],
+      include: [...include],
+      perPage: perPage,
+      pageOffset: pageOffset,
+      order: order,
+      where: {...where},
+      extraParams: {...extraParams},
+    );
   }
 
   /// returns a new query only modifying the offset value

@@ -1,3 +1,7 @@
+## 0.7.2
+
+-   Updated the `description` in `pubspec.yaml`
+
 ## 0.7.1
 
 -   Improved documentation for the `PlanningCenterApiQuery` class and all the classes that use it.

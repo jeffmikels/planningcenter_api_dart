@@ -373,18 +373,24 @@ class PlanningCenterApiQuery {
   /// [order] can usually be one of created_at, updated_at, title, sort_date, but may be others.
   ///
   /// Each class has a static field named `canOrderBy` that indicates which fields may be used.
+  /// Order fields are also described in the class documentation.
+  ///
   /// Prefix with a hyphen (`-`) to reverse the sort order.
   String? order;
 
   /// [where] should be a map of query parameters.
   ///
-  /// Each class has a static field named `canQuery` with the list of fields that can be used.
+  /// Each class has a static field named `canQuery` with the list of fields that can be queried.
+  /// Queryable fields are also described in the class documentation.
   ///
-  /// The API supports url params like this:
+  /// The PlanningCenter API supports url params like this:
   /// - `?where[field_name]=value`
   /// - `?where[field_name][gt|lt]=value`
   ///
-  /// However, for this library use a comparison suffix (=, <, >) appended to field_name for the key.
+  /// However, this library uses a different format for the where component of a query.
+  /// Use the queryable field name as a key and append a comparison suffix (`=`, `<`, `>`).
+  ///
+  /// The [where] map will be converted to url parameters like the following:
   ///
   /// - `{ 'created_at<': '2022-01-01' }` -> `?where[created_at][lt]=2022-01-01`  (finds items before that date)
   /// - `{ 'created_at>': '2022-01-01' }` -> `?where[created_at][gt]=2022-01-01`  (finds items after that date)

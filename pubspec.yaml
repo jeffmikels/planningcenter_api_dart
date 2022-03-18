@@ -1,6 +1,20 @@
 name: planningcenter_api
-description: Supports nearly 100% of the Planning Center public API.
-version: 0.7.1
+description: |
+  Planning Center is an online platform for church management.
+  It provides multiple apps for things like check-ins, service planning,
+  volunteer management, CRM, giving and more. Plus, they provide a robust
+  API to access nearly every aspect of their system remotely.
+
+  This package gives you full coverage of the Planning Center API as described here:
+
+  `https://developer.planning.center/docs/#/overview`
+
+  It is in large part programmatically generated from the PlanningCenter API documentation
+  as described here:
+
+  `https://api.planningcenteronline.com/[APPLICATION_NAME]/v2/documentation`
+
+version: 0.7.2
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 

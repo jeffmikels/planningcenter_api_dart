@@ -255,10 +255,12 @@ class PlanningCenter {
     String jsonString = '';
     if (data != null && verb != 'get') {
       headers['Content-Type'] = 'application/json';
-      if (data is! String) {
-        jsonString = json.encode(data);
-      } else {
+      if (data is String) {
         jsonString = data;
+      } else if (data is PcoData) {
+        jsonString = json.encode(data.asMapWithData);
+      } else {
+        jsonString = json.encode(data);
       }
     }
 
@@ -564,6 +566,7 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 class PlanningCenterApiResponse {
   bool get isError => this is PlanningCenterApiError;
   PlanningCenterApiError? get error => isError ? (this as PlanningCenterApiError) : null;
+  String get errorMessage => error?.errorMessage ?? '';
 
   // request items
   final String application;
@@ -670,4 +673,19 @@ class PlanningCenterApiResponse {
       included,
     );
   }
+}
+
+/// simple wrapper for JSON:API data that doesn't make sense as a full PcoResource
+class PcoData {
+  String type = '';
+  Map<String, dynamic> attributes = {};
+
+  Map<String, dynamic> get asMap => {'type': type, 'attributes': attributes};
+  Map<String, dynamic> get asMapWithData => {'data': asMap};
+  Map<String, dynamic> toJson() => asMap;
+
+  dynamic get(String key) => attributes[key];
+  void set(String key, dynamic val) => attributes[key] = val;
+
+  PcoData(this.type, {this.attributes = const {}});
 }

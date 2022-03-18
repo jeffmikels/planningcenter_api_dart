@@ -17,15 +17,14 @@ abstract class PcoResource {
   static const String kPcoApplication = '';
   static const String kTypeString = '';
   static const String kApiVersion = '';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = '';
   static const String kDefaultPathTemplate = '';
+  static const String kCreatePathTemplate = '';
 
   /// child classes can override these getters which will allow
   /// methods in this class to see static variables from child classes
   String get apiVersion => kApiVersion;
   String get defaultPathTemplate => kDefaultPathTemplate;
-  String get shortestEdgePathTemplate => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   // field mapping constants
   static const kCreatedAt = 'created_at';
@@ -254,7 +253,8 @@ class PcoCollection<T extends PcoResource> {
   bool get hasMore => meta.nextOffset != null;
 
   bool get isError => response.isError;
-  PlanningCenterApiError? get error => isError ? (response as PlanningCenterApiError) : null;
+  PlanningCenterApiError? get error => response.error;
+  String get errorMessage => error?.errorMessage ?? '';
 
   PcoCollection(this.data, this.meta, this.response, this.query, this.endpoint, this.apiVersion);
 

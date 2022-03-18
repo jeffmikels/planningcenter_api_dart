@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.004817
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.848446
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Platform Notification is a suite-wide notification that shows at the top of each application's screen until dismissed by the user.
@@ -70,9 +71,8 @@ class PcoPeoplePlatformNotification extends PcoResource {
   static const String kTypeString = 'PlatformNotification';
   static const String kTypeId = 'platform_notification';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'platformnotification-person-platform_notifications';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -90,7 +90,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -125,19 +125,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get html => attributes[kHtml] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get html => attributes[kHtml] ?? '';    
 
   // Class Constructors
   PcoPeoplePlatformNotification._() : super(kPcoApplication, kTypeString);

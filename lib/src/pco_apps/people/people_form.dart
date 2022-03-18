@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.945705
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.767089
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A custom form for people to fill out.
@@ -111,9 +112,8 @@ class PcoPeopleForm extends PcoResource {
   static const String kTypeString = 'Form';
   static const String kTypeId = 'form';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'form-organization-forms';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `campus`: include associated campus 
@@ -137,7 +137,7 @@ class PcoPeopleForm extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -182,7 +182,6 @@ class PcoPeopleForm extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get description => attributes[kDescription] ?? '';
   bool get isActive => attributes[kActive] == true;
@@ -191,18 +190,7 @@ class PcoPeopleForm extends PcoResource {
   int get submissionCount => attributes[kSubmissionCount] ?? 0;
   String get publicUrl => attributes[kPublicUrl] ?? '';
   bool get isRecentlyViewed => attributes[kRecentlyViewed] == true;
-  bool get isArchived => attributes[kArchived] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isArchived => attributes[kArchived] == true;    
 
   // Class Constructors
   PcoPeopleForm._() : super(kPcoApplication, kTypeString);

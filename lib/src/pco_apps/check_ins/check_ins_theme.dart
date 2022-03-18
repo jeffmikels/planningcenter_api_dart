@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.713359
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.598766
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/themes
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A custom style which may be applied to stations.
@@ -87,9 +88,8 @@ class PcoCheckInsTheme extends PcoResource {
   static const String kTypeString = 'Theme';
   static const String kTypeId = 'theme';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'theme-organization-themes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/themes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/themes';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoCheckInsTheme extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -150,25 +150,13 @@ class PcoCheckInsTheme extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get imageThumbnail => attributes[kImageThumbnail] ?? '';
   String get name => attributes[kName] ?? '';
   String get color => attributes[kColor] ?? '';
   String get textColor => attributes[kTextColor] ?? '';
   String get image => attributes[kImage] ?? '';
   String get backgroundColor => attributes[kBackgroundColor] ?? '';
-  String get mode => attributes[kMode] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get mode => attributes[kMode] ?? '';    
 
   // Class Constructors
   PcoCheckInsTheme._() : super(kPcoApplication, kTypeString);

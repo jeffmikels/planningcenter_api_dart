@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.981472
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.801229
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_categories/1/shares
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/note_categories/1/shares
 /// 
 /// ## Description
 /// A note category share defines who can view notes in a category.
@@ -85,9 +86,8 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   static const String kTypeString = 'NoteCategoryShare';
   static const String kTypeId = 'note_category_share';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'notecategoryshare-notecategory-shares';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -126,10 +126,10 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['group','person_id'];
+  List<String> get createAllowed => ['group', 'person_id'];
 
   @override
-  List<String> get updateAllowed => ['group','person_id'];
+  List<String> get updateAllowed => ['group', 'person_id'];
 
   @override
   bool get canCreate => true;
@@ -141,24 +141,18 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get group => attributes[kGroup] ?? '';
-  String get personId => attributes[kPersonId] ?? '';
+  String get personId => attributes[kPersonId] ?? '';  
   
-
   // setters for object attributes
-
   
   /// Possible values: `No Access`, `Viewer`, `Editor`, or `Manager`
-  set group(String s) => attributes[kGroup] = s;
-  set personId(String s) => attributes[kPersonId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set group(String? x) => (x == null) ? attributes.remove(kGroup) : attributes[kGroup] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;  
 
   // Class Constructors
   PcoPeopleNoteCategoryShare._() : super(kPcoApplication, kTypeString);
@@ -169,9 +163,12 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNoteCategoryShare(String noteCategoryId) {
-    return PcoPeopleNoteCategoryShare._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
+  factory PcoPeopleNoteCategoryShare(String noteCategoryId, { String? group, String? personId }) {
+    var obj = PcoPeopleNoteCategoryShare._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
+    if (group != null) obj.group = group;
+    if (personId != null) obj.personId = personId;
+    return obj;
   }
 
 

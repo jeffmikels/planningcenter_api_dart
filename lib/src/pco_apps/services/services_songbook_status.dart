@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.569717
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.416548
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Used to get the status of an in progress songbook action. When FINISHED, will contain the url of the songbook.
@@ -76,9 +77,8 @@ class PcoServicesSongbookStatu extends PcoResource {
   static const String kTypeString = 'SongbookStatus';
   static const String kTypeId = 'songbook_status';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -96,7 +96,7 @@ class PcoServicesSongbookStatu extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -134,22 +134,10 @@ class PcoServicesSongbookStatu extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get status => attributes[kStatus] ?? '';
   String get statusCode => attributes[kStatusCode] ?? '';
   String get statusToken => attributes[kStatusToken] ?? '';
-  String get url => attributes[kUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get url => attributes[kUrl] ?? '';    
 
   // Class Constructors
   PcoServicesSongbookStatu._() : super(kPcoApplication, kTypeString);

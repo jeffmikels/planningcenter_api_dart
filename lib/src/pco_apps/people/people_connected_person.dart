@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.938603
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.761722
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/connected_people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Connected Person is an account from a different organization linked to an account in this organization.
@@ -91,9 +92,8 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const String kTypeString = 'ConnectedPerson';
   static const String kTypeId = 'connected_person';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'connectedperson-person-connected_people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -111,7 +111,7 @@ class PcoPeopleConnectedPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -153,7 +153,6 @@ class PcoPeopleConnectedPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get givenName => attributes[kGivenName] ?? '';
   String get firstName => attributes[kFirstName] ?? '';
   String get nickname => attributes[kNickname] ?? '';
@@ -161,18 +160,7 @@ class PcoPeopleConnectedPerson extends PcoResource {
   String get lastName => attributes[kLastName] ?? '';
   String get gender => attributes[kGender] ?? '';
   String get organizationName => attributes[kOrganizationName] ?? '';
-  String get organizationId => attributes[kOrganizationId] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get organizationId => attributes[kOrganizationId] ?? '';    
 
   // Class Constructors
   PcoPeopleConnectedPerson._() : super(kPcoApplication, kTypeString);

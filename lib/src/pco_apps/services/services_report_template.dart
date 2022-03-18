@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.554551
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.344864
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/report_templates
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A template for generating reports
@@ -76,9 +77,8 @@ class PcoServicesReportTemplate extends PcoResource {
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -96,7 +96,7 @@ class PcoServicesReportTemplate extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -134,22 +134,10 @@ class PcoServicesReportTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get body => attributes[kBody] ?? '';
   String get title => attributes[kTitle] ?? '';
   String get type => attributes[kType] ?? '';
-  bool get isDefault => attributes[kDefault] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isDefault => attributes[kDefault] == true;    
 
   // Class Constructors
   PcoServicesReportTemplate._() : super(kPcoApplication, kTypeString);

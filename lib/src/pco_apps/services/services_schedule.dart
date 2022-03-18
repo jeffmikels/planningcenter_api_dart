@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.557306
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.349323
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/schedules
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An instance of a PlanPerson with included data for displaying in a user's schedule
@@ -160,9 +161,8 @@ class PcoServicesSchedule extends PcoResource {
   static const String kTypeString = 'Schedule';
   static const String kTypeId = 'schedule';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'schedule-person-schedules';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/schedules';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/schedules';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `plan_times`: include associated plan_times 
@@ -180,7 +180,7 @@ class PcoServicesSchedule extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -232,7 +232,6 @@ class PcoServicesSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
   String get dates => attributes[kDates] ?? '';
   String get declineReason => attributes[kDeclineReason] ?? '';
@@ -250,18 +249,7 @@ class PcoServicesSchedule extends PcoResource {
   bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
   bool get isCanAcceptPartialOneTime => attributes[kCanAcceptPartialOneTime] == true;
   bool get isPlanVisible => attributes[kPlanVisible] == true;
-  bool get isPlanVisibleToMe => attributes[kPlanVisibleToMe] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isPlanVisibleToMe => attributes[kPlanVisibleToMe] == true;    
 
   // Class Constructors
   PcoServicesSchedule._() : super(kPcoApplication, kTypeString);
@@ -361,6 +349,10 @@ class PcoServicesSchedule extends PcoResource {
   /// Accept a Schedule
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// If this isn't a split time schedule, or you want to accept all times, an empty JSON body is accepted.
   /// 
@@ -388,7 +380,7 @@ class PcoServicesSchedule extends PcoResource {
   /// 	}
   /// }
   /// ```
-  Future<PlanningCenterApiResponse> accept(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> accept(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -402,6 +394,10 @@ class PcoServicesSchedule extends PcoResource {
   /// 
   /// Decline a Schedule
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
   /// 
   /// Details:
   /// If this is a split time request, all times will be declined.
@@ -421,7 +417,7 @@ class PcoServicesSchedule extends PcoResource {
   /// 	}
   /// }
   /// ```
-  Future<PlanningCenterApiResponse> decline(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> decline(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

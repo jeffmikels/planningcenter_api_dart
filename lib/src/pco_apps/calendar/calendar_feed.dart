@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.091684
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.915524
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/feeds
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A feed belonging to an organization.
@@ -87,9 +88,8 @@ class PcoCalendarFeed extends PcoResource {
   static const String kTypeString = 'Feed';
   static const String kTypeId = 'feed';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'feed-organization-feeds';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoCalendarFeed extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -132,10 +132,10 @@ class PcoCalendarFeed extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['feed_type','event_owner_id','default_church_center_visibility'];
+  List<String> get createAllowed => ['feed_type', 'event_owner_id', 'default_church_center_visibility'];
 
   @override
-  List<String> get updateAllowed => ['event_owner_id','default_church_center_visibility'];
+  List<String> get updateAllowed => ['event_owner_id', 'default_church_center_visibility'];
 
   @override
   bool get canCreate => true;
@@ -147,45 +147,34 @@ class PcoCalendarFeed extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get defaultChurchCenterVisibility => attributes[kDefaultChurchCenterVisibility] ?? '';
   String get feedType => attributes[kFeedType] ?? '';
   String get name => attributes[kName] ?? '';
   DateTime get importedAt => DateTime.parse(attributes[kImportedAt] ?? '');
-  bool get isCanDelete => attributes[kCanDelete] == true;
+  bool get isCanDelete => attributes[kCanDelete] == true;  
   
-
   // setters for object attributes
-
   
   /// Possible values: `hidden` or `published`
-  set defaultChurchCenterVisibility(String s) => attributes[kDefaultChurchCenterVisibility] = s;
+  
+  /// pass `null` to remove key from attributes
+  set defaultChurchCenterVisibility(String? x) => (x == null) ? attributes.remove(kDefaultChurchCenterVisibility) : attributes[kDefaultChurchCenterVisibility] = x;
   
   /// Possible values: `registrations`, `groups`, or `ical`
-  set feedType(String s) => attributes[kFeedType] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set feedType(String? x) => (x == null) ? attributes.remove(kFeedType) : attributes[kFeedType] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set eventOwnerId(String? x) => (x == null) ? attributes.remove(kEventOwnerId) : attributes[kEventOwnerId] = x;
   String get eventOwnerId => attributes[kEventOwnerId] ?? '';
-  set eventOwnerId(String s) => attributes[kEventOwnerId] = s;
-  
-
-
 
   // Class Constructors
   PcoCalendarFeed._() : super(kPcoApplication, kTypeString);
   PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoCalendarFeed] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/calendar/v2/feeds`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoCalendarFeed() {
-    return PcoCalendarFeed._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/feeds';
-  }
 
 
   // ---------------------------------

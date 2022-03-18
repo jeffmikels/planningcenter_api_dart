@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.509693
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.265458
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media/1/media_schedules
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -89,9 +90,8 @@ class PcoServicesMediaSchedule extends PcoResource {
   static const String kTypeString = 'MediaSchedule';
   static const String kTypeId = 'media_schedule';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'mediaschedule-media-media_schedules';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -109,7 +109,7 @@ class PcoServicesMediaSchedule extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -147,22 +147,10 @@ class PcoServicesMediaSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get planDates => attributes[kPlanDates] ?? '';
   String get planShortDates => attributes[kPlanShortDates] ?? '';
   String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  DateTime get planSortDate => DateTime.parse(attributes[kPlanSortDate] ?? '');
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  DateTime get planSortDate => DateTime.parse(attributes[kPlanSortDate] ?? '');    
 
   // Class Constructors
   PcoServicesMediaSchedule._() : super(kPcoApplication, kTypeString);

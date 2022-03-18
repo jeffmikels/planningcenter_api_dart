@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.008323
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.851626
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/school_options
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/school_options
 /// 
 /// ## Description
 /// A school option represents a school name, school type, grades, etc. and can be selected for a person.
@@ -87,9 +88,8 @@ class PcoPeopleSchoolOption extends PcoResource {
   static const String kTypeString = 'SchoolOption';
   static const String kTypeId = 'school_option';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'schooloption-organization-school_options';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/school_options';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/school_options';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/school_options';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -114,7 +114,7 @@ class PcoPeopleSchoolOption extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -138,10 +138,10 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['value','sequence','beginning_grade','ending_grade','school_types'];
+  List<String> get createAllowed => ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
 
   @override
-  List<String> get updateAllowed => ['value','sequence','beginning_grade','ending_grade','school_types'];
+  List<String> get updateAllowed => ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
 
   @override
   bool get canCreate => true;
@@ -153,28 +153,28 @@ class PcoPeopleSchoolOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get value => attributes[kValue] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
   String get beginningGrade => attributes[kBeginningGrade] ?? '';
   String get endingGrade => attributes[kEndingGrade] ?? '';
-  List get schoolTypes => attributes[kSchoolTypes] ?? [];
+  List get schoolTypes => attributes[kSchoolTypes] ?? [];  
   
-
   // setters for object attributes
-
-  set value(String s) => attributes[kValue] = s;
-  set sequence(int n) => attributes[kSequence] = n;
-  set beginningGrade(String s) => attributes[kBeginningGrade] = s;
-  set endingGrade(String s) => attributes[kEndingGrade] = s;
-  set schoolTypes(List a) => attributes[kSchoolTypes] = a;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set beginningGrade(String? x) => (x == null) ? attributes.remove(kBeginningGrade) : attributes[kBeginningGrade] = x;
+  
+  /// pass `null` to remove key from attributes
+  set endingGrade(String? x) => (x == null) ? attributes.remove(kEndingGrade) : attributes[kEndingGrade] = x;
+  
+  /// pass `null` to remove key from attributes
+  set schoolTypes(List? x) => (x == null) ? attributes.remove(kSchoolTypes) : attributes[kSchoolTypes] = x;  
 
   // Class Constructors
   PcoPeopleSchoolOption._() : super(kPcoApplication, kTypeString);
@@ -185,9 +185,15 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleSchoolOption() {
-    return PcoPeopleSchoolOption._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/school_options';
+  factory PcoPeopleSchoolOption({ String? value, int? sequence, String? beginningGrade, String? endingGrade, List? schoolTypes }) {
+    var obj = PcoPeopleSchoolOption._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/school_options';
+    if (value != null) obj.value = value;
+    if (sequence != null) obj.sequence = sequence;
+    if (beginningGrade != null) obj.beginningGrade = beginningGrade;
+    if (endingGrade != null) obj.endingGrade = endingGrade;
+    if (schoolTypes != null) obj.schoolTypes = schoolTypes;
+    return obj;
   }
 
 

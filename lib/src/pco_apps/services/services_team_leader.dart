@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.577421
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.458701
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A leader of a specific Team in a Service Type.
@@ -91,9 +92,8 @@ class PcoServicesTeamLeader extends PcoResource {
   static const String kTypeString = 'TeamLeader';
   static const String kTypeId = 'team_leader';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'teamleader-team-team_leaders';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/team_leaders';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `people`: include associated people 
@@ -113,7 +113,7 @@ class PcoServicesTeamLeader extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -150,21 +150,9 @@ class PcoServicesTeamLeader extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isSendResponsesForAccepts => attributes[kSendResponsesForAccepts] == true;
   bool get isSendResponsesForDeclines => attributes[kSendResponsesForDeclines] == true;
-  bool get isSendResponsesForBlockouts => attributes[kSendResponsesForBlockouts] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isSendResponsesForBlockouts => attributes[kSendResponsesForBlockouts] == true;    
 
   // Class Constructors
   PcoServicesTeamLeader._() : super(kPcoApplication, kTypeString);

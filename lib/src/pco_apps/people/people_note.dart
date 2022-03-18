@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.970680
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.789176
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/notes
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/notes
 /// 
 /// ## Description
 /// A note is text with a category connected to a person’s profile.
@@ -120,9 +121,8 @@ class PcoPeopleNote extends PcoResource {
   static const String kTypeString = 'Note';
   static const String kTypeId = 'note';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'note-organization-notes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/notes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/notes';
 
   /// possible includes with parameter ?include=a,b
   /// - `category`: include associated category 
@@ -148,7 +148,7 @@ class PcoPeopleNote extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -175,7 +175,7 @@ class PcoPeopleNote extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['note','created_at','updated_at','display_date','note_category_id'];
+  List<String> get createAllowed => ['note', 'created_at', 'updated_at', 'display_date', 'note_category_id'];
 
   @override
   List<String> get updateAllowed => [];
@@ -190,42 +190,48 @@ class PcoPeopleNote extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get note => attributes[kNote] ?? '';
   DateTime get displayDate => DateTime.parse(attributes[kDisplayDate] ?? '');
   String get noteCategoryId => attributes[kNoteCategoryId] ?? '';
   String get organizationId => attributes[kOrganizationId] ?? '';
   String get personId => attributes[kPersonId] ?? '';
-  String get createdById => attributes[kCreatedById] ?? '';
+  String get createdById => attributes[kCreatedById] ?? '';  
   
-
   // setters for object attributes
-
-  set note(String s) => attributes[kNote] = s;
-  set createdAt(DateTime d) => attributes[kCreatedAt] = d.toIso8601String();
-  set updatedAt(DateTime d) => attributes[kUpdatedAt] = d.toIso8601String();
-  set displayDate(DateTime d) => attributes[kDisplayDate] = d.toIso8601String();
-  set noteCategoryId(String s) => attributes[kNoteCategoryId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set note(String? x) => (x == null) ? attributes.remove(kNote) : attributes[kNote] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set createdAt(DateTime? x) => (x == null) ? attributes.remove(kCreatedAt) : attributes[kCreatedAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set updatedAt(DateTime? x) => (x == null) ? attributes.remove(kUpdatedAt) : attributes[kUpdatedAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set displayDate(DateTime? x) => (x == null) ? attributes.remove(kDisplayDate) : attributes[kDisplayDate] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set noteCategoryId(String? x) => (x == null) ? attributes.remove(kNoteCategoryId) : attributes[kNoteCategoryId] = x;  
 
   // Class Constructors
   PcoPeopleNote._() : super(kPcoApplication, kTypeString);
   PcoPeopleNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleNote] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/notes`
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/notes`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNote() {
-    return PcoPeopleNote._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/notes';
+  factory PcoPeopleNote(String peopleId, { String? note, DateTime? createdAt, DateTime? updatedAt, DateTime? displayDate, String? noteCategoryId }) {
+    var obj = PcoPeopleNote._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/notes';
+    if (note != null) obj.note = note;
+    if (createdAt != null) obj.createdAt = createdAt;
+    if (updatedAt != null) obj.updatedAt = updatedAt;
+    if (displayDate != null) obj.displayDate = displayDate;
+    if (noteCategoryId != null) obj.noteCategoryId = noteCategoryId;
+    return obj;
   }
 
 

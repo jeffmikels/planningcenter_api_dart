@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.633832
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.554620
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A recurrence of an event, sometimes called a "session".
@@ -103,9 +104,8 @@ class PcoCheckInsEventPeriod extends PcoResource {
   static const String kTypeString = 'EventPeriod';
   static const String kTypeId = 'event_period';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'eventperiod-event-event_periods';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/events/1/event_periods';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event`: include associated event 
@@ -124,7 +124,7 @@ class PcoCheckInsEventPeriod extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -166,24 +166,12 @@ class PcoCheckInsEventPeriod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
   int get regularCount => attributes[kRegularCount] ?? 0;
   int get guestCount => attributes[kGuestCount] ?? 0;
   int get volunteerCount => attributes[kVolunteerCount] ?? 0;
-  String get note => attributes[kNote] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get note => attributes[kNote] ?? '';    
 
   // Class Constructors
   PcoCheckInsEventPeriod._() : super(kPcoApplication, kTypeString);

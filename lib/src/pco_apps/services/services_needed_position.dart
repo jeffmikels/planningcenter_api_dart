@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.510811
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.266395
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
 /// 
 /// ## Description
 /// An amount of unfilled positions needed within a team in a plan.
@@ -103,9 +104,8 @@ class PcoServicesNeededPosition extends PcoResource {
   static const String kTypeString = 'NeededPosition';
   static const String kTypeId = 'needed_position';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'neededposition-plan-needed_positions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions';
 
   /// possible includes with parameter ?include=a,b
   /// - `team`: include associated team 
@@ -124,7 +124,7 @@ class PcoServicesNeededPosition extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,7 +148,7 @@ class PcoServicesNeededPosition extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['quantity','time_id','time_preference_option_id'];
+  List<String> get createAllowed => ['quantity', 'time_id', 'time_preference_option_id'];
 
   @override
   List<String> get updateAllowed => ['quantity'];
@@ -163,39 +163,39 @@ class PcoServicesNeededPosition extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   int get quantity => attributes[kQuantity] ?? 0;
   String get teamPositionName => attributes[kTeamPositionName] ?? '';
-  String get scheduledTo => attributes[kScheduledTo] ?? '';
+  String get scheduledTo => attributes[kScheduledTo] ?? '';  
   
-
   // setters for object attributes
-
-  set quantity(int n) => attributes[kQuantity] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set quantity(int? x) => (x == null) ? attributes.remove(kQuantity) : attributes[kQuantity] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set timeId(String? x) => (x == null) ? attributes.remove(kTimeId) : attributes[kTimeId] = x;
   String get timeId => attributes[kTimeId] ?? '';
-  set timeId(String s) => attributes[kTimeId] = s;
-  String get timePreferenceOptionId => attributes[kTimePreferenceOptionId] ?? '';
-  set timePreferenceOptionId(String s) => attributes[kTimePreferenceOptionId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set timePreferenceOptionId(String? x) => (x == null) ? attributes.remove(kTimePreferenceOptionId) : attributes[kTimePreferenceOptionId] = x;
+  String get timePreferenceOptionId => attributes[kTimePreferenceOptionId] ?? '';
 
   // Class Constructors
   PcoServicesNeededPosition._() : super(kPcoApplication, kTypeString);
   PcoServicesNeededPosition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesNeededPosition] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/next_up_plans/$upPlanId/needed_positions`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesNeededPosition(String peopleId,String upPlanId) {
-    return PcoServicesNeededPosition._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_up_plans/$upPlanId/needed_positions';
+  factory PcoServicesNeededPosition(String serviceTypeId, String planId, { int? quantity }) {
+    var obj = PcoServicesNeededPosition._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions';
+    if (quantity != null) obj.quantity = quantity;
+    return obj;
   }
 
 

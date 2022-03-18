@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.101335
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.928387
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A resource and quantity suggested by a room setup.
@@ -87,9 +88,8 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   static const String kTypeString = 'ResourceSuggestion';
   static const String kTypeId = 'resource_suggestion';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resourcesuggestion-roomsetup-resource_suggestions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `resource`: include associated resource 
@@ -107,7 +107,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -144,19 +144,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  int get quantity => attributes[kQuantity] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get quantity => attributes[kQuantity] ?? 0;    
 
   // Class Constructors
   PcoCalendarResourceSuggestion._() : super(kPcoApplication, kTypeString);

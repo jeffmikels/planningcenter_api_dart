@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.568677
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.414240
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs
 /// 
 /// ## Description
 /// A song
@@ -104,9 +105,8 @@ class PcoServicesSong extends PcoResource {
   static const String kTypeString = 'Song';
   static const String kTypeId = 'song';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'song-organization-songs';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -131,7 +131,7 @@ class PcoServicesSong extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -162,10 +162,10 @@ class PcoServicesSong extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['title','admin','author','copyright','ccli_number','hidden','themes'];
+  List<String> get createAllowed => ['title', 'admin', 'author', 'copyright', 'ccli_number', 'hidden', 'themes'];
 
   @override
-  List<String> get updateAllowed => ['title','admin','author','copyright','ccli_number','hidden','themes'];
+  List<String> get updateAllowed => ['title', 'admin', 'author', 'copyright', 'ccli_number', 'hidden', 'themes'];
 
   @override
   bool get canCreate => true;
@@ -177,7 +177,6 @@ class PcoServicesSong extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get title => attributes[kTitle] ?? '';
   String get admin => attributes[kAdmin] ?? '';
   String get author => attributes[kAuthor] ?? '';
@@ -187,29 +186,34 @@ class PcoServicesSong extends PcoResource {
   String get themes => attributes[kThemes] ?? '';
   String get lastScheduledShortDates => attributes[kLastScheduledShortDates] ?? '';
   DateTime get lastScheduledAt => DateTime.parse(attributes[kLastScheduledAt] ?? '');
-  int get ccliNumber => attributes[kCcliNumber] ?? 0;
+  int get ccliNumber => attributes[kCcliNumber] ?? 0;  
   
-
   // setters for object attributes
-
   
   /// The name of the song.
   /// 
   /// When setting this value on a create you can pass a CCLI number and Services will fetch the song metadata for you.
-  set title(String s) => attributes[kTitle] = s;
-  set admin(String s) => attributes[kAdmin] = s;
-  set author(String s) => attributes[kAuthor] = s;
-  set copyright(String s) => attributes[kCopyright] = s;
-  set isHidden(bool b) => attributes[kHidden] = b;
-  set themes(String s) => attributes[kThemes] = s;
-  set ccliNumber(int n) => attributes[kCcliNumber] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set title(String? x) => (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set admin(String? x) => (x == null) ? attributes.remove(kAdmin) : attributes[kAdmin] = x;
+  
+  /// pass `null` to remove key from attributes
+  set author(String? x) => (x == null) ? attributes.remove(kAuthor) : attributes[kAuthor] = x;
+  
+  /// pass `null` to remove key from attributes
+  set copyright(String? x) => (x == null) ? attributes.remove(kCopyright) : attributes[kCopyright] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isHidden(bool? x) => (x == null) ? attributes.remove(kHidden) : attributes[kHidden] = x;
+  
+  /// pass `null` to remove key from attributes
+  set themes(String? x) => (x == null) ? attributes.remove(kThemes) : attributes[kThemes] = x;
+  
+  /// pass `null` to remove key from attributes
+  set ccliNumber(int? x) => (x == null) ? attributes.remove(kCcliNumber) : attributes[kCcliNumber] = x;  
 
   // Class Constructors
   PcoServicesSong._() : super(kPcoApplication, kTypeString);
@@ -220,9 +224,17 @@ class PcoServicesSong extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesSong() {
-    return PcoServicesSong._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs';
+  factory PcoServicesSong({ String? title, String? admin, String? author, String? copyright, int? ccliNumber, bool? isHidden, String? themes }) {
+    var obj = PcoServicesSong._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs';
+    if (title != null) obj.title = title;
+    if (admin != null) obj.admin = admin;
+    if (author != null) obj.author = author;
+    if (copyright != null) obj.copyright = copyright;
+    if (ccliNumber != null) obj.ccliNumber = ccliNumber;
+    if (isHidden != null) obj.isHidden = isHidden;
+    if (themes != null) obj.themes = themes;
+    return obj;
   }
 
 
@@ -318,6 +330,10 @@ class PcoServicesSong extends PcoResource {
   /// Used to assign tags to a song.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/assign_tags`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// All tags will be replaced so the full data set must be sent.
   /// 
@@ -343,7 +359,7 @@ class PcoServicesSong extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> assignTags(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

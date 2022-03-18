@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.567433
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.409981
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// a skipped attachment
@@ -83,9 +84,8 @@ class PcoServicesSkippedAttachment extends PcoResource {
   static const String kTypeString = 'SkippedAttachment';
   static const String kTypeId = 'skipped_attachment';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -103,7 +103,7 @@ class PcoServicesSkippedAttachment extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -138,19 +138,7 @@ class PcoServicesSkippedAttachment extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  bool get isSkipped => attributes[kSkipped] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isSkipped => attributes[kSkipped] == true;    
 
   // Class Constructors
   PcoServicesSkippedAttachment._() : super(kPcoApplication, kTypeString);

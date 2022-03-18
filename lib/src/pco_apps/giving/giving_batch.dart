@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.183310
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.954739
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/batches
+/// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/batches
 /// 
 /// ## Description
 /// 
@@ -95,9 +96,8 @@ class PcoGivingBatch extends PcoResource {
   static const String kTypeString = 'Batch';
   static const String kTypeId = 'batch';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'batch-organization-batches';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batches';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/batches';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batches';
 
   /// possible includes with parameter ?include=a,b
   /// - `batch_group`: include associated batch_group 
@@ -116,7 +116,7 @@ class PcoGivingBatch extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -158,25 +158,17 @@ class PcoGivingBatch extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   DateTime get committedAt => DateTime.parse(attributes[kCommittedAt] ?? '');
   String get description => attributes[kDescription] ?? '';
   int get donationsCount => attributes[kDonationsCount] ?? 0;
   int get totalCents => attributes[kTotalCents] ?? 0;
   String get totalCurrency => attributes[kTotalCurrency] ?? '';
-  String get status => attributes[kStatus] ?? '';
+  String get status => attributes[kStatus] ?? '';  
   
-
   // setters for object attributes
-
-  set description(String s) => attributes[kDescription] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;  
 
   // Class Constructors
   PcoGivingBatch._() : super(kPcoApplication, kTypeString);
@@ -187,9 +179,11 @@ class PcoGivingBatch extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingBatch() {
-    return PcoGivingBatch._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batches';
+  factory PcoGivingBatch({ String? description }) {
+    var obj = PcoGivingBatch._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batches';
+    if (description != null) obj.description = description;
+    return obj;
   }
 
 
@@ -287,6 +281,10 @@ class PcoGivingBatch extends PcoResource {
   /// Used to commit an in progress batch.
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batches/1/commit`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This action takes an uncommitted Batch and commits it.
   /// It will respond with `unprocessable_entity` if the Batch cannot be committed.
@@ -295,7 +293,7 @@ class PcoGivingBatch extends PcoResource {
   /// 
   /// Committing a Batch happens asyncronously, so initially the Batch's `status` will be `updating`.
   /// You can poll that Batch's endpoint to see whether it's changed from `updating` to `committed`.
-  Future<PlanningCenterApiResponse> commit(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> commit(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

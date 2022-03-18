@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.210393
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.969317
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -72,9 +73,8 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
   static const String kTypeString = 'RecurringDonationDesignation';
   static const String kTypeId = 'recurring_donation_designation';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'recurringdonationdesignation-recurringdonation-designations';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `fund`: include associated fund 
@@ -92,7 +92,7 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -128,20 +128,8 @@ class PcoGivingRecurringDonationDesignation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get amountCents => attributes[kAmountCents] ?? 0;
-  String get amountCurrency => attributes[kAmountCurrency] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get amountCurrency => attributes[kAmountCurrency] ?? '';    
 
   // Class Constructors
   PcoGivingRecurringDonationDesignation._() : super(kPcoApplication, kTypeString);

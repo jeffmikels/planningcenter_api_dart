@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.548446
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.331140
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A PlanTemplate Resource
@@ -113,9 +114,8 @@ class PcoServicesPlanTemplate extends PcoResource {
   static const String kTypeString = 'PlanTemplate';
   static const String kTypeId = 'plan_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'plantemplate-servicetype-plan_templates';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -138,7 +138,7 @@ class PcoServicesPlanTemplate extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -182,7 +182,6 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get itemCount => attributes[kItemCount] ?? 0;
   int get teamCount => attributes[kTeamCount] ?? 0;
@@ -190,18 +189,7 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get isCanViewOrder => attributes[kCanViewOrder] == true;
   bool get isMultiDay => attributes[kMultiDay] == true;
   bool get isPrefersOrderView => attributes[kPrefersOrderView] == true;
-  bool get isRehearsable => attributes[kRehearsable] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isRehearsable => attributes[kRehearsable] == true;    
 
   // Class Constructors
   PcoServicesPlanTemplate._() : super(kPcoApplication, kTypeString);
@@ -260,6 +248,10 @@ class PcoServicesPlanTemplate extends PcoResource {
   /// Reorder plan template items in one request.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/item_reorder`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This can be used to reorder all items in a plan template in one request.
   /// 
@@ -281,7 +273,7 @@ class PcoServicesPlanTemplate extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> itemReorder(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> itemReorder(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

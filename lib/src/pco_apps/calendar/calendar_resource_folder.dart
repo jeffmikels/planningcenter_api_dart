@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.099683
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.926947
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_folders
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An organizational folder containing rooms or resources.
@@ -84,9 +85,8 @@ class PcoCalendarResourceFolder extends PcoResource {
   static const String kTypeString = 'ResourceFolder';
   static const String kTypeId = 'resource_folder';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resourcefolder-organization-resource_folders';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `resources`: include associated resources 
@@ -109,7 +109,7 @@ class PcoCalendarResourceFolder extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,38 +148,21 @@ class PcoCalendarResourceFolder extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get kind => attributes[kKind] ?? '';
-  String get pathName => attributes[kPathName] ?? '';
+  String get pathName => attributes[kPathName] ?? '';  
   
-
   // setters for object attributes
-
   
   /// The folder name
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoCalendarResourceFolder._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoCalendarResourceFolder] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/calendar/v2/resource_folders`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoCalendarResourceFolder() {
-    return PcoCalendarResourceFolder._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
-  }
 
 
   // ---------------------------------

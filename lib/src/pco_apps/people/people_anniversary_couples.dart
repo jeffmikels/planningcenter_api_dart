@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.930799
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.755078
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/anniversary_couples
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Returns upcoming anniversary couples for the organization.
@@ -67,9 +68,8 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   static const String kTypeString = 'AnniversaryCouples';
   static const String kTypeId = 'anniversary_couples';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'anniversarycouples-organization-anniversary_couples';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -87,7 +87,7 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -120,19 +120,7 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoPeopleAnniversaryCouple._() : super(kPcoApplication, kTypeString);

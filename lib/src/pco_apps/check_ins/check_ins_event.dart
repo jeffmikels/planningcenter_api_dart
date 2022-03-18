@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.631158
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.549947
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/events
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A recurring event which people may attend.
@@ -108,9 +109,8 @@ class PcoCheckInsEvent extends PcoResource {
   static const String kTypeString = 'Event';
   static const String kTypeId = 'event';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'event-organization-events';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/events';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/events';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `attendance_types`: include associated attendance_types 
@@ -131,7 +131,7 @@ class PcoCheckInsEvent extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -175,7 +175,6 @@ class PcoCheckInsEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get frequency => attributes[kFrequency] ?? '';
   bool get isEnableServicesIntegration => attributes[kEnableServicesIntegration] == true;
@@ -183,18 +182,7 @@ class PcoCheckInsEvent extends PcoResource {
   String get integrationKey => attributes[kIntegrationKey] ?? '';
   bool get isLocationTimesEnabled => attributes[kLocationTimesEnabled] == true;
   bool get isPreSelectEnabled => attributes[kPreSelectEnabled] == true;
-  String get appSource => attributes[kAppSource] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get appSource => attributes[kAppSource] ?? '';    
 
   // Class Constructors
   PcoCheckInsEvent._() : super(kPcoApplication, kTypeString);

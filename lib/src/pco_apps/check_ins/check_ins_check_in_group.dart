@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.628171
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.544769
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// When one or more people check in, they're grouped in a `CheckInGroup`.
@@ -94,9 +95,8 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   static const String kTypeString = 'CheckInGroup';
   static const String kTypeId = 'check_in_group';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'checkingroup-station-check_in_groups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `check_ins`: include associated check_ins 
@@ -116,7 +116,7 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -156,22 +156,10 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get nameLabelsCount => attributes[kNameLabelsCount] ?? 0;
   int get securityLabelsCount => attributes[kSecurityLabelsCount] ?? 0;
   int get checkInsCount => attributes[kCheckInsCount] ?? 0;
-  String get printStatus => attributes[kPrintStatus] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get printStatus => attributes[kPrintStatus] ?? '';    
 
   // Class Constructors
   PcoCheckInsCheckInGroup._() : super(kPcoApplication, kTypeString);

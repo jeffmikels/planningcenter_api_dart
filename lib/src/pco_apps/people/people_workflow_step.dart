@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.028066
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.873935
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows/1/steps
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows/1/steps
 /// 
 /// ## Description
 /// A Step
@@ -113,9 +114,8 @@ class PcoPeopleWorkflowStep extends PcoResource {
   static const String kTypeString = 'WorkflowStep';
   static const String kTypeId = 'workflow_step';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflowstep-workflow-steps';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
 
   /// possible includes with parameter ?include=a,b
   /// - `default_assignee`: include associated default_assignee 
@@ -139,7 +139,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -170,10 +170,10 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['sequence','name'];
+  List<String> get createAllowed => ['sequence', 'name'];
 
   @override
-  List<String> get updateAllowed => ['sequence','name'];
+  List<String> get updateAllowed => ['sequence', 'name'];
 
   @override
   bool get canCreate => true;
@@ -185,7 +185,6 @@ class PcoPeopleWorkflowStep extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
   String get description => attributes[kDescription] ?? '';
@@ -195,20 +194,15 @@ class PcoPeopleWorkflowStep extends PcoResource {
   int get expectedResponseTimeInDays => attributes[kExpectedResponseTimeInDays] ?? 0;
   int get myReadyCardCount => attributes[kMyReadyCardCount] ?? 0;
   int get totalReadyCardCount => attributes[kTotalReadyCardCount] ?? 0;
-  String get defaultAssigneeId => attributes[kDefaultAssigneeId] ?? '';
+  String get defaultAssigneeId => attributes[kDefaultAssigneeId] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set sequence(int n) => attributes[kSequence] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;  
 
   // Class Constructors
   PcoPeopleWorkflowStep._() : super(kPcoApplication, kTypeString);
@@ -219,9 +213,12 @@ class PcoPeopleWorkflowStep extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowStep(String workflowId) {
-    return PcoPeopleWorkflowStep._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/steps';
+  factory PcoPeopleWorkflowStep(String workflowId, { int? sequence, String? name }) {
+    var obj = PcoPeopleWorkflowStep._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/steps';
+    if (sequence != null) obj.sequence = sequence;
+    if (name != null) obj.name = name;
+    return obj;
   }
 
 

@@ -104,8 +104,10 @@ class Vertex extends JsonApiDoc {
 
   // List<Relationship> vertexRelationships = []; // allow for filters
   // List<Action> vertexActions;
+  Map<String, Edge> edgeById = {};
   List<Edge> inboundEdges = []; // refers to the endpoints that lead to this item
   List<Edge> outboundEdges = []; // refers to the endpoints that come from this item
+  Edge? createEdge;
   List<Action> actions = [];
 
   List<URLParameter> canInclude = [];
@@ -125,19 +127,6 @@ class Vertex extends JsonApiDoc {
   String? _inboundPath;
   String get inboundPath => _inboundPath ??= path;
   set path(String s) => _inboundPath = s;
-
-  Edge? get shortestInboundEdge {
-    if (inboundEdges.isEmpty) return null;
-
-    var shortest = inboundEdges.first;
-    for (var e in inboundEdges) {
-      if (e.path.split('/').length <= shortest.path.split('/').length && e.path.length <= shortest.path.length) {
-        shortest = e;
-      }
-    }
-    if (shortest.path.length > path.length) return null;
-    return shortest;
-  }
 
   Vertex.fromJson(this.application, this.version, Map<String, dynamic> data) : super.fromJson(data) {
     if (relationships.isEmpty) return;
@@ -169,6 +158,14 @@ class Vertex extends JsonApiDoc {
     outboundEdges = [
       for (var item in relationships['outbound_edges']?['data']) Edge.fromJson(application, version, item),
     ];
+
+    for (var edge in [...inboundEdges, ...outboundEdges]) {
+      edgeById[edge.id!] = edge;
+    }
+
+    if (vertexPermissions.canCreate && vertexPermissions.edgeIds.isNotEmpty) {
+      createEdge = edgeById[vertexPermissions.edgeIds.first];
+    }
 
     typedRelationships['per_page'] = perPage;
     typedRelationships['offset'] = offset;
@@ -251,6 +248,23 @@ class Attribute extends JsonApiDoc {
   String get typeString => attributes['type_annotation']?['name'] ?? 'string';
   String get typeExample => attributes['type_annotation']?['example'] ?? typeString;
 
+  String get dartTypeString {
+    switch (typeString) {
+      case 'boolean':
+        return 'bool';
+      case 'float':
+        return 'double';
+      case 'integer':
+        return 'int';
+      case 'date_time':
+        return 'DateTime';
+      case 'array':
+        return 'List';
+      default:
+        return 'String';
+    }
+  }
+
   Attribute.nameOnly(String name) : super() {
     attributes['name'] = name;
   }
@@ -263,7 +277,7 @@ class Permission extends JsonApiDoc {
   bool get canCreate => attributes['can_create'] == true;
   bool get canUpdate => attributes['can_update'] == true;
   bool get canDestroy => attributes['can_destroy'] == true;
-  List get edges => attributes['edges'];
+  List get edgeIds => attributes['edges'] ?? [];
   List get createAssignable => attributes['create_assignable'] ?? [];
   List get updateAssignable => attributes['update_assignable'] ?? [];
   // appear to be unused
@@ -385,46 +399,52 @@ String fieldVarName(Attribute attribute) {
 }
 
 /// this function helps to generate the getters for a specific [Vertex] - [Attribute]
-/// [mode] can be 'get' 'set' or 'both'
+/// [realMode] can be 'get' 'set' or 'both'
 /// if 'both' it will do a get first and then call itself again with 'set'
 String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttributeNameAsKey = false}) {
-  var targetName =
-      useAttributeNameAsKey ? 'attributes[\'${attribute.name}\']' : 'attributes[k${attribute.name.snakeToPascal()}]';
+  var keyName = useAttributeNameAsKey ? "'${attribute.name}'" : 'k${attribute.name.snakeToPascal()}';
+  var targetName = 'attributes[$keyName]';
   var varName = fieldVarName(attribute);
-
+  var setterDoc = '\n/// pass `null` to remove key from attributes';
   var output = '';
-  if (mode == 'set' && attribute.description.isNotEmpty) {
+  var realMode = mode == 'get' ? 'get' : 'set';
+  if (realMode == 'set' && attribute.description.isNotEmpty) {
     output += '\n' + attribute.description.cleanLines().trim().prefixLines('/// ') + '\n';
   }
   switch (attribute.typeString) {
     case 'boolean':
-      output +=
-          mode == 'set' ? 'set $varName(bool b) => $targetName = b;\n' : 'bool get $varName => $targetName == true;\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(bool? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          : 'bool get $varName => $targetName == true;';
       break;
     case 'float':
-      output +=
-          mode == 'set' ? 'set $varName(double n) => $targetName = n;\n' : 'double get $varName => $targetName ?? 0;\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(double? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          : 'double get $varName => $targetName ?? 0;';
       break;
     case 'integer':
-      output += mode == 'set' ? 'set $varName(int n) => $targetName = n;\n' : 'int get $varName => $targetName ?? 0;\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(int? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          : 'int get $varName => $targetName ?? 0;';
       break;
     case 'date_time':
-      output += mode == 'set'
-          ? 'set $varName(DateTime d) => $targetName = d.toIso8601String();\n'
-          : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(DateTime? x) => (x == null) ? attributes.remove($keyName) : $targetName = x.toIso8601String();'
+          : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');';
       break;
     case 'array':
-      output +=
-          mode == 'set' ? 'set $varName(List a) => $targetName = a;\n' : 'List get $varName => $targetName ?? [];\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(List? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          : 'List get $varName => $targetName ?? [];';
       break;
     default:
-      output += mode == 'set'
-          ? 'set $varName(String s) => $targetName = s;\n'
-          : 'String get $varName => $targetName ?? \'\';\n';
+      output += realMode == 'set'
+          ? '$setterDoc\nset $varName(String? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          : 'String get $varName => $targetName ?? \'\';';
       break;
   }
   if (mode == 'both') {
-    output += fieldSetterOrGetterLine('set', attribute, useAttributeNameAsKey: useAttributeNameAsKey);
+    output += '\n' + fieldSetterOrGetterLine('get', attribute, useAttributeNameAsKey: useAttributeNameAsKey);
   }
   return output;
 }
@@ -466,15 +486,17 @@ String classTemplate(Vertex vertex) {
   // NOTE: sometimes the documentation has attribute duplicates, so keep track of what's been seen
   Set<String> seen = {};
 
+  var attributesByName = <String, Attribute>{};
   var fieldConstantLines = <String>[];
-  var fieldGetterLines = <String>[];
-  var fieldSetterLines = <String>[];
-  var additionalAssignableLines = <String>[];
+  var fieldGetterLines = <String>['// getters for object attributes'];
+  var fieldSetterLines = <String>['// setters for object attributes'];
+  var additionalAssignableLines = <String>['// additional setters / getters for create/update attributes'];
   var attributeDocLines = <String>[];
 
-  print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(',')}');
+  print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(', ')}');
   for (var attribute in vertex.vertexAttributes) {
     if (seen.add(attribute.name) == false) continue; // true when it was added, false when already there
+    attributesByName[attribute.name] = attribute;
 
     var canwrite = false;
 
@@ -498,7 +520,7 @@ String classTemplate(Vertex vertex) {
 
   // for fields that can be set in the api, but don't exist as attributes in the object
   if (setterNeeded.isNotEmpty) {
-    print('  handling additional assignables: ${setterNeeded.join(',')}');
+    print('  handling additional assignables: ${setterNeeded.join(', ')}');
   }
   for (var item in setterNeeded) {
     fieldConstantLines.add(fieldConstantTemplate(item));
@@ -711,9 +733,13 @@ String classTemplate(Vertex vertex) {
 $description
   /// using a path like this: `${action.path}`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
 $details
-  Future<PlanningCenterApiResponse> $functionName(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> $functionName(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -728,11 +754,13 @@ $details
   /// NOW ASSEMBLE FACTORY CONSTRUCTORS
   var additionalConstructors = [];
 
-  if (vertex.vertexPermissions.canCreate) {
+  if (vertex.createEdge != null) {
+    // first, parse the createPath so we know where to post on create
+    // and also so we know what variables we need in the constructor
+
     // ignore everything up through /appname/v2
-    var pathParts = vertex.path.split('/');
+    var pathParts = vertex.createEdge!.path.split('/');
     var idArgs = <String>[];
-    var functionName = 'create';
     var pathNames = [];
     var varNames = [];
 
@@ -748,17 +776,51 @@ $details
       }
     }
     var createPath = pathParts.join('/');
+
+    // now pay attention to the assignable parameters
+    var assignLines = <String>[];
+    assignLines.add('obj._apiPathOverride = \'$createPath\';');
+
+    var factoryAttributes = <Attribute>[];
+    for (var attribName in vertex.vertexPermissions.createAssignable) {
+      var attrib = attributesByName[attribName];
+      if (attrib == null) continue;
+      factoryAttributes.add(attrib);
+    }
+    var namedParams = <String>[];
+    for (var fa in factoryAttributes) {
+      var typeString = fa.dartTypeString;
+      var varName = fieldVarName(fa);
+      namedParams.add('$typeString? $varName');
+      assignLines.add('if ($varName != null) obj.$varName = $varName;');
+    }
+    var extras = '';
+    if (namedParams.isNotEmpty) {
+      extras = '{ ${namedParams.join(', ')} }';
+    }
+    if (idArgs.isNotEmpty) extras = ', ' + extras;
+
     additionalConstructors.add('''
   /// Create a new [$className] object based on this request endpoint:
   /// `$createPath`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory $className(${idArgs.join(',')}) {
-    return $className._()
-      .._apiPathOverride = '$createPath';
+  factory $className(${idArgs.join(', ')}$extras) {
+    var obj = $className._();
+${assignLines.join('\n').prefixLines('    ')}
+    return obj;
   }
 ''');
+  }
+
+  // do some cleanup
+  if (fieldGetterLines.length == 1) fieldGetterLines = [];
+  if (fieldSetterLines.length == 1) fieldSetterLines = [];
+  if (additionalAssignableLines.length == 1) additionalAssignableLines = [];
+  if (fieldGetterLines.isNotEmpty && fieldSetterLines.isNotEmpty) fieldSetterLines.insert(0, '\n');
+  if ((fieldGetterLines.isNotEmpty || fieldSetterLines.isNotEmpty) && additionalAssignableLines.isNotEmpty) {
+    additionalAssignableLines.insert(0, '\n');
   }
 
   /// HERE'S THE ACTUAL TEMPLATE ========================
@@ -774,6 +836,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      ${vertex.deprecated}
 /// - Is Collection Only: ${vertex.collectionOnly}
 /// - Default Endpoint:   ${vertex.path}
+/// - Create Endpoint:    ${vertex.createEdge?.path ?? 'NONE'}
 /// 
 /// ## Description
 ${vertex.description.cleanLines().trim().prefixLines('/// ')}
@@ -820,9 +883,8 @@ class $className extends PcoResource {
   static const String kTypeString = '${vertex.name}';
   static const String kTypeId = '${vertex.id}';
   static const String kApiVersion = '${vertex.version}';
-  static const String kShortestEdgeId = '${vertex.shortestInboundEdge?.id ?? ""}';
-  static const String kShortestEdgePathTemplate = '${vertex.shortestInboundEdge?.path ?? vertex.path}';
   static const String kDefaultPathTemplate = '${vertex.path}';
+  static const String kCreatePathTemplate = '${vertex.createEdge?.path}';
 
   /// possible includes with parameter ?include=a,b
   /// ${vertex.canInclude.map((e) => '- `${e.value}`: ${e.description} ').join('\n  /// ')}
@@ -840,7 +902,7 @@ class $className extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -858,10 +920,10 @@ ${fieldConstantLines.join()}
 
   // getters and setters
   @override
-  List<String> get createAllowed => [${vertex.vertexPermissions.createAssignable.map((e) => '\'$e\'').join(',')}];
+  List<String> get createAllowed => [${vertex.vertexPermissions.createAssignable.map((e) => '\'$e\'').join(', ')}];
 
   @override
-  List<String> get updateAllowed => [${vertex.vertexPermissions.updateAssignable.map((e) => '\'$e\'').join(',')}];
+  List<String> get updateAllowed => [${vertex.vertexPermissions.updateAssignable.map((e) => '\'$e\'').join(', ')}];
 
   @override
   bool get canCreate => ${vertex.vertexPermissions.canCreate};
@@ -872,19 +934,7 @@ ${fieldConstantLines.join()}
   @override
   bool get canDestroy => ${vertex.vertexPermissions.canDestroy};
 
-  // getters for object attributes
-
-${fieldGetterLines.join().prefixLines('  ')}
-
-  // setters for object attributes
-
-${fieldSetterLines.join().prefixLines('  ')}
-
-  // additional setters and getters for assignable values
-
-${additionalAssignableLines.join().prefixLines('  ')}
-
-
+${fieldGetterLines.join('\n').prefixLines('  ')}${fieldSetterLines.join('\n').prefixLines('  ')}${additionalAssignableLines.join('\n').prefixLines('  ')}
 
   // Class Constructors
   $className._() : super(kPcoApplication, kTypeString);

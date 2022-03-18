@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.952157
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.773146
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A form submission value.
@@ -89,9 +90,8 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   static const String kTypeString = 'FormSubmissionValue';
   static const String kTypeId = 'form_submission_value';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'formsubmissionvalue-formsubmission-form_submission_values';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -109,7 +109,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -144,19 +144,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get displayValue => attributes[kDisplayValue] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get displayValue => attributes[kDisplayValue] ?? '';    
 
   // Class Constructors
   PcoPeopleFormSubmissionValue._() : super(kPcoApplication, kTypeString);

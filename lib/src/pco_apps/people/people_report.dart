@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.006017
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.849533
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/reports
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/reports
 /// 
 /// ## Description
 /// A report is editable liquid syntax that provides  a powerful tool for presenting your Lists however you want.
@@ -84,9 +85,8 @@ class PcoPeopleReport extends PcoResource {
   static const String kTypeString = 'Report';
   static const String kTypeId = 'report';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'report-organization-reports';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/reports';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/reports';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/reports';
 
   /// possible includes with parameter ?include=a,b
   /// - `created_by`: include associated created_by 
@@ -111,7 +111,7 @@ class PcoPeopleReport extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -134,10 +134,10 @@ class PcoPeopleReport extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','body'];
+  List<String> get createAllowed => ['name', 'body'];
 
   @override
-  List<String> get updateAllowed => ['name','body'];
+  List<String> get updateAllowed => ['name', 'body'];
 
   @override
   bool get canCreate => true;
@@ -149,22 +149,16 @@ class PcoPeopleReport extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
-  String get body => attributes[kBody] ?? '';
+  String get body => attributes[kBody] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set body(String s) => attributes[kBody] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set body(String? x) => (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;  
 
   // Class Constructors
   PcoPeopleReport._() : super(kPcoApplication, kTypeString);
@@ -175,9 +169,12 @@ class PcoPeopleReport extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleReport() {
-    return PcoPeopleReport._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/reports';
+  factory PcoPeopleReport({ String? name, String? body }) {
+    var obj = PcoPeopleReport._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/reports';
+    if (name != null) obj.name = name;
+    if (body != null) obj.body = body;
+    return obj;
   }
 
 

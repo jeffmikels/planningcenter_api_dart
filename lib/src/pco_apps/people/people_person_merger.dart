@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.001850
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.845731
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/person_mergers
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Person Merger is the history of profiles that were merged into other profiles.
@@ -89,9 +90,8 @@ class PcoPeoplePersonMerger extends PcoResource {
   static const String kTypeString = 'PersonMerger';
   static const String kTypeId = 'person_merger';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'personmerger-organization-person_mergers';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/person_mergers';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/person_mergers';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -111,7 +111,7 @@ class PcoPeoplePersonMerger extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,20 +148,8 @@ class PcoPeoplePersonMerger extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get personToKeepId => attributes[kPersonToKeepId] ?? '';
-  String get personToRemoveId => attributes[kPersonToRemoveId] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get personToRemoveId => attributes[kPersonToRemoveId] ?? '';    
 
   // Class Constructors
   PcoPeoplePersonMerger._() : super(kPcoApplication, kTypeString);

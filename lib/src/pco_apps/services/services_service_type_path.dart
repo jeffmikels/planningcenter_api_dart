@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.564140
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.394127
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/path
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// The Folder path of a Service Type
@@ -70,9 +71,8 @@ class PcoServicesServiceTypePath extends PcoResource {
   static const String kTypeString = 'ServiceTypePath';
   static const String kTypeId = 'service_type_path';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/path';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/path';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -90,7 +90,7 @@ class PcoServicesServiceTypePath extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -125,19 +125,7 @@ class PcoServicesServiceTypePath extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  List get path => attributes[kPath] ?? [];
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  List get path => attributes[kPath] ?? [];    
 
   // Class Constructors
   PcoServicesServiceTypePath._() : super(kPcoApplication, kTypeString);

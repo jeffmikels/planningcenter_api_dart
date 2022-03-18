@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.018443
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.868574
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Workflow Card Activity is a record of an action performed on a card
@@ -97,9 +98,8 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   static const String kTypeString = 'WorkflowCardActivity';
   static const String kTypeId = 'workflow_card_activity';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflowcardactivity-workflowcard-activities';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -117,7 +117,7 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -162,7 +162,6 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get comment => attributes[kComment] ?? '';
   String get content => attributes[kContent] ?? '';
   String get formSubmissionUrl => attributes[kFormSubmissionUrl] ?? '';
@@ -172,18 +171,7 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   String get reassignedToName => attributes[kReassignedToName] ?? '';
   String get subject => attributes[kSubject] ?? '';
   String get type => attributes[kType] ?? '';
-  bool get isContentIsHtml => attributes[kContentIsHtml] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isContentIsHtml => attributes[kContentIsHtml] == true;    
 
   // Class Constructors
   PcoPeopleWorkflowCardActivity._() : super(kPcoApplication, kTypeString);

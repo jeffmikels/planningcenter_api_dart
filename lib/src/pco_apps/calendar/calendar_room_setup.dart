@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.102203
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.929872
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/room_setups
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A diagram and list of suggested resources useful for predefined room setups.
@@ -111,9 +112,8 @@ class PcoCalendarRoomSetup extends PcoResource {
   static const String kTypeString = 'RoomSetup';
   static const String kTypeId = 'room_setup';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'roomsetup-organization-room_setups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `containing_resource`: include associated containing_resource 
@@ -136,7 +136,7 @@ class PcoCalendarRoomSetup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -177,23 +177,11 @@ class PcoCalendarRoomSetup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get description => attributes[kDescription] ?? '';
   String get diagram => attributes[kDiagram] ?? '';
   String get diagramUrl => attributes[kDiagramUrl] ?? '';
-  String get diagramThumbnailUrl => attributes[kDiagramThumbnailUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get diagramThumbnailUrl => attributes[kDiagramThumbnailUrl] ?? '';    
 
   // Class Constructors
   PcoCalendarRoomSetup._() : super(kPcoApplication, kTypeString);

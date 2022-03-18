@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.016851
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.866979
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows/1/cards
 /// 
 /// ## Description
 /// A Card
@@ -139,9 +140,8 @@ class PcoPeopleWorkflowCard extends PcoResource {
   static const String kTypeString = 'WorkflowCard';
   static const String kTypeId = 'workflow_card';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflowcard-workflow-cards';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/cards';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/cards';
 
   /// possible includes with parameter ?include=a,b
   /// - `assignee`: include associated assignee 
@@ -168,7 +168,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -200,10 +200,10 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['sticky_assignment','assignee_id','person_id'];
+  List<String> get createAllowed => ['sticky_assignment', 'assignee_id', 'person_id'];
 
   @override
-  List<String> get updateAllowed => ['sticky_assignment','assignee_id','person_id'];
+  List<String> get updateAllowed => ['sticky_assignment', 'assignee_id', 'person_id'];
 
   @override
   bool get canCreate => true;
@@ -215,7 +215,6 @@ class PcoPeopleWorkflowCard extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   DateTime get snoozeUntil => DateTime.parse(attributes[kSnoozeUntil] ?? '');
   bool get isOverdue => attributes[kOverdue] == true;
   String get stage => attributes[kStage] ?? '';
@@ -224,36 +223,37 @@ class PcoPeopleWorkflowCard extends PcoResource {
   DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
   DateTime get flaggedForNotificationAt => DateTime.parse(attributes[kFlaggedForNotificationAt] ?? '');
   DateTime get removedAt => DateTime.parse(attributes[kRemovedAt] ?? '');
-  DateTime get movedToStepAt => DateTime.parse(attributes[kMovedToStepAt] ?? '');
+  DateTime get movedToStepAt => DateTime.parse(attributes[kMovedToStepAt] ?? '');  
   
-
   // setters for object attributes
-
-  set isStickyAssignment(bool b) => attributes[kStickyAssignment] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set isStickyAssignment(bool? x) => (x == null) ? attributes.remove(kStickyAssignment) : attributes[kStickyAssignment] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set assigneeId(String? x) => (x == null) ? attributes.remove(kAssigneeId) : attributes[kAssigneeId] = x;
   String get assigneeId => attributes[kAssigneeId] ?? '';
-  set assigneeId(String s) => attributes[kAssigneeId] = s;
-  String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
+  String get personId => attributes[kPersonId] ?? '';
 
   // Class Constructors
   PcoPeopleWorkflowCard._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCard.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleWorkflowCard] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards`
+  /// `https://api.planningcenteronline.com/people/v2/workflows/$workflowId/cards`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowCard(String peopleId) {
-    return PcoPeopleWorkflowCard._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards';
+  factory PcoPeopleWorkflowCard(String workflowId, { bool? isStickyAssignment }) {
+    var obj = PcoPeopleWorkflowCard._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/cards';
+    if (isStickyAssignment != null) obj.isStickyAssignment = isStickyAssignment;
+    return obj;
   }
 
 
@@ -358,9 +358,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Move a Workflow Card back to the previous step.
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/go_back`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> goBack(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> goBack(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -375,9 +379,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Move a Workflow Card to the next step.
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/promote`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> promote(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> promote(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -392,9 +400,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Removes a card
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/remove`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> remove(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> remove(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -409,9 +421,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Restore a card
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/restore`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> restore(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> restore(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -426,9 +442,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Sends an email to the subject of the card
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/send_email`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// Pass in a subject and note.
-  Future<PlanningCenterApiResponse> sendEmail(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> sendEmail(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -443,9 +463,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Move a Workflow Card to the next step without completing the current step.
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/skip_step`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> skipStep(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> skipStep(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -460,9 +484,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Snoozes a card for a specific duration
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/snooze`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// Pass in a duration in days.
-  Future<PlanningCenterApiResponse> snooze(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> snooze(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -477,9 +505,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// Unsnoozes a card
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/unsnooze`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> unsnooze(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> unsnooze(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

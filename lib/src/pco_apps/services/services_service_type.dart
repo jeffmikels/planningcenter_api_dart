@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.561252
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.392788
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types
 /// 
 /// ## Description
 /// A Service Type is a container for plans.
@@ -121,9 +122,8 @@ class PcoServicesServiceType extends PcoResource {
   static const String kTypeString = 'ServiceType';
   static const String kTypeId = 'service_type';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'servicetype-organization-service_types';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types';
 
   /// possible includes with parameter ?include=a,b
   /// - `time_preference_options`: include associated time_preference_options 
@@ -143,7 +143,7 @@ class PcoServicesServiceType extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -177,10 +177,10 @@ class PcoServicesServiceType extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['attachment_types_enabled','background_check_permissions','comment_permissions','custom_item_types','frequency','last_plan_from','name','parent_id','sequence','standard_item_types'];
+  List<String> get createAllowed => ['attachment_types_enabled', 'background_check_permissions', 'comment_permissions', 'custom_item_types', 'frequency', 'last_plan_from', 'name', 'parent_id', 'sequence', 'standard_item_types'];
 
   @override
-  List<String> get updateAllowed => ['attachment_types_enabled','background_check_permissions','comment_permissions','custom_item_types','frequency','last_plan_from','name','parent_id','sequence','standard_item_types'];
+  List<String> get updateAllowed => ['attachment_types_enabled', 'background_check_permissions', 'comment_permissions', 'custom_item_types', 'frequency', 'last_plan_from', 'name', 'parent_id', 'sequence', 'standard_item_types'];
 
   @override
   bool get canCreate => true;
@@ -192,7 +192,6 @@ class PcoServicesServiceType extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
   String get name => attributes[kName] ?? '';
@@ -204,16 +203,24 @@ class PcoServicesServiceType extends PcoResource {
   String get frequency => attributes[kFrequency] ?? '';
   String get lastPlanFrom => attributes[kLastPlanFrom] ?? '';
   String get permissions => attributes[kPermissions] ?? '';
-  String get standardItemTypes => attributes[kStandardItemTypes] ?? '';
+  String get standardItemTypes => attributes[kStandardItemTypes] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set sequence(int n) => attributes[kSequence] = n;
-  set isAttachmentTypesEnabled(bool b) => attributes[kAttachmentTypesEnabled] = b;
-  set backgroundCheckPermissions(String s) => attributes[kBackgroundCheckPermissions] = s;
-  set commentPermissions(String s) => attributes[kCommentPermissions] = s;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isAttachmentTypesEnabled(bool? x) => (x == null) ? attributes.remove(kAttachmentTypesEnabled) : attributes[kAttachmentTypesEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set backgroundCheckPermissions(String? x) => (x == null) ? attributes.remove(kBackgroundCheckPermissions) : attributes[kBackgroundCheckPermissions] = x;
+  
+  /// pass `null` to remove key from attributes
+  set commentPermissions(String? x) => (x == null) ? attributes.remove(kCommentPermissions) : attributes[kCommentPermissions] = x;
   
   /// A array of hashes that maps an item title substring matcher to a color:
   /// 
@@ -223,9 +230,15 @@ class PcoServicesServiceType extends PcoResource {
   /// 
   /// A color is the hexadecimal value of a valid color e.g. #FFFFFF
   /// Valid colors values are #e8f6df, #e0f7ff, #e6e2fd, #ffe0e8, #ffedd1, #cfcfcf, #eaebeb, and #ffffff
-  set customItemTypes(String s) => attributes[kCustomItemTypes] = s;
-  set frequency(String s) => attributes[kFrequency] = s;
-  set lastPlanFrom(String s) => attributes[kLastPlanFrom] = s;
+  
+  /// pass `null` to remove key from attributes
+  set customItemTypes(String? x) => (x == null) ? attributes.remove(kCustomItemTypes) : attributes[kCustomItemTypes] = x;
+  
+  /// pass `null` to remove key from attributes
+  set frequency(String? x) => (x == null) ? attributes.remove(kFrequency) : attributes[kFrequency] = x;
+  
+  /// pass `null` to remove key from attributes
+  set lastPlanFrom(String? x) => (x == null) ? attributes.remove(kLastPlanFrom) : attributes[kLastPlanFrom] = x;
   
   /// An array of hashes that maps an item type to a color:
   /// 
@@ -235,16 +248,15 @@ class PcoServicesServiceType extends PcoResource {
   /// 
   /// A color is the hexadecimal value of a valid color e.g. #FFFFFF
   /// Valid colors values are #e8f6df, #e0f7ff, #e6e2fd, #ffe0e8, #ffedd1, #cfcfcf, #eaebeb, and #ffffff
-  set standardItemTypes(String s) => attributes[kStandardItemTypes] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set standardItemTypes(String? x) => (x == null) ? attributes.remove(kStandardItemTypes) : attributes[kStandardItemTypes] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set parentId(String? x) => (x == null) ? attributes.remove(kParentId) : attributes[kParentId] = x;
   String get parentId => attributes[kParentId] ?? '';
-  set parentId(String s) => attributes[kParentId] = s;
-  
-
-
 
   // Class Constructors
   PcoServicesServiceType._() : super(kPcoApplication, kTypeString);
@@ -255,9 +267,19 @@ class PcoServicesServiceType extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesServiceType() {
-    return PcoServicesServiceType._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types';
+  factory PcoServicesServiceType({ bool? isAttachmentTypesEnabled, String? backgroundCheckPermissions, String? commentPermissions, String? customItemTypes, String? frequency, String? lastPlanFrom, String? name, int? sequence, String? standardItemTypes }) {
+    var obj = PcoServicesServiceType._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types';
+    if (isAttachmentTypesEnabled != null) obj.isAttachmentTypesEnabled = isAttachmentTypesEnabled;
+    if (backgroundCheckPermissions != null) obj.backgroundCheckPermissions = backgroundCheckPermissions;
+    if (commentPermissions != null) obj.commentPermissions = commentPermissions;
+    if (customItemTypes != null) obj.customItemTypes = customItemTypes;
+    if (frequency != null) obj.frequency = frequency;
+    if (lastPlanFrom != null) obj.lastPlanFrom = lastPlanFrom;
+    if (name != null) obj.name = name;
+    if (sequence != null) obj.sequence = sequence;
+    if (standardItemTypes != null) obj.standardItemTypes = standardItemTypes;
+    return obj;
   }
 
 
@@ -466,6 +488,10 @@ class PcoServicesServiceType extends PcoResource {
   /// Create multiple plans
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/create_plans`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This action provides the abillity to create multiple plans with a single API request.
   /// 
@@ -492,7 +518,7 @@ class PcoServicesServiceType extends PcoResource {
   /// 
   /// - `template` (optional) Collection of templates from which to copy items, people, and notes (not times) for each new plan.
   ///   Order dependant. Takes precedence over `plan`.
-  Future<PlanningCenterApiResponse> createPlans(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> createPlans(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

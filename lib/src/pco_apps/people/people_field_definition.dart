@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.942262
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.765328
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_definitions
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions
 /// 
 /// ## Description
 /// A field definition represents a custom field -- its name, data type, etc.
@@ -105,9 +106,8 @@ class PcoPeopleFieldDefinition extends PcoResource {
   static const String kTypeString = 'FieldDefinition';
   static const String kTypeId = 'field_definition';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'fielddefinition-organization-field_definitions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs/1/field_definitions';
 
   /// possible includes with parameter ?include=a,b
   /// - `field_options`: include associated field_options 
@@ -138,7 +138,7 @@ class PcoPeopleFieldDefinition extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -164,10 +164,10 @@ class PcoPeopleFieldDefinition extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['data_type','name','sequence','slug','config','deleted_at'];
+  List<String> get createAllowed => ['data_type', 'name', 'sequence', 'slug', 'config', 'deleted_at'];
 
   @override
-  List<String> get updateAllowed => ['data_type','name','sequence','slug','config','deleted_at'];
+  List<String> get updateAllowed => ['data_type', 'name', 'sequence', 'slug', 'config', 'deleted_at'];
 
   @override
   bool get canCreate => true;
@@ -179,44 +179,53 @@ class PcoPeopleFieldDefinition extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get dataType => attributes[kDataType] ?? '';
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
   String get slug => attributes[kSlug] ?? '';
   String get config => attributes[kConfig] ?? '';
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get tabId => attributes[kTabId] ?? '';
+  String get tabId => attributes[kTabId] ?? '';  
   
-
   // setters for object attributes
-
-  set dataType(String s) => attributes[kDataType] = s;
-  set name(String s) => attributes[kName] = s;
-  set sequence(int n) => attributes[kSequence] = n;
-  set slug(String s) => attributes[kSlug] = s;
-  set config(String s) => attributes[kConfig] = s;
-  set deletedAt(DateTime d) => attributes[kDeletedAt] = d.toIso8601String();
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set dataType(String? x) => (x == null) ? attributes.remove(kDataType) : attributes[kDataType] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set slug(String? x) => (x == null) ? attributes.remove(kSlug) : attributes[kSlug] = x;
+  
+  /// pass `null` to remove key from attributes
+  set config(String? x) => (x == null) ? attributes.remove(kConfig) : attributes[kConfig] = x;
+  
+  /// pass `null` to remove key from attributes
+  set deletedAt(DateTime? x) => (x == null) ? attributes.remove(kDeletedAt) : attributes[kDeletedAt] = x.toIso8601String();  
 
   // Class Constructors
   PcoPeopleFieldDefinition._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldDefinition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleFieldDefinition] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/field_definitions`
+  /// `https://api.planningcenteronline.com/people/v2/tabs/$tabId/field_definitions`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleFieldDefinition() {
-    return PcoPeopleFieldDefinition._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_definitions';
+  factory PcoPeopleFieldDefinition(String tabId, { String? dataType, String? name, int? sequence, String? slug, String? config, DateTime? deletedAt }) {
+    var obj = PcoPeopleFieldDefinition._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/tabs/$tabId/field_definitions';
+    if (dataType != null) obj.dataType = dataType;
+    if (name != null) obj.name = name;
+    if (sequence != null) obj.sequence = sequence;
+    if (slug != null) obj.slug = slug;
+    if (config != null) obj.config = config;
+    if (deletedAt != null) obj.deletedAt = deletedAt;
+    return obj;
   }
 
 

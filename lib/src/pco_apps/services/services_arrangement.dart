@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.450610
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.162226
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/arrangements
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements
 /// 
 /// ## Description
 /// Each arrangement belongs to a song and is a different version of that song.
@@ -150,9 +151,8 @@ class PcoServicesArrangement extends PcoResource {
   static const String kTypeString = 'Arrangement';
   static const String kTypeId = 'arrangement';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'arrangement-song-arrangements';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
 
   /// possible includes with parameter ?include=a,b
   /// - `keys`: include associated keys 
@@ -171,7 +171,7 @@ class PcoServicesArrangement extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -219,10 +219,10 @@ class PcoServicesArrangement extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['bpm','chord_chart','chord_chart_chord_color','chord_chart_columns','chord_chart_font','chord_chart_font_size','chord_chart_key','isrc','length','lyrics_enabled','meter','mtid','name','notes','number_chart_enabled','numeral_chart_enabled','print_margin','print_orientation','print_page_size','rehearsal_mix_id','sequence'];
+  List<String> get createAllowed => ['bpm', 'chord_chart', 'chord_chart_chord_color', 'chord_chart_columns', 'chord_chart_font', 'chord_chart_font_size', 'chord_chart_key', 'isrc', 'length', 'lyrics_enabled', 'meter', 'mtid', 'name', 'notes', 'number_chart_enabled', 'numeral_chart_enabled', 'print_margin', 'print_orientation', 'print_page_size', 'rehearsal_mix_id', 'sequence'];
 
   @override
-  List<String> get updateAllowed => ['bpm','chord_chart','chord_chart_chord_color','chord_chart_columns','chord_chart_font','chord_chart_font_size','chord_chart_key','isrc','length','lyrics_enabled','meter','mtid','name','notes','number_chart_enabled','numeral_chart_enabled','print_margin','print_orientation','print_page_size','rehearsal_mix_id','sequence'];
+  List<String> get updateAllowed => ['bpm', 'chord_chart', 'chord_chart_chord_color', 'chord_chart_columns', 'chord_chart_font', 'chord_chart_font_size', 'chord_chart_key', 'isrc', 'length', 'lyrics_enabled', 'meter', 'mtid', 'name', 'notes', 'number_chart_enabled', 'numeral_chart_enabled', 'print_margin', 'print_orientation', 'print_page_size', 'rehearsal_mix_id', 'sequence'];
 
   @override
   bool get canCreate => true;
@@ -234,7 +234,6 @@ class PcoServicesArrangement extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   double get bpm => attributes[kBpm] ?? 0;
   String get isrc => attributes[kIsrc] ?? '';
   bool get isHasChords => attributes[kHasChords] == true;
@@ -261,14 +260,18 @@ class PcoServicesArrangement extends PcoResource {
   DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
   String get lyrics => attributes[kLyrics] ?? '';
   String get mtid => attributes[kMtid] ?? '';
-  String get rehearsalMixId => attributes[kRehearsalMixId] ?? '';
+  String get rehearsalMixId => attributes[kRehearsalMixId] ?? '';  
   
-
   // setters for object attributes
-
-  set bpm(double n) => attributes[kBpm] = n;
-  set isrc(String s) => attributes[kIsrc] = s;
-  set length(int n) => attributes[kLength] = n;
+  
+  /// pass `null` to remove key from attributes
+  set bpm(double? x) => (x == null) ? attributes.remove(kBpm) : attributes[kBpm] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isrc(String? x) => (x == null) ? attributes.remove(kIsrc) : attributes[kIsrc] = x;
+  
+  /// pass `null` to remove key from attributes
+  set length(int? x) => (x == null) ? attributes.remove(kLength) : attributes[kLength] = x;
   
   /// Possible Values:
   /// 
@@ -293,9 +296,15 @@ class PcoServicesArrangement extends PcoResource {
   /// - `9/8`
   /// 
   /// - `12/8`
-  set meter(String s) => attributes[kMeter] = s;
-  set name(String s) => attributes[kName] = s;
-  set notes(String s) => attributes[kNotes] = s;
+  
+  /// pass `null` to remove key from attributes
+  set meter(String? x) => (x == null) ? attributes.remove(kMeter) : attributes[kMeter] = x;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set notes(String? x) => (x == null) ? attributes.remove(kNotes) : attributes[kNotes] = x;
   
   /// Possible Values:
   /// 
@@ -308,14 +317,18 @@ class PcoServicesArrangement extends PcoResource {
   /// - `0.75in`
   /// 
   /// - `1.0in`
-  set printMargin(String s) => attributes[kPrintMargin] = s;
+  
+  /// pass `null` to remove key from attributes
+  set printMargin(String? x) => (x == null) ? attributes.remove(kPrintMargin) : attributes[kPrintMargin] = x;
   
   /// Possible Values:
   /// 
   /// - `Portrait`
   /// 
   /// - `Landscape`
-  set printOrientation(String s) => attributes[kPrintOrientation] = s;
+  
+  /// pass `null` to remove key from attributes
+  set printOrientation(String? x) => (x == null) ? attributes.remove(kPrintOrientation) : attributes[kPrintOrientation] = x;
   
   /// Possible Values:
   /// 
@@ -330,38 +343,57 @@ class PcoServicesArrangement extends PcoResource {
   /// - `Legal`
   /// 
   /// - `11x17`
-  set printPageSize(String s) => attributes[kPrintPageSize] = s;
+  
+  /// pass `null` to remove key from attributes
+  set printPageSize(String? x) => (x == null) ? attributes.remove(kPrintPageSize) : attributes[kPrintPageSize] = x;
   
   /// A string of lyrics and chords. Supports standard and ChordPro formats.
-  set chordChart(String s) => attributes[kChordChart] = s;
-  set chordChartFont(String s) => attributes[kChordChartFont] = s;
-  set chordChartKey(String s) => attributes[kChordChartKey] = s;
-  set chordChartColumns(int n) => attributes[kChordChartColumns] = n;
+  
+  /// pass `null` to remove key from attributes
+  set chordChart(String? x) => (x == null) ? attributes.remove(kChordChart) : attributes[kChordChart] = x;
+  
+  /// pass `null` to remove key from attributes
+  set chordChartFont(String? x) => (x == null) ? attributes.remove(kChordChartFont) : attributes[kChordChartFont] = x;
+  
+  /// pass `null` to remove key from attributes
+  set chordChartKey(String? x) => (x == null) ? attributes.remove(kChordChartKey) : attributes[kChordChartKey] = x;
+  
+  /// pass `null` to remove key from attributes
+  set chordChartColumns(int? x) => (x == null) ? attributes.remove(kChordChartColumns) : attributes[kChordChartColumns] = x;
   
   /// Possible Values:
   /// 
   /// `10`, `11`, `12`, `13`, `14`, `15`, `16`, `18`, `20`, `22`, `24`, `26`, `28`, `32`, `36`, `42`, `48`
-  set chordChartFontSize(int n) => attributes[kChordChartFontSize] = n;
-  set isLyricsEnabled(bool b) => attributes[kLyricsEnabled] = b;
-  set isNumberChartEnabled(bool b) => attributes[kNumberChartEnabled] = b;
-  set isNumeralChartEnabled(bool b) => attributes[kNumeralChartEnabled] = b;
+  
+  /// pass `null` to remove key from attributes
+  set chordChartFontSize(int? x) => (x == null) ? attributes.remove(kChordChartFontSize) : attributes[kChordChartFontSize] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isLyricsEnabled(bool? x) => (x == null) ? attributes.remove(kLyricsEnabled) : attributes[kLyricsEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isNumberChartEnabled(bool? x) => (x == null) ? attributes.remove(kNumberChartEnabled) : attributes[kNumberChartEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isNumeralChartEnabled(bool? x) => (x == null) ? attributes.remove(kNumeralChartEnabled) : attributes[kNumeralChartEnabled] = x;
   
   /// An array of strings containing a label and a number describing the section:
   /// 
   /// ['Verse 1', 'Chorus 1', 'Verse 2']
-  set sequence(List a) => attributes[kSequence] = a;
-  set chordChartChordColor(int n) => attributes[kChordChartChordColor] = n;
+  
+  /// pass `null` to remove key from attributes
+  set sequence(List? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set chordChartChordColor(int? x) => (x == null) ? attributes.remove(kChordChartChordColor) : attributes[kChordChartChordColor] = x;
   
   /// An alias for rehearsal_mix_id
-  set mtid(String s) => attributes[kMtid] = s;
-  set rehearsalMixId(String s) => attributes[kRehearsalMixId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set mtid(String? x) => (x == null) ? attributes.remove(kMtid) : attributes[kMtid] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set rehearsalMixId(String? x) => (x == null) ? attributes.remove(kRehearsalMixId) : attributes[kRehearsalMixId] = x;  
 
   // Class Constructors
   PcoServicesArrangement._() : super(kPcoApplication, kTypeString);
@@ -372,9 +404,31 @@ class PcoServicesArrangement extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesArrangement(String songId) {
-    return PcoServicesArrangement._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements';
+  factory PcoServicesArrangement(String songId, { double? bpm, String? chordChart, int? chordChartChordColor, int? chordChartColumns, String? chordChartFont, int? chordChartFontSize, String? chordChartKey, String? isrc, int? length, bool? isLyricsEnabled, String? meter, String? mtid, String? name, String? notes, bool? isNumberChartEnabled, bool? isNumeralChartEnabled, String? printMargin, String? printOrientation, String? printPageSize, String? rehearsalMixId, List? sequence }) {
+    var obj = PcoServicesArrangement._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements';
+    if (bpm != null) obj.bpm = bpm;
+    if (chordChart != null) obj.chordChart = chordChart;
+    if (chordChartChordColor != null) obj.chordChartChordColor = chordChartChordColor;
+    if (chordChartColumns != null) obj.chordChartColumns = chordChartColumns;
+    if (chordChartFont != null) obj.chordChartFont = chordChartFont;
+    if (chordChartFontSize != null) obj.chordChartFontSize = chordChartFontSize;
+    if (chordChartKey != null) obj.chordChartKey = chordChartKey;
+    if (isrc != null) obj.isrc = isrc;
+    if (length != null) obj.length = length;
+    if (isLyricsEnabled != null) obj.isLyricsEnabled = isLyricsEnabled;
+    if (meter != null) obj.meter = meter;
+    if (mtid != null) obj.mtid = mtid;
+    if (name != null) obj.name = name;
+    if (notes != null) obj.notes = notes;
+    if (isNumberChartEnabled != null) obj.isNumberChartEnabled = isNumberChartEnabled;
+    if (isNumeralChartEnabled != null) obj.isNumeralChartEnabled = isNumeralChartEnabled;
+    if (printMargin != null) obj.printMargin = printMargin;
+    if (printOrientation != null) obj.printOrientation = printOrientation;
+    if (printPageSize != null) obj.printPageSize = printPageSize;
+    if (rehearsalMixId != null) obj.rehearsalMixId = rehearsalMixId;
+    if (sequence != null) obj.sequence = sequence;
+    return obj;
   }
 
 
@@ -458,6 +512,10 @@ class PcoServicesArrangement extends PcoResource {
   /// Used to assign tags to an arrangement.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/assign_tags`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// All tags will be replaced so the full data set must be sent.
   /// 
@@ -483,7 +541,7 @@ class PcoServicesArrangement extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> assignTags(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.640332
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.562561
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/headcounts
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A tally of attendees for a given event time and attendance type.
@@ -95,9 +96,8 @@ class PcoCheckInsHeadcount extends PcoResource {
   static const String kTypeString = 'Headcount';
   static const String kTypeId = 'headcount';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'headcount-organization-headcounts';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/headcounts';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/headcounts';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `attendance_type`: include associated attendance_type 
@@ -119,7 +119,7 @@ class PcoCheckInsHeadcount extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -156,19 +156,7 @@ class PcoCheckInsHeadcount extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  int get total => attributes[kTotal] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get total => attributes[kTotal] ?? 0;    
 
   // Class Constructors
   PcoCheckInsHeadcount._() : super(kPcoApplication, kTypeString);

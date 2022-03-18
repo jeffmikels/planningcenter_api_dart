@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.203746
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.966912
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/pledge_campaigns
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -101,9 +102,8 @@ class PcoGivingPledgeCampaign extends PcoResource {
   static const String kTypeString = 'PledgeCampaign';
   static const String kTypeId = 'pledge_campaign';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `fund`: include associated fund 
@@ -123,7 +123,7 @@ class PcoGivingPledgeCampaign extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -154,10 +154,10 @@ class PcoGivingPledgeCampaign extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','description','starts_at','ends_at','goal_cents','show_goal_in_church_center','fund_id'];
+  List<String> get createAllowed => ['name', 'description', 'starts_at', 'ends_at', 'goal_cents', 'show_goal_in_church_center', 'fund_id'];
 
   @override
-  List<String> get updateAllowed => ['name','description','starts_at','ends_at','goal_cents','show_goal_in_church_center','fund_id'];
+  List<String> get updateAllowed => ['name', 'description', 'starts_at', 'ends_at', 'goal_cents', 'show_goal_in_church_center', 'fund_id'];
 
   @override
   bool get canCreate => true;
@@ -169,7 +169,6 @@ class PcoGivingPledgeCampaign extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get description => attributes[kDescription] ?? '';
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
@@ -178,44 +177,42 @@ class PcoGivingPledgeCampaign extends PcoResource {
   String get goalCurrency => attributes[kGoalCurrency] ?? '';
   bool get isShowGoalInChurchCenter => attributes[kShowGoalInChurchCenter] == true;
   int get receivedTotalFromPledgesCents => attributes[kReceivedTotalFromPledgesCents] ?? 0;
-  int get receivedTotalOutsideOfPledgesCents => attributes[kReceivedTotalOutsideOfPledgesCents] ?? 0;
+  int get receivedTotalOutsideOfPledgesCents => attributes[kReceivedTotalOutsideOfPledgesCents] ?? 0;  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set description(String s) => attributes[kDescription] = s;
-  set startsAt(DateTime d) => attributes[kStartsAt] = d.toIso8601String();
-  set endsAt(DateTime d) => attributes[kEndsAt] = d.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;
+  
+  /// pass `null` to remove key from attributes
+  set startsAt(DateTime? x) => (x == null) ? attributes.remove(kStartsAt) : attributes[kStartsAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set endsAt(DateTime? x) => (x == null) ? attributes.remove(kEndsAt) : attributes[kEndsAt] = x.toIso8601String();
   
   /// Optional. During the donation period of this campaign, the running total of donations will be tracked against this number
-  set goalCents(int n) => attributes[kGoalCents] = n;
+  
+  /// pass `null` to remove key from attributes
+  set goalCents(int? x) => (x == null) ? attributes.remove(kGoalCents) : attributes[kGoalCents] = x;
   
   /// In addition to seeing their personal pledge progress within their donor profile, this option allows donors to see the the collective progress towards the campaign’s overall goal (if set).
-  set isShowGoalInChurchCenter(bool b) => attributes[kShowGoalInChurchCenter] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set isShowGoalInChurchCenter(bool? x) => (x == null) ? attributes.remove(kShowGoalInChurchCenter) : attributes[kShowGoalInChurchCenter] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set fundId(String? x) => (x == null) ? attributes.remove(kFundId) : attributes[kFundId] = x;
   String get fundId => attributes[kFundId] ?? '';
-  set fundId(String s) => attributes[kFundId] = s;
-  
-
-
 
   // Class Constructors
   PcoGivingPledgeCampaign._() : super(kPcoApplication, kTypeString);
   PcoGivingPledgeCampaign.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoGivingPledgeCampaign] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/giving/v2/pledge_campaigns`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoGivingPledgeCampaign() {
-    return PcoGivingPledgeCampaign._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/pledge_campaigns';
-  }
 
 
   // ---------------------------------

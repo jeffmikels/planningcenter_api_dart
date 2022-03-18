@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.967583
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.786840
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/message_groups
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A message group represents one or more emails or text messages sent from one of the Planning Center apps. The message group indicates the from person, app, etc.
@@ -100,9 +101,8 @@ class PcoPeopleMessageGroup extends PcoResource {
   static const String kTypeString = 'MessageGroup';
   static const String kTypeId = 'message_group';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'messagegroup-organization-message_groups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/message_groups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/message_groups';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `app`: include associated app 
@@ -134,7 +134,7 @@ class PcoPeopleMessageGroup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -175,24 +175,12 @@ class PcoPeopleMessageGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get uuid => attributes[kUuid] ?? '';
   String get messageType => attributes[kMessageType] ?? '';
   String get fromAddress => attributes[kFromAddress] ?? '';
   String get subject => attributes[kSubject] ?? '';
   int get messageCount => attributes[kMessageCount] ?? 0;
-  bool get isSystemMessage => attributes[kSystemMessage] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isSystemMessage => attributes[kSystemMessage] == true;    
 
   // Class Constructors
   PcoPeopleMessageGroup._() : super(kPcoApplication, kTypeString);

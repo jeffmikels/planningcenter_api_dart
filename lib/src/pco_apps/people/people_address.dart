@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.929838
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.754172
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/addresses
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/addresses
 /// 
 /// ## Description
 /// An address represents a physical and/or mailing address for a person.
@@ -104,9 +105,8 @@ class PcoPeopleAddres extends PcoResource {
   static const String kTypeString = 'Address';
   static const String kTypeId = 'address';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'address-organization-addresses';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/addresses';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/addresses';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/addresses';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -136,7 +136,7 @@ class PcoPeopleAddres extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -163,10 +163,10 @@ class PcoPeopleAddres extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['city','state','zip','street','location','primary'];
+  List<String> get createAllowed => ['city', 'state', 'zip', 'street', 'location', 'primary'];
 
   @override
-  List<String> get updateAllowed => ['city','state','zip','street','location','primary'];
+  List<String> get updateAllowed => ['city', 'state', 'zip', 'street', 'location', 'primary'];
 
   @override
   bool get canCreate => true;
@@ -178,43 +178,52 @@ class PcoPeopleAddres extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get city => attributes[kCity] ?? '';
   String get state => attributes[kState] ?? '';
   String get zip => attributes[kZip] ?? '';
   String get street => attributes[kStreet] ?? '';
   String get location => attributes[kLocation] ?? '';
-  bool get isPrimary => attributes[kPrimary] == true;
+  bool get isPrimary => attributes[kPrimary] == true;  
   
-
   // setters for object attributes
-
-  set city(String s) => attributes[kCity] = s;
-  set state(String s) => attributes[kState] = s;
-  set zip(String s) => attributes[kZip] = s;
-  set street(String s) => attributes[kStreet] = s;
-  set location(String s) => attributes[kLocation] = s;
-  set isPrimary(bool b) => attributes[kPrimary] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set city(String? x) => (x == null) ? attributes.remove(kCity) : attributes[kCity] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set state(String? x) => (x == null) ? attributes.remove(kState) : attributes[kState] = x;
+  
+  /// pass `null` to remove key from attributes
+  set zip(String? x) => (x == null) ? attributes.remove(kZip) : attributes[kZip] = x;
+  
+  /// pass `null` to remove key from attributes
+  set street(String? x) => (x == null) ? attributes.remove(kStreet) : attributes[kStreet] = x;
+  
+  /// pass `null` to remove key from attributes
+  set location(String? x) => (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isPrimary(bool? x) => (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;  
 
   // Class Constructors
   PcoPeopleAddres._() : super(kPcoApplication, kTypeString);
   PcoPeopleAddres.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleAddres] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/addresses`
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/addresses`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleAddres() {
-    return PcoPeopleAddres._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/addresses';
+  factory PcoPeopleAddres(String peopleId, { String? city, String? state, String? zip, String? street, String? location, bool? isPrimary }) {
+    var obj = PcoPeopleAddres._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/addresses';
+    if (city != null) obj.city = city;
+    if (state != null) obj.state = state;
+    if (zip != null) obj.zip = zip;
+    if (street != null) obj.street = street;
+    if (location != null) obj.location = location;
+    if (isPrimary != null) obj.isPrimary = isPrimary;
+    return obj;
   }
 
 

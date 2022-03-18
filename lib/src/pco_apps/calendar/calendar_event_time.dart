@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.090756
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.914649
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Start and end times for each event instance.
@@ -93,9 +94,8 @@ class PcoCalendarEventTime extends PcoResource {
   static const String kTypeString = 'EventTime';
   static const String kTypeId = 'event_time';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'eventtime-eventinstance-event_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event`: include associated event 
@@ -118,7 +118,7 @@ class PcoCalendarEventTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -157,23 +157,11 @@ class PcoCalendarEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get name => DateTime.parse(attributes[kName] ?? '');
   bool get isVisibleOnKiosks => attributes[kVisibleOnKiosks] == true;
-  bool get isVisibleOnWidgetAndIcal => attributes[kVisibleOnWidgetAndIcal] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isVisibleOnWidgetAndIcal => attributes[kVisibleOnWidgetAndIcal] == true;    
 
   // Class Constructors
   PcoCalendarEventTime._() : super(kPcoApplication, kTypeString);

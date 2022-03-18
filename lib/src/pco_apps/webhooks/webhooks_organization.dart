@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.335497
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.096689
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -68,9 +69,8 @@ class PcoWebhooksOrganization extends PcoResource {
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -88,7 +88,7 @@ class PcoWebhooksOrganization extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -121,19 +121,7 @@ class PcoWebhooksOrganization extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoWebhooksOrganization._() : super(kPcoApplication, kTypeString);

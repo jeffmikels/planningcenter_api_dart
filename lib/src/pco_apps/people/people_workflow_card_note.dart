@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.020519
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.869496
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
 /// 
 /// ## Description
 /// Workflow Note is a note that has been made on a Workflow Card
@@ -80,9 +81,8 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   static const String kTypeString = 'WorkflowCardNote';
   static const String kTypeId = 'workflow_card_note';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflowcardnote-workflowcard-notes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -100,7 +100,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -122,7 +122,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['note','note_category_id'];
+  List<String> get createAllowed => ['note', 'note_category_id'];
 
   @override
   List<String> get updateAllowed => [];
@@ -137,22 +137,18 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get note => attributes[kNote] ?? '';
+  String get note => attributes[kNote] ?? '';  
   
-
   // setters for object attributes
-
-  set note(String s) => attributes[kNote] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set note(String? x) => (x == null) ? attributes.remove(kNote) : attributes[kNote] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set noteCategoryId(String? x) => (x == null) ? attributes.remove(kNoteCategoryId) : attributes[kNoteCategoryId] = x;
   String get noteCategoryId => attributes[kNoteCategoryId] ?? '';
-  set noteCategoryId(String s) => attributes[kNoteCategoryId] = s;
-  
-
-
 
   // Class Constructors
   PcoPeopleWorkflowCardNote._() : super(kPcoApplication, kTypeString);
@@ -163,9 +159,11 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowCardNote(String peopleId,String workflowCardId) {
-    return PcoPeopleWorkflowCardNote._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
+  factory PcoPeopleWorkflowCardNote(String peopleId, String workflowCardId, { String? note }) {
+    var obj = PcoPeopleWorkflowCardNote._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
+    if (note != null) obj.note = note;
+    return obj;
   }
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.940741
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.764247
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_data
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/field_data
 /// 
 /// ## Description
 /// A field datum is an individual piece of data for a custom field.
@@ -106,9 +107,8 @@ class PcoPeopleFieldDatum extends PcoResource {
   static const String kTypeString = 'FieldDatum';
   static const String kTypeId = 'field_datum';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'fielddatum-organization-field_data';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/field_data';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/field_data';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/field_data';
 
   /// possible includes with parameter ?include=a,b
   /// - `field_definition`: include associated field_definition 
@@ -136,7 +136,7 @@ class PcoPeopleFieldDatum extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -161,10 +161,10 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['value','field_definition_id'];
+  List<String> get createAllowed => ['value', 'field_definition_id'];
 
   @override
-  List<String> get updateAllowed => ['value','field_definition_id'];
+  List<String> get updateAllowed => ['value', 'field_definition_id'];
 
   @override
   bool get canCreate => true;
@@ -176,39 +176,37 @@ class PcoPeopleFieldDatum extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get value => attributes[kValue] ?? '';
   String get file => attributes[kFile] ?? '';
   int get fileSize => attributes[kFileSize] ?? 0;
   String get fileContentType => attributes[kFileContentType] ?? '';
-  String get fileName => attributes[kFileName] ?? '';
+  String get fileName => attributes[kFileName] ?? '';  
   
-
   // setters for object attributes
-
-  set value(String s) => attributes[kValue] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set fieldDefinitionId(String? x) => (x == null) ? attributes.remove(kFieldDefinitionId) : attributes[kFieldDefinitionId] = x;
   String get fieldDefinitionId => attributes[kFieldDefinitionId] ?? '';
-  set fieldDefinitionId(String s) => attributes[kFieldDefinitionId] = s;
-  
-
-
 
   // Class Constructors
   PcoPeopleFieldDatum._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldDatum.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleFieldDatum] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/field_data`
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleFieldDatum() {
-    return PcoPeopleFieldDatum._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_data';
+  factory PcoPeopleFieldDatum(String peopleId, { String? value }) {
+    var obj = PcoPeopleFieldDatum._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data';
+    if (value != null) obj.value = value;
+    return obj;
   }
 
 

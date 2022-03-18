@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.958203
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.778841
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A list is a powerful tool for finding and grouping people together using any criteria imaginable.
@@ -137,9 +138,8 @@ class PcoPeopleList extends PcoResource {
   static const String kTypeString = 'List';
   static const String kTypeId = 'list';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'list-organization-lists';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `campus`: include associated campus 
@@ -174,7 +174,7 @@ class PcoPeopleList extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -228,7 +228,6 @@ class PcoPeopleList extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   bool get isAutoRefresh => attributes[kAutoRefresh] == true;
   String get status => attributes[kStatus] ?? '';
@@ -246,18 +245,7 @@ class PcoPeopleList extends PcoResource {
   DateTime get refreshedAt => DateTime.parse(attributes[kRefreshedAt] ?? '');
   bool get isStarred => attributes[kStarred] == true;
   int get totalPeople => attributes[kTotalPeople] ?? 0;
-  DateTime get batchCompletedAt => DateTime.parse(attributes[kBatchCompletedAt] ?? '');
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  DateTime get batchCompletedAt => DateTime.parse(attributes[kBatchCompletedAt] ?? '');    
 
   // Class Constructors
   PcoPeopleList._() : super(kPcoApplication, kTypeString);
@@ -415,9 +403,13 @@ class PcoPeopleList extends PcoResource {
   /// Sync a List to Mailchimp. (Mailchimp integration must already be configured for this organization.)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> mailchimpSync(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> mailchimpSync(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -432,9 +424,13 @@ class PcoPeopleList extends PcoResource {
   /// Run a List to update its results.
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/run`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> run(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> run(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

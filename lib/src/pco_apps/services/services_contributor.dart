@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.486174
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.219391
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Contributor Resource
@@ -96,9 +97,8 @@ class PcoServicesContributor extends PcoResource {
   static const String kTypeString = 'Contributor';
   static const String kTypeId = 'contributor';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'contributor-plan-contributors';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/contributors';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -117,7 +117,7 @@ class PcoServicesContributor extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -158,23 +158,11 @@ class PcoServicesContributor extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get contributableAction => attributes[kContributableAction] ?? '';
   String get contributableCategory => attributes[kContributableCategory] ?? '';
   String get contributableType => attributes[kContributableType] ?? '';
   String get fullName => attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';    
 
   // Class Constructors
   PcoServicesContributor._() : super(kPcoApplication, kTypeString);

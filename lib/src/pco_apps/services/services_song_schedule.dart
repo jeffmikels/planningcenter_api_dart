@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.569280
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.415383
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A upcoming schedule for a song
@@ -109,9 +110,8 @@ class PcoServicesSongSchedule extends PcoResource {
   static const String kTypeString = 'SongSchedule';
   static const String kTypeId = 'song_schedule';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'songschedule-song-song_schedules';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/song_schedules';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/song_schedules';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -129,7 +129,7 @@ class PcoServicesSongSchedule extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -168,23 +168,11 @@ class PcoServicesSongSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get arrangementName => attributes[kArrangementName] ?? '';
   String get keyName => attributes[kKeyName] ?? '';
   String get planDates => attributes[kPlanDates] ?? '';
   String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  String get planSortDate => attributes[kPlanSortDate] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get planSortDate => attributes[kPlanSortDate] ?? '';    
 
   // Class Constructors
   PcoServicesSongSchedule._() : super(kPcoApplication, kTypeString);

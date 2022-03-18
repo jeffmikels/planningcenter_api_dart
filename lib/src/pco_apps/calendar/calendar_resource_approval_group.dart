@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.097586
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.923745
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_approval_groups
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A group of people that can be attached to a room or resource
@@ -85,9 +86,8 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   static const String kTypeString = 'ResourceApprovalGroup';
   static const String kTypeId = 'resource_approval_group';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resourceapprovalgroup-organization-resource_approval_groups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_approval_groups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_approval_groups';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `people`: include associated people 
@@ -110,7 +110,7 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -149,38 +149,21 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get resourceCount => attributes[kResourceCount] ?? 0;
-  int get roomCount => attributes[kRoomCount] ?? 0;
+  int get roomCount => attributes[kRoomCount] ?? 0;  
   
-
   // setters for object attributes
-
   
   /// Name of the approval group
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoCalendarResourceApprovalGroup._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceApprovalGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoCalendarResourceApprovalGroup] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/calendar/v2/resource_approval_groups`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoCalendarResourceApprovalGroup() {
-    return PcoCalendarResourceApprovalGroup._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/resource_approval_groups';
-  }
 
 
   // ---------------------------------

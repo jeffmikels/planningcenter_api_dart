@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.193653
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.958966
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations
+/// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/batches/1/donations
 /// 
 /// ## Description
 /// 
@@ -160,9 +161,8 @@ class PcoGivingDonation extends PcoResource {
   static const String kTypeString = 'Donation';
   static const String kTypeId = 'donation';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'donation-organization-donations';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batches/1/donations';
 
   /// possible includes with parameter ?include=a,b
   /// - `designations`: include associated designations 
@@ -189,7 +189,7 @@ class PcoGivingDonation extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -228,10 +228,10 @@ class PcoGivingDonation extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['payment_method_sub','payment_last4','payment_brand','payment_check_number','payment_check_dated_at','fee_cents','payment_method','received_at','person_id','payment_source_id','campus_id'];
+  List<String> get createAllowed => ['payment_method_sub', 'payment_last4', 'payment_brand', 'payment_check_number', 'payment_check_dated_at', 'fee_cents', 'payment_method', 'received_at', 'person_id', 'payment_source_id', 'campus_id'];
 
   @override
-  List<String> get updateAllowed => ['payment_method_sub','payment_last4','payment_brand','payment_check_number','payment_check_dated_at','fee_cents','payment_method','received_at','person_id','payment_source_id','campus_id'];
+  List<String> get updateAllowed => ['payment_method_sub', 'payment_last4', 'payment_brand', 'payment_check_number', 'payment_check_dated_at', 'fee_cents', 'payment_method', 'received_at', 'person_id', 'payment_source_id', 'campus_id'];
 
   @override
   bool get canCreate => true;
@@ -243,7 +243,6 @@ class PcoGivingDonation extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get paymentMethodSub => attributes[kPaymentMethodSub] ?? '';
   String get paymentLast4 => attributes[kPaymentLast4] ?? '';
   String get paymentBrand => attributes[kPaymentBrand] ?? '';
@@ -258,53 +257,77 @@ class PcoGivingDonation extends PcoResource {
   String get amountCurrency => attributes[kAmountCurrency] ?? '';
   String get feeCurrency => attributes[kFeeCurrency] ?? '';
   bool get isRefunded => attributes[kRefunded] == true;
-  bool get isRefundable => attributes[kRefundable] == true;
+  bool get isRefundable => attributes[kRefundable] == true;  
   
-
   // setters for object attributes
-
   
   /// For cards only. Will be `null` for other payment method types.
   /// 
   /// Possible values: `credit`, `debit`, `prepaid`, or `unknown`
-  set paymentMethodSub(String s) => attributes[kPaymentMethodSub] = s;
-  set paymentLast4(String s) => attributes[kPaymentLast4] = s;
+  
+  /// pass `null` to remove key from attributes
+  set paymentMethodSub(String? x) => (x == null) ? attributes.remove(kPaymentMethodSub) : attributes[kPaymentMethodSub] = x;
+  
+  /// pass `null` to remove key from attributes
+  set paymentLast4(String? x) => (x == null) ? attributes.remove(kPaymentLast4) : attributes[kPaymentLast4] = x;
   
   /// For cards, this is the card brand (eg Visa, Mastercard, etc). For checks, this is the bank name
-  set paymentBrand(String s) => attributes[kPaymentBrand] = s;
-  set paymentCheckNumber(int n) => attributes[kPaymentCheckNumber] = n;
-  set paymentCheckDatedAt(String s) => attributes[kPaymentCheckDatedAt] = s;
-  set feeCents(int n) => attributes[kFeeCents] = n;
+  
+  /// pass `null` to remove key from attributes
+  set paymentBrand(String? x) => (x == null) ? attributes.remove(kPaymentBrand) : attributes[kPaymentBrand] = x;
+  
+  /// pass `null` to remove key from attributes
+  set paymentCheckNumber(int? x) => (x == null) ? attributes.remove(kPaymentCheckNumber) : attributes[kPaymentCheckNumber] = x;
+  
+  /// pass `null` to remove key from attributes
+  set paymentCheckDatedAt(String? x) => (x == null) ? attributes.remove(kPaymentCheckDatedAt) : attributes[kPaymentCheckDatedAt] = x;
+  
+  /// pass `null` to remove key from attributes
+  set feeCents(int? x) => (x == null) ? attributes.remove(kFeeCents) : attributes[kFeeCents] = x;
   
   /// Possible values: `ach`, `cash`, `check`, or `card`
-  set paymentMethod(String s) => attributes[kPaymentMethod] = s;
-  set receivedAt(DateTime d) => attributes[kReceivedAt] = d.toIso8601String();
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set paymentMethod(String? x) => (x == null) ? attributes.remove(kPaymentMethod) : attributes[kPaymentMethod] = x;
+  
+  /// pass `null` to remove key from attributes
+  set receivedAt(DateTime? x) => (x == null) ? attributes.remove(kReceivedAt) : attributes[kReceivedAt] = x.toIso8601String();  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
   String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
-  String get paymentSourceId => attributes[kPaymentSourceId] ?? '';
-  set paymentSourceId(String s) => attributes[kPaymentSourceId] = s;
-  String get campusId => attributes[kCampusId] ?? '';
-  set campusId(String s) => attributes[kCampusId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set paymentSourceId(String? x) => (x == null) ? attributes.remove(kPaymentSourceId) : attributes[kPaymentSourceId] = x;
+  String get paymentSourceId => attributes[kPaymentSourceId] ?? '';
+  
+  /// pass `null` to remove key from attributes
+  set campusId(String? x) => (x == null) ? attributes.remove(kCampusId) : attributes[kCampusId] = x;
+  String get campusId => attributes[kCampusId] ?? '';
 
   // Class Constructors
   PcoGivingDonation._() : super(kPcoApplication, kTypeString);
   PcoGivingDonation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoGivingDonation] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/giving/v2/donations`
+  /// `https://api.planningcenteronline.com/giving/v2/batches/$batcheId/donations`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingDonation() {
-    return PcoGivingDonation._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/donations';
+  factory PcoGivingDonation(String batcheId, { String? paymentMethodSub, String? paymentLast4, String? paymentBrand, int? paymentCheckNumber, String? paymentCheckDatedAt, int? feeCents, String? paymentMethod, DateTime? receivedAt }) {
+    var obj = PcoGivingDonation._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batches/$batcheId/donations';
+    if (paymentMethodSub != null) obj.paymentMethodSub = paymentMethodSub;
+    if (paymentLast4 != null) obj.paymentLast4 = paymentLast4;
+    if (paymentBrand != null) obj.paymentBrand = paymentBrand;
+    if (paymentCheckNumber != null) obj.paymentCheckNumber = paymentCheckNumber;
+    if (paymentCheckDatedAt != null) obj.paymentCheckDatedAt = paymentCheckDatedAt;
+    if (feeCents != null) obj.feeCents = feeCents;
+    if (paymentMethod != null) obj.paymentMethod = paymentMethod;
+    if (receivedAt != null) obj.receivedAt = receivedAt;
+    return obj;
   }
 
 
@@ -424,6 +447,10 @@ class PcoGivingDonation extends PcoResource {
   /// Used to refund a batch donation
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/issue_refund`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This action refunds a batch donation.
   /// It will respond with `unprocessable_entity` if the donation cannot be refunded, or if the donation is not part of a batch.
@@ -439,7 +466,7 @@ class PcoGivingDonation extends PcoResource {
   ///   }
   /// }
   /// ```
-  Future<PlanningCenterApiResponse> issueRefund(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> issueRefund(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

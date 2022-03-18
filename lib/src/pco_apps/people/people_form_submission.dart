@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.951474
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.772373
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A form submission.
@@ -93,9 +94,8 @@ class PcoPeopleFormSubmission extends PcoResource {
   static const String kTypeString = 'FormSubmission';
   static const String kTypeId = 'form_submission';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'formsubmission-form-form_submissions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `form_fields`: include associated form_fields 
@@ -117,7 +117,7 @@ class PcoPeopleFormSubmission extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -154,20 +154,8 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isVerified => attributes[kVerified] == true;
-  bool get isRequiresVerification => attributes[kRequiresVerification] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isRequiresVerification => attributes[kRequiresVerification] == true;    
 
   // Class Constructors
   PcoPeopleFormSubmission._() : super(kPcoApplication, kTypeString);

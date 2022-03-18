@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.960874
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.780790
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/list_results
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A list result
@@ -86,9 +87,8 @@ class PcoPeopleListResult extends PcoResource {
   static const String kTypeString = 'ListResult';
   static const String kTypeId = 'list_result';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'listresult-list-list_results';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/list_results';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/list_results';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoPeopleListResult extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -142,19 +142,7 @@ class PcoPeopleListResult extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoPeopleListResult._() : super(kPcoApplication, kTypeString);

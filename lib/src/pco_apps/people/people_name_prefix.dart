@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.968563
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.787669
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/name_prefixes
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/name_prefixes
 /// 
 /// ## Description
 /// A name prefix is one of Mr., Mrs., etc.
@@ -71,9 +72,8 @@ class PcoPeopleNamePrefix extends PcoResource {
   static const String kTypeString = 'NamePrefix';
   static const String kTypeId = 'name_prefix';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'nameprefix-organization-name_prefixes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -91,7 +91,7 @@ class PcoPeopleNamePrefix extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -126,20 +126,12 @@ class PcoPeopleNamePrefix extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
-  String get value => attributes[kValue] ?? '';
+  String get value => attributes[kValue] ?? '';  
   
-
   // setters for object attributes
-
-  set value(String s) => attributes[kValue] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;  
 
   // Class Constructors
   PcoPeopleNamePrefix._() : super(kPcoApplication, kTypeString);
@@ -150,9 +142,11 @@ class PcoPeopleNamePrefix extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNamePrefix() {
-    return PcoPeopleNamePrefix._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
+  factory PcoPeopleNamePrefix({ String? value }) {
+    var obj = PcoPeopleNamePrefix._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
+    if (value != null) obj.value = value;
+    return obj;
   }
 
 

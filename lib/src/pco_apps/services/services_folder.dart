@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.492247
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.228156
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/folders
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A folder is a container used to organize multiple Service Types or other Folders.
@@ -100,9 +101,8 @@ class PcoServicesFolder extends PcoResource {
   static const String kTypeString = 'Folder';
   static const String kTypeId = 'folder';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'folder-organization-folders';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/folders';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/folders';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `service_types`: include associated service_types 
@@ -120,7 +120,7 @@ class PcoServicesFolder extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -145,10 +145,10 @@ class PcoServicesFolder extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','parent_id','campus_id'];
+  List<String> get createAllowed => ['name', 'parent_id', 'campus_id'];
 
   @override
-  List<String> get updateAllowed => ['name','parent_id','campus_id'];
+  List<String> get updateAllowed => ['name', 'parent_id', 'campus_id'];
 
   @override
   bool get canCreate => true;
@@ -160,39 +160,28 @@ class PcoServicesFolder extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
-  String get container => attributes[kContainer] ?? '';
+  String get container => attributes[kContainer] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set parentId(String? x) => (x == null) ? attributes.remove(kParentId) : attributes[kParentId] = x;
   String get parentId => attributes[kParentId] ?? '';
-  set parentId(String s) => attributes[kParentId] = s;
-  String get campusId => attributes[kCampusId] ?? '';
-  set campusId(String s) => attributes[kCampusId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set campusId(String? x) => (x == null) ? attributes.remove(kCampusId) : attributes[kCampusId] = x;
+  String get campusId => attributes[kCampusId] ?? '';
 
   // Class Constructors
   PcoServicesFolder._() : super(kPcoApplication, kTypeString);
   PcoServicesFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoServicesFolder] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/folders`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoServicesFolder() {
-    return PcoServicesFolder._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/folders';
-  }
 
 
   // ---------------------------------

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.955664
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.776549
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/households/1/household_memberships
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/households/1/household_memberships
 /// 
 /// ## Description
 /// A household membership is the linking record between a household and a person.
@@ -85,9 +86,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   static const String kTypeString = 'HouseholdMembership';
   static const String kTypeId = 'household_membership';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'householdmembership-person-household_memberships';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/household_memberships';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/households/1/household_memberships';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/households/1/household_memberships';
 
   /// possible includes with parameter ?include=a,b
   /// - `household`: include associated household 
@@ -108,7 +108,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -130,10 +130,10 @@ class PcoPeopleHouseholdMembership extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['person_id','pending'];
+  List<String> get createAllowed => ['person_id', 'pending'];
 
   @override
-  List<String> get updateAllowed => ['person_id','pending'];
+  List<String> get updateAllowed => ['person_id', 'pending'];
 
   @override
   bool get canCreate => true;
@@ -145,25 +145,21 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get personName => attributes[kPersonName] ?? '';
-  bool get isPending => attributes[kPending] == true;
+  bool get isPending => attributes[kPending] == true;  
   
-
   // setters for object attributes
-
   
   /// False when a person's memership in a household is unverified.
-  set isPending(bool b) => attributes[kPending] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set isPending(bool? x) => (x == null) ? attributes.remove(kPending) : attributes[kPending] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
   String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
-  
-
-
 
   // Class Constructors
   PcoPeopleHouseholdMembership._() : super(kPcoApplication, kTypeString);
@@ -174,9 +170,11 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleHouseholdMembership(String householdId) {
-    return PcoPeopleHouseholdMembership._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households/$householdId/household_memberships';
+  factory PcoPeopleHouseholdMembership(String householdId, { bool? isPending }) {
+    var obj = PcoPeopleHouseholdMembership._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households/$householdId/household_memberships';
+    if (isPending != null) obj.isPending = isPending;
+    return obj;
   }
 
 

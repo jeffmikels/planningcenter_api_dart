@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.103130
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.930810
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/tags
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An organizational tag that can be applied to events.
@@ -92,9 +93,8 @@ class PcoCalendarTag extends PcoResource {
   static const String kTypeString = 'Tag';
   static const String kTypeId = 'tag';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'tag-organization-tags';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tags';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tags';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `tag_group`: include associated tag_group 
@@ -118,7 +118,7 @@ class PcoCalendarTag extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -157,21 +157,9 @@ class PcoCalendarTag extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get color => attributes[kColor] ?? '';
   String get name => attributes[kName] ?? '';
-  double get position => attributes[kPosition] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  double get position => attributes[kPosition] ?? 0;    
 
   // Class Constructors
   PcoCalendarTag._() : super(kPcoApplication, kTypeString);

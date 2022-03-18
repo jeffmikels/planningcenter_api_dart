@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.544527
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.314238
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_note_categories
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A category of plan notes for an entire Service Type.
@@ -86,9 +87,8 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   static const String kTypeString = 'PlanNoteCategory';
   static const String kTypeId = 'plan_note_category';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'plannotecategory-servicetype-plan_note_categories';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_note_categories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_note_categories';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -106,7 +106,7 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -145,21 +145,9 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
   String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get sequence => attributes[kSequence] ?? 0;    
 
   // Class Constructors
   PcoServicesPlanNoteCategory._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.692226
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.579495
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An organization which has people and events.
@@ -95,9 +96,8 @@ class PcoCheckInsOrganization extends PcoResource {
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -115,7 +115,7 @@ class PcoCheckInsOrganization extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -157,24 +157,12 @@ class PcoCheckInsOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get dateFormatPattern => attributes[kDateFormatPattern] ?? '';
   String get timeZoneOlson => attributes[kTimeZoneOlson] ?? '';
   String get name => attributes[kName] ?? '';
   int get dailyCheckIns => attributes[kDailyCheckIns] ?? 0;
   String get timeZone => attributes[kTimeZone] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get avatarUrl => attributes[kAvatarUrl] ?? '';    
 
   // Class Constructors
   PcoCheckInsOrganization._() : super(kPcoApplication, kTypeString);
@@ -311,9 +299,13 @@ class PcoCheckInsOrganization extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> buildCheckInTimesForPreparedCheckIn(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> buildCheckInTimesForPreparedCheckIn(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -328,9 +320,13 @@ class PcoCheckInsOrganization extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> buildRecommendedCheckInTimes(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> buildRecommendedCheckInTimes(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -345,9 +341,13 @@ class PcoCheckInsOrganization extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> bulkCheckIn(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> bulkCheckIn(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.964753
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.783983
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/marital_statuses
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/marital_statuses
 /// 
 /// ## Description
 /// A martial status represents a member's current status, e.g. married, single, etc.
@@ -71,9 +72,8 @@ class PcoPeopleMaritalStatu extends PcoResource {
   static const String kTypeString = 'MaritalStatus';
   static const String kTypeId = 'marital_status';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'maritalstatus-organization-marital_statuses';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -91,7 +91,7 @@ class PcoPeopleMaritalStatu extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -126,20 +126,12 @@ class PcoPeopleMaritalStatu extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
-  String get value => attributes[kValue] ?? '';
+  String get value => attributes[kValue] ?? '';  
   
-
   // setters for object attributes
-
-  set value(String s) => attributes[kValue] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;  
 
   // Class Constructors
   PcoPeopleMaritalStatu._() : super(kPcoApplication, kTypeString);
@@ -150,9 +142,11 @@ class PcoPeopleMaritalStatu extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleMaritalStatu() {
-    return PcoPeopleMaritalStatu._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
+  factory PcoPeopleMaritalStatu({ String? value }) {
+    var obj = PcoPeopleMaritalStatu._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
+    if (value != null) obj.value = value;
+    return obj;
   }
 
 

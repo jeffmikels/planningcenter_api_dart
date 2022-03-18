@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.566736
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.409287
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A SignupSheetMetadata Resource
@@ -83,9 +84,8 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   static const String kTypeString = 'SignupSheetMetadata';
   static const String kTypeId = 'signup_sheet_metadata';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'signupsheetmetadata-signupsheet-signup_sheet_metadata';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -103,7 +103,7 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -141,22 +141,10 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get conflicts => attributes[kConflicts] ?? '';
   String get timeType => attributes[kTimeType] ?? '';
   String get timeName => attributes[kTimeName] ?? '';
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');    
 
   // Class Constructors
   PcoServicesSignupSheetMetadata._() : super(kPcoApplication, kTypeString);

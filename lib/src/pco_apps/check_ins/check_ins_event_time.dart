@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.636535
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.561476
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/event_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A time that someone may check in. Times are copied from session to session.
@@ -121,9 +122,8 @@ class PcoCheckInsEventTime extends PcoResource {
   static const String kTypeString = 'EventTime';
   static const String kTypeId = 'event_time';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'eventtime-organization-event_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event`: include associated event 
@@ -145,7 +145,7 @@ class PcoCheckInsEventTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -192,7 +192,6 @@ class PcoCheckInsEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get totalCount => attributes[kTotalCount] ?? 0;
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get showsAt => DateTime.parse(attributes[kShowsAt] ?? '');
@@ -203,18 +202,7 @@ class PcoCheckInsEventTime extends PcoResource {
   String get name => attributes[kName] ?? '';
   int get hour => attributes[kHour] ?? 0;
   int get minute => attributes[kMinute] ?? 0;
-  int get dayOfWeek => attributes[kDayOfWeek] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get dayOfWeek => attributes[kDayOfWeek] ?? 0;    
 
   // Class Constructors
   PcoCheckInsEventTime._() : super(kPcoApplication, kTypeString);

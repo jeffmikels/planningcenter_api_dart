@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.693059
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.580247
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/passes
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Enables quick lookup of a person via barcode reader.
@@ -77,9 +78,8 @@ class PcoCheckInsPas extends PcoResource {
   static const String kTypeString = 'Pass';
   static const String kTypeId = 'pass';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'pass-organization-passes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/passes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/passes';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -97,7 +97,7 @@ class PcoCheckInsPas extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -135,20 +135,8 @@ class PcoCheckInsPas extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get code => attributes[kCode] ?? '';
-  String get kind => attributes[kKind] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get kind => attributes[kKind] ?? '';    
 
   // Class Constructors
   PcoCheckInsPas._() : super(kPcoApplication, kTypeString);

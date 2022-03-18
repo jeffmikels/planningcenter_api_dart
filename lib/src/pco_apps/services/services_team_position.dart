@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.578955
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.463529
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/team_positions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A position within a team.
@@ -94,9 +95,8 @@ class PcoServicesTeamPosition extends PcoResource {
   static const String kTypeString = 'TeamPosition';
   static const String kTypeId = 'team_position';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'teamposition-team-team_positions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/team_positions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/team_positions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `team`: include associated team 
@@ -114,7 +114,7 @@ class PcoServicesTeamPosition extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -152,22 +152,10 @@ class PcoServicesTeamPosition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   List get tags => attributes[kTags] ?? [];
   List get negativeTagGroups => attributes[kNegativeTagGroups] ?? [];
-  List get tagGroups => attributes[kTagGroups] ?? [];
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  List get tagGroups => attributes[kTagGroups] ?? [];    
 
   // Class Constructors
   PcoServicesTeamPosition._() : super(kPcoApplication, kTypeString);

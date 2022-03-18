@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.559508
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.355028
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Series can be specified for each plan to tie plans with similar messages together, even across Service Types.
@@ -91,9 +92,8 @@ class PcoServicesSeries extends PcoResource {
   static const String kTypeString = 'Series';
   static const String kTypeId = 'series';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'series-organization-series';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/series';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -111,7 +111,7 @@ class PcoServicesSeries extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -155,7 +155,6 @@ class PcoServicesSeries extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get artworkFileName => attributes[kArtworkFileName] ?? '';
   String get artworkContentType => attributes[kArtworkContentType] ?? '';
   int get artworkFileSize => attributes[kArtworkFileSize] ?? 0;
@@ -163,18 +162,7 @@ class PcoServicesSeries extends PcoResource {
   String get artworkForDashboard => attributes[kArtworkForDashboard] ?? '';
   String get artworkForMobile => attributes[kArtworkForMobile] ?? '';
   String get artworkForPlan => attributes[kArtworkForPlan] ?? '';
-  String get artworkOriginal => attributes[kArtworkOriginal] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get artworkOriginal => attributes[kArtworkOriginal] ?? '';    
 
   // Class Constructors
   PcoServicesSeries._() : super(kPcoApplication, kTypeString);

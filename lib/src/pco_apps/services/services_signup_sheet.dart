@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.565617
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.397847
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Available positions to sign up for
@@ -103,9 +104,8 @@ class PcoServicesSignupSheet extends PcoResource {
   static const String kTypeString = 'SignupSheet';
   static const String kTypeId = 'signup_sheet';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'signupsheet-availablesignup-signup_sheets';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `scheduled_people`: include associated scheduled_people 
@@ -124,7 +124,7 @@ class PcoServicesSignupSheet extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -165,25 +165,13 @@ class PcoServicesSignupSheet extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
   String get groupKey => attributes[kGroupKey] ?? '';
   String get teamName => attributes[kTeamName] ?? '';
   String get displayTimes => attributes[kDisplayTimes] ?? '';
   String get positionName => attributes[kPositionName] ?? '';
   String get title => attributes[kTitle] ?? '';
-  int get sortIndex => attributes[kSortIndex] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get sortIndex => attributes[kSortIndex] ?? 0;    
 
   // Class Constructors
   PcoServicesSignupSheet._() : super(kPcoApplication, kTypeString);
@@ -242,9 +230,13 @@ class PcoServicesSignupSheet extends PcoResource {
   /// Accept a signup sheet
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/accept`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> accept(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> accept(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

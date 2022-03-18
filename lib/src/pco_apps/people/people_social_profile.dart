@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.010559
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.853475
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/social_profiles
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/social_profiles
 /// 
 /// ## Description
 /// A social profile represents a members's Twitter, Facebook, or other social media account.
@@ -87,9 +88,8 @@ class PcoPeopleSocialProfile extends PcoResource {
   static const String kTypeString = 'SocialProfile';
   static const String kTypeId = 'social_profile';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'socialprofile-organization-social_profiles';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/social_profiles';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/social_profiles';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/social_profiles';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -115,7 +115,7 @@ class PcoPeopleSocialProfile extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -139,10 +139,10 @@ class PcoPeopleSocialProfile extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['site','url','verified'];
+  List<String> get createAllowed => ['site', 'url', 'verified'];
 
   @override
-  List<String> get updateAllowed => ['site','url','verified'];
+  List<String> get updateAllowed => ['site', 'url', 'verified'];
 
   @override
   bool get canCreate => true;
@@ -154,37 +154,37 @@ class PcoPeopleSocialProfile extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get site => attributes[kSite] ?? '';
   String get url => attributes[kUrl] ?? '';
-  bool get isVerified => attributes[kVerified] == true;
+  bool get isVerified => attributes[kVerified] == true;  
   
-
   // setters for object attributes
-
-  set site(String s) => attributes[kSite] = s;
-  set url(String s) => attributes[kUrl] = s;
-  set isVerified(bool b) => attributes[kVerified] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set site(String? x) => (x == null) ? attributes.remove(kSite) : attributes[kSite] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set url(String? x) => (x == null) ? attributes.remove(kUrl) : attributes[kUrl] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isVerified(bool? x) => (x == null) ? attributes.remove(kVerified) : attributes[kVerified] = x;  
 
   // Class Constructors
   PcoPeopleSocialProfile._() : super(kPcoApplication, kTypeString);
   PcoPeopleSocialProfile.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleSocialProfile] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/social_profiles`
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleSocialProfile() {
-    return PcoPeopleSocialProfile._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/social_profiles';
+  factory PcoPeopleSocialProfile(String peopleId, { String? site, String? url, bool? isVerified }) {
+    var obj = PcoPeopleSocialProfile._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles';
+    if (site != null) obj.site = site;
+    if (url != null) obj.url = url;
+    if (isVerified != null) obj.isVerified = isVerified;
+    return obj;
   }
 
 

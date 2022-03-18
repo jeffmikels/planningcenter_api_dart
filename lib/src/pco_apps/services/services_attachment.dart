@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.472902
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.191443
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
 /// 
 /// ## Description
 /// A file, whether it's stored on Planning Center or linked from another location.
@@ -161,9 +162,8 @@ class PcoServicesAttachment extends PcoResource {
   static const String kTypeString = 'Attachment';
   static const String kTypeId = 'attachment';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments';
 
   /// possible includes with parameter ?include=a,b
   /// - `zooms`: include associated zooms 
@@ -185,7 +185,7 @@ class PcoServicesAttachment extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -228,10 +228,10 @@ class PcoServicesAttachment extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['attachment_type_ids','file_upload_identifier','filename','remote_link','page_order'];
+  List<String> get createAllowed => ['attachment_type_ids', 'file_upload_identifier', 'filename', 'remote_link', 'page_order'];
 
   @override
-  List<String> get updateAllowed => ['attachment_type_ids','file_upload_identifier','filename','remote_link','page_order'];
+  List<String> get updateAllowed => ['attachment_type_ids', 'file_upload_identifier', 'filename', 'remote_link', 'page_order'];
 
   @override
   bool get canCreate => true;
@@ -243,7 +243,6 @@ class PcoServicesAttachment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get pageOrder => attributes[kPageOrder] ?? '';
   String get filename => attributes[kFilename] ?? '';
   int get fileSize => attributes[kFileSize] ?? 0;
@@ -264,37 +263,45 @@ class PcoServicesAttachment extends PcoResource {
   bool get isTransposable => attributes[kTransposable] == true;
   bool get isStreamable => attributes[kStreamable] == true;
   bool get isHasPreview => attributes[kHasPreview] == true;
-  String get fileUploadIdentifier => attributes[kFileUploadIdentifier] ?? '';
+  String get fileUploadIdentifier => attributes[kFileUploadIdentifier] ?? '';  
   
-
   // setters for object attributes
-
-  set pageOrder(String s) => attributes[kPageOrder] = s;
-  set filename(String s) => attributes[kFilename] = s;
-  set remoteLink(String s) => attributes[kRemoteLink] = s;
-  set fileUploadIdentifier(String s) => attributes[kFileUploadIdentifier] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set pageOrder(String? x) => (x == null) ? attributes.remove(kPageOrder) : attributes[kPageOrder] = x;
+  
+  /// pass `null` to remove key from attributes
+  set filename(String? x) => (x == null) ? attributes.remove(kFilename) : attributes[kFilename] = x;
+  
+  /// pass `null` to remove key from attributes
+  set remoteLink(String? x) => (x == null) ? attributes.remove(kRemoteLink) : attributes[kRemoteLink] = x;
+  
+  /// pass `null` to remove key from attributes
+  set fileUploadIdentifier(String? x) => (x == null) ? attributes.remove(kFileUploadIdentifier) : attributes[kFileUploadIdentifier] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set attachmentTypeIds(String? x) => (x == null) ? attributes.remove(kAttachmentTypeIds) : attributes[kAttachmentTypeIds] = x;
   String get attachmentTypeIds => attributes[kAttachmentTypeIds] ?? '';
-  set attachmentTypeIds(String s) => attributes[kAttachmentTypeIds] = s;
-  
-
-
 
   // Class Constructors
   PcoServicesAttachment._() : super(kPcoApplication, kTypeString);
   PcoServicesAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesAttachment] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/attachments`
+  /// `https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesAttachment() {
-    return PcoServicesAttachment._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments';
+  factory PcoServicesAttachment(String songId, String arrangementId, { String? fileUploadIdentifier, String? filename, String? remoteLink, String? pageOrder }) {
+    var obj = PcoServicesAttachment._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/attachments';
+    if (fileUploadIdentifier != null) obj.fileUploadIdentifier = fileUploadIdentifier;
+    if (filename != null) obj.filename = filename;
+    if (remoteLink != null) obj.remoteLink = remoteLink;
+    if (pageOrder != null) obj.pageOrder = pageOrder;
+    return obj;
   }
 
 
@@ -452,9 +459,13 @@ class PcoServicesAttachment extends PcoResource {
   /// This will generate the URL and return it in the `attachment_url` attribute of the `AttachmentActivity`.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/attachments/1/open`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> open(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> open(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -473,9 +484,13 @@ class PcoServicesAttachment extends PcoResource {
   /// The `has_preview` attribute of an `Attachment` indicates if a preview is available. When a preview is not available this action will return a `Not Found` error with a status code of `404`.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/attachments/1/preview`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> preview(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> preview(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

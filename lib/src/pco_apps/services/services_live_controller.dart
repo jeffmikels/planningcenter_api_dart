@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.507235
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.261662
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A person who can control Services LIVE without the required permissions
@@ -84,9 +85,8 @@ class PcoServicesLiveController extends PcoResource {
   static const String kTypeString = 'LiveController';
   static const String kTypeId = 'live_controller';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'livecontroller-servicetype-live_controllers';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoServicesLiveController extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -143,20 +143,8 @@ class PcoServicesLiveController extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get fullName => attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';    
 
   // Class Constructors
   PcoServicesLiveController._() : super(kPcoApplication, kTypeString);

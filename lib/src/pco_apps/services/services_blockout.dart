@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.481052
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.206845
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/blockouts
 /// 
 /// ## Description
 /// An object representing a blockout date, and an optional recurrence pattern
@@ -112,9 +113,8 @@ class PcoServicesBlockout extends PcoResource {
   static const String kTypeString = 'Blockout';
   static const String kTypeId = 'blockout';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'blockout-person-blockouts';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -132,7 +132,7 @@ class PcoServicesBlockout extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -166,10 +166,10 @@ class PcoServicesBlockout extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['reason','repeat_frequency','repeat_interval','repeat_period','share','repeat_until','starts_at','ends_at'];
+  List<String> get createAllowed => ['reason', 'repeat_frequency', 'repeat_interval', 'repeat_period', 'share', 'repeat_until', 'starts_at', 'ends_at'];
 
   @override
-  List<String> get updateAllowed => ['reason','repeat_frequency','repeat_interval','repeat_period','share','repeat_until','starts_at','ends_at'];
+  List<String> get updateAllowed => ['reason', 'repeat_frequency', 'repeat_interval', 'repeat_period', 'share', 'repeat_until', 'starts_at', 'ends_at'];
 
   @override
   bool get canCreate => true;
@@ -181,7 +181,6 @@ class PcoServicesBlockout extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get description => attributes[kDescription] ?? '';
   String get groupIdentifier => attributes[kGroupIdentifier] ?? '';
   String get organizationName => attributes[kOrganizationName] ?? '';
@@ -194,12 +193,12 @@ class PcoServicesBlockout extends PcoResource {
   String get repeatUntil => attributes[kRepeatUntil] ?? '';
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  bool get isShare => attributes[kShare] == true;
+  bool get isShare => attributes[kShare] == true;  
   
-
   // setters for object attributes
-
-  set reason(String s) => attributes[kReason] = s;
+  
+  /// pass `null` to remove key from attributes
+  set reason(String? x) => (x == null) ? attributes.remove(kReason) : attributes[kReason] = x;
   
   /// Possible values:
   /// 
@@ -220,7 +219,9 @@ class PcoServicesBlockout extends PcoResource {
   /// - every_7
   /// 
   /// - every_8
-  set repeatFrequency(String s) => attributes[kRepeatFrequency] = s;
+  
+  /// pass `null` to remove key from attributes
+  set repeatFrequency(String? x) => (x == null) ? attributes.remove(kRepeatFrequency) : attributes[kRepeatFrequency] = x;
   
   /// Possible values:
   /// 
@@ -235,7 +236,9 @@ class PcoServicesBlockout extends PcoResource {
   /// - week_of_month_4
   /// 
   /// - week_of_month_last
-  set repeatInterval(String s) => attributes[kRepeatInterval] = s;
+  
+  /// pass `null` to remove key from attributes
+  set repeatInterval(String? x) => (x == null) ? attributes.remove(kRepeatInterval) : attributes[kRepeatInterval] = x;
   
   /// Possible values:
   /// 
@@ -246,18 +249,21 @@ class PcoServicesBlockout extends PcoResource {
   /// - monthly
   /// 
   /// - yearly
-  set repeatPeriod(String s) => attributes[kRepeatPeriod] = s;
-  set repeatUntil(String s) => attributes[kRepeatUntil] = s;
-  set startsAt(DateTime d) => attributes[kStartsAt] = d.toIso8601String();
-  set endsAt(DateTime d) => attributes[kEndsAt] = d.toIso8601String();
-  set isShare(bool b) => attributes[kShare] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set repeatPeriod(String? x) => (x == null) ? attributes.remove(kRepeatPeriod) : attributes[kRepeatPeriod] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set repeatUntil(String? x) => (x == null) ? attributes.remove(kRepeatUntil) : attributes[kRepeatUntil] = x;
+  
+  /// pass `null` to remove key from attributes
+  set startsAt(DateTime? x) => (x == null) ? attributes.remove(kStartsAt) : attributes[kStartsAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set endsAt(DateTime? x) => (x == null) ? attributes.remove(kEndsAt) : attributes[kEndsAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set isShare(bool? x) => (x == null) ? attributes.remove(kShare) : attributes[kShare] = x;  
 
   // Class Constructors
   PcoServicesBlockout._() : super(kPcoApplication, kTypeString);
@@ -268,9 +274,18 @@ class PcoServicesBlockout extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockout(String peopleId) {
-    return PcoServicesBlockout._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
+  factory PcoServicesBlockout(String peopleId, { String? reason, String? repeatFrequency, String? repeatInterval, String? repeatPeriod, bool? isShare, String? repeatUntil, DateTime? startsAt, DateTime? endsAt }) {
+    var obj = PcoServicesBlockout._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
+    if (reason != null) obj.reason = reason;
+    if (repeatFrequency != null) obj.repeatFrequency = repeatFrequency;
+    if (repeatInterval != null) obj.repeatInterval = repeatInterval;
+    if (repeatPeriod != null) obj.repeatPeriod = repeatPeriod;
+    if (isShare != null) obj.isShare = isShare;
+    if (repeatUntil != null) obj.repeatUntil = repeatUntil;
+    if (startsAt != null) obj.startsAt = startsAt;
+    if (endsAt != null) obj.endsAt = endsAt;
+    return obj;
   }
 
 

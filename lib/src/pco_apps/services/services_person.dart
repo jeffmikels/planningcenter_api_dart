@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.528175
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.286460
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A person added to Planning Center Services.
@@ -187,9 +188,8 @@ class PcoServicesPerson extends PcoResource {
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'person-organization-people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -211,7 +211,7 @@ class PcoServicesPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -274,7 +274,7 @@ class PcoServicesPerson extends PcoResource {
   List<String> get createAllowed => [];
 
   @override
-  List<String> get updateAllowed => ['preferred_app','onboardings','access_media_attachments','access_plan_attachments','access_song_attachments','current_folder_id','permissions'];
+  List<String> get updateAllowed => ['preferred_app', 'onboardings', 'access_media_attachments', 'access_plan_attachments', 'access_song_attachments', 'current_folder_id', 'permissions'];
 
   @override
   bool get canCreate => false;
@@ -286,7 +286,6 @@ class PcoServicesPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get photoUrl => attributes[kPhotoUrl] ?? '';
   String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';
   String get preferredApp => attributes[kPreferredApp] ?? '';
@@ -324,26 +323,33 @@ class PcoServicesPerson extends PcoResource {
   String get peopleTab => attributes[kPeopleTab] ?? '';
   bool get isCanEditAllPeople => attributes[kCanEditAllPeople] == true;
   bool get isCanViewAllPeople => attributes[kCanViewAllPeople] == true;
-  List get onboardings => attributes[kOnboardings] ?? [];
+  List get onboardings => attributes[kOnboardings] ?? [];  
   
-
   // setters for object attributes
-
-  set preferredApp(String s) => attributes[kPreferredApp] = s;
-  set permissions(String s) => attributes[kPermissions] = s;
-  set isAccessMediaAttachments(bool b) => attributes[kAccessMediaAttachments] = b;
-  set isAccessPlanAttachments(bool b) => attributes[kAccessPlanAttachments] = b;
-  set isAccessSongAttachments(bool b) => attributes[kAccessSongAttachments] = b;
-  set onboardings(List a) => attributes[kOnboardings] = a;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set preferredApp(String? x) => (x == null) ? attributes.remove(kPreferredApp) : attributes[kPreferredApp] = x;
+  
+  /// pass `null` to remove key from attributes
+  set permissions(String? x) => (x == null) ? attributes.remove(kPermissions) : attributes[kPermissions] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isAccessMediaAttachments(bool? x) => (x == null) ? attributes.remove(kAccessMediaAttachments) : attributes[kAccessMediaAttachments] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isAccessPlanAttachments(bool? x) => (x == null) ? attributes.remove(kAccessPlanAttachments) : attributes[kAccessPlanAttachments] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isAccessSongAttachments(bool? x) => (x == null) ? attributes.remove(kAccessSongAttachments) : attributes[kAccessSongAttachments] = x;
+  
+  /// pass `null` to remove key from attributes
+  set onboardings(List? x) => (x == null) ? attributes.remove(kOnboardings) : attributes[kOnboardings] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set currentFolderId(String? x) => (x == null) ? attributes.remove(kCurrentFolderId) : attributes[kCurrentFolderId] = x;
   String get currentFolderId => attributes[kCurrentFolderId] ?? '';
-  set currentFolderId(String s) => attributes[kCurrentFolderId] = s;
-  
-
-
 
   // Class Constructors
   PcoServicesPerson._() : super(kPcoApplication, kTypeString);
@@ -549,6 +555,10 @@ class PcoServicesPerson extends PcoResource {
   /// Used to assign tags to a person.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assign_tags`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// All tags will be replaced so the full data set must be sent.
   /// 
@@ -574,7 +584,7 @@ class PcoServicesPerson extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> assignTags(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -588,6 +598,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Used to set Service Types as collapsed for the Person
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/collapse_service_types`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
   /// 
   /// Details:
   /// It expects a body that looks like:
@@ -616,7 +630,7 @@ class PcoServicesPerson extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> collapseServiceTypes(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> collapseServiceTypes(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -630,6 +644,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Used to set Service Types as expanded for the Person
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/expand_service_types`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
   /// 
   /// Details:
   /// It expects a body that looks like:
@@ -658,7 +676,7 @@ class PcoServicesPerson extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> expandServiceTypes(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> expandServiceTypes(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

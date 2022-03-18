@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.310803
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.014991
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/groups
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -123,9 +124,8 @@ class PcoGroupsGroup extends PcoResource {
   static const String kTypeString = 'Group';
   static const String kTypeId = 'group';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'group-organization-groups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `group_type`: include associated group_type 
@@ -144,7 +144,7 @@ class PcoGroupsGroup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -194,7 +194,6 @@ class PcoGroupsGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get archiveStatus => attributes[kArchiveStatus] ?? '';
   DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
   String get contactEmail => attributes[kContactEmail] ?? '';
@@ -209,18 +208,7 @@ class PcoGroupsGroup extends PcoResource {
   String get publicChurchCenterWebUrl => attributes[kPublicChurchCenterWebUrl] ?? '';
   String get schedule => attributes[kSchedule] ?? '';
   String get virtualLocationUrl => attributes[kVirtualLocationUrl] ?? '';
-  String get widgetStatus => attributes[kWidgetStatus] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get widgetStatus => attributes[kWidgetStatus] ?? '';    
 
   // Class Constructors
   PcoGroupsGroup._() : super(kPcoApplication, kTypeString);

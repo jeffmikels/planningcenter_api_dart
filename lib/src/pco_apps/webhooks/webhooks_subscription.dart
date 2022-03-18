@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.336223
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.097835
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/subscriptions
+/// - Create Endpoint:    https://api.planningcenteronline.com/webhooks/v2/subscriptions
 /// 
 /// ## Description
 /// 
@@ -82,9 +83,8 @@ class PcoWebhooksSubscription extends PcoResource {
   static const String kTypeString = 'Subscription';
   static const String kTypeId = 'subscription';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'subscription-organization-subscriptions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -102,7 +102,7 @@ class PcoWebhooksSubscription extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -128,7 +128,7 @@ class PcoWebhooksSubscription extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','url','active'];
+  List<String> get createAllowed => ['name', 'url', 'active'];
 
   @override
   List<String> get updateAllowed => ['active'];
@@ -143,26 +143,22 @@ class PcoWebhooksSubscription extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get url => attributes[kUrl] ?? '';
   bool get isActive => attributes[kActive] == true;
   String get authenticitySecret => attributes[kAuthenticitySecret] ?? '';
-  String get applicationId => attributes[kApplicationId] ?? '';
+  String get applicationId => attributes[kApplicationId] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set url(String s) => attributes[kUrl] = s;
-  set isActive(bool b) => attributes[kActive] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set url(String? x) => (x == null) ? attributes.remove(kUrl) : attributes[kUrl] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isActive(bool? x) => (x == null) ? attributes.remove(kActive) : attributes[kActive] = x;  
 
   // Class Constructors
   PcoWebhooksSubscription._() : super(kPcoApplication, kTypeString);
@@ -173,9 +169,13 @@ class PcoWebhooksSubscription extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoWebhooksSubscription() {
-    return PcoWebhooksSubscription._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
+  factory PcoWebhooksSubscription({ String? name, String? url, bool? isActive }) {
+    var obj = PcoWebhooksSubscription._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
+    if (name != null) obj.name = name;
+    if (url != null) obj.url = url;
+    if (isActive != null) obj.isActive = isActive;
+    return obj;
   }
 
 
@@ -221,9 +221,13 @@ class PcoWebhooksSubscription extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/rotate_secret`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> rotateSecret(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> rotateSecret(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

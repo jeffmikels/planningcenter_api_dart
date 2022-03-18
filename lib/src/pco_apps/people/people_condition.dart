@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.937432
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.759797
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A condition is an individual criterion used by a List Rule.
@@ -105,9 +106,8 @@ class PcoPeopleCondition extends PcoResource {
   static const String kTypeString = 'Condition';
   static const String kTypeId = 'condition';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'condition-rule-conditions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `created_by`: include associated created_by 
@@ -139,7 +139,7 @@ class PcoPeopleCondition extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -181,24 +181,12 @@ class PcoPeopleCondition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get application => attributes[kApplication] ?? '';
   String get definitionClass => attributes[kDefinitionClass] ?? '';
   String get comparison => attributes[kComparison] ?? '';
   String get settings => attributes[kSettings] ?? '';
   String get definitionIdentifier => attributes[kDefinitionIdentifier] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get description => attributes[kDescription] ?? '';    
 
   // Class Constructors
   PcoPeopleCondition._() : super(kPcoApplication, kTypeString);

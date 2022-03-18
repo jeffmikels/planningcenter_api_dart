@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.000938
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.844818
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/person_apps
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/person_apps
 /// 
 /// ## Description
 /// A Person App is the relationship between a Person and an App.
@@ -86,9 +87,8 @@ class PcoPeoplePersonApp extends PcoResource {
   static const String kTypeString = 'PersonApp';
   static const String kTypeId = 'person_app';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'personapp-person-person_apps';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
 
   /// possible includes with parameter ?include=a,b
   /// - `app`: include associated app 
@@ -106,7 +106,7 @@ class PcoPeoplePersonApp extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -143,22 +143,14 @@ class PcoPeoplePersonApp extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isAllowPcoLogin => attributes[kAllowPcoLogin] == true;
-  String get peoplePermissions => attributes[kPeoplePermissions] ?? '';
+  String get peoplePermissions => attributes[kPeoplePermissions] ?? '';    
   
-
-  // setters for object attributes
-
+  // additional setters / getters for create/update attributes
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set appId(String? x) => (x == null) ? attributes.remove(kAppId) : attributes[kAppId] = x;
   String get appId => attributes[kAppId] ?? '';
-  set appId(String s) => attributes[kAppId] = s;
-  
-
-
 
   // Class Constructors
   PcoPeoplePersonApp._() : super(kPcoApplication, kTypeString);
@@ -169,9 +161,10 @@ class PcoPeoplePersonApp extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeoplePersonApp(String peopleId) {
-    return PcoPeoplePersonApp._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps';
+  factory PcoPeoplePersonApp(String peopleId, ) {
+    var obj = PcoPeoplePersonApp._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps';
+    return obj;
   }
 
 

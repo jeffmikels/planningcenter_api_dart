@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.966344
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.785082
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/messages
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A message is an individual email or sms text sent to a member. Every message has a parent message group.
@@ -123,9 +124,8 @@ class PcoPeopleMessage extends PcoResource {
   static const String kTypeString = 'Message';
   static const String kTypeId = 'message';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'message-organization-messages';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `message_group`: include associated message_group 
@@ -167,7 +167,7 @@ class PcoPeopleMessage extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -215,7 +215,6 @@ class PcoPeopleMessage extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   String get toAddresses => attributes[kToAddresses] ?? '';
   String get subject => attributes[kSubject] ?? '';
@@ -228,18 +227,7 @@ class PcoPeopleMessage extends PcoResource {
   String get fromName => attributes[kFromName] ?? '';
   String get fromAddress => attributes[kFromAddress] ?? '';
   DateTime get readAt => DateTime.parse(attributes[kReadAt] ?? '');
-  String get appName => attributes[kAppName] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get appName => attributes[kAppName] ?? '';    
 
   // Class Constructors
   PcoPeopleMessage._() : super(kPcoApplication, kTypeString);

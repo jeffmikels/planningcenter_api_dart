@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.184512
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.955672
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/batch_groups
+/// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/batch_groups
 /// 
 /// ## Description
 /// 
@@ -85,9 +86,8 @@ class PcoGivingBatchGroup extends PcoResource {
   static const String kTypeString = 'BatchGroup';
   static const String kTypeId = 'batch_group';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'batchgroup-organization-batch_groups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
 
   /// possible includes with parameter ?include=a,b
   /// - `owner`: include associated owner 
@@ -105,7 +105,7 @@ class PcoGivingBatchGroup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -146,24 +146,16 @@ class PcoGivingBatchGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get description => attributes[kDescription] ?? '';
   bool get isCommitted => attributes[kCommitted] == true;
   int get totalCents => attributes[kTotalCents] ?? 0;
   String get totalCurrency => attributes[kTotalCurrency] ?? '';
-  String get status => attributes[kStatus] ?? '';
+  String get status => attributes[kStatus] ?? '';  
   
-
   // setters for object attributes
-
-  set description(String s) => attributes[kDescription] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;  
 
   // Class Constructors
   PcoGivingBatchGroup._() : super(kPcoApplication, kTypeString);
@@ -174,9 +166,11 @@ class PcoGivingBatchGroup extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingBatchGroup() {
-    return PcoGivingBatchGroup._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
+  factory PcoGivingBatchGroup({ String? description }) {
+    var obj = PcoGivingBatchGroup._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
+    if (description != null) obj.description = description;
+    return obj;
   }
 
 
@@ -257,6 +251,10 @@ class PcoGivingBatchGroup extends PcoResource {
   /// Used to commit an in progress batch group.
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This action takes an uncommitted BatchGroup and commits it.
   /// It will respond with `unprocessable_entity` if the BatchGroup cannot be committed.
@@ -265,7 +263,7 @@ class PcoGivingBatchGroup extends PcoResource {
   /// 
   /// Committing a BatchGroup happens asyncronously, so initially the BatchGroup's `status` will be `updating`.
   /// You can poll that BatchGroup's endpoint to see whether it's changed from `updating` to `committed`.
-  Future<PlanningCenterApiResponse> commit(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> commit(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.963714
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.783276
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// The status of syncing a List with Mailchimp.
@@ -78,9 +79,8 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   static const String kTypeString = 'MailchimpSyncStatus';
   static const String kTypeId = 'mailchimp_sync_status';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'mailchimpsyncstatus-list-mailchimp_sync_status';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -98,7 +98,7 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -137,23 +137,11 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get status => attributes[kStatus] ?? '';
   String get error => attributes[kError] ?? '';
   int get progress => attributes[kProgress] ?? 0;
   DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
-  int get segmentId => attributes[kSegmentId] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get segmentId => attributes[kSegmentId] ?? 0;    
 
   // Class Constructors
   PcoPeopleMailchimpSyncStatu._() : super(kPcoApplication, kTypeString);

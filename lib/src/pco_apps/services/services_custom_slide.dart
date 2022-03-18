@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.488674
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.222262
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/custom_slides
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides
 /// 
 /// ## Description
 /// A CustomSlide is used for adding text intended for display on a screen.
@@ -89,9 +90,8 @@ class PcoServicesCustomSlide extends PcoResource {
   static const String kTypeString = 'CustomSlide';
   static const String kTypeId = 'custom_slide';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/custom_slides';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/custom_slides';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -109,7 +109,7 @@ class PcoServicesCustomSlide extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -132,10 +132,10 @@ class PcoServicesCustomSlide extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['body','enabled','label','order'];
+  List<String> get createAllowed => ['body', 'enabled', 'label', 'order'];
 
   @override
-  List<String> get updateAllowed => ['body','enabled','label','order'];
+  List<String> get updateAllowed => ['body', 'enabled', 'label', 'order'];
 
   @override
   bool get canCreate => true;
@@ -147,39 +147,42 @@ class PcoServicesCustomSlide extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get body => attributes[kBody] ?? '';
   String get label => attributes[kLabel] ?? '';
   int get order => attributes[kOrder] ?? 0;
-  bool get isEnabled => attributes[kEnabled] == true;
+  bool get isEnabled => attributes[kEnabled] == true;  
   
-
   // setters for object attributes
-
-  set body(String s) => attributes[kBody] = s;
-  set label(String s) => attributes[kLabel] = s;
-  set order(int n) => attributes[kOrder] = n;
-  set isEnabled(bool b) => attributes[kEnabled] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set body(String? x) => (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set label(String? x) => (x == null) ? attributes.remove(kLabel) : attributes[kLabel] = x;
+  
+  /// pass `null` to remove key from attributes
+  set order(int? x) => (x == null) ? attributes.remove(kOrder) : attributes[kOrder] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isEnabled(bool? x) => (x == null) ? attributes.remove(kEnabled) : attributes[kEnabled] = x;  
 
   // Class Constructors
   PcoServicesCustomSlide._() : super(kPcoApplication, kTypeString);
   PcoServicesCustomSlide.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesCustomSlide] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/custom_slides`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesCustomSlide(String songId,String scheduledItemId) {
-    return PcoServicesCustomSlide._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/custom_slides';
+  factory PcoServicesCustomSlide(String serviceTypeId, String planId, String itemId, { String? body, bool? isEnabled, String? label, int? order }) {
+    var obj = PcoServicesCustomSlide._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides';
+    if (body != null) obj.body = body;
+    if (isEnabled != null) obj.isEnabled = isEnabled;
+    if (label != null) obj.label = label;
+    if (order != null) obj.order = order;
+    return obj;
   }
 
 

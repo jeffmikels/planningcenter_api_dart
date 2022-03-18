@@ -1,3 +1,8 @@
+## 0.8.0
+
+-   Added named parameters to class factory constructors to make it easier to create new objects that can be immediately posted to PlanningCenter.
+-   Allow setters to take `null` to remove attributes from classes.
+
 ## 0.7.2
 
 -   Updated the `description` in `pubspec.yaml`

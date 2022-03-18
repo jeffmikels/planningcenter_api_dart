@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.088639
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.911536
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/event_instances
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A specific occurrence of an event.
@@ -111,9 +112,8 @@ class PcoCalendarEventInstance extends PcoResource {
   static const String kTypeString = 'EventInstance';
   static const String kTypeId = 'event_instance';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'eventinstance-organization-event_instances';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event`: include associated event 
@@ -140,7 +140,7 @@ class PcoCalendarEventInstance extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -183,25 +183,13 @@ class PcoCalendarEventInstance extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isAllDayEvent => attributes[kAllDayEvent] == true;
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
   String get location => attributes[kLocation] ?? '';
   String get recurrence => attributes[kRecurrence] ?? '';
   String get recurrenceDescription => attributes[kRecurrenceDescription] ?? '';
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  String get churchCenterUrl => attributes[kChurchCenterUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get churchCenterUrl => attributes[kChurchCenterUrl] ?? '';    
 
   // Class Constructors
   PcoCalendarEventInstance._() : super(kPcoApplication, kTypeString);

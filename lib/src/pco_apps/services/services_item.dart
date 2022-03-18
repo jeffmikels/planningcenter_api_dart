@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.498011
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.240728
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
 /// 
 /// ## Description
 /// An item in a plan.
@@ -154,9 +155,8 @@ class PcoServicesItem extends PcoResource {
   static const String kTypeString = 'Item';
   static const String kTypeId = 'item';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'item-song-last_scheduled_item';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items';
 
   /// possible includes with parameter ?include=a,b
   /// - `arrangement`: include associated arrangement 
@@ -180,7 +180,7 @@ class PcoServicesItem extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -216,10 +216,10 @@ class PcoServicesItem extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['arrangement_id','custom_arrangement_sequence','description','html_details','key_id','length','selected_layout_id','service_position','song_id','title','item_type','sequence'];
+  List<String> get createAllowed => ['arrangement_id', 'custom_arrangement_sequence', 'description', 'html_details', 'key_id', 'length', 'selected_layout_id', 'service_position', 'song_id', 'title', 'item_type', 'sequence'];
 
   @override
-  List<String> get updateAllowed => ['arrangement_id','custom_arrangement_sequence','description','html_details','key_id','length','selected_layout_id','service_position','song_id','title'];
+  List<String> get updateAllowed => ['arrangement_id', 'custom_arrangement_sequence', 'description', 'html_details', 'key_id', 'length', 'selected_layout_id', 'service_position', 'song_id', 'title'];
 
   @override
   bool get canCreate => true;
@@ -231,7 +231,6 @@ class PcoServicesItem extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get title => attributes[kTitle] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
   int get length => attributes[kLength] ?? 0;
@@ -242,14 +241,18 @@ class PcoServicesItem extends PcoResource {
   String get keyName => attributes[kKeyName] ?? '';
   List get customArrangementSequence => attributes[kCustomArrangementSequence] ?? [];
   List get customArrangementSequenceShort => attributes[kCustomArrangementSequenceShort] ?? [];
-  List get customArrangementSequenceFull => attributes[kCustomArrangementSequenceFull] ?? [];
+  List get customArrangementSequenceFull => attributes[kCustomArrangementSequenceFull] ?? [];  
   
-
   // setters for object attributes
-
-  set title(String s) => attributes[kTitle] = s;
-  set sequence(int n) => attributes[kSequence] = n;
-  set length(int n) => attributes[kLength] = n;
+  
+  /// pass `null` to remove key from attributes
+  set title(String? x) => (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+  
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set length(int? x) => (x == null) ? attributes.remove(kLength) : attributes[kLength] = x;
   
   /// There are 4 possible values:
   /// 
@@ -262,8 +265,12 @@ class PcoServicesItem extends PcoResource {
   /// - `item`: The default item type
   /// 
   /// This value can only be set when an item is created. The only value that you can pass is `header`. If no value is passed then `item` will be used. To create a media item you'll attach a video media to the item, and to create a song item, you'll attach a song.
-  set itemType(String s) => attributes[kItemType] = s;
-  set htmlDetails(String s) => attributes[kHtmlDetails] = s;
+  
+  /// pass `null` to remove key from attributes
+  set itemType(String? x) => (x == null) ? attributes.remove(kItemType) : attributes[kItemType] = x;
+  
+  /// pass `null` to remove key from attributes
+  set htmlDetails(String? x) => (x == null) ? attributes.remove(kHtmlDetails) : attributes[kHtmlDetails] = x;
   
   /// There are 3 possible values:
   /// 
@@ -272,28 +279,37 @@ class PcoServicesItem extends PcoResource {
   /// - `post`: the item happens after the service ends
   /// 
   /// - `during`: the item happens during the service
-  set servicePosition(String s) => attributes[kServicePosition] = s;
-  set description(String s) => attributes[kDescription] = s;
+  
+  /// pass `null` to remove key from attributes
+  set servicePosition(String? x) => (x == null) ? attributes.remove(kServicePosition) : attributes[kServicePosition] = x;
+  
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;
   
   /// An array of strings containing a label and a number describing the section:
   /// 
   /// ['Verse 1', 'Chorus 1', 'Verse 2']
-  set customArrangementSequence(List a) => attributes[kCustomArrangementSequence] = a;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set customArrangementSequence(List? x) => (x == null) ? attributes.remove(kCustomArrangementSequence) : attributes[kCustomArrangementSequence] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set arrangementId(String? x) => (x == null) ? attributes.remove(kArrangementId) : attributes[kArrangementId] = x;
   String get arrangementId => attributes[kArrangementId] ?? '';
-  set arrangementId(String s) => attributes[kArrangementId] = s;
-  String get keyId => attributes[kKeyId] ?? '';
-  set keyId(String s) => attributes[kKeyId] = s;
-  String get selectedLayoutId => attributes[kSelectedLayoutId] ?? '';
-  set selectedLayoutId(String s) => attributes[kSelectedLayoutId] = s;
-  String get songId => attributes[kSongId] ?? '';
-  set songId(String s) => attributes[kSongId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set keyId(String? x) => (x == null) ? attributes.remove(kKeyId) : attributes[kKeyId] = x;
+  String get keyId => attributes[kKeyId] ?? '';
+  
+  /// pass `null` to remove key from attributes
+  set selectedLayoutId(String? x) => (x == null) ? attributes.remove(kSelectedLayoutId) : attributes[kSelectedLayoutId] = x;
+  String get selectedLayoutId => attributes[kSelectedLayoutId] ?? '';
+  
+  /// pass `null` to remove key from attributes
+  set songId(String? x) => (x == null) ? attributes.remove(kSongId) : attributes[kSongId] = x;
+  String get songId => attributes[kSongId] ?? '';
 
   // Class Constructors
   PcoServicesItem._() : super(kPcoApplication, kTypeString);
@@ -304,9 +320,18 @@ class PcoServicesItem extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesItem(String serviceTypeId,String planId) {
-    return PcoServicesItem._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items';
+  factory PcoServicesItem(String serviceTypeId, String planId, { List? customArrangementSequence, String? description, String? htmlDetails, int? length, String? servicePosition, String? title, String? itemType, int? sequence }) {
+    var obj = PcoServicesItem._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items';
+    if (customArrangementSequence != null) obj.customArrangementSequence = customArrangementSequence;
+    if (description != null) obj.description = description;
+    if (htmlDetails != null) obj.htmlDetails = htmlDetails;
+    if (length != null) obj.length = length;
+    if (servicePosition != null) obj.servicePosition = servicePosition;
+    if (title != null) obj.title = title;
+    if (itemType != null) obj.itemType = itemType;
+    if (sequence != null) obj.sequence = sequence;
+    return obj;
   }
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.978475
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.798057
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_categories
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/note_categories
 /// 
 /// ## Description
 /// A Note Category
@@ -98,9 +99,8 @@ class PcoPeopleNoteCategory extends PcoResource {
   static const String kTypeString = 'NoteCategory';
   static const String kTypeId = 'note_category';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'notecategory-organization-note_categories';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories';
 
   /// possible includes with parameter ?include=a,b
   /// - `shares`: include associated shares 
@@ -128,7 +128,7 @@ class PcoPeopleNoteCategory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -167,22 +167,14 @@ class PcoPeopleNoteCategory extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   bool get isLocked => attributes[kLocked] == true;
-  String get organizationId => attributes[kOrganizationId] ?? '';
+  String get organizationId => attributes[kOrganizationId] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoPeopleNoteCategory._() : super(kPcoApplication, kTypeString);
@@ -193,9 +185,11 @@ class PcoPeopleNoteCategory extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleNoteCategory() {
-    return PcoPeopleNoteCategory._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories';
+  factory PcoPeopleNoteCategory({ String? name }) {
+    var obj = PcoPeopleNoteCategory._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories';
+    if (name != null) obj.name = name;
+    return obj;
   }
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.689528
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.575049
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Counts check-ins for a location for a given event time.
@@ -84,9 +85,8 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   static const String kTypeString = 'LocationEventTime';
   static const String kTypeId = 'location_event_time';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'locationeventtime-eventtime-location_event_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event_time`: include associated event_time 
@@ -106,7 +106,7 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -145,21 +145,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get regularCount => attributes[kRegularCount] ?? 0;
   int get guestCount => attributes[kGuestCount] ?? 0;
-  int get volunteerCount => attributes[kVolunteerCount] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get volunteerCount => attributes[kVolunteerCount] ?? 0;    
 
   // Class Constructors
   PcoCheckInsLocationEventTime._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.576040
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.457700
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/teams
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/teams
 /// 
 /// ## Description
 /// A Team within a Service Type.
@@ -128,9 +129,8 @@ class PcoServicesTeam extends PcoResource {
   static const String kTypeString = 'Team';
   static const String kTypeId = 'team';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'team-organization-teams';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/teams';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/teams';
 
   /// possible includes with parameter ?include=a,b
   /// - `people`: include associated people 
@@ -154,7 +154,7 @@ class PcoServicesTeam extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -187,7 +187,7 @@ class PcoServicesTeam extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','archived_at','assigned_directly','rehearsal_team','schedule_to','stage_color','stage_variant'];
+  List<String> get createAllowed => ['name', 'archived_at', 'assigned_directly', 'rehearsal_team', 'schedule_to', 'stage_color', 'stage_variant'];
 
   @override
   List<String> get updateAllowed => [];
@@ -202,7 +202,6 @@ class PcoServicesTeam extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   bool get isRehearsalTeam => attributes[kRehearsalTeam] == true;
   int get sequence => attributes[kSequence] ?? 0;
@@ -214,40 +213,53 @@ class PcoServicesTeam extends PcoResource {
   bool get isSecureTeam => attributes[kSecureTeam] == true;
   String get lastPlanFrom => attributes[kLastPlanFrom] ?? '';
   String get stageColor => attributes[kStageColor] ?? '';
-  String get stageVariant => attributes[kStageVariant] ?? '';
+  String get stageVariant => attributes[kStageVariant] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set isRehearsalTeam(bool b) => attributes[kRehearsalTeam] = b;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isRehearsalTeam(bool? x) => (x == null) ? attributes.remove(kRehearsalTeam) : attributes[kRehearsalTeam] = x;
   
   /// This determines whether a team is a split team or not.Accepted values: 1. "plan" (default) 2. "time" (designates as a split team)
-  set scheduleTo(String s) => attributes[kScheduleTo] = s;
-  set archivedAt(DateTime d) => attributes[kArchivedAt] = d.toIso8601String();
-  set isAssignedDirectly(bool b) => attributes[kAssignedDirectly] = b;
-  set stageColor(String s) => attributes[kStageColor] = s;
-  set stageVariant(String s) => attributes[kStageVariant] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set scheduleTo(String? x) => (x == null) ? attributes.remove(kScheduleTo) : attributes[kScheduleTo] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set archivedAt(DateTime? x) => (x == null) ? attributes.remove(kArchivedAt) : attributes[kArchivedAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set isAssignedDirectly(bool? x) => (x == null) ? attributes.remove(kAssignedDirectly) : attributes[kAssignedDirectly] = x;
+  
+  /// pass `null` to remove key from attributes
+  set stageColor(String? x) => (x == null) ? attributes.remove(kStageColor) : attributes[kStageColor] = x;
+  
+  /// pass `null` to remove key from attributes
+  set stageVariant(String? x) => (x == null) ? attributes.remove(kStageVariant) : attributes[kStageVariant] = x;  
 
   // Class Constructors
   PcoServicesTeam._() : super(kPcoApplication, kTypeString);
   PcoServicesTeam.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesTeam] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/teams`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/teams`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesTeam() {
-    return PcoServicesTeam._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/teams';
+  factory PcoServicesTeam(String serviceTypeId, { String? name, DateTime? archivedAt, bool? isAssignedDirectly, bool? isRehearsalTeam, String? scheduleTo, String? stageColor, String? stageVariant }) {
+    var obj = PcoServicesTeam._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/teams';
+    if (name != null) obj.name = name;
+    if (archivedAt != null) obj.archivedAt = archivedAt;
+    if (isAssignedDirectly != null) obj.isAssignedDirectly = isAssignedDirectly;
+    if (isRehearsalTeam != null) obj.isRehearsalTeam = isRehearsalTeam;
+    if (scheduleTo != null) obj.scheduleTo = scheduleTo;
+    if (stageColor != null) obj.stageColor = stageColor;
+    if (stageVariant != null) obj.stageVariant = stageVariant;
+    return obj;
   }
 
 

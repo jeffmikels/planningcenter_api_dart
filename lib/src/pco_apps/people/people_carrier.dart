@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.935936
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.758784
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/carriers
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -75,9 +76,8 @@ class PcoPeopleCarrier extends PcoResource {
   static const String kTypeString = 'Carrier';
   static const String kTypeId = 'carrier';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'carrier-organization-carriers';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -96,7 +96,7 @@ class PcoPeopleCarrier extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -133,21 +133,9 @@ class PcoPeopleCarrier extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get value => attributes[kValue] ?? '';
   String get name => attributes[kName] ?? '';
-  bool get isInternational => attributes[kInternational] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isInternational => attributes[kInternational] == true;    
 
   // Class Constructors
   PcoPeopleCarrier._() : super(kPcoApplication, kTypeString);

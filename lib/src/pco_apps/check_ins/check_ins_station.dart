@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.711097
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.595831
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/stations
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A device where people can be checked in.
@@ -98,9 +99,8 @@ class PcoCheckInsStation extends PcoResource {
   static const String kTypeString = 'Station';
   static const String kTypeId = 'station';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'station-organization-stations';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event`: include associated event 
@@ -121,7 +121,7 @@ class PcoCheckInsStation extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -164,25 +164,13 @@ class PcoCheckInsStation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isOnline => attributes[kOnline] == true;
   int get mode => attributes[kMode] ?? 0;
   String get name => attributes[kName] ?? '';
   int get timeoutSeconds => attributes[kTimeoutSeconds] ?? 0;
   String get inputType => attributes[kInputType] ?? '';
   String get inputTypeOptions => attributes[kInputTypeOptions] ?? '';
-  int get checkInCount => attributes[kCheckInCount] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get checkInCount => attributes[kCheckInCount] ?? 0;    
 
   // Class Constructors
   PcoCheckInsStation._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.490799
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.225896
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A EmailTemplateRenderedResponse Resource
@@ -85,9 +86,8 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   static const String kTypeString = 'EmailTemplateRenderedResponse';
   static const String kTypeId = 'email_template_rendered_response';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -141,20 +141,8 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get body => attributes[kBody] ?? '';
-  String get subject => attributes[kSubject] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get subject => attributes[kSubject] ?? '';    
 
   // Class Constructors
   PcoServicesEmailTemplateRenderedResponse._() : super(kPcoApplication, kTypeString);

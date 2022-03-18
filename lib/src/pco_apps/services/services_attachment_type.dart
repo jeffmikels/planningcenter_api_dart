@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.477673
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.200074
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachment_types
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Create an Attachment Type for each type of file you might want only specific people to see. When you attach a file, you can specify an attachment type to then be able to link the file to a position.
@@ -93,9 +94,8 @@ class PcoServicesAttachmentType extends PcoResource {
   static const String kTypeString = 'AttachmentType';
   static const String kTypeId = 'attachment_type';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'attachmenttype-organization-attachment_types';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -113,7 +113,7 @@ class PcoServicesAttachmentType extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -156,7 +156,6 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get aliases => attributes[kAliases] ?? '';
   bool get isCapoedChordCharts => attributes[kCapoedChordCharts] == true;
@@ -165,18 +164,7 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get isLyrics => attributes[kLyrics] == true;
   bool get isNumberCharts => attributes[kNumberCharts] == true;
   bool get isNumeralCharts => attributes[kNumeralCharts] == true;
-  bool get isBuiltIn => attributes[kBuiltIn] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isBuiltIn => attributes[kBuiltIn] == true;    
 
   // Class Constructors
   PcoServicesAttachmentType._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.478977
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.202550
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Signups that are available.
@@ -95,9 +96,8 @@ class PcoServicesAvailableSignup extends PcoResource {
   static const String kTypeString = 'AvailableSignup';
   static const String kTypeId = 'available_signup';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'availablesignup-person-available_signups';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `signup_sheets`: include associated signup_sheets 
@@ -115,7 +115,7 @@ class PcoServicesAvailableSignup extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -153,22 +153,10 @@ class PcoServicesAvailableSignup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get organizationName => attributes[kOrganizationName] ?? '';
   String get planningCenterUrl => attributes[kPlanningCenterUrl] ?? '';
   String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  bool get isSignupsAvailable => attributes[kSignupsAvailable] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isSignupsAvailable => attributes[kSignupsAvailable] == true;    
 
   // Class Constructors
   PcoServicesAvailableSignup._() : super(kPcoApplication, kTypeString);

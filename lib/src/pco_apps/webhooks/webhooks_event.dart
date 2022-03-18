@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.335085
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.095058
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -83,9 +84,8 @@ class PcoWebhooksEvent extends PcoResource {
   static const String kTypeString = 'Event';
   static const String kTypeId = 'event';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'event-subscription-events';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -103,7 +103,7 @@ class PcoWebhooksEvent extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -141,20 +141,8 @@ class PcoWebhooksEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get uuid => attributes[kUuid] ?? '';
-  String get payload => attributes[kPayload] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get payload => attributes[kPayload] ?? '';    
 
   // Class Constructors
   PcoWebhooksEvent._() : super(kPcoApplication, kTypeString);
@@ -204,9 +192,13 @@ class PcoWebhooksEvent extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/redeliver`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> redeliver(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> redeliver(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

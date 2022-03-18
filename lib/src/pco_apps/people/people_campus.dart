@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.934011
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.757515
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/campuses
 /// 
 /// ## Description
 /// A Campus is a location belonging to an Organization
@@ -123,9 +124,8 @@ class PcoPeopleCampus extends PcoResource {
   static const String kTypeString = 'Campus';
   static const String kTypeId = 'campus';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'campus-organization-campuses';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses';
 
   /// possible includes with parameter ?include=a,b
   /// - `lists`: include associated lists 
@@ -147,7 +147,7 @@ class PcoPeopleCampus extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -186,10 +186,10 @@ class PcoPeopleCampus extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['latitude','longitude','description','street','city','state','zip','country','phone_number','website','twenty_four_hour_time','date_format','church_center_enabled','contact_email_address','time_zone','geolocation_set_manually','name'];
+  List<String> get createAllowed => ['latitude', 'longitude', 'description', 'street', 'city', 'state', 'zip', 'country', 'phone_number', 'website', 'twenty_four_hour_time', 'date_format', 'church_center_enabled', 'contact_email_address', 'time_zone', 'geolocation_set_manually', 'name'];
 
   @override
-  List<String> get updateAllowed => ['latitude','longitude','description','street','city','state','zip','country','phone_number','website','twenty_four_hour_time','date_format','church_center_enabled','contact_email_address','time_zone','geolocation_set_manually','name'];
+  List<String> get updateAllowed => ['latitude', 'longitude', 'description', 'street', 'city', 'state', 'zip', 'country', 'phone_number', 'website', 'twenty_four_hour_time', 'date_format', 'church_center_enabled', 'contact_email_address', 'time_zone', 'geolocation_set_manually', 'name'];
 
   @override
   bool get canCreate => true;
@@ -201,7 +201,6 @@ class PcoPeopleCampus extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   double get latitude => attributes[kLatitude] ?? 0;
   double get longitude => attributes[kLongitude] ?? 0;
   String get description => attributes[kDescription] ?? '';
@@ -219,35 +218,60 @@ class PcoPeopleCampus extends PcoResource {
   String get timeZone => attributes[kTimeZone] ?? '';
   bool get isGeolocationSetManually => attributes[kGeolocationSetManually] == true;
   String get name => attributes[kName] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
+  String get avatarUrl => attributes[kAvatarUrl] ?? '';  
   
-
   // setters for object attributes
-
-  set latitude(double n) => attributes[kLatitude] = n;
-  set longitude(double n) => attributes[kLongitude] = n;
-  set description(String s) => attributes[kDescription] = s;
-  set street(String s) => attributes[kStreet] = s;
-  set city(String s) => attributes[kCity] = s;
-  set state(String s) => attributes[kState] = s;
-  set zip(String s) => attributes[kZip] = s;
-  set country(String s) => attributes[kCountry] = s;
-  set phoneNumber(String s) => attributes[kPhoneNumber] = s;
-  set website(String s) => attributes[kWebsite] = s;
-  set isTwentyFourHourTime(bool b) => attributes[kTwentyFourHourTime] = b;
-  set dateFormat(int n) => attributes[kDateFormat] = n;
-  set isChurchCenterEnabled(bool b) => attributes[kChurchCenterEnabled] = b;
-  set contactEmailAddress(String s) => attributes[kContactEmailAddress] = s;
-  set timeZone(String s) => attributes[kTimeZone] = s;
-  set isGeolocationSetManually(bool b) => attributes[kGeolocationSetManually] = b;
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set latitude(double? x) => (x == null) ? attributes.remove(kLatitude) : attributes[kLatitude] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set longitude(double? x) => (x == null) ? attributes.remove(kLongitude) : attributes[kLongitude] = x;
+  
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;
+  
+  /// pass `null` to remove key from attributes
+  set street(String? x) => (x == null) ? attributes.remove(kStreet) : attributes[kStreet] = x;
+  
+  /// pass `null` to remove key from attributes
+  set city(String? x) => (x == null) ? attributes.remove(kCity) : attributes[kCity] = x;
+  
+  /// pass `null` to remove key from attributes
+  set state(String? x) => (x == null) ? attributes.remove(kState) : attributes[kState] = x;
+  
+  /// pass `null` to remove key from attributes
+  set zip(String? x) => (x == null) ? attributes.remove(kZip) : attributes[kZip] = x;
+  
+  /// pass `null` to remove key from attributes
+  set country(String? x) => (x == null) ? attributes.remove(kCountry) : attributes[kCountry] = x;
+  
+  /// pass `null` to remove key from attributes
+  set phoneNumber(String? x) => (x == null) ? attributes.remove(kPhoneNumber) : attributes[kPhoneNumber] = x;
+  
+  /// pass `null` to remove key from attributes
+  set website(String? x) => (x == null) ? attributes.remove(kWebsite) : attributes[kWebsite] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isTwentyFourHourTime(bool? x) => (x == null) ? attributes.remove(kTwentyFourHourTime) : attributes[kTwentyFourHourTime] = x;
+  
+  /// pass `null` to remove key from attributes
+  set dateFormat(int? x) => (x == null) ? attributes.remove(kDateFormat) : attributes[kDateFormat] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isChurchCenterEnabled(bool? x) => (x == null) ? attributes.remove(kChurchCenterEnabled) : attributes[kChurchCenterEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set contactEmailAddress(String? x) => (x == null) ? attributes.remove(kContactEmailAddress) : attributes[kContactEmailAddress] = x;
+  
+  /// pass `null` to remove key from attributes
+  set timeZone(String? x) => (x == null) ? attributes.remove(kTimeZone) : attributes[kTimeZone] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isGeolocationSetManually(bool? x) => (x == null) ? attributes.remove(kGeolocationSetManually) : attributes[kGeolocationSetManually] = x;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoPeopleCampus._() : super(kPcoApplication, kTypeString);
@@ -258,9 +282,27 @@ class PcoPeopleCampus extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleCampus() {
-    return PcoPeopleCampus._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses';
+  factory PcoPeopleCampus({ double? latitude, double? longitude, String? description, String? street, String? city, String? state, String? zip, String? country, String? phoneNumber, String? website, bool? isTwentyFourHourTime, int? dateFormat, bool? isChurchCenterEnabled, String? contactEmailAddress, String? timeZone, bool? isGeolocationSetManually, String? name }) {
+    var obj = PcoPeopleCampus._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses';
+    if (latitude != null) obj.latitude = latitude;
+    if (longitude != null) obj.longitude = longitude;
+    if (description != null) obj.description = description;
+    if (street != null) obj.street = street;
+    if (city != null) obj.city = city;
+    if (state != null) obj.state = state;
+    if (zip != null) obj.zip = zip;
+    if (country != null) obj.country = country;
+    if (phoneNumber != null) obj.phoneNumber = phoneNumber;
+    if (website != null) obj.website = website;
+    if (isTwentyFourHourTime != null) obj.isTwentyFourHourTime = isTwentyFourHourTime;
+    if (dateFormat != null) obj.dateFormat = dateFormat;
+    if (isChurchCenterEnabled != null) obj.isChurchCenterEnabled = isChurchCenterEnabled;
+    if (contactEmailAddress != null) obj.contactEmailAddress = contactEmailAddress;
+    if (timeZone != null) obj.timeZone = timeZone;
+    if (isGeolocationSetManually != null) obj.isGeolocationSetManually = isGeolocationSetManually;
+    if (name != null) obj.name = name;
+    return obj;
   }
 
 

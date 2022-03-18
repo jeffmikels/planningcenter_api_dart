@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.508775
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.264472
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/media
 /// 
 /// ## Description
 /// A piece of media
@@ -116,9 +117,8 @@ class PcoServicesMedia extends PcoResource {
   static const String kTypeString = 'Media';
   static const String kTypeId = 'media';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'media-organization-media';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/media';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/media';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/media';
 
   /// possible includes with parameter ?include=a,b
   /// - `attachments`: include associated attachments 
@@ -141,7 +141,7 @@ class PcoServicesMedia extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -179,10 +179,10 @@ class PcoServicesMedia extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['media_type','title','creator_name','themes'];
+  List<String> get createAllowed => ['media_type', 'title', 'creator_name', 'themes'];
 
   @override
-  List<String> get updateAllowed => ['media_type','title','creator_name','themes'];
+  List<String> get updateAllowed => ['media_type', 'title', 'creator_name', 'themes'];
 
   @override
   bool get canCreate => true;
@@ -194,7 +194,6 @@ class PcoServicesMedia extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get themes => attributes[kThemes] ?? '';
   String get title => attributes[kTitle] ?? '';
   String get thumbnailFileName => attributes[kThumbnailFileName] ?? '';
@@ -211,13 +210,15 @@ class PcoServicesMedia extends PcoResource {
   String get thumbnailUrl => attributes[kThumbnailUrl] ?? '';
   String get creatorName => attributes[kCreatorName] ?? '';
   String get previewUrl => attributes[kPreviewUrl] ?? '';
-  String get imageUrl => attributes[kImageUrl] ?? '';
+  String get imageUrl => attributes[kImageUrl] ?? '';  
   
-
   // setters for object attributes
-
-  set themes(String s) => attributes[kThemes] = s;
-  set title(String s) => attributes[kTitle] = s;
+  
+  /// pass `null` to remove key from attributes
+  set themes(String? x) => (x == null) ? attributes.remove(kThemes) : attributes[kThemes] = x;
+  
+  /// pass `null` to remove key from attributes
+  set title(String? x) => (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
   
   /// Possible Values:
   /// 
@@ -242,15 +243,12 @@ class PcoServicesMedia extends PcoResource {
   /// - `song_video`
   /// 
   /// - `video`
-  set mediaType(String s) => attributes[kMediaType] = s;
-  set creatorName(String s) => attributes[kCreatorName] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set mediaType(String? x) => (x == null) ? attributes.remove(kMediaType) : attributes[kMediaType] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set creatorName(String? x) => (x == null) ? attributes.remove(kCreatorName) : attributes[kCreatorName] = x;  
 
   // Class Constructors
   PcoServicesMedia._() : super(kPcoApplication, kTypeString);
@@ -261,9 +259,14 @@ class PcoServicesMedia extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesMedia() {
-    return PcoServicesMedia._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/media';
+  factory PcoServicesMedia({ String? mediaType, String? title, String? creatorName, String? themes }) {
+    var obj = PcoServicesMedia._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/media';
+    if (mediaType != null) obj.mediaType = mediaType;
+    if (title != null) obj.title = title;
+    if (creatorName != null) obj.creatorName = creatorName;
+    if (themes != null) obj.themes = themes;
+    return obj;
   }
 
 
@@ -353,6 +356,10 @@ class PcoServicesMedia extends PcoResource {
   /// Archive a Media.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/archive`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// Accepts an optional `time` attribute (ISO 8601) for scheduling archival for a future time.
   /// 
@@ -366,7 +373,7 @@ class PcoServicesMedia extends PcoResource {
   ///   }
   /// }
   /// ```
-  Future<PlanningCenterApiResponse> archive(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> archive(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -380,6 +387,10 @@ class PcoServicesMedia extends PcoResource {
   /// 
   /// Used to assign tags to a media.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/assign_tags`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
   /// 
   /// Details:
   /// All tags will be replaced so the full data set must be sent.
@@ -406,7 +417,7 @@ class PcoServicesMedia extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> assignTags(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> assignTags(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -421,9 +432,13 @@ class PcoServicesMedia extends PcoResource {
   /// Restore an archived Media.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/unarchive`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> unarchive(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> unarchive(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

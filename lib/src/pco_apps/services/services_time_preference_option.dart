@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.581752
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.469358
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Service Time a person prefers to be scheduled to.
@@ -85,9 +86,8 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   static const String kTypeString = 'TimePreferenceOption';
   static const String kTypeId = 'time_preference_option';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'timepreferenceoption-servicetype-time_preference_options';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -106,7 +106,7 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,24 +148,12 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get dayOfWeek => attributes[kDayOfWeek] ?? 0;
   String get description => attributes[kDescription] ?? '';
   String get sortIndex => attributes[kSortIndex] ?? '';
   String get timeType => attributes[kTimeType] ?? '';
   int get minuteOfDay => attributes[kMinuteOfDay] ?? 0;
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');    
 
   // Class Constructors
   PcoServicesTimePreferenceOption._() : super(kPcoApplication, kTypeString);

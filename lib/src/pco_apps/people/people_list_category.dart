@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.959476
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.779873
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/list_categories
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/list_categories
 /// 
 /// ## Description
 /// A List Category
@@ -90,9 +91,8 @@ class PcoPeopleListCategory extends PcoResource {
   static const String kTypeString = 'ListCategory';
   static const String kTypeId = 'list_category';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'listcategory-organization-list_categories';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/list_categories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/list_categories';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/list_categories';
 
   /// possible includes with parameter ?include=a,b
   /// - `lists`: include associated lists 
@@ -116,7 +116,7 @@ class PcoPeopleListCategory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -154,21 +154,13 @@ class PcoPeopleListCategory extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
-  String get organizationId => attributes[kOrganizationId] ?? '';
+  String get organizationId => attributes[kOrganizationId] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoPeopleListCategory._() : super(kPcoApplication, kTypeString);
@@ -179,9 +171,11 @@ class PcoPeopleListCategory extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleListCategory() {
-    return PcoPeopleListCategory._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/list_categories';
+  factory PcoPeopleListCategory({ String? name }) {
+    var obj = PcoPeopleListCategory._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/list_categories';
+    if (name != null) obj.name = name;
+    return obj;
   }
 
 

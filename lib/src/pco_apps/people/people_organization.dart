@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.987145
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.805312
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// The organization represents a single church. Every other resource is scoped to this record.
@@ -110,9 +111,8 @@ class PcoPeopleOrganization extends PcoResource {
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -130,7 +130,7 @@ class PcoPeopleOrganization extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -170,24 +170,12 @@ class PcoPeopleOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get countryCode => attributes[kCountryCode] ?? '';
   int get dateFormat => attributes[kDateFormat] ?? 0;
   String get timeZone => attributes[kTimeZone] ?? '';
   String get contactWebsite => attributes[kContactWebsite] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get avatarUrl => attributes[kAvatarUrl] ?? '';    
 
   // Class Constructors
   PcoPeopleOrganization._() : super(kPcoApplication, kTypeString);

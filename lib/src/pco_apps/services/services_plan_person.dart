@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.546279
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.322741
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/plan_people
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members
 /// 
 /// ## Description
 /// A person scheduled within a specific plan.
@@ -175,9 +176,8 @@ class PcoServicesPlanPerson extends PcoResource {
   static const String kTypeString = 'PlanPerson';
   static const String kTypeId = 'plan_person';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'planperson-team-plan_people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/plan_people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/plan_people';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members';
 
   /// possible includes with parameter ?include=a,b
   /// - `declined_plan_times`: include associated declined_plan_times 
@@ -198,7 +198,7 @@ class PcoServicesPlanPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -236,10 +236,10 @@ class PcoServicesPlanPerson extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['person_id','status','decline_reason','notes','team_position_name','responds_to_id','prepare_notification','notification_prepared_at'];
+  List<String> get createAllowed => ['person_id', 'status', 'decline_reason', 'notes', 'team_position_name', 'responds_to_id', 'prepare_notification', 'notification_prepared_at'];
 
   @override
-  List<String> get updateAllowed => ['person_id','status','decline_reason','notes','team_position_name','responds_to_id','prepare_notification','notification_prepared_at'];
+  List<String> get updateAllowed => ['person_id', 'status', 'decline_reason', 'notes', 'team_position_name', 'responds_to_id', 'prepare_notification', 'notification_prepared_at'];
 
   @override
   bool get canCreate => true;
@@ -251,7 +251,6 @@ class PcoServicesPlanPerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get status => attributes[kStatus] ?? '';
   String get notes => attributes[kNotes] ?? '';
   String get declineReason => attributes[kDeclineReason] ?? '';
@@ -266,43 +265,59 @@ class PcoServicesPlanPerson extends PcoResource {
   DateTime get notificationReadAt => DateTime.parse(attributes[kNotificationReadAt] ?? '');
   DateTime get notificationSentAt => DateTime.parse(attributes[kNotificationSentAt] ?? '');
   bool get isPrepareNotification => attributes[kPrepareNotification] == true;
-  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
+  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;  
   
-
   // setters for object attributes
-
   
   /// Accepts one of 'C', 'U', 'D', or 'Confirmed', 'Unconfirmed', or 'Declined'
-  set status(String s) => attributes[kStatus] = s;
-  set notes(String s) => attributes[kNotes] = s;
-  set declineReason(String s) => attributes[kDeclineReason] = s;
-  set teamPositionName(String s) => attributes[kTeamPositionName] = s;
-  set notificationPreparedAt(DateTime d) => attributes[kNotificationPreparedAt] = d.toIso8601String();
-  set isPrepareNotification(bool b) => attributes[kPrepareNotification] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set status(String? x) => (x == null) ? attributes.remove(kStatus) : attributes[kStatus] = x;
+  
+  /// pass `null` to remove key from attributes
+  set notes(String? x) => (x == null) ? attributes.remove(kNotes) : attributes[kNotes] = x;
+  
+  /// pass `null` to remove key from attributes
+  set declineReason(String? x) => (x == null) ? attributes.remove(kDeclineReason) : attributes[kDeclineReason] = x;
+  
+  /// pass `null` to remove key from attributes
+  set teamPositionName(String? x) => (x == null) ? attributes.remove(kTeamPositionName) : attributes[kTeamPositionName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set notificationPreparedAt(DateTime? x) => (x == null) ? attributes.remove(kNotificationPreparedAt) : attributes[kNotificationPreparedAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set isPrepareNotification(bool? x) => (x == null) ? attributes.remove(kPrepareNotification) : attributes[kPrepareNotification] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
   String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
-  String get respondsToId => attributes[kRespondsToId] ?? '';
-  set respondsToId(String s) => attributes[kRespondsToId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set respondsToId(String? x) => (x == null) ? attributes.remove(kRespondsToId) : attributes[kRespondsToId] = x;
+  String get respondsToId => attributes[kRespondsToId] ?? '';
 
   // Class Constructors
   PcoServicesPlanPerson._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesPlanPerson] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/plan_people`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/team_members`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPlanPerson(String peopleId) {
-    return PcoServicesPlanPerson._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/plan_people';
+  factory PcoServicesPlanPerson(String serviceTypeId, String planId, { String? status, String? declineReason, String? notes, String? teamPositionName, bool? isPrepareNotification, DateTime? notificationPreparedAt }) {
+    var obj = PcoServicesPlanPerson._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/team_members';
+    if (status != null) obj.status = status;
+    if (declineReason != null) obj.declineReason = declineReason;
+    if (notes != null) obj.notes = notes;
+    if (teamPositionName != null) obj.teamPositionName = teamPositionName;
+    if (isPrepareNotification != null) obj.isPrepareNotification = isPrepareNotification;
+    if (notificationPreparedAt != null) obj.notificationPreparedAt = notificationPreparedAt;
+    return obj;
   }
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.950493
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.771100
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A field option on a custom form field.
@@ -91,9 +92,8 @@ class PcoPeopleFormFieldOption extends PcoResource {
   static const String kTypeString = 'FormFieldOption';
   static const String kTypeId = 'form_field_option';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'formfieldoption-formfield-options';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -113,7 +113,7 @@ class PcoPeopleFormFieldOption extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -151,20 +151,8 @@ class PcoPeopleFormFieldOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get label => attributes[kLabel] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get sequence => attributes[kSequence] ?? 0;    
 
   // Class Constructors
   PcoPeopleFormFieldOption._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.558463
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.353334
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A person already scheduled to a SignupSheet
@@ -87,9 +88,8 @@ class PcoServicesScheduledPerson extends PcoResource {
   static const String kTypeString = 'ScheduledPerson';
   static const String kTypeId = 'scheduled_person';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'scheduledperson-signupsheet-scheduled_people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoServicesScheduledPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -144,21 +144,9 @@ class PcoServicesScheduledPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get fullName => attributes[kFullName] ?? '';
   String get status => attributes[kStatus] ?? '';
-  String get thumbnail => attributes[kThumbnail] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get thumbnail => attributes[kThumbnail] ?? '';    
 
   // Class Constructors
   PcoServicesScheduledPerson._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.953747
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.774782
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/households
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/households
 /// 
 /// ## Description
 /// A household links people together and can have a primary contact. To add a person to an existing household, use the HouseholdMemberships endpoint.
@@ -109,9 +110,8 @@ class PcoPeopleHousehold extends PcoResource {
   static const String kTypeString = 'Household';
   static const String kTypeId = 'household';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'household-organization-households';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/households';
 
   /// possible includes with parameter ?include=a,b
   /// - `people`: include associated people 
@@ -137,7 +137,7 @@ class PcoPeopleHousehold extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -163,10 +163,10 @@ class PcoPeopleHousehold extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','member_count','avatar','primary_contact_id'];
+  List<String> get createAllowed => ['name', 'member_count', 'avatar', 'primary_contact_id'];
 
   @override
-  List<String> get updateAllowed => ['name','member_count','avatar','primary_contact_id'];
+  List<String> get updateAllowed => ['name', 'member_count', 'avatar', 'primary_contact_id'];
 
   @override
   bool get canCreate => true;
@@ -178,27 +178,25 @@ class PcoPeopleHousehold extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get memberCount => attributes[kMemberCount] ?? 0;
   String get primaryContactName => attributes[kPrimaryContactName] ?? '';
   String get avatar => attributes[kAvatar] ?? '';
-  String get primaryContactId => attributes[kPrimaryContactId] ?? '';
+  String get primaryContactId => attributes[kPrimaryContactId] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set memberCount(int n) => attributes[kMemberCount] = n;
-  set avatar(String s) => attributes[kAvatar] = s;
-  set primaryContactId(String s) => attributes[kPrimaryContactId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set memberCount(int? x) => (x == null) ? attributes.remove(kMemberCount) : attributes[kMemberCount] = x;
+  
+  /// pass `null` to remove key from attributes
+  set avatar(String? x) => (x == null) ? attributes.remove(kAvatar) : attributes[kAvatar] = x;
+  
+  /// pass `null` to remove key from attributes
+  set primaryContactId(String? x) => (x == null) ? attributes.remove(kPrimaryContactId) : attributes[kPrimaryContactId] = x;  
 
   // Class Constructors
   PcoPeopleHousehold._() : super(kPcoApplication, kTypeString);
@@ -209,9 +207,14 @@ class PcoPeopleHousehold extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleHousehold() {
-    return PcoPeopleHousehold._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households';
+  factory PcoPeopleHousehold({ String? name, int? memberCount, String? avatar, String? primaryContactId }) {
+    var obj = PcoPeopleHousehold._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households';
+    if (name != null) obj.name = name;
+    if (memberCount != null) obj.memberCount = memberCount;
+    if (avatar != null) obj.avatar = avatar;
+    if (primaryContactId != null) obj.primaryContactId = primaryContactId;
+    return obj;
   }
 
 

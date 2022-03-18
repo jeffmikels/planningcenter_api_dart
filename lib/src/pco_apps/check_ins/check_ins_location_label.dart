@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.690434
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.577562
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Says how many of a given label to print for this location and
@@ -84,9 +85,8 @@ class PcoCheckInsLocationLabel extends PcoResource {
   static const String kTypeString = 'LocationLabel';
   static const String kTypeId = 'location_label';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'locationlabel-label-location_labels';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `label`: include associated label 
@@ -105,7 +105,7 @@ class PcoCheckInsLocationLabel extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -145,22 +145,10 @@ class PcoCheckInsLocationLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   int get quantity => attributes[kQuantity] ?? 0;
   bool get isForRegular => attributes[kForRegular] == true;
   bool get isForGuest => attributes[kForGuest] == true;
-  bool get isForVolunteer => attributes[kForVolunteer] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isForVolunteer => attributes[kForVolunteer] == true;    
 
   // Class Constructors
   PcoCheckInsLocationLabel._() : super(kPcoApplication, kTypeString);

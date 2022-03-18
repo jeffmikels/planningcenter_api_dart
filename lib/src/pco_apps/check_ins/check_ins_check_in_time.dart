@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.629142
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.546767
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A CheckInTime combines an EventTime and a Location, and associates it with
@@ -96,9 +97,8 @@ class PcoCheckInsCheckInTime extends PcoResource {
   static const String kTypeString = 'CheckInTime';
   static const String kTypeId = 'check_in_time';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'checkintime-checkin-check_in_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -116,7 +116,7 @@ class PcoCheckInsCheckInTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -154,22 +154,10 @@ class PcoCheckInsCheckInTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   bool get isHasValidated => attributes[kHasValidated] == true;
   List get errors => attributes[kErrors] ?? [];
-  bool get isServicesIntegrated => attributes[kServicesIntegrated] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isServicesIntegrated => attributes[kServicesIntegrated] == true;    
 
   // Class Constructors
   PcoCheckInsCheckInTime._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.534513
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.289421
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments
 /// 
 /// ## Description
 /// A person's assignment to a position within a team.
@@ -104,9 +105,8 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   static const String kTypeString = 'PersonTeamPositionAssignment';
   static const String kTypeId = 'person_team_position_assignment';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'personteampositionassignment-team-person_team_position_assignments';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/teams/1/person_team_position_assignments';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -126,7 +126,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -151,10 +151,10 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['schedule_preference','preferred_weeks','time_preference_option_ids','person_id'];
+  List<String> get createAllowed => ['schedule_preference', 'preferred_weeks', 'time_preference_option_ids', 'person_id'];
 
   @override
-  List<String> get updateAllowed => ['schedule_preference','preferred_weeks','time_preference_option_ids'];
+  List<String> get updateAllowed => ['schedule_preference', 'preferred_weeks', 'time_preference_option_ids'];
 
   @override
   bool get canCreate => true;
@@ -166,13 +166,10 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get schedulePreference => attributes[kSchedulePreference] ?? '';
-  List get preferredWeeks => attributes[kPreferredWeeks] ?? [];
+  List get preferredWeeks => attributes[kPreferredWeeks] ?? [];  
   
-
   // setters for object attributes
-
   
   /// Possible Values:
   ///   "Every week"
@@ -185,24 +182,27 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   ///   "Twice a month"
   ///   "Three times a month"
   ///   "Choose Weeks"
-  set schedulePreference(String s) => attributes[kSchedulePreference] = s;
+  
+  /// pass `null` to remove key from attributes
+  set schedulePreference(String? x) => (x == null) ? attributes.remove(kSchedulePreference) : attributes[kSchedulePreference] = x;
   
   /// When `schedule_preference` is set to "Choose Weeks" then this
   /// indicates which weeks are preferred (checked).
   /// 
   /// e.g. ['1', '3', '5'] to prefer odd numbered weeks.
-  set preferredWeeks(List a) => attributes[kPreferredWeeks] = a;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set preferredWeeks(List? x) => (x == null) ? attributes.remove(kPreferredWeeks) : attributes[kPreferredWeeks] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set timePreferenceOptionIds(String? x) => (x == null) ? attributes.remove(kTimePreferenceOptionIds) : attributes[kTimePreferenceOptionIds] = x;
   String get timePreferenceOptionIds => attributes[kTimePreferenceOptionIds] ?? '';
-  set timePreferenceOptionIds(String s) => attributes[kTimePreferenceOptionIds] = s;
-  String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
+  String get personId => attributes[kPersonId] ?? '';
 
   // Class Constructors
   PcoServicesPersonTeamPositionAssignment._() : super(kPcoApplication, kTypeString);
@@ -213,9 +213,12 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPersonTeamPositionAssignment(String serviceTypeId,String teamPositionId) {
-    return PcoServicesPersonTeamPositionAssignment._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments';
+  factory PcoServicesPersonTeamPositionAssignment(String serviceTypeId, String teamPositionId, { String? schedulePreference, List? preferredWeeks }) {
+    var obj = PcoServicesPersonTeamPositionAssignment._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments';
+    if (schedulePreference != null) obj.schedulePreference = schedulePreference;
+    if (preferredWeeks != null) obj.preferredWeeks = preferredWeeks;
+    return obj;
   }
 
 

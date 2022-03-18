@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.024733
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.870527
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflow_categories
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Workflow Category
@@ -78,9 +79,8 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   static const String kTypeString = 'WorkflowCategory';
   static const String kTypeId = 'workflow_category';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflow_categories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflow_categories';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -102,7 +102,7 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -139,34 +139,17 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
-  String get name => attributes[kName] ?? '';
+  String get name => attributes[kName] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoPeopleWorkflowCategory._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoPeopleWorkflowCategory] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/workflow_categories`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowCategory() {
-    return PcoPeopleWorkflowCategory._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflow_categories';
-  }
 
 
   // ---------------------------------

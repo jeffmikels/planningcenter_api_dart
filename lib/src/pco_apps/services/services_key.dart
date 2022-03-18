@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.502957
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.250798
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
 /// 
 /// ## Description
 /// Each song arrangement can have multiple keys. A key is the pitch center of the song.
@@ -93,9 +94,8 @@ class PcoServicesKey extends PcoResource {
   static const String kTypeString = 'Key';
   static const String kTypeId = 'key';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'key-arrangement-keys';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -114,7 +114,7 @@ class PcoServicesKey extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -141,10 +141,10 @@ class PcoServicesKey extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','starting_key','ending_key','alternate_keys'];
+  List<String> get createAllowed => ['name', 'starting_key', 'ending_key', 'alternate_keys'];
 
   @override
-  List<String> get updateAllowed => ['name','starting_key','ending_key','alternate_keys'];
+  List<String> get updateAllowed => ['name', 'starting_key', 'ending_key', 'alternate_keys'];
 
   @override
   bool get canCreate => true;
@@ -156,18 +156,17 @@ class PcoServicesKey extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get alternateKeys => attributes[kAlternateKeys] ?? '';
   String get endingKey => attributes[kEndingKey] ?? '';
   String get startingKey => attributes[kStartingKey] ?? '';
   bool get isStartingMinor => attributes[kStartingMinor] == true;
-  bool get isEndingMinor => attributes[kEndingMinor] == true;
+  bool get isEndingMinor => attributes[kEndingMinor] == true;  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
   /// An array of objects.
   /// 
@@ -177,28 +176,27 @@ class PcoServicesKey extends PcoResource {
   ///   "key": "B"
   /// }
   /// `
-  set alternateKeys(String s) => attributes[kAlternateKeys] = s;
+  
+  /// pass `null` to remove key from attributes
+  set alternateKeys(String? x) => (x == null) ? attributes.remove(kAlternateKeys) : attributes[kAlternateKeys] = x;
   
   /// Possible Values:
   /// 
   /// `Ab`, `A`, `A#`, `Bb`, `B`, `C`, `C#`, `Db`, `D`, `D#`, `Eb`, `E`, `F`, `F#`, `Gb`, `G`, `G#`, `Abm`, `Am`, `A#m`, `Bbm`, `Bm`, `Cm`, `C#m`, `Dbm`, `Dm`, `D#m`, `Ebm`, `Em`, `Fm`, `F#m`, `Gbm`, `Gm`, `G#m`
   /// 
   /// To set the key to minor append `m` to the key. e.g. `Cm`
-  set endingKey(String s) => attributes[kEndingKey] = s;
+  
+  /// pass `null` to remove key from attributes
+  set endingKey(String? x) => (x == null) ? attributes.remove(kEndingKey) : attributes[kEndingKey] = x;
   
   /// Possible Values:
   /// 
   /// `Ab`, `A`, `A#`, `Bb`, `B`, `C`, `C#`, `Db`, `D`, `D#`, `Eb`, `E`, `F`, `F#`, `Gb`, `G`, `G#`, `Abm`, `Am`, `A#m`, `Bbm`, `Bm`, `Cm`, `C#m`, `Dbm`, `Dm`, `D#m`, `Ebm`, `Em`, `Fm`, `F#m`, `Gbm`, `Gm`, `G#m`
   /// 
   /// To set the key to minor append `m` to the key. e.g. `Cm`
-  set startingKey(String s) => attributes[kStartingKey] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set startingKey(String? x) => (x == null) ? attributes.remove(kStartingKey) : attributes[kStartingKey] = x;  
 
   // Class Constructors
   PcoServicesKey._() : super(kPcoApplication, kTypeString);
@@ -209,9 +207,14 @@ class PcoServicesKey extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesKey(String songId,String arrangementId) {
-    return PcoServicesKey._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/keys';
+  factory PcoServicesKey(String songId, String arrangementId, { String? name, String? startingKey, String? endingKey, String? alternateKeys }) {
+    var obj = PcoServicesKey._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/keys';
+    if (name != null) obj.name = name;
+    if (startingKey != null) obj.startingKey = startingKey;
+    if (endingKey != null) obj.endingKey = endingKey;
+    if (alternateKeys != null) obj.alternateKeys = alternateKeys;
+    return obj;
   }
 
 

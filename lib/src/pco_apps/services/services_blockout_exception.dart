@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.483485
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.210149
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
 /// 
 /// ## Description
 /// A single exception for the dates generated from the blockout
@@ -81,9 +82,8 @@ class PcoServicesBlockoutException extends PcoResource {
   static const String kTypeString = 'BlockoutException';
   static const String kTypeId = 'blockout_exception';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'blockoutexception-blockout-blockout_exceptions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -101,7 +101,7 @@ class PcoServicesBlockoutException extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -138,20 +138,12 @@ class PcoServicesBlockoutException extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get date => attributes[kDate] ?? '';
+  String get date => attributes[kDate] ?? '';  
   
-
   // setters for object attributes
-
-  set date(String s) => attributes[kDate] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set date(String? x) => (x == null) ? attributes.remove(kDate) : attributes[kDate] = x;  
 
   // Class Constructors
   PcoServicesBlockoutException._() : super(kPcoApplication, kTypeString);
@@ -162,9 +154,11 @@ class PcoServicesBlockoutException extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockoutException(String peopleId,String blockoutId) {
-    return PcoServicesBlockoutException._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+  factory PcoServicesBlockoutException(String peopleId, String blockoutId, { String? date }) {
+    var obj = PcoServicesBlockoutException._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+    if (date != null) obj.date = date;
+    return obj;
   }
 
 

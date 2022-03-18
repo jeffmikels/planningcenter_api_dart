@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.003491
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.847283
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// 
 /// ## Description
 /// A phone number represents a single telephone number and location.
@@ -105,9 +106,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   static const String kTypeString = 'PhoneNumber';
   static const String kTypeId = 'phone_number';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'phonenumber-person-phone_numbers';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -135,7 +135,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -164,10 +164,10 @@ class PcoPeoplePhoneNumber extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['number','carrier','location','primary'];
+  List<String> get createAllowed => ['number', 'carrier', 'location', 'primary'];
 
   @override
-  List<String> get updateAllowed => ['number','carrier','location','primary'];
+  List<String> get updateAllowed => ['number', 'carrier', 'location', 'primary'];
 
   @override
   bool get canCreate => true;
@@ -179,7 +179,6 @@ class PcoPeoplePhoneNumber extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get number => attributes[kNumber] ?? '';
   String get carrier => attributes[kCarrier] ?? '';
   String get location => attributes[kLocation] ?? '';
@@ -187,22 +186,21 @@ class PcoPeoplePhoneNumber extends PcoResource {
   String get e164 => attributes[kE164] ?? '';
   String get international => attributes[kInternational] ?? '';
   String get national => attributes[kNational] ?? '';
-  String get countryCode => attributes[kCountryCode] ?? '';
+  String get countryCode => attributes[kCountryCode] ?? '';  
   
-
   // setters for object attributes
-
-  set number(String s) => attributes[kNumber] = s;
-  set carrier(String s) => attributes[kCarrier] = s;
-  set location(String s) => attributes[kLocation] = s;
-  set isPrimary(bool b) => attributes[kPrimary] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set number(String? x) => (x == null) ? attributes.remove(kNumber) : attributes[kNumber] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set carrier(String? x) => (x == null) ? attributes.remove(kCarrier) : attributes[kCarrier] = x;
+  
+  /// pass `null` to remove key from attributes
+  set location(String? x) => (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isPrimary(bool? x) => (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;  
 
   // Class Constructors
   PcoPeoplePhoneNumber._() : super(kPcoApplication, kTypeString);
@@ -213,9 +211,14 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeoplePhoneNumber(String peopleId) {
-    return PcoPeoplePhoneNumber._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers';
+  factory PcoPeoplePhoneNumber(String peopleId, { String? number, String? carrier, String? location, bool? isPrimary }) {
+    var obj = PcoPeoplePhoneNumber._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers';
+    if (number != null) obj.number = number;
+    if (carrier != null) obj.carrier = carrier;
+    if (location != null) obj.location = location;
+    if (isPrimary != null) obj.isPrimary = isPrimary;
+    return obj;
   }
 
 

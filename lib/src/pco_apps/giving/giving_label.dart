@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.195409
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.960526
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/labels
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -71,9 +72,8 @@ class PcoGivingLabel extends PcoResource {
   static const String kTypeString = 'Label';
   static const String kTypeId = 'label';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'label-organization-labels';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/labels';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/labels';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -91,7 +91,7 @@ class PcoGivingLabel extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -126,19 +126,7 @@ class PcoGivingLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get slug => attributes[kSlug] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get slug => attributes[kSlug] ?? '';    
 
   // Class Constructors
   PcoGivingLabel._() : super(kPcoApplication, kTypeString);

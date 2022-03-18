@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.506081
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.259424
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -97,9 +98,8 @@ class PcoServicesLive extends PcoResource {
   static const String kTypeString = 'Live';
   static const String kTypeId = 'live';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'live-plan-live';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `controller`: include associated controller 
@@ -121,7 +121,7 @@ class PcoServicesLive extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -164,7 +164,6 @@ class PcoServicesLive extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get seriesTitle => attributes[kSeriesTitle] ?? '';
   String get title => attributes[kTitle] ?? '';
   String get dates => attributes[kDates] ?? '';
@@ -173,32 +172,12 @@ class PcoServicesLive extends PcoResource {
   bool get isCanControl => attributes[kCanControl] == true;
   bool get isCanTakeControl => attributes[kCanTakeControl] == true;
   bool get isCanChat => attributes[kCanChat] == true;
-  bool get isCanControlVideoFeed => attributes[kCanControlVideoFeed] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isCanControlVideoFeed => attributes[kCanControlVideoFeed] == true;    
 
   // Class Constructors
   PcoServicesLive._() : super(kPcoApplication, kTypeString);
   PcoServicesLive.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoServicesLive] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/recent_plans/$recentPlanId/live`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoServicesLive(String peopleId,String recentPlanId) {
-    return PcoServicesLive._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/recent_plans/$recentPlanId/live';
-  }
 
 
   // ---------------------------------
@@ -288,9 +267,13 @@ class PcoServicesLive extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_next_item`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> goToNextItem(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> goToNextItem(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -305,9 +288,13 @@ class PcoServicesLive extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_previous_item`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> goToPreviousItem(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> goToPreviousItem(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -322,9 +309,13 @@ class PcoServicesLive extends PcoResource {
   /// 
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/toggle_control`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
-  Future<PlanningCenterApiResponse> toggleControl(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> toggleControl(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

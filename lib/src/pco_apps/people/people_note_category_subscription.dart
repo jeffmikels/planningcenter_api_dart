@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.984726
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.803369
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_category_subscriptions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A subscription for note categories
@@ -89,9 +90,8 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
   static const String kTypeString = 'NoteCategorySubscription';
   static const String kTypeId = 'note_category_subscription';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'notecategorysubscription-person-';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_category_subscriptions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -111,7 +111,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -146,19 +146,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoPeopleNoteCategorySubscription._() : super(kPcoApplication, kTypeString);

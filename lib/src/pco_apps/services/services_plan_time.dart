@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.549657
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.334834
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_plan_time
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times
 /// 
 /// ## Description
 /// A time in a plan.
@@ -103,9 +104,8 @@ class PcoServicesPlanTime extends PcoResource {
   static const String kTypeString = 'PlanTime';
   static const String kTypeId = 'plan_time';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times';
 
   /// possible includes with parameter ?include=a,b
   /// - `split_team_rehearsal_assignments`: include associated split_team_rehearsal_assignments 
@@ -123,7 +123,7 @@ class PcoServicesPlanTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -152,10 +152,10 @@ class PcoServicesPlanTime extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['starts_at','ends_at','name','time_type','team_reminders'];
+  List<String> get createAllowed => ['starts_at', 'ends_at', 'name', 'time_type', 'team_reminders'];
 
   @override
-  List<String> get updateAllowed => ['starts_at','ends_at','name','time_type','team_reminders'];
+  List<String> get updateAllowed => ['starts_at', 'ends_at', 'name', 'time_type', 'team_reminders'];
 
   @override
   bool get canCreate => true;
@@ -167,7 +167,6 @@ class PcoServicesPlanTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get timeType => attributes[kTimeType] ?? 0;
   bool get isRecorded => attributes[kRecorded] == true;
@@ -175,12 +174,12 @@ class PcoServicesPlanTime extends PcoResource {
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
   DateTime get liveStartsAt => DateTime.parse(attributes[kLiveStartsAt] ?? '');
-  DateTime get liveEndsAt => DateTime.parse(attributes[kLiveEndsAt] ?? '');
+  DateTime get liveEndsAt => DateTime.parse(attributes[kLiveEndsAt] ?? '');  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
   /// Possible values are:
   /// 
@@ -189,36 +188,43 @@ class PcoServicesPlanTime extends PcoResource {
   /// - service
   /// 
   /// - other
-  set timeType(int n) => attributes[kTimeType] = n;
+  
+  /// pass `null` to remove key from attributes
+  set timeType(int? x) => (x == null) ? attributes.remove(kTimeType) : attributes[kTimeType] = x;
   
   /// A Hash that maps a Team ID to a reminder value. If nothing is specified, no reminder is set for that team. A reminder value is an integer (0-7) equal to the number of days before the selected time a reminder should be sent.
-  set teamReminders(List a) => attributes[kTeamReminders] = a;
+  
+  /// pass `null` to remove key from attributes
+  set teamReminders(List? x) => (x == null) ? attributes.remove(kTeamReminders) : attributes[kTeamReminders] = x;
   
   /// Planned start time.
-  set startsAt(DateTime d) => attributes[kStartsAt] = d.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set startsAt(DateTime? x) => (x == null) ? attributes.remove(kStartsAt) : attributes[kStartsAt] = x.toIso8601String();
   
   /// Planned end time.
-  set endsAt(DateTime d) => attributes[kEndsAt] = d.toIso8601String();
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set endsAt(DateTime? x) => (x == null) ? attributes.remove(kEndsAt) : attributes[kEndsAt] = x.toIso8601String();  
 
   // Class Constructors
   PcoServicesPlanTime._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesPlanTime] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/plan_times`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPlanTime(String peopleId) {
-    return PcoServicesPlanTime._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time';
+  factory PcoServicesPlanTime(String serviceTypeId, String planId, { DateTime? startsAt, DateTime? endsAt, String? name, int? timeType, List? teamReminders }) {
+    var obj = PcoServicesPlanTime._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/plan_times';
+    if (startsAt != null) obj.startsAt = startsAt;
+    if (endsAt != null) obj.endsAt = endsAt;
+    if (name != null) obj.name = name;
+    if (timeType != null) obj.timeType = timeType;
+    if (teamReminders != null) obj.teamReminders = teamReminders;
+    return obj;
   }
 
 

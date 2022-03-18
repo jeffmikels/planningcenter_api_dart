@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.202776
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.965921
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/pledges
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -102,9 +103,8 @@ class PcoGivingPledge extends PcoResource {
   static const String kTypeString = 'Pledge';
   static const String kTypeId = 'pledge';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledges';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/pledges';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `joint_giver`: include associated joint_giver 
@@ -125,7 +125,7 @@ class PcoGivingPledge extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -153,7 +153,7 @@ class PcoGivingPledge extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['amount_cents','person_id','pledge_campaign_id'];
+  List<String> get createAllowed => ['amount_cents', 'person_id', 'pledge_campaign_id'];
 
   @override
   List<String> get updateAllowed => ['amount_cents'];
@@ -168,44 +168,33 @@ class PcoGivingPledge extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   int get amountCents => attributes[kAmountCents] ?? 0;
   String get amountCurrency => attributes[kAmountCurrency] ?? '';
   int get jointGiverAmountCents => attributes[kJointGiverAmountCents] ?? 0;
   int get donatedTotalCents => attributes[kDonatedTotalCents] ?? 0;
-  int get jointGiverDonatedTotalCents => attributes[kJointGiverDonatedTotalCents] ?? 0;
+  int get jointGiverDonatedTotalCents => attributes[kJointGiverDonatedTotalCents] ?? 0;  
   
-
   // setters for object attributes
-
   
   /// The amount pledged
-  set amountCents(int n) => attributes[kAmountCents] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set amountCents(int? x) => (x == null) ? attributes.remove(kAmountCents) : attributes[kAmountCents] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
   String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
-  String get pledgeCampaignId => attributes[kPledgeCampaignId] ?? '';
-  set pledgeCampaignId(String s) => attributes[kPledgeCampaignId] = s;
   
-
-
+  /// pass `null` to remove key from attributes
+  set pledgeCampaignId(String? x) => (x == null) ? attributes.remove(kPledgeCampaignId) : attributes[kPledgeCampaignId] = x;
+  String get pledgeCampaignId => attributes[kPledgeCampaignId] ?? '';
 
   // Class Constructors
   PcoGivingPledge._() : super(kPcoApplication, kTypeString);
   PcoGivingPledge.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoGivingPledge] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/giving/v2/pledges`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoGivingPledge() {
-    return PcoGivingPledge._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/pledges';
-  }
 
 
   // ---------------------------------

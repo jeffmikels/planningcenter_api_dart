@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.500860
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.247094
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A category of plan item notes for an entire Service Type.
@@ -88,9 +89,8 @@ class PcoServicesItemNoteCategory extends PcoResource {
   static const String kTypeString = 'ItemNoteCategory';
   static const String kTypeId = 'item_note_category';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'itemnotecategory-servicetype-item_note_categories';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -108,7 +108,7 @@ class PcoServicesItemNoteCategory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,22 +148,10 @@ class PcoServicesItemNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
-  bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;    
 
   // Class Constructors
   PcoServicesItemNoteCategory._() : super(kPcoApplication, kTypeString);

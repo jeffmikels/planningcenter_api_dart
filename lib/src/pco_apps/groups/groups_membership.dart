@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.313498
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.018155
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/groups/1/memberships
+/// - Create Endpoint:    https://api.planningcenteronline.com/groups/v2/groups/1/memberships
 /// 
 /// ## Description
 /// 
@@ -104,9 +105,8 @@ class PcoGroupsMembership extends PcoResource {
   static const String kTypeString = 'Membership';
   static const String kTypeId = 'membership';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'membership-person-memberships';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/people/1/memberships';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -127,7 +127,7 @@ class PcoGroupsMembership extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -156,10 +156,10 @@ class PcoGroupsMembership extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['person_id','role','joined_at'];
+  List<String> get createAllowed => ['person_id', 'role', 'joined_at'];
 
   @override
-  List<String> get updateAllowed => ['role','joined_at'];
+  List<String> get updateAllowed => ['role', 'joined_at'];
 
   @override
   bool get canCreate => true;
@@ -171,7 +171,6 @@ class PcoGroupsMembership extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get accountCenterIdentifier => attributes[kAccountCenterIdentifier] ?? '';
   String get avatarUrl => attributes[kAvatarUrl] ?? '';
   String get colorIdentifier => attributes[kColorIdentifier] ?? '';
@@ -180,24 +179,23 @@ class PcoGroupsMembership extends PcoResource {
   DateTime get joinedAt => DateTime.parse(attributes[kJoinedAt] ?? '');
   String get lastName => attributes[kLastName] ?? '';
   String get phoneNumber => attributes[kPhoneNumber] ?? '';
-  String get role => attributes[kRole] ?? '';
+  String get role => attributes[kRole] ?? '';  
   
-
   // setters for object attributes
-
-  set joinedAt(DateTime d) => attributes[kJoinedAt] = d.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set joinedAt(DateTime? x) => (x == null) ? attributes.remove(kJoinedAt) : attributes[kJoinedAt] = x.toIso8601String();
   
   /// Can be either `leader` or `member`
-  set role(String s) => attributes[kRole] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set role(String? x) => (x == null) ? attributes.remove(kRole) : attributes[kRole] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
   String get personId => attributes[kPersonId] ?? '';
-  set personId(String s) => attributes[kPersonId] = s;
-  
-
-
 
   // Class Constructors
   PcoGroupsMembership._() : super(kPcoApplication, kTypeString);
@@ -208,9 +206,12 @@ class PcoGroupsMembership extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGroupsMembership(String groupId) {
-    return PcoGroupsMembership._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
+  factory PcoGroupsMembership(String groupId, { String? role, DateTime? joinedAt }) {
+    var obj = PcoGroupsMembership._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
+    if (role != null) obj.role = role;
+    if (joinedAt != null) obj.joinedAt = joinedAt;
+    return obj;
   }
 
 

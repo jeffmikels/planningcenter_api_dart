@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.013755
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.864962
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows
 /// 
 /// ## Description
 /// A Workflow
@@ -123,9 +124,8 @@ class PcoPeopleWorkflow extends PcoResource {
   static const String kTypeString = 'Workflow';
   static const String kTypeId = 'workflow';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflow-organization-workflows';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows';
 
   /// possible includes with parameter ?include=a,b
   /// - `category`: include associated category 
@@ -156,7 +156,7 @@ class PcoPeopleWorkflow extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -188,10 +188,10 @@ class PcoPeopleWorkflow extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','campus_id','workflow_category_id'];
+  List<String> get createAllowed => ['name', 'campus_id', 'workflow_category_id'];
 
   @override
-  List<String> get updateAllowed => ['name','campus_id','workflow_category_id'];
+  List<String> get updateAllowed => ['name', 'campus_id', 'workflow_category_id'];
 
   @override
   bool get canCreate => true;
@@ -203,7 +203,6 @@ class PcoPeopleWorkflow extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get myReadyCardCount => attributes[kMyReadyCardCount] ?? 0;
   int get totalReadyCardCount => attributes[kTotalReadyCardCount] ?? 0;
@@ -214,21 +213,18 @@ class PcoPeopleWorkflow extends PcoResource {
   String get campusId => attributes[kCampusId] ?? '';
   String get workflowCategoryId => attributes[kWorkflowCategoryId] ?? '';
   int get myOverdueCardCount => attributes[kMyOverdueCardCount] ?? 0;
-  int get myDueSoonCardCount => attributes[kMyDueSoonCardCount] ?? 0;
+  int get myDueSoonCardCount => attributes[kMyDueSoonCardCount] ?? 0;  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set campusId(String s) => attributes[kCampusId] = s;
-  set workflowCategoryId(String s) => attributes[kWorkflowCategoryId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set campusId(String? x) => (x == null) ? attributes.remove(kCampusId) : attributes[kCampusId] = x;
+  
+  /// pass `null` to remove key from attributes
+  set workflowCategoryId(String? x) => (x == null) ? attributes.remove(kWorkflowCategoryId) : attributes[kWorkflowCategoryId] = x;  
 
   // Class Constructors
   PcoPeopleWorkflow._() : super(kPcoApplication, kTypeString);
@@ -239,9 +235,13 @@ class PcoPeopleWorkflow extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflow() {
-    return PcoPeopleWorkflow._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows';
+  factory PcoPeopleWorkflow({ String? name, String? campusId, String? workflowCategoryId }) {
+    var obj = PcoPeopleWorkflow._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows';
+    if (name != null) obj.name = name;
+    if (campusId != null) obj.campusId = campusId;
+    if (workflowCategoryId != null) obj.workflowCategoryId = workflowCategoryId;
+    return obj;
   }
 
 

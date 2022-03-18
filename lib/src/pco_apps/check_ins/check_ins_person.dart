@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.694384
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.588969
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An attendee, volunteer or administrator.
@@ -132,9 +133,8 @@ class PcoCheckInsPerson extends PcoResource {
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
   static const String kApiVersion = '2019-07-17';
-  static const String kShortestEdgeId = 'person-organization-people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `organization`: include associated organization 
@@ -157,7 +157,7 @@ class PcoCheckInsPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -215,7 +215,6 @@ class PcoCheckInsPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   List get addresses => attributes[kAddresses] ?? [];
   List get emailAddresses => attributes[kEmailAddresses] ?? [];
   List get phoneNumbers => attributes[kPhoneNumbers] ?? [];
@@ -237,18 +236,7 @@ class PcoCheckInsPerson extends PcoResource {
   String get demographicAvatarUrl => attributes[kDemographicAvatarUrl] ?? '';
   String get name => attributes[kName] ?? '';
   String get topPermission => attributes[kTopPermission] ?? '';
-  String get searchName => attributes[kSearchName] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get searchName => attributes[kSearchName] ?? '';    
 
   // Class Constructors
   PcoCheckInsPerson._() : super(kPcoApplication, kTypeString);

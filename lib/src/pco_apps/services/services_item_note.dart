@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.499903
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.241963
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes
 /// 
 /// ## Description
 /// A plan item note that belongs to a category.
@@ -91,9 +92,8 @@ class PcoServicesItemNote extends PcoResource {
   static const String kTypeString = 'ItemNote';
   static const String kTypeId = 'item_note';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes';
 
   /// possible includes with parameter ?include=a,b
   /// - `item_note_category`: include associated item_note_category 
@@ -111,7 +111,7 @@ class PcoServicesItemNote extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -149,34 +149,28 @@ class PcoServicesItemNote extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get content => attributes[kContent] ?? '';
-  String get categoryName => attributes[kCategoryName] ?? '';
+  String get categoryName => attributes[kCategoryName] ?? '';  
   
-
   // setters for object attributes
-
-  set content(String s) => attributes[kContent] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set content(String? x) => (x == null) ? attributes.remove(kContent) : attributes[kContent] = x;  
 
   // Class Constructors
   PcoServicesItemNote._() : super(kPcoApplication, kTypeString);
   PcoServicesItemNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesItemNote] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesItemNote(String songId,String scheduledItemId) {
-    return PcoServicesItemNote._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes';
+  factory PcoServicesItemNote(String serviceTypeId, String planId, String itemId, { String? content }) {
+    var obj = PcoServicesItemNote._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
+    if (content != null) obj.content = content;
+    return obj;
   }
 
 

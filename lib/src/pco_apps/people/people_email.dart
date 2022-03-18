@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.939360
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.763147
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/emails
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/emails
 /// 
 /// ## Description
 /// An email represents an email address and location.
@@ -97,9 +98,8 @@ class PcoPeopleEmail extends PcoResource {
   static const String kTypeString = 'Email';
   static const String kTypeId = 'email';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'email-organization-emails';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/emails';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/emails';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/emails';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -126,7 +126,7 @@ class PcoPeopleEmail extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -151,10 +151,10 @@ class PcoPeopleEmail extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['address','location','primary'];
+  List<String> get createAllowed => ['address', 'location', 'primary'];
 
   @override
-  List<String> get updateAllowed => ['address','location','primary'];
+  List<String> get updateAllowed => ['address', 'location', 'primary'];
 
   @override
   bool get canCreate => true;
@@ -166,38 +166,38 @@ class PcoPeopleEmail extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get address => attributes[kAddress] ?? '';
   String get location => attributes[kLocation] ?? '';
   bool get isPrimary => attributes[kPrimary] == true;
-  bool get isBlocked => attributes[kBlocked] == true;
+  bool get isBlocked => attributes[kBlocked] == true;  
   
-
   // setters for object attributes
-
-  set address(String s) => attributes[kAddress] = s;
-  set location(String s) => attributes[kLocation] = s;
-  set isPrimary(bool b) => attributes[kPrimary] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set address(String? x) => (x == null) ? attributes.remove(kAddress) : attributes[kAddress] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set location(String? x) => (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isPrimary(bool? x) => (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;  
 
   // Class Constructors
   PcoPeopleEmail._() : super(kPcoApplication, kTypeString);
   PcoPeopleEmail.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleEmail] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/emails`
+  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/emails`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleEmail() {
-    return PcoPeopleEmail._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/emails';
+  factory PcoPeopleEmail(String peopleId, { String? address, String? location, bool? isPrimary }) {
+    var obj = PcoPeopleEmail._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/emails';
+    if (address != null) obj.address = address;
+    if (location != null) obj.location = location;
+    if (isPrimary != null) obj.isPrimary = isPrimary;
+    return obj;
   }
 
 

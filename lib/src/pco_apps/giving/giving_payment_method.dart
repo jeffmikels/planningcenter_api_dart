@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.196775
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.962876
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/people/1/payment_methods
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -85,9 +86,8 @@ class PcoGivingPaymentMethod extends PcoResource {
   static const String kTypeString = 'PaymentMethod';
   static const String kTypeId = 'payment_method';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'paymentmethod-person-payment_methods';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/people/1/payment_methods';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/people/1/payment_methods';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoGivingPaymentMethod extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -147,24 +147,12 @@ class PcoGivingPaymentMethod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get methodType => attributes[kMethodType] ?? '';
   String get methodSubtype => attributes[kMethodSubtype] ?? '';
   String get last4 => attributes[kLast4] ?? '';
   String get brand => attributes[kBrand] ?? '';
   String get expiration => attributes[kExpiration] ?? '';
-  bool get isVerified => attributes[kVerified] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isVerified => attributes[kVerified] == true;    
 
   // Class Constructors
   PcoGivingPaymentMethod._() : super(kPcoApplication, kTypeString);

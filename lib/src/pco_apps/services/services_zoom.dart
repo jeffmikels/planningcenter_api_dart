@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.583006
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.471193
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments/1/zooms
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/attachments/1/zooms
 /// 
 /// ## Description
 /// Describes a zoom level for an attachment
@@ -95,9 +96,8 @@ class PcoServicesZoom extends PcoResource {
   static const String kTypeString = 'Zoom';
   static const String kTypeId = 'zoom';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'zoom-attachment-zooms';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -115,7 +115,7 @@ class PcoServicesZoom extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -138,10 +138,10 @@ class PcoServicesZoom extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['zoom_level','x_offset','y_offset','aspect_ratio'];
+  List<String> get createAllowed => ['zoom_level', 'x_offset', 'y_offset', 'aspect_ratio'];
 
   @override
-  List<String> get updateAllowed => ['zoom_level','x_offset','y_offset'];
+  List<String> get updateAllowed => ['zoom_level', 'x_offset', 'y_offset'];
 
   @override
   bool get canCreate => true;
@@ -153,34 +153,32 @@ class PcoServicesZoom extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   double get aspectRatio => attributes[kAspectRatio] ?? 0;
   double get zoomLevel => attributes[kZoomLevel] ?? 0;
   double get xOffset => attributes[kXOffset] ?? 0;
-  double get yOffset => attributes[kYOffset] ?? 0;
+  double get yOffset => attributes[kYOffset] ?? 0;  
   
-
   // setters for object attributes
-
   
   /// The aspect ratio of the device this zoom is for. It is rounded to the nearest 3 decimal places.
-  set aspectRatio(double n) => attributes[kAspectRatio] = n;
+  
+  /// pass `null` to remove key from attributes
+  set aspectRatio(double? x) => (x == null) ? attributes.remove(kAspectRatio) : attributes[kAspectRatio] = x;
   
   /// The percentage of the zoom. Must be a value between 1.0 and 5.0
-  set zoomLevel(double n) => attributes[kZoomLevel] = n;
+  
+  /// pass `null` to remove key from attributes
+  set zoomLevel(double? x) => (x == null) ? attributes.remove(kZoomLevel) : attributes[kZoomLevel] = x;
   
   /// The percentage of the document's width the zoomed document should be offset by horizontally.
-  set xOffset(double n) => attributes[kXOffset] = n;
+  
+  /// pass `null` to remove key from attributes
+  set xOffset(double? x) => (x == null) ? attributes.remove(kXOffset) : attributes[kXOffset] = x;
   
   /// The percentage of the document's height the zoomed document should be offset by vertically.
-  set yOffset(double n) => attributes[kYOffset] = n;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set yOffset(double? x) => (x == null) ? attributes.remove(kYOffset) : attributes[kYOffset] = x;  
 
   // Class Constructors
   PcoServicesZoom._() : super(kPcoApplication, kTypeString);
@@ -191,9 +189,14 @@ class PcoServicesZoom extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesZoom(String attachmentId) {
-    return PcoServicesZoom._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments/$attachmentId/zooms';
+  factory PcoServicesZoom(String attachmentId, { double? zoomLevel, double? xOffset, double? yOffset, double? aspectRatio }) {
+    var obj = PcoServicesZoom._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments/$attachmentId/zooms';
+    if (zoomLevel != null) obj.zoomLevel = zoomLevel;
+    if (xOffset != null) obj.xOffset = xOffset;
+    if (yOffset != null) obj.yOffset = yOffset;
+    if (aspectRatio != null) obj.aspectRatio = aspectRatio;
+    return obj;
   }
 
 

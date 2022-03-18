@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.961616
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.781586
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/shares
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A list share indicates who has access to edit a list.
@@ -87,9 +88,8 @@ class PcoPeopleListShare extends PcoResource {
   static const String kTypeString = 'ListShare';
   static const String kTypeId = 'list_share';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'listshare-list-shares';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/shares';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/shares';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -111,7 +111,7 @@ class PcoPeopleListShare extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -149,21 +149,9 @@ class PcoPeopleListShare extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get permission => attributes[kPermission] ?? '';
   String get group => attributes[kGroup] ?? '';
-  String get name => attributes[kName] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get name => attributes[kName] ?? '';    
 
   // Class Constructors
   PcoPeopleListShare._() : super(kPcoApplication, kTypeString);

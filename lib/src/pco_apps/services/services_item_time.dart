@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.501736
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.248385
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -99,9 +100,8 @@ class PcoServicesItemTime extends PcoResource {
   static const String kTypeString = 'ItemTime';
   static const String kTypeId = 'item_time';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = '';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -119,7 +119,7 @@ class PcoServicesItemTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -158,23 +158,11 @@ class PcoServicesItemTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get liveStartAt => DateTime.parse(attributes[kLiveStartAt] ?? '');
   DateTime get liveEndAt => DateTime.parse(attributes[kLiveEndAt] ?? '');
   bool get isExclude => attributes[kExclude] == true;
   int get length => attributes[kLength] ?? 0;
-  int get lengthOffset => attributes[kLengthOffset] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get lengthOffset => attributes[kLengthOffset] ?? 0;    
 
   // Class Constructors
   PcoServicesItemTime._() : super(kPcoApplication, kTypeString);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.503725
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.256455
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/layouts
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A Layout is used for formatting text for each item in Projector.
@@ -67,9 +68,8 @@ class PcoServicesLayout extends PcoResource {
   static const String kTypeString = 'Layout';
   static const String kTypeId = 'layout';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'layout-servicetype-layouts';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/layouts';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/layouts';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -87,7 +87,7 @@ class PcoServicesLayout extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -120,19 +120,7 @@ class PcoServicesLayout extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoServicesLayout._() : super(kPcoApplication, kTypeString);

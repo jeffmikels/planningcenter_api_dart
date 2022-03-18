@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.315245
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.020200
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -90,9 +91,8 @@ class PcoGroupsPerson extends PcoResource {
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'person-organization-people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -112,7 +112,7 @@ class PcoGroupsPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -154,25 +154,13 @@ class PcoGroupsPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   List get addresses => attributes[kAddresses] ?? [];
   String get avatarUrl => attributes[kAvatarUrl] ?? '';
   List get emailAddresses => attributes[kEmailAddresses] ?? [];
   String get firstName => attributes[kFirstName] ?? '';
   String get lastName => attributes[kLastName] ?? '';
   String get permissions => attributes[kPermissions] ?? '';
-  List get phoneNumbers => attributes[kPhoneNumbers] ?? [];
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  List get phoneNumbers => attributes[kPhoneNumbers] ?? [];    
 
   // Class Constructors
   PcoGroupsPerson._() : super(kPcoApplication, kTypeString);

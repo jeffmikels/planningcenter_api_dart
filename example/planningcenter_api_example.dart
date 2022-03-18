@@ -122,5 +122,25 @@ void main() async {
     await credentialsFile.writeAsString(json.encode(PlanningCenter.instance.oAuthCredentials));
   }
 
+  // var email = PcoPeopleEmail('1', address: 'email@example.com', location: 'Home',isPrimary: true);
+  // email.save();
+  // PcoCollection<PcoPeopleEmail> emails = await PcoPeopleEmail.getFromPeople('1');
+  // var myEmail = emails.data.first;
+  // var myProfile = await myEmail.getPerson();
+  // print(myProfile.data.first);
+
+  var r = await PcoServicesPlan.getFromServiceType('1234567');
+  if (!r.isError) {
+    var plan = r.data.first;
+    var r2 = await plan.itemReorder(PcoData('PlanItemReorder', attributes: {
+      'sequence': ['5', '1', '3']
+    }));
+    if (r2.isError) {
+      print(r2.errorMessage);
+    } else {
+      print('success');
+    }
+  }
+
   exit(0);
 }

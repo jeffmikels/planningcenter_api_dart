@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.932550
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.756264
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/birthday_people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// Returns upcoming birthdays for the organization.
@@ -67,9 +68,8 @@ class PcoPeopleBirthdayPeople extends PcoResource {
   static const String kTypeString = 'BirthdayPeople';
   static const String kTypeId = 'birthday_people';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'birthdaypeople-organization-birthday_people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/birthday_people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/birthday_people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -87,7 +87,7 @@ class PcoPeopleBirthdayPeople extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -120,19 +120,7 @@ class PcoPeopleBirthdayPeople extends PcoResource {
   @override
   bool get canDestroy => false;
 
-  // getters for object attributes
-
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+      
 
   // Class Constructors
   PcoPeopleBirthdayPeople._() : super(kPcoApplication, kTypeString);

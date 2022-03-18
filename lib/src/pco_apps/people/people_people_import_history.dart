@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.992161
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.831024
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports/1/histories
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A PeopleImportHistory is a record of change that occurred when the parent PeopleImport was completed.
@@ -80,9 +81,8 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   static const String kTypeString = 'PeopleImportHistory';
   static const String kTypeId = 'people_import_history';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'peopleimporthistory-peopleimport-histories';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/histories';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/histories';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `household`: include associated household 
@@ -101,7 +101,7 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -140,21 +140,9 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get conflictingChanges => attributes[kConflictingChanges] ?? '';
-  String get kind => attributes[kKind] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get kind => attributes[kKind] ?? '';    
 
   // Class Constructors
   PcoPeoplePeopleImportHistory._() : super(kPcoApplication, kTypeString);

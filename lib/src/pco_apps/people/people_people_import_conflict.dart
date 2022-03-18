@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.990974
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.830107
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A PeopleImportConflict is a record of change that will occur if the parent PeopleImport is completed.
@@ -85,9 +86,8 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   static const String kTypeString = 'PeopleImportConflict';
   static const String kTypeId = 'people_import_conflict';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'peopleimportconflict-peopleimport-conflicts';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -106,7 +106,7 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,24 +148,12 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   String get name => attributes[kName] ?? '';
   String get message => attributes[kMessage] ?? '';
   String get data => attributes[kData] ?? '';
   String get conflictingChanges => attributes[kConflictingChanges] ?? '';
-  bool get isIgnore => attributes[kIgnore] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isIgnore => attributes[kIgnore] == true;    
 
   // Class Constructors
   PcoPeoplePeopleImportConflict._() : super(kPcoApplication, kTypeString);

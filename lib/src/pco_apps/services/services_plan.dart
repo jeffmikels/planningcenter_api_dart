@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.541809
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.307681
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plans
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans
 /// 
 /// ## Description
 /// A single plan within a Service Type.
@@ -200,9 +201,8 @@ class PcoServicesPlan extends PcoResource {
   static const String kTypeString = 'Plan';
   static const String kTypeId = 'plan';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'plan-series-plans';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/series/1/plans';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans';
 
   /// possible includes with parameter ?include=a,b
   /// - `contributors`: include associated contributors 
@@ -230,7 +230,7 @@ class PcoServicesPlan extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -275,10 +275,10 @@ class PcoServicesPlan extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['title','public','series_id','series_title'];
+  List<String> get createAllowed => ['title', 'public', 'series_id', 'series_title'];
 
   @override
-  List<String> get updateAllowed => ['title','public','series_id','series_title','reminders_disabled'];
+  List<String> get updateAllowed => ['title', 'public', 'series_id', 'series_title', 'reminders_disabled'];
 
   @override
   bool get canCreate => true;
@@ -290,7 +290,6 @@ class PcoServicesPlan extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get title => attributes[kTitle] ?? '';
   bool get isPublic => attributes[kPublic] == true;
   String get seriesTitle => attributes[kSeriesTitle] ?? '';
@@ -313,26 +312,29 @@ class PcoServicesPlan extends PcoResource {
   String get dates => attributes[kDates] ?? '';
   String get shortDates => attributes[kShortDates] ?? '';
   String get planningCenterUrl => attributes[kPlanningCenterUrl] ?? '';
-  bool get isRemindersDisabled => attributes[kRemindersDisabled] == true;
+  bool get isRemindersDisabled => attributes[kRemindersDisabled] == true;  
   
-
   // setters for object attributes
-
-  set title(String s) => attributes[kTitle] = s;
+  
+  /// pass `null` to remove key from attributes
+  set title(String? x) => (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
   
   /// True if Public Access has been enabled.
-  set isPublic(bool b) => attributes[kPublic] = b;
-  set seriesTitle(String s) => attributes[kSeriesTitle] = s;
-  set isRemindersDisabled(bool b) => attributes[kRemindersDisabled] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set isPublic(bool? x) => (x == null) ? attributes.remove(kPublic) : attributes[kPublic] = x;
+  
+  /// pass `null` to remove key from attributes
+  set seriesTitle(String? x) => (x == null) ? attributes.remove(kSeriesTitle) : attributes[kSeriesTitle] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isRemindersDisabled(bool? x) => (x == null) ? attributes.remove(kRemindersDisabled) : attributes[kRemindersDisabled] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set seriesId(String? x) => (x == null) ? attributes.remove(kSeriesId) : attributes[kSeriesId] = x;
   String get seriesId => attributes[kSeriesId] ?? '';
-  set seriesId(String s) => attributes[kSeriesId] = s;
-  
-
-
 
   // Class Constructors
   PcoServicesPlan._() : super(kPcoApplication, kTypeString);
@@ -343,9 +345,13 @@ class PcoServicesPlan extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPlan(String serviceTypeId) {
-    return PcoServicesPlan._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans';
+  factory PcoServicesPlan(String serviceTypeId, { String? title, bool? isPublic, String? seriesTitle }) {
+    var obj = PcoServicesPlan._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans';
+    if (title != null) obj.title = title;
+    if (isPublic != null) obj.isPublic = isPublic;
+    if (seriesTitle != null) obj.seriesTitle = seriesTitle;
+    return obj;
   }
 
 
@@ -604,6 +610,10 @@ class PcoServicesPlan extends PcoResource {
   /// Import template to plan
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/import_template`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// This action allows the importing of a template into a plan.
   /// 
@@ -615,7 +625,7 @@ class PcoServicesPlan extends PcoResource {
   /// - `copy_people` (Boolean) Copy People from another plan. (default false)
   /// 
   /// - `copy_notes` (Boolean) Copy Notes from another plan. (default false)
-  Future<PlanningCenterApiResponse> importTemplate(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> importTemplate(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',
@@ -629,6 +639,10 @@ class PcoServicesPlan extends PcoResource {
   /// 
   /// Reorder plan items in one request.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/item_reorder`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
   /// 
   /// Details:
   /// This can be used to reorder all items in a plan in one request.
@@ -651,7 +665,7 @@ class PcoServicesPlan extends PcoResource {
   /// ```
   /// 
   /// On success you will get back a `204 No Content`.
-  Future<PlanningCenterApiResponse> itemReorder(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> itemReorder(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

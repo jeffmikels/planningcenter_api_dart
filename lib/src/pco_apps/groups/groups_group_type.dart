@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.311480
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.016253
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/group_types
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -86,9 +87,8 @@ class PcoGroupsGroupType extends PcoResource {
   static const String kTypeString = 'GroupType';
   static const String kTypeId = 'group_type';
   static const String kApiVersion = '2018-08-01';
-  static const String kShortestEdgeId = 'grouptype-organization-group_types';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoGroupsGroupType extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -148,25 +148,13 @@ class PcoGroupsGroupType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isChurchCenterVisible => attributes[kChurchCenterVisible] == true;
   bool get isChurchCenterMapVisible => attributes[kChurchCenterMapVisible] == true;
   String get color => attributes[kColor] ?? '';
   String get defaultGroupSettings => attributes[kDefaultGroupSettings] ?? '';
   String get description => attributes[kDescription] ?? '';
   String get name => attributes[kName] ?? '';
-  int get position => attributes[kPosition] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get position => attributes[kPosition] ?? 0;    
 
   // Class Constructors
   PcoGroupsGroupType._() : super(kPcoApplication, kTypeString);

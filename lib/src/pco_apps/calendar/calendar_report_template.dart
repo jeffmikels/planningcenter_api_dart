@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.094932
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.919940
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/report_templates
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A template for generating a report.
@@ -78,9 +79,8 @@ class PcoCalendarReportTemplate extends PcoResource {
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'reporttemplate-organization-report_templates';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -98,7 +98,7 @@ class PcoCalendarReportTemplate extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -122,10 +122,10 @@ class PcoCalendarReportTemplate extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['body','description','title'];
+  List<String> get createAllowed => ['body', 'description', 'title'];
 
   @override
-  List<String> get updateAllowed => ['body','description','title'];
+  List<String> get updateAllowed => ['body', 'description', 'title'];
 
   @override
   bool get canCreate => true;
@@ -137,44 +137,31 @@ class PcoCalendarReportTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get body => attributes[kBody] ?? '';
   String get description => attributes[kDescription] ?? '';
-  String get title => attributes[kTitle] ?? '';
+  String get title => attributes[kTitle] ?? '';  
   
-
   // setters for object attributes
-
   
   /// The contents of the report template
-  set body(String s) => attributes[kBody] = s;
+  
+  /// pass `null` to remove key from attributes
+  set body(String? x) => (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;
   
   /// A summarization of the report
-  set description(String s) => attributes[kDescription] = s;
+  
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;
   
   /// The title of the report
-  set title(String s) => attributes[kTitle] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set title(String? x) => (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;  
 
   // Class Constructors
   PcoCalendarReportTemplate._() : super(kPcoApplication, kTypeString);
   PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoCalendarReportTemplate] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/calendar/v2/report_templates`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoCalendarReportTemplate() {
-    return PcoCalendarReportTemplate._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
-  }
 
 
   // ---------------------------------

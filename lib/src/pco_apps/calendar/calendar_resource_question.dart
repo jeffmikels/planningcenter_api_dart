@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.100504
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.927697
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_questions
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A question to answer when requesting to book a room or resource.
@@ -96,9 +97,8 @@ class PcoCalendarResourceQuestion extends PcoResource {
   static const String kTypeString = 'ResourceQuestion';
   static const String kTypeId = 'resource_question';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resourcequestion-organization-resource_questions';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_questions';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_questions';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -118,7 +118,7 @@ class PcoCalendarResourceQuestion extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -161,25 +161,13 @@ class PcoCalendarResourceQuestion extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   String get choices => attributes[kChoices] ?? '';
   String get description => attributes[kDescription] ?? '';
   bool get isMultipleSelect => attributes[kMultipleSelect] == true;
   bool get isOptional => attributes[kOptional] == true;
   int get position => attributes[kPosition] ?? 0;
-  String get question => attributes[kQuestion] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get question => attributes[kQuestion] ?? '';    
 
   // Class Constructors
   PcoCalendarResourceQuestion._() : super(kPcoApplication, kTypeString);

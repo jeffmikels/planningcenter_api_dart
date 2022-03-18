@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.490088
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.224148
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/email_templates
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/email_templates
 /// 
 /// ## Description
 /// A EmailTemplate Resource
@@ -85,9 +86,8 @@ class PcoServicesEmailTemplate extends PcoResource {
   static const String kTypeString = 'EmailTemplate';
   static const String kTypeId = 'email_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'emailtemplate-organization-email_templates';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoServicesEmailTemplate extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -129,10 +129,10 @@ class PcoServicesEmailTemplate extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['html_body','subject','kind'];
+  List<String> get createAllowed => ['html_body', 'subject', 'kind'];
 
   @override
-  List<String> get updateAllowed => ['html_body','subject'];
+  List<String> get updateAllowed => ['html_body', 'subject'];
 
   @override
   bool get canCreate => true;
@@ -144,24 +144,20 @@ class PcoServicesEmailTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   String get htmlBody => attributes[kHtmlBody] ?? '';
-  String get subject => attributes[kSubject] ?? '';
+  String get subject => attributes[kSubject] ?? '';  
   
-
   // setters for object attributes
-
-  set kind(String s) => attributes[kKind] = s;
-  set htmlBody(String s) => attributes[kHtmlBody] = s;
-  set subject(String s) => attributes[kSubject] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set kind(String? x) => (x == null) ? attributes.remove(kKind) : attributes[kKind] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set htmlBody(String? x) => (x == null) ? attributes.remove(kHtmlBody) : attributes[kHtmlBody] = x;
+  
+  /// pass `null` to remove key from attributes
+  set subject(String? x) => (x == null) ? attributes.remove(kSubject) : attributes[kSubject] = x;  
 
   // Class Constructors
   PcoServicesEmailTemplate._() : super(kPcoApplication, kTypeString);
@@ -172,9 +168,13 @@ class PcoServicesEmailTemplate extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesEmailTemplate() {
-    return PcoServicesEmailTemplate._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/email_templates';
+  factory PcoServicesEmailTemplate({ String? htmlBody, String? subject, String? kind }) {
+    var obj = PcoServicesEmailTemplate._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/email_templates';
+    if (htmlBody != null) obj.htmlBody = htmlBody;
+    if (subject != null) obj.subject = subject;
+    if (kind != null) obj.kind = kind;
+    return obj;
   }
 
 
@@ -212,6 +212,10 @@ class PcoServicesEmailTemplate extends PcoResource {
   /// Render an email template and fill in the persons details
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/email_templates/1/render`
   /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// provided for just such a purpose.
+  /// 
   /// Details:
   /// Render the template with information from the person.
   /// 
@@ -232,7 +236,7 @@ class PcoServicesEmailTemplate extends PcoResource {
   ///   }
   /// }
   /// ```
-  Future<PlanningCenterApiResponse> render(Map<String, dynamic> data) async {
+  Future<PlanningCenterApiResponse> render(Object data) async {
     if (id == null) {
       return PlanningCenterApiError.messageOnly(
         'Actions must be called on items that already exist on the remote server',

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.580023
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.465641
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/text_settings
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -82,9 +83,8 @@ class PcoServicesTextSetting extends PcoResource {
   static const String kTypeString = 'TextSetting';
   static const String kTypeId = 'text_setting';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'textsetting-person-text_settings';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/text_settings';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/text_settings';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -102,7 +102,7 @@ class PcoServicesTextSetting extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -131,7 +131,7 @@ class PcoServicesTextSetting extends PcoResource {
   List<String> get createAllowed => [];
 
   @override
-  List<String> get updateAllowed => ['general_emails_enabled','reminders_enabled','scheduling_replies_enabled','scheduling_requests_enabled'];
+  List<String> get updateAllowed => ['general_emails_enabled', 'reminders_enabled', 'scheduling_replies_enabled', 'scheduling_requests_enabled'];
 
   @override
   bool get canCreate => false;
@@ -143,29 +143,27 @@ class PcoServicesTextSetting extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   bool get isSchedulingRequestsEnabled => attributes[kSchedulingRequestsEnabled] == true;
   bool get isGeneralEmailsEnabled => attributes[kGeneralEmailsEnabled] == true;
   bool get isSchedulingRepliesEnabled => attributes[kSchedulingRepliesEnabled] == true;
   bool get isRemindersEnabled => attributes[kRemindersEnabled] == true;
   String get carrier => attributes[kCarrier] ?? '';
   String get displayNumber => attributes[kDisplayNumber] ?? '';
-  String get normalizedNumber => attributes[kNormalizedNumber] ?? '';
+  String get normalizedNumber => attributes[kNormalizedNumber] ?? '';  
   
-
   // setters for object attributes
-
-  set isSchedulingRequestsEnabled(bool b) => attributes[kSchedulingRequestsEnabled] = b;
-  set isGeneralEmailsEnabled(bool b) => attributes[kGeneralEmailsEnabled] = b;
-  set isSchedulingRepliesEnabled(bool b) => attributes[kSchedulingRepliesEnabled] = b;
-  set isRemindersEnabled(bool b) => attributes[kRemindersEnabled] = b;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set isSchedulingRequestsEnabled(bool? x) => (x == null) ? attributes.remove(kSchedulingRequestsEnabled) : attributes[kSchedulingRequestsEnabled] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set isGeneralEmailsEnabled(bool? x) => (x == null) ? attributes.remove(kGeneralEmailsEnabled) : attributes[kGeneralEmailsEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isSchedulingRepliesEnabled(bool? x) => (x == null) ? attributes.remove(kSchedulingRepliesEnabled) : attributes[kSchedulingRepliesEnabled] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isRemindersEnabled(bool? x) => (x == null) ? attributes.remove(kRemindersEnabled) : attributes[kRemindersEnabled] = x;  
 
   // Class Constructors
   PcoServicesTextSetting._() : super(kPcoApplication, kTypeString);

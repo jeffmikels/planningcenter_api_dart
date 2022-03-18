@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.943651
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.766263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
 /// 
 /// ## Description
 /// A field option represents an individual option for a custom field of type "select" or "checkboxes".
@@ -83,9 +84,8 @@ class PcoPeopleFieldOption extends PcoResource {
   static const String kTypeString = 'FieldOption';
   static const String kTypeId = 'field_option';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'fieldoption-tab-field_options';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs/1/field_options';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoPeopleFieldOption extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -126,10 +126,10 @@ class PcoPeopleFieldOption extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['value','sequence'];
+  List<String> get createAllowed => ['value', 'sequence'];
 
   @override
-  List<String> get updateAllowed => ['value','sequence'];
+  List<String> get updateAllowed => ['value', 'sequence'];
 
   @override
   bool get canCreate => true;
@@ -141,22 +141,16 @@ class PcoPeopleFieldOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get value => attributes[kValue] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  int get sequence => attributes[kSequence] ?? 0;  
   
-
   // setters for object attributes
-
-  set value(String s) => attributes[kValue] = s;
-  set sequence(int n) => attributes[kSequence] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;  
 
   // Class Constructors
   PcoPeopleFieldOption._() : super(kPcoApplication, kTypeString);
@@ -167,9 +161,12 @@ class PcoPeopleFieldOption extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleFieldOption(String fieldDefinitionId) {
-    return PcoPeopleFieldOption._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_definitions/$fieldDefinitionId/field_options';
+  factory PcoPeopleFieldOption(String fieldDefinitionId, { String? value, int? sequence }) {
+    var obj = PcoPeopleFieldOption._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_definitions/$fieldDefinitionId/field_options';
+    if (value != null) obj.value = value;
+    if (sequence != null) obj.sequence = sequence;
+    return obj;
   }
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.087633
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.909181
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/events
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// An event.
@@ -122,9 +123,8 @@ class PcoCalendarEvent extends PcoResource {
   static const String kTypeString = 'Event';
   static const String kTypeId = 'event';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'event-organization-events';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/events';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/events';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `attachments`: include associated attachments 
@@ -150,7 +150,7 @@ class PcoCalendarEvent extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -195,7 +195,6 @@ class PcoCalendarEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get approvalStatus => attributes[kApprovalStatus] ?? '';
   DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
   String get details => attributes[kDetails] ?? '';
@@ -204,18 +203,7 @@ class PcoCalendarEvent extends PcoResource {
   int get percentApproved => attributes[kPercentApproved] ?? 0;
   int get percentRejected => attributes[kPercentRejected] ?? 0;
   String get registrationUrl => attributes[kRegistrationUrl] ?? '';
-  bool get isVisibleInChurchCenter => attributes[kVisibleInChurchCenter] == true;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  bool get isVisibleInChurchCenter => attributes[kVisibleInChurchCenter] == true;    
 
   // Class Constructors
   PcoCalendarEvent._() : super(kPcoApplication, kTypeString);

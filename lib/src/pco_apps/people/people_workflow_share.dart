@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.025616
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.872536
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/workflow_shares
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows/1/shares
 /// 
 /// ## Description
 /// A workflow share defines who can access a workflow.
@@ -88,9 +89,8 @@ class PcoPeopleWorkflowShare extends PcoResource {
   static const String kTypeString = 'WorkflowShare';
   static const String kTypeId = 'workflow_share';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'workflowshare-workflow-shares';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/shares';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_shares';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/shares';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -108,7 +108,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -130,10 +130,10 @@ class PcoPeopleWorkflowShare extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['group','permission','person_id'];
+  List<String> get createAllowed => ['group', 'permission', 'person_id'];
 
   @override
-  List<String> get updateAllowed => ['group','permission'];
+  List<String> get updateAllowed => ['group', 'permission'];
 
   @override
   bool get canCreate => true;
@@ -145,41 +145,41 @@ class PcoPeopleWorkflowShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get group => attributes[kGroup] ?? '';
   String get permission => attributes[kPermission] ?? '';
-  String get personId => attributes[kPersonId] ?? '';
+  String get personId => attributes[kPersonId] ?? '';  
   
-
   // setters for object attributes
-
   
   /// Possible values: `No Access`, `Viewer`, `Editor`, or `Manager`
-  set group(String s) => attributes[kGroup] = s;
+  
+  /// pass `null` to remove key from attributes
+  set group(String? x) => (x == null) ? attributes.remove(kGroup) : attributes[kGroup] = x;
   
   /// Possible values: `view`, `manage_cards`, or `manage`
-  set permission(String s) => attributes[kPermission] = s;
-  set personId(String s) => attributes[kPersonId] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set permission(String? x) => (x == null) ? attributes.remove(kPermission) : attributes[kPermission] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;  
 
   // Class Constructors
   PcoPeopleWorkflowShare._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoPeopleWorkflowShare] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/workflow_shares`
+  /// `https://api.planningcenteronline.com/people/v2/workflows/$workflowId/shares`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowShare(String peopleId) {
-    return PcoPeopleWorkflowShare._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/workflow_shares';
+  factory PcoPeopleWorkflowShare(String workflowId, { String? group, String? permission, String? personId }) {
+    var obj = PcoPeopleWorkflowShare._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/shares';
+    if (group != null) obj.group = group;
+    if (permission != null) obj.permission = permission;
+    if (personId != null) obj.personId = personId;
+    return obj;
   }
 
 

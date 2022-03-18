@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.570410
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.454412
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
 /// 
 /// ## Description
 /// For Rehearsal/Other Times, maps a Split Team to selected Time Preference Options. For example, used to assign 8am Ushers to 7:30am call time, and 11am Ushers to 10:30am call time.
@@ -85,9 +86,8 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const String kTypeString = 'SplitTeamRehearsalAssignment';
   static const String kTypeId = 'split_team_rehearsal_assignment';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -105,7 +105,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -140,22 +140,14 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
-  bool get isScheduleSpecialServiceTimes => attributes[kScheduleSpecialServiceTimes] == true;
+  bool get isScheduleSpecialServiceTimes => attributes[kScheduleSpecialServiceTimes] == true;  
   
-
   // setters for object attributes
-
   
   /// Controls if the related rehearsal/other time is assigned when a person is scheduled to a split team service time that does not match a Time Preference Option
-  set isScheduleSpecialServiceTimes(bool b) => attributes[kScheduleSpecialServiceTimes] = b;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set isScheduleSpecialServiceTimes(bool? x) => (x == null) ? attributes.remove(kScheduleSpecialServiceTimes) : attributes[kScheduleSpecialServiceTimes] = x;  
 
   // Class Constructors
   PcoServicesSplitTeamRehearsalAssignment._() : super(kPcoApplication, kTypeString);
@@ -166,9 +158,11 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesSplitTeamRehearsalAssignment(String peopleId,String planTimeId) {
-    return PcoServicesSplitTeamRehearsalAssignment._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+  factory PcoServicesSplitTeamRehearsalAssignment(String peopleId, String planTimeId, { bool? isScheduleSpecialServiceTimes }) {
+    var obj = PcoServicesSplitTeamRehearsalAssignment._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+    if (isScheduleSpecialServiceTimes != null) obj.isScheduleSpecialServiceTimes = isScheduleSpecialServiceTimes;
+    return obj;
   }
 
 

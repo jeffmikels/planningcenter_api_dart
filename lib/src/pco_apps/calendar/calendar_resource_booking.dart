@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.098662
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.925761
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_bookings
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A specific booking of a room or resource for an event instance.
@@ -111,9 +112,8 @@ class PcoCalendarResourceBooking extends PcoResource {
   static const String kTypeString = 'ResourceBooking';
   static const String kTypeId = 'resource_booking';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resourcebooking-organization-resource_bookings';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_bookings';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_bookings';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `event_instance`: include associated event_instance 
@@ -139,7 +139,7 @@ class PcoCalendarResourceBooking extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -178,21 +178,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  int get quantity => attributes[kQuantity] ?? 0;
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  int get quantity => attributes[kQuantity] ?? 0;    
 
   // Class Constructors
   PcoCalendarResourceBooking._() : super(kPcoApplication, kTypeString);

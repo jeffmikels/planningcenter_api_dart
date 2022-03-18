@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.198744
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.963651
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/payment_sources
+/// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/payment_sources
 /// 
 /// ## Description
 /// 
@@ -74,9 +75,8 @@ class PcoGivingPaymentSource extends PcoResource {
   static const String kTypeString = 'PaymentSource';
   static const String kTypeId = 'payment_source';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'paymentsource-organization-payment_sources';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -94,7 +94,7 @@ class PcoGivingPaymentSource extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -131,20 +131,12 @@ class PcoGivingPaymentSource extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
-  String get name => attributes[kName] ?? '';
+  String get name => attributes[kName] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
   PcoGivingPaymentSource._() : super(kPcoApplication, kTypeString);
@@ -155,9 +147,11 @@ class PcoGivingPaymentSource extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingPaymentSource() {
-    return PcoGivingPaymentSource._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
+  factory PcoGivingPaymentSource({ String? name }) {
+    var obj = PcoGivingPaymentSource._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/payment_sources';
+    if (name != null) obj.name = name;
+    return obj;
   }
 
 

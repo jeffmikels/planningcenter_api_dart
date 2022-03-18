@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.997389
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.842363
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people
 /// 
 /// ## Description
 /// A person record represents a single member/user of the application. Each person has different permissions that determine how the user can use this app (if at all).
@@ -244,9 +245,8 @@ class PcoPeoplePerson extends PcoResource {
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'person-organization-people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
 
   /// possible includes with parameter ?include=a,b
   /// - `addresses`: include associated addresses 
@@ -323,7 +323,7 @@ class PcoPeoplePerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -376,10 +376,10 @@ class PcoPeoplePerson extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['given_name','first_name','nickname','middle_name','last_name','birthdate','anniversary','gender','grade','child','graduation_year','site_administrator','accounting_administrator','people_permissions','membership','inactivated_at','status','medical_notes','avatar','primary_campus_id','remote_id'];
+  List<String> get createAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'remote_id'];
 
   @override
-  List<String> get updateAllowed => ['given_name','first_name','nickname','middle_name','last_name','birthdate','anniversary','gender','grade','child','graduation_year','site_administrator','accounting_administrator','people_permissions','membership','inactivated_at','status','medical_notes','avatar','primary_campus_id','remote_id'];
+  List<String> get updateAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'remote_id'];
 
   @override
   bool get canCreate => true;
@@ -391,7 +391,6 @@ class PcoPeoplePerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get givenName => attributes[kGivenName] ?? '';
   String get firstName => attributes[kFirstName] ?? '';
   String get nickname => attributes[kNickname] ?? '';
@@ -422,40 +421,75 @@ class PcoPeoplePerson extends PcoResource {
   String get searchPhoneNumber => attributes[kSearchPhoneNumber] ?? '';
   String get searchPhoneNumberE164 => attributes[kSearchPhoneNumberE164] ?? '';
   String get searchNameOrEmail => attributes[kSearchNameOrEmail] ?? '';
-  String get searchNameOrEmailOrPhoneNumber => attributes[kSearchNameOrEmailOrPhoneNumber] ?? '';
+  String get searchNameOrEmailOrPhoneNumber => attributes[kSearchNameOrEmailOrPhoneNumber] ?? '';  
   
-
   // setters for object attributes
-
-  set givenName(String s) => attributes[kGivenName] = s;
-  set firstName(String s) => attributes[kFirstName] = s;
-  set nickname(String s) => attributes[kNickname] = s;
-  set middleName(String s) => attributes[kMiddleName] = s;
-  set lastName(String s) => attributes[kLastName] = s;
-  set birthdate(String s) => attributes[kBirthdate] = s;
-  set anniversary(String s) => attributes[kAnniversary] = s;
-  set gender(String s) => attributes[kGender] = s;
-  set grade(int n) => attributes[kGrade] = n;
-  set isChild(bool b) => attributes[kChild] = b;
-  set graduationYear(int n) => attributes[kGraduationYear] = n;
-  set isSiteAdministrator(bool b) => attributes[kSiteAdministrator] = b;
-  set isAccountingAdministrator(bool b) => attributes[kAccountingAdministrator] = b;
-  set peoplePermissions(String s) => attributes[kPeoplePermissions] = s;
-  set membership(String s) => attributes[kMembership] = s;
-  set inactivatedAt(DateTime d) => attributes[kInactivatedAt] = d.toIso8601String();
-  set status(String s) => attributes[kStatus] = s;
-  set medicalNotes(String s) => attributes[kMedicalNotes] = s;
-  set avatar(String s) => attributes[kAvatar] = s;
-  set remoteId(int n) => attributes[kRemoteId] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set givenName(String? x) => (x == null) ? attributes.remove(kGivenName) : attributes[kGivenName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set firstName(String? x) => (x == null) ? attributes.remove(kFirstName) : attributes[kFirstName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set nickname(String? x) => (x == null) ? attributes.remove(kNickname) : attributes[kNickname] = x;
+  
+  /// pass `null` to remove key from attributes
+  set middleName(String? x) => (x == null) ? attributes.remove(kMiddleName) : attributes[kMiddleName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set lastName(String? x) => (x == null) ? attributes.remove(kLastName) : attributes[kLastName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set birthdate(String? x) => (x == null) ? attributes.remove(kBirthdate) : attributes[kBirthdate] = x;
+  
+  /// pass `null` to remove key from attributes
+  set anniversary(String? x) => (x == null) ? attributes.remove(kAnniversary) : attributes[kAnniversary] = x;
+  
+  /// pass `null` to remove key from attributes
+  set gender(String? x) => (x == null) ? attributes.remove(kGender) : attributes[kGender] = x;
+  
+  /// pass `null` to remove key from attributes
+  set grade(int? x) => (x == null) ? attributes.remove(kGrade) : attributes[kGrade] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isChild(bool? x) => (x == null) ? attributes.remove(kChild) : attributes[kChild] = x;
+  
+  /// pass `null` to remove key from attributes
+  set graduationYear(int? x) => (x == null) ? attributes.remove(kGraduationYear) : attributes[kGraduationYear] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isSiteAdministrator(bool? x) => (x == null) ? attributes.remove(kSiteAdministrator) : attributes[kSiteAdministrator] = x;
+  
+  /// pass `null` to remove key from attributes
+  set isAccountingAdministrator(bool? x) => (x == null) ? attributes.remove(kAccountingAdministrator) : attributes[kAccountingAdministrator] = x;
+  
+  /// pass `null` to remove key from attributes
+  set peoplePermissions(String? x) => (x == null) ? attributes.remove(kPeoplePermissions) : attributes[kPeoplePermissions] = x;
+  
+  /// pass `null` to remove key from attributes
+  set membership(String? x) => (x == null) ? attributes.remove(kMembership) : attributes[kMembership] = x;
+  
+  /// pass `null` to remove key from attributes
+  set inactivatedAt(DateTime? x) => (x == null) ? attributes.remove(kInactivatedAt) : attributes[kInactivatedAt] = x.toIso8601String();
+  
+  /// pass `null` to remove key from attributes
+  set status(String? x) => (x == null) ? attributes.remove(kStatus) : attributes[kStatus] = x;
+  
+  /// pass `null` to remove key from attributes
+  set medicalNotes(String? x) => (x == null) ? attributes.remove(kMedicalNotes) : attributes[kMedicalNotes] = x;
+  
+  /// pass `null` to remove key from attributes
+  set avatar(String? x) => (x == null) ? attributes.remove(kAvatar) : attributes[kAvatar] = x;
+  
+  /// pass `null` to remove key from attributes
+  set remoteId(int? x) => (x == null) ? attributes.remove(kRemoteId) : attributes[kRemoteId] = x;  
+  
+  // additional setters / getters for create/update attributes
+  
+  /// pass `null` to remove key from attributes
+  set primaryCampusId(String? x) => (x == null) ? attributes.remove(kPrimaryCampusId) : attributes[kPrimaryCampusId] = x;
   String get primaryCampusId => attributes[kPrimaryCampusId] ?? '';
-  set primaryCampusId(String s) => attributes[kPrimaryCampusId] = s;
-  
-
-
 
   // Class Constructors
   PcoPeoplePerson._() : super(kPcoApplication, kTypeString);
@@ -466,9 +500,30 @@ class PcoPeoplePerson extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeoplePerson() {
-    return PcoPeoplePerson._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people';
+  factory PcoPeoplePerson({ String? givenName, String? firstName, String? nickname, String? middleName, String? lastName, String? birthdate, String? anniversary, String? gender, int? grade, bool? isChild, int? graduationYear, bool? isSiteAdministrator, bool? isAccountingAdministrator, String? peoplePermissions, String? membership, DateTime? inactivatedAt, String? status, String? medicalNotes, String? avatar, int? remoteId }) {
+    var obj = PcoPeoplePerson._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people';
+    if (givenName != null) obj.givenName = givenName;
+    if (firstName != null) obj.firstName = firstName;
+    if (nickname != null) obj.nickname = nickname;
+    if (middleName != null) obj.middleName = middleName;
+    if (lastName != null) obj.lastName = lastName;
+    if (birthdate != null) obj.birthdate = birthdate;
+    if (anniversary != null) obj.anniversary = anniversary;
+    if (gender != null) obj.gender = gender;
+    if (grade != null) obj.grade = grade;
+    if (isChild != null) obj.isChild = isChild;
+    if (graduationYear != null) obj.graduationYear = graduationYear;
+    if (isSiteAdministrator != null) obj.isSiteAdministrator = isSiteAdministrator;
+    if (isAccountingAdministrator != null) obj.isAccountingAdministrator = isAccountingAdministrator;
+    if (peoplePermissions != null) obj.peoplePermissions = peoplePermissions;
+    if (membership != null) obj.membership = membership;
+    if (inactivatedAt != null) obj.inactivatedAt = inactivatedAt;
+    if (status != null) obj.status = status;
+    if (medicalNotes != null) obj.medicalNotes = medicalNotes;
+    if (avatar != null) obj.avatar = avatar;
+    if (remoteId != null) obj.remoteId = remoteId;
+    return obj;
   }
 
 

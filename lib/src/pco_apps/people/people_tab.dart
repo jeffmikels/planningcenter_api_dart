@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.011957
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.862666
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/tabs
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/tabs
 /// 
 /// ## Description
 /// A tab is a custom tab and groups like field definitions.
@@ -82,9 +83,8 @@ class PcoPeopleTab extends PcoResource {
   static const String kTypeString = 'Tab';
   static const String kTypeId = 'tab';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'tab-organization-tabs';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
 
   /// possible includes with parameter ?include=a,b
   /// - `field_definitions`: include associated field_definitions 
@@ -107,7 +107,7 @@ class PcoPeopleTab extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -129,10 +129,10 @@ class PcoPeopleTab extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','sequence','slug'];
+  List<String> get createAllowed => ['name', 'sequence', 'slug'];
 
   @override
-  List<String> get updateAllowed => ['name','sequence','slug'];
+  List<String> get updateAllowed => ['name', 'sequence', 'slug'];
 
   @override
   bool get canCreate => true;
@@ -144,24 +144,20 @@ class PcoPeopleTab extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
-  String get slug => attributes[kSlug] ?? '';
+  String get slug => attributes[kSlug] ?? '';  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set sequence(int n) => attributes[kSequence] = n;
-  set slug(String s) => attributes[kSlug] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
+  /// pass `null` to remove key from attributes
+  set slug(String? x) => (x == null) ? attributes.remove(kSlug) : attributes[kSlug] = x;  
 
   // Class Constructors
   PcoPeopleTab._() : super(kPcoApplication, kTypeString);
@@ -172,9 +168,13 @@ class PcoPeopleTab extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleTab() {
-    return PcoPeopleTab._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/tabs';
+  factory PcoPeopleTab({ String? name, int? sequence, String? slug }) {
+    var obj = PcoPeopleTab._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/tabs';
+    if (name != null) obj.name = name;
+    if (sequence != null) obj.sequence = sequence;
+    if (slug != null) obj.slug = slug;
+    return obj;
   }
 
 

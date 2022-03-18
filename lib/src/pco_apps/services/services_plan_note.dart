@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.543586
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.312911
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/notes
 /// 
 /// ## Description
 /// A specific plan note within a single plan.
@@ -92,9 +93,8 @@ class PcoServicesPlanNote extends PcoResource {
   static const String kTypeString = 'PlanNote';
   static const String kTypeId = 'plan_note';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'plannote-plan-notes';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/notes';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/notes';
 
   /// possible includes with parameter ?include=a,b
   /// - `plan_note_category`: include associated plan_note_category 
@@ -114,7 +114,7 @@ class PcoServicesPlanNote extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -152,34 +152,28 @@ class PcoServicesPlanNote extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get categoryName => attributes[kCategoryName] ?? '';
-  String get content => attributes[kContent] ?? '';
+  String get content => attributes[kContent] ?? '';  
   
-
   // setters for object attributes
-
-  set content(String s) => attributes[kContent] = s;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set content(String? x) => (x == null) ? attributes.remove(kContent) : attributes[kContent] = x;  
 
   // Class Constructors
   PcoServicesPlanNote._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
   /// Create a new [PcoServicesPlanNote] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/notes`
+  /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/notes`
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesPlanNote(String serviceTypeId,String planTemplateId) {
-    return PcoServicesPlanNote._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/notes';
+  factory PcoServicesPlanNote(String serviceTypeId, String planId, { String? content }) {
+    var obj = PcoServicesPlanNote._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/notes';
+    if (content != null) obj.content = content;
+    return obj;
   }
 
 

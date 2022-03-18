@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.194778
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.959854
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/funds
+/// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/funds
 /// 
 /// ## Description
 /// 
@@ -93,9 +94,8 @@ class PcoGivingFund extends PcoResource {
   static const String kTypeString = 'Fund';
   static const String kTypeId = 'fund';
   static const String kApiVersion = '2019-10-18';
-  static const String kShortestEdgeId = 'fund-organization-funds';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/giving/v2/funds';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/funds';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/giving/v2/funds';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -116,7 +116,7 @@ class PcoGivingFund extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -145,10 +145,10 @@ class PcoGivingFund extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name','ledger_code','description','visibility','color_identifier'];
+  List<String> get createAllowed => ['name', 'ledger_code', 'description', 'visibility', 'color_identifier'];
 
   @override
-  List<String> get updateAllowed => ['name','ledger_code','description','visibility','color_identifier'];
+  List<String> get updateAllowed => ['name', 'ledger_code', 'description', 'visibility', 'color_identifier'];
 
   @override
   bool get canCreate => true;
@@ -160,7 +160,6 @@ class PcoGivingFund extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get name => attributes[kName] ?? '';
   String get ledgerCode => attributes[kLedgerCode] ?? '';
   String get description => attributes[kDescription] ?? '';
@@ -168,25 +167,26 @@ class PcoGivingFund extends PcoResource {
   int get colorIdentifier => attributes[kColorIdentifier] ?? 0;
   bool get isDefault => attributes[kDefault] == true;
   String get color => attributes[kColor] ?? '';
-  bool get isDeletable => attributes[kDeletable] == true;
+  bool get isDeletable => attributes[kDeletable] == true;  
   
-
   // setters for object attributes
-
-  set name(String s) => attributes[kName] = s;
-  set ledgerCode(String s) => attributes[kLedgerCode] = s;
-  set description(String s) => attributes[kDescription] = s;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
+  /// pass `null` to remove key from attributes
+  set ledgerCode(String? x) => (x == null) ? attributes.remove(kLedgerCode) : attributes[kLedgerCode] = x;
+  
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;
   
   /// Possible values: `everywhere`, `admin_only`, `nowhere`, or `hidden`
-  set visibility(String s) => attributes[kVisibility] = s;
-  set colorIdentifier(int n) => attributes[kColorIdentifier] = n;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set visibility(String? x) => (x == null) ? attributes.remove(kVisibility) : attributes[kVisibility] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set colorIdentifier(int? x) => (x == null) ? attributes.remove(kColorIdentifier) : attributes[kColorIdentifier] = x;  
 
   // Class Constructors
   PcoGivingFund._() : super(kPcoApplication, kTypeString);
@@ -197,9 +197,15 @@ class PcoGivingFund extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoGivingFund() {
-    return PcoGivingFund._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/funds';
+  factory PcoGivingFund({ String? name, String? ledgerCode, String? description, String? visibility, int? colorIdentifier }) {
+    var obj = PcoGivingFund._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/funds';
+    if (name != null) obj.name = name;
+    if (ledgerCode != null) obj.ledgerCode = ledgerCode;
+    if (description != null) obj.description = description;
+    if (visibility != null) obj.visibility = visibility;
+    if (colorIdentifier != null) obj.colorIdentifier = colorIdentifier;
+    return obj;
   }
 
 

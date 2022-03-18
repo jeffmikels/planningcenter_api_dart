@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:09.547431
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.328209
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// 
@@ -93,9 +94,8 @@ class PcoServicesPlanPersonTime extends PcoResource {
   static const String kTypeString = 'PlanPersonTime';
   static const String kTypeId = 'plan_person_time';
   static const String kApiVersion = '2018-11-01';
-  static const String kShortestEdgeId = 'planpersontime-planperson-plan_person_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -113,7 +113,7 @@ class PcoServicesPlanPersonTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -150,19 +150,7 @@ class PcoServicesPlanPersonTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
-  String get status => attributes[kStatus] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get status => attributes[kStatus] ?? '';    
 
   // Class Constructors
   PcoServicesPlanPersonTime._() : super(kPcoApplication, kTypeString);

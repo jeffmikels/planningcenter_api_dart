@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.096523
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.922569
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resources
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// A room or resource that can be requested for use as part of
@@ -115,9 +116,8 @@ class PcoCalendarResource extends PcoResource {
   static const String kTypeString = 'Resource';
   static const String kTypeId = 'resource';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'resource-organization-resources';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resources';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resources';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// - `resource_approval_groups`: include associated resource_approval_groups 
@@ -146,7 +146,7 @@ class PcoCalendarResource extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -176,10 +176,10 @@ class PcoCalendarResource extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['home_location','name','quantity'];
+  List<String> get createAllowed => ['home_location', 'name', 'quantity'];
 
   @override
-  List<String> get updateAllowed => ['home_location','name','quantity'];
+  List<String> get updateAllowed => ['home_location', 'name', 'quantity'];
 
   @override
   bool get canCreate => true;
@@ -191,7 +191,6 @@ class PcoCalendarResource extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   String get kind => attributes[kKind] ?? '';
   String get name => attributes[kName] ?? '';
   String get serialNumber => attributes[kSerialNumber] ?? '';
@@ -200,41 +199,29 @@ class PcoCalendarResource extends PcoResource {
   String get homeLocation => attributes[kHomeLocation] ?? '';
   String get image => attributes[kImage] ?? '';
   int get quantity => attributes[kQuantity] ?? 0;
-  String get pathName => attributes[kPathName] ?? '';
+  String get pathName => attributes[kPathName] ?? '';  
   
-
   // setters for object attributes
-
   
   /// The name of the room or resource
-  set name(String s) => attributes[kName] = s;
+  
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
   
   /// Where the resource is normally kept
-  set homeLocation(String s) => attributes[kHomeLocation] = s;
+  
+  /// pass `null` to remove key from attributes
+  set homeLocation(String? x) => (x == null) ? attributes.remove(kHomeLocation) : attributes[kHomeLocation] = x;
   
   /// The quantity of the resource
-  set quantity(int n) => attributes[kQuantity] = n;
   
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  /// pass `null` to remove key from attributes
+  set quantity(int? x) => (x == null) ? attributes.remove(kQuantity) : attributes[kQuantity] = x;  
 
   // Class Constructors
   PcoCalendarResource._() : super(kPcoApplication, kTypeString);
   PcoCalendarResource.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
 
-  /// Create a new [PcoCalendarResource] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/calendar/v2/resources`
-  /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoCalendarResource() {
-    return PcoCalendarResource._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/calendar/v2/resources';
-  }
 
 
   // ---------------------------------

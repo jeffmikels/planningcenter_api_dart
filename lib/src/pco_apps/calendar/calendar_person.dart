@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.094017
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.918473
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/people
+/// - Create Endpoint:    NONE
 /// 
 /// ## Description
 /// The people in your organization with access to Calendar.
@@ -122,9 +123,8 @@ class PcoCalendarPerson extends PcoResource {
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
   static const String kApiVersion = '2020-04-08';
-  static const String kShortestEdgeId = 'person-organization-people';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/calendar/v2/people';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/people';
+  static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -149,7 +149,7 @@ class PcoCalendarPerson extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -204,7 +204,6 @@ class PcoCalendarPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-
   String get firstName => attributes[kFirstName] ?? '';
   String get lastName => attributes[kLastName] ?? '';
   String get middleName => attributes[kMiddleName] ?? '';
@@ -223,18 +222,7 @@ class PcoCalendarPerson extends PcoResource {
   String get eventPermissionsType => attributes[kEventPermissionsType] ?? '';
   String get peoplePermissionsType => attributes[kPeoplePermissionsType] ?? '';
   String get roomPermissionsType => attributes[kRoomPermissionsType] ?? '';
-  String get resourcesPermissionsType => attributes[kResourcesPermissionsType] ?? '';
-  
-
-  // setters for object attributes
-
-  
-
-  // additional setters and getters for assignable values
-
-  
-
-
+  String get resourcesPermissionsType => attributes[kResourcesPermissionsType] ?? '';    
 
   // Class Constructors
   PcoCalendarPerson._() : super(kPcoApplication, kTypeString);

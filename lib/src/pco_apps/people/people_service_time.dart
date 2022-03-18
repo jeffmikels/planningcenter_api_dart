@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-17T16:19:10.009725
+/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.852585
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,7 @@ import '../../pco.dart';
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses/1/service_times
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/campuses/1/service_times
 /// 
 /// ## Description
 /// A ServiceTime Resource
@@ -87,9 +88,8 @@ class PcoPeopleServiceTime extends PcoResource {
   static const String kTypeString = 'ServiceTime';
   static const String kTypeId = 'service_time';
   static const String kApiVersion = '2021-08-17';
-  static const String kShortestEdgeId = 'servicetime-campus-service_times';
-  static const String kShortestEdgePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -107,7 +107,7 @@ class PcoPeopleServiceTime extends PcoResource {
   // child class. This lets the parent access the static variables of the child class.
 
   @override
-  String get shortestEdgePath => kShortestEdgePathTemplate;
+  String get createPathTemplate => kCreatePathTemplate;
 
   @override
   String get defaultPathTemplate => kDefaultPathTemplate;
@@ -129,10 +129,10 @@ class PcoPeopleServiceTime extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['start_time','day','description'];
+  List<String> get createAllowed => ['start_time', 'day', 'description'];
 
   @override
-  List<String> get updateAllowed => ['start_time','day','description'];
+  List<String> get updateAllowed => ['start_time', 'day', 'description'];
 
   @override
   bool get canCreate => true;
@@ -144,26 +144,22 @@ class PcoPeopleServiceTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-
   int get startTime => attributes[kStartTime] ?? 0;
   String get day => attributes[kDay] ?? '';
-  String get description => attributes[kDescription] ?? '';
+  String get description => attributes[kDescription] ?? '';  
   
-
   // setters for object attributes
-
-  set startTime(int n) => attributes[kStartTime] = n;
+  
+  /// pass `null` to remove key from attributes
+  set startTime(int? x) => (x == null) ? attributes.remove(kStartTime) : attributes[kStartTime] = x;
   
   /// Possible values: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, or `saturday`
-  set day(String s) => attributes[kDay] = s;
-  set description(String s) => attributes[kDescription] = s;
   
-
-  // additional setters and getters for assignable values
-
+  /// pass `null` to remove key from attributes
+  set day(String? x) => (x == null) ? attributes.remove(kDay) : attributes[kDay] = x;
   
-
-
+  /// pass `null` to remove key from attributes
+  set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;  
 
   // Class Constructors
   PcoPeopleServiceTime._() : super(kPcoApplication, kTypeString);
@@ -174,9 +170,13 @@ class PcoPeopleServiceTime extends PcoResource {
   /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleServiceTime(String campusId) {
-    return PcoPeopleServiceTime._()
-      .._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times';
+  factory PcoPeopleServiceTime(String campusId, { int? startTime, String? day, String? description }) {
+    var obj = PcoPeopleServiceTime._();
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times';
+    if (startTime != null) obj.startTime = startTime;
+    if (day != null) obj.day = day;
+    if (description != null) obj.description = description;
+    return obj;
   }
 
 

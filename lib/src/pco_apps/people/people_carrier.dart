@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.292239
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.350622
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO People Carrier Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 carrier
 /// - Type:               Carrier
@@ -17,44 +15,44 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/carriers
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (ro) -> PCO: `value`
 /// - `name` (ro) -> PCO: `name`
 /// - `isInternational` (ro) -> PCO: `international`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `international`: (URLParameter), prefix with a hyphen (-international) to reverse the order
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `carrier-organization-carriers`: https://api.planningcenteronline.com/people/v2/carriers
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -76,21 +74,22 @@ class PcoPeopleCarrier extends PcoResource {
   static const String kTypeString = 'Carrier';
   static const String kTypeId = 'carrier';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/carriers';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `international`: (URLParameter), prefix with a hyphen (-international) to reverse the order
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-  static List<String> get canOrderBy => ['international','name'];
+  static List<String> get canOrderBy => ['international', 'name'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -115,7 +114,6 @@ class PcoPeopleCarrier extends PcoResource {
   static const kName = 'name';
   static const kInternational = 'international';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -135,43 +133,41 @@ class PcoPeopleCarrier extends PcoResource {
   // getters for object attributes
   String get value => attributes[kValue] ?? '';
   String get name => attributes[kName] ?? '';
-  bool get isInternational => attributes[kInternational] == true;    
+  bool get isInternational => attributes[kInternational] == true;
 
   // Class Constructors
-  PcoPeopleCarrier.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleCarrier.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoPeopleCarrier.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoPeopleCarrier] objects (expecting many)
   /// using a path like this: `/people/v2/carriers`
-  static Future<PcoCollection<PcoPeopleCarrier>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleCarrier>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleCarrier.canInclude;
     var url = '/people/v2/carriers';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleCarrier>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleCarrier>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

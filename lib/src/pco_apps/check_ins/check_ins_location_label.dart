@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.160347
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.212506
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO CheckIns LocationLabel Object
-/// 
+///
 /// - Application:        check-ins
 /// - Id:                 location_label
 /// - Type:               LocationLabel
@@ -17,11 +15,11 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Says how many of a given label to print for this location and
 /// whether to print it for regulars, guests, and/or volunteers.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `quantity` (ro) -> PCO: `quantity`
@@ -30,37 +28,37 @@ import '../../pco.dart';
 /// - `isForVolunteer` (ro) -> PCO: `for_volunteer`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `label`: include associated label 
-/// - `location`: include associated location 
+///
+/// - `label`: include associated label
+/// - `location`: include associated location
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `label-locationlabel-label`: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/label
 /// - `location-locationlabel-location`: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/location
-/// 
+///
 /// Inbound Edges:
 /// - `locationlabel-label-location_labels`: https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels
 /// - `locationlabel-location-location_labels`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_labels
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -85,20 +83,21 @@ class PcoCheckInsLocationLabel extends PcoResource {
   static const String kTypeString = 'LocationLabel';
   static const String kTypeId = 'location_label';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `label`: include associated label 
-  /// - `location`: include associated location 
-  static List<String> get canInclude => ['label','location'];
+  /// - `label`: include associated label
+  /// - `location`: include associated location
+  static List<String> get canInclude => ['label', 'location'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -127,7 +126,6 @@ class PcoCheckInsLocationLabel extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -148,41 +146,49 @@ class PcoCheckInsLocationLabel extends PcoResource {
   int get quantity => attributes[kQuantity] ?? 0;
   bool get isForRegular => attributes[kForRegular] == true;
   bool get isForGuest => attributes[kForGuest] == true;
-  bool get isForVolunteer => attributes[kForVolunteer] == true;    
+  bool get isForVolunteer => attributes[kForVolunteer] == true;
 
   // Class Constructors
-  PcoCheckInsLocationLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsLocationLabel.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoCheckInsLocationLabel.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoCheckInsLocationLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels`
-  static Future<PcoCollection<PcoCheckInsLocationLabel>> getFromLabel(String labelId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsLocationLabel>> getFromLabel(
+      String labelId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationLabel.canInclude;
     var url = '/check-ins/v2/labels/$labelId/location_labels';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCheckInsLocationLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels`
-  static Future<PcoCollection<PcoCheckInsLocationLabel>> getFromCheckInAndLocation(String checkInId,String locationId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsLocationLabel>>
+      getFromCheckInAndLocation(String checkInId, String locationId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocationLabel.canInclude;
-    var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels';
+    var url =
+        '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -191,28 +197,29 @@ class PcoCheckInsLocationLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/label`
-  Future<PcoCollection<PcoCheckInsLabel>> getLabel({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsLabel>> getLabel(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLabel.canInclude;
     var url = '$apiEndpoint/label';
-    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsLocation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels/1/location`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocation({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsLocation>> getLocation(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsLocation.canInclude;
     var url = '$apiEndpoint/location';
-    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.033811
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.090326
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services SongSchedule Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 song_schedule
 /// - Type:               SongSchedule
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A upcoming schedule for a song
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `arrangementName` (ro) -> PCO: `arrangement_name`
@@ -28,34 +26,34 @@ import '../../pco.dart';
 /// - `planDates` (ro) -> PCO: `plan_dates`
 /// - `serviceTypeName` (ro) -> PCO: `service_type_name`
 /// - `planSortDate` (ro) -> PCO: `plan_sort_date`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `plan_sort_date`: (URLParameter), prefix with a hyphen (-plan_sort_date) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `songschedule-song-song_schedules`: https://api.planningcenteronline.com/services/v2/songs/1/song_schedules
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -110,15 +108,16 @@ class PcoServicesSongSchedule extends PcoResource {
   static const String kTypeString = 'SongSchedule';
   static const String kTypeId = 'song_schedule';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/song_schedules';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/songs/1/song_schedules';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -150,7 +149,6 @@ class PcoServicesSongSchedule extends PcoResource {
   static const kServiceTypeName = 'service_type_name';
   static const kPlanSortDate = 'plan_sort_date';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -172,46 +170,45 @@ class PcoServicesSongSchedule extends PcoResource {
   String get keyName => attributes[kKeyName] ?? '';
   String get planDates => attributes[kPlanDates] ?? '';
   String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  String get planSortDate => attributes[kPlanSortDate] ?? '';    
+  String get planSortDate => attributes[kPlanSortDate] ?? '';
 
   // Class Constructors
-  PcoServicesSongSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSongSchedule.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesSongSchedule.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesSongSchedule] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/song_schedules`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `three_most_recent`
-  static Future<PcoCollection<PcoServicesSongSchedule>> getFromSong(String songId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSongSchedule>> getFromSong(
+      String songId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSongSchedule.canInclude;
     var url = '/services/v2/songs/$songId/song_schedules';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSongSchedule>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSongSchedule>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

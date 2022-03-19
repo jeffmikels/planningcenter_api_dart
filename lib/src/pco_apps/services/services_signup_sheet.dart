@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.029698
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.082561
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services SignupSheet Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 signup_sheet
 /// - Type:               SignupSheet
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Available positions to sign up for
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `sortDate` (ro) -> PCO: `sort_date`
@@ -30,36 +28,36 @@ import '../../pco.dart';
 /// - `positionName` (ro) -> PCO: `position_name`
 /// - `title` (ro) -> PCO: `title`
 /// - `sortIndex` (ro) -> PCO: `sort_index`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `scheduled_people`: include associated scheduled_people 
-/// - `signup_sheet_metadata`: include associated signup_sheet_metadata 
+///
+/// - `scheduled_people`: include associated scheduled_people
+/// - `signup_sheet_metadata`: include associated signup_sheet_metadata
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `scheduledperson-signupsheet-scheduled_people`: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people
 /// - `signupsheetmetadata-signupsheet-signup_sheet_metadata`: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata
-/// 
+///
 /// Inbound Edges:
 /// - `signupsheet-availablesignup-signup_sheets`: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets
-/// 
+///
 /// Actions:
 /// - `accept`: https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/accept
 ///
@@ -104,20 +102,22 @@ class PcoServicesSignupSheet extends PcoResource {
   static const String kTypeString = 'SignupSheet';
   static const String kTypeId = 'signup_sheet';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `scheduled_people`: include associated scheduled_people 
-  /// - `signup_sheet_metadata`: include associated signup_sheet_metadata 
-  static List<String> get canInclude => ['scheduled_people','signup_sheet_metadata'];
+  /// - `scheduled_people`: include associated scheduled_people
+  /// - `signup_sheet_metadata`: include associated signup_sheet_metadata
+  static List<String> get canInclude =>
+      ['scheduled_people', 'signup_sheet_metadata'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -147,7 +147,6 @@ class PcoServicesSignupSheet extends PcoResource {
   static const kTitle = 'title';
   static const kSortIndex = 'sort_index';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -171,30 +170,34 @@ class PcoServicesSignupSheet extends PcoResource {
   String get displayTimes => attributes[kDisplayTimes] ?? '';
   String get positionName => attributes[kPositionName] ?? '';
   String get title => attributes[kTitle] ?? '';
-  int get sortIndex => attributes[kSortIndex] ?? 0;    
+  int get sortIndex => attributes[kSortIndex] ?? 0;
 
   // Class Constructors
-  PcoServicesSignupSheet.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSignupSheet.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesSignupSheet.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesSignupSheet] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets`
-  static Future<PcoCollection<PcoServicesSignupSheet>> getFromPeopleAndAvailableSignup(String peopleId,String availableSignupId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSignupSheet>>
+      getFromPeopleAndAvailableSignup(String peopleId, String availableSignupId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSignupSheet.canInclude;
-    var url = '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets';
+    var url =
+        '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSignupSheet>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSignupSheet>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -203,22 +206,25 @@ class PcoServicesSignupSheet extends PcoResource {
 
   /// Will get a collection of [PcoServicesScheduledPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/scheduled_people`
-  Future<PcoCollection<PcoServicesScheduledPerson>> getScheduledPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesScheduledPerson>> getScheduledPeople(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesScheduledPerson.canInclude;
     var url = '$apiEndpoint/scheduled_people';
-    return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesSignupSheetMetadata] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata`
-  Future<PcoCollection<PcoServicesSignupSheetMetadata>> getSignupSheetMetadata({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesSignupSheetMetadata>> getSignupSheetMetadata(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSignupSheetMetadata.canInclude;
     var url = '$apiEndpoint/signup_sheet_metadata';
-    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadata>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadata>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
@@ -226,14 +232,14 @@ class PcoServicesSignupSheet extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `accept`
-  /// 
+  ///
   /// Accept a signup sheet
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/accept`
-  /// 
+  ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PcoData] helper class has been
   /// provided for just such a purpose.
-  /// 
+  ///
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
   Future<PlanningCenterApiResponse> accept(Object data) async {
@@ -243,8 +249,6 @@ class PcoServicesSignupSheet extends PcoResource {
       );
     }
     var url = '$apiEndpoint/accept';
-    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
-
-
 }

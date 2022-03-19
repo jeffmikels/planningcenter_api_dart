@@ -101,14 +101,14 @@ void main() async {
       }
     }
   } else {
-    print(collection.error!.errorMessage);
+    print(collection.error!.message);
   }
 
   // to call the API directly, you can do this, but it will not return
   // typed data... just a moderately parsed PlanningCenterApiResponse object
   var res = await PlanningCenter.instance.call('/services/v2/songs');
   if (res is PlanningCenterApiError) {
-    debug(res.errorMessage);
+    debug(res.message);
     debug(res.responseBody);
   }
   debug(res.toJson());

@@ -3,7 +3,7 @@ description: |
   This package gives you full coverage of the PlanningCenter API as described here:
   `https://developer.planning.center/docs/#/overview`
 
-version: 0.8.1
+version: 0.8.2
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 

@@ -1,8 +1,7 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.489800
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.518603
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
 
 export "./calendar_attachment.dart";
 export "./calendar_conflict.dart";

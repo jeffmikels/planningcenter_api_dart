@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.287891
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.347030
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO People AnniversaryCouples Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 anniversary_couples
 /// - Type:               AnniversaryCouples
@@ -17,40 +15,40 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/anniversary_couples
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Returns upcoming anniversary couples for the organization.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `anniversarycouples-organization-anniversary_couples`: https://api.planningcenteronline.com/people/v2/anniversary_couples
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -68,19 +66,20 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   static const String kTypeString = 'AnniversaryCouples';
   static const String kTypeId = 'anniversary_couples';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/anniversary_couples';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -103,7 +102,6 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   // field mapping constants
   static const kId = 'id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -120,43 +118,39 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   @override
   bool get canDestroy => false;
 
-      
-
   // Class Constructors
-  PcoPeopleAnniversaryCouple.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleAnniversaryCouple.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoPeopleAnniversaryCouple.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoPeopleAnniversaryCouple] objects (expecting many)
   /// using a path like this: `/people/v2/anniversary_couples`
-  static Future<PcoCollection<PcoPeopleAnniversaryCouple>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleAnniversaryCouple>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleAnniversaryCouple.canInclude;
     var url = '/people/v2/anniversary_couples';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

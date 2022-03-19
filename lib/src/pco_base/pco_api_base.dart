@@ -25,10 +25,14 @@ const int apiInterval = 201;
 /// That's why the global api object here allows a version to be specified in the call function
 ///
 class PlanningCenter {
-  static const mainEndpoint = 'https://api.planningcenteronline.com'; // no final slash
-  static const uploadsEndpoint = 'https://upload.planningcenteronline.com/v2/files';
-  static const authEndpoint = 'https://api.planningcenteronline.com/oauth/authorize';
-  static const tokenEndpoint = 'https://api.planningcenteronline.com/oauth/token';
+  static const mainEndpoint =
+      'https://api.planningcenteronline.com'; // no final slash
+  static const uploadsEndpoint =
+      'https://upload.planningcenteronline.com/v2/files';
+  static const authEndpoint =
+      'https://api.planningcenteronline.com/oauth/authorize';
+  static const tokenEndpoint =
+      'https://api.planningcenteronline.com/oauth/token';
   static const oAuthScopes = [
     'calendar',
     'check_ins',
@@ -42,7 +46,8 @@ class PlanningCenter {
   static late PlanningCenter instance;
 
   /// initialize with an appId and a secret for basic authentication
-  static PlanningCenter init(String appId, String secret) => instance = PlanningCenter._(appId, secret);
+  static PlanningCenter init(String appId, String secret) =>
+      instance = PlanningCenter._(appId, secret);
 
   /// initialize with an already configured client.
   ///
@@ -54,7 +59,8 @@ class PlanningCenter {
     String clientSecret,
     PlanningCenterCredentials credentials,
   ) =>
-      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+      instance =
+          PlanningCenter._withCredentials(clientId, clientSecret, credentials);
 
   /// Use OAuth2 to authorize
   /// Scopes should be one or more of the following: api, calendar, check_ins, giving, groups, people, services, webhooks
@@ -95,7 +101,7 @@ class PlanningCenter {
     Future<String> Function(String url) redirector,
   ) async {
     var url =
-        '${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=${scopes.join('+')}';
+        '$authEndpoint?client_id=$clientId&redirect_uri=$redirectUri&response_type=code&scope=${scopes.join('+')}';
 
     // call the redirector and wait for a code response
     var code = await redirector(url);
@@ -134,7 +140,8 @@ class PlanningCenter {
     if (res.statusCode == 200) {
       var data = json.decode(res.body);
       var credentials = PlanningCenterCredentials.fromJson(data);
-      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+      instance =
+          PlanningCenter._withCredentials(clientId, clientSecret, credentials);
       return true;
     }
     print(res.statusCode);
@@ -180,7 +187,8 @@ class PlanningCenter {
     initialized = true;
   }
 
-  PlanningCenter._withCredentials(this.clientId, this.clientSecret, this.oAuthCredentials) {
+  PlanningCenter._withCredentials(
+      this.clientId, this.clientSecret, this.oAuthCredentials) {
     _baseUri = Uri.parse(mainEndpoint);
     _baseUri = Uri(
       scheme: _baseUri.scheme,
@@ -189,10 +197,11 @@ class PlanningCenter {
     );
     _client = http.Client();
     var now = DateTime.now();
-    var expiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+    var expiresAt = DateTime.fromMillisecondsSinceEpoch(
+        1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
     var refreshExpiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt)
+            .add(Duration(days: 90));
     if (now.isAfter(expiresAt) && now.isAfter(refreshExpiresAt)) {
       initialized = false;
     } else {
@@ -235,7 +244,8 @@ class PlanningCenter {
     PlanningCenterApiQuery? query,
     String apiVersion = '',
   }) async {
-    if (endpoint.startsWith(mainEndpoint)) endpoint = endpoint.replaceFirst(mainEndpoint, '');
+    if (endpoint.startsWith(mainEndpoint))
+      endpoint = endpoint.replaceFirst(mainEndpoint, '');
 
     var application = endpoint.split('/')[1];
 
@@ -248,7 +258,8 @@ class PlanningCenter {
     // fix params
     var fixedParams = <String, String>{};
     query.asMap.forEach((k, v) => fixedParams[k.toString()] = v.toString());
-    var uri = Uri.https(_baseUri.authority, _baseUri.path + endpoint, fixedParams);
+    var uri =
+        Uri.https(_baseUri.authority, _baseUri.path + endpoint, fixedParams);
     var headers = <String, String>{};
     if (apiVersion.isNotEmpty) headers['X-PCO-API-Version'] = apiVersion;
 
@@ -268,16 +279,23 @@ class PlanningCenter {
     if (oAuthCredentials != null) {
       // do we need to refresh the token?
       var now = DateTime.now();
-      var expiresAt =
-          DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
-      var refreshExpiresAt =
-          DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+      var expiresAt = DateTime.fromMillisecondsSinceEpoch(
+          1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+      var refreshExpiresAt = DateTime.fromMillisecondsSinceEpoch(
+              1000 * oAuthCredentials!.createdAt)
+          .add(Duration(days: 90));
 
       if (now.isAfter(expiresAt)) {
         if (now.isAfter(refreshExpiresAt)) {
           initialized = false;
           return PlanningCenterApiError(
-              'Must Reauthorize, refresh token has expired.', application, uri, jsonString, query, 401, '');
+              'Must Reauthorize, refresh token has expired.',
+              application,
+              uri,
+              jsonString,
+              query,
+              401,
+              '');
         } else {
           // attempt to refresh the token
           var res = await _client.post(Uri.parse(tokenEndpoint),
@@ -289,11 +307,18 @@ class PlanningCenter {
                 'grant_type': 'refresh_token',
               }));
           if (res.statusCode == 200) {
-            oAuthCredentials = PlanningCenterCredentials.fromJson(json.decode(res.body));
+            oAuthCredentials =
+                PlanningCenterCredentials.fromJson(json.decode(res.body));
           } else {
             initialized = false;
             return PlanningCenterApiError(
-                'Must Reauthorize, failed to refresh token', application, uri, jsonString, query, 401, res.body);
+                'Must Reauthorize, failed to refresh token',
+                application,
+                uri,
+                jsonString,
+                query,
+                401,
+                res.body);
           }
         }
       }
@@ -318,7 +343,8 @@ class PlanningCenter {
         res = await _client.delete(uri, headers: headers);
         break;
       default:
-        return PlanningCenterApiError('Unsupported http verb', application, uri, jsonString, query, 400, '');
+        return PlanningCenterApiError('Unsupported http verb', application, uri,
+            jsonString, query, 400, '');
     }
     if (res.statusCode >= 200 && res.statusCode < 300) {
       var retval = PlanningCenterApiResponse.fromResponse(
@@ -517,8 +543,8 @@ class PlanningCenterApiMeta {
 }
 
 class PlanningCenterApiError extends PlanningCenterApiResponse {
-  final String errorMessage;
-  PlanningCenterApiError.messageOnly(this.errorMessage)
+  final String message;
+  PlanningCenterApiError.messageOnly(this.message)
       : super(
           '',
           PlanningCenterApiQuery(),
@@ -533,7 +559,7 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
         );
 
   PlanningCenterApiError(
-    this.errorMessage,
+    this.message,
     String application,
     Uri requestUri,
     String requestBody,
@@ -555,18 +581,20 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 
   @override
   Map<String, dynamic> toJson({bool includeRawResponseBody = false}) =>
-      super.toJson(includeRawResponseBody: includeRawResponseBody)..addAll({'message': errorMessage});
+      super.toJson(includeRawResponseBody: includeRawResponseBody)
+        ..addAll({'message': message});
 
   @override
   String toString() {
-    return 'PCOERROR: $statusCode, $errorMessage\nURI: $requestUri\n\nRESPONSE: $responseBody\n\nREQUEST: ${json.encode(requestBody)}\n\n';
+    return 'PCOERROR: $statusCode, $message\nURI: $requestUri\n\nRESPONSE: $responseBody\n\nREQUEST: ${json.encode(requestBody)}\n\n';
   }
 }
 
 class PlanningCenterApiResponse {
   bool get isError => this is PlanningCenterApiError;
-  PlanningCenterApiError? get error => isError ? (this as PlanningCenterApiError) : null;
-  String get errorMessage => error?.errorMessage ?? '';
+  PlanningCenterApiError? get error =>
+      isError ? (this as PlanningCenterApiError) : null;
+  String get errorMessage => error?.message ?? '';
 
   // request items
   final String application;
@@ -640,15 +668,18 @@ class PlanningCenterApiResponse {
 
     var body = json.decode(response.body);
 
-    PlanningCenterApiMeta meta = PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});
-    Map<String, dynamic> links = ((body['links'] ?? {}) as Map).map((key, value) => MapEntry(key.toString(), value));
+    PlanningCenterApiMeta meta =
+        PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});
+    Map<String, dynamic> links = ((body['links'] ?? {}) as Map)
+        .map((key, value) => MapEntry(key.toString(), value));
 
     // coerce the type of the data
     List<Map<String, dynamic>> realData = [];
     var data = body['data'] ?? [];
     if (data is! List) data = [data];
     for (var item in data) {
-      realData.add((item as Map).map((key, value) => MapEntry(key.toString(), value)));
+      realData.add(
+          (item as Map).map((key, value) => MapEntry(key.toString(), value)));
     }
 
     // coerce the type of includes

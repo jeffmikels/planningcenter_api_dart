@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.563607
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.586778
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Groups Location Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 location
 /// - Type:               Location
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/location
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayPreference` (ro) -> PCO: `display_preference`
@@ -30,35 +28,35 @@ import '../../pco.dart';
 /// - `name` (ro) -> PCO: `name`
 /// - `radius` (ro) -> PCO: `radius`
 /// - `strategy` (ro) -> PCO: `strategy`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
 /// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -84,19 +82,20 @@ class PcoGroupsLocation extends PcoResource {
   static const String kTypeString = 'Location';
   static const String kTypeId = 'location';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/location';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/events/1/location';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -126,7 +125,6 @@ class PcoGroupsLocation extends PcoResource {
   static const kRadius = 'radius';
   static const kStrategy = 'strategy';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -150,54 +148,55 @@ class PcoGroupsLocation extends PcoResource {
   double get longitude => attributes[kLongitude] ?? 0;
   String get name => attributes[kName] ?? '';
   String get radius => attributes[kRadius] ?? '';
-  String get strategy => attributes[kStrategy] ?? '';    
+  String get strategy => attributes[kStrategy] ?? '';
 
   // Class Constructors
-  PcoGroupsLocation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsLocation.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoGroupsLocation.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/location`
-  static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(String eventId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(String eventId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/events/$eventId/location';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsLocation>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/location`
-  static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(String groupId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(String groupId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsLocation.canInclude;
     var url = '/groups/v2/groups/$groupId/location';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsLocation>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.971963
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.005050
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services EmailTemplateRenderedResponse Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 email_template_rendered_response
 /// - Type:               EmailTemplateRenderedResponse
@@ -17,42 +15,42 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A EmailTemplateRenderedResponse Resource
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
 /// - `subject` (ro) -> PCO: `subject`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -86,19 +84,20 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   static const String kTypeString = 'EmailTemplateRenderedResponse';
   static const String kTypeId = 'email_template_rendered_response';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -123,7 +122,6 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   static const kBody = 'body';
   static const kSubject = 'subject';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -142,32 +140,28 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
 
   // getters for object attributes
   String get body => attributes[kBody] ?? '';
-  String get subject => attributes[kSubject] ?? '';    
+  String get subject => attributes[kSubject] ?? '';
 
   // Class Constructors
-  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
-  PcoServicesEmailTemplateRenderedResponse.empty() : super(kPcoApplication, kTypeString);
-
-
+  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
+  PcoServicesEmailTemplateRenderedResponse.empty()
+      : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
-
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

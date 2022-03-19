@@ -52,7 +52,7 @@ void main() async {
   /// unless the user supplies their own
   if (!PlanningCenter.initialized) {
     print('initiating oAuth workflow');
-    var authorized = await PlanningCenter.authorize(
+    await PlanningCenter.authorize(
       oAuthClientId,
       oAuthClientSecret,
       'http://localhost:64738/pco_callback',

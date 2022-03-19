@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.970679
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.004183
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services EmailTemplate Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 email_template
 /// - Type:               EmailTemplate
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/email_templates
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/email_templates
-/// 
+///
 /// ## Description
 /// A EmailTemplate Resource
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (rw) -> PCO: `kind`
@@ -28,34 +26,34 @@ import '../../pco.dart';
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `htmlBody` (rw) -> PCO: `html_body`
 /// - `subject` (rw) -> PCO: `subject`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `emailtemplate-organization-email_templates`: https://api.planningcenteronline.com/services/v2/email_templates
-/// 
+///
 /// Actions:
 /// - `render`: https://api.planningcenteronline.com/services/v2/email_templates/1/render
 ///
@@ -86,19 +84,21 @@ class PcoServicesEmailTemplate extends PcoResource {
   static const String kTypeString = 'EmailTemplate';
   static const String kTypeId = 'email_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/email_templates';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/email_templates';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/services/v2/email_templates';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -126,7 +126,6 @@ class PcoServicesEmailTemplate extends PcoResource {
   static const kHtmlBody = 'html_body';
   static const kSubject = 'subject';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['html_body', 'subject', 'kind'];
@@ -146,61 +145,67 @@ class PcoServicesEmailTemplate extends PcoResource {
   // getters for object attributes
   String get kind => attributes[kKind] ?? '';
   String get htmlBody => attributes[kHtmlBody] ?? '';
-  String get subject => attributes[kSubject] ?? '';  
-  
+  String get subject => attributes[kSubject] ?? '';
+
   // setters for object attributes
-  
+
   /// pass `null` to remove key from attributes
-  set kind(String? x) => (x == null) ? attributes.remove(kKind) : attributes[kKind] = x;
-  
+  set kind(String? x) =>
+      (x == null) ? attributes.remove(kKind) : attributes[kKind] = x;
+
   /// pass `null` to remove key from attributes
-  set htmlBody(String? x) => (x == null) ? attributes.remove(kHtmlBody) : attributes[kHtmlBody] = x;
-  
+  set htmlBody(String? x) =>
+      (x == null) ? attributes.remove(kHtmlBody) : attributes[kHtmlBody] = x;
+
   /// pass `null` to remove key from attributes
-  set subject(String? x) => (x == null) ? attributes.remove(kSubject) : attributes[kSubject] = x;  
+  set subject(String? x) =>
+      (x == null) ? attributes.remove(kSubject) : attributes[kSubject] = x;
 
   // Class Constructors
-  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesEmailTemplate.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesEmailTemplate] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/email_templates`
-  /// 
+  ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesEmailTemplate({ String? htmlBody, String? subject, String? kind }) {
+  factory PcoServicesEmailTemplate(
+      {String? htmlBody, String? subject, String? kind}) {
     var obj = PcoServicesEmailTemplate.empty();
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/email_templates';
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/services/v2/email_templates';
     if (htmlBody != null) obj.htmlBody = htmlBody;
     if (subject != null) obj.subject = subject;
     if (kind != null) obj.kind = kind;
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesEmailTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/email_templates`
-  static Future<PcoCollection<PcoServicesEmailTemplate>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesEmailTemplate>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
     var url = '/services/v2/email_templates';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
-
-
 
   // --------------------------------
   // Actions
@@ -208,17 +213,17 @@ class PcoServicesEmailTemplate extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `render`
-  /// 
+  ///
   /// Render an email template and fill in the persons details
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/email_templates/1/render`
-  /// 
+  ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PcoData] helper class has been
   /// provided for just such a purpose.
-  /// 
+  ///
   /// Details:
   /// Render the template with information from the person.
-  /// 
+  ///
   /// ```json
   /// {
   ///   "data": {
@@ -243,8 +248,6 @@ class PcoServicesEmailTemplate extends PcoResource {
       );
     }
     var url = '$apiEndpoint/render';
-    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
-
-
 }

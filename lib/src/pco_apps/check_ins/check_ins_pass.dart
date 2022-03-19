@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.180195
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.217809
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO CheckIns Pass Object
-/// 
+///
 /// - Application:        check-ins
 /// - Id:                 pass
 /// - Type:               Pass
@@ -17,45 +15,45 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/passes
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Enables quick lookup of a person via barcode reader.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `code` (ro) -> PCO: `code`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `person`: include associated person 
+///
+/// - `person`: include associated person
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `code`: (URLParameter), query on a specific code, example: ?where[code]=string
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `person-pass-person`: https://api.planningcenteronline.com/check-ins/v2/passes/1/person
-/// 
+///
 /// Inbound Edges:
 /// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
 /// - `pass-person-passes`: https://api.planningcenteronline.com/check-ins/v2/people/1/passes
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -78,11 +76,12 @@ class PcoCheckInsPas extends PcoResource {
   static const String kTypeString = 'Pass';
   static const String kTypeId = 'pass';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/passes';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/check-ins/v2/passes';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `person`: include associated person 
+  /// - `person`: include associated person
   static List<String> get canInclude => ['person'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -90,7 +89,7 @@ class PcoCheckInsPas extends PcoResource {
   static List<String> get canQuery => ['code'];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -117,7 +116,6 @@ class PcoCheckInsPas extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -136,41 +134,46 @@ class PcoCheckInsPas extends PcoResource {
 
   // getters for object attributes
   String get code => attributes[kCode] ?? '';
-  String get kind => attributes[kKind] ?? '';    
+  String get kind => attributes[kKind] ?? '';
 
   // Class Constructors
-  PcoCheckInsPas.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsPas.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoCheckInsPas.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsPas>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsPas.canInclude;
     var url = '/check-ins/v2/passes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$peopleId/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> getFromPeople(String peopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsPas>> getFromPeople(String peopleId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsPas.canInclude;
     var url = '/check-ins/v2/people/$peopleId/passes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -179,19 +182,18 @@ class PcoCheckInsPas extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/passes/1/person`
-  Future<PcoCollection<PcoCheckInsPerson>> getPerson({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsPerson>> getPerson(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsPerson.canInclude;
     var url = '$apiEndpoint/person';
-    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

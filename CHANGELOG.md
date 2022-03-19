@@ -1,3 +1,7 @@
+## 0.8.2
+
+-   Fixing some dart analyze warnings.
+
 ## 0.8.1
 
 -   Replaced private class constructors (many were unused) with named `empty` constructors.

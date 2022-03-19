@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.319492
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.373992
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO People MailchimpSyncStatus Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 mailchimp_sync_status
 /// - Type:               MailchimpSyncStatus
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// The status of syncing a List with Mailchimp.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
@@ -28,34 +26,34 @@ import '../../pco.dart';
 /// - `progress` (ro) -> PCO: `progress`
 /// - `completedAt` (ro) -> PCO: `completed_at`
 /// - `segmentId` (ro) -> PCO: `segment_id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `mailchimpsyncstatus-list-mailchimp_sync_status`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -79,19 +77,20 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   static const String kTypeString = 'MailchimpSyncStatus';
   static const String kTypeId = 'mailchimp_sync_status';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -119,7 +118,6 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   static const kCompletedAt = 'completed_at';
   static const kSegmentId = 'segment_id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -141,43 +139,42 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   String get error => attributes[kError] ?? '';
   int get progress => attributes[kProgress] ?? 0;
   DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
-  int get segmentId => attributes[kSegmentId] ?? 0;    
+  int get segmentId => attributes[kSegmentId] ?? 0;
 
   // Class Constructors
-  PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoPeopleMailchimpSyncStatu.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoPeopleMailchimpSyncStatu] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
-  static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getMailchimpSyncStatusFromList(String listId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>>
+      getMailchimpSyncStatusFromList(String listId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleMailchimpSyncStatu.canInclude;
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

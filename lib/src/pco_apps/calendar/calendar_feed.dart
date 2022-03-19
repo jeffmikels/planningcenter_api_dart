@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.464917
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.502748
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Calendar Feed Object
-/// 
+///
 /// - Application:        calendar
 /// - Id:                 feed
 /// - Type:               Feed
@@ -17,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/feeds
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A feed belonging to an organization.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `defaultChurchCenterVisibility` (rw) -> PCO: `default_church_center_visibility`
@@ -29,35 +27,35 @@ import '../../pco.dart';
 /// - `importedAt` (ro) -> PCO: `imported_at`
 /// - `isCanDelete` (ro) -> PCO: `can_delete`
 /// - `eventOwnerId` (wo) -> PCO: `event_owner_id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `feed_type`: (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `feed-event-feed`: https://api.planningcenteronline.com/calendar/v2/events/1/feed
 /// - `feed-organization-feeds`: https://api.planningcenteronline.com/calendar/v2/feeds
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -88,11 +86,12 @@ class PcoCalendarFeed extends PcoResource {
   static const String kTypeString = 'Feed';
   static const String kTypeId = 'feed';
   static const String kApiVersion = '2020-04-08';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/calendar/v2/feeds';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -122,20 +121,22 @@ class PcoCalendarFeed extends PcoResource {
 
   // field mapping constants
   static const kId = 'id';
-  static const kDefaultChurchCenterVisibility = 'default_church_center_visibility';
+  static const kDefaultChurchCenterVisibility =
+      'default_church_center_visibility';
   static const kFeedType = 'feed_type';
   static const kName = 'name';
   static const kImportedAt = 'imported_at';
   static const kCanDelete = 'can_delete';
   static const kEventOwnerId = 'event_owner_id';
 
-
   // getters and setters
   @override
-  List<String> get createAllowed => ['feed_type', 'event_owner_id', 'default_church_center_visibility'];
+  List<String> get createAllowed =>
+      ['feed_type', 'event_owner_id', 'default_church_center_visibility'];
 
   @override
-  List<String> get updateAllowed => ['event_owner_id', 'default_church_center_visibility'];
+  List<String> get updateAllowed =>
+      ['event_owner_id', 'default_church_center_visibility'];
 
   @override
   bool get canCreate => true;
@@ -147,76 +148,81 @@ class PcoCalendarFeed extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get defaultChurchCenterVisibility => attributes[kDefaultChurchCenterVisibility] ?? '';
+  String get defaultChurchCenterVisibility =>
+      attributes[kDefaultChurchCenterVisibility] ?? '';
   String get feedType => attributes[kFeedType] ?? '';
   String get name => attributes[kName] ?? '';
   DateTime get importedAt => DateTime.parse(attributes[kImportedAt] ?? '');
-  bool get isCanDelete => attributes[kCanDelete] == true;  
-  
+  bool get isCanDelete => attributes[kCanDelete] == true;
+
   // setters for object attributes
-  
+
   /// Possible values: `hidden` or `published`
-  
+
   /// pass `null` to remove key from attributes
-  set defaultChurchCenterVisibility(String? x) => (x == null) ? attributes.remove(kDefaultChurchCenterVisibility) : attributes[kDefaultChurchCenterVisibility] = x;
-  
+  set defaultChurchCenterVisibility(String? x) => (x == null)
+      ? attributes.remove(kDefaultChurchCenterVisibility)
+      : attributes[kDefaultChurchCenterVisibility] = x;
+
   /// Possible values: `registrations`, `groups`, or `ical`
-  
+
   /// pass `null` to remove key from attributes
-  set feedType(String? x) => (x == null) ? attributes.remove(kFeedType) : attributes[kFeedType] = x;  
-  
+  set feedType(String? x) =>
+      (x == null) ? attributes.remove(kFeedType) : attributes[kFeedType] = x;
+
   // additional setters / getters for create/update attributes
-  
+
   /// pass `null` to remove key from attributes
-  set eventOwnerId(String? x) => (x == null) ? attributes.remove(kEventOwnerId) : attributes[kEventOwnerId] = x;
+  set eventOwnerId(String? x) => (x == null)
+      ? attributes.remove(kEventOwnerId)
+      : attributes[kEventOwnerId] = x;
   String get eventOwnerId => attributes[kEventOwnerId] ?? '';
 
   // Class Constructors
-  PcoCalendarFeed.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarFeed.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoCalendarFeed.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoCalendarFeed] objects (expecting many)
   /// using a path like this: `/calendar/v2/feeds`
-  static Future<PcoCollection<PcoCalendarFeed>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarFeed>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/feeds';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCalendarFeed] objects (expecting one)
   /// using a path like this: `/calendar/v2/events/$eventId/feed`
-  static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(String eventId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(String eventId,
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCalendarFeed.canInclude;
     var url = '/calendar/v2/events/$eventId/feed';
-    
-    return PcoCollection.fromApiCall<PcoCalendarFeed>(url, query: query, apiVersion:kApiVersion);
-  }
 
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
+        query: query, apiVersion: kApiVersion);
+  }
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

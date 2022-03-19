@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.035639
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.091987
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services SplitTeamRehearsalAssignment Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 split_team_rehearsal_assignment
 /// - Type:               SplitTeamRehearsalAssignment
@@ -17,41 +15,41 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
-/// 
+///
 /// ## Description
 /// For Rehearsal/Other Times, maps a Split Team to selected Time Preference Options. For example, used to assign 8am Ushers to 7:30am call time, and 11am Ushers to 10:30am call time.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isScheduleSpecialServiceTimes` (rw) -> PCO: `schedule_special_service_times`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team
-/// 
+///
 /// Inbound Edges:
 /// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -86,19 +84,21 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const String kTypeString = 'SplitTeamRehearsalAssignment';
   static const String kTypeId = 'split_team_rehearsal_assignment';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -122,7 +122,6 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const kId = 'id';
   static const kScheduleSpecialServiceTimes = 'schedule_special_service_times';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['schedule_special_service_times'];
@@ -140,48 +139,64 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  bool get isScheduleSpecialServiceTimes => attributes[kScheduleSpecialServiceTimes] == true;  
-  
+  bool get isScheduleSpecialServiceTimes =>
+      attributes[kScheduleSpecialServiceTimes] == true;
+
   // setters for object attributes
-  
+
   /// Controls if the related rehearsal/other time is assigned when a person is scheduled to a split team service time that does not match a Time Preference Option
-  
+
   /// pass `null` to remove key from attributes
-  set isScheduleSpecialServiceTimes(bool? x) => (x == null) ? attributes.remove(kScheduleSpecialServiceTimes) : attributes[kScheduleSpecialServiceTimes] = x;  
+  set isScheduleSpecialServiceTimes(bool? x) => (x == null)
+      ? attributes.remove(kScheduleSpecialServiceTimes)
+      : attributes[kScheduleSpecialServiceTimes] = x;
 
   // Class Constructors
-  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
-  PcoServicesSplitTeamRehearsalAssignment.empty() : super(kPcoApplication, kTypeString);
+  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
+  PcoServicesSplitTeamRehearsalAssignment.empty()
+      : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
-  /// 
+  ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesSplitTeamRehearsalAssignment(String peopleId, String planTimeId, { bool? isScheduleSpecialServiceTimes }) {
+  factory PcoServicesSplitTeamRehearsalAssignment(
+      String peopleId, String planTimeId,
+      {bool? isScheduleSpecialServiceTimes}) {
     var obj = PcoServicesSplitTeamRehearsalAssignment.empty();
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
-    if (isScheduleSpecialServiceTimes != null) obj.isScheduleSpecialServiceTimes = isScheduleSpecialServiceTimes;
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+    if (isScheduleSpecialServiceTimes != null)
+      obj.isScheduleSpecialServiceTimes = isScheduleSpecialServiceTimes;
     return obj;
   }
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
-  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getFromPeopleAndPlanTime(String peopleId,String planTimeId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>>
+      getFromPeopleAndPlanTime(String peopleId, String planTimeId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesSplitTeamRehearsalAssignment.canInclude;
-    var url = '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+    if (allIncludes)
+      query.include = PcoServicesSplitTeamRehearsalAssignment.canInclude;
+    var url =
+        '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -190,19 +205,18 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeam(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeam.canInclude;
     var url = '$apiEndpoint/team';
-    return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeam>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

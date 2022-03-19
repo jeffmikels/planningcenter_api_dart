@@ -1,8 +1,7 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.536597
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.566120
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
 
 export "./giving_batch.dart";
 export "./giving_batch_group.dart";

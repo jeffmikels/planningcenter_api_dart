@@ -1,8 +1,7 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.570291
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.592526
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
 
 export "./groups_attendance.dart";
 export "./groups_event.dart";

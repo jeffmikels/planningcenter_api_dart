@@ -1,14 +1,12 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.303074
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.363737
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
-
-
 
 import '../../pco.dart';
 
 /// This class represents a PCO People FormSubmissionValue Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 form_submission_value
 /// - Type:               FormSubmissionValue
@@ -17,41 +15,41 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A form submission value.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayValue` (ro) -> PCO: `display_value`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `formsubmissionvalue-formsubmission-form_submission_values`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -90,19 +88,20 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   static const String kTypeString = 'FormSubmissionValue';
   static const String kTypeId = 'form_submission_value';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -126,7 +125,6 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   static const kId = 'id';
   static const kDisplayValue = 'display_value';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -144,43 +142,43 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get displayValue => attributes[kDisplayValue] ?? '';    
+  String get displayValue => attributes[kDisplayValue] ?? '';
 
   // Class Constructors
-  PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoPeopleFormSubmissionValue.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoPeopleFormSubmissionValue] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values`
-  static Future<PcoCollection<PcoPeopleFormSubmissionValue>> getFromFormAndFormSubmission(String formId,String formSubmissionId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleFormSubmissionValue>>
+      getFromFormAndFormSubmission(String formId, String formSubmissionId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormSubmissionValue.canInclude;
-    var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';
+    var url =
+        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.852585
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.376906
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -162,8 +162,8 @@ class PcoPeopleServiceTime extends PcoResource {
   set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;  
 
   // Class Constructors
-  PcoPeopleServiceTime._() : super(kPcoApplication, kTypeString);
   PcoPeopleServiceTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleServiceTime.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleServiceTime] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times`
@@ -171,7 +171,7 @@ class PcoPeopleServiceTime extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleServiceTime(String campusId, { int? startTime, String? day, String? description }) {
-    var obj = PcoPeopleServiceTime._();
+    var obj = PcoPeopleServiceTime.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times';
     if (startTime != null) obj.startTime = startTime;
     if (day != null) obj.day = day;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.966912
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.532189
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -210,8 +210,8 @@ class PcoGivingPledgeCampaign extends PcoResource {
   String get fundId => attributes[kFundId] ?? '';
 
   // Class Constructors
-  PcoGivingPledgeCampaign._() : super(kPcoApplication, kTypeString);
   PcoGivingPledgeCampaign.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingPledgeCampaign.empty() : super(kPcoApplication, kTypeString);
 
 
 

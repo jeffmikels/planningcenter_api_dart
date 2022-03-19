@@ -807,7 +807,7 @@ $details
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory $className(${idArgs.join(', ')}$extras) {
-    var obj = $className._();
+    var obj = $className.empty();
 ${assignLines.join('\n').prefixLines('    ')}
     return obj;
   }
@@ -937,8 +937,8 @@ ${fieldConstantLines.join()}
 ${fieldGetterLines.join('\n').prefixLines('  ')}${fieldSetterLines.join('\n').prefixLines('  ')}${additionalAssignableLines.join('\n').prefixLines('  ')}
 
   // Class Constructors
-  $className._() : super(kPcoApplication, kTypeString);
   $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  $className.empty() : super(kPcoApplication, kTypeString);
 
 ${additionalConstructors.join()}
 

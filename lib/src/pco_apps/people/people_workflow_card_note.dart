@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.869496
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.385108
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -151,8 +151,8 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   String get noteCategoryId => attributes[kNoteCategoryId] ?? '';
 
   // Class Constructors
-  PcoPeopleWorkflowCardNote._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflowCardNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowCardNote] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes`
@@ -160,7 +160,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleWorkflowCardNote(String peopleId, String workflowCardId, { String? note }) {
-    var obj = PcoPeopleWorkflowCardNote._();
+    var obj = PcoPeopleWorkflowCardNote.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
     if (note != null) obj.note = note;
     return obj;

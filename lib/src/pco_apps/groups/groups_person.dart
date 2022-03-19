@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.020200
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.566758
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -163,8 +163,8 @@ class PcoGroupsPerson extends PcoResource {
   List get phoneNumbers => attributes[kPhoneNumbers] ?? [];    
 
   // Class Constructors
-  PcoGroupsPerson._() : super(kPcoApplication, kTypeString);
   PcoGroupsPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

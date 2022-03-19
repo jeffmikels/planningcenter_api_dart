@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.414240
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.032959
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -216,8 +216,8 @@ class PcoServicesSong extends PcoResource {
   set ccliNumber(int? x) => (x == null) ? attributes.remove(kCcliNumber) : attributes[kCcliNumber] = x;  
 
   // Class Constructors
-  PcoServicesSong._() : super(kPcoApplication, kTypeString);
   PcoServicesSong.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSong.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSong] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/songs`
@@ -225,7 +225,7 @@ class PcoServicesSong extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesSong({ String? title, String? admin, String? author, String? copyright, int? ccliNumber, bool? isHidden, String? themes }) {
-    var obj = PcoServicesSong._();
+    var obj = PcoServicesSong.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs';
     if (title != null) obj.title = title;
     if (admin != null) obj.admin = admin;

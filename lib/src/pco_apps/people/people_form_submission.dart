@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.772373
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.302348
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -158,8 +158,8 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get isRequiresVerification => attributes[kRequiresVerification] == true;    
 
   // Class Constructors
-  PcoPeopleFormSubmission._() : super(kPcoApplication, kTypeString);
   PcoPeopleFormSubmission.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFormSubmission.empty() : super(kPcoApplication, kTypeString);
 
 
 

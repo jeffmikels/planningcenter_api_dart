@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.850389
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.373535
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -142,8 +142,8 @@ class PcoPeopleRule extends PcoResource {
   String get subset => attributes[kSubset] ?? '';    
 
   // Class Constructors
-  PcoPeopleRule._() : super(kPcoApplication, kTypeString);
   PcoPeopleRule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleRule.empty() : super(kPcoApplication, kTypeString);
 
 
 

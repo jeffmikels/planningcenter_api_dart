@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.344864
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.016452
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -140,8 +140,8 @@ class PcoServicesReportTemplate extends PcoResource {
   bool get isDefault => attributes[kDefault] == true;    
 
   // Class Constructors
-  PcoServicesReportTemplate._() : super(kPcoApplication, kTypeString);
   PcoServicesReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesReportTemplate.empty() : super(kPcoApplication, kTypeString);
 
 
 

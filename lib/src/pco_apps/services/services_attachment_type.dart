@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.200074
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.961397
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -167,8 +167,8 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get isBuiltIn => attributes[kBuiltIn] == true;    
 
   // Class Constructors
-  PcoServicesAttachmentType._() : super(kPcoApplication, kTypeString);
   PcoServicesAttachmentType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesAttachmentType.empty() : super(kPcoApplication, kTypeString);
 
 
 

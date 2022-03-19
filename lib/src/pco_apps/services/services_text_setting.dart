@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.465641
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.047450
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -166,8 +166,8 @@ class PcoServicesTextSetting extends PcoResource {
   set isRemindersEnabled(bool? x) => (x == null) ? attributes.remove(kRemindersEnabled) : attributes[kRemindersEnabled] = x;  
 
   // Class Constructors
-  PcoServicesTextSetting._() : super(kPcoApplication, kTypeString);
   PcoServicesTextSetting.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesTextSetting.empty() : super(kPcoApplication, kTypeString);
 
 
 

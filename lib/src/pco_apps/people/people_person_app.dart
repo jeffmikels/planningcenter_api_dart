@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.844818
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.365241
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,8 +153,8 @@ class PcoPeoplePersonApp extends PcoResource {
   String get appId => attributes[kAppId] ?? '';
 
   // Class Constructors
-  PcoPeoplePersonApp._() : super(kPcoApplication, kTypeString);
   PcoPeoplePersonApp.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePersonApp.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePersonApp] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps`
@@ -162,7 +162,7 @@ class PcoPeoplePersonApp extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeoplePersonApp(String peopleId, ) {
-    var obj = PcoPeoplePersonApp._();
+    var obj = PcoPeoplePersonApp.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps';
     return obj;
   }

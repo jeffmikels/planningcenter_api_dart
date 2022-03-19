@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.853475
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.377929
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -170,8 +170,8 @@ class PcoPeopleSocialProfile extends PcoResource {
   set isVerified(bool? x) => (x == null) ? attributes.remove(kVerified) : attributes[kVerified] = x;  
 
   // Class Constructors
-  PcoPeopleSocialProfile._() : super(kPcoApplication, kTypeString);
   PcoPeopleSocialProfile.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleSocialProfile.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleSocialProfile] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles`
@@ -179,7 +179,7 @@ class PcoPeopleSocialProfile extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleSocialProfile(String peopleId, { String? site, String? url, bool? isVerified }) {
-    var obj = PcoPeopleSocialProfile._();
+    var obj = PcoPeopleSocialProfile.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles';
     if (site != null) obj.site = site;
     if (url != null) obj.url = url;

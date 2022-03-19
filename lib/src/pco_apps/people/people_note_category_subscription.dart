@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.803369
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.340278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -149,8 +149,8 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
       
 
   // Class Constructors
-  PcoPeopleNoteCategorySubscription._() : super(kPcoApplication, kTypeString);
   PcoPeopleNoteCategorySubscription.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleNoteCategorySubscription.empty() : super(kPcoApplication, kTypeString);
 
 
 

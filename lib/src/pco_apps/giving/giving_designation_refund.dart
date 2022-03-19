@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.957526
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.521741
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -139,8 +139,8 @@ class PcoGivingDesignationRefund extends PcoResource {
   String get amountCurrency => attributes[kAmountCurrency] ?? '';    
 
   // Class Constructors
-  PcoGivingDesignationRefund._() : super(kPcoApplication, kTypeString);
   PcoGivingDesignationRefund.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingDesignationRefund.empty() : super(kPcoApplication, kTypeString);
 
 
 

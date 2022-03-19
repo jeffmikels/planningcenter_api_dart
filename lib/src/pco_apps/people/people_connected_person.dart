@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.761722
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.294104
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -163,8 +163,8 @@ class PcoPeopleConnectedPerson extends PcoResource {
   String get organizationId => attributes[kOrganizationId] ?? '';    
 
   // Class Constructors
-  PcoPeopleConnectedPerson._() : super(kPcoApplication, kTypeString);
   PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleConnectedPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

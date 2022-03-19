@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.870527
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.386037
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -147,8 +147,8 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
-  PcoPeopleWorkflowCategory._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflowCategory.empty() : super(kPcoApplication, kTypeString);
 
 
 

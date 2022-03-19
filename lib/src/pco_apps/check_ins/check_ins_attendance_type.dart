@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.539211
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.144197
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,8 +153,8 @@ class PcoCheckInsAttendanceType extends PcoResource {
   int get limit => attributes[kLimit] ?? 0;    
 
   // Class Constructors
-  PcoCheckInsAttendanceType._() : super(kPcoApplication, kTypeString);
   PcoCheckInsAttendanceType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsAttendanceType.empty() : super(kPcoApplication, kTypeString);
 
 
 

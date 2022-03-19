@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.265458
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.989597
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,8 +153,8 @@ class PcoServicesMediaSchedule extends PcoResource {
   DateTime get planSortDate => DateTime.parse(attributes[kPlanSortDate] ?? '');    
 
   // Class Constructors
-  PcoServicesMediaSchedule._() : super(kPcoApplication, kTypeString);
   PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesMediaSchedule.empty() : super(kPcoApplication, kTypeString);
 
 
 

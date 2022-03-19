@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.574118
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.158610
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -147,8 +147,8 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   int get volunteerCount => attributes[kVolunteerCount] ?? 0;    
 
   // Class Constructors
-  PcoCheckInsLocationEventPeriod._() : super(kPcoApplication, kTypeString);
   PcoCheckInsLocationEventPeriod.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsLocationEventPeriod.empty() : super(kPcoApplication, kTypeString);
 
 
 

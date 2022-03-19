@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.913675
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.462522
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -213,8 +213,8 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   String get roomSetupInfo => attributes[kRoomSetupInfo] ?? '';    
 
   // Class Constructors
-  PcoCalendarEventResourceRequest._() : super(kPcoApplication, kTypeString);
   PcoCalendarEventResourceRequest.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarEventResourceRequest.empty() : super(kPcoApplication, kTypeString);
 
 
 

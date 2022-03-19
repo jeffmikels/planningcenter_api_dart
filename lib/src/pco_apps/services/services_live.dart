@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.259424
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.985901
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,8 +175,8 @@ class PcoServicesLive extends PcoResource {
   bool get isCanControlVideoFeed => attributes[kCanControlVideoFeed] == true;    
 
   // Class Constructors
-  PcoServicesLive._() : super(kPcoApplication, kTypeString);
   PcoServicesLive.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesLive.empty() : super(kPcoApplication, kTypeString);
 
 
 

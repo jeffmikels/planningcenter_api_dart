@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.776549
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.305015
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -162,8 +162,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   String get personId => attributes[kPersonId] ?? '';
 
   // Class Constructors
-  PcoPeopleHouseholdMembership._() : super(kPcoApplication, kTypeString);
   PcoPeopleHouseholdMembership.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleHouseholdMembership.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleHouseholdMembership] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/households/$householdId/household_memberships`
@@ -171,7 +171,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleHouseholdMembership(String householdId, { bool? isPending }) {
-    var obj = PcoPeopleHouseholdMembership._();
+    var obj = PcoPeopleHouseholdMembership.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households/$householdId/household_memberships';
     if (isPending != null) obj.isPending = isPending;
     return obj;

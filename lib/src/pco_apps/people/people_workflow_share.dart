@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.872536
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.387777
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,8 +165,8 @@ class PcoPeopleWorkflowShare extends PcoResource {
   set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;  
 
   // Class Constructors
-  PcoPeopleWorkflowShare._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflowShare.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowShare] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/workflows/$workflowId/shares`
@@ -174,7 +174,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleWorkflowShare(String workflowId, { String? group, String? permission, String? personId }) {
-    var obj = PcoPeopleWorkflowShare._();
+    var obj = PcoPeopleWorkflowShare.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/shares';
     if (group != null) obj.group = group;
     if (permission != null) obj.permission = permission;

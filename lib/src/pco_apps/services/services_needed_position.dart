@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.266395
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.991428
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoServicesNeededPosition extends PcoResource {
   String get timePreferenceOptionId => attributes[kTimePreferenceOptionId] ?? '';
 
   // Class Constructors
-  PcoServicesNeededPosition._() : super(kPcoApplication, kTypeString);
   PcoServicesNeededPosition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesNeededPosition.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesNeededPosition] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
@@ -192,7 +192,7 @@ class PcoServicesNeededPosition extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesNeededPosition(String serviceTypeId, String planId, { int? quantity }) {
-    var obj = PcoServicesNeededPosition._();
+    var obj = PcoServicesNeededPosition.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions';
     if (quantity != null) obj.quantity = quantity;
     return obj;

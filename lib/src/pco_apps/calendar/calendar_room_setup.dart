@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.929872
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.487197
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -184,8 +184,8 @@ class PcoCalendarRoomSetup extends PcoResource {
   String get diagramThumbnailUrl => attributes[kDiagramThumbnailUrl] ?? '';    
 
   // Class Constructors
-  PcoCalendarRoomSetup._() : super(kPcoApplication, kTypeString);
   PcoCalendarRoomSetup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarRoomSetup.empty() : super(kPcoApplication, kTypeString);
 
 
 

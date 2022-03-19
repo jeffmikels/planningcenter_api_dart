@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.247094
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.981636
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -154,8 +154,8 @@ class PcoServicesItemNoteCategory extends PcoResource {
   bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;    
 
   // Class Constructors
-  PcoServicesItemNoteCategory._() : super(kPcoApplication, kTypeString);
   PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesItemNoteCategory.empty() : super(kPcoApplication, kTypeString);
 
 
 

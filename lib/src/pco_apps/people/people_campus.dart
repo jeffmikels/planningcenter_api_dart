@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.757515
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.290915
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -274,8 +274,8 @@ class PcoPeopleCampus extends PcoResource {
   set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
-  PcoPeopleCampus._() : super(kPcoApplication, kTypeString);
   PcoPeopleCampus.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleCampus.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleCampus] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/campuses`
@@ -283,7 +283,7 @@ class PcoPeopleCampus extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleCampus({ double? latitude, double? longitude, String? description, String? street, String? city, String? state, String? zip, String? country, String? phoneNumber, String? website, bool? isTwentyFourHourTime, int? dateFormat, bool? isChurchCenterEnabled, String? contactEmailAddress, String? timeZone, bool? isGeolocationSetManually, String? name }) {
-    var obj = PcoPeopleCampus._();
+    var obj = PcoPeopleCampus.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses';
     if (latitude != null) obj.latitude = latitude;
     if (longitude != null) obj.longitude = longitude;

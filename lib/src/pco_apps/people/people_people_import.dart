@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.828425
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.347472
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -147,8 +147,8 @@ class PcoPeoplePeopleImport extends PcoResource {
   DateTime get undoneAt => DateTime.parse(attributes[kUndoneAt] ?? '');    
 
   // Class Constructors
-  PcoPeoplePeopleImport._() : super(kPcoApplication, kTypeString);
   PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePeopleImport.empty() : super(kPcoApplication, kTypeString);
 
 
 

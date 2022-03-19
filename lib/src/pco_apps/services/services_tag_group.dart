@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.456268
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.038011
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -149,8 +149,8 @@ class PcoServicesTagGroup extends PcoResource {
   String get serviceTypeFolderName => attributes[kServiceTypeFolderName] ?? '';    
 
   // Class Constructors
-  PcoServicesTagGroup._() : super(kPcoApplication, kTypeString);
   PcoServicesTagGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesTagGroup.empty() : super(kPcoApplication, kTypeString);
 
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.469358
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.048188
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -156,8 +156,8 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');    
 
   // Class Constructors
-  PcoServicesTimePreferenceOption._() : super(kPcoApplication, kTypeString);
   PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesTimePreferenceOption.empty() : super(kPcoApplication, kTypeString);
 
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.458701
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.040860
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,8 +155,8 @@ class PcoServicesTeamLeader extends PcoResource {
   bool get isSendResponsesForBlockouts => attributes[kSendResponsesForBlockouts] == true;    
 
   // Class Constructors
-  PcoServicesTeamLeader._() : super(kPcoApplication, kTypeString);
   PcoServicesTeamLeader.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesTeamLeader.empty() : super(kPcoApplication, kTypeString);
 
 
 

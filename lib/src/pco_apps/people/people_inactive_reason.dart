@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.777586
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.305925
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -134,8 +134,8 @@ class PcoPeopleInactiveReason extends PcoResource {
   set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;  
 
   // Class Constructors
-  PcoPeopleInactiveReason._() : super(kPcoApplication, kTypeString);
   PcoPeopleInactiveReason.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleInactiveReason.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleInactiveReason] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/inactive_reasons`
@@ -143,7 +143,7 @@ class PcoPeopleInactiveReason extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleInactiveReason({ String? value }) {
-    var obj = PcoPeopleInactiveReason._();
+    var obj = PcoPeopleInactiveReason.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/inactive_reasons';
     if (value != null) obj.value = value;
     return obj;

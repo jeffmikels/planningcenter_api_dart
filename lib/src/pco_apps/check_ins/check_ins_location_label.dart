@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.577562
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.160347
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -151,8 +151,8 @@ class PcoCheckInsLocationLabel extends PcoResource {
   bool get isForVolunteer => attributes[kForVolunteer] == true;    
 
   // Class Constructors
-  PcoCheckInsLocationLabel._() : super(kPcoApplication, kTypeString);
   PcoCheckInsLocationLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsLocationLabel.empty() : super(kPcoApplication, kTypeString);
 
 
 

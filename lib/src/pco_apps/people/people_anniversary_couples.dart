@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.755078
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.287891
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -123,8 +123,8 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
       
 
   // Class Constructors
-  PcoPeopleAnniversaryCouple._() : super(kPcoApplication, kTypeString);
   PcoPeopleAnniversaryCouple.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleAnniversaryCouple.empty() : super(kPcoApplication, kTypeString);
 
 
 

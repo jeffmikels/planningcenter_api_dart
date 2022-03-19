@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.580247
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.180195
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -139,8 +139,8 @@ class PcoCheckInsPas extends PcoResource {
   String get kind => attributes[kKind] ?? '';    
 
   // Class Constructors
-  PcoCheckInsPas._() : super(kPcoApplication, kTypeString);
   PcoCheckInsPas.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsPas.empty() : super(kPcoApplication, kTypeString);
 
 
 

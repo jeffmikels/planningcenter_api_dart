@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.780790
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.309603
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -145,8 +145,8 @@ class PcoPeopleListResult extends PcoResource {
       
 
   // Class Constructors
-  PcoPeopleListResult._() : super(kPcoApplication, kTypeString);
   PcoPeopleListResult.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleListResult.empty() : super(kPcoApplication, kTypeString);
 
 
 

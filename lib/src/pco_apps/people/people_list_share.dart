@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.781586
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.310924
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -154,8 +154,8 @@ class PcoPeopleListShare extends PcoResource {
   String get name => attributes[kName] ?? '';    
 
   // Class Constructors
-  PcoPeopleListShare._() : super(kPcoApplication, kTypeString);
   PcoPeopleListShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleListShare.empty() : super(kPcoApplication, kTypeString);
 
 
 

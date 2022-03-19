@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.827554
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.345304
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -123,8 +123,8 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
       
 
   // Class Constructors
-  PcoPeopleOrganizationStatistic._() : super(kPcoApplication, kTypeString);
   PcoPeopleOrganizationStatistic.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleOrganizationStatistic.empty() : super(kPcoApplication, kTypeString);
 
 
 

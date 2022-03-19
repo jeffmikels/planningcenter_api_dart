@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.847283
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.370469
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -203,8 +203,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   set isPrimary(bool? x) => (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;  
 
   // Class Constructors
-  PcoPeoplePhoneNumber._() : super(kPcoApplication, kTypeString);
   PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePhoneNumber.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePhoneNumber] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers`
@@ -212,7 +212,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeoplePhoneNumber(String peopleId, { String? number, String? carrier, String? location, bool? isPrimary }) {
-    var obj = PcoPeoplePhoneNumber._();
+    var obj = PcoPeoplePhoneNumber.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers';
     if (number != null) obj.number = number;
     if (carrier != null) obj.carrier = carrier;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.962876
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.527580
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,8 +155,8 @@ class PcoGivingPaymentMethod extends PcoResource {
   bool get isVerified => attributes[kVerified] == true;    
 
   // Class Constructors
-  PcoGivingPaymentMethod._() : super(kPcoApplication, kTypeString);
   PcoGivingPaymentMethod.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingPaymentMethod.empty() : super(kPcoApplication, kTypeString);
 
 
 

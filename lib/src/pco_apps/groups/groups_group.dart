@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.014991
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.561910
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -211,8 +211,8 @@ class PcoGroupsGroup extends PcoResource {
   String get widgetStatus => attributes[kWidgetStatus] ?? '';    
 
   // Class Constructors
-  PcoGroupsGroup._() : super(kPcoApplication, kTypeString);
   PcoGroupsGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsGroup.empty() : super(kPcoApplication, kTypeString);
 
 
 

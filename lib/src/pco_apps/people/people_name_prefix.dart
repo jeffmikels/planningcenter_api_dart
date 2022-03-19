@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.787669
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.325295
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -134,8 +134,8 @@ class PcoPeopleNamePrefix extends PcoResource {
   set value(String? x) => (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;  
 
   // Class Constructors
-  PcoPeopleNamePrefix._() : super(kPcoApplication, kTypeString);
   PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleNamePrefix.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleNamePrefix] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/name_prefixes`
@@ -143,7 +143,7 @@ class PcoPeopleNamePrefix extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleNamePrefix({ String? value }) {
-    var obj = PcoPeopleNamePrefix._();
+    var obj = PcoPeopleNamePrefix.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
     if (value != null) obj.value = value;
     return obj;

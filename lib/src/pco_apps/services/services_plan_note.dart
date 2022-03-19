@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.312911
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.003440
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoServicesPlanNote extends PcoResource {
   set content(String? x) => (x == null) ? attributes.remove(kContent) : attributes[kContent] = x;  
 
   // Class Constructors
-  PcoServicesPlanNote._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlanNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesPlanNote] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/notes`
@@ -170,7 +170,7 @@ class PcoServicesPlanNote extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesPlanNote(String serviceTypeId, String planId, { String? content }) {
-    var obj = PcoServicesPlanNote._();
+    var obj = PcoServicesPlanNote.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/notes';
     if (content != null) obj.content = content;
     return obj;

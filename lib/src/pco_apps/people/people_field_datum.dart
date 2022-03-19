@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.764247
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.296094
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -194,8 +194,8 @@ class PcoPeopleFieldDatum extends PcoResource {
   String get fieldDefinitionId => attributes[kFieldDefinitionId] ?? '';
 
   // Class Constructors
-  PcoPeopleFieldDatum._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldDatum.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFieldDatum.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleFieldDatum] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data`
@@ -203,7 +203,7 @@ class PcoPeopleFieldDatum extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleFieldDatum(String peopleId, { String? value }) {
-    var obj = PcoPeopleFieldDatum._();
+    var obj = PcoPeopleFieldDatum.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data';
     if (value != null) obj.value = value;
     return obj;

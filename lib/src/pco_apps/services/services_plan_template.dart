@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.331140
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.012049
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -192,8 +192,8 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get isRehearsable => attributes[kRehearsable] == true;    
 
   // Class Constructors
-  PcoServicesPlanTemplate._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlanTemplate.empty() : super(kPcoApplication, kTypeString);
 
 
 

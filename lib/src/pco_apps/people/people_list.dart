@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.778841
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.307860
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -248,8 +248,8 @@ class PcoPeopleList extends PcoResource {
   DateTime get batchCompletedAt => DateTime.parse(attributes[kBatchCompletedAt] ?? '');    
 
   // Class Constructors
-  PcoPeopleList._() : super(kPcoApplication, kTypeString);
   PcoPeopleList.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleList.empty() : super(kPcoApplication, kTypeString);
 
 
 

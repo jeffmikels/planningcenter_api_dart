@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.208463
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.965443
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -169,8 +169,8 @@ class PcoServicesBlockoutDate extends PcoResource {
   DateTime get startsAtUtc => DateTime.parse(attributes[kStartsAtUtc] ?? '');    
 
   // Class Constructors
-  PcoServicesBlockoutDate._() : super(kPcoApplication, kTypeString);
   PcoServicesBlockoutDate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesBlockoutDate.empty() : super(kPcoApplication, kTypeString);
 
 
 

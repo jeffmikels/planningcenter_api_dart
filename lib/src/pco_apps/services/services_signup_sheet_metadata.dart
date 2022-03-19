@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.409287
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.031084
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -147,8 +147,8 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');    
 
   // Class Constructors
-  PcoServicesSignupSheetMetadata._() : super(kPcoApplication, kTypeString);
   PcoServicesSignupSheetMetadata.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSignupSheetMetadata.empty() : super(kPcoApplication, kTypeString);
 
 
 

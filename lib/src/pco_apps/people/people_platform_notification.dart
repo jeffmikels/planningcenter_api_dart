@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.848446
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.371907
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -128,8 +128,8 @@ class PcoPeoplePlatformNotification extends PcoResource {
   String get html => attributes[kHtml] ?? '';    
 
   // Class Constructors
-  PcoPeoplePlatformNotification._() : super(kPcoApplication, kTypeString);
   PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePlatformNotification.empty() : super(kPcoApplication, kTypeString);
 
 
 

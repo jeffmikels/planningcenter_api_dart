@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.595831
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.187812
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -173,8 +173,8 @@ class PcoCheckInsStation extends PcoResource {
   int get checkInCount => attributes[kCheckInCount] ?? 0;    
 
   // Class Constructors
-  PcoCheckInsStation._() : super(kPcoApplication, kTypeString);
   PcoCheckInsStation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsStation.empty() : super(kPcoApplication, kTypeString);
 
 
 

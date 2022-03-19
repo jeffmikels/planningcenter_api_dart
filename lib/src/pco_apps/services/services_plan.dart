@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.307681
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.001777
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -337,8 +337,8 @@ class PcoServicesPlan extends PcoResource {
   String get seriesId => attributes[kSeriesId] ?? '';
 
   // Class Constructors
-  PcoServicesPlan._() : super(kPcoApplication, kTypeString);
   PcoServicesPlan.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlan.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesPlan] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans`
@@ -346,7 +346,7 @@ class PcoServicesPlan extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesPlan(String serviceTypeId, { String? title, bool? isPublic, String? seriesTitle }) {
-    var obj = PcoServicesPlan._();
+    var obj = PcoServicesPlan.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans';
     if (title != null) obj.title = title;
     if (isPublic != null) obj.isPublic = isPublic;

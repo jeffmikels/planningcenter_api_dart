@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.355028
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.021256
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,8 +165,8 @@ class PcoServicesSeries extends PcoResource {
   String get artworkOriginal => attributes[kArtworkOriginal] ?? '';    
 
   // Class Constructors
-  PcoServicesSeries._() : super(kPcoApplication, kTypeString);
   PcoServicesSeries.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSeries.empty() : super(kPcoApplication, kTypeString);
 
 
 

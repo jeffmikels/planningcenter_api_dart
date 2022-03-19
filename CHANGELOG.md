@@ -1,3 +1,7 @@
+## 0.8.1
+
+-   Replaced private class constructors (many were unused) with named `empty` constructors.
+
 ## 0.8.0
 
 -   Added named parameters to class factory constructors to make it easier to create new objects that can be immediately posted to PlanningCenter.

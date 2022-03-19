@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.964707
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.529393
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -170,8 +170,8 @@ class PcoGivingPerson extends PcoResource {
   int get donorNumber => attributes[kDonorNumber] ?? 0;    
 
   // Class Constructors
-  PcoGivingPerson._() : super(kPcoApplication, kTypeString);
   PcoGivingPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.923745
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.475750
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
-  PcoCalendarResourceApprovalGroup._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceApprovalGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarResourceApprovalGroup.empty() : super(kPcoApplication, kTypeString);
 
 
 

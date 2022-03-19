@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.195845
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.960402
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -143,8 +143,8 @@ class PcoServicesAttachmentActivity extends PcoResource {
   String get activityType => attributes[kActivityType] ?? '';    
 
   // Class Constructors
-  PcoServicesAttachmentActivity._() : super(kPcoApplication, kTypeString);
   PcoServicesAttachmentActivity.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesAttachmentActivity.empty() : super(kPcoApplication, kTypeString);
 
 
 

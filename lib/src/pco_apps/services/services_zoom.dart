@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.471193
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.056278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -181,8 +181,8 @@ class PcoServicesZoom extends PcoResource {
   set yOffset(double? x) => (x == null) ? attributes.remove(kYOffset) : attributes[kYOffset] = x;  
 
   // Class Constructors
-  PcoServicesZoom._() : super(kPcoApplication, kTypeString);
   PcoServicesZoom.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesZoom.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesZoom] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/attachments/$attachmentId/zooms`
@@ -190,7 +190,7 @@ class PcoServicesZoom extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesZoom(String attachmentId, { double? zoomLevel, double? xOffset, double? yOffset, double? aspectRatio }) {
-    var obj = PcoServicesZoom._();
+    var obj = PcoServicesZoom.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/attachments/$attachmentId/zooms';
     if (zoomLevel != null) obj.zoomLevel = zoomLevel;
     if (xOffset != null) obj.xOffset = xOffset;

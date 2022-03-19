@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.180401
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.952640
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -128,8 +128,8 @@ class PcoServicesArrangementSection extends PcoResource {
   List get sections => attributes[kSections] ?? [];    
 
   // Class Constructors
-  PcoServicesArrangementSection._() : super(kPcoApplication, kTypeString);
   PcoServicesArrangementSection.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesArrangementSection.empty() : super(kPcoApplication, kTypeString);
 
 
 

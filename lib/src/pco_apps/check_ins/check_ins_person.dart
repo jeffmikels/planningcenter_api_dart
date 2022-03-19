@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.588969
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.183420
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -239,8 +239,8 @@ class PcoCheckInsPerson extends PcoResource {
   String get searchName => attributes[kSearchName] ?? '';    
 
   // Class Constructors
-  PcoCheckInsPerson._() : super(kPcoApplication, kTypeString);
   PcoCheckInsPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

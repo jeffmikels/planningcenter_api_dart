@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.779873
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.308946
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -163,8 +163,8 @@ class PcoPeopleListCategory extends PcoResource {
   set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
-  PcoPeopleListCategory._() : super(kPcoApplication, kTypeString);
   PcoPeopleListCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleListCategory.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleListCategory] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/list_categories`
@@ -172,7 +172,7 @@ class PcoPeopleListCategory extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleListCategory({ String? name }) {
-    var obj = PcoPeopleListCategory._();
+    var obj = PcoPeopleListCategory.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/list_categories';
     if (name != null) obj.name = name;
     return obj;

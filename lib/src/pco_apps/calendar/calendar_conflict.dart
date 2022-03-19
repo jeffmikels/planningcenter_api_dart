@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.907635
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.455925
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -168,8 +168,8 @@ class PcoCalendarConflict extends PcoResource {
   DateTime get resolvedAt => DateTime.parse(attributes[kResolvedAt] ?? '');    
 
   // Class Constructors
-  PcoCalendarConflict._() : super(kPcoApplication, kTypeString);
   PcoCalendarConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarConflict.empty() : super(kPcoApplication, kTypeString);
 
 
 

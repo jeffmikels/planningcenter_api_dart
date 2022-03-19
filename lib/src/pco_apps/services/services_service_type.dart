@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.392788
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.025633
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -259,8 +259,8 @@ class PcoServicesServiceType extends PcoResource {
   String get parentId => attributes[kParentId] ?? '';
 
   // Class Constructors
-  PcoServicesServiceType._() : super(kPcoApplication, kTypeString);
   PcoServicesServiceType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesServiceType.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesServiceType] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types`
@@ -268,7 +268,7 @@ class PcoServicesServiceType extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesServiceType({ bool? isAttachmentTypesEnabled, String? backgroundCheckPermissions, String? commentPermissions, String? customItemTypes, String? frequency, String? lastPlanFrom, String? name, int? sequence, String? standardItemTypes }) {
-    var obj = PcoServicesServiceType._();
+    var obj = PcoServicesServiceType.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types';
     if (isAttachmentTypesEnabled != null) obj.isAttachmentTypesEnabled = isAttachmentTypesEnabled;
     if (backgroundCheckPermissions != null) obj.backgroundCheckPermissions = backgroundCheckPermissions;

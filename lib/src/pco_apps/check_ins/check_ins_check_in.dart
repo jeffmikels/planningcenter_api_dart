@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.542860
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.146624
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -243,8 +243,8 @@ class PcoCheckInsCheckIn extends PcoResource {
   String get emergencyContactPhoneNumber => attributes[kEmergencyContactPhoneNumber] ?? '';    
 
   // Class Constructors
-  PcoCheckInsCheckIn._() : super(kPcoApplication, kTypeString);
   PcoCheckInsCheckIn.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsCheckIn.empty() : super(kPcoApplication, kTypeString);
 
 
 

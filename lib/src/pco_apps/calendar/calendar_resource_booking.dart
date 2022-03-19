@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.925761
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.477546
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoCalendarResourceBooking extends PcoResource {
   int get quantity => attributes[kQuantity] ?? 0;    
 
   // Class Constructors
-  PcoCalendarResourceBooking._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceBooking.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarResourceBooking.empty() : super(kPcoApplication, kTypeString);
 
 
 

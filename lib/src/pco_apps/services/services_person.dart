@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.286460
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.996575
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -352,8 +352,8 @@ class PcoServicesPerson extends PcoResource {
   String get currentFolderId => attributes[kCurrentFolderId] ?? '';
 
   // Class Constructors
-  PcoServicesPerson._() : super(kPcoApplication, kTypeString);
   PcoServicesPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

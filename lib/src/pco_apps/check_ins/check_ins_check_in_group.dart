@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.544769
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.147885
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -162,8 +162,8 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   String get printStatus => attributes[kPrintStatus] ?? '';    
 
   // Class Constructors
-  PcoCheckInsCheckInGroup._() : super(kPcoApplication, kTypeString);
   PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsCheckInGroup.empty() : super(kPcoApplication, kTypeString);
 
 
 

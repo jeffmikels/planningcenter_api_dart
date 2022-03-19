@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.862666
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.379328
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,8 +160,8 @@ class PcoPeopleTab extends PcoResource {
   set slug(String? x) => (x == null) ? attributes.remove(kSlug) : attributes[kSlug] = x;  
 
   // Class Constructors
-  PcoPeopleTab._() : super(kPcoApplication, kTypeString);
   PcoPeopleTab.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleTab.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleTab] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/tabs`
@@ -169,7 +169,7 @@ class PcoPeopleTab extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleTab({ String? name, int? sequence, String? slug }) {
-    var obj = PcoPeopleTab._();
+    var obj = PcoPeopleTab.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/tabs';
     if (name != null) obj.name = name;
     if (sequence != null) obj.sequence = sequence;

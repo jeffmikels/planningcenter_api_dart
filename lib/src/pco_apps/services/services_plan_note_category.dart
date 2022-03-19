@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.314238
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.004360
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -150,8 +150,8 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   int get sequence => attributes[kSequence] ?? 0;    
 
   // Class Constructors
-  PcoServicesPlanNoteCategory._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlanNoteCategory.empty() : super(kPcoApplication, kTypeString);
 
 
 

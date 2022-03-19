@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.454412
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.035639
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -150,8 +150,8 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   set isScheduleSpecialServiceTimes(bool? x) => (x == null) ? attributes.remove(kScheduleSpecialServiceTimes) : attributes[kScheduleSpecialServiceTimes] = x;  
 
   // Class Constructors
-  PcoServicesSplitTeamRehearsalAssignment._() : super(kPcoApplication, kTypeString);
   PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSplitTeamRehearsalAssignment.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
@@ -159,7 +159,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesSplitTeamRehearsalAssignment(String peopleId, String planTimeId, { bool? isScheduleSpecialServiceTimes }) {
-    var obj = PcoServicesSplitTeamRehearsalAssignment._();
+    var obj = PcoServicesSplitTeamRehearsalAssignment.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
     if (isScheduleSpecialServiceTimes != null) obj.isScheduleSpecialServiceTimes = isScheduleSpecialServiceTimes;
     return obj;

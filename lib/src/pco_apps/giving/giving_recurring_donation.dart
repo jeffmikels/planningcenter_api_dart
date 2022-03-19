@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.968562
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.533540
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,8 +172,8 @@ class PcoGivingRecurringDonation extends PcoResource {
   String get amountCurrency => attributes[kAmountCurrency] ?? '';    
 
   // Class Constructors
-  PcoGivingRecurringDonation._() : super(kPcoApplication, kTypeString);
   PcoGivingRecurringDonation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingRecurringDonation.empty() : super(kPcoApplication, kTypeString);
 
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.228156
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.973215
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -179,8 +179,8 @@ class PcoServicesFolder extends PcoResource {
   String get campusId => attributes[kCampusId] ?? '';
 
   // Class Constructors
-  PcoServicesFolder._() : super(kPcoApplication, kTypeString);
   PcoServicesFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesFolder.empty() : super(kPcoApplication, kTypeString);
 
 
 

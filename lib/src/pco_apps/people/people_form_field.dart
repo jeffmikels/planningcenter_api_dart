@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.769709
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.300779
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -186,8 +186,8 @@ class PcoPeopleFormField extends PcoResource {
   int get sequence => attributes[kSequence] ?? 0;    
 
   // Class Constructors
-  PcoPeopleFormField._() : super(kPcoApplication, kTypeString);
   PcoPeopleFormField.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFormField.empty() : super(kPcoApplication, kTypeString);
 
 
 

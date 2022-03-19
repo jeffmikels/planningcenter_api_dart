@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.564924
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.156133
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -154,8 +154,8 @@ class PcoCheckInsLabel extends PcoResource {
   String get roll => attributes[kRoll] ?? '';    
 
   // Class Constructors
-  PcoCheckInsLabel._() : super(kPcoApplication, kTypeString);
   PcoCheckInsLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsLabel.empty() : super(kPcoApplication, kTypeString);
 
 
 

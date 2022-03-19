@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.765328
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.297599
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -208,8 +208,8 @@ class PcoPeopleFieldDefinition extends PcoResource {
   set deletedAt(DateTime? x) => (x == null) ? attributes.remove(kDeletedAt) : attributes[kDeletedAt] = x.toIso8601String();  
 
   // Class Constructors
-  PcoPeopleFieldDefinition._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldDefinition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFieldDefinition.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleFieldDefinition] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/tabs/$tabId/field_definitions`
@@ -217,7 +217,7 @@ class PcoPeopleFieldDefinition extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleFieldDefinition(String tabId, { String? dataType, String? name, int? sequence, String? slug, String? config, DateTime? deletedAt }) {
-    var obj = PcoPeopleFieldDefinition._();
+    var obj = PcoPeopleFieldDefinition.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/tabs/$tabId/field_definitions';
     if (dataType != null) obj.dataType = dataType;
     if (name != null) obj.name = name;

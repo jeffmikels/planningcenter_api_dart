@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.018155
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.564467
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -198,8 +198,8 @@ class PcoGroupsMembership extends PcoResource {
   String get personId => attributes[kPersonId] ?? '';
 
   // Class Constructors
-  PcoGroupsMembership._() : super(kPcoApplication, kTypeString);
   PcoGroupsMembership.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsMembership.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGroupsMembership] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships`
@@ -207,7 +207,7 @@ class PcoGroupsMembership extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoGroupsMembership(String groupId, { String? role, DateTime? joinedAt }) {
-    var obj = PcoGroupsMembership._();
+    var obj = PcoGroupsMembership.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
     if (role != null) obj.role = role;
     if (joinedAt != null) obj.joinedAt = joinedAt;

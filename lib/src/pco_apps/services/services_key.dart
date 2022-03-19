@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.250798
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.983914
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -199,8 +199,8 @@ class PcoServicesKey extends PcoResource {
   set startingKey(String? x) => (x == null) ? attributes.remove(kStartingKey) : attributes[kStartingKey] = x;  
 
   // Class Constructors
-  PcoServicesKey._() : super(kPcoApplication, kTypeString);
   PcoServicesKey.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesKey.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesKey] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/keys`
@@ -208,7 +208,7 @@ class PcoServicesKey extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesKey(String songId, String arrangementId, { String? name, String? startingKey, String? endingKey, String? alternateKeys }) {
-    var obj = PcoServicesKey._();
+    var obj = PcoServicesKey.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/keys';
     if (name != null) obj.name = name;
     if (startingKey != null) obj.startingKey = startingKey;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.342044
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.014219
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,8 +172,8 @@ class PcoServicesPublicView extends PcoResource {
   bool get isVimeo => attributes[kVimeo] == true;    
 
   // Class Constructors
-  PcoServicesPublicView._() : super(kPcoApplication, kTypeString);
   PcoServicesPublicView.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPublicView.empty() : super(kPcoApplication, kTypeString);
 
 
 

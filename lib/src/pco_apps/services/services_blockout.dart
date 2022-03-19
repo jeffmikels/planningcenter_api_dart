@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.206845
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.964350
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -266,8 +266,8 @@ class PcoServicesBlockout extends PcoResource {
   set isShare(bool? x) => (x == null) ? attributes.remove(kShare) : attributes[kShare] = x;  
 
   // Class Constructors
-  PcoServicesBlockout._() : super(kPcoApplication, kTypeString);
   PcoServicesBlockout.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesBlockout.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockout] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts`
@@ -275,7 +275,7 @@ class PcoServicesBlockout extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesBlockout(String peopleId, { String? reason, String? repeatFrequency, String? repeatInterval, String? repeatPeriod, bool? isShare, String? repeatUntil, DateTime? startsAt, DateTime? endsAt }) {
-    var obj = PcoServicesBlockout._();
+    var obj = PcoServicesBlockout.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
     if (reason != null) obj.reason = reason;
     if (repeatFrequency != null) obj.repeatFrequency = repeatFrequency;

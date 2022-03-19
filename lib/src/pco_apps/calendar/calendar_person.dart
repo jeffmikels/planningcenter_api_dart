@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.918473
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.469254
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -225,8 +225,8 @@ class PcoCalendarPerson extends PcoResource {
   String get resourcesPermissionsType => attributes[kResourcesPermissionsType] ?? '';    
 
   // Class Constructors
-  PcoCalendarPerson._() : super(kPcoApplication, kTypeString);
   PcoCalendarPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarPerson.empty() : super(kPcoApplication, kTypeString);
 
 
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.214392
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.966915
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -203,8 +203,8 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;    
 
   // Class Constructors
-  PcoServicesBlockoutScheduleConflict._() : super(kPcoApplication, kTypeString);
   PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesBlockoutScheduleConflict.empty() : super(kPcoApplication, kTypeString);
 
 
 

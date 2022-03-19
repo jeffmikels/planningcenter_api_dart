@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.755752
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.288945
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -139,8 +139,8 @@ class PcoPeopleApp extends PcoResource {
   String get url => attributes[kUrl] ?? '';    
 
   // Class Constructors
-  PcoPeopleApp._() : super(kPcoApplication, kTypeString);
   PcoPeopleApp.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleApp.empty() : super(kPcoApplication, kTypeString);
 
 
 

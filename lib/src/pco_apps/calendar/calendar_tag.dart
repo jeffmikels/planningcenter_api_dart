@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.930810
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.488525
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -162,8 +162,8 @@ class PcoCalendarTag extends PcoResource {
   double get position => attributes[kPosition] ?? 0;    
 
   // Class Constructors
-  PcoCalendarTag._() : super(kPcoApplication, kTypeString);
   PcoCalendarTag.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarTag.empty() : super(kPcoApplication, kTypeString);
 
 
 

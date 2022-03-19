@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.416548
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.034486
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -140,8 +140,8 @@ class PcoServicesSongbookStatu extends PcoResource {
   String get url => attributes[kUrl] ?? '';    
 
   // Class Constructors
-  PcoServicesSongbookStatu._() : super(kPcoApplication, kTypeString);
   PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSongbookStatu.empty() : super(kPcoApplication, kTypeString);
 
 
 

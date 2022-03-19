@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.774782
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.304097
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -199,8 +199,8 @@ class PcoPeopleHousehold extends PcoResource {
   set primaryContactId(String? x) => (x == null) ? attributes.remove(kPrimaryContactId) : attributes[kPrimaryContactId] = x;  
 
   // Class Constructors
-  PcoPeopleHousehold._() : super(kPcoApplication, kTypeString);
   PcoPeopleHousehold.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleHousehold.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleHousehold] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/households`
@@ -208,7 +208,7 @@ class PcoPeopleHousehold extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleHousehold({ String? name, int? memberCount, String? avatar, String? primaryContactId }) {
-    var obj = PcoPeopleHousehold._();
+    var obj = PcoPeopleHousehold.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/households';
     if (name != null) obj.name = name;
     if (memberCount != null) obj.memberCount = memberCount;

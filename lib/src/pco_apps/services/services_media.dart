@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.264472
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.988586
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -251,8 +251,8 @@ class PcoServicesMedia extends PcoResource {
   set creatorName(String? x) => (x == null) ? attributes.remove(kCreatorName) : attributes[kCreatorName] = x;  
 
   // Class Constructors
-  PcoServicesMedia._() : super(kPcoApplication, kTypeString);
   PcoServicesMedia.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesMedia.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesMedia] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/media`
@@ -260,7 +260,7 @@ class PcoServicesMedia extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesMedia({ String? mediaType, String? title, String? creatorName, String? themes }) {
-    var obj = PcoServicesMedia._();
+    var obj = PcoServicesMedia.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/media';
     if (mediaType != null) obj.mediaType = mediaType;
     if (title != null) obj.title = title;

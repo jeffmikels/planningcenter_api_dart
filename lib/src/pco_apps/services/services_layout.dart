@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.256455
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.984560
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -123,8 +123,8 @@ class PcoServicesLayout extends PcoResource {
       
 
   // Class Constructors
-  PcoServicesLayout._() : super(kPcoApplication, kTypeString);
   PcoServicesLayout.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesLayout.empty() : super(kPcoApplication, kTypeString);
 
 
 

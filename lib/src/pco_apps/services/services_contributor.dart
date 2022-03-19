@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.219391
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.968670
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,8 +165,8 @@ class PcoServicesContributor extends PcoResource {
   String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';    
 
   // Class Constructors
-  PcoServicesContributor._() : super(kPcoApplication, kTypeString);
   PcoServicesContributor.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesContributor.empty() : super(kPcoApplication, kTypeString);
 
 
 

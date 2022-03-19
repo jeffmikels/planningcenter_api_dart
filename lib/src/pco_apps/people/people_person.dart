@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.842363
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.362532
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -492,8 +492,8 @@ class PcoPeoplePerson extends PcoResource {
   String get primaryCampusId => attributes[kPrimaryCampusId] ?? '';
 
   // Class Constructors
-  PcoPeoplePerson._() : super(kPcoApplication, kTypeString);
   PcoPeoplePerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePerson.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePerson] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people`
@@ -501,7 +501,7 @@ class PcoPeoplePerson extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeoplePerson({ String? givenName, String? firstName, String? nickname, String? middleName, String? lastName, String? birthdate, String? anniversary, String? gender, int? grade, bool? isChild, int? graduationYear, bool? isSiteAdministrator, bool? isAccountingAdministrator, String? peoplePermissions, String? membership, DateTime? inactivatedAt, String? status, String? medicalNotes, String? avatar, int? remoteId }) {
-    var obj = PcoPeoplePerson._();
+    var obj = PcoPeoplePerson.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people';
     if (givenName != null) obj.givenName = givenName;
     if (firstName != null) obj.firstName = firstName;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.759797
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.293181
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -189,8 +189,8 @@ class PcoPeopleCondition extends PcoResource {
   String get description => attributes[kDescription] ?? '';    
 
   // Class Constructors
-  PcoPeopleCondition._() : super(kPcoApplication, kTypeString);
   PcoPeopleCondition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleCondition.empty() : super(kPcoApplication, kTypeString);
 
 
 

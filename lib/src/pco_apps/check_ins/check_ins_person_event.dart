@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.591438
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.185532
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -144,8 +144,8 @@ class PcoCheckInsPersonEvent extends PcoResource {
   int get checkInCount => attributes[kCheckInCount] ?? 0;    
 
   // Class Constructors
-  PcoCheckInsPersonEvent._() : super(kPcoApplication, kTypeString);
   PcoCheckInsPersonEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsPersonEvent.empty() : super(kPcoApplication, kTypeString);
 
 
 

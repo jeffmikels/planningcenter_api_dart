@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.248385
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.982825
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,8 +165,8 @@ class PcoServicesItemTime extends PcoResource {
   int get lengthOffset => attributes[kLengthOffset] ?? 0;    
 
   // Class Constructors
-  PcoServicesItemTime._() : super(kPcoApplication, kTypeString);
   PcoServicesItemTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesItemTime.empty() : super(kPcoApplication, kTypeString);
 
 
 

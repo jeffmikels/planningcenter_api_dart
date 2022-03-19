@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.758784
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.292239
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -138,8 +138,8 @@ class PcoPeopleCarrier extends PcoResource {
   bool get isInternational => attributes[kInternational] == true;    
 
   // Class Constructors
-  PcoPeopleCarrier._() : super(kPcoApplication, kTypeString);
   PcoPeopleCarrier.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleCarrier.empty() : super(kPcoApplication, kTypeString);
 
 
 

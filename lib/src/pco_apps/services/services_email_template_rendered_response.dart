@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.225896
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.971963
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -145,8 +145,8 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   String get subject => attributes[kSubject] ?? '';    
 
   // Class Constructors
-  PcoServicesEmailTemplateRenderedResponse._() : super(kPcoApplication, kTypeString);
   PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesEmailTemplateRenderedResponse.empty() : super(kPcoApplication, kTypeString);
 
 
 

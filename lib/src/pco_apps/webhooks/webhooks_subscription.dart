@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.097835
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.582494
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoWebhooksSubscription extends PcoResource {
   set isActive(bool? x) => (x == null) ? attributes.remove(kActive) : attributes[kActive] = x;  
 
   // Class Constructors
-  PcoWebhooksSubscription._() : super(kPcoApplication, kTypeString);
   PcoWebhooksSubscription.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoWebhooksSubscription.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoWebhooksSubscription] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/webhooks/v2/subscriptions`
@@ -170,7 +170,7 @@ class PcoWebhooksSubscription extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoWebhooksSubscription({ String? name, String? url, bool? isActive }) {
-    var obj = PcoWebhooksSubscription._();
+    var obj = PcoWebhooksSubscription.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions';
     if (name != null) obj.name = name;
     if (url != null) obj.url = url;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.783276
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.319492
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -144,8 +144,8 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   int get segmentId => attributes[kSegmentId] ?? 0;    
 
   // Class Constructors
-  PcoPeopleMailchimpSyncStatu._() : super(kPcoApplication, kTypeString);
   PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleMailchimpSyncStatu.empty() : super(kPcoApplication, kTypeString);
 
 
 

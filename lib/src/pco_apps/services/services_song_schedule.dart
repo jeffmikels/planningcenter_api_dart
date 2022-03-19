@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.415383
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.033811
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,8 +175,8 @@ class PcoServicesSongSchedule extends PcoResource {
   String get planSortDate => attributes[kPlanSortDate] ?? '';    
 
   // Class Constructors
-  PcoServicesSongSchedule._() : super(kPcoApplication, kTypeString);
   PcoServicesSongSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSongSchedule.empty() : super(kPcoApplication, kTypeString);
 
 
 

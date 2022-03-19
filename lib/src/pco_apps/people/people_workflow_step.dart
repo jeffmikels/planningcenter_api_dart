@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.873935
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.388924
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,8 +205,8 @@ class PcoPeopleWorkflowStep extends PcoResource {
   set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;  
 
   // Class Constructors
-  PcoPeopleWorkflowStep._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowStep.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflowStep.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowStep] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/workflows/$workflowId/steps`
@@ -214,7 +214,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleWorkflowStep(String workflowId, { int? sequence, String? name }) {
-    var obj = PcoPeopleWorkflowStep._();
+    var obj = PcoPeopleWorkflowStep.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows/$workflowId/steps';
     if (sequence != null) obj.sequence = sequence;
     if (name != null) obj.name = name;

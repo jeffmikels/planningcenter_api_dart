@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.334834
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.013434
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -208,8 +208,8 @@ class PcoServicesPlanTime extends PcoResource {
   set endsAt(DateTime? x) => (x == null) ? attributes.remove(kEndsAt) : attributes[kEndsAt] = x.toIso8601String();  
 
   // Class Constructors
-  PcoServicesPlanTime._() : super(kPcoApplication, kTypeString);
   PcoServicesPlanTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlanTime.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesPlanTime] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/plan_times`
@@ -217,7 +217,7 @@ class PcoServicesPlanTime extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesPlanTime(String serviceTypeId, String planId, { DateTime? startsAt, DateTime? endsAt, String? name, int? timeType, List? teamReminders }) {
-    var obj = PcoServicesPlanTime._();
+    var obj = PcoServicesPlanTime.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/plan_times';
     if (startsAt != null) obj.startsAt = startsAt;
     if (endsAt != null) obj.endsAt = endsAt;

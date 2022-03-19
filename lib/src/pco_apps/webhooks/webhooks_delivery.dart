@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.092197
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.580236
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoWebhooksDelivery extends PcoResource {
   double get timing => attributes[kTiming] ?? 0;    
 
   // Class Constructors
-  PcoWebhooksDelivery._() : super(kPcoApplication, kTypeString);
   PcoWebhooksDelivery.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoWebhooksDelivery.empty() : super(kPcoApplication, kTypeString);
 
 
 

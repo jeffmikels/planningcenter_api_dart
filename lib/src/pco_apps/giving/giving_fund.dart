@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.959854
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.524860
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -189,8 +189,8 @@ class PcoGivingFund extends PcoResource {
   set colorIdentifier(int? x) => (x == null) ? attributes.remove(kColorIdentifier) : attributes[kColorIdentifier] = x;  
 
   // Class Constructors
-  PcoGivingFund._() : super(kPcoApplication, kTypeString);
   PcoGivingFund.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingFund.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGivingFund] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/giving/v2/funds`
@@ -198,7 +198,7 @@ class PcoGivingFund extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoGivingFund({ String? name, String? ledgerCode, String? description, String? visibility, int? colorIdentifier }) {
-    var obj = PcoGivingFund._();
+    var obj = PcoGivingFund.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/funds';
     if (name != null) obj.name = name;
     if (ledgerCode != null) obj.ledgerCode = ledgerCode;

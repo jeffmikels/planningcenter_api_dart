@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.868574
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.384139
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,8 +174,8 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   bool get isContentIsHtml => attributes[kContentIsHtml] == true;    
 
   // Class Constructors
-  PcoPeopleWorkflowCardActivity._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflowCardActivity.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflowCardActivity.empty() : super(kPcoApplication, kTypeString);
 
 
 

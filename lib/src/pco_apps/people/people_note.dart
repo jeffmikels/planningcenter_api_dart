@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.789176
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.327860
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -215,8 +215,8 @@ class PcoPeopleNote extends PcoResource {
   set noteCategoryId(String? x) => (x == null) ? attributes.remove(kNoteCategoryId) : attributes[kNoteCategoryId] = x;  
 
   // Class Constructors
-  PcoPeopleNote._() : super(kPcoApplication, kTypeString);
   PcoPeopleNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleNote] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/notes`
@@ -224,7 +224,7 @@ class PcoPeopleNote extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleNote(String peopleId, { String? note, DateTime? createdAt, DateTime? updatedAt, DateTime? displayDate, String? noteCategoryId }) {
-    var obj = PcoPeopleNote._();
+    var obj = PcoPeopleNote.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/notes';
     if (note != null) obj.note = note;
     if (createdAt != null) obj.createdAt = createdAt;

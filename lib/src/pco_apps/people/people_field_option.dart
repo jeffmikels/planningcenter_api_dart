@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.766263
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.298876
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,8 +153,8 @@ class PcoPeopleFieldOption extends PcoResource {
   set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;  
 
   // Class Constructors
-  PcoPeopleFieldOption._() : super(kPcoApplication, kTypeString);
   PcoPeopleFieldOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFieldOption.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleFieldOption] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/field_definitions/$fieldDefinitionId/field_options`
@@ -162,7 +162,7 @@ class PcoPeopleFieldOption extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleFieldOption(String fieldDefinitionId, { String? value, int? sequence }) {
-    var obj = PcoPeopleFieldOption._();
+    var obj = PcoPeopleFieldOption.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/field_definitions/$fieldDefinitionId/field_options';
     if (value != null) obj.value = value;
     if (sequence != null) obj.sequence = sequence;

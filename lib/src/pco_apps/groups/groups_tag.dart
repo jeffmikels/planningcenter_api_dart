@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.022614
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.568630
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -144,8 +144,8 @@ class PcoGroupsTag extends PcoResource {
   int get position => attributes[kPosition] ?? 0;    
 
   // Class Constructors
-  PcoGroupsTag._() : super(kPcoApplication, kTypeString);
   PcoGroupsTag.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsTag.empty() : super(kPcoApplication, kTypeString);
 
 
 

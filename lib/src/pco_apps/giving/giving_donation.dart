@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.958966
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.523485
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -308,8 +308,8 @@ class PcoGivingDonation extends PcoResource {
   String get campusId => attributes[kCampusId] ?? '';
 
   // Class Constructors
-  PcoGivingDonation._() : super(kPcoApplication, kTypeString);
   PcoGivingDonation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingDonation.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGivingDonation] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/giving/v2/batches/$batcheId/donations`
@@ -317,7 +317,7 @@ class PcoGivingDonation extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoGivingDonation(String batcheId, { String? paymentMethodSub, String? paymentLast4, String? paymentBrand, int? paymentCheckNumber, String? paymentCheckDatedAt, int? feeCents, String? paymentMethod, DateTime? receivedAt }) {
-    var obj = PcoGivingDonation._();
+    var obj = PcoGivingDonation.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batches/$batcheId/donations';
     if (paymentMethodSub != null) obj.paymentMethodSub = paymentMethodSub;
     if (paymentLast4 != null) obj.paymentLast4 = paymentLast4;

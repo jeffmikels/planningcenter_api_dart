@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.191443
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.958144
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -286,8 +286,8 @@ class PcoServicesAttachment extends PcoResource {
   String get attachmentTypeIds => attributes[kAttachmentTypeIds] ?? '';
 
   // Class Constructors
-  PcoServicesAttachment._() : super(kPcoApplication, kTypeString);
   PcoServicesAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesAttachment.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesAttachment] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
@@ -295,7 +295,7 @@ class PcoServicesAttachment extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesAttachment(String songId, String arrangementId, { String? fileUploadIdentifier, String? filename, String? remoteLink, String? pageOrder }) {
-    var obj = PcoServicesAttachment._();
+    var obj = PcoServicesAttachment.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements/$arrangementId/attachments';
     if (fileUploadIdentifier != null) obj.fileUploadIdentifier = fileUploadIdentifier;
     if (filename != null) obj.filename = filename;

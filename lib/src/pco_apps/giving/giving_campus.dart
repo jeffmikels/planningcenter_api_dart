@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.956273
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.518174
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -134,8 +134,8 @@ class PcoGivingCampus extends PcoResource {
   String get address => attributes[kAddress] ?? '';    
 
   // Class Constructors
-  PcoGivingCampus._() : super(kPcoApplication, kTypeString);
   PcoGivingCampus.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingCampus.empty() : super(kPcoApplication, kTypeString);
 
 
 

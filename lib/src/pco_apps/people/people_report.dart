@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.849533
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.372796
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoPeopleReport extends PcoResource {
   set body(String? x) => (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;  
 
   // Class Constructors
-  PcoPeopleReport._() : super(kPcoApplication, kTypeString);
   PcoPeopleReport.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleReport.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleReport] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/reports`
@@ -170,7 +170,7 @@ class PcoPeopleReport extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleReport({ String? name, String? body }) {
-    var obj = PcoPeopleReport._();
+    var obj = PcoPeopleReport.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/reports';
     if (name != null) obj.name = name;
     if (body != null) obj.body = body;

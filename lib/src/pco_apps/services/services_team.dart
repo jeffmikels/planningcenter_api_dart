@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.457700
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.040050
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -241,8 +241,8 @@ class PcoServicesTeam extends PcoResource {
   set stageVariant(String? x) => (x == null) ? attributes.remove(kStageVariant) : attributes[kStageVariant] = x;  
 
   // Class Constructors
-  PcoServicesTeam._() : super(kPcoApplication, kTypeString);
   PcoServicesTeam.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesTeam.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesTeam] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/teams`
@@ -250,7 +250,7 @@ class PcoServicesTeam extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesTeam(String serviceTypeId, { String? name, DateTime? archivedAt, bool? isAssignedDirectly, bool? isRehearsalTeam, String? scheduleTo, String? stageColor, String? stageVariant }) {
-    var obj = PcoServicesTeam._();
+    var obj = PcoServicesTeam.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/teams';
     if (name != null) obj.name = name;
     if (archivedAt != null) obj.archivedAt = archivedAt;

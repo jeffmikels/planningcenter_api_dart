@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.801229
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.339569
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,8 +155,8 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   set personId(String? x) => (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;  
 
   // Class Constructors
-  PcoPeopleNoteCategoryShare._() : super(kPcoApplication, kTypeString);
   PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleNoteCategoryShare.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleNoteCategoryShare] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares`
@@ -164,7 +164,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleNoteCategoryShare(String noteCategoryId, { String? group, String? personId }) {
-    var obj = PcoPeopleNoteCategoryShare._();
+    var obj = PcoPeopleNoteCategoryShare.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
     if (group != null) obj.group = group;
     if (personId != null) obj.personId = personId;

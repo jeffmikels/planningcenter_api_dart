@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.013516
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.560677
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -220,8 +220,8 @@ class PcoGroupsEvent extends PcoResource {
   String get virtualLocationUrl => attributes[kVirtualLocationUrl] ?? '';    
 
   // Class Constructors
-  PcoGroupsEvent._() : super(kPcoApplication, kTypeString);
   PcoGroupsEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsEvent.empty() : super(kPcoApplication, kTypeString);
 
 
 

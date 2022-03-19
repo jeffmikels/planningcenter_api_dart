@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.554620
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.152874
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,8 +174,8 @@ class PcoCheckInsEventPeriod extends PcoResource {
   String get note => attributes[kNote] ?? '';    
 
   // Class Constructors
-  PcoCheckInsEventPeriod._() : super(kPcoApplication, kTypeString);
   PcoCheckInsEventPeriod.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCheckInsEventPeriod.empty() : super(kPcoApplication, kTypeString);
 
 
 

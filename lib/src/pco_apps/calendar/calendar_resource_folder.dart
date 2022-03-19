@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.926947
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.478584
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,8 +160,8 @@ class PcoCalendarResourceFolder extends PcoResource {
   set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;  
 
   // Class Constructors
-  PcoCalendarResourceFolder._() : super(kPcoApplication, kTypeString);
   PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarResourceFolder.empty() : super(kPcoApplication, kTypeString);
 
 
 

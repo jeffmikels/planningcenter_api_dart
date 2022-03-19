@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.955672
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.517668
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -158,8 +158,8 @@ class PcoGivingBatchGroup extends PcoResource {
   set description(String? x) => (x == null) ? attributes.remove(kDescription) : attributes[kDescription] = x;  
 
   // Class Constructors
-  PcoGivingBatchGroup._() : super(kPcoApplication, kTypeString);
   PcoGivingBatchGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingBatchGroup.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGivingBatchGroup] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/giving/v2/batch_groups`
@@ -167,7 +167,7 @@ class PcoGivingBatchGroup extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoGivingBatchGroup({ String? description }) {
-    var obj = PcoGivingBatchGroup._();
+    var obj = PcoGivingBatchGroup.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/giving/v2/batch_groups';
     if (description != null) obj.description = description;
     return obj;

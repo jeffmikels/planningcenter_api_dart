@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.960526
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.525933
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -129,8 +129,8 @@ class PcoGivingLabel extends PcoResource {
   String get slug => attributes[kSlug] ?? '';    
 
   // Class Constructors
-  PcoGivingLabel._() : super(kPcoApplication, kTypeString);
   PcoGivingLabel.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGivingLabel.empty() : super(kPcoApplication, kTypeString);
 
 
 

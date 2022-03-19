@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.397847
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.029698
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,8 +174,8 @@ class PcoServicesSignupSheet extends PcoResource {
   int get sortIndex => attributes[kSortIndex] ?? 0;    
 
   // Class Constructors
-  PcoServicesSignupSheet._() : super(kPcoApplication, kTypeString);
   PcoServicesSignupSheet.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSignupSheet.empty() : super(kPcoApplication, kTypeString);
 
 
 

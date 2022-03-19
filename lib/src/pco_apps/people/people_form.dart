@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.767089
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.299878
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -193,8 +193,8 @@ class PcoPeopleForm extends PcoResource {
   bool get isArchived => attributes[kArchived] == true;    
 
   // Class Constructors
-  PcoPeopleForm._() : super(kPcoApplication, kTypeString);
   PcoPeopleForm.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleForm.empty() : super(kPcoApplication, kTypeString);
 
 
 

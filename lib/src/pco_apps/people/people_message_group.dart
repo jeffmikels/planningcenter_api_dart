@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.786840
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.324050
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoPeopleMessageGroup extends PcoResource {
   bool get isSystemMessage => attributes[kSystemMessage] == true;    
 
   // Class Constructors
-  PcoPeopleMessageGroup._() : super(kPcoApplication, kTypeString);
   PcoPeopleMessageGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleMessageGroup.empty() : super(kPcoApplication, kTypeString);
 
 
 

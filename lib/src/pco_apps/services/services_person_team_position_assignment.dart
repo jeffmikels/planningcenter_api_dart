@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.289421
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.998475
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,8 +205,8 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   String get personId => attributes[kPersonId] ?? '';
 
   // Class Constructors
-  PcoServicesPersonTeamPositionAssignment._() : super(kPcoApplication, kTypeString);
   PcoServicesPersonTeamPositionAssignment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPersonTeamPositionAssignment.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesPersonTeamPositionAssignment] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments`
@@ -214,7 +214,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesPersonTeamPositionAssignment(String serviceTypeId, String teamPositionId, { String? schedulePreference, List? preferredWeeks }) {
-    var obj = PcoServicesPersonTeamPositionAssignment._();
+    var obj = PcoServicesPersonTeamPositionAssignment.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments';
     if (schedulePreference != null) obj.schedulePreference = schedulePreference;
     if (preferredWeeks != null) obj.preferredWeeks = preferredWeeks;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.409981
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.031767
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -141,8 +141,8 @@ class PcoServicesSkippedAttachment extends PcoResource {
   bool get isSkipped => attributes[kSkipped] == true;    
 
   // Class Constructors
-  PcoServicesSkippedAttachment._() : super(kPcoApplication, kTypeString);
   PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSkippedAttachment.empty() : super(kPcoApplication, kTypeString);
 
 
 

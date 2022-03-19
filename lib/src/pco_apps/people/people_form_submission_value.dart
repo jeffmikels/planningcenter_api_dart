@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.773146
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.303074
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -147,8 +147,8 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   String get displayValue => attributes[kDisplayValue] ?? '';    
 
   // Class Constructors
-  PcoPeopleFormSubmissionValue._() : super(kPcoApplication, kTypeString);
   PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleFormSubmissionValue.empty() : super(kPcoApplication, kTypeString);
 
 
 

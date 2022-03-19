@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.222262
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.969611
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -167,8 +167,8 @@ class PcoServicesCustomSlide extends PcoResource {
   set isEnabled(bool? x) => (x == null) ? attributes.remove(kEnabled) : attributes[kEnabled] = x;  
 
   // Class Constructors
-  PcoServicesCustomSlide._() : super(kPcoApplication, kTypeString);
   PcoServicesCustomSlide.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesCustomSlide.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesCustomSlide] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides`
@@ -176,7 +176,7 @@ class PcoServicesCustomSlide extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesCustomSlide(String serviceTypeId, String planId, String itemId, { String? body, bool? isEnabled, String? label, int? order }) {
-    var obj = PcoServicesCustomSlide._();
+    var obj = PcoServicesCustomSlide.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides';
     if (body != null) obj.body = body;
     if (isEnabled != null) obj.isEnabled = isEnabled;

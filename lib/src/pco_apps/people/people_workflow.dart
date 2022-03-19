@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.864962
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.380923
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -227,8 +227,8 @@ class PcoPeopleWorkflow extends PcoResource {
   set workflowCategoryId(String? x) => (x == null) ? attributes.remove(kWorkflowCategoryId) : attributes[kWorkflowCategoryId] = x;  
 
   // Class Constructors
-  PcoPeopleWorkflow._() : super(kPcoApplication, kTypeString);
   PcoPeopleWorkflow.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleWorkflow.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflow] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/workflows`
@@ -236,7 +236,7 @@ class PcoPeopleWorkflow extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleWorkflow({ String? name, String? campusId, String? workflowCategoryId }) {
-    var obj = PcoPeopleWorkflow._();
+    var obj = PcoPeopleWorkflow.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows';
     if (name != null) obj.name = name;
     if (campusId != null) obj.campusId = campusId;

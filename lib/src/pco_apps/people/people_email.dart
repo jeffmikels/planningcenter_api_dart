@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.763147
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.294884
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoPeopleEmail extends PcoResource {
   set isPrimary(bool? x) => (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;  
 
   // Class Constructors
-  PcoPeopleEmail._() : super(kPcoApplication, kTypeString);
   PcoPeopleEmail.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleEmail.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleEmail] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/emails`
@@ -192,7 +192,7 @@ class PcoPeopleEmail extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleEmail(String peopleId, { String? address, String? location, bool? isPrimary }) {
-    var obj = PcoPeopleEmail._();
+    var obj = PcoPeopleEmail.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$peopleId/emails';
     if (address != null) obj.address = address;
     if (location != null) obj.location = location;

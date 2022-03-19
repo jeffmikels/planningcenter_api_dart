@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.845731
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.367437
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,8 +152,8 @@ class PcoPeoplePersonMerger extends PcoResource {
   String get personToRemoveId => attributes[kPersonToRemoveId] ?? '';    
 
   // Class Constructors
-  PcoPeoplePersonMerger._() : super(kPcoApplication, kTypeString);
   PcoPeoplePersonMerger.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePersonMerger.empty() : super(kPcoApplication, kTypeString);
 
 
 

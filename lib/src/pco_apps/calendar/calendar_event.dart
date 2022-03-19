@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.909181
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.457257
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,8 +206,8 @@ class PcoCalendarEvent extends PcoResource {
   bool get isVisibleInChurchCenter => attributes[kVisibleInChurchCenter] == true;    
 
   // Class Constructors
-  PcoCalendarEvent._() : super(kPcoApplication, kTypeString);
   PcoCalendarEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoCalendarEvent.empty() : super(kPcoApplication, kTypeString);
 
 
 

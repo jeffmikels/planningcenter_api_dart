@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.831024
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.356458
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -145,8 +145,8 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   String get kind => attributes[kKind] ?? '';    
 
   // Class Constructors
-  PcoPeoplePeopleImportHistory._() : super(kPcoApplication, kTypeString);
   PcoPeoplePeopleImportHistory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeoplePeopleImportHistory.empty() : super(kPcoApplication, kTypeString);
 
 
 

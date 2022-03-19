@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.210149
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.966104
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -146,8 +146,8 @@ class PcoServicesBlockoutException extends PcoResource {
   set date(String? x) => (x == null) ? attributes.remove(kDate) : attributes[kDate] = x;  
 
   // Class Constructors
-  PcoServicesBlockoutException._() : super(kPcoApplication, kTypeString);
   PcoServicesBlockoutException.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesBlockoutException.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockoutException] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions`
@@ -155,7 +155,7 @@ class PcoServicesBlockoutException extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesBlockoutException(String peopleId, String blockoutId, { String? date }) {
-    var obj = PcoServicesBlockoutException._();
+    var obj = PcoServicesBlockoutException.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
     if (date != null) obj.date = date;
     return obj;

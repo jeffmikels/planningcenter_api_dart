@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.095058
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.580997
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -145,8 +145,8 @@ class PcoWebhooksEvent extends PcoResource {
   String get payload => attributes[kPayload] ?? '';    
 
   // Class Constructors
-  PcoWebhooksEvent._() : super(kPcoApplication, kTypeString);
   PcoWebhooksEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoWebhooksEvent.empty() : super(kPcoApplication, kTypeString);
 
 
 

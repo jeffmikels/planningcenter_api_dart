@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.224148
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:04.970679
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,8 +160,8 @@ class PcoServicesEmailTemplate extends PcoResource {
   set subject(String? x) => (x == null) ? attributes.remove(kSubject) : attributes[kSubject] = x;  
 
   // Class Constructors
-  PcoServicesEmailTemplate._() : super(kPcoApplication, kTypeString);
   PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesEmailTemplate.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesEmailTemplate] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/email_templates`
@@ -169,7 +169,7 @@ class PcoServicesEmailTemplate extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesEmailTemplate({ String? htmlBody, String? subject, String? kind }) {
-    var obj = PcoServicesEmailTemplate._();
+    var obj = PcoServicesEmailTemplate.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/email_templates';
     if (htmlBody != null) obj.htmlBody = htmlBody;
     if (subject != null) obj.subject = subject;

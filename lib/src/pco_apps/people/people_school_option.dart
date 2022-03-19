@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.851626
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.375095
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -177,8 +177,8 @@ class PcoPeopleSchoolOption extends PcoResource {
   set schoolTypes(List? x) => (x == null) ? attributes.remove(kSchoolTypes) : attributes[kSchoolTypes] = x;  
 
   // Class Constructors
-  PcoPeopleSchoolOption._() : super(kPcoApplication, kTypeString);
   PcoPeopleSchoolOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleSchoolOption.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleSchoolOption] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/school_options`
@@ -186,7 +186,7 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeopleSchoolOption({ String? value, int? sequence, String? beginningGrade, String? endingGrade, List? schoolTypes }) {
-    var obj = PcoPeopleSchoolOption._();
+    var obj = PcoPeopleSchoolOption.empty();
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/school_options';
     if (value != null) obj.value = value;
     if (sequence != null) obj.sequence = sequence;

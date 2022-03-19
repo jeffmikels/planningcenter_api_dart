@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:02.349323
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.018449
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -252,8 +252,8 @@ class PcoServicesSchedule extends PcoResource {
   bool get isPlanVisibleToMe => attributes[kPlanVisibleToMe] == true;    
 
   // Class Constructors
-  PcoServicesSchedule._() : super(kPcoApplication, kTypeString);
   PcoServicesSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSchedule.empty() : super(kPcoApplication, kTypeString);
 
 
 

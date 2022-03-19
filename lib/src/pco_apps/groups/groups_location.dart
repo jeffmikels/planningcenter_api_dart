@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-18T18:33:03.017169
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T08:59:05.563607
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,8 +153,8 @@ class PcoGroupsLocation extends PcoResource {
   String get strategy => attributes[kStrategy] ?? '';    
 
   // Class Constructors
-  PcoGroupsLocation._() : super(kPcoApplication, kTypeString);
   PcoGroupsLocation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsLocation.empty() : super(kPcoApplication, kTypeString);
 
 
 

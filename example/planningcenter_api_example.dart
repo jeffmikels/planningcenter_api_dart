@@ -3,6 +3,7 @@ import 'dart:io'; // to exit the script faster
 import 'dart:convert'; // for the pretty printing of json
 
 import 'package:planningcenter_api/planningcenter_api.dart';
+import 'package:planningcenter_api/src/pco_base/pco_file.dart';
 
 /// this is where I store my [appid], [secret], [oAuthClientId], and [oAuthClientSecret] constants
 import '../secrets.dart';
@@ -132,7 +133,7 @@ void main() async {
   var r = await PcoServicesPlan.getFromServiceType('1234567');
   if (!r.isError) {
     var plan = r.data.first;
-    var r2 = await plan.itemReorder(PcoData('PlanItemReorder', attributes: {
+    var r2 = await plan.itemReorder(PlanningCenterApiData('PlanItemReorder', attributes: {
       'sequence': ['5', '1', '3']
     }));
     if (r2.isError) {
@@ -140,6 +141,16 @@ void main() async {
     } else {
       print('success');
     }
+  }
+
+  var r3 = await PlanningCenterApiFile.upload('myImage.jpg');
+  if (r3.isError) {
+    print(r3.errorMessage);
+  } else {
+    var f = (r3.data.first);
+    print('File was successfully uploaded... it can now be attached to other objects by using its UUID');
+    print('UUID: ${f.id}');
+    print('CONTENT-TYPE: ${f.contentType}');
   }
 
   exit(0);

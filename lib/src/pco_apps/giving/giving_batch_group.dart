@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.546325
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.499833
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,7 +268,7 @@ class PcoGivingBatchGroup extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups/1/commit`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:

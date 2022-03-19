@@ -734,7 +734,7 @@ $description
   /// using a path like this: `${action.path}`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   /// 
   /// Details:

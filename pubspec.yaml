@@ -1,9 +1,9 @@
 name: planningcenter_api
 description: |
-  This package gives you full coverage of the PlanningCenter API as described here:
-  `https://developer.planning.center/docs/#/overview`
-
-version: 0.8.2
+  This package gives you full coverage of the latest,
+  non-beta version of the PlanningCenter API for each
+  PlanningCenter application.
+version: 0.9.0
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 

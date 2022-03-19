@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.073361
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.887185
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -364,7 +364,7 @@ class PcoServicesSchedule extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/accept`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:
@@ -410,7 +410,7 @@ class PcoServicesSchedule extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/decline`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:

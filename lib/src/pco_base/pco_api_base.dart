@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 /// Planning Center limits requests to 100 requests per 20 seconds
@@ -164,12 +165,14 @@ class PlanningCenter {
   }
 
   late Uri _baseUri;
+  late Uri _uploadsUri;
   late http.Client _client;
 
   // oauth credentials are optional
   String? clientId;
   String? clientSecret;
   PlanningCenterCredentials? oAuthCredentials;
+  final Map<String, String> _authHeaders = {};
 
   /// used for throttling requests
   Future apiCanCall = Future.value(true);
@@ -182,6 +185,13 @@ class PlanningCenter {
       userInfo: '$_appId:$_secret',
       host: _baseUri.host,
       path: _baseUri.path,
+    );
+    _uploadsUri = Uri.parse(uploadsEndpoint);
+    _uploadsUri = Uri(
+      scheme: _uploadsUri.scheme,
+      userInfo: '$_appId:$_secret',
+      host: _uploadsUri.host,
+      path: _uploadsUri.path,
     );
     _client = http.Client();
     initialized = true;
@@ -209,6 +219,59 @@ class PlanningCenter {
     }
   }
 
+  /// a kind of middleware to check credentials before doing an api call
+  Future<PlanningCenterApiError?> _checkCredentials() async {
+    // clear credentials from last time
+    _authHeaders.remove('Authorization');
+
+    // if we have oAuthCredentials, use them
+    if (oAuthCredentials == null) return null;
+
+    // do we need to refresh the token?
+    var now = DateTime.now();
+    var expiresAt = DateTime.fromMillisecondsSinceEpoch(
+        1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+    var refreshExpiresAt =
+        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt)
+            .add(Duration(days: 90));
+
+    if (now.isAfter(expiresAt)) {
+      if (now.isAfter(refreshExpiresAt)) {
+        initialized = false;
+        return PlanningCenterApiError.messageOnly(
+            'Must Fully Reauthorize: refresh token has expired.');
+      } else {
+        // attempt to refresh the token
+        var uri = Uri.parse(tokenEndpoint);
+        var jsonString = json.encode({
+          'client_id': clientId,
+          'client_secret': clientSecret,
+          'refresh_token': oAuthCredentials!.refreshToken,
+          'grant_type': 'refresh_token',
+        });
+        var res = await _client.post(uri,
+            headers: {'Content-Type': 'application/json'}, body: jsonString);
+        if (res.statusCode == 200) {
+          oAuthCredentials =
+              PlanningCenterCredentials.fromJson(json.decode(res.body));
+        } else {
+          initialized = false;
+          return PlanningCenterApiError(
+            'Must Reauthorize: error while refreshing token',
+            'auth',
+            uri,
+            jsonString,
+            PlanningCenterApiQuery(),
+            res.statusCode,
+            res.body,
+          );
+        }
+      }
+    }
+    _authHeaders['Authorization'] = 'Bearer ${oAuthCredentials!.accessToken}';
+    return null;
+  }
+
   /// Planning Center publishes their API documentation here:
   /// https://developer.planning.center/docs/#/overview/
   ///
@@ -222,7 +285,8 @@ class PlanningCenter {
   ///  ?where[date_field_name]=2018-02-22
   ///  or
   ///  ?where[date_field_name][operator]=2018-02-22
-  /// the optional operator can be one of gt,gte,lt,lte for greater than, etc.
+  /// the optional operator can be one of `gt`,`gte`,`lt`,`lte` for greater than, etc.
+  /// The [PlanningCenterApiQuery] object provides abstractions for this.
   ///
   /// related resources can be included with ?include=something
   ///
@@ -235,7 +299,6 @@ class PlanningCenter {
   ///
   /// [endpoint] should begin with a slash, because
   /// 'https://api.planningcenteronline.com' will be prepended automatically
-  ///
   ///
   Future<PlanningCenterApiResponse> call(
     String endpoint, {
@@ -252,14 +315,12 @@ class PlanningCenter {
     // ensure query defaults
     query ??= PlanningCenterApiQuery();
 
-    await apiCanCall;
-    apiCanCall = Future.delayed(Duration(milliseconds: apiInterval));
+    // fix params to be the correct type
+    var params = <String, String>{};
+    query.asMap.forEach((k, v) => params[k.toString()] = v.toString());
 
-    // fix params
-    var fixedParams = <String, String>{};
-    query.asMap.forEach((k, v) => fixedParams[k.toString()] = v.toString());
-    var uri =
-        Uri.https(_baseUri.authority, _baseUri.path + endpoint, fixedParams);
+    // if we are using app secret authentication, it will be embedded in the _baseUri.authority
+    var uri = Uri.https(_baseUri.authority, _baseUri.path + endpoint, params);
     var headers = <String, String>{};
     if (apiVersion.isNotEmpty) headers['X-PCO-API-Version'] = apiVersion;
 
@@ -268,62 +329,20 @@ class PlanningCenter {
       headers['Content-Type'] = 'application/json';
       if (data is String) {
         jsonString = data;
-      } else if (data is PcoData) {
+      } else if (data is PlanningCenterApiData) {
         jsonString = json.encode(data.asMapWithData);
       } else {
         jsonString = json.encode(data);
       }
     }
 
-    // if we have oAuthCredentials, use them
-    if (oAuthCredentials != null) {
-      // do we need to refresh the token?
-      var now = DateTime.now();
-      var expiresAt = DateTime.fromMillisecondsSinceEpoch(
-          1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
-      var refreshExpiresAt = DateTime.fromMillisecondsSinceEpoch(
-              1000 * oAuthCredentials!.createdAt)
-          .add(Duration(days: 90));
+    await apiCanCall;
+    apiCanCall = Future.delayed(Duration(milliseconds: apiInterval));
 
-      if (now.isAfter(expiresAt)) {
-        if (now.isAfter(refreshExpiresAt)) {
-          initialized = false;
-          return PlanningCenterApiError(
-              'Must Reauthorize, refresh token has expired.',
-              application,
-              uri,
-              jsonString,
-              query,
-              401,
-              '');
-        } else {
-          // attempt to refresh the token
-          var res = await _client.post(Uri.parse(tokenEndpoint),
-              headers: {'Content-Type': 'application/json'},
-              body: json.encode({
-                'client_id': clientId,
-                'client_secret': clientSecret,
-                'refresh_token': oAuthCredentials!.refreshToken,
-                'grant_type': 'refresh_token',
-              }));
-          if (res.statusCode == 200) {
-            oAuthCredentials =
-                PlanningCenterCredentials.fromJson(json.decode(res.body));
-          } else {
-            initialized = false;
-            return PlanningCenterApiError(
-                'Must Reauthorize, failed to refresh token',
-                application,
-                uri,
-                jsonString,
-                query,
-                401,
-                res.body);
-          }
-        }
-      }
-      headers['Authorization'] = 'Bearer ${oAuthCredentials!.accessToken}';
-    }
+    var authFailure = await _checkCredentials();
+    if (authFailure != null) return authFailure;
+
+    headers.addAll(_authHeaders);
 
     late http.Response res;
     switch (verb.toLowerCase()) {
@@ -361,6 +380,39 @@ class PlanningCenter {
       uri,
       jsonString,
       query,
+      res.statusCode,
+      res.body,
+    );
+  }
+
+  /// Handle Uploads
+  Future<PlanningCenterApiResponse> upload(String filename) async {
+    // if we are using app secret authentication, it will be embedded in the _uploadsUri
+    // if not, we try to populate the _authHeaders
+    var authFailure = await _checkCredentials();
+    if (authFailure != null) return authFailure;
+
+    var request = http.MultipartRequest('POST', _uploadsUri);
+    var fileBytes = File(filename).readAsBytesSync();
+    var fileToPost = http.MultipartFile.fromBytes('file', fileBytes);
+    request.files.add(fileToPost);
+    request.headers.addAll(_authHeaders);
+    var res = await http.Response.fromStream(await request.send());
+    if (res.statusCode >= 200 && res.statusCode < 300) {
+      var retval = PlanningCenterApiResponse.fromResponse(
+        '-upload-',
+        PlanningCenterApiQuery(),
+        '',
+        res,
+      );
+      return retval;
+    }
+    return PlanningCenterApiError(
+      'UPLOAD Failed',
+      '-upload-',
+      _uploadsUri,
+      '',
+      PlanningCenterApiQuery(),
       res.statusCode,
       res.body,
     );
@@ -413,17 +465,17 @@ class PlanningCenterApiQuery {
   ///
   /// The PlanningCenter API supports url params like this:
   /// - `?where[field_name]=value`
-  /// - `?where[field_name][gt|lt]=value`
+  /// - `?where[field_name][gt|lt|gte|lte]=value`
   ///
   /// However, this library uses a different format for the where component of a query.
   /// Use the queryable field name as a key and append a comparison suffix (`=`, `<`, `>`).
   ///
   /// The [where] map will be converted to url parameters like the following:
   ///
-  /// - `{ 'created_at<': '2022-01-01' }` -> `?where[created_at][lt]=2022-01-01`  (finds items before that date)
-  /// - `{ 'created_at>': '2022-01-01' }` -> `?where[created_at][gt]=2022-01-01`  (finds items after that date)
-  /// - `{ 'created_at=': '2022-01-01' }` -> `?where[created_at]=2022-01-01`      (finds items on that date)
-  /// - `{ 'created_at':  '2022-01-01' }` -> same as using `=`
+  /// - `{ 'created_at<': '2022-01-01' }`  -> `?where[created_at][lt]=2022-01-01`   (finds items before that date)
+  /// - `{ 'created_at>=': '2022-01-01' }` -> `?where[created_at][gte]=2022-01-01`  (finds items on or after that date)
+  /// - `{ 'created_at=': '2022-01-01' }`  -> `?where[created_at]=2022-01-01`       (finds items on that date)
+  /// - `{ 'created_at':  '2022-01-01' }`  -> same as using `=`
   Map<String, String> where;
 
   /// [filter] should be something like `future`, `past`, `after`, `before`, `no_dates`
@@ -477,16 +529,30 @@ class PlanningCenterApiQuery {
     if (filter.isNotEmpty) retval['filter'] = filter.join(',');
 
     // unlike the API, we handle where keys using a comparison suffix
-    // where keys will be transformed like this
+    // the comparison suffix can be `>`, `<`, `=`, `<=`, `>=`
+    final regex = RegExp(r'([^=<>]+)(.*)$');
     where.forEach((key, value) {
       // sanity check
       if (key.isEmpty) return;
       var suffix = '';
-      if (key.contains(RegExp(r'[=<>]$'))) {
-        var endchar = key.substring(key.length - 1);
-        key = key.substring(0, key.length - 1);
-        if (endchar != '=') {
-          suffix = endchar == '<' ? '[lt]' : '[gt]';
+      var m = regex.matchAsPrefix(key);
+      if (m != null) {
+        key = m.group(1)!;
+        switch (m.group(2)!) {
+          case '<':
+            suffix = '[lt]';
+            break;
+          case '>':
+            suffix = '[gt]';
+            break;
+          case '<=':
+            suffix = '[lte]';
+            break;
+          case '>=':
+            suffix = '[gte]';
+            break;
+          case '=':
+          default:
         }
       }
       retval['where[$key]$suffix'] = value;
@@ -590,7 +656,11 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
   }
 }
 
-class PlanningCenterApiResponse {
+/// encapsulates the JSON:API response...
+/// the [rawData] field holds contents of the data field in the response
+/// but is always coerced to a list even if it was an object in the
+/// original response
+class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
   bool get isError => this is PlanningCenterApiError;
   PlanningCenterApiError? get error =>
       isError ? (this as PlanningCenterApiError) : null;
@@ -607,7 +677,7 @@ class PlanningCenterApiResponse {
   final String responseBody;
 
   // JSON:API / PCO raw content
-  final List<Map<String, dynamic>> data; // always coerced into a list
+  final List<T> data;
   final PlanningCenterApiMeta meta;
   final Map<String, dynamic> links;
   final List<Map<String, dynamic>> included;
@@ -650,7 +720,7 @@ class PlanningCenterApiResponse {
     String requestBody,
     http.Response response,
   ) {
-    // handle 'DELETE' responses
+    // handle 'NO-CONTENT' (like DELETE) responses
     if (response.statusCode == 204) {
       return PlanningCenterApiResponse(
         application,
@@ -673,16 +743,16 @@ class PlanningCenterApiResponse {
     Map<String, dynamic> links = ((body['links'] ?? {}) as Map)
         .map((key, value) => MapEntry(key.toString(), value));
 
-    // coerce the type of the data
-    List<Map<String, dynamic>> realData = [];
-    var data = body['data'] ?? [];
-    if (data is! List) data = [data];
-    for (var item in data) {
-      realData.add(
-          (item as Map).map((key, value) => MapEntry(key.toString(), value)));
+    // Process the raw data into List<PcoData>
+    List<T> data = [];
+    var rawData = body['data'] ?? [];
+    if (rawData is! List) rawData = [rawData];
+    for (var item in rawData) {
+      data.add(PlanningCenterApiData.fromJson(item) as T);
+      // data.add((item as Map).map((key, value) => MapEntry(key.toString(), value)));
     }
 
-    // coerce the type of includes
+    // coerce the type of includes to List<Map<String, dynamic>>
     List<Map<String, dynamic>> included = [];
     if (body['included'] != null && body['included'] is List) {
       for (var inc in body['included']) {
@@ -698,7 +768,23 @@ class PlanningCenterApiResponse {
       requestBody,
       response.statusCode,
       response.body,
-      realData,
+      data,
+      meta,
+      links,
+      included,
+    );
+  }
+
+  PlanningCenterApiResponse<F> withData<F extends PlanningCenterApiData>(
+      F data) {
+    return PlanningCenterApiResponse<F>(
+      application,
+      query,
+      requestUri,
+      requestBody,
+      statusCode,
+      responseBody,
+      [data],
       meta,
       links,
       included,
@@ -707,16 +793,47 @@ class PlanningCenterApiResponse {
 }
 
 /// simple wrapper for JSON:API data that doesn't make sense as a full PcoResource
-class PcoData {
+class PlanningCenterApiData {
   String type = '';
-  Map<String, dynamic> attributes = {};
+  String? id = '';
 
-  Map<String, dynamic> get asMap => {'type': type, 'attributes': attributes};
+  final Map<String, dynamic> attributes;
+  final List<Map<String, dynamic>> relationships;
+  final List<Map<String, dynamic>> links;
+
+  Map<String, dynamic> get asMap => {
+        'type': type,
+        if (id != null) 'id': id,
+        'attributes': attributes,
+        if (relationships.isNotEmpty) 'relationships': relationships,
+        if (links.isNotEmpty) 'links': links,
+      };
+  Map<String, dynamic> get asFullMap => {
+        'type': type,
+        if (id != null) 'id': id,
+        'attributes': attributes,
+        'relationships': relationships,
+        'links': links,
+      };
   Map<String, dynamic> get asMapWithData => {'data': asMap};
+  Map<String, dynamic> get asFullMapWithData => {'data': asFullMap};
+
   Map<String, dynamic> toJson() => asMap;
 
   dynamic get(String key) => attributes[key];
   void set(String key, dynamic val) => attributes[key] = val;
 
-  PcoData(this.type, {this.attributes = const {}});
+  PlanningCenterApiData(
+    this.type, {
+    this.id,
+    this.attributes = const {},
+    this.relationships = const [],
+    this.links = const [],
+  });
+  PlanningCenterApiData.fromJson(Map<String, dynamic> data)
+      : type = data['type'] ?? 'unknown',
+        id = data['id'],
+        attributes = data['attributes'] ?? {},
+        relationships = data['relationships'] ?? [],
+        links = data['links'] ?? [];
 }

@@ -22,8 +22,14 @@ This package supports authentication by developer key and secret:
 
 Install the package:
 
-```
+```bash
 dart pub add planningcenter_api
+```
+
+Import the package in your dart file
+
+```dart
+import 'package:planningcenter_api/planningcenter_api.dart';
 ```
 
 ## Usage
@@ -85,6 +91,29 @@ The earlier example of adding an email address to a person should be re-written 
 var email = PcoPeopleEmail('1', address: 'email@example.com', location: 'Home', isPrimary: true);
 email.save();
 ```
+
+## File Uploads
+
+You can upload files to PlanningCenter for later use in other resources.
+
+```dart
+var r3 = await PlanningCenterApiFile.upload('myImage.jpg');
+if (r3.isError) {
+  print(r3.errorMessage);
+} else {
+  var f = (r3.data.first);
+  print('File was successfully uploaded... it can now be attached to other objects by using its UUID');
+  print('UUID: ${f.id}');
+  print('CONTENT-TYPE: ${f.contentType}');
+}
+```
+
+## Application Resource Classes
+
+Library classes have the naming convention of beginning with `PlanningCenter` but classes for resource
+objects are named with the convention `Pco` + Application Name + Resource Name. Here are a couple examples: `PcoPeopleEmail` & `PcoServicesPlan`.
+
+By typing `Pco`, your IDE should pick up the available resource classes.
 
 ### Static Methods
 

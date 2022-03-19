@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.022098
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.855515
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -286,7 +286,7 @@ class PcoServicesLive extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_next_item`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:
@@ -307,7 +307,7 @@ class PcoServicesLive extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_previous_item`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:
@@ -328,7 +328,7 @@ class PcoServicesLive extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/toggle_control`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:

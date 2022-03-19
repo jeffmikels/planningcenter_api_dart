@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T09:51:55.369535
+/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.283345
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -449,7 +449,7 @@ class PcoPeopleList extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:
@@ -470,7 +470,7 @@ class PcoPeopleList extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/run`
   ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
-  /// the JSON:API specifications. The [PcoData] helper class has been
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
   ///
   /// Details:

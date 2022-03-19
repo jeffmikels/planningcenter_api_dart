@@ -1,3 +1,13 @@
+## 0.9.0
+
+-   PlanningCenterApiResponse now includes `data` as `List<PlanningCenterApiData>` instead of a `List<Map<String, dynamic>>`.
+-   `PlanningCenterApiData` objects can also be used directly in api calls.
+-   File uploads are now supported with the `PlanningCenterApiFile` class.
+
+## 0.8.3
+
+-   Supports greater-than-or-equal and less-than-or-equal in where queries now.
+
 ## 0.8.2
 
 -   Fixing some dart analyze warnings.

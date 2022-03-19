@@ -116,17 +116,19 @@ abstract class PcoResource {
           verb: verb, apiVersion: apiVersion, data: data);
       if (!res.isError) {
         // apiresponses now always give data as a list
-        fromJson(res.data.first);
+        fromJson(res.data.first.asMap);
       }
     }
     return res;
   }
 
   Future<PlanningCenterApiResponse> save() async {
-    if (id == null && !canCreate)
+    if (id == null && !canCreate) {
       return PlanningCenterApiError.messageOnly('cannot create object');
-    if (id != null && !canUpdate)
+    }
+    if (id != null && !canUpdate) {
       return PlanningCenterApiError.messageOnly('cannot update object');
+    }
 
     var jsonString = json
         .encode({'data': id == null ? toCreateResource() : toUpdateResource()});
@@ -284,7 +286,7 @@ class PcoCollection<T extends PcoResource> {
     List<T> data = [];
     var toProcess = response.data;
     for (var item in toProcess) {
-      var res = buildResource<T>(response.application, item);
+      var res = buildResource<T>(response.application, item.asMap);
       if (res != null) data.add(res as T);
     }
     return PcoCollection<T>(

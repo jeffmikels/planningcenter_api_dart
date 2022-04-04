@@ -1,3 +1,7 @@
+## 0.9.2
+
+-   Actually including the file upload code into the repo.
+
 ## 0.9.1
 
 -   Bug fix

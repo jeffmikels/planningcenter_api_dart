@@ -115,8 +115,11 @@ abstract class PcoResource {
       res = await api.call(apiEndpoint,
           verb: verb, apiVersion: apiVersion, data: data);
       if (!res.isError) {
-        // apiresponses now always give data as a list
-        fromJson(res.data.first.asMap);
+        if (res.data.isNotEmpty) {
+          // apiresponses now always give data as a list
+          // update self with new data before returning response
+          fromJson(res.data.first.asMap);
+        }
       }
     }
     return res;

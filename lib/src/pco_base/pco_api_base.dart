@@ -775,8 +775,11 @@ class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
     );
   }
 
+  /// Cretes a clone of this object replacing the data field.
+  /// This is only really useful when you want to change the type of the underlying
+  /// data. Note: this might make [data] lose similarity to the [responseBody].
   PlanningCenterApiResponse<F> withData<F extends PlanningCenterApiData>(
-      F data) {
+      List<F> data) {
     return PlanningCenterApiResponse<F>(
       application,
       query,
@@ -784,7 +787,7 @@ class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
       requestBody,
       statusCode,
       responseBody,
-      [data],
+      data,
       meta,
       links,
       included,
@@ -798,8 +801,8 @@ class PlanningCenterApiData {
   String? id = '';
 
   final Map<String, dynamic> attributes;
-  final List<Map<String, dynamic>> relationships;
-  final List<Map<String, dynamic>> links;
+  final Map<String, dynamic> relationships;
+  final Map<String, dynamic> links;
 
   Map<String, dynamic> get asMap => {
         'type': type,
@@ -827,13 +830,13 @@ class PlanningCenterApiData {
     this.type, {
     this.id,
     this.attributes = const {},
-    this.relationships = const [],
-    this.links = const [],
+    this.relationships = const {},
+    this.links = const {},
   });
   PlanningCenterApiData.fromJson(Map<String, dynamic> data)
       : type = data['type'] ?? 'unknown',
         id = data['id'],
         attributes = data['attributes'] ?? {},
-        relationships = data['relationships'] ?? [],
-        links = data['links'] ?? [];
+        relationships = data['relationships'] ?? {},
+        links = data['links'] ?? {};
 }

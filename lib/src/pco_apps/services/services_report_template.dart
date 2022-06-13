@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services ReportTemplate Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 report_template
 /// - Type:               ReportTemplate
@@ -16,44 +15,44 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/report_templates
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A template for generating reports
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
 /// - `title` (ro) -> PCO: `title`
 /// - `type` (ro) -> PCO: `type`
 /// - `isDefault` (ro) -> PCO: `default`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `reporttemplate-organization-report_templates`: https://api.planningcenteronline.com/services/v2/report_templates
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -76,19 +75,20 @@ class PcoServicesReportTemplate extends PcoResource {
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/report_templates';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -115,7 +115,6 @@ class PcoServicesReportTemplate extends PcoResource {
   static const kType = 'type';
   static const kDefault = 'default';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -136,58 +135,50 @@ class PcoServicesReportTemplate extends PcoResource {
   String get body => attributes[kBody] ?? '';
   String get title => attributes[kTitle] ?? '';
   String get type => attributes[kType] ?? '';
-  bool get isDefault => attributes[kDefault] == true;    
-
+  bool get isDefault => attributes[kDefault] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesReportTemplate.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesReportTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/report_templates`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `matrix`
   /// - `people`
   /// - `plans`
   /// - `without_defaults`
-  static Future<PcoCollection<PcoServicesReportTemplate>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesReportTemplate>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesReportTemplate.canInclude;
     var url = '/services/v2/report_templates';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

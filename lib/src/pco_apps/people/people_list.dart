@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO People List Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 list
 /// - Type:               List
@@ -16,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A list is a powerful tool for finding and grouping people together using any criteria imaginable.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -42,35 +41,35 @@ import '../../pco.dart';
 /// - `batchCompletedAt` (ro) -> PCO: `batch_completed_at`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `campus`: include associated campus 
-/// - `category`: include associated category 
-/// - `created_by`: include associated created_by 
-/// - `mailchimp_sync_status`: include associated mailchimp_sync_status 
-/// - `people`: include associated people 
-/// - `rules`: include associated rules 
-/// - `shares`: include associated shares 
-/// - `updated_by`: include associated updated_by 
+///
+/// - `campus`: include associated campus
+/// - `category`: include associated category
+/// - `created_by`: include associated created_by
+/// - `mailchimp_sync_status`: include associated mailchimp_sync_status
+/// - `people`: include associated people
+/// - `rules`: include associated rules
+/// - `shares`: include associated shares
+/// - `updated_by`: include associated updated_by
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `batch_completed_at`: (URLParameter), query on a specific batch_completed_at, example: ?where[batch_completed_at]=2000-01-01T12:00:00Z
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
 /// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
 /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `batch_completed_at`: (URLParameter), prefix with a hyphen (-batch_completed_at) to reverse the order
 /// - `campus_id`: (URLParameter), prefix with a hyphen (-campus_id) to reverse the order
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
@@ -80,7 +79,7 @@ import '../../pco.dart';
 /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `campus-list-campus`: https://api.planningcenteronline.com/people/v2/lists/1/campus
 /// - `listcategory-list-category`: https://api.planningcenteronline.com/people/v2/lists/1/category
@@ -92,12 +91,12 @@ import '../../pco.dart';
 /// - `listshare-list-shares`: https://api.planningcenteronline.com/people/v2/lists/1/shares
 /// - `liststar-list-star`: https://api.planningcenteronline.com/people/v2/lists/1/star
 /// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
-/// 
+///
 /// Inbound Edges:
 /// - `list-campus-lists`: https://api.planningcenteronline.com/people/v2/campuses/1/lists
 /// - `list-listcategory-lists`: https://api.planningcenteronline.com/people/v2/list_categories/1/lists
 /// - `list-organization-lists`: https://api.planningcenteronline.com/people/v2/lists
-/// 
+///
 /// Actions:
 /// - `mailchimp_sync`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync
 /// - `run`: https://api.planningcenteronline.com/people/v2/lists/1/run
@@ -137,19 +136,29 @@ class PcoPeopleList extends PcoResource {
   static const String kTypeString = 'List';
   static const String kTypeId = 'list';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/lists';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `campus`: include associated campus 
-  /// - `category`: include associated category 
-  /// - `created_by`: include associated created_by 
-  /// - `mailchimp_sync_status`: include associated mailchimp_sync_status 
-  /// - `people`: include associated people 
-  /// - `rules`: include associated rules 
-  /// - `shares`: include associated shares 
-  /// - `updated_by`: include associated updated_by 
-  static List<String> get canInclude => ['campus','category','created_by','mailchimp_sync_status','people','rules','shares','updated_by'];
+  /// - `campus`: include associated campus
+  /// - `category`: include associated category
+  /// - `created_by`: include associated created_by
+  /// - `mailchimp_sync_status`: include associated mailchimp_sync_status
+  /// - `people`: include associated people
+  /// - `rules`: include associated rules
+  /// - `shares`: include associated shares
+  /// - `updated_by`: include associated updated_by
+  static List<String> get canInclude => [
+        'campus',
+        'category',
+        'created_by',
+        'mailchimp_sync_status',
+        'people',
+        'rules',
+        'shares',
+        'updated_by'
+      ];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `batch_completed_at`: (URLParameter), query on a specific batch_completed_at, example: ?where[batch_completed_at]=2000-01-01T12:00:00Z
@@ -157,7 +166,8 @@ class PcoPeopleList extends PcoResource {
   /// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['batch_completed_at','created_at','id','name','updated_at'];
+  static List<String> get canQuery =>
+      ['batch_completed_at', 'created_at', 'id', 'name', 'updated_at'];
 
   /// possible orderings with parameter ?order=
   /// - `batch_completed_at`: (URLParameter), prefix with a hyphen (-batch_completed_at) to reverse the order
@@ -167,7 +177,15 @@ class PcoPeopleList extends PcoResource {
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `name_or_description`: (URLParameter), prefix with a hyphen (-name_or_description) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['batch_completed_at','campus_id','created_at','list_category_id','name','name_or_description','updated_at'];
+  static List<String> get canOrderBy => [
+        'batch_completed_at',
+        'campus_id',
+        'created_at',
+        'list_category_id',
+        'name',
+        'name_or_description',
+        'updated_at'
+      ];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -209,7 +227,6 @@ class PcoPeopleList extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -244,73 +261,87 @@ class PcoPeopleList extends PcoResource {
   DateTime get refreshedAt => DateTime.parse(attributes[kRefreshedAt] ?? '');
   bool get isStarred => attributes[kStarred] == true;
   int get totalPeople => attributes[kTotalPeople] ?? 0;
-  DateTime get batchCompletedAt => DateTime.parse(attributes[kBatchCompletedAt] ?? '');    
-
+  DateTime get batchCompletedAt =>
+      DateTime.parse(attributes[kBatchCompletedAt] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  List<T> includedCampus<T extends PcoResource>() => relationships['campus']?.cast<T>() ?? [];
-  List<T> includedCategory<T extends PcoResource>() => relationships['category']?.cast<T>() ?? [];
-  List<T> includedCreatedBy<T extends PcoResource>() => relationships['created_by']?.cast<T>() ?? [];
-  List<T> includedMailchimpSyncStatus<T extends PcoResource>() => relationships['mailchimp_sync_status']?.cast<T>() ?? [];
-  List<T> includedPeople<T extends PcoResource>() => relationships['people']?.cast<T>() ?? [];
-  List<T> includedRules<T extends PcoResource>() => relationships['rules']?.cast<T>() ?? [];
-  List<T> includedShares<T extends PcoResource>() => relationships['shares']?.cast<T>() ?? [];
-  List<T> includedUpdatedBy<T extends PcoResource>() => relationships['updated_by']?.cast<T>() ?? [];
 
-
-
+  List<T> includedCampus<T extends PcoResource>() =>
+      relationships['campus']?.cast<T>() ?? [];
+  List<T> includedCategory<T extends PcoResource>() =>
+      relationships['category']?.cast<T>() ?? [];
+  List<T> includedCreatedBy<T extends PcoResource>() =>
+      relationships['created_by']?.cast<T>() ?? [];
+  List<T> includedMailchimpSyncStatus<T extends PcoResource>() =>
+      relationships['mailchimp_sync_status']?.cast<T>() ?? [];
+  List<T> includedPeople<T extends PcoResource>() =>
+      relationships['people']?.cast<T>() ?? [];
+  List<T> includedRules<T extends PcoResource>() =>
+      relationships['rules']?.cast<T>() ?? [];
+  List<T> includedShares<T extends PcoResource>() =>
+      relationships['shares']?.cast<T>() ?? [];
+  List<T> includedUpdatedBy<T extends PcoResource>() =>
+      relationships['updated_by']?.cast<T>() ?? [];
 
   // Class Constructors
-  PcoPeopleList.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoPeopleList.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoPeopleList.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/lists`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `can_manage`
   /// - `recently_viewed`
   /// - `starred`
-  static Future<PcoCollection<PcoPeopleList>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleList>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleList.canInclude;
     var url = '/people/v2/lists';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleList>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/campuses/$campusId/lists`
-  static Future<PcoCollection<PcoPeopleList>> getFromCampus(String campusId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleList>> getFromCampus(String campusId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleList.canInclude;
     var url = '/people/v2/campuses/$campusId/lists';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleList>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists`
-  static Future<PcoCollection<PcoPeopleList>> getFromListCategory(String listCategoryId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleList>> getFromListCategory(
+      String listCategoryId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleList.canInclude;
     var url = '/people/v2/list_categories/$listCategoryId/lists';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleList>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -319,94 +350,113 @@ class PcoPeopleList extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/campus`
-  Future<PcoCollection<PcoPeopleCampus>> getCampus({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleCampus>> getCampus(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleCampus.canInclude;
     var url = '$apiEndpoint/campus';
-    return PcoCollection.fromApiCall<PcoPeopleCampus>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleListCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/category`
-  Future<PcoCollection<PcoPeopleListCategory>> getCategory({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleListCategory>> getCategory(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListCategory.canInclude;
     var url = '$apiEndpoint/category';
-    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/created_by`
-  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePerson.canInclude;
     var url = '$apiEndpoint/created_by';
-    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleListResult] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/list_results`
-  Future<PcoCollection<PcoPeopleListResult>> getListResults({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleListResult>> getListResults(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListResult.canInclude;
     var url = '$apiEndpoint/list_results';
-    return PcoCollection.fromApiCall<PcoPeopleListResult>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleListResult>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleMailchimpSyncStatu] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status`
-  Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getMailchimpSyncStatus({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getMailchimpSyncStatus(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleMailchimpSyncStatu.canInclude;
     var url = '$apiEndpoint/mailchimp_sync_status';
-    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/people`
-  Future<PcoCollection<PcoPeoplePerson>> getPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPeople(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePerson.canInclude;
     var url = '$apiEndpoint/people';
-    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleRule] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/rules`
-  Future<PcoCollection<PcoPeopleRule>> getRules({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleRule>> getRules(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleRule.canInclude;
     var url = '$apiEndpoint/rules';
-    return PcoCollection.fromApiCall<PcoPeopleRule>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleRule>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleListShare] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/shares`
-  Future<PcoCollection<PcoPeopleListShare>> getShares({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleListShare>> getShares(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListShare.canInclude;
     var url = '$apiEndpoint/shares';
-    return PcoCollection.fromApiCall<PcoPeopleListShare>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleListShare>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeopleListStar] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/star`
-  Future<PcoCollection<PcoPeopleListStar>> getStar({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleListStar>> getStar(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleListStar.canInclude;
     var url = '$apiEndpoint/star';
-    return PcoCollection.fromApiCall<PcoPeopleListStar>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleListStar>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/updated_by`
-  Future<PcoCollection<PcoPeoplePerson>> getUpdatedBy({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getUpdatedBy(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePerson.canInclude;
     var url = '$apiEndpoint/updated_by';
-    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
@@ -414,14 +464,14 @@ class PcoPeopleList extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `mailchimp_sync`
-  /// 
+  ///
   /// Sync a List to Mailchimp. (Mailchimp integration must already be configured for this organization.)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync`
-  /// 
+  ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
-  /// 
+  ///
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
   Future<PlanningCenterApiResponse> mailchimpSync(Object data) async {
@@ -431,18 +481,18 @@ class PcoPeopleList extends PcoResource {
       );
     }
     var url = '$apiEndpoint/mailchimp_sync';
-    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
 
   /// ACTION: `run`
-  /// 
+  ///
   /// Run a List to update its results.
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/run`
-  /// 
+  ///
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
-  /// 
+  ///
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
   Future<PlanningCenterApiResponse> run(Object data) async {
@@ -452,8 +502,6 @@ class PcoPeopleList extends PcoResource {
       );
     }
     var url = '$apiEndpoint/run';
-    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
-
-
 }

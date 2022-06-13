@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services Series Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 series
 /// - Type:               Series
@@ -16,12 +15,12 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// A Series can be specified for each plan to tie plans with similar messages together, even across Service Types.
-/// 
+///
 /// *Note*: A series is not created until artwork is added from the plan.  You can use `series_title` included in `Plan` attributes to get titles for series without artwork.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -34,35 +33,35 @@ import '../../pco.dart';
 /// - `artworkForMobile` (ro) -> PCO: `artwork_for_mobile`
 /// - `artworkForPlan` (ro) -> PCO: `artwork_for_plan`
 /// - `artworkOriginal` (ro) -> PCO: `artwork_original`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `plan-series-plans`: https://api.planningcenteronline.com/services/v2/series/1/plans
-/// 
+///
 /// Inbound Edges:
 /// - `series-organization-series`: https://api.planningcenteronline.com/services/v2/series
 /// - `series-plan-series`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/series
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -91,11 +90,12 @@ class PcoServicesSeries extends PcoResource {
   static const String kTypeString = 'Series';
   static const String kTypeId = 'series';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/series';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -136,7 +136,6 @@ class PcoServicesSeries extends PcoResource {
   static const kArtworkForPlan = 'artwork_for_plan';
   static const kArtworkOriginal = 'artwork_original';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -161,50 +160,50 @@ class PcoServicesSeries extends PcoResource {
   String get artworkForDashboard => attributes[kArtworkForDashboard] ?? '';
   String get artworkForMobile => attributes[kArtworkForMobile] ?? '';
   String get artworkForPlan => attributes[kArtworkForPlan] ?? '';
-  String get artworkOriginal => attributes[kArtworkOriginal] ?? '';    
-
+  String get artworkOriginal => attributes[kArtworkOriginal] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesSeries.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSeries.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesSeries.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesSeries] objects (expecting many)
   /// using a path like this: `/services/v2/series`
-  static Future<PcoCollection<PcoServicesSeries>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSeries>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSeries.canInclude;
     var url = '/services/v2/series';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSeries>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSeries>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoServicesSeries] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/series`
-  static Future<PcoCollection<PcoServicesSeries>> getFromServiceTypeAndPlan(String serviceTypeId,String planId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSeries>> getFromServiceTypeAndPlan(
+      String serviceTypeId, String planId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesSeries.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/series';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSeries>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSeries>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -213,19 +212,18 @@ class PcoServicesSeries extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans`
-  Future<PcoCollection<PcoServicesPlan>> getPlans({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlan>> getPlans(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlan.canInclude;
     var url = '$apiEndpoint/plans';
-    return PcoCollection.fromApiCall<PcoServicesPlan>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

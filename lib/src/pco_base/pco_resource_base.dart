@@ -46,7 +46,8 @@ abstract class PcoResource {
   /// but this might be null if we haven't created/fetched the object yet
   /// Child classes should redefine this getter to allow for manual path overrides
   String? get apiPath => links['self'] ?? defaultPathTemplate;
-  String get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
+  String get apiEndpoint =>
+      '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
   bool fetched = false;
@@ -92,13 +93,15 @@ abstract class PcoResource {
   }) {
     if (!data.containsKey('type')) {
       print(data);
-      throw FormatException('data supplied does not meet JSON:API specs. No "type" field found');
+      throw FormatException(
+          'data supplied does not meet JSON:API specs. No "type" field found');
     }
     fromJson(data);
     handleIncludes(withIncludes);
   }
 
-  Future<PlanningCenterApiResponse> _selfcall<T extends PcoResource>(verb, [String data = '']) async {
+  Future<PlanningCenterApiResponse> _selfcall<T extends PcoResource>(verb,
+      [String data = '']) async {
     late PlanningCenterApiResponse res;
     if (apiPath == null) {
       res = PlanningCenterApiError(
@@ -111,7 +114,8 @@ abstract class PcoResource {
         '',
       );
     } else {
-      res = await api.call(apiEndpoint, verb: verb, apiVersion: apiVersion, data: data);
+      res = await api.call(apiEndpoint,
+          verb: verb, apiVersion: apiVersion, data: data);
       if (!res.isError) {
         if (res.data.isNotEmpty) {
           // apiresponses now always give data as a list
@@ -131,7 +135,8 @@ abstract class PcoResource {
       return PlanningCenterApiError.messageOnly('cannot update object');
     }
 
-    var jsonString = json.encode({'data': id == null ? toCreateResource() : toUpdateResource()});
+    var jsonString = json
+        .encode({'data': id == null ? toCreateResource() : toUpdateResource()});
     return _selfcall(id == null ? 'post' : 'patch', jsonString);
   }
 
@@ -144,7 +149,8 @@ abstract class PcoResource {
   /// will clear and update [id], [apiPath], [attributes] and [_relationships]
   fromJson(Map<String, dynamic> data) {
     if (data['type'] != resourceType) {
-      throw FormatException('Incorrect data type: ${data['type']} given, but $resourceType expected.');
+      throw FormatException(
+          'Incorrect data type: ${data['type']} given, but $resourceType expected.');
     }
 
     // responses will always have an id, but we shouldn't update this data
@@ -269,25 +275,31 @@ class PcoCollection<T extends PcoResource> {
   PlanningCenterApiError? get error => response.error;
   String get errorMessage => error?.message ?? '';
 
-  PcoCollection(this.items, this.meta, this.response, this.query, this.endpoint, this.apiVersion);
+  PcoCollection(this.items, this.meta, this.response, this.query, this.endpoint,
+      this.apiVersion);
 
   /// url, query: query, apiVersion:kApiVersion
-  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(String endpoint,
-      {PlanningCenterApiQuery? query, required String apiVersion}) async {
-    var res = await PlanningCenter.instance.call(endpoint, query: query, apiVersion: apiVersion);
+  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(
+      String endpoint,
+      {PlanningCenterApiQuery? query,
+      required String apiVersion}) async {
+    var res = await PlanningCenter.instance
+        .call(endpoint, query: query, apiVersion: apiVersion);
     return PcoCollection<T>.fromApiResponse(res, endpoint, apiVersion);
   }
 
   /// we also require the original endpoint and the apiversion so that subsequent
   /// requests like [getMore] and [nextPage] can be built easily off of this one.
-  factory PcoCollection.fromApiResponse(PlanningCenterApiResponse response, endpoint, apiVersion) {
+  factory PcoCollection.fromApiResponse(
+      PlanningCenterApiResponse response, endpoint, apiVersion) {
     List<T> data = [];
     var toProcess = response.data;
     for (var item in toProcess) {
       var res = buildResource<T>(response.application, item.asMap);
       if (res != null) data.add(res as T);
     }
-    return PcoCollection<T>(data, response.meta, response, response.query, endpoint, apiVersion);
+    return PcoCollection<T>(
+        data, response.meta, response, response.query, endpoint, apiVersion);
   }
 
   /// [nextPage] will return a *new collection* representing the next page of data from
@@ -299,7 +311,8 @@ class PcoCollection<T extends PcoResource> {
   /// new resources have been added on the server. Otherwise it might be a wasted request.
   Future<PcoCollection<T>> nextPage() {
     return PcoCollection.fromApiCall<T>(endpoint,
-        query: query.withOffset(meta.nextOffset ?? meta.totalCount), apiVersion: apiVersion);
+        query: query.withOffset(meta.nextOffset ?? meta.totalCount),
+        apiVersion: apiVersion);
   }
 
   /// If a collection has more items available on the server

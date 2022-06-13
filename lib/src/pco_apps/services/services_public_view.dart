@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services PublicView Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 public_view
 /// - Type:               PublicView
@@ -16,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/public_view
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Manage options for a public plan
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isSeriesAndPlanTitles` (ro) -> PCO: `series_and_plan_titles`
@@ -34,34 +33,34 @@ import '../../pco.dart';
 /// - `isSpotify` (ro) -> PCO: `spotify`
 /// - `isYoutube` (ro) -> PCO: `youtube`
 /// - `isVimeo` (ro) -> PCO: `vimeo`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `publicview-servicetype-public_view`: https://api.planningcenteronline.com/services/v2/service_types/1/public_view
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -92,19 +91,20 @@ class PcoServicesPublicView extends PcoResource {
   static const String kTypeString = 'PublicView';
   static const String kTypeId = 'public_view';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/public_view';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/public_view';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -139,7 +139,6 @@ class PcoServicesPublicView extends PcoResource {
   static const kYoutube = 'youtube';
   static const kVimeo = 'vimeo';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -168,52 +167,45 @@ class PcoServicesPublicView extends PcoResource {
   bool get isAmazon => attributes[kAmazon] == true;
   bool get isSpotify => attributes[kSpotify] == true;
   bool get isYoutube => attributes[kYoutube] == true;
-  bool get isVimeo => attributes[kVimeo] == true;    
-
+  bool get isVimeo => attributes[kVimeo] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesPublicView.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPublicView.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesPublicView.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesPublicView] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/public_view`
-  static Future<PcoCollection<PcoServicesPublicView>> getFromServiceType(String serviceTypeId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesPublicView>> getFromServiceType(
+      String serviceTypeId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/public_view';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesPublicView>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPublicView>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

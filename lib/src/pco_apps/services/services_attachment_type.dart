@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services AttachmentType Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 attachment_type
 /// - Type:               AttachmentType
@@ -16,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachment_types
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Create an Attachment Type for each type of file you might want only specific people to see. When you attach a file, you can specify an attachment type to then be able to link the file to a position.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -31,34 +30,34 @@ import '../../pco.dart';
 /// - `isNumberCharts` (ro) -> PCO: `number_charts`
 /// - `isNumeralCharts` (ro) -> PCO: `numeral_charts`
 /// - `isBuiltIn` (ro) -> PCO: `built_in`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `attachmenttype-organization-attachment_types`: https://api.planningcenteronline.com/services/v2/attachment_types
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -93,15 +92,16 @@ class PcoServicesAttachmentType extends PcoResource {
   static const String kTypeString = 'AttachmentType';
   static const String kTypeId = 'attachment_type';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/attachment_types';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -137,7 +137,6 @@ class PcoServicesAttachmentType extends PcoResource {
   static const kNumeralCharts = 'numeral_charts';
   static const kBuiltIn = 'built_in';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -163,52 +162,44 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get isLyrics => attributes[kLyrics] == true;
   bool get isNumberCharts => attributes[kNumberCharts] == true;
   bool get isNumeralCharts => attributes[kNumeralCharts] == true;
-  bool get isBuiltIn => attributes[kBuiltIn] == true;    
-
+  bool get isBuiltIn => attributes[kBuiltIn] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesAttachmentType.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesAttachmentType] objects (expecting many)
   /// using a path like this: `/services/v2/attachment_types`
-  static Future<PcoCollection<PcoServicesAttachmentType>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesAttachmentType>> get(
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesAttachmentType.canInclude;
     var url = '/services/v2/attachment_types';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services PlanPersonTime Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 plan_person_time
 /// - Type:               PlanPersonTime
@@ -16,43 +15,43 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `planpersontime-planperson-plan_person_times`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -93,19 +92,20 @@ class PcoServicesPlanPersonTime extends PcoResource {
   static const String kTypeString = 'PlanPersonTime';
   static const String kTypeId = 'plan_person_time';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -131,7 +131,6 @@ class PcoServicesPlanPersonTime extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -149,52 +148,46 @@ class PcoServicesPlanPersonTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get status => attributes[kStatus] ?? '';    
-
+  String get status => attributes[kStatus] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesPlanPersonTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesPlanPersonTime.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesPlanPersonTime.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoServicesPlanPersonTime] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/plan_people/$planPeopleId/plan_person_times`
-  static Future<PcoCollection<PcoServicesPlanPersonTime>> getFromPeopleAndPlanPeople(String peopleId,String planPeopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesPlanPersonTime>>
+      getFromPeopleAndPlanPeople(String peopleId, String planPeopleId,
+          {String? id,
+          PlanningCenterApiQuery? query,
+          bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlanPersonTime.canInclude;
-    var url = '/services/v2/people/$peopleId/plan_people/$planPeopleId/plan_person_times';
+    var url =
+        '/services/v2/people/$peopleId/plan_people/$planPeopleId/plan_person_times';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

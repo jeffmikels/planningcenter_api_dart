@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services SongbookStatus Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 songbook_status
 /// - Type:               SongbookStatus
@@ -16,44 +15,44 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
 /// Used to get the status of an in progress songbook action. When FINISHED, will contain the url of the songbook.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
 /// - `statusCode` (ro) -> PCO: `status_code`
 /// - `statusToken` (ro) -> PCO: `status_token`
 /// - `url` (ro) -> PCO: `url`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -76,19 +75,20 @@ class PcoServicesSongbookStatu extends PcoResource {
   static const String kTypeString = 'SongbookStatus';
   static const String kTypeId = 'songbook_status';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -115,7 +115,6 @@ class PcoServicesSongbookStatu extends PcoResource {
   static const kStatusToken = 'status_token';
   static const kUrl = 'url';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -136,41 +135,30 @@ class PcoServicesSongbookStatu extends PcoResource {
   String get status => attributes[kStatus] ?? '';
   String get statusCode => attributes[kStatusCode] ?? '';
   String get statusToken => attributes[kStatusToken] ?? '';
-  String get url => attributes[kUrl] ?? '';    
-
+  String get url => attributes[kUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoServicesSongbookStatu.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
-
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

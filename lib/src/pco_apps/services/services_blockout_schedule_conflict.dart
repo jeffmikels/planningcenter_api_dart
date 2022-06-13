@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Services BlockoutScheduleConflict Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 blockout_schedule_conflict
 /// - Type:               BlockoutScheduleConflict
@@ -16,10 +15,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dates` (ro) -> PCO: `dates`
@@ -34,34 +33,34 @@ import '../../pco.dart';
 /// - `teamPositionName` (ro) -> PCO: `team_position_name`
 /// - `sortDate` (ro) -> PCO: `sort_date`
 /// - `isCanAcceptPartial` (ro) -> PCO: `can_accept_partial`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -123,19 +122,20 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   static const String kTypeString = 'BlockoutScheduleConflict';
   static const String kTypeId = 'blockout_schedule_conflict';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -170,7 +170,6 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   static const kSortDate = 'sort_date';
   static const kCanAcceptPartial = 'can_accept_partial';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -199,41 +198,31 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   String get teamName => attributes[kTeamName] ?? '';
   String get teamPositionName => attributes[kTeamPositionName] ?? '';
   DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
-  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;    
-
+  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  
-
-
-
 
   // Class Constructors
-  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
-  PcoServicesBlockoutScheduleConflict.empty() : super(kPcoApplication, kTypeString);
-
-
+  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
+  PcoServicesBlockoutScheduleConflict.empty()
+      : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
-
-
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
-
-
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

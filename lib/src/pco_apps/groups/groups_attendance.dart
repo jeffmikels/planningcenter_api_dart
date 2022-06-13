@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 import '../../pco.dart';
 
 /// This class represents a PCO Groups Attendance Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 attendance
 /// - Type:               Attendance
@@ -16,44 +15,44 @@ import '../../pco.dart';
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/attendances
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isAttended` (ro) -> PCO: `attended`
 /// - `role` (ro) -> PCO: `role`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `person`: include associated person 
+///
+/// - `person`: include associated person
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `role`: (URLParameter), query on a specific role, example: ?where[role]=value
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
 /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
 /// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `person-attendance-person`: https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person
-/// 
+///
 /// Inbound Edges:
 /// - `attendance-event-attendances`: https://api.planningcenteronline.com/groups/v2/events/1/attendances
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -87,11 +86,12 @@ class PcoGroupsAttendance extends PcoResource {
   static const String kTypeString = 'Attendance';
   static const String kTypeId = 'attendance';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/attendances';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/events/1/attendances';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `person`: include associated person 
+  /// - `person`: include associated person
   static List<String> get canInclude => ['person'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -102,7 +102,7 @@ class PcoGroupsAttendance extends PcoResource {
   /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
   /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
   /// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
-  static List<String> get canOrderBy => ['first_name','last_name','role'];
+  static List<String> get canOrderBy => ['first_name', 'last_name', 'role'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -126,7 +126,6 @@ class PcoGroupsAttendance extends PcoResource {
   static const kAttended = 'attended';
   static const kRole = 'role';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -145,42 +144,41 @@ class PcoGroupsAttendance extends PcoResource {
 
   // getters for object attributes
   bool get isAttended => attributes[kAttended] == true;
-  String get role => attributes[kRole] ?? '';    
-
+  String get role => attributes[kRole] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships
-  
-  List<T> includedPerson<T extends PcoResource>() => relationships['person']?.cast<T>() ?? [];
 
-
-
+  List<T> includedPerson<T extends PcoResource>() =>
+      relationships['person']?.cast<T>() ?? [];
 
   // Class Constructors
-  PcoGroupsAttendance.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
+  PcoGroupsAttendance.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>> withIncludes = const []})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncludes: withIncludes);
   PcoGroupsAttendance.empty() : super(kPcoApplication, kTypeString);
-
-
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
-
-
   /// Will get a collection of [PcoGroupsAttendance] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/attendances`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `attended`
-  static Future<PcoCollection<PcoGroupsAttendance>> getFromEvent(String eventId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsAttendance>> getFromEvent(String eventId,
+      {String? id,
+      PlanningCenterApiQuery? query,
+      bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsAttendance.canInclude;
     var url = '/groups/v2/events/$eventId/attendances';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsAttendance>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // --------------------------------
   // Outbound Edges
@@ -189,19 +187,18 @@ class PcoGroupsAttendance extends PcoResource {
 
   /// Will get a collection of [PcoGroupsPerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person`
-  Future<PcoCollection<PcoGroupsPerson>> getPerson({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsPerson>> getPerson(
+      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsPerson.canInclude;
     var url = '$apiEndpoint/person';
-    return PcoCollection.fromApiCall<PcoGroupsPerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsPerson>(url,
+        query: query, apiVersion: apiVersion);
   }
-
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
-
-
 
 }

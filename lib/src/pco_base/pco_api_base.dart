@@ -26,10 +26,14 @@ const int apiInterval = 201;
 /// That's why the global api object here allows a version to be specified in the call function
 ///
 class PlanningCenter {
-  static const mainEndpoint = 'https://api.planningcenteronline.com'; // no final slash
-  static const uploadsEndpoint = 'https://upload.planningcenteronline.com/v2/files';
-  static const authEndpoint = 'https://api.planningcenteronline.com/oauth/authorize';
-  static const tokenEndpoint = 'https://api.planningcenteronline.com/oauth/token';
+  static const mainEndpoint =
+      'https://api.planningcenteronline.com'; // no final slash
+  static const uploadsEndpoint =
+      'https://upload.planningcenteronline.com/v2/files';
+  static const authEndpoint =
+      'https://api.planningcenteronline.com/oauth/authorize';
+  static const tokenEndpoint =
+      'https://api.planningcenteronline.com/oauth/token';
   static const oAuthScopes = [
     'calendar',
     'check_ins',
@@ -43,7 +47,8 @@ class PlanningCenter {
   static late PlanningCenter instance;
 
   /// initialize with an appId and a secret for basic authentication
-  static PlanningCenter init(String appId, String secret) => instance = PlanningCenter._(appId, secret);
+  static PlanningCenter init(String appId, String secret) =>
+      instance = PlanningCenter._(appId, secret);
 
   /// initialize with an already configured client.
   ///
@@ -55,7 +60,8 @@ class PlanningCenter {
     String clientSecret,
     PlanningCenterCredentials credentials,
   ) =>
-      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+      instance =
+          PlanningCenter._withCredentials(clientId, clientSecret, credentials);
 
   /// Use OAuth2 to authorize
   /// Scopes should be one or more of the following: api, calendar, check_ins, giving, groups, people, services, webhooks
@@ -135,7 +141,8 @@ class PlanningCenter {
     if (res.statusCode == 200) {
       var data = json.decode(res.body);
       var credentials = PlanningCenterCredentials.fromJson(data);
-      instance = PlanningCenter._withCredentials(clientId, clientSecret, credentials);
+      instance =
+          PlanningCenter._withCredentials(clientId, clientSecret, credentials);
       return true;
     }
     print(res.statusCode);
@@ -190,7 +197,8 @@ class PlanningCenter {
     initialized = true;
   }
 
-  PlanningCenter._withCredentials(this.clientId, this.clientSecret, this.oAuthCredentials) {
+  PlanningCenter._withCredentials(
+      this.clientId, this.clientSecret, this.oAuthCredentials) {
     _baseUri = Uri.parse(mainEndpoint);
     _baseUri = Uri(
       scheme: _baseUri.scheme,
@@ -199,10 +207,11 @@ class PlanningCenter {
     );
     _client = http.Client();
     var now = DateTime.now();
-    var expiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+    var expiresAt = DateTime.fromMillisecondsSinceEpoch(
+        1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
     var refreshExpiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt)
+            .add(Duration(days: 90));
     if (now.isAfter(expiresAt) && now.isAfter(refreshExpiresAt)) {
       initialized = false;
     } else {
@@ -220,15 +229,17 @@ class PlanningCenter {
 
     // do we need to refresh the token?
     var now = DateTime.now();
-    var expiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
+    var expiresAt = DateTime.fromMillisecondsSinceEpoch(
+        1000 * (oAuthCredentials!.createdAt + oAuthCredentials!.expiresIn));
     var refreshExpiresAt =
-        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt).add(Duration(days: 90));
+        DateTime.fromMillisecondsSinceEpoch(1000 * oAuthCredentials!.createdAt)
+            .add(Duration(days: 90));
 
     if (now.isAfter(expiresAt)) {
       if (now.isAfter(refreshExpiresAt)) {
         initialized = false;
-        return PlanningCenterApiError.messageOnly('Must Fully Reauthorize: refresh token has expired.');
+        return PlanningCenterApiError.messageOnly(
+            'Must Fully Reauthorize: refresh token has expired.');
       } else {
         // attempt to refresh the token
         var uri = Uri.parse(tokenEndpoint);
@@ -238,9 +249,11 @@ class PlanningCenter {
           'refresh_token': oAuthCredentials!.refreshToken,
           'grant_type': 'refresh_token',
         });
-        var res = await _client.post(uri, headers: {'Content-Type': 'application/json'}, body: jsonString);
+        var res = await _client.post(uri,
+            headers: {'Content-Type': 'application/json'}, body: jsonString);
         if (res.statusCode == 200) {
-          oAuthCredentials = PlanningCenterCredentials.fromJson(json.decode(res.body));
+          oAuthCredentials =
+              PlanningCenterCredentials.fromJson(json.decode(res.body));
         } else {
           initialized = false;
           return PlanningCenterApiError(
@@ -294,7 +307,8 @@ class PlanningCenter {
     PlanningCenterApiQuery? query,
     String apiVersion = '',
   }) async {
-    if (endpoint.startsWith(mainEndpoint)) endpoint = endpoint.replaceFirst(mainEndpoint, '');
+    if (endpoint.startsWith(mainEndpoint))
+      endpoint = endpoint.replaceFirst(mainEndpoint, '');
 
     var application = endpoint.split('/')[1];
 
@@ -348,7 +362,8 @@ class PlanningCenter {
         res = await _client.delete(uri, headers: headers);
         break;
       default:
-        return PlanningCenterApiError('Unsupported http verb', application, uri, jsonString, query, 400, '');
+        return PlanningCenterApiError('Unsupported http verb', application, uri,
+            jsonString, query, 400, '');
     }
     if (res.statusCode >= 200 && res.statusCode < 300) {
       var retval = PlanningCenterApiResponse.fromResponse(
@@ -632,7 +647,8 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 
   @override
   Map<String, dynamic> toJson({bool includeRawResponseBody = false}) =>
-      super.toJson(includeRawResponseBody: includeRawResponseBody)..addAll({'message': message});
+      super.toJson(includeRawResponseBody: includeRawResponseBody)
+        ..addAll({'message': message});
 
   @override
   String toString() {
@@ -646,7 +662,8 @@ class PlanningCenterApiError extends PlanningCenterApiResponse {
 /// original response
 class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
   bool get isError => this is PlanningCenterApiError;
-  PlanningCenterApiError? get error => isError ? (this as PlanningCenterApiError) : null;
+  PlanningCenterApiError? get error =>
+      isError ? (this as PlanningCenterApiError) : null;
   String get errorMessage => error?.message ?? '';
 
   // request items
@@ -721,8 +738,10 @@ class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
 
     var body = json.decode(response.body);
 
-    PlanningCenterApiMeta meta = PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});
-    Map<String, dynamic> links = ((body['links'] ?? {}) as Map).map((key, value) => MapEntry(key.toString(), value));
+    PlanningCenterApiMeta meta =
+        PlanningCenterApiMeta.fromJson(body['meta'] ?? <String, dynamic>{});
+    Map<String, dynamic> links = ((body['links'] ?? {}) as Map)
+        .map((key, value) => MapEntry(key.toString(), value));
 
     // Process the raw data into List<PcoData>
     List<T> data = [];
@@ -759,7 +778,8 @@ class PlanningCenterApiResponse<T extends PlanningCenterApiData> {
   /// Cretes a clone of this object replacing the data field.
   /// This is only really useful when you want to change the type of the underlying
   /// data. Note: this might make [data] lose similarity to the [responseBody].
-  PlanningCenterApiResponse<F> withData<F extends PlanningCenterApiData>(List<F> data) {
+  PlanningCenterApiResponse<F> withData<F extends PlanningCenterApiData>(
+      List<F> data) {
     return PlanningCenterApiResponse<F>(
       application,
       query,

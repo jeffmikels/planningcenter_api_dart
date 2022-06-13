@@ -1,3 +1,9 @@
+## 0.9.3
+
+-   Adding a note discouraging users from accessing resource attributes directly.
+-   Added typed relationship getters for each class
+-   deprecated the `data` field on PcoCollection objects, use `items` moving forward.
+
 ## 0.9.2
 
 -   Actually including the file upload code into the repo.

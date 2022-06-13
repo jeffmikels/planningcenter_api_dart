@@ -15,7 +15,7 @@ void main() {
     test('First Test', () async {
       var collection = await PcoServicesSong.get();
       if (!collection.isError) {
-        for (var song in collection.data) {
+        for (var song in collection.items) {
           print(song.attributes);
         }
       }

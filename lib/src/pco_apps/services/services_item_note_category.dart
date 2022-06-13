@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.851319
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.608263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services ItemNoteCategory Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 item_note_category
 /// - Type:               ItemNoteCategory
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A category of plan item notes for an entire Service Type.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -27,35 +28,35 @@ import '../../pco.dart';
 /// - `sequence` (ro) -> PCO: `sequence`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isFrequentlyUsed` (ro) -> PCO: `frequently_used`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `itemnotecategory-itemnote-item_note_category`: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category
 /// - `itemnotecategory-servicetype-item_note_categories`: https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -87,20 +88,19 @@ class PcoServicesItemNoteCategory extends PcoResource {
   static const String kTypeString = 'ItemNoteCategory';
   static const String kTypeId = 'item_note_category';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -129,6 +129,7 @@ class PcoServicesItemNoteCategory extends PcoResource {
   static const kUpdatedAt = 'updated_at';
   static const kFrequentlyUsed = 'frequently_used';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -149,57 +150,63 @@ class PcoServicesItemNoteCategory extends PcoResource {
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
-  bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;
+  bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoServicesItemNoteCategory.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category`
-  static Future<PcoCollection<PcoServicesItemNoteCategory>>
-      getFromSongAndScheduledItemAndItemNote(
-          String songId, String scheduledItemId, String itemNoteId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesItemNoteCategory>> getFromSongAndScheduledItemAndItemNote(String songId,String scheduledItemId,String itemNoteId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
-    var url =
-        '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category';
-
-    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
-        query: query, apiVersion: kApiVersion);
+    var url = '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category';
+    
+    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories`
-  static Future<PcoCollection<PcoServicesItemNoteCategory>> getFromServiceType(
-      String serviceTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesItemNoteCategory>> getFromServiceType(String serviceTypeId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '/services/v2/service_types/$serviceTypeId/item_note_categories';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

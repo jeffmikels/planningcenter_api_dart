@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.275214
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.727801
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO People FormField Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 form_field
 /// - Type:               FormField
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/fields
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A field in a custom form.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `fieldType` (ro) -> PCO: `field_type`
@@ -29,37 +30,37 @@ import '../../pco.dart';
 /// - `sequence` (ro) -> PCO: `sequence`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
-/// - `options`: include associated options
+/// 
+/// - `options`: include associated options 
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
 /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `formfieldoption-formfield-options`: https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options
-///
+/// 
 /// Inbound Edges:
 /// - `formfield-form-fields`: https://api.planningcenteronline.com/people/v2/forms/1/fields
 /// - `formfield-formsubmission-form_fields`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_fields
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -113,24 +114,22 @@ class PcoPeopleFormField extends PcoResource {
   static const String kTypeString = 'FormField';
   static const String kTypeId = 'form_field';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/forms/1/fields';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/fields';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `options`: include associated options
+  /// - `options`: include associated options 
   static List<String> get canInclude => ['options'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
   /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy =>
-      ['created_at', 'sequence', 'updated_at'];
+  static List<String> get canOrderBy => ['created_at','sequence','updated_at'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -160,6 +159,7 @@ class PcoPeopleFormField extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -182,48 +182,50 @@ class PcoPeopleFormField extends PcoResource {
   String get description => attributes[kDescription] ?? '';
   bool get isRequired => attributes[kRequired] == true;
   String get settings => attributes[kSettings] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  int get sequence => attributes[kSequence] ?? 0;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  List<T> includedOptions<T extends PcoResource>() => relationships['options']?.cast<T>() ?? [];
+
+
+
 
   // Class Constructors
-  PcoPeopleFormField.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeopleFormField.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoPeopleFormField.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoPeopleFormField] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/fields`
-  static Future<PcoCollection<PcoPeopleFormField>> getFieldsFromForm(
-      String formId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleFormField>> getFieldsFromForm(String formId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormField.canInclude;
     var url = '/people/v2/forms/$formId/fields';
-
-    return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
-        query: query, apiVersion: kApiVersion);
+    
+    return PcoCollection.fromApiCall<PcoPeopleFormField>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields`
-  static Future<PcoCollection<PcoPeopleFormField>> getFromFormAndFormSubmission(
-      String formId, String formSubmissionId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleFormField>> getFromFormAndFormSubmission(String formId,String formSubmissionId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormField.canInclude;
-    var url =
-        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
+    var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleFormField>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -232,18 +234,19 @@ class PcoPeopleFormField extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormFieldOption] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options`
-  Future<PcoCollection<PcoPeopleFormFieldOption>> getOptions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFormFieldOption>> getOptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleFormFieldOption.canInclude;
     var url = '$apiEndpoint/options';
-    return PcoCollection.fromApiCall<PcoPeopleFormFieldOption>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleFormFieldOption>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

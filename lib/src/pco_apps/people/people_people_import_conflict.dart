@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.309560
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.747883
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO People PeopleImportConflict Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 people_import_conflict
 /// - Type:               PeopleImportConflict
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A PeopleImportConflict is a record of change that will occur if the parent PeopleImport is completed.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (ro) -> PCO: `kind`
@@ -29,35 +30,35 @@ import '../../pco.dart';
 /// - `isIgnore` (ro) -> PCO: `ignore`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `peopleimportconflict-peopleimport-conflicts`: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -84,21 +85,20 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   static const String kTypeString = 'PeopleImportConflict';
   static const String kTypeId = 'people_import_conflict';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-  static List<String> get canQuery => ['kind', 'name'];
+  static List<String> get canQuery => ['kind','name'];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -129,6 +129,7 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -151,22 +152,32 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   String get message => attributes[kMessage] ?? '';
   String get data => attributes[kData] ?? '';
   String get conflictingChanges => attributes[kConflictingChanges] ?? '';
-  bool get isIgnore => attributes[kIgnore] == true;
+  bool get isIgnore => attributes[kIgnore] == true;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoPeoplePeopleImportConflict.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoPeoplePeopleImportConflict] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/conflicts`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `creates`
   /// - `creates_and_updates`
@@ -177,27 +188,27 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   /// - `ignored`
   /// - `not_ignored`
   /// - `updates`
-  static Future<PcoCollection<PcoPeoplePeopleImportConflict>>
-      getConflictsFromPeopleImport(String peopleImportId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflictsFromPeopleImport(String peopleImportId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

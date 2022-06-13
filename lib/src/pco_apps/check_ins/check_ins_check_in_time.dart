@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.006021
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.659367
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO CheckIns CheckInTime Object
-///
+/// 
 /// - Application:        check-ins
 /// - Id:                 check_in_time
 /// - Type:               CheckInTime
@@ -15,45 +16,45 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A CheckInTime combines an EventTime and a Location, and associates it with
 /// the parent CheckIn.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `isHasValidated` (ro) -> PCO: `has_validated`
 /// - `errors` (ro) -> PCO: `errors`
 /// - `isServicesIntegrated` (ro) -> PCO: `services_integrated`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `checkintime-checkin-check_in_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -95,20 +96,19 @@ class PcoCheckInsCheckInTime extends PcoResource {
   static const String kTypeString = 'CheckInTime';
   static const String kTypeId = 'check_in_time';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -135,6 +135,7 @@ class PcoCheckInsCheckInTime extends PcoResource {
   static const kErrors = 'errors';
   static const kServicesIntegrated = 'services_integrated';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -155,42 +156,52 @@ class PcoCheckInsCheckInTime extends PcoResource {
   String get kind => attributes[kKind] ?? '';
   bool get isHasValidated => attributes[kHasValidated] == true;
   List get errors => attributes[kErrors] ?? [];
-  bool get isServicesIntegrated => attributes[kServicesIntegrated] == true;
+  bool get isServicesIntegrated => attributes[kServicesIntegrated] == true;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoCheckInsCheckInTime.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoCheckInsCheckInTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoCheckInsCheckInTime.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoCheckInsCheckInTime] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_times`
-  static Future<PcoCollection<PcoCheckInsCheckInTime>> getFromCheckIn(
-      String checkInId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsCheckInTime>> getFromCheckIn(String checkInId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoCheckInsCheckInTime.canInclude;
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_times';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

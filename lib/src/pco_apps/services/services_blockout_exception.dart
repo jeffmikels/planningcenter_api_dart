@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.834295
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.600552
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services BlockoutException Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 blockout_exception
 /// - Type:               BlockoutException
@@ -15,43 +16,43 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-///
+/// 
 /// ## Description
 /// A single exception for the dates generated from the blockout
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `date` (rw) -> PCO: `date`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `blockoutexception-blockout-blockout_exceptions`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -80,21 +81,19 @@ class PcoServicesBlockoutException extends PcoResource {
   static const String kTypeString = 'BlockoutException';
   static const String kTypeId = 'blockout_exception';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -120,6 +119,7 @@ class PcoServicesBlockoutException extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['date'];
@@ -137,63 +137,68 @@ class PcoServicesBlockoutException extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get date => attributes[kDate] ?? '';
-
+  String get date => attributes[kDate] ?? '';  
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set date(String? x) =>
-      (x == null) ? attributes.remove(kDate) : attributes[kDate] = x;
+  set date(String? x) => (x == null) ? attributes.remove(kDate) : attributes[kDate] = x;  
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoServicesBlockoutException.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoServicesBlockoutException.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoServicesBlockoutException.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockoutException] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions`
-  ///
+  /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockoutException(String peopleId, String blockoutId,
-      {String? date}) {
+  factory PcoServicesBlockoutException(String peopleId, String blockoutId, { String? date }) {
     var obj = PcoServicesBlockoutException.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
     if (date != null) obj.date = date;
     return obj;
   }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoServicesBlockoutException] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions`
-  static Future<PcoCollection<PcoServicesBlockoutException>>
-      getFromPeopleAndBlockout(String peopleId, String blockoutId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesBlockoutException>> getFromPeopleAndBlockout(String peopleId,String blockoutId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
-    var url =
-        '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+    var url = '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

@@ -102,7 +102,6 @@ class Vertex extends JsonApiDoc {
   List<Attribute> vertexAttributes = [];
   List<Relationship> vertexRelationships = [];
 
-  // List<Relationship> vertexRelationships = []; // allow for filters
   // List<Action> vertexActions;
   Map<String, Edge> edgeById = {};
   List<Edge> inboundEdges = []; // refers to the endpoints that lead to this item
@@ -491,6 +490,7 @@ String classTemplate(Vertex vertex) {
   var fieldGetterLines = <String>['// getters for object attributes'];
   var fieldSetterLines = <String>['// setters for object attributes'];
   var additionalAssignableLines = <String>['// additional setters / getters for create/update attributes'];
+  var relationshipGetterLines = <String>['// lines to access typed relationships'];
   var attributeDocLines = <String>[];
 
   print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(', ')}');
@@ -527,6 +527,13 @@ String classTemplate(Vertex vertex) {
     var attribute = Attribute.nameOnly(item);
     additionalAssignableLines.add(fieldSetterOrGetterLine('both', attribute));
     attributeDocLines.add('- `${fieldVarName(attribute)}` (wo) -> PCO: `${attribute.name}`');
+  }
+
+  // for related items that can be included, we want to create typed getters
+  // but the api documentation doesn't map between the `can_include` field and the real edges
+  // we will need to create our own mapping. :-(
+  for (var rel in vertex.vertexRelationships) {
+    var relationshipClass = classNameFromVertex(vertex.application, rel.name);
   }
 
   /// HANDLING EDGES...
@@ -815,9 +822,13 @@ ${assignLines.join('\n').prefixLines('    ')}
   }
 
   // do some cleanup
+  // the first line for these is a comment, so empty out if it's the only line
   if (fieldGetterLines.length == 1) fieldGetterLines = [];
   if (fieldSetterLines.length == 1) fieldSetterLines = [];
   if (additionalAssignableLines.length == 1) additionalAssignableLines = [];
+  if (relationshipGetterLines.length == 1) relationshipGetterLines = [];
+
+  // add extra empty line between getter and setter and additional assignable lines
   if (fieldGetterLines.isNotEmpty && fieldSetterLines.isNotEmpty) fieldSetterLines.insert(0, '\n');
   if ((fieldGetterLines.isNotEmpty || fieldSetterLines.isNotEmpty) && additionalAssignableLines.isNotEmpty) {
     additionalAssignableLines.insert(0, '\n');
@@ -935,6 +946,15 @@ ${fieldConstantLines.join()}
   bool get canDestroy => ${vertex.vertexPermissions.canDestroy};
 
 ${fieldGetterLines.join('\n').prefixLines('  ')}${fieldSetterLines.join('\n').prefixLines('  ')}${additionalAssignableLines.join('\n').prefixLines('  ')}
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+${vertex.canInclude.map((e) => 'List<T> included${e.name.snakeToPascal()}<T extends PcoResource>() => relationships[\'${e.name}\']?.cast<T>() ?? [];').join('\n').prefixLines('  ')}
+
+
+
 
   // Class Constructors
   $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);

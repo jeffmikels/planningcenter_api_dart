@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.832487
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.599580
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services Blockout Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 blockout
 /// - Type:               Blockout
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/blockouts
-///
+/// 
 /// ## Description
 /// An object representing a blockout date, and an optional recurrence pattern
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `description` (ro) -> PCO: `description`
@@ -36,35 +37,35 @@ import '../../pco.dart';
 /// - `startsAt` (rw) -> PCO: `starts_at`
 /// - `endsAt` (rw) -> PCO: `ends_at`
 /// - `isShare` (rw) -> PCO: `share`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `group_identifier`: (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `blockoutdate-blockout-blockout_dates`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
 /// - `blockoutexception-blockout-blockout_exceptions`: https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions
-///
+/// 
 /// Inbound Edges:
 /// - `blockout-person-blockouts`: https://api.planningcenteronline.com/services/v2/people/1/blockouts
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -111,13 +112,11 @@ class PcoServicesBlockout extends PcoResource {
   static const String kTypeString = 'Blockout';
   static const String kTypeId = 'blockout';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -125,7 +124,7 @@ class PcoServicesBlockout extends PcoResource {
   static List<String> get canQuery => ['group_identifier'];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -163,30 +162,13 @@ class PcoServicesBlockout extends PcoResource {
   static const kEndsAt = 'ends_at';
   static const kShare = 'share';
 
+
   // getters and setters
   @override
-  List<String> get createAllowed => [
-        'reason',
-        'repeat_frequency',
-        'repeat_interval',
-        'repeat_period',
-        'share',
-        'repeat_until',
-        'starts_at',
-        'ends_at'
-      ];
+  List<String> get createAllowed => ['reason', 'repeat_frequency', 'repeat_interval', 'repeat_period', 'share', 'repeat_until', 'starts_at', 'ends_at'];
 
   @override
-  List<String> get updateAllowed => [
-        'reason',
-        'repeat_frequency',
-        'repeat_interval',
-        'repeat_period',
-        'share',
-        'repeat_until',
-        'starts_at',
-        'ends_at'
-      ];
+  List<String> get updateAllowed => ['reason', 'repeat_frequency', 'repeat_interval', 'repeat_period', 'share', 'repeat_until', 'starts_at', 'ends_at'];
 
   @override
   bool get canCreate => true;
@@ -210,116 +192,99 @@ class PcoServicesBlockout extends PcoResource {
   String get repeatUntil => attributes[kRepeatUntil] ?? '';
   DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
   DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  bool get isShare => attributes[kShare] == true;
-
+  bool get isShare => attributes[kShare] == true;  
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set reason(String? x) =>
-      (x == null) ? attributes.remove(kReason) : attributes[kReason] = x;
-
+  set reason(String? x) => (x == null) ? attributes.remove(kReason) : attributes[kReason] = x;
+  
   /// Possible values:
-  ///
+  /// 
   /// - no_repeat
-  ///
+  /// 
   /// - every_1
-  ///
+  /// 
   /// - every_2
-  ///
+  /// 
   /// - every_3
-  ///
+  /// 
   /// - every_4
-  ///
+  /// 
   /// - every_5
-  ///
+  /// 
   /// - every_6
-  ///
+  /// 
   /// - every_7
-  ///
+  /// 
   /// - every_8
-
+  
   /// pass `null` to remove key from attributes
-  set repeatFrequency(String? x) => (x == null)
-      ? attributes.remove(kRepeatFrequency)
-      : attributes[kRepeatFrequency] = x;
-
+  set repeatFrequency(String? x) => (x == null) ? attributes.remove(kRepeatFrequency) : attributes[kRepeatFrequency] = x;
+  
   /// Possible values:
-  ///
+  /// 
   /// - exact_day_of_month
-  ///
+  /// 
   /// - week_of_month_1
-  ///
+  /// 
   /// - week_of_month_2
-  ///
+  /// 
   /// - week_of_month_3
-  ///
+  /// 
   /// - week_of_month_4
-  ///
+  /// 
   /// - week_of_month_last
-
+  
   /// pass `null` to remove key from attributes
-  set repeatInterval(String? x) => (x == null)
-      ? attributes.remove(kRepeatInterval)
-      : attributes[kRepeatInterval] = x;
-
+  set repeatInterval(String? x) => (x == null) ? attributes.remove(kRepeatInterval) : attributes[kRepeatInterval] = x;
+  
   /// Possible values:
-  ///
+  /// 
   /// - daily
-  ///
+  /// 
   /// - weekly
-  ///
+  /// 
   /// - monthly
-  ///
+  /// 
   /// - yearly
-
+  
   /// pass `null` to remove key from attributes
-  set repeatPeriod(String? x) => (x == null)
-      ? attributes.remove(kRepeatPeriod)
-      : attributes[kRepeatPeriod] = x;
-
+  set repeatPeriod(String? x) => (x == null) ? attributes.remove(kRepeatPeriod) : attributes[kRepeatPeriod] = x;
+  
   /// pass `null` to remove key from attributes
-  set repeatUntil(String? x) => (x == null)
-      ? attributes.remove(kRepeatUntil)
-      : attributes[kRepeatUntil] = x;
-
+  set repeatUntil(String? x) => (x == null) ? attributes.remove(kRepeatUntil) : attributes[kRepeatUntil] = x;
+  
   /// pass `null` to remove key from attributes
-  set startsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kStartsAt)
-      : attributes[kStartsAt] = x.toIso8601String();
-
+  set startsAt(DateTime? x) => (x == null) ? attributes.remove(kStartsAt) : attributes[kStartsAt] = x.toIso8601String();
+  
   /// pass `null` to remove key from attributes
-  set endsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kEndsAt)
-      : attributes[kEndsAt] = x.toIso8601String();
-
+  set endsAt(DateTime? x) => (x == null) ? attributes.remove(kEndsAt) : attributes[kEndsAt] = x.toIso8601String();
+  
   /// pass `null` to remove key from attributes
-  set isShare(bool? x) =>
-      (x == null) ? attributes.remove(kShare) : attributes[kShare] = x;
+  set isShare(bool? x) => (x == null) ? attributes.remove(kShare) : attributes[kShare] = x;  
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoServicesBlockout.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoServicesBlockout.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoServicesBlockout.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockout] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts`
-  ///
+  /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockout(String peopleId,
-      {String? reason,
-      String? repeatFrequency,
-      String? repeatInterval,
-      String? repeatPeriod,
-      bool? isShare,
-      String? repeatUntil,
-      DateTime? startsAt,
-      DateTime? endsAt}) {
+  factory PcoServicesBlockout(String peopleId, { String? reason, String? repeatFrequency, String? repeatInterval, String? repeatPeriod, bool? isShare, String? repeatUntil, DateTime? startsAt, DateTime? endsAt }) {
     var obj = PcoServicesBlockout.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
     if (reason != null) obj.reason = reason;
     if (repeatFrequency != null) obj.repeatFrequency = repeatFrequency;
     if (repeatInterval != null) obj.repeatInterval = repeatInterval;
@@ -331,28 +296,27 @@ class PcoServicesBlockout extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoServicesBlockout] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/blockouts`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `future`
   /// - `past`
-  static Future<PcoCollection<PcoServicesBlockout>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesBlockout>> getFromPeople(String peopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockout.canInclude;
     var url = '/services/v2/people/$peopleId/blockouts';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesBlockout>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesBlockout>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -361,29 +325,28 @@ class PcoServicesBlockout extends PcoResource {
 
   /// Will get a collection of [PcoServicesBlockoutDate] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates`
-  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockoutDate.canInclude;
     var url = '$apiEndpoint/blockout_dates';
-    return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesBlockoutException] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions`
-  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
     var url = '$apiEndpoint/blockout_exceptions';
-    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

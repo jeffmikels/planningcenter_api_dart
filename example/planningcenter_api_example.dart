@@ -80,7 +80,7 @@ void main() async {
   var collection = await PcoServicesServiceType.get();
   debug(collection.response);
   if (!collection.isError) {
-    var service = collection.data.first;
+    var service = collection.items.first;
     print('Found Service Type: ${service.name}');
 
     /// most class instances have methods allowing you to fetch related items
@@ -88,10 +88,10 @@ void main() async {
     /// of their sort date
     var plans = await service.getPlans(query: PlanningCenterApiQuery(order: '-sort_date'));
     if (!plans.isError) {
-      var plan = plans.data.first;
+      var plan = plans.items.first;
       print('Found Plan: ${plan.seriesTitle} - ${plan.title} - ${plan.lastTimeAt}');
       var items = await plan.getItems();
-      for (var item in items.data) {
+      for (var item in items.items) {
         print('Plan Item: ${item.title}\n${item.description}\n');
         if (item.title == 'CHANGE ME') {
           print('attempting to update this item');
@@ -132,7 +132,7 @@ void main() async {
 
   var r = await PcoServicesPlan.getFromServiceType('1234567');
   if (!r.isError) {
-    var plan = r.data.first;
+    var plan = r.items.first;
     var r2 = await plan.itemReorder(PlanningCenterApiData('PlanItemReorder', attributes: {
       'sequence': ['5', '1', '3']
     }));

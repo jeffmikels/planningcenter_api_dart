@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.560848
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.867618
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Webhooks Delivery Object
-///
+/// 
 /// - Application:        webhooks
 /// - Id:                 delivery
 /// - Type:               Delivery
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
@@ -29,34 +30,34 @@ import '../../pco.dart';
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `timing` (ro) -> PCO: `timing`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `delivery-event-deliveries`: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -90,16 +91,15 @@ class PcoWebhooksDelivery extends PcoResource {
   static const String kTypeString = 'Delivery';
   static const String kTypeId = 'delivery';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -134,6 +134,7 @@ class PcoWebhooksDelivery extends PcoResource {
   static const kUpdatedAt = 'updated_at';
   static const kTiming = 'timing';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -156,43 +157,52 @@ class PcoWebhooksDelivery extends PcoResource {
   String get requestBody => attributes[kRequestBody] ?? '';
   String get responseHeaders => attributes[kResponseHeaders] ?? '';
   String get responseBody => attributes[kResponseBody] ?? '';
-  double get timing => attributes[kTiming] ?? 0;
+  double get timing => attributes[kTiming] ?? 0;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoWebhooksDelivery.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoWebhooksDelivery.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoWebhooksDelivery.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoWebhooksDelivery] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions/$subscriptionId/events/$eventId/deliveries`
-  static Future<PcoCollection<PcoWebhooksDelivery>> getFromSubscriptionAndEvent(
-      String subscriptionId, String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoWebhooksDelivery>> getFromSubscriptionAndEvent(String subscriptionId,String eventId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoWebhooksDelivery.canInclude;
-    var url =
-        '/webhooks/v2/subscriptions/$subscriptionId/events/$eventId/deliveries';
+    var url = '/webhooks/v2/subscriptions/$subscriptionId/events/$eventId/deliveries';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

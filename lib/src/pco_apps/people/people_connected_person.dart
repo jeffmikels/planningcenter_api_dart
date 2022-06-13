@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.265292
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.723704
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO People ConnectedPerson Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 connected_person
 /// - Type:               ConnectedPerson
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/connected_people
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A Connected Person is an account from a different organization linked to an account in this organization.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `givenName` (ro) -> PCO: `given_name`
@@ -29,34 +30,34 @@ import '../../pco.dart';
 /// - `gender` (ro) -> PCO: `gender`
 /// - `organizationName` (ro) -> PCO: `organization_name`
 /// - `organizationId` (ro) -> PCO: `organization_id`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `connectedperson-person-connected_people`: https://api.planningcenteronline.com/people/v2/people/1/connected_people
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -90,20 +91,19 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const String kTypeString = 'ConnectedPerson';
   static const String kTypeId = 'connected_person';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -134,6 +134,7 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const kOrganizationName = 'organization_name';
   static const kOrganizationId = 'organization_id';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -158,40 +159,52 @@ class PcoPeopleConnectedPerson extends PcoResource {
   String get lastName => attributes[kLastName] ?? '';
   String get gender => attributes[kGender] ?? '';
   String get organizationName => attributes[kOrganizationName] ?? '';
-  String get organizationId => attributes[kOrganizationId] ?? '';
+  String get organizationId => attributes[kOrganizationId] ?? '';    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoPeopleConnectedPerson.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/connected_people`
-  static Future<PcoCollection<PcoPeopleConnectedPerson>>
-      getConnectedPeopleFromPeople(String peopleId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleConnectedPerson>> getConnectedPeopleFromPeople(String peopleId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeopleConnectedPerson.canInclude;
     var url = '/people/v2/people/$peopleId/connected_people';
-
-    return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
-        query: query, apiVersion: kApiVersion);
+    
+    return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
   // --------------------------------
   // Instance functions to traverse outbound edges
 
+
+
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

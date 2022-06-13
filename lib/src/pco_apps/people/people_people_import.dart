@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.308758
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.747148
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO People PeopleImport Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 people_import
 /// - Type:               PeopleImport
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A PeopleImport is a record of an ongoing or previous import from a CSV file.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `attribs` (ro) -> PCO: `attribs`
@@ -27,35 +28,35 @@ import '../../pco.dart';
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `processedAt` (ro) -> PCO: `processed_at`
 /// - `undoneAt` (ro) -> PCO: `undone_at`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `status`: (URLParameter), query on a specific status, example: ?where[status]=value
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `peopleimportconflict-peopleimport-conflicts`: https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
 /// - `peopleimporthistory-peopleimport-histories`: https://api.planningcenteronline.com/people/v2/people_imports/1/histories
-///
+/// 
 /// Inbound Edges:
 /// - `peopleimport-organization-people_imports`: https://api.planningcenteronline.com/people/v2/people_imports
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -80,12 +81,11 @@ class PcoPeoplePeopleImport extends PcoResource {
   static const String kTypeString = 'PeopleImport';
   static const String kTypeId = 'people_import';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people_imports';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people_imports';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -93,7 +93,7 @@ class PcoPeoplePeopleImport extends PcoResource {
   static List<String> get canQuery => ['status'];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -122,6 +122,7 @@ class PcoPeoplePeopleImport extends PcoResource {
   static const kProcessedAt = 'processed_at';
   static const kUndoneAt = 'undone_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -142,32 +143,39 @@ class PcoPeoplePeopleImport extends PcoResource {
   String get attribs => attributes[kAttribs] ?? '';
   String get status => attributes[kStatus] ?? '';
   DateTime get processedAt => DateTime.parse(attributes[kProcessedAt] ?? '');
-  DateTime get undoneAt => DateTime.parse(attributes[kUndoneAt] ?? '');
+  DateTime get undoneAt => DateTime.parse(attributes[kUndoneAt] ?? '');    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoPeoplePeopleImport.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoPeoplePeopleImport] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports`
-  static Future<PcoCollection<PcoPeoplePeopleImport>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeoplePeopleImport>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImport.canInclude;
     var url = '/people/v2/people_imports';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeoplePeopleImport>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImport>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -176,7 +184,7 @@ class PcoPeoplePeopleImport extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePeopleImportConflict] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `creates`
   /// - `creates_and_updates`
@@ -187,36 +195,35 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// - `ignored`
   /// - `not_ignored`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
     var url = '$apiEndpoint/conflicts';
-    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePeopleImportHistory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people_imports/1/histories`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `creates`
   /// - `household_creates`
   /// - `household_updates`
   /// - `identical`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoPeoplePeopleImportHistory.canInclude;
     var url = '$apiEndpoint/histories';
-    return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

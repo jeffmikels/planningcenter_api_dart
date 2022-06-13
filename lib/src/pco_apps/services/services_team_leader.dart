@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.906164
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.629966
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services TeamLeader Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 team_leader
 /// - Type:               TeamLeader
@@ -15,47 +16,47 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
 /// A leader of a specific Team in a Service Type.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isSendResponsesForAccepts` (ro) -> PCO: `send_responses_for_accepts`
 /// - `isSendResponsesForDeclines` (ro) -> PCO: `send_responses_for_declines`
 /// - `isSendResponsesForBlockouts` (ro) -> PCO: `send_responses_for_blockouts`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
-/// - `people`: include associated people
-/// - `team`: include associated team
+/// 
+/// - `people`: include associated people 
+/// - `team`: include associated team 
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
 /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people
 /// - `team-teamleader-team`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team
-///
+/// 
 /// Inbound Edges:
 /// - `teamleader-person-team_leaders`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders
 /// - `teamleader-team-team_leaders`: https://api.planningcenteronline.com/services/v2/teams/1/team_leaders
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -90,23 +91,22 @@ class PcoServicesTeamLeader extends PcoResource {
   static const String kTypeString = 'TeamLeader';
   static const String kTypeId = 'team_leader';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `people`: include associated people
-  /// - `team`: include associated team
-  static List<String> get canInclude => ['people', 'team'];
+  /// - `people`: include associated people 
+  /// - `team`: include associated team 
+  static List<String> get canInclude => ['people','team'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
   /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-  static List<String> get canOrderBy => ['first_name', 'last_name'];
+  static List<String> get canOrderBy => ['first_name','last_name'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -131,6 +131,7 @@ class PcoServicesTeamLeader extends PcoResource {
   static const kSendResponsesForDeclines = 'send_responses_for_declines';
   static const kSendResponsesForBlockouts = 'send_responses_for_blockouts';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -148,56 +149,57 @@ class PcoServicesTeamLeader extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isSendResponsesForAccepts =>
-      attributes[kSendResponsesForAccepts] == true;
-  bool get isSendResponsesForDeclines =>
-      attributes[kSendResponsesForDeclines] == true;
-  bool get isSendResponsesForBlockouts =>
-      attributes[kSendResponsesForBlockouts] == true;
+  bool get isSendResponsesForAccepts => attributes[kSendResponsesForAccepts] == true;
+  bool get isSendResponsesForDeclines => attributes[kSendResponsesForDeclines] == true;
+  bool get isSendResponsesForBlockouts => attributes[kSendResponsesForBlockouts] == true;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  List<T> includedPeople<T extends PcoResource>() => relationships['people']?.cast<T>() ?? [];
+  List<T> includedTeam<T extends PcoResource>() => relationships['team']?.cast<T>() ?? [];
+
+
+
 
   // Class Constructors
-  PcoServicesTeamLeader.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoServicesTeamLeader.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoServicesTeamLeader.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/team_leaders`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
-  static Future<PcoCollection<PcoServicesTeamLeader>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesTeamLeader>> getFromPeople(String peopleId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeamLeader.canInclude;
     var url = '/services/v2/people/$peopleId/team_leaders';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/team_leaders`
-  static Future<PcoCollection<PcoServicesTeamLeader>> getFromTeam(String teamId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesTeamLeader>> getFromTeam(String teamId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeamLeader.canInclude;
     var url = '/services/v2/teams/$teamId/team_leaders';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -206,29 +208,28 @@ class PcoServicesTeamLeader extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people`
-  Future<PcoCollection<PcoServicesPerson>> getPeople(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPerson>> getPeople({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPerson.canInclude;
     var url = '$apiEndpoint/people';
-    return PcoCollection.fromApiCall<PcoServicesPerson>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeam({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeam.canInclude;
     var url = '$apiEndpoint/team';
-    return PcoCollection.fromApiCall<PcoServicesTeam>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

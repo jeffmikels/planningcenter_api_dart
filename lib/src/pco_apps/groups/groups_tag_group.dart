@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:05.549198
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.853704
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Groups TagGroup Object
-///
+/// 
 /// - Application:        groups
 /// - Id:                 tag_group
 /// - Type:               TagGroup
@@ -15,45 +16,45 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/tag_groups
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isDisplayPublicly` (ro) -> PCO: `display_publicly`
 /// - `isMultipleOptionsEnabled` (ro) -> PCO: `multiple_options_enabled`
 /// - `name` (ro) -> PCO: `name`
 /// - `position` (ro) -> PCO: `position`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 /// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `tag-taggroup-tags`: https://api.planningcenteronline.com/groups/v2/tag_groups/1/tags
-///
+/// 
 /// Inbound Edges:
 /// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/groups/v2/tag_groups
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -76,12 +77,11 @@ class PcoGroupsTagGroup extends PcoResource {
   static const String kTypeString = 'TagGroup';
   static const String kTypeId = 'tag_group';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/groups/v2/tag_groups';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/tag_groups';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -91,7 +91,7 @@ class PcoGroupsTagGroup extends PcoResource {
   /// possible orderings with parameter ?order=
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
-  static List<String> get canOrderBy => ['name', 'position'];
+  static List<String> get canOrderBy => ['name','position'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -117,6 +117,7 @@ class PcoGroupsTagGroup extends PcoResource {
   static const kName = 'name';
   static const kPosition = 'position';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -135,40 +136,46 @@ class PcoGroupsTagGroup extends PcoResource {
 
   // getters for object attributes
   bool get isDisplayPublicly => attributes[kDisplayPublicly] == true;
-  bool get isMultipleOptionsEnabled =>
-      attributes[kMultipleOptionsEnabled] == true;
+  bool get isMultipleOptionsEnabled => attributes[kMultipleOptionsEnabled] == true;
   String get name => attributes[kName] ?? '';
-  int get position => attributes[kPosition] ?? 0;
+  int get position => attributes[kPosition] ?? 0;    
+
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  
+
+
+
 
   // Class Constructors
-  PcoGroupsTagGroup.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoGroupsTagGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoGroupsTagGroup.empty() : super(kPcoApplication, kTypeString);
+
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoGroupsTagGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/tag_groups`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `public`
   /// Filter tag groups that are visible on public pages
-  ///
-  static Future<PcoCollection<PcoGroupsTagGroup>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  /// 
+  static Future<PcoCollection<PcoGroupsTagGroup>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsTagGroup.canInclude;
     var url = '/groups/v2/tag_groups';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsTagGroup>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsTagGroup>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -177,18 +184,19 @@ class PcoGroupsTagGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/tag_groups/1/tags`
-  Future<PcoCollection<PcoGroupsTag>> getTags(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsTag>> getTags({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoGroupsTag.canInclude;
     var url = '$apiEndpoint/tags';
-    return PcoCollection.fromApiCall<PcoGroupsTag>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsTag>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+
 
 }

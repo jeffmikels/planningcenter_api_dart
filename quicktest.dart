@@ -72,7 +72,7 @@ void main() async {
     debug(collection.response.responseBody);
   }
 
-  var result = collection.data.first;
+  var result = collection.items.first;
 
   print('\nRESULT:');
   debug(result);

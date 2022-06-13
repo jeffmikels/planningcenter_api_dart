@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-03-19T13:06:04.893162
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:17:42.624572
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 import '../../pco.dart';
 
 /// This class represents a PCO Services ServiceType Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 service_type
 /// - Type:               ServiceType
@@ -15,10 +16,10 @@ import '../../pco.dart';
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types
-///
+/// 
 /// ## Description
 /// A Service Type is a container for plans.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `archivedAt` (ro) -> PCO: `archived_at`
@@ -36,30 +37,30 @@ import '../../pco.dart';
 /// - `permissions` (ro) -> PCO: `permissions`
 /// - `standardItemTypes` (rw) -> PCO: `standard_item_types`
 /// - `parentId` (wo) -> PCO: `parent_id`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
-/// - `time_preference_options`: include associated time_preference_options
+/// 
+/// - `time_preference_options`: include associated time_preference_options 
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `attachment-servicetype-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/attachments
 /// - `itemnotecategory-servicetype-item_note_categories`: https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
@@ -74,13 +75,13 @@ import '../../pco.dart';
 /// - `team-servicetype-teams`: https://api.planningcenteronline.com/services/v2/service_types/1/teams
 /// - `timepreferenceoption-servicetype-time_preference_options`: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
 /// - `plan-servicetype-unscoped_plans`: https://api.planningcenteronline.com/services/v2/service_types/1/unscoped_plans
-///
+/// 
 /// Inbound Edges:
 /// - `servicetype-folder-service_types`: https://api.planningcenteronline.com/services/v2/folders/1/service_types
 /// - `servicetype-live-service_type`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/service_type
 /// - `servicetype-organization-service_types`: https://api.planningcenteronline.com/services/v2/service_types
 /// - `servicetype-team-service_type`: https://api.planningcenteronline.com/services/v2/teams/1/service_type
-///
+/// 
 /// Actions:
 /// - `create_plans`: https://api.planningcenteronline.com/services/v2/service_types/1/create_plans
 ///
@@ -120,24 +121,22 @@ class PcoServicesServiceType extends PcoResource {
   static const String kTypeString = 'ServiceType';
   static const String kTypeId = 'service_type';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/service_types';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/services/v2/service_types';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types';
 
   /// possible includes with parameter ?include=a,b
-  /// - `time_preference_options`: include associated time_preference_options
+  /// - `time_preference_options`: include associated time_preference_options 
   static List<String> get canInclude => ['time_preference_options'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-  static List<String> get canQuery => ['id', 'name'];
+  static List<String> get canQuery => ['id','name'];
 
   /// possible orderings with parameter ?order=
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-  static List<String> get canOrderBy => ['name', 'sequence'];
+  static List<String> get canOrderBy => ['name','sequence'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -174,34 +173,13 @@ class PcoServicesServiceType extends PcoResource {
   static const kStandardItemTypes = 'standard_item_types';
   static const kParentId = 'parent_id';
 
+
   // getters and setters
   @override
-  List<String> get createAllowed => [
-        'attachment_types_enabled',
-        'background_check_permissions',
-        'comment_permissions',
-        'custom_item_types',
-        'frequency',
-        'last_plan_from',
-        'name',
-        'parent_id',
-        'sequence',
-        'standard_item_types'
-      ];
+  List<String> get createAllowed => ['attachment_types_enabled', 'background_check_permissions', 'comment_permissions', 'custom_item_types', 'frequency', 'last_plan_from', 'name', 'parent_id', 'sequence', 'standard_item_types'];
 
   @override
-  List<String> get updateAllowed => [
-        'attachment_types_enabled',
-        'background_check_permissions',
-        'comment_permissions',
-        'custom_item_types',
-        'frequency',
-        'last_plan_from',
-        'name',
-        'parent_id',
-        'sequence',
-        'standard_item_types'
-      ];
+  List<String> get updateAllowed => ['attachment_types_enabled', 'background_check_permissions', 'comment_permissions', 'custom_item_types', 'frequency', 'last_plan_from', 'name', 'parent_id', 'sequence', 'standard_item_types'];
 
   @override
   bool get canCreate => true;
@@ -217,115 +195,91 @@ class PcoServicesServiceType extends PcoResource {
   DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
   String get name => attributes[kName] ?? '';
   int get sequence => attributes[kSequence] ?? 0;
-  bool get isAttachmentTypesEnabled =>
-      attributes[kAttachmentTypesEnabled] == true;
-  String get backgroundCheckPermissions =>
-      attributes[kBackgroundCheckPermissions] ?? '';
+  bool get isAttachmentTypesEnabled => attributes[kAttachmentTypesEnabled] == true;
+  String get backgroundCheckPermissions => attributes[kBackgroundCheckPermissions] ?? '';
   String get commentPermissions => attributes[kCommentPermissions] ?? '';
   String get customItemTypes => attributes[kCustomItemTypes] ?? '';
   String get frequency => attributes[kFrequency] ?? '';
   String get lastPlanFrom => attributes[kLastPlanFrom] ?? '';
   String get permissions => attributes[kPermissions] ?? '';
-  String get standardItemTypes => attributes[kStandardItemTypes] ?? '';
-
+  String get standardItemTypes => attributes[kStandardItemTypes] ?? '';  
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
-
+  set name(String? x) => (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+  
   /// pass `null` to remove key from attributes
-  set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
-
+  set sequence(int? x) => (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+  
   /// pass `null` to remove key from attributes
-  set isAttachmentTypesEnabled(bool? x) => (x == null)
-      ? attributes.remove(kAttachmentTypesEnabled)
-      : attributes[kAttachmentTypesEnabled] = x;
-
+  set isAttachmentTypesEnabled(bool? x) => (x == null) ? attributes.remove(kAttachmentTypesEnabled) : attributes[kAttachmentTypesEnabled] = x;
+  
   /// pass `null` to remove key from attributes
-  set backgroundCheckPermissions(String? x) => (x == null)
-      ? attributes.remove(kBackgroundCheckPermissions)
-      : attributes[kBackgroundCheckPermissions] = x;
-
+  set backgroundCheckPermissions(String? x) => (x == null) ? attributes.remove(kBackgroundCheckPermissions) : attributes[kBackgroundCheckPermissions] = x;
+  
   /// pass `null` to remove key from attributes
-  set commentPermissions(String? x) => (x == null)
-      ? attributes.remove(kCommentPermissions)
-      : attributes[kCommentPermissions] = x;
-
+  set commentPermissions(String? x) => (x == null) ? attributes.remove(kCommentPermissions) : attributes[kCommentPermissions] = x;
+  
   /// A array of hashes that maps an item title substring matcher to a color:
-  ///
+  /// 
   /// [{ name: "Announcements", color: "#FFFFFF" }]
-  ///
+  /// 
   /// Valid substring matchers are any string that could be used as an item title.
-  ///
+  /// 
   /// A color is the hexadecimal value of a valid color e.g. #FFFFFF
   /// Valid colors values are #e8f6df, #e0f7ff, #e6e2fd, #ffe0e8, #ffedd1, #cfcfcf, #eaebeb, and #ffffff
-
+  
   /// pass `null` to remove key from attributes
-  set customItemTypes(String? x) => (x == null)
-      ? attributes.remove(kCustomItemTypes)
-      : attributes[kCustomItemTypes] = x;
-
+  set customItemTypes(String? x) => (x == null) ? attributes.remove(kCustomItemTypes) : attributes[kCustomItemTypes] = x;
+  
   /// pass `null` to remove key from attributes
-  set frequency(String? x) =>
-      (x == null) ? attributes.remove(kFrequency) : attributes[kFrequency] = x;
-
+  set frequency(String? x) => (x == null) ? attributes.remove(kFrequency) : attributes[kFrequency] = x;
+  
   /// pass `null` to remove key from attributes
-  set lastPlanFrom(String? x) => (x == null)
-      ? attributes.remove(kLastPlanFrom)
-      : attributes[kLastPlanFrom] = x;
-
+  set lastPlanFrom(String? x) => (x == null) ? attributes.remove(kLastPlanFrom) : attributes[kLastPlanFrom] = x;
+  
   /// An array of hashes that maps an item type to a color:
-  ///
+  /// 
   /// [{ name: "Header", color: "#FFFFFF" }]
-  ///
+  /// 
   /// Valid names are Header, Song, and Media.
-  ///
+  /// 
   /// A color is the hexadecimal value of a valid color e.g. #FFFFFF
   /// Valid colors values are #e8f6df, #e0f7ff, #e6e2fd, #ffe0e8, #ffedd1, #cfcfcf, #eaebeb, and #ffffff
-
+  
   /// pass `null` to remove key from attributes
-  set standardItemTypes(String? x) => (x == null)
-      ? attributes.remove(kStandardItemTypes)
-      : attributes[kStandardItemTypes] = x;
-
+  set standardItemTypes(String? x) => (x == null) ? attributes.remove(kStandardItemTypes) : attributes[kStandardItemTypes] = x;  
+  
   // additional setters / getters for create/update attributes
-
+  
   /// pass `null` to remove key from attributes
-  set parentId(String? x) =>
-      (x == null) ? attributes.remove(kParentId) : attributes[kParentId] = x;
+  set parentId(String? x) => (x == null) ? attributes.remove(kParentId) : attributes[kParentId] = x;
   String get parentId => attributes[kParentId] ?? '';
 
+
+  // getters for each relationship
+  // the code generator cannot determine the resource type of the relationships
+  
+  List<T> includedTimePreferenceOptions<T extends PcoResource>() => relationships['time_preference_options']?.cast<T>() ?? [];
+
+
+
+
   // Class Constructors
-  PcoServicesServiceType.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoServicesServiceType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
   PcoServicesServiceType.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesServiceType] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/services/v2/service_types`
-  ///
+  /// 
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesServiceType(
-      {bool? isAttachmentTypesEnabled,
-      String? backgroundCheckPermissions,
-      String? commentPermissions,
-      String? customItemTypes,
-      String? frequency,
-      String? lastPlanFrom,
-      String? name,
-      int? sequence,
-      String? standardItemTypes}) {
+  factory PcoServicesServiceType({ bool? isAttachmentTypesEnabled, String? backgroundCheckPermissions, String? commentPermissions, String? customItemTypes, String? frequency, String? lastPlanFrom, String? name, int? sequence, String? standardItemTypes }) {
     var obj = PcoServicesServiceType.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/service_types';
-    if (isAttachmentTypesEnabled != null)
-      obj.isAttachmentTypesEnabled = isAttachmentTypesEnabled;
-    if (backgroundCheckPermissions != null)
-      obj.backgroundCheckPermissions = backgroundCheckPermissions;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types';
+    if (isAttachmentTypesEnabled != null) obj.isAttachmentTypesEnabled = isAttachmentTypesEnabled;
+    if (backgroundCheckPermissions != null) obj.backgroundCheckPermissions = backgroundCheckPermissions;
     if (commentPermissions != null) obj.commentPermissions = commentPermissions;
     if (customItemTypes != null) obj.customItemTypes = customItemTypes;
     if (frequency != null) obj.frequency = frequency;
@@ -336,70 +290,59 @@ class PcoServicesServiceType extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
 
+
+
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `/services/v2/service_types`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `no_parent`
-  static Future<PcoCollection<PcoServicesServiceType>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesServiceType>> get( {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesServiceType.canInclude;
     var url = '/services/v2/service_types';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/service_types`
-  static Future<PcoCollection<PcoServicesServiceType>> getFromFolder(
-      String folderId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesServiceType>> getFromFolder(String folderId, {String? id, PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesServiceType.canInclude;
     var url = '/services/v2/folders/$folderId/service_types';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/service_type`
-  static Future<PcoCollection<PcoServicesServiceType>>
-      getFromPeopleAndRecentPlanAndLive(
-          String peopleId, String recentPlanId, String liveId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesServiceType>> getFromPeopleAndRecentPlanAndLive(String peopleId,String recentPlanId,String liveId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesServiceType.canInclude;
-    var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/service_type';
-
-    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
-        query: query, apiVersion: kApiVersion);
+    var url = '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/service_type';
+    
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/teams/$teamId/service_type`
-  static Future<PcoCollection<PcoServicesServiceType>> getFromTeam(
-      String teamId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesServiceType>> getFromTeam(String teamId, {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesServiceType.canInclude;
     var url = '/services/v2/teams/$teamId/service_type';
-
-    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
-        query: query, apiVersion: kApiVersion);
+    
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // --------------------------------
   // Outbound Edges
@@ -408,166 +351,140 @@ class PcoServicesServiceType extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesAttachment.canInclude;
     var url = '$apiEndpoint/attachments';
-    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories`
-  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategories(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategories({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
     var url = '$apiEndpoint/item_note_categories';
-    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesLayout] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/layouts`
-  Future<PcoCollection<PcoServicesLayout>> getLayouts(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesLayout>> getLayouts({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLayout.canInclude;
     var url = '$apiEndpoint/layouts';
-    return PcoCollection.fromApiCall<PcoServicesLayout>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesLayout>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesLiveController] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/live_controllers`
-  Future<PcoCollection<PcoServicesLiveController>> getLiveControllers(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesLiveController>> getLiveControllers({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesLiveController.canInclude;
     var url = '$apiEndpoint/live_controllers';
-    return PcoCollection.fromApiCall<PcoServicesLiveController>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesLiveController>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPlanNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_note_categories`
-  Future<PcoCollection<PcoServicesPlanNoteCategory>> getPlanNoteCategories(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanNoteCategory>> getPlanNoteCategories({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlanNoteCategory.canInclude;
     var url = '$apiEndpoint/plan_note_categories';
-    return PcoCollection.fromApiCall<PcoServicesPlanNoteCategory>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlanNoteCategory>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPlanTemplate] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates`
-  Future<PcoCollection<PcoServicesPlanTemplate>> getPlanTemplates(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanTemplate>> getPlanTemplates({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlanTemplate.canInclude;
     var url = '$apiEndpoint/plan_templates';
-    return PcoCollection.fromApiCall<PcoServicesPlanTemplate>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlanTemplate>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_times`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `future`
   /// - `named`
   /// - `past`
-  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlanTime.canInclude;
     var url = '$apiEndpoint/plan_times';
-    return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlanTime>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plans`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `after`
   /// filter to plans with a time beginning after the `after` parameter
-  ///
+  /// 
   /// - `before`
   /// filter to plans with a time beginning before the `before` parameter
-  ///
+  /// 
   /// - `future`
   /// - `no_dates`
   /// - `past`
-  Future<PcoCollection<PcoServicesPlan>> getPlans(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlan>> getPlans({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlan.canInclude;
     var url = '$apiEndpoint/plans';
-    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPublicView] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/public_view`
-  Future<PcoCollection<PcoServicesPublicView>> getPublicView(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPublicView>> getPublicView({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPublicView.canInclude;
     var url = '$apiEndpoint/public_view';
-    return PcoCollection.fromApiCall<PcoServicesPublicView>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPublicView>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTeamPosition] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/team_positions`
-  Future<PcoCollection<PcoServicesTeamPosition>> getTeamPositions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeamPosition>> getTeamPositions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeamPosition.canInclude;
     var url = '$apiEndpoint/team_positions';
-    return PcoCollection.fromApiCall<PcoServicesTeamPosition>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeamPosition>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/teams`
-  Future<PcoCollection<PcoServicesTeam>> getTeams(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeams({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTeam.canInclude;
     var url = '$apiEndpoint/teams';
-    return PcoCollection.fromApiCall<PcoServicesTeam>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTimePreferenceOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options`
-  Future<PcoCollection<PcoServicesTimePreferenceOption>>
-      getTimePreferenceOptions(
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTimePreferenceOption>> getTimePreferenceOptions({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesTimePreferenceOption.canInclude;
     var url = '$apiEndpoint/time_preference_options';
-    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/unscoped_plans`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `deleted`
-  Future<PcoCollection<PcoServicesPlan>> getUnscopedPlans(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlan>> getUnscopedPlans({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
     query ??= PlanningCenterApiQuery();
     if (allIncludes) query.include = PcoServicesPlan.canInclude;
     var url = '$apiEndpoint/unscoped_plans';
-    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
@@ -575,38 +492,38 @@ class PcoServicesServiceType extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `create_plans`
-  ///
+  /// 
   /// Create multiple plans
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/create_plans`
-  ///
+  /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
-  ///
+  /// 
   /// Details:
   /// This action provides the abillity to create multiple plans with a single API request.
-  ///
+  /// 
   /// Accepted attributes:
-  ///
+  /// 
   /// - `count` (Integer) The number of plans to create. (max 12, default 1)
-  ///
+  /// 
   /// - `copy_items` (Boolean) Copy Items from another plan. (default false)
-  ///
+  /// 
   /// - `copy_people` (Boolean) Copy People from another plan. (default false)
-  ///
+  /// 
   /// - `team_ids` (Array[Integer]) IDs of teams to copy people from when `copy_people` is set to true.
   ///   If nil, `copy_people` copies from all teams. (default nil)
-  ///
+  /// 
   /// - `copy_notes` (Boolean) Copy Notes from another plan. (default false)
-  ///
+  /// 
   /// - `as_template` (Boolean) Create the new plans as templates (default false)
-  ///
+  /// 
   /// - `base_date` (ISO 8601 Date) The date from which to start building the plans. (default false)
-  ///
+  /// 
   /// Accepted Relationships
-  ///
+  /// 
   /// - `plan` (optional) The plan from which to copy times, items, people, and notes
-  ///
+  /// 
   /// - `template` (optional) Collection of templates from which to copy items, people, and notes (not times) for each new plan.
   ///   Order dependant. Takes precedence over `plan`.
   Future<PlanningCenterApiResponse> createPlans(Object data) async {
@@ -616,6 +533,8 @@ class PcoServicesServiceType extends PcoResource {
       );
     }
     var url = '$apiEndpoint/create_plans';
-    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
   }
+
+
 }

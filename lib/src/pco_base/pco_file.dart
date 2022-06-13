@@ -37,10 +37,8 @@ import 'pco_api_base.dart';
 class PlanningCenterApiFile extends PlanningCenterApiData {
   static const String kTypeString = 'File';
   static const String kTypeId = 'file';
-  static const String kDefaultPathTemplate =
-      'https://upload.planningcenteronline.com/v2/files';
-  static const String kCreatePathTemplate =
-      'https://upload.planningcenteronline.com/v2/files';
+  static const String kDefaultPathTemplate = 'https://upload.planningcenteronline.com/v2/files';
+  static const String kCreatePathTemplate = 'https://upload.planningcenteronline.com/v2/files';
 
   // field mapping constants
   static const kName = 'name';
@@ -74,13 +72,11 @@ class PlanningCenterApiFile extends PlanningCenterApiData {
   }
 
   /// Will attempt to upload a file.
-  /// If the upload is successful, the [data] in the `PlanningCenterApiResponse`
+  /// If the upload is successful, the [items] in the `PlanningCenterApiResponse`
   /// will contain a `PlanningCenterApiFile` with its fields (like `id`) set.
-  static Future<PlanningCenterApiResponse<PlanningCenterApiFile>> upload(
-      String filename) async {
+  static Future<PlanningCenterApiResponse<PlanningCenterApiFile>> upload(String filename) async {
     var res = await PlanningCenter.instance.upload(filename);
-    if (res.isError)
-      return res.withData<PlanningCenterApiFile>([PlanningCenterApiFile._()]);
+    if (res.isError) return res.withData<PlanningCenterApiFile>([PlanningCenterApiFile._()]);
     var data = PlanningCenterApiFile.fromJson(res.data.first.asMap);
     return res.withData<PlanningCenterApiFile>([data]);
   }

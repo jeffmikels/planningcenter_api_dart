@@ -293,11 +293,14 @@ class PcoCollection<T extends PcoResource> {
   factory PcoCollection.fromApiResponse(
       PlanningCenterApiResponse response, endpoint, apiVersion) {
     List<T> data = [];
-    var toProcess = response.data;
-    for (var item in toProcess) {
-      var res = buildResource<T>(response.application, item.asMap);
+
+    // handle the main data
+    for (var item in response.data) {
+      var res = buildResource<T>(response.application, item.asMap,
+          withIncludes: response.included);
       if (res != null) data.add(res as T);
     }
+
     return PcoCollection<T>(
         data, response.meta, response, response.query, endpoint, apiVersion);
   }

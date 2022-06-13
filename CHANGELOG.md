@@ -1,3 +1,7 @@
+## 0.9.4
+
+-   Fixed typed relationship getters for each class
+
 ## 0.9.3
 
 -   Adding a note discouraging users from accessing resource attributes directly.

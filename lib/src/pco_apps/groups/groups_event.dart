@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.741487
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.144178
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -234,12 +234,11 @@ class PcoGroupsEvent extends PcoResource {
   String get virtualLocationUrl => _attributes[kVirtualLocationUrl] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedGroup<T extends PcoResource>() =>
-      relationships['group']?.cast<T>() ?? [];
-  List<T> includedLocation<T extends PcoResource>() =>
-      relationships['location']?.cast<T>() ?? [];
+  List<PcoGroupsGroup> get includedGroup =>
+      (relationships['group'] as List?)?.cast<PcoGroupsGroup>() ?? [];
+  List<PcoGroupsLocation> get includedLocation =>
+      (relationships['location'] as List?)?.cast<PcoGroupsLocation>() ?? [];
 
   // Class Constructors
   PcoGroupsEvent.fromJson(Map<String, dynamic> data,
@@ -334,13 +333,13 @@ class PcoGroupsEvent extends PcoResource {
   }
 
   /// Will get a collection of [PcoGroupsEvent] objects (expecting many)
-  /// using a path like this: `/groups/v2/people/$peopleId/events`
+  /// using a path like this: `/groups/v2/people/$personId/events`
   ///
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
-  static Future<PcoCollection<PcoGroupsEvent>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoGroupsEvent>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -351,7 +350,7 @@ class PcoGroupsEvent extends PcoResource {
     if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
-    var url = '/groups/v2/people/$peopleId/events';
+    var url = '/groups/v2/people/$personId/events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.595980
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.975973
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,12 +268,16 @@ class PcoPeopleMessage extends PcoResource {
   String get appName => _attributes[kAppName] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedMessageGroup<T extends PcoResource>() =>
-      relationships['message_group']?.cast<T>() ?? [];
+  List<PcoPeopleMessageGroup> get includedMessageGroup =>
+      (relationships['message_group'] as List?)
+          ?.cast<PcoPeopleMessageGroup>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedTo<T extends PcoResource>() =>
-      relationships['to']?.cast<T>() ?? [];
+      (relationships['to'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleMessage.fromJson(Map<String, dynamic> data,
@@ -329,15 +333,15 @@ class PcoPeopleMessage extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/messages`
+  /// using a path like this: `/people/v2/people/$personId/messages`
   ///
   /// Available Query Filters:
   /// - `created_after`
   /// - `received`
   /// - `sent`
   /// - `unread`
-  static Future<PcoCollection<PcoPeopleMessage>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoPeopleMessage>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -348,7 +352,7 @@ class PcoPeopleMessage extends PcoResource {
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
-    var url = '/people/v2/people/$peopleId/messages';
+    var url = '/people/v2/people/$personId/messages';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: kApiVersion);

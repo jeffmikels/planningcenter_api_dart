@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.441705
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.808674
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -200,12 +200,14 @@ class PcoServicesNeededPosition extends PcoResource {
       _attributes[kTimePreferenceOptionId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedTeam<T extends PcoResource>() =>
-      relationships['team']?.cast<T>() ?? [];
+  List<PcoServicesTeam> get includedTeam =>
+      (relationships['team'] as List?)?.cast<PcoServicesTeam>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedTime<T extends PcoResource>() =>
-      relationships['time']?.cast<T>() ?? [];
+      (relationships['time'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoServicesNeededPosition.fromJson(Map<String, dynamic> data,

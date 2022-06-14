@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.462343
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.847411
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -311,10 +311,11 @@ class PcoServicesServiceType extends PcoResource {
   String get parentId => _attributes[kParentId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedTimePreferenceOptions<T extends PcoResource>() =>
-      relationships['time_preference_options']?.cast<T>() ?? [];
+  List<PcoServicesTimePreferenceOption> get includedTimePreferenceOptions =>
+      (relationships['time_preference_options'] as List?)
+          ?.cast<PcoServicesTimePreferenceOption>() ??
+      [];
 
   // Class Constructors
   PcoServicesServiceType.fromJson(Map<String, dynamic> data,
@@ -399,10 +400,10 @@ class PcoServicesServiceType extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/service_type`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/service_type`
   static Future<PcoCollection<PcoServicesServiceType>>
-      getFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     PlanningCenterApiQuery? query,
@@ -413,7 +414,7 @@ class PcoServicesServiceType extends PcoResource {
     if (includeTimePreferenceOptions)
       query.include.add('time_preference_options');
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/service_type';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/service_type';
 
     return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
         query: query, apiVersion: kApiVersion);

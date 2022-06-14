@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.743927
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.146671
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -257,15 +257,15 @@ class PcoGroupsMembership extends PcoResource {
   }
 
   /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
-  /// using a path like this: `/groups/v2/people/$peopleId/memberships`
-  static Future<PcoCollection<PcoGroupsMembership>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/groups/v2/people/$personId/memberships`
+  static Future<PcoCollection<PcoGroupsMembership>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/groups/v2/people/$peopleId/memberships';
+    var url = '/groups/v2/people/$personId/memberships';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
         query: query, apiVersion: kApiVersion);

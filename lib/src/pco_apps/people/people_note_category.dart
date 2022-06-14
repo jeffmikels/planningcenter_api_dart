@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.607653
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.007604
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -192,14 +192,21 @@ class PcoPeopleNoteCategory extends PcoResource {
       (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedShares<T extends PcoResource>() =>
-      relationships['shares']?.cast<T>() ?? [];
+      (relationships['shares'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSubscribers<T extends PcoResource>() =>
-      relationships['subscribers']?.cast<T>() ?? [];
+      (relationships['subscribers'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSubscriptions<T extends PcoResource>() =>
-      relationships['subscriptions']?.cast<T>() ?? [];
+      (relationships['subscriptions'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleNoteCategory.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.469756
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.856676
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -168,12 +168,11 @@ class PcoServicesTeamLeader extends PcoResource {
       _attributes[kSendResponsesForBlockouts] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPeople<T extends PcoResource>() =>
-      relationships['people']?.cast<T>() ?? [];
-  List<T> includedTeam<T extends PcoResource>() =>
-      relationships['team']?.cast<T>() ?? [];
+  List<PcoServicesPerson> get includedPeople =>
+      (relationships['people'] as List?)?.cast<PcoServicesPerson>() ?? [];
+  List<PcoServicesTeam> get includedTeam =>
+      (relationships['team'] as List?)?.cast<PcoServicesTeam>() ?? [];
 
   // Class Constructors
   PcoServicesTeamLeader.fromJson(Map<String, dynamic> data,
@@ -187,13 +186,13 @@ class PcoServicesTeamLeader extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/team_leaders`
+  /// using a path like this: `/services/v2/people/$personId/team_leaders`
   ///
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
-  static Future<PcoCollection<PcoServicesTeamLeader>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoServicesTeamLeader>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -204,7 +203,7 @@ class PcoServicesTeamLeader extends PcoResource {
     if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
     if (includePeople) query.include.add('people');
     if (includeTeam) query.include.add('team');
-    var url = '/services/v2/people/$peopleId/team_leaders';
+    var url = '/services/v2/people/$personId/team_leaders';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
         query: query, apiVersion: kApiVersion);

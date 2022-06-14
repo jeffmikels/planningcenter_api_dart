@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.740812
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.143509
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -159,10 +159,9 @@ class PcoGroupsAttendance extends PcoResource {
   String get role => _attributes[kRole] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoGroupsPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoGroupsPerson>() ?? [];
 
   // Class Constructors
   PcoGroupsAttendance.fromJson(Map<String, dynamic> data,

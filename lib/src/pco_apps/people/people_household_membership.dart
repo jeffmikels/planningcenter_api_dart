@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.591923
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.969525
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,12 +175,11 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   String get personId => _attributes[kPersonId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedHousehold<T extends PcoResource>() =>
-      relationships['household']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeopleHousehold> get includedHousehold =>
+      (relationships['household'] as List?)?.cast<PcoPeopleHousehold>() ?? [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleHouseholdMembership.fromJson(Map<String, dynamic> data,
@@ -229,9 +228,9 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/household_memberships`
-  static Future<PcoCollection<PcoPeopleHouseholdMembership>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/household_memberships`
+  static Future<PcoCollection<PcoPeopleHouseholdMembership>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -243,7 +242,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
       query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
     if (includeHousehold) query.include.add('household');
     if (includePerson) query.include.add('person');
-    var url = '/people/v2/people/$peopleId/household_memberships';
+    var url = '/people/v2/people/$personId/household_memberships';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.590239
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.967464
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -170,14 +170,15 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get isRequiresVerification => _attributes[kRequiresVerification] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedFormFields<T extends PcoResource>() =>
-      relationships['form_fields']?.cast<T>() ?? [];
-  List<T> includedFormSubmissionValues<T extends PcoResource>() =>
-      relationships['form_submission_values']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeopleFormField> get includedFormFields =>
+      (relationships['form_fields'] as List?)?.cast<PcoPeopleFormField>() ?? [];
+  List<PcoPeopleFormSubmissionValue> get includedFormSubmissionValues =>
+      (relationships['form_submission_values'] as List?)
+          ?.cast<PcoPeopleFormSubmissionValue>() ??
+      [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleFormSubmission.fromJson(Map<String, dynamic> data,

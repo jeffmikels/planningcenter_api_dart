@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.588906
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.965924
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -211,10 +211,9 @@ class PcoPeopleForm extends PcoResource {
   bool get isArchived => _attributes[kArchived] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedCampus<T extends PcoResource>() =>
-      relationships['campus']?.cast<T>() ?? [];
+  List<PcoPeopleCampus> get includedCampus =>
+      (relationships['campus'] as List?)?.cast<PcoPeopleCampus>() ?? [];
 
   // Class Constructors
   PcoPeopleForm.fromJson(Map<String, dynamic> data,

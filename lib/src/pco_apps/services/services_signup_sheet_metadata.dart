@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.465270
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.850807
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ part of pco;
 ///
 /// ## Instantiation
 /// - This object cannot be created through the API.
-/// - Instantiate from existing `JSON` data using the `PcoServicesSignupSheetMetadata.fromJson()` constructor.
+/// - Instantiate from existing `JSON` data using the `PcoServicesSignupSheetMetadatum.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -89,7 +89,7 @@ part of pco;
 ///   }
 /// }
 /// ```
-class PcoServicesSignupSheetMetadata extends PcoResource {
+class PcoServicesSignupSheetMetadatum extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'SignupSheetMetadata';
   static const String kTypeId = 'signup_sheet_metadata';
@@ -157,7 +157,7 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
 
   // Class Constructors
-  PcoServicesSignupSheetMetadata.fromJson(Map<String, dynamic> data,
+  PcoServicesSignupSheetMetadatum.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
@@ -167,21 +167,22 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSignupSheetMetadata] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata`
-  static Future<PcoCollection<PcoServicesSignupSheetMetadata>>
-      getFromPeopleAndAvailableSignupAndSignupSheet(
-    String peopleId,
+  /// Will get a collection of [PcoServicesSignupSheetMetadatum] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata`
+  static Future<PcoCollection<PcoServicesSignupSheetMetadatum>>
+      getFromPersonAndAvailableSignupAndSignupSheet(
+    String personId,
     String availableSignupId,
     String signupSheetId, {
+    String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata';
-
-    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadata>(url,
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadatum>(url,
         query: query, apiVersion: kApiVersion);
   }
 }

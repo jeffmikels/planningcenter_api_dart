@@ -71,8 +71,8 @@ void main() async {
     debug(collection.query.asMap);
     debug(collection.response.responseBody);
   }
-
   var result = collection.items.first;
+  var email = result.includedEmails;
 
   print('\nRESULT:');
   debug(result);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.686673
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.060091
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,16 +205,18 @@ class PcoCalendarEventInstance extends PcoResource {
   String get churchCenterUrl => _attributes[kChurchCenterUrl] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedEventTimes<T extends PcoResource>() =>
-      relationships['event_times']?.cast<T>() ?? [];
-  List<T> includedResourceBookings<T extends PcoResource>() =>
-      relationships['resource_bookings']?.cast<T>() ?? [];
-  List<T> includedTags<T extends PcoResource>() =>
-      relationships['tags']?.cast<T>() ?? [];
+  List<PcoCalendarEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCalendarEvent>() ?? [];
+  List<PcoCalendarEventTime> get includedEventTimes =>
+      (relationships['event_times'] as List?)?.cast<PcoCalendarEventTime>() ??
+      [];
+  List<PcoCalendarResourceBooking> get includedResourceBookings =>
+      (relationships['resource_bookings'] as List?)
+          ?.cast<PcoCalendarResourceBooking>() ??
+      [];
+  List<PcoCalendarTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoCalendarTag>() ?? [];
 
   // Class Constructors
   PcoCalendarEventInstance.fromJson(Map<String, dynamic> data,

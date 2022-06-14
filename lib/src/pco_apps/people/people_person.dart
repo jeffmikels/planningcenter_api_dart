@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.620667
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.021342
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -651,38 +651,55 @@ class PcoPeoplePerson extends PcoResource {
   String get primaryCampusId => _attributes[kPrimaryCampusId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedAddresses<T extends PcoResource>() =>
-      relationships['addresses']?.cast<T>() ?? [];
-  List<T> includedEmails<T extends PcoResource>() =>
-      relationships['emails']?.cast<T>() ?? [];
-  List<T> includedFieldData<T extends PcoResource>() =>
-      relationships['field_data']?.cast<T>() ?? [];
-  List<T> includedHouseholds<T extends PcoResource>() =>
-      relationships['households']?.cast<T>() ?? [];
-  List<T> includedInactiveReason<T extends PcoResource>() =>
-      relationships['inactive_reason']?.cast<T>() ?? [];
-  List<T> includedMaritalStatus<T extends PcoResource>() =>
-      relationships['marital_status']?.cast<T>() ?? [];
-  List<T> includedNamePrefix<T extends PcoResource>() =>
-      relationships['name_prefix']?.cast<T>() ?? [];
-  List<T> includedNameSuffix<T extends PcoResource>() =>
-      relationships['name_suffix']?.cast<T>() ?? [];
-  List<T> includedOrganization<T extends PcoResource>() =>
-      relationships['organization']?.cast<T>() ?? [];
-  List<T> includedPersonApps<T extends PcoResource>() =>
-      relationships['person_apps']?.cast<T>() ?? [];
-  List<T> includedPhoneNumbers<T extends PcoResource>() =>
-      relationships['phone_numbers']?.cast<T>() ?? [];
-  List<T> includedPlatformNotifications<T extends PcoResource>() =>
-      relationships['platform_notifications']?.cast<T>() ?? [];
+  List<PcoPeopleAddress> get includedAddresses =>
+      (relationships['addresses'] as List?)?.cast<PcoPeopleAddress>() ?? [];
+  List<PcoPeopleEmail> get includedEmails =>
+      (relationships['emails'] as List?)?.cast<PcoPeopleEmail>() ?? [];
+  List<PcoPeopleFieldDatum> get includedFieldData =>
+      (relationships['field_data'] as List?)?.cast<PcoPeopleFieldDatum>() ?? [];
+  List<PcoPeopleHousehold> get includedHouseholds =>
+      (relationships['households'] as List?)?.cast<PcoPeopleHousehold>() ?? [];
+  List<PcoPeopleInactiveReason> get includedInactiveReason =>
+      (relationships['inactive_reason'] as List?)
+          ?.cast<PcoPeopleInactiveReason>() ??
+      [];
+  List<PcoPeopleMaritalStatus> get includedMaritalStatus =>
+      (relationships['marital_status'] as List?)
+          ?.cast<PcoPeopleMaritalStatus>() ??
+      [];
+  List<PcoPeopleNamePrefix> get includedNamePrefix =>
+      (relationships['name_prefix'] as List?)?.cast<PcoPeopleNamePrefix>() ??
+      [];
+  List<PcoPeopleNameSuffix> get includedNameSuffix =>
+      (relationships['name_suffix'] as List?)?.cast<PcoPeopleNameSuffix>() ??
+      [];
+  List<PcoPeopleOrganization> get includedOrganization =>
+      (relationships['organization'] as List?)?.cast<PcoPeopleOrganization>() ??
+      [];
+  List<PcoPeoplePersonApp> get includedPersonApps =>
+      (relationships['person_apps'] as List?)?.cast<PcoPeoplePersonApp>() ?? [];
+  List<PcoPeoplePhoneNumber> get includedPhoneNumbers =>
+      (relationships['phone_numbers'] as List?)?.cast<PcoPeoplePhoneNumber>() ??
+      [];
+  List<PcoPeoplePlatformNotification> get includedPlatformNotifications =>
+      (relationships['platform_notifications'] as List?)
+          ?.cast<PcoPeoplePlatformNotification>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedPrimaryCampus<T extends PcoResource>() =>
-      relationships['primary_campus']?.cast<T>() ?? [];
+      (relationships['primary_campus'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSchool<T extends PcoResource>() =>
-      relationships['school']?.cast<T>() ?? [];
-  List<T> includedSocialProfiles<T extends PcoResource>() =>
-      relationships['social_profiles']?.cast<T>() ?? [];
+      (relationships['school'] as List?)?.cast<T>() ?? [];
+  List<PcoPeopleSocialProfile> get includedSocialProfiles =>
+      (relationships['social_profiles'] as List?)
+          ?.cast<PcoPeopleSocialProfile>() ??
+      [];
 
   // Class Constructors
   PcoPeoplePerson.fromJson(Map<String, dynamic> data,
@@ -1042,14 +1059,15 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/households/$householdId/people`
   ///
   /// Available Query Filters:
   /// - `non_pending`
   /// - `without_deceased`
-  static Future<PcoCollection<PcoPeoplePerson>> getPeopleFromHousehold(
+  static Future<PcoCollection<PcoPeoplePerson>> getFromHousehold(
     String householdId, {
+    String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
@@ -1087,7 +1105,7 @@ class PcoPeoplePerson extends PcoResource {
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '/people/v2/households/$householdId/people';
-
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: kApiVersion);
   }
@@ -1138,10 +1156,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/people`
-  static Future<PcoCollection<PcoPeoplePerson>> getPeopleFromList(
+  static Future<PcoCollection<PcoPeoplePerson>> getFromList(
     String listId, {
+    String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
@@ -1179,7 +1198,7 @@ class PcoPeoplePerson extends PcoResource {
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '/people/v2/lists/$listId/people';
-
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: kApiVersion);
   }
@@ -1694,10 +1713,10 @@ class PcoPeoplePerson extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/assignee`
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/assignee`
   static Future<PcoCollection<PcoPeoplePerson>>
-      getAssigneeFromPeopleAndWorkflowCard(
-    String peopleId,
+      getAssigneeFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -1736,16 +1755,16 @@ class PcoPeoplePerson extends PcoResource {
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/assignee';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/assignee';
 
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/person`
-  static Future<PcoCollection<PcoPeoplePerson>> getFromPeopleAndWorkflowCard(
-    String peopleId,
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/person`
+  static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -1784,16 +1803,16 @@ class PcoPeoplePerson extends PcoResource {
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/person';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/person';
 
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/workflow_shares/$workflowShareId/person`
-  static Future<PcoCollection<PcoPeoplePerson>> getFromPeopleAndWorkflowShare(
-    String peopleId,
+  /// using a path like this: `/people/v2/people/$personId/workflow_shares/$workflowShareId/person`
+  static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowShare(
+    String personId,
     String workflowShareId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -1832,7 +1851,7 @@ class PcoPeoplePerson extends PcoResource {
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url =
-        '/people/v2/people/$peopleId/workflow_shares/$workflowShareId/person';
+        '/people/v2/people/$personId/workflow_shares/$workflowShareId/person';
 
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: kApiVersion);
@@ -1987,15 +2006,15 @@ class PcoPeoplePerson extends PcoResource {
   // ---------------------------------
   // Instance functions to traverse outbound edges
 
-  /// Will get a collection of [PcoPeopleAddres] objects (expecting many)
+  /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/addresses`
-  Future<PcoCollection<PcoPeopleAddres>> getAddresses({
+  Future<PcoCollection<PcoPeopleAddress>> getAddresses({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/addresses';
-    return PcoCollection.fromApiCall<PcoPeopleAddres>(url,
+    return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: apiVersion);
   }
 
@@ -2097,15 +2116,15 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMaritalStatu] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/marital_status`
-  Future<PcoCollection<PcoPeopleMaritalStatu>> getMaritalStatus({
+  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatus({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/marital_status';
-    return PcoCollection.fromApiCall<PcoPeopleMaritalStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: apiVersion);
   }
 

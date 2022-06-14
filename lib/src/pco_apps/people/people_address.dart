@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.581331
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.958025
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,8 +17,8 @@ part of pco;
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/addresses
 ///
 /// ## Instantiation
-/// - Create a new instance using the `PcoPeopleAddres()` constructor
-/// - Instantiate from existing `JSON` data using the `PcoPeopleAddres.fromJson()` constructor.
+/// - Create a new instance using the `PcoPeopleAddress()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleAddress.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -110,7 +110,7 @@ part of pco;
 ///   }
 /// }
 /// ```
-class PcoPeopleAddres extends PcoResource {
+class PcoPeopleAddress extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Address';
   static const String kTypeId = 'address';
@@ -235,27 +235,27 @@ class PcoPeopleAddres extends PcoResource {
       (x == null) ? _attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // Class Constructors
-  PcoPeopleAddres.fromJson(Map<String, dynamic> data,
+  PcoPeopleAddress.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleAddres.empty() : super(kPcoApplication, kTypeString);
+  PcoPeopleAddress.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleAddres] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/addresses`
+  /// Create a new [PcoPeopleAddress] object based on this request endpoint:
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/addresses`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleAddres(String peopleId,
+  factory PcoPeopleAddress(String personId,
       {String? city,
       String? state,
       String? zip,
       String? street,
       String? location,
       bool? isPrimary}) {
-    var obj = PcoPeopleAddres.empty();
+    var obj = PcoPeopleAddress.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/addresses';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/addresses';
     if (city != null) obj.city = city;
     if (state != null) obj.state = state;
     if (zip != null) obj.zip = zip;
@@ -270,9 +270,9 @@ class PcoPeopleAddres extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleAddres] objects (expecting many)
+  /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
   /// using a path like this: `/people/v2/addresses`
-  static Future<PcoCollection<PcoPeopleAddres>> get({
+  static Future<PcoCollection<PcoPeopleAddress>> get({
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
@@ -280,22 +280,22 @@ class PcoPeopleAddres extends PcoResource {
 
     var url = '/people/v2/addresses';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleAddres>(url,
+    return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleAddres] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/addresses`
-  static Future<PcoCollection<PcoPeopleAddres>> getFromPeople(
-    String peopleId, {
+  /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/addresses`
+  static Future<PcoCollection<PcoPeopleAddress>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/addresses';
+    var url = '/people/v2/people/$personId/addresses';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleAddres>(url,
+    return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: kApiVersion);
   }
 }

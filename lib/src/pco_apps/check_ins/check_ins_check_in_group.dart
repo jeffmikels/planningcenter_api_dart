@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.499438
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.887636
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -173,14 +173,18 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   String get printStatus => _attributes[kPrintStatus] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedCheckIns<T extends PcoResource>() =>
-      relationships['check_ins']?.cast<T>() ?? [];
-  List<T> includedEventPeriod<T extends PcoResource>() =>
-      relationships['event_period']?.cast<T>() ?? [];
+  List<PcoCheckInsCheckIn> get includedCheckIns =>
+      (relationships['check_ins'] as List?)?.cast<PcoCheckInsCheckIn>() ?? [];
+  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
+      (relationships['event_period'] as List?)
+          ?.cast<PcoCheckInsEventPeriod>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedPrintStation<T extends PcoResource>() =>
-      relationships['print_station']?.cast<T>() ?? [];
+      (relationships['print_station'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoCheckInsCheckInGroup.fromJson(Map<String, dynamic> data,

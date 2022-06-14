@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.694371
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.086566
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -156,12 +156,11 @@ class PcoCalendarTagGroup extends PcoResource {
   bool get isRequired => _attributes[kRequired] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvents<T extends PcoResource>() =>
-      relationships['events']?.cast<T>() ?? [];
-  List<T> includedTags<T extends PcoResource>() =>
-      relationships['tags']?.cast<T>() ?? [];
+  List<PcoCalendarEvent> get includedEvents =>
+      (relationships['events'] as List?)?.cast<PcoCalendarEvent>() ?? [];
+  List<PcoCalendarTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoCalendarTag>() ?? [];
 
   // Class Constructors
   PcoCalendarTagGroup.fromJson(Map<String, dynamic> data,

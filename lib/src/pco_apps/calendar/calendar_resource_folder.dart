@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.691901
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.079675
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,10 +172,9 @@ class PcoCalendarResourceFolder extends PcoResource {
       (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedResources<T extends PcoResource>() =>
-      relationships['resources']?.cast<T>() ?? [];
+  List<PcoCalendarResource> get includedResources =>
+      (relationships['resources'] as List?)?.cast<PcoCalendarResource>() ?? [];
 
   // Class Constructors
   PcoCalendarResourceFolder.fromJson(Map<String, dynamic> data,

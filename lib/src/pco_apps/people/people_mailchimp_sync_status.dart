@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.595086
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.974806
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ part of pco;
 ///
 /// ## Instantiation
 /// - This object cannot be created through the API.
-/// - Instantiate from existing `JSON` data using the `PcoPeopleMailchimpSyncStatu.fromJson()` constructor.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleMailchimpSyncStatus.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -84,7 +84,7 @@ part of pco;
 ///   "relationships": {}
 /// }
 /// ```
-class PcoPeopleMailchimpSyncStatu extends PcoResource {
+class PcoPeopleMailchimpSyncStatus extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'MailchimpSyncStatus';
   static const String kTypeId = 'mailchimp_sync_status';
@@ -154,7 +154,7 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   int get segmentId => _attributes[kSegmentId] ?? 0;
 
   // Class Constructors
-  PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data,
+  PcoPeopleMailchimpSyncStatus.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
@@ -164,10 +164,9 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleMailchimpSyncStatu] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMailchimpSyncStatus] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
-  static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>>
-      getMailchimpSyncStatusFromList(
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getFromList(
     String listId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -176,7 +175,7 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
 
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(url,
         query: query, apiVersion: kApiVersion);
   }
 }

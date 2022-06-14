@@ -88,7 +88,7 @@ Although you can issue calls to the API directly using `PlanningCenter.instance`
 The earlier example of adding an email address to a person should be re-written this way:
 
 ```dart
-var email = PcoPeopleEmail('1', address: 'email@example.com', location: 'Home', isPrimary: true);
+var email = PcoPeopleEmail(personId, address: 'email@example.com', location: 'Home', isPrimary: true);
 email.save();
 ```
 
@@ -122,8 +122,8 @@ Each PlanningCenter resource that can be retrieved is available to you through s
 Static methods always return a `Future<PcoCollection<T>>`
 
 ```dart
-PcoCollection<PcoPeopleEmail> emails = await PcoPeopleEmail.getFromPeople('1');
-print(emails.data);
+PcoCollection<PcoPeopleEmail> emails = await PcoPeopleEmail.getFromPeople(personId);
+print(emails.items);
 ```
 
 ### Instance Relationship Methods
@@ -133,10 +133,21 @@ Once you have a PlanningCenter resource, you can get related resources through i
 Instance methods always return a `Future<PcoCollection<T>>`
 
 ```dart
-PcoCollection<PcoPeopleEmail> emails = await PcoPeopleEmail.getFromPeople('1');
-var myEmail = emails.data.first;
+PcoCollection<PcoPeopleEmail> emails = await PcoPeopleEmail.getFromPeople(personId);
+var myEmail = emails.items.first;
 PcoCollection<PcoPeoplePerson> myProfile = await myEmail.getPerson();
-print(myProfile.data.first);
+print(myProfile.items.first);
+```
+
+### Including Related Objects
+
+Whenever an API object allows a request for related objects to be included, those options are exposed by the
+relevant methods, and any included relationships can be retrieved using type-safe functions as follows:
+
+```dart
+var collection = await PcoPeoplePerson.get(id: '000000001', includeEmails: true);
+var person = collection.items.first;
+var email = person.includedEmails<PcoPeopleEmail>(); // if the Type is not specified, it will be a `PcoResource`
 ```
 
 ### Instance Action Methods
@@ -153,9 +164,12 @@ NOTE: Actions should be documented, but they do not have helper code. You'll nee
 var res = await PcoServicesPlan.getFromServiceType('1234567');
 if (!res.isError) {
   var plan = res.data.first;
-  var r2 = await plan.itemReorder(PcoData('PlanItemReorder', attributes: {
-    'sequence': ['5', '1', '3']
-  }));
+  var r2 = await plan.itemReorder(
+    PcoData(
+      'PlanItemReorder',
+      attributes: {'sequence': ['5', '1', '3']},
+    ),
+  );
   if (r2.isError) {
     print(r2.errorMessage);
   } else {

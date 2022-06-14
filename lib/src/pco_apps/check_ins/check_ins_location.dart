@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.504705
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.892151
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -244,16 +244,18 @@ class PcoCheckInsLocation extends PcoResource {
   int get position => _attributes[kPosition] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedLocations<T extends PcoResource>() =>
-      relationships['locations']?.cast<T>() ?? [];
-  List<T> includedOptions<T extends PcoResource>() =>
-      relationships['options']?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  List<PcoCheckInsLocation> get includedLocations =>
+      (relationships['locations'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
+  List<PcoCheckInsOption> get includedOptions =>
+      (relationships['options'] as List?)?.cast<PcoCheckInsOption>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedParent<T extends PcoResource>() =>
-      relationships['parent']?.cast<T>() ?? [];
+      (relationships['parent'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoCheckInsLocation.fromJson(Map<String, dynamic> data,

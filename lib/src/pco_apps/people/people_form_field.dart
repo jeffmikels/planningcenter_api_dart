@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.589377
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.966440
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -197,10 +197,11 @@ class PcoPeopleFormField extends PcoResource {
   int get sequence => _attributes[kSequence] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedOptions<T extends PcoResource>() =>
-      relationships['options']?.cast<T>() ?? [];
+      (relationships['options'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleFormField.fromJson(Map<String, dynamic> data,

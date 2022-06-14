@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.693026
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.085464
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,12 +195,15 @@ class PcoCalendarRoomSetup extends PcoResource {
   String get diagramThumbnailUrl => _attributes[kDiagramThumbnailUrl] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedContainingResource<T extends PcoResource>() =>
-      relationships['containing_resource']?.cast<T>() ?? [];
-  List<T> includedResourceSuggestions<T extends PcoResource>() =>
-      relationships['resource_suggestions']?.cast<T>() ?? [];
+      (relationships['containing_resource'] as List?)?.cast<T>() ?? [];
+  List<PcoCalendarResourceSuggestion> get includedResourceSuggestions =>
+      (relationships['resource_suggestions'] as List?)
+          ?.cast<PcoCalendarResourceSuggestion>() ??
+      [];
 
   // Class Constructors
   PcoCalendarRoomSetup.fromJson(Map<String, dynamic> data,

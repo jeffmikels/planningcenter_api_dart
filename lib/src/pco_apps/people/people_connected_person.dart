@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.586196
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.962660
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,17 +183,17 @@ class PcoPeopleConnectedPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/connected_people`
-  static Future<PcoCollection<PcoPeopleConnectedPerson>>
-      getConnectedPeopleFromPeople(
-    String peopleId, {
+  /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/connected_people`
+  static Future<PcoCollection<PcoPeopleConnectedPerson>> getFromPerson(
+    String personId, {
+    String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/connected_people';
-
+    var url = '/people/v2/people/$personId/connected_people';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
         query: query, apiVersion: kApiVersion);
   }

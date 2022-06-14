@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.470842
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.857666
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -202,15 +202,15 @@ class PcoServicesTextSetting extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesTextSetting] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/text_settings`
-  static Future<PcoCollection<PcoServicesTextSetting>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/services/v2/people/$personId/text_settings`
+  static Future<PcoCollection<PcoServicesTextSetting>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/services/v2/people/$peopleId/text_settings';
+    var url = '/services/v2/people/$personId/text_settings';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTextSetting>(url,
         query: query, apiVersion: kApiVersion);

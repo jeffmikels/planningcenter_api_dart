@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.597344
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.977482
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,15 +185,15 @@ class PcoPeopleNameSuffix extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/name_suffix`
-  static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/name_suffix`
+  static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/name_suffix';
+    var url = '/people/v2/people/$personId/name_suffix';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
         query: query, apiVersion: kApiVersion);

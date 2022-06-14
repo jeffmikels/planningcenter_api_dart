@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.432764
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.801095
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -192,10 +192,11 @@ class PcoServicesFolder extends PcoResource {
   String get campusId => _attributes[kCampusId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedServiceTypes<T extends PcoResource>() =>
-      relationships['service_types']?.cast<T>() ?? [];
+  List<PcoServicesServiceType> get includedServiceTypes =>
+      (relationships['service_types'] as List?)
+          ?.cast<PcoServicesServiceType>() ??
+      [];
 
   // Class Constructors
   PcoServicesFolder.fromJson(Map<String, dynamic> data,

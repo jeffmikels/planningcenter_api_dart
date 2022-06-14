@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.653550
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.040949
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -220,10 +220,11 @@ class PcoPeopleWorkflowStep extends PcoResource {
       (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedDefaultAssignee<T extends PcoResource>() =>
-      relationships['default_assignee']?.cast<T>() ?? [];
+      (relationships['default_assignee'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleWorkflowStep.fromJson(Map<String, dynamic> data,
@@ -253,10 +254,10 @@ class PcoPeopleWorkflowStep extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step`
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/current_step`
   static Future<PcoCollection<PcoPeopleWorkflowStep>>
-      getCurrentStepFromPeopleAndWorkflowCard(
-    String peopleId,
+      getCurrentStepFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
     bool includeDefaultAssignee = false,
@@ -265,7 +266,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
     if (includeDefaultAssignee) query.include.add('default_assignee');
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/current_step';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url,
         query: query, apiVersion: kApiVersion);

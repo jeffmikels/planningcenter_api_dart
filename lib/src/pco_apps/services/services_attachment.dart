@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.424816
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.788781
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -319,10 +319,9 @@ class PcoServicesAttachment extends PcoResource {
   String get attachmentTypeIds => _attributes[kAttachmentTypeIds] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedZooms<T extends PcoResource>() =>
-      relationships['zooms']?.cast<T>() ?? [];
+  List<PcoServicesZoom> get includedZooms =>
+      (relationships['zooms'] as List?)?.cast<PcoServicesZoom>() ?? [];
 
   // Class Constructors
   PcoServicesAttachment.fromJson(Map<String, dynamic> data,

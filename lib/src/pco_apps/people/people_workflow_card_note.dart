@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.650699
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.039385
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,15 +172,15 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   PcoPeopleWorkflowCardNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowCardNote] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleWorkflowCardNote(String peopleId, String workflowCardId,
+  factory PcoPeopleWorkflowCardNote(String personId, String workflowCardId,
       {String? note}) {
     var obj = PcoPeopleWorkflowCardNote.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
     if (note != null) obj.note = note;
     return obj;
   }
@@ -191,17 +191,17 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes`
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
   static Future<PcoCollection<PcoPeopleWorkflowCardNote>>
-      getNotesFromPeopleAndWorkflowCard(
-    String peopleId,
+      getNotesFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url,
         query: query, apiVersion: kApiVersion);

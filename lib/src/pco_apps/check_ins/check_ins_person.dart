@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.509
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.895750
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -252,10 +252,11 @@ class PcoCheckInsPerson extends PcoResource {
   String get searchName => _attributes[kSearchName] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedOrganization<T extends PcoResource>() =>
-      relationships['organization']?.cast<T>() ?? [];
+  List<PcoCheckInsOrganization> get includedOrganization =>
+      (relationships['organization'] as List?)
+          ?.cast<PcoCheckInsOrganization>() ??
+      [];
 
   // Class Constructors
   PcoCheckInsPerson.fromJson(Map<String, dynamic> data,
@@ -336,9 +337,9 @@ class PcoCheckInsPerson extends PcoResource {
   }
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
-  /// using a path like this: `/check-ins/v2/passes/$pasId/person`
-  static Future<PcoCollection<PcoCheckInsPerson>> getFromPas(
-    String pasId, {
+  /// using a path like this: `/check-ins/v2/passes/$passId/person`
+  static Future<PcoCollection<PcoCheckInsPerson>> getFromPass(
+    String passId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeOrganization = false,
@@ -346,7 +347,7 @@ class PcoCheckInsPerson extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includeOrganization) query.include.add('organization');
-    var url = '/check-ins/v2/passes/$pasId/person';
+    var url = '/check-ins/v2/passes/$passId/person';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
         query: query, apiVersion: kApiVersion);
@@ -431,9 +432,9 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
+  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/people/1/passes`
-  Future<PcoCollection<PcoCheckInsPas>> getPasses({
+  Future<PcoCollection<PcoCheckInsPass>> getPasses({
     PlanningCenterApiQuery? query,
     bool includePerson = false,
   }) async {
@@ -441,7 +442,7 @@ class PcoCheckInsPerson extends PcoResource {
 
     if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/passes';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
         query: query, apiVersion: apiVersion);
   }
 

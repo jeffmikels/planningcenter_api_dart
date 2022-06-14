@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.718482
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.134725
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,10 +185,10 @@ class PcoGivingRecurringDonation extends PcoResource {
   String get amountCurrency => _attributes[kAmountCurrency] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedDesignations<T extends PcoResource>() =>
-      relationships['designations']?.cast<T>() ?? [];
+  List<PcoGivingDesignation> get includedDesignations =>
+      (relationships['designations'] as List?)?.cast<PcoGivingDesignation>() ??
+      [];
 
   // Class Constructors
   PcoGivingRecurringDonation.fromJson(Map<String, dynamic> data,
@@ -218,10 +218,10 @@ class PcoGivingRecurringDonation extends PcoResource {
   }
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations`
+  /// using a path like this: `/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations`
   static Future<PcoCollection<PcoGivingRecurringDonation>>
-      getFromPeopleAndPaymentMethod(
-    String peopleId,
+      getFromPersonAndPaymentMethod(
+    String personId,
     String paymentMethodId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -231,16 +231,16 @@ class PcoGivingRecurringDonation extends PcoResource {
 
     if (includeDesignations) query.include.add('designations');
     var url =
-        '/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations';
+        '/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/recurring_donations`
-  static Future<PcoCollection<PcoGivingRecurringDonation>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/recurring_donations`
+  static Future<PcoCollection<PcoGivingRecurringDonation>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeDesignations = false,
@@ -248,7 +248,7 @@ class PcoGivingRecurringDonation extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includeDesignations) query.include.add('designations');
-    var url = '/giving/v2/people/$peopleId/recurring_donations';
+    var url = '/giving/v2/people/$personId/recurring_donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.428502
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.795154
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -190,10 +190,10 @@ class PcoServicesBlockoutDate extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesBlockoutDate] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_dates`
+  /// using a path like this: `/services/v2/people/$personId/blockouts/$blockoutId/blockout_dates`
   static Future<PcoCollection<PcoServicesBlockoutDate>>
-      getFromPeopleAndBlockout(
-    String peopleId,
+      getFromPersonAndBlockout(
+    String personId,
     String blockoutId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -201,7 +201,7 @@ class PcoServicesBlockoutDate extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_dates';
+        '/services/v2/people/$personId/blockouts/$blockoutId/blockout_dates';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.468205
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.855109
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -191,15 +191,15 @@ class PcoServicesTag extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/tags`
-  static Future<PcoCollection<PcoServicesTag>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/services/v2/people/$personId/tags`
+  static Future<PcoCollection<PcoServicesTag>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/services/v2/people/$peopleId/tags';
+    var url = '/services/v2/people/$personId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: kApiVersion);

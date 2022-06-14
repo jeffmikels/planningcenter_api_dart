@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.591373
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.968704
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -230,10 +230,9 @@ class PcoPeopleHousehold extends PcoResource {
       : _attributes[kPrimaryContactId] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPeople<T extends PcoResource>() =>
-      relationships['people']?.cast<T>() ?? [];
+  List<PcoPeoplePerson> get includedPeople =>
+      (relationships['people'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleHousehold.fromJson(Map<String, dynamic> data,
@@ -322,9 +321,9 @@ class PcoPeopleHousehold extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/households`
-  static Future<PcoCollection<PcoPeopleHousehold>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/households`
+  static Future<PcoCollection<PcoPeopleHousehold>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includePeople = false,
@@ -332,7 +331,7 @@ class PcoPeopleHousehold extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includePeople) query.include.add('people');
-    var url = '/people/v2/people/$peopleId/households';
+    var url = '/people/v2/people/$personId/households';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.467807
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.854750
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,16 +172,16 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
       : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
+  /// `https://api.planningcenteronline.com/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoServicesSplitTeamRehearsalAssignment(
-      String peopleId, String planTimeId,
+      String personId, String planTimeId,
       {bool? isScheduleSpecialServiceTimes}) {
     var obj = PcoServicesSplitTeamRehearsalAssignment.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+        'https://api.planningcenteronline.com/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
     if (isScheduleSpecialServiceTimes != null)
       obj.isScheduleSpecialServiceTimes = isScheduleSpecialServiceTimes;
     return obj;
@@ -193,10 +193,10 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
+  /// using a path like this: `/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
   static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>>
-      getFromPeopleAndPlanTime(
-    String peopleId,
+      getFromPersonAndPlanTime(
+    String personId,
     String planTimeId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -204,7 +204,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+        '/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(
         url,

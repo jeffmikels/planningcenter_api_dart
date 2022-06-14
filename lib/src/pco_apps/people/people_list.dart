@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.593120
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.971235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -277,24 +277,37 @@ class PcoPeopleList extends PcoResource {
       DateTime.parse(_attributes[kBatchCompletedAt] ?? '');
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedCampus<T extends PcoResource>() =>
-      relationships['campus']?.cast<T>() ?? [];
+  List<PcoPeopleCampus> get includedCampus =>
+      (relationships['campus'] as List?)?.cast<PcoPeopleCampus>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCategory<T extends PcoResource>() =>
-      relationships['category']?.cast<T>() ?? [];
+      (relationships['category'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
-      relationships['created_by']?.cast<T>() ?? [];
-  List<T> includedMailchimpSyncStatus<T extends PcoResource>() =>
-      relationships['mailchimp_sync_status']?.cast<T>() ?? [];
-  List<T> includedPeople<T extends PcoResource>() =>
-      relationships['people']?.cast<T>() ?? [];
-  List<T> includedRules<T extends PcoResource>() =>
-      relationships['rules']?.cast<T>() ?? [];
+      (relationships['created_by'] as List?)?.cast<T>() ?? [];
+  List<PcoPeopleMailchimpSyncStatus> get includedMailchimpSyncStatus =>
+      (relationships['mailchimp_sync_status'] as List?)
+          ?.cast<PcoPeopleMailchimpSyncStatus>() ??
+      [];
+  List<PcoPeoplePerson> get includedPeople =>
+      (relationships['people'] as List?)?.cast<PcoPeoplePerson>() ?? [];
+  List<PcoPeopleRule> get includedRules =>
+      (relationships['rules'] as List?)?.cast<PcoPeopleRule>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedShares<T extends PcoResource>() =>
-      relationships['shares']?.cast<T>() ?? [];
+      (relationships['shares'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedUpdatedBy<T extends PcoResource>() =>
-      relationships['updated_by']?.cast<T>() ?? [];
+      (relationships['updated_by'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleList.fromJson(Map<String, dynamic> data,
@@ -499,15 +512,15 @@ class PcoPeopleList extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMailchimpSyncStatu] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMailchimpSyncStatus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status`
-  Future<PcoCollection<PcoPeopleMailchimpSyncStatu>> getMailchimpSyncStatus({
+  Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getMailchimpSyncStatus({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/mailchimp_sync_status';
-    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(url,
         query: query, apiVersion: apiVersion);
   }
 

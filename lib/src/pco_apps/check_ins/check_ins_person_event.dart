@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.509775
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.896253
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,16 +155,21 @@ class PcoCheckInsPersonEvent extends PcoResource {
   int get checkInCount => _attributes[kCheckInCount] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedFirstCheckIn<T extends PcoResource>() =>
-      relationships['first_check_in']?.cast<T>() ?? [];
+      (relationships['first_check_in'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedLastCheckIn<T extends PcoResource>() =>
-      relationships['last_check_in']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+      (relationships['last_check_in'] as List?)?.cast<T>() ?? [];
+  List<PcoCheckInsPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoCheckInsPerson>() ?? [];
 
   // Class Constructors
   PcoCheckInsPersonEvent.fromJson(Map<String, dynamic> data,
@@ -202,9 +207,9 @@ class PcoCheckInsPersonEvent extends PcoResource {
   }
 
   /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
-  /// using a path like this: `/check-ins/v2/people/$peopleId/person_events`
-  static Future<PcoCollection<PcoCheckInsPersonEvent>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/check-ins/v2/people/$personId/person_events`
+  static Future<PcoCollection<PcoCheckInsPersonEvent>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -219,7 +224,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
     if (includeFirstCheckIn) query.include.add('first_check_in');
     if (includeLastCheckIn) query.include.add('last_check_in');
     if (includePerson) query.include.add('person');
-    var url = '/check-ins/v2/people/$peopleId/person_events';
+    var url = '/check-ins/v2/people/$personId/person_events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
         query: query, apiVersion: kApiVersion);

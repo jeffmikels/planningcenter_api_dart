@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.506890
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.894211
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -151,10 +151,9 @@ class PcoCheckInsOption extends PcoResource {
   int get quantity => _attributes[kQuantity] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedLabel<T extends PcoResource>() =>
-      relationships['label']?.cast<T>() ?? [];
+  List<PcoCheckInsLabel> get includedLabel =>
+      (relationships['label'] as List?)?.cast<PcoCheckInsLabel>() ?? [];
 
   // Class Constructors
   PcoCheckInsOption.fromJson(Map<String, dynamic> data,

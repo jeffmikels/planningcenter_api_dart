@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.625224
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.025881
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,10 +165,9 @@ class PcoPeoplePersonApp extends PcoResource {
   String get appId => _attributes[kAppId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedApp<T extends PcoResource>() =>
-      relationships['app']?.cast<T>() ?? [];
+  List<PcoPeopleApp> get includedApp =>
+      (relationships['app'] as List?)?.cast<PcoPeopleApp>() ?? [];
 
   // Class Constructors
   PcoPeoplePersonApp.fromJson(Map<String, dynamic> data,
@@ -178,16 +177,16 @@ class PcoPeoplePersonApp extends PcoResource {
   PcoPeoplePersonApp.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePersonApp] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/person_apps`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
   factory PcoPeoplePersonApp(
-    String peopleId,
+    String personId,
   ) {
     var obj = PcoPeoplePersonApp.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/person_apps';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/person_apps';
     return obj;
   }
 
@@ -197,9 +196,9 @@ class PcoPeoplePersonApp extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePersonApp] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/person_apps`
-  static Future<PcoCollection<PcoPeoplePersonApp>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/person_apps`
+  static Future<PcoCollection<PcoPeoplePersonApp>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeApp = false,
@@ -207,7 +206,7 @@ class PcoPeoplePersonApp extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includeApp) query.include.add('app');
-    var url = '/people/v2/people/$peopleId/person_apps';
+    var url = '/people/v2/people/$personId/person_apps';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
         query: query, apiVersion: kApiVersion);

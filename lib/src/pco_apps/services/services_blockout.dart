@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.427973
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.794360
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -316,11 +316,11 @@ class PcoServicesBlockout extends PcoResource {
   PcoServicesBlockout.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockout] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts`
+  /// `https://api.planningcenteronline.com/services/v2/people/$personId/blockouts`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockout(String peopleId,
+  factory PcoServicesBlockout(String personId,
       {String? reason,
       String? repeatFrequency,
       String? repeatInterval,
@@ -331,7 +331,7 @@ class PcoServicesBlockout extends PcoResource {
       DateTime? endsAt}) {
     var obj = PcoServicesBlockout.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts';
+        'https://api.planningcenteronline.com/services/v2/people/$personId/blockouts';
     if (reason != null) obj.reason = reason;
     if (repeatFrequency != null) obj.repeatFrequency = repeatFrequency;
     if (repeatInterval != null) obj.repeatInterval = repeatInterval;
@@ -349,19 +349,19 @@ class PcoServicesBlockout extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesBlockout] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/blockouts`
+  /// using a path like this: `/services/v2/people/$personId/blockouts`
   ///
   /// Available Query Filters:
   /// - `future`
   /// - `past`
-  static Future<PcoCollection<PcoServicesBlockout>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoServicesBlockout>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/services/v2/people/$peopleId/blockouts';
+    var url = '/services/v2/people/$personId/blockouts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesBlockout>(url,
         query: query, apiVersion: kApiVersion);

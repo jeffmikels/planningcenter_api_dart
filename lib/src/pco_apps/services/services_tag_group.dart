@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.468562
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.855463
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,12 +160,11 @@ class PcoServicesTagGroup extends PcoResource {
   String get serviceTypeFolderName => _attributes[kServiceTypeFolderName] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedFolder<T extends PcoResource>() =>
-      relationships['folder']?.cast<T>() ?? [];
-  List<T> includedTags<T extends PcoResource>() =>
-      relationships['tags']?.cast<T>() ?? [];
+  List<PcoServicesFolder> get includedFolder =>
+      (relationships['folder'] as List?)?.cast<PcoServicesFolder>() ?? [];
+  List<PcoServicesTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoServicesTag>() ?? [];
 
   // Class Constructors
   PcoServicesTagGroup.fromJson(Map<String, dynamic> data,

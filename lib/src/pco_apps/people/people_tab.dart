@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.633584
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.033754
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,12 +174,14 @@ class PcoPeopleTab extends PcoResource {
       (x == null) ? _attributes.remove(kSlug) : _attributes[kSlug] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedFieldDefinitions<T extends PcoResource>() =>
-      relationships['field_definitions']?.cast<T>() ?? [];
-  List<T> includedFieldOptions<T extends PcoResource>() =>
-      relationships['field_options']?.cast<T>() ?? [];
+  List<PcoPeopleFieldDefinition> get includedFieldDefinitions =>
+      (relationships['field_definitions'] as List?)
+          ?.cast<PcoPeopleFieldDefinition>() ??
+      [];
+  List<PcoPeopleFieldOption> get includedFieldOptions =>
+      (relationships['field_options'] as List?)?.cast<PcoPeopleFieldOption>() ??
+      [];
 
   // Class Constructors
   PcoPeopleTab.fromJson(Map<String, dynamic> data,

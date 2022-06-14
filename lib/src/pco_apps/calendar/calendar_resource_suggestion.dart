@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.692641
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.080496
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -157,10 +157,9 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   int get quantity => _attributes[kQuantity] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedResource<T extends PcoResource>() =>
-      relationships['resource']?.cast<T>() ?? [];
+  List<PcoCalendarResource> get includedResource =>
+      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
 
   // Class Constructors
   PcoCalendarResourceSuggestion.fromJson(Map<String, dynamic> data,

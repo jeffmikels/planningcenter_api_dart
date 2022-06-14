@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.583128
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.959764
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -189,31 +189,31 @@ class PcoPeopleApp extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/person_apps/$personAppId/app`
-  static Future<PcoCollection<PcoPeopleApp>> getFromPeopleAndPersonApp(
-    String peopleId,
+  /// using a path like this: `/people/v2/people/$personId/person_apps/$personAppId/app`
+  static Future<PcoCollection<PcoPeopleApp>> getFromPersonAndPersonApp(
+    String personId,
     String personAppId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/person_apps/$personAppId/app';
+    var url = '/people/v2/people/$personId/person_apps/$personAppId/app';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/apps`
-  static Future<PcoCollection<PcoPeopleApp>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/apps`
+  static Future<PcoCollection<PcoPeopleApp>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/apps';
+    var url = '/people/v2/people/$personId/apps';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: kApiVersion);

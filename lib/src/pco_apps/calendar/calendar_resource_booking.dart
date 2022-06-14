@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.691391
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.079109
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -196,14 +196,17 @@ class PcoCalendarResourceBooking extends PcoResource {
   int get quantity => _attributes[kQuantity] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEventInstance<T extends PcoResource>() =>
-      relationships['event_instance']?.cast<T>() ?? [];
-  List<T> includedEventResourceRequest<T extends PcoResource>() =>
-      relationships['event_resource_request']?.cast<T>() ?? [];
-  List<T> includedResource<T extends PcoResource>() =>
-      relationships['resource']?.cast<T>() ?? [];
+  List<PcoCalendarEventInstance> get includedEventInstance =>
+      (relationships['event_instance'] as List?)
+          ?.cast<PcoCalendarEventInstance>() ??
+      [];
+  List<PcoCalendarEventResourceRequest> get includedEventResourceRequest =>
+      (relationships['event_resource_request'] as List?)
+          ?.cast<PcoCalendarEventResourceRequest>() ??
+      [];
+  List<PcoCalendarResource> get includedResource =>
+      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
 
   // Class Constructors
   PcoCalendarResourceBooking.fromJson(Map<String, dynamic> data,

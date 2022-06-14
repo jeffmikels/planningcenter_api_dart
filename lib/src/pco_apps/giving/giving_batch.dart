@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.708541
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.128033
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -184,12 +184,15 @@ class PcoGivingBatch extends PcoResource {
       : _attributes[kDescription] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedBatchGroup<T extends PcoResource>() =>
-      relationships['batch_group']?.cast<T>() ?? [];
+  List<PcoGivingBatchGroup> get includedBatchGroup =>
+      (relationships['batch_group'] as List?)?.cast<PcoGivingBatchGroup>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedOwner<T extends PcoResource>() =>
-      relationships['owner']?.cast<T>() ?? [];
+      (relationships['owner'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoGivingBatch.fromJson(Map<String, dynamic> data,
@@ -263,13 +266,13 @@ class PcoGivingBatch extends PcoResource {
   }
 
   /// Will get a collection of [PcoGivingBatch] objects (expecting one)
-  /// using a path like this: `/giving/v2/people/$peopleId/batches`
+  /// using a path like this: `/giving/v2/people/$personId/batches`
   ///
   /// Available Query Filters:
   /// - `committed`
   /// - `in_progress`
-  static Future<PcoCollection<PcoGivingBatch>> getBatchesFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoGivingBatch>> getBatchesFromPerson(
+    String personId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeBatchGroup = false,
@@ -279,7 +282,7 @@ class PcoGivingBatch extends PcoResource {
     if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
-    var url = '/giving/v2/people/$peopleId/batches';
+    var url = '/giving/v2/people/$personId/batches';
 
     return PcoCollection.fromApiCall<PcoGivingBatch>(url,
         query: query, apiVersion: kApiVersion);

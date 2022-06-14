@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.428876
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.795658
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,15 +165,15 @@ class PcoServicesBlockoutException extends PcoResource {
   PcoServicesBlockoutException.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockoutException] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions`
+  /// `https://api.planningcenteronline.com/services/v2/people/$personId/blockouts/$blockoutId/blockout_exceptions`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoServicesBlockoutException(String peopleId, String blockoutId,
+  factory PcoServicesBlockoutException(String personId, String blockoutId,
       {String? date}) {
     var obj = PcoServicesBlockoutException.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+        'https://api.planningcenteronline.com/services/v2/people/$personId/blockouts/$blockoutId/blockout_exceptions';
     if (date != null) obj.date = date;
     return obj;
   }
@@ -184,10 +184,10 @@ class PcoServicesBlockoutException extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesBlockoutException] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions`
+  /// using a path like this: `/services/v2/people/$personId/blockouts/$blockoutId/blockout_exceptions`
   static Future<PcoCollection<PcoServicesBlockoutException>>
-      getFromPeopleAndBlockout(
-    String peopleId,
+      getFromPersonAndBlockout(
+    String personId,
     String blockoutId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -195,7 +195,7 @@ class PcoServicesBlockoutException extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/blockouts/$blockoutId/blockout_exceptions';
+        '/services/v2/people/$personId/blockouts/$blockoutId/blockout_exceptions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url,
         query: query, apiVersion: kApiVersion);

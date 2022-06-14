@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.439450
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.806086
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -191,18 +191,27 @@ class PcoServicesLive extends PcoResource {
   bool get isCanControlVideoFeed => _attributes[kCanControlVideoFeed] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedController<T extends PcoResource>() =>
-      relationships['controller']?.cast<T>() ?? [];
+      (relationships['controller'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCurrentItemTime<T extends PcoResource>() =>
-      relationships['current_item_time']?.cast<T>() ?? [];
-  List<T> includedItems<T extends PcoResource>() =>
-      relationships['items']?.cast<T>() ?? [];
+      (relationships['current_item_time'] as List?)?.cast<T>() ?? [];
+  List<PcoServicesItem> get includedItems =>
+      (relationships['items'] as List?)?.cast<PcoServicesItem>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedNextItemTime<T extends PcoResource>() =>
-      relationships['next_item_time']?.cast<T>() ?? [];
-  List<T> includedServiceType<T extends PcoResource>() =>
-      relationships['service_type']?.cast<T>() ?? [];
+      (relationships['next_item_time'] as List?)?.cast<T>() ?? [];
+  List<PcoServicesServiceType> get includedServiceType =>
+      (relationships['service_type'] as List?)
+          ?.cast<PcoServicesServiceType>() ??
+      [];
 
   // Class Constructors
   PcoServicesLive.fromJson(Map<String, dynamic> data,

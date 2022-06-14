@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.458752
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.840601
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -265,10 +265,9 @@ class PcoServicesSchedule extends PcoResource {
   bool get isPlanVisibleToMe => _attributes[kPlanVisibleToMe] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPlanTimes<T extends PcoResource>() =>
-      relationships['plan_times']?.cast<T>() ?? [];
+  List<PcoServicesPlanTime> get includedPlanTimes =>
+      (relationships['plan_times'] as List?)?.cast<PcoServicesPlanTime>() ?? [];
 
   // Class Constructors
   PcoServicesSchedule.fromJson(Map<String, dynamic> data,
@@ -282,7 +281,7 @@ class PcoServicesSchedule extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesSchedule] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/schedules`
+  /// using a path like this: `/services/v2/people/$personId/schedules`
   ///
   /// Available Query Filters:
   /// - `after`
@@ -295,8 +294,8 @@ class PcoServicesSchedule extends PcoResource {
   /// - `future`
   /// - `not_across_organizations`
   /// - `past`
-  static Future<PcoCollection<PcoServicesSchedule>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoServicesSchedule>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includePlanTimes = false,
@@ -304,7 +303,7 @@ class PcoServicesSchedule extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includePlanTimes) query.include.add('plan_times');
-    var url = '/services/v2/people/$peopleId/schedules';
+    var url = '/services/v2/people/$personId/schedules';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesSchedule>(url,
         query: query, apiVersion: kApiVersion);

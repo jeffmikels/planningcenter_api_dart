@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.444924
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.817463
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -230,12 +230,13 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   String get personId => _attributes[kPersonId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
-  List<T> includedTeamPosition<T extends PcoResource>() =>
-      relationships['team_position']?.cast<T>() ?? [];
+  List<PcoServicesPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoServicesPerson>() ?? [];
+  List<PcoServicesTeamPosition> get includedTeamPosition =>
+      (relationships['team_position'] as List?)
+          ?.cast<PcoServicesTeamPosition>() ??
+      [];
 
   // Class Constructors
   PcoServicesPersonTeamPositionAssignment.fromJson(Map<String, dynamic> data,
@@ -267,14 +268,14 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesPersonTeamPositionAssignment] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/person_team_position_assignments`
+  /// using a path like this: `/services/v2/people/$personId/person_team_position_assignments`
   ///
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
   static Future<PcoCollection<PcoServicesPersonTeamPositionAssignment>>
-      getFromPeople(
-    String peopleId, {
+      getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -286,7 +287,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
       query.include.addAll(PcoServicesPersonTeamPositionAssignment.canInclude);
     if (includePerson) query.include.add('person');
     if (includeTeamPosition) query.include.add('team_position');
-    var url = '/services/v2/people/$peopleId/person_team_position_assignments';
+    var url = '/services/v2/people/$personId/person_team_position_assignments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPersonTeamPositionAssignment>(
         url,

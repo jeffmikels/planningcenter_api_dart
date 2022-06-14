@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.629471
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.028645
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -176,12 +176,16 @@ class PcoPeopleReport extends PcoResource {
       (x == null) ? _attributes.remove(kBody) : _attributes[kBody] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
-      relationships['created_by']?.cast<T>() ?? [];
+      (relationships['created_by'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedUpdatedBy<T extends PcoResource>() =>
-      relationships['updated_by']?.cast<T>() ?? [];
+      (relationships['updated_by'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleReport.fromJson(Map<String, dynamic> data,

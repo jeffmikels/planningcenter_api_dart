@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.411904
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.774278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -485,12 +485,14 @@ class PcoServicesArrangement extends PcoResource {
       : _attributes[kRehearsalMixId] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedKeys<T extends PcoResource>() =>
-      relationships['keys']?.cast<T>() ?? [];
+  List<PcoServicesKey> get includedKeys =>
+      (relationships['keys'] as List?)?.cast<PcoServicesKey>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSections<T extends PcoResource>() =>
-      relationships['sections']?.cast<T>() ?? [];
+      (relationships['sections'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoServicesArrangement.fromJson(Map<String, dynamic> data,

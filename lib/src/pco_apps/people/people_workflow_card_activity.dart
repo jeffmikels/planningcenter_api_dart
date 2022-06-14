@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.649569
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.038844
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,17 +195,17 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/activities`
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities`
   static Future<PcoCollection<PcoPeopleWorkflowCardActivity>>
-      getActivitiesFromPeopleAndWorkflowCard(
-    String peopleId,
+      getActivitiesFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/activities';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.592310
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.970185
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,15 +185,15 @@ class PcoPeopleInactiveReason extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/inactive_reason`
-  static Future<PcoCollection<PcoPeopleInactiveReason>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/inactive_reason`
+  static Future<PcoCollection<PcoPeopleInactiveReason>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/inactive_reason';
+    var url = '/people/v2/people/$personId/inactive_reason';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
         query: query, apiVersion: kApiVersion);

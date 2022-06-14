@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.447560
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.821680
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -361,16 +361,20 @@ class PcoServicesPlan extends PcoResource {
   String get seriesId => _attributes[kSeriesId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedContributors<T extends PcoResource>() =>
-      relationships['contributors']?.cast<T>() ?? [];
+  List<PcoServicesContributor> get includedContributors =>
+      (relationships['contributors'] as List?)
+          ?.cast<PcoServicesContributor>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedMySchedules<T extends PcoResource>() =>
-      relationships['my_schedules']?.cast<T>() ?? [];
-  List<T> includedPlanTimes<T extends PcoResource>() =>
-      relationships['plan_times']?.cast<T>() ?? [];
-  List<T> includedSeries<T extends PcoResource>() =>
-      relationships['series']?.cast<T>() ?? [];
+      (relationships['my_schedules'] as List?)?.cast<T>() ?? [];
+  List<PcoServicesPlanTime> get includedPlanTimes =>
+      (relationships['plan_times'] as List?)?.cast<PcoServicesPlanTime>() ?? [];
+  List<PcoServicesSeries> get includedSeries =>
+      (relationships['series'] as List?)?.cast<PcoServicesSeries>() ?? [];
 
   // Class Constructors
   PcoServicesPlan.fromJson(Map<String, dynamic> data,
@@ -401,10 +405,10 @@ class PcoServicesPlan extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/watchable_plans`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/watchable_plans`
   static Future<PcoCollection<PcoServicesPlan>>
-      getWatchablePlansFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getWatchablePlansFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     PlanningCenterApiQuery? query,
@@ -421,7 +425,7 @@ class PcoServicesPlan extends PcoResource {
     if (includePlanTimes) query.include.add('plan_times');
     if (includeSeries) query.include.add('series');
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/watchable_plans';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/watchable_plans';
 
     return PcoCollection.fromApiCall<PcoServicesPlan>(url,
         query: query, apiVersion: kApiVersion);
@@ -454,10 +458,10 @@ class PcoServicesPlan extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/plan_people/$planPeopleId/plan`
-  static Future<PcoCollection<PcoServicesPlan>> getFromPeopleAndPlanPeople(
-    String peopleId,
-    String planPeopleId, {
+  /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan`
+  static Future<PcoCollection<PcoServicesPlan>> getFromPersonAndPlanPerson(
+    String personId,
+    String planPersonId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeContributors = false,
@@ -471,7 +475,7 @@ class PcoServicesPlan extends PcoResource {
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
     if (includeSeries) query.include.add('series');
-    var url = '/services/v2/people/$peopleId/plan_people/$planPeopleId/plan';
+    var url = '/services/v2/people/$personId/plan_people/$planPersonId/plan';
 
     return PcoCollection.fromApiCall<PcoServicesPlan>(url,
         query: query, apiVersion: kApiVersion);

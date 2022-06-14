@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.505441
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.892700
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -157,12 +157,13 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEventPeriod<T extends PcoResource>() =>
-      relationships['event_period']?.cast<T>() ?? [];
-  List<T> includedLocation<T extends PcoResource>() =>
-      relationships['location']?.cast<T>() ?? [];
+  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
+      (relationships['event_period'] as List?)
+          ?.cast<PcoCheckInsEventPeriod>() ??
+      [];
+  List<PcoCheckInsLocation> get includedLocation =>
+      (relationships['location'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
 
   // Class Constructors
   PcoCheckInsLocationEventPeriod.fromJson(Map<String, dynamic> data,

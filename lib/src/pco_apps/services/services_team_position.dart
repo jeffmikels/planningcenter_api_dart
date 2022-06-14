@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.470359
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.857230
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -168,10 +168,9 @@ class PcoServicesTeamPosition extends PcoResource {
   List get tagGroups => _attributes[kTagGroups] ?? [];
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedTeam<T extends PcoResource>() =>
-      relationships['team']?.cast<T>() ?? [];
+  List<PcoServicesTeam> get includedTeam =>
+      (relationships['team'] as List?)?.cast<PcoServicesTeam>() ?? [];
 
   // Class Constructors
   PcoServicesTeamPosition.fromJson(Map<String, dynamic> data,

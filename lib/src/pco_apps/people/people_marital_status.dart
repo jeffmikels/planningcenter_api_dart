@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.595415
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.975319
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,8 +17,8 @@ part of pco;
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/marital_statuses
 ///
 /// ## Instantiation
-/// - Create a new instance using the `PcoPeopleMaritalStatu()` constructor
-/// - Instantiate from existing `JSON` data using the `PcoPeopleMaritalStatu.fromJson()` constructor.
+/// - Create a new instance using the `PcoPeopleMaritalStatus()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleMaritalStatus.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -77,7 +77,7 @@ part of pco;
 ///   "relationships": {}
 /// }
 /// ```
-class PcoPeopleMaritalStatu extends PcoResource {
+class PcoPeopleMaritalStatus extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'MaritalStatus';
   static const String kTypeId = 'marital_status';
@@ -146,19 +146,19 @@ class PcoPeopleMaritalStatu extends PcoResource {
       (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // Class Constructors
-  PcoPeopleMaritalStatu.fromJson(Map<String, dynamic> data,
+  PcoPeopleMaritalStatus.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleMaritalStatu.empty() : super(kPcoApplication, kTypeString);
+  PcoPeopleMaritalStatus.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleMaritalStatu] object based on this request endpoint:
+  /// Create a new [PcoPeopleMaritalStatus] object based on this request endpoint:
   /// `https://api.planningcenteronline.com/people/v2/marital_statuses`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleMaritalStatu({String? value}) {
-    var obj = PcoPeopleMaritalStatu.empty();
+  factory PcoPeopleMaritalStatus({String? value}) {
+    var obj = PcoPeopleMaritalStatus.empty();
     obj._apiPathOverride =
         'https://api.planningcenteronline.com/people/v2/marital_statuses';
     if (value != null) obj.value = value;
@@ -170,9 +170,9 @@ class PcoPeopleMaritalStatu extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleMaritalStatu] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `/people/v2/marital_statuses`
-  static Future<PcoCollection<PcoPeopleMaritalStatu>> get({
+  static Future<PcoCollection<PcoPeopleMaritalStatus>> get({
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
@@ -180,23 +180,22 @@ class PcoPeopleMaritalStatu extends PcoResource {
 
     var url = '/people/v2/marital_statuses';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMaritalStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMaritalStatu] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/marital_status`
-  static Future<PcoCollection<PcoPeopleMaritalStatu>>
-      getMaritalStatusFromPeople(
-    String peopleId, {
+  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/marital_status`
+  static Future<PcoCollection<PcoPeopleMaritalStatus>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/marital_status';
+    var url = '/people/v2/people/$personId/marital_status';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMaritalStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: kApiVersion);
   }
 }

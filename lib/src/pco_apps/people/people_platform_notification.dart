@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.628778
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.028037
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -149,15 +149,15 @@ class PcoPeoplePlatformNotification extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePlatformNotification] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/platform_notifications`
-  static Future<PcoCollection<PcoPeoplePlatformNotification>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/platform_notifications`
+  static Future<PcoCollection<PcoPeoplePlatformNotification>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/platform_notifications';
+    var url = '/people/v2/people/$personId/platform_notifications';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url,
         query: query, apiVersion: kApiVersion);

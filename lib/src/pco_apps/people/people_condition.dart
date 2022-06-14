@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.585721
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.962166
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -217,10 +217,11 @@ class PcoPeopleCondition extends PcoResource {
   String get description => _attributes[kDescription] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
-      relationships['created_by']?.cast<T>() ?? [];
+      (relationships['created_by'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleCondition.fromJson(Map<String, dynamic> data,

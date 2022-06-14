@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.450312
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.828462
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -350,16 +350,17 @@ class PcoServicesPlanPerson extends PcoResource {
   String get respondsToId => _attributes[kRespondsToId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedDeclinedPlanTimes<T extends PcoResource>() =>
-      relationships['declined_plan_times']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
-  List<T> includedPlan<T extends PcoResource>() =>
-      relationships['plan']?.cast<T>() ?? [];
-  List<T> includedTeam<T extends PcoResource>() =>
-      relationships['team']?.cast<T>() ?? [];
+      (relationships['declined_plan_times'] as List?)?.cast<T>() ?? [];
+  List<PcoServicesPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoServicesPerson>() ?? [];
+  List<PcoServicesPlan> get includedPlan =>
+      (relationships['plan'] as List?)?.cast<PcoServicesPlan>() ?? [];
+  List<PcoServicesTeam> get includedTeam =>
+      (relationships['team'] as List?)?.cast<PcoServicesTeam>() ?? [];
 
   // Class Constructors
   PcoServicesPlanPerson.fromJson(Map<String, dynamic> data,
@@ -399,10 +400,11 @@ class PcoServicesPlanPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesPlanPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/plan_people`
-  static Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeopleFromPeople(
-    String peopleId, {
+  /// Will get a collection of [PcoServicesPlanPerson] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/plan_people`
+  static Future<PcoCollection<PcoServicesPlanPerson>> getFromPerson(
+    String personId, {
+    String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeDeclinedPlanTimes = false,
@@ -416,8 +418,8 @@ class PcoServicesPlanPerson extends PcoResource {
     if (includePerson) query.include.add('person');
     if (includePlan) query.include.add('plan');
     if (includeTeam) query.include.add('team');
-    var url = '/services/v2/people/$peopleId/plan_people';
-
+    var url = '/services/v2/people/$personId/plan_people';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPlanPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
@@ -453,10 +455,11 @@ class PcoServicesPlanPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlanPerson] objects (expecting one)
+  /// Will get a collection of [PcoServicesPlanPerson] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/plan_people`
-  static Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeopleFromTeam(
+  static Future<PcoCollection<PcoServicesPlanPerson>> getFromTeam(
     String teamId, {
+    String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeDeclinedPlanTimes = false,
@@ -471,7 +474,7 @@ class PcoServicesPlanPerson extends PcoResource {
     if (includePlan) query.include.add('plan');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/teams/$teamId/plan_people';
-
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPlanPerson>(url,
         query: query, apiVersion: kApiVersion);
   }

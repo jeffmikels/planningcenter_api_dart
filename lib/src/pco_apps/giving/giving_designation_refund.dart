@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.710114
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.129931
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -149,10 +149,10 @@ class PcoGivingDesignationRefund extends PcoResource {
   String get amountCurrency => _attributes[kAmountCurrency] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedDesignation<T extends PcoResource>() =>
-      relationships['designation']?.cast<T>() ?? [];
+  List<PcoGivingDesignation> get includedDesignation =>
+      (relationships['designation'] as List?)?.cast<PcoGivingDesignation>() ??
+      [];
 
   // Class Constructors
   PcoGivingDesignationRefund.fromJson(Map<String, dynamic> data,

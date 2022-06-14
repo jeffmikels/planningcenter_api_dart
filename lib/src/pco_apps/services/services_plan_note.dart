@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.448331
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.824058
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -173,10 +173,11 @@ class PcoServicesPlanNote extends PcoResource {
       (x == null) ? _attributes.remove(kContent) : _attributes[kContent] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPlanNoteCategory<T extends PcoResource>() =>
-      relationships['plan_note_category']?.cast<T>() ?? [];
+  List<PcoServicesPlanNoteCategory> get includedPlanNoteCategory =>
+      (relationships['plan_note_category'] as List?)
+          ?.cast<PcoServicesPlanNoteCategory>() ??
+      [];
 
   // Class Constructors
   PcoServicesPlanNote.fromJson(Map<String, dynamic> data,

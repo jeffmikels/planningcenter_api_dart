@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.440652
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.807434
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -272,10 +272,10 @@ class PcoServicesMedia extends PcoResource {
       : _attributes[kCreatorName] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedAttachments<T extends PcoResource>() =>
-      relationships['attachments']?.cast<T>() ?? [];
+  List<PcoServicesAttachment> get includedAttachments =>
+      (relationships['attachments'] as List?)?.cast<PcoServicesAttachment>() ??
+      [];
 
   // Class Constructors
   PcoServicesMedia.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.508163
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.895133
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ part of pco;
 ///
 /// ## Instantiation
 /// - This object cannot be created through the API.
-/// - Instantiate from existing `JSON` data using the `PcoCheckInsPas.fromJson()` constructor.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsPass.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -83,7 +83,7 @@ part of pco;
 ///   "relationships": {}
 /// }
 /// ```
-class PcoCheckInsPas extends PcoResource {
+class PcoCheckInsPass extends PcoResource {
   static const String kPcoApplication = 'check-ins';
   static const String kTypeString = 'Pass';
   static const String kTypeId = 'pass';
@@ -149,13 +149,12 @@ class PcoCheckInsPas extends PcoResource {
   String get kind => _attributes[kKind] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoCheckInsPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoCheckInsPerson>() ?? [];
 
   // Class Constructors
-  PcoCheckInsPas.fromJson(Map<String, dynamic> data,
+  PcoCheckInsPass.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
@@ -165,9 +164,9 @@ class PcoCheckInsPas extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
+  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> get({
+  static Future<PcoCollection<PcoCheckInsPass>> get({
     String? id,
     PlanningCenterApiQuery? query,
     bool includePerson = false,
@@ -177,14 +176,14 @@ class PcoCheckInsPas extends PcoResource {
     if (includePerson) query.include.add('person');
     var url = '/check-ins/v2/passes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
-  /// using a path like this: `/check-ins/v2/people/$peopleId/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> getFromPeople(
-    String peopleId, {
+  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/people/$personId/passes`
+  static Future<PcoCollection<PcoCheckInsPass>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includePerson = false,
@@ -192,9 +191,9 @@ class PcoCheckInsPas extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includePerson) query.include.add('person');
-    var url = '/check-ins/v2/people/$peopleId/passes';
+    var url = '/check-ins/v2/people/$personId/passes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
         query: query, apiVersion: kApiVersion);
   }
 

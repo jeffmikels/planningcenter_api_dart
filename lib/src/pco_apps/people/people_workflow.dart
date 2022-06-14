@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.634644
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.035278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -261,14 +261,21 @@ class PcoPeopleWorkflow extends PcoResource {
       : _attributes[kWorkflowCategoryId] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCategory<T extends PcoResource>() =>
-      relationships['category']?.cast<T>() ?? [];
+      (relationships['category'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedShares<T extends PcoResource>() =>
-      relationships['shares']?.cast<T>() ?? [];
+      (relationships['shares'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSteps<T extends PcoResource>() =>
-      relationships['steps']?.cast<T>() ?? [];
+      (relationships['steps'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoPeopleWorkflow.fromJson(Map<String, dynamic> data,
@@ -326,9 +333,9 @@ class PcoPeopleWorkflow extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/workflow`
-  static Future<PcoCollection<PcoPeopleWorkflow>> getFromPeopleAndWorkflowCard(
-    String peopleId,
+  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/workflow`
+  static Future<PcoCollection<PcoPeopleWorkflow>> getFromPersonAndWorkflowCard(
+    String personId,
     String workflowCardId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -342,7 +349,7 @@ class PcoPeopleWorkflow extends PcoResource {
     if (includeShares) query.include.add('shares');
     if (includeSteps) query.include.add('steps');
     var url =
-        '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/workflow';
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/workflow';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.652602
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.040361
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -180,10 +180,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleWorkflowShare.fromJson(Map<String, dynamic> data,
@@ -214,9 +213,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/workflow_shares`
-  static Future<PcoCollection<PcoPeopleWorkflowShare>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/workflow_shares`
+  static Future<PcoCollection<PcoPeopleWorkflowShare>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includePerson = false,
@@ -224,7 +223,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includePerson) query.include.add('person');
-    var url = '/people/v2/people/$peopleId/workflow_shares';
+    var url = '/people/v2/people/$personId/workflow_shares';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
         query: query, apiVersion: kApiVersion);

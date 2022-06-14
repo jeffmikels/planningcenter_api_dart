@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.507739
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.894773
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -186,15 +186,15 @@ class PcoCheckInsOrganization extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsOrganization] objects (expecting many)
-  /// using a path like this: `/check-ins/v2/people/$peopleId/organization`
-  static Future<PcoCollection<PcoCheckInsOrganization>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/check-ins/v2/people/$personId/organization`
+  static Future<PcoCollection<PcoCheckInsOrganization>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/check-ins/v2/people/$peopleId/organization';
+    var url = '/check-ins/v2/people/$personId/organization';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsOrganization>(url,
         query: query, apiVersion: kApiVersion);
@@ -318,9 +318,9 @@ class PcoCheckInsOrganization extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
+  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/passes`
-  Future<PcoCollection<PcoCheckInsPas>> getPasses({
+  Future<PcoCollection<PcoCheckInsPass>> getPasses({
     PlanningCenterApiQuery? query,
     bool includePerson = false,
   }) async {
@@ -328,7 +328,7 @@ class PcoCheckInsOrganization extends PcoResource {
 
     if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/passes';
-    return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
         query: query, apiVersion: apiVersion);
   }
 

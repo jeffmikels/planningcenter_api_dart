@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.742295
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.144933
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -223,12 +223,11 @@ class PcoGroupsGroup extends PcoResource {
   String get widgetStatus => _attributes[kWidgetStatus] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedGroupType<T extends PcoResource>() =>
-      relationships['group_type']?.cast<T>() ?? [];
-  List<T> includedLocation<T extends PcoResource>() =>
-      relationships['location']?.cast<T>() ?? [];
+  List<PcoGroupsGroupType> get includedGroupType =>
+      (relationships['group_type'] as List?)?.cast<PcoGroupsGroupType>() ?? [];
+  List<PcoGroupsLocation> get includedLocation =>
+      (relationships['location'] as List?)?.cast<PcoGroupsLocation>() ?? [];
 
   // Class Constructors
   PcoGroupsGroup.fromJson(Map<String, dynamic> data,
@@ -320,9 +319,9 @@ class PcoGroupsGroup extends PcoResource {
   }
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
-  /// using a path like this: `/groups/v2/people/$peopleId/groups`
-  static Future<PcoCollection<PcoGroupsGroup>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/groups/v2/people/$personId/groups`
+  static Future<PcoCollection<PcoGroupsGroup>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -333,7 +332,7 @@ class PcoGroupsGroup extends PcoResource {
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
-    var url = '/groups/v2/people/$peopleId/groups';
+    var url = '/groups/v2/people/$personId/groups';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: kApiVersion);

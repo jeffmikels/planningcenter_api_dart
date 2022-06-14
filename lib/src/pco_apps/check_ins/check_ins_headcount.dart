@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.503204
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.890922
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -169,12 +169,14 @@ class PcoCheckInsHeadcount extends PcoResource {
   int get total => _attributes[kTotal] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedAttendanceType<T extends PcoResource>() =>
-      relationships['attendance_type']?.cast<T>() ?? [];
-  List<T> includedEventTime<T extends PcoResource>() =>
-      relationships['event_time']?.cast<T>() ?? [];
+  List<PcoCheckInsAttendanceType> get includedAttendanceType =>
+      (relationships['attendance_type'] as List?)
+          ?.cast<PcoCheckInsAttendanceType>() ??
+      [];
+  List<PcoCheckInsEventTime> get includedEventTime =>
+      (relationships['event_time'] as List?)?.cast<PcoCheckInsEventTime>() ??
+      [];
 
   // Class Constructors
   PcoCheckInsHeadcount.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.687264
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.062010
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -230,18 +230,23 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   String get roomSetupInfo => _attributes[kRoomSetupInfo] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
-      relationships['created_by']?.cast<T>() ?? [];
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedResource<T extends PcoResource>() =>
-      relationships['resource']?.cast<T>() ?? [];
-  List<T> includedRoomSetup<T extends PcoResource>() =>
-      relationships['room_setup']?.cast<T>() ?? [];
+      (relationships['created_by'] as List?)?.cast<T>() ?? [];
+  List<PcoCalendarEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCalendarEvent>() ?? [];
+  List<PcoCalendarResource> get includedResource =>
+      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
+  List<PcoCalendarRoomSetup> get includedRoomSetup =>
+      (relationships['room_setup'] as List?)?.cast<PcoCalendarRoomSetup>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedUpdatedBy<T extends PcoResource>() =>
-      relationships['updated_by']?.cast<T>() ?? [];
+      (relationships['updated_by'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoCalendarEventResourceRequest.fromJson(Map<String, dynamic> data,
@@ -308,15 +313,15 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   }
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
-  /// using a path like this: `/calendar/v2/people/$peopleId/event_resource_requests`
+  /// using a path like this: `/calendar/v2/people/$personId/event_resource_requests`
   ///
   /// Available Query Filters:
   /// - `awaiting_response`
   /// - `future`
   /// - `not_overbooked`
   /// - `overbooked`
-  static Future<PcoCollection<PcoCalendarEventResourceRequest>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoCalendarEventResourceRequest>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -334,7 +339,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     if (includeResource) query.include.add('resource');
     if (includeRoomSetup) query.include.add('room_setup');
     if (includeUpdatedBy) query.include.add('updated_by');
-    var url = '/calendar/v2/people/$peopleId/event_resource_requests';
+    var url = '/calendar/v2/people/$personId/event_resource_requests';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url,
         query: query, apiVersion: kApiVersion);

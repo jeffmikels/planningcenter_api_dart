@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.763707
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.159965
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,7 +152,8 @@ Map<
       PcoServicesSignupSheet.fromJson(data, withIncludes: withIncludes),
   'services-SignupSheetMetadata': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoServicesSignupSheetMetadata.fromJson(data, withIncludes: withIncludes),
+      PcoServicesSignupSheetMetadatum.fromJson(data,
+          withIncludes: withIncludes),
   'services-SkippedAttachment': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoServicesSkippedAttachment.fromJson(data, withIncludes: withIncludes),
@@ -164,7 +165,7 @@ Map<
       PcoServicesSongSchedule.fromJson(data, withIncludes: withIncludes),
   'services-SongbookStatus': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoServicesSongbookStatu.fromJson(data, withIncludes: withIncludes),
+      PcoServicesSongbookStatus.fromJson(data, withIncludes: withIncludes),
   'services-SplitTeamRehearsalAssignment': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoServicesSplitTeamRehearsalAssignment.fromJson(data,
@@ -244,7 +245,7 @@ Map<
       PcoCheckInsOrganization.fromJson(data, withIncludes: withIncludes),
   'check-ins-Pass': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoCheckInsPas.fromJson(data, withIncludes: withIncludes),
+      PcoCheckInsPass.fromJson(data, withIncludes: withIncludes),
   'check-ins-Person': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoCheckInsPerson.fromJson(data, withIncludes: withIncludes),
@@ -259,7 +260,7 @@ Map<
       PcoCheckInsTheme.fromJson(data, withIncludes: withIncludes),
   'people-Address': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoPeopleAddres.fromJson(data, withIncludes: withIncludes),
+      PcoPeopleAddress.fromJson(data, withIncludes: withIncludes),
   'people-AnniversaryCouples': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoPeopleAnniversaryCouple.fromJson(data, withIncludes: withIncludes),
@@ -268,7 +269,7 @@ Map<
       PcoPeopleApp.fromJson(data, withIncludes: withIncludes),
   'people-BirthdayPeople': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoPeopleBirthdayPeople.fromJson(data, withIncludes: withIncludes),
+      PcoPeopleBirthdayPerson.fromJson(data, withIncludes: withIncludes),
   'people-Campus': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoPeopleCampus.fromJson(data, withIncludes: withIncludes),
@@ -334,10 +335,10 @@ Map<
       PcoPeopleListStar.fromJson(data, withIncludes: withIncludes),
   'people-MailchimpSyncStatus': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoPeopleMailchimpSyncStatu.fromJson(data, withIncludes: withIncludes),
+      PcoPeopleMailchimpSyncStatus.fromJson(data, withIncludes: withIncludes),
   'people-MaritalStatus': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
-      PcoPeopleMaritalStatu.fromJson(data, withIncludes: withIncludes),
+      PcoPeopleMaritalStatus.fromJson(data, withIncludes: withIncludes),
   'people-Message': (Map<String, dynamic> data,
           {List<Map<String, dynamic>> withIncludes = const []}) =>
       PcoPeopleMessage.fromJson(data, withIncludes: withIncludes),

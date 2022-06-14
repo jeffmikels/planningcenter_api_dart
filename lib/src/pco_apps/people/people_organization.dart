@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.610931
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.011630
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -199,15 +199,15 @@ class PcoPeopleOrganization extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleOrganization] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/organization`
-  static Future<PcoCollection<PcoPeopleOrganization>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/organization`
+  static Future<PcoCollection<PcoPeopleOrganization>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/organization';
+    var url = '/people/v2/people/$personId/organization';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleOrganization>(url,
         query: query, apiVersion: kApiVersion);
@@ -218,15 +218,15 @@ class PcoPeopleOrganization extends PcoResource {
   // ---------------------------------
   // Instance functions to traverse outbound edges
 
-  /// Will get a collection of [PcoPeopleAddres] objects (expecting many)
+  /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/addresses`
-  Future<PcoCollection<PcoPeopleAddres>> getAddresses({
+  Future<PcoCollection<PcoPeopleAddress>> getAddresses({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/addresses';
-    return PcoCollection.fromApiCall<PcoPeopleAddres>(url,
+    return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: apiVersion);
   }
 
@@ -254,15 +254,15 @@ class PcoPeopleOrganization extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleBirthdayPeople] objects (expecting many)
+  /// Will get a collection of [PcoPeopleBirthdayPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/birthday_people`
-  Future<PcoCollection<PcoPeopleBirthdayPeople>> getBirthdayPeople({
+  Future<PcoCollection<PcoPeopleBirthdayPerson>> getBirthdayPeople({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/birthday_people';
-    return PcoCollection.fromApiCall<PcoPeopleBirthdayPeople>(url,
+    return PcoCollection.fromApiCall<PcoPeopleBirthdayPerson>(url,
         query: query, apiVersion: apiVersion);
   }
 
@@ -444,15 +444,15 @@ class PcoPeopleOrganization extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMaritalStatu] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/marital_statuses`
-  Future<PcoCollection<PcoPeopleMaritalStatu>> getMaritalStatuses({
+  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatuses({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/marital_statuses';
-    return PcoCollection.fromApiCall<PcoPeopleMaritalStatu>(url,
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: apiVersion);
   }
 

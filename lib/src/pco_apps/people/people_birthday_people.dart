@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.583652
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.960279
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ part of pco;
 ///
 /// ## Instantiation
 /// - This object cannot be created through the API.
-/// - Instantiate from existing `JSON` data using the `PcoPeopleBirthdayPeople.fromJson()` constructor.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleBirthdayPerson.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -73,7 +73,7 @@ part of pco;
 ///   "relationships": {}
 /// }
 /// ```
-class PcoPeopleBirthdayPeople extends PcoResource {
+class PcoPeopleBirthdayPerson extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'BirthdayPeople';
   static const String kTypeId = 'birthday_people';
@@ -131,7 +131,7 @@ class PcoPeopleBirthdayPeople extends PcoResource {
   bool get canDestroy => false;
 
   // Class Constructors
-  PcoPeopleBirthdayPeople.fromJson(Map<String, dynamic> data,
+  PcoPeopleBirthdayPerson.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
@@ -141,9 +141,9 @@ class PcoPeopleBirthdayPeople extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleBirthdayPeople] objects (expecting many)
+  /// Will get a collection of [PcoPeopleBirthdayPerson] objects (expecting many)
   /// using a path like this: `/people/v2/birthday_people`
-  static Future<PcoCollection<PcoPeopleBirthdayPeople>> get({
+  static Future<PcoCollection<PcoPeopleBirthdayPerson>> get({
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
@@ -151,7 +151,7 @@ class PcoPeopleBirthdayPeople extends PcoResource {
 
     var url = '/people/v2/birthday_people';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleBirthdayPeople>(url,
+    return PcoCollection.fromApiCall<PcoPeopleBirthdayPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.463420
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.848499
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,12 +185,15 @@ class PcoServicesSignupSheet extends PcoResource {
   int get sortIndex => _attributes[kSortIndex] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedScheduledPeople<T extends PcoResource>() =>
-      relationships['scheduled_people']?.cast<T>() ?? [];
-  List<T> includedSignupSheetMetadata<T extends PcoResource>() =>
-      relationships['signup_sheet_metadata']?.cast<T>() ?? [];
+  List<PcoServicesScheduledPerson> get includedScheduledPeople =>
+      (relationships['scheduled_people'] as List?)
+          ?.cast<PcoServicesScheduledPerson>() ??
+      [];
+  List<PcoServicesSignupSheetMetadatum> get includedSignupSheetMetadata =>
+      (relationships['signup_sheet_metadata'] as List?)
+          ?.cast<PcoServicesSignupSheetMetadatum>() ??
+      [];
 
   // Class Constructors
   PcoServicesSignupSheet.fromJson(Map<String, dynamic> data,
@@ -204,10 +207,10 @@ class PcoServicesSignupSheet extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesSignupSheet] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets`
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets`
   static Future<PcoCollection<PcoServicesSignupSheet>>
-      getFromPeopleAndAvailableSignup(
-    String peopleId,
+      getFromPersonAndAvailableSignup(
+    String personId,
     String availableSignupId, {
     String? id,
     PlanningCenterApiQuery? query,
@@ -220,7 +223,7 @@ class PcoServicesSignupSheet extends PcoResource {
     if (includeScheduledPeople) query.include.add('scheduled_people');
     if (includeSignupSheetMetadata) query.include.add('signup_sheet_metadata');
     var url =
-        '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets';
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesSignupSheet>(url,
         query: query, apiVersion: kApiVersion);
@@ -243,15 +246,16 @@ class PcoServicesSignupSheet extends PcoResource {
         query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoServicesSignupSheetMetadata] objects (expecting many)
+  /// Will get a collection of [PcoServicesSignupSheetMetadatum] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets/1/signup_sheet_metadata`
-  Future<PcoCollection<PcoServicesSignupSheetMetadata>> getSignupSheetMetadata({
+  Future<PcoCollection<PcoServicesSignupSheetMetadatum>>
+      getSignupSheetMetadata({
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '$apiEndpoint/signup_sheet_metadata';
-    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadata>(url,
+    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadatum>(url,
         query: query, apiVersion: apiVersion);
   }
 

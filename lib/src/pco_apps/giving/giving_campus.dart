@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.709466
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.129243
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -184,15 +184,15 @@ class PcoGivingCampus extends PcoResource {
   }
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/primary_campus`
-  static Future<PcoCollection<PcoGivingCampus>> getPrimaryCampusFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/primary_campus`
+  static Future<PcoCollection<PcoGivingCampus>> getPrimaryCampusFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/giving/v2/people/$peopleId/primary_campus';
+    var url = '/giving/v2/people/$personId/primary_campus';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingCampus>(url,
         query: query, apiVersion: kApiVersion);

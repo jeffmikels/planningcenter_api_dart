@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.437522
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.804322
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,10 +205,10 @@ class PcoServicesItemTime extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time`
   static Future<PcoCollection<PcoServicesItemTime>>
-      getCurrentItemTimeFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getCurrentItemTimeFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     PlanningCenterApiQuery? query,
@@ -216,17 +216,17 @@ class PcoServicesItemTime extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
 
     return PcoCollection.fromApiCall<PcoServicesItemTime>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time`
   static Future<PcoCollection<PcoServicesItemTime>>
-      getNextItemTimeFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getNextItemTimeFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     PlanningCenterApiQuery? query,
@@ -234,7 +234,7 @@ class PcoServicesItemTime extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time';
 
     return PcoCollection.fromApiCall<PcoServicesItemTime>(url,
         query: query, apiVersion: kApiVersion);

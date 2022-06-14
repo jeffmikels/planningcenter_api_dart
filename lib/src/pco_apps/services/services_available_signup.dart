@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.427069
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.793195
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -169,10 +169,11 @@ class PcoServicesAvailableSignup extends PcoResource {
   bool get isSignupsAvailable => _attributes[kSignupsAvailable] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedSignupSheets<T extends PcoResource>() =>
-      relationships['signup_sheets']?.cast<T>() ?? [];
+  List<PcoServicesSignupSheet> get includedSignupSheets =>
+      (relationships['signup_sheets'] as List?)
+          ?.cast<PcoServicesSignupSheet>() ??
+      [];
 
   // Class Constructors
   PcoServicesAvailableSignup.fromJson(Map<String, dynamic> data,
@@ -186,12 +187,12 @@ class PcoServicesAvailableSignup extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesAvailableSignup] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/available_signups`
+  /// using a path like this: `/services/v2/people/$personId/available_signups`
   ///
   /// Available Query Filters:
   /// - `current_organization`
-  static Future<PcoCollection<PcoServicesAvailableSignup>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoServicesAvailableSignup>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeSignupSheets = false,
@@ -199,7 +200,7 @@ class PcoServicesAvailableSignup extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includeSignupSheets) query.include.add('signup_sheets');
-    var url = '/services/v2/people/$peopleId/available_signups';
+    var url = '/services/v2/people/$personId/available_signups';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesAvailableSignup>(url,
         query: query, apiVersion: kApiVersion);

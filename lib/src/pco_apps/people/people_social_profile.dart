@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.632668
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.032049
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -186,10 +186,9 @@ class PcoPeopleSocialProfile extends PcoResource {
       (x == null) ? _attributes.remove(kVerified) : _attributes[kVerified] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleSocialProfile.fromJson(Map<String, dynamic> data,
@@ -199,15 +198,15 @@ class PcoPeopleSocialProfile extends PcoResource {
   PcoPeopleSocialProfile.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleSocialProfile] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/social_profiles`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleSocialProfile(String peopleId,
+  factory PcoPeopleSocialProfile(String personId,
       {String? site, String? url, bool? isVerified}) {
     var obj = PcoPeopleSocialProfile.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/social_profiles';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/social_profiles';
     if (site != null) obj.site = site;
     if (url != null) obj.url = url;
     if (isVerified != null) obj.isVerified = isVerified;
@@ -236,9 +235,9 @@ class PcoPeopleSocialProfile extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleSocialProfile] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/social_profiles`
-  static Future<PcoCollection<PcoPeopleSocialProfile>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/social_profiles`
+  static Future<PcoCollection<PcoPeopleSocialProfile>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includePerson = false,
@@ -246,7 +245,7 @@ class PcoPeopleSocialProfile extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includePerson) query.include.add('person');
-    var url = '/people/v2/people/$peopleId/social_profiles';
+    var url = '/people/v2/people/$personId/social_profiles';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
         query: query, apiVersion: kApiVersion);

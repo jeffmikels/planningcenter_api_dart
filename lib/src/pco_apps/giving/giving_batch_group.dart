@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.709081
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.128793
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -171,10 +171,11 @@ class PcoGivingBatchGroup extends PcoResource {
       : _attributes[kDescription] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedOwner<T extends PcoResource>() =>
-      relationships['owner']?.cast<T>() ?? [];
+      (relationships['owner'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoGivingBatchGroup.fromJson(Map<String, dynamic> data,
@@ -235,9 +236,9 @@ class PcoGivingBatchGroup extends PcoResource {
   }
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/batch_groups`
-  static Future<PcoCollection<PcoGivingBatchGroup>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/batch_groups`
+  static Future<PcoCollection<PcoGivingBatchGroup>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeOwner = false,
@@ -245,7 +246,7 @@ class PcoGivingBatchGroup extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     if (includeOwner) query.include.add('owner');
-    var url = '/giving/v2/people/$peopleId/batch_groups';
+    var url = '/giving/v2/people/$personId/batch_groups';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
         query: query, apiVersion: kApiVersion);

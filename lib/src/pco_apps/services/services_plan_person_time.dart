@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.451267
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.829102
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,18 +174,18 @@ class PcoServicesPlanPersonTime extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesPlanPersonTime] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/plan_people/$planPeopleId/plan_person_times`
+  /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times`
   static Future<PcoCollection<PcoServicesPlanPersonTime>>
-      getFromPeopleAndPlanPeople(
-    String peopleId,
-    String planPeopleId, {
+      getFromPersonAndPlanPerson(
+    String personId,
+    String planPersonId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/plan_people/$planPeopleId/plan_person_times';
+        '/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url,
         query: query, apiVersion: kApiVersion);

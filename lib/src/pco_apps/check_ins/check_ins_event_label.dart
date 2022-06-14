@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.501303
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.889094
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,12 +161,11 @@ class PcoCheckInsEventLabel extends PcoResource {
   bool get isForVolunteer => _attributes[kForVolunteer] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedLabel<T extends PcoResource>() =>
-      relationships['label']?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  List<PcoCheckInsLabel> get includedLabel =>
+      (relationships['label'] as List?)?.cast<PcoCheckInsLabel>() ?? [];
 
   // Class Constructors
   PcoCheckInsEventLabel.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.596588
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.976621
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -209,14 +209,16 @@ class PcoPeopleMessageGroup extends PcoResource {
   bool get isSystemMessage => _attributes[kSystemMessage] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedApp<T extends PcoResource>() =>
-      relationships['app']?.cast<T>() ?? [];
+  List<PcoPeopleApp> get includedApp =>
+      (relationships['app'] as List?)?.cast<PcoPeopleApp>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedFrom<T extends PcoResource>() =>
-      relationships['from']?.cast<T>() ?? [];
-  List<T> includedMessages<T extends PcoResource>() =>
-      relationships['messages']?.cast<T>() ?? [];
+      (relationships['from'] as List?)?.cast<T>() ?? [];
+  List<PcoPeopleMessage> get includedMessages =>
+      (relationships['messages'] as List?)?.cast<PcoPeopleMessage>() ?? [];
 
   // Class Constructors
   PcoPeopleMessageGroup.fromJson(Map<String, dynamic> data,
@@ -273,9 +275,9 @@ class PcoPeopleMessageGroup extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/message_groups`
-  static Future<PcoCollection<PcoPeopleMessageGroup>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/message_groups`
+  static Future<PcoCollection<PcoPeopleMessageGroup>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -288,7 +290,7 @@ class PcoPeopleMessageGroup extends PcoResource {
     if (includeApp) query.include.add('app');
     if (includeFrom) query.include.add('from');
     if (includeMessages) query.include.add('messages');
-    var url = '/people/v2/people/$peopleId/message_groups';
+    var url = '/people/v2/people/$personId/message_groups';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url,
         query: query, apiVersion: kApiVersion);

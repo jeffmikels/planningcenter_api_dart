@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.435285
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.802536
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -378,22 +378,25 @@ class PcoServicesItem extends PcoResource {
   String get songId => _attributes[kSongId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedArrangement<T extends PcoResource>() =>
-      relationships['arrangement']?.cast<T>() ?? [];
-  List<T> includedItemNotes<T extends PcoResource>() =>
-      relationships['item_notes']?.cast<T>() ?? [];
-  List<T> includedItemTimes<T extends PcoResource>() =>
-      relationships['item_times']?.cast<T>() ?? [];
-  List<T> includedKey<T extends PcoResource>() =>
-      relationships['key']?.cast<T>() ?? [];
-  List<T> includedMedia<T extends PcoResource>() =>
-      relationships['media']?.cast<T>() ?? [];
+  List<PcoServicesArrangement> get includedArrangement =>
+      (relationships['arrangement'] as List?)?.cast<PcoServicesArrangement>() ??
+      [];
+  List<PcoServicesItemNote> get includedItemNotes =>
+      (relationships['item_notes'] as List?)?.cast<PcoServicesItemNote>() ?? [];
+  List<PcoServicesItemTime> get includedItemTimes =>
+      (relationships['item_times'] as List?)?.cast<PcoServicesItemTime>() ?? [];
+  List<PcoServicesKey> get includedKey =>
+      (relationships['key'] as List?)?.cast<PcoServicesKey>() ?? [];
+  List<PcoServicesMedia> get includedMedia =>
+      (relationships['media'] as List?)?.cast<PcoServicesMedia>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedSelectedAttachment<T extends PcoResource>() =>
-      relationships['selected_attachment']?.cast<T>() ?? [];
-  List<T> includedSong<T extends PcoResource>() =>
-      relationships['song']?.cast<T>() ?? [];
+      (relationships['selected_attachment'] as List?)?.cast<T>() ?? [];
+  List<PcoServicesSong> get includedSong =>
+      (relationships['song'] as List?)?.cast<PcoServicesSong>() ?? [];
 
   // Class Constructors
   PcoServicesItem.fromJson(Map<String, dynamic> data,
@@ -437,10 +440,10 @@ class PcoServicesItem extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/items`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/items`
   static Future<PcoCollection<PcoServicesItem>>
-      getFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     String? id,
@@ -464,7 +467,7 @@ class PcoServicesItem extends PcoResource {
     if (includeSelectedAttachment) query.include.add('selected_attachment');
     if (includeSong) query.include.add('song');
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/items';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/items';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesItem>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.690145
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.076722
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -246,16 +246,22 @@ class PcoCalendarResource extends PcoResource {
       (x == null) ? _attributes.remove(kQuantity) : _attributes[kQuantity] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedResourceApprovalGroups<T extends PcoResource>() =>
-      relationships['resource_approval_groups']?.cast<T>() ?? [];
-  List<T> includedResourceFolder<T extends PcoResource>() =>
-      relationships['resource_folder']?.cast<T>() ?? [];
-  List<T> includedResourceQuestions<T extends PcoResource>() =>
-      relationships['resource_questions']?.cast<T>() ?? [];
-  List<T> includedRoomSetups<T extends PcoResource>() =>
-      relationships['room_setups']?.cast<T>() ?? [];
+  List<PcoCalendarResourceApprovalGroup> get includedResourceApprovalGroups =>
+      (relationships['resource_approval_groups'] as List?)
+          ?.cast<PcoCalendarResourceApprovalGroup>() ??
+      [];
+  List<PcoCalendarResourceFolder> get includedResourceFolder =>
+      (relationships['resource_folder'] as List?)
+          ?.cast<PcoCalendarResourceFolder>() ??
+      [];
+  List<PcoCalendarResourceQuestion> get includedResourceQuestions =>
+      (relationships['resource_questions'] as List?)
+          ?.cast<PcoCalendarResourceQuestion>() ??
+      [];
+  List<PcoCalendarRoomSetup> get includedRoomSetups =>
+      (relationships['room_setups'] as List?)?.cast<PcoCalendarRoomSetup>() ??
+      [];
 
   // Class Constructors
   PcoCalendarResource.fromJson(Map<String, dynamic> data,

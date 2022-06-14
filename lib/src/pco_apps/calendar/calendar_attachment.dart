@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.681452
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.056895
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -202,10 +202,9 @@ class PcoCalendarAttachment extends PcoResource {
   String get url => _attributes[kUrl] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
+  List<PcoCalendarEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCalendarEvent>() ?? [];
 
   // Class Constructors
   PcoCalendarAttachment.fromJson(Map<String, dynamic> data,

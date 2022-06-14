@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.654864
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.041426
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,10 +155,9 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
   int get snoozedCount => _attributes[kSnoozedCount] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeopleWorkflowStepAssigneeSummary.fromJson(Map<String, dynamic> data,

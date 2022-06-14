@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.689188
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.072104
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -331,8 +331,7 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people`
-  static Future<PcoCollection<PcoCalendarPerson>>
-      getPeopleFromResourceApprovalGroup(
+  static Future<PcoCollection<PcoCalendarPerson>> getFromResourceApprovalGroup(
     String resourceApprovalGroupId, {
     String? id,
     PlanningCenterApiQuery? query,

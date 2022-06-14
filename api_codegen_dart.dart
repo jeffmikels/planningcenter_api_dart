@@ -11,10 +11,16 @@ extension MyStringExtensions on String {
   String get singular {
     if (endsWith('eries')) return this;
     if (endsWith('ampus')) return this;
+    if (endsWith('ss')) return this;
+    if (endsWith('atus')) return this;
     if (endsWith('ies')) return substring(0, length - 3) + 'y';
-    if (endsWith('sses')) return substring(0, length - 3);
+    if (endsWith('sses')) return substring(0, length - 2);
     if (endsWith('ses')) return substring(0, length - 2);
     if (endsWith('xes')) return substring(0, length - 2);
+    if (endsWith('datum')) return this;
+    if (endsWith('data')) return replaceFirst('data', 'datum');
+    if (endsWith('erson')) return this;
+    if (endsWith('eople')) return replaceFirst('eople', 'erson');
     return endsWith('s') ? substring(0, length - 1) : this;
   }
 
@@ -25,10 +31,14 @@ extension MyStringExtensions on String {
     if (endsWith('oy')) return this + 's';
     if (endsWith('y')) return substring(0, length - 1) + 'ies';
     if (endsWith('s') || endsWith('x')) return this + 'es';
+    if (endsWith('data')) return this;
+    if (endsWith('datum')) replaceFirst('datum', 'data');
+    if (endsWith('eople')) return this;
+    if (endsWith('erson')) return replaceFirst('erson', 'eople');
     return this + 's';
   }
 
-  String get singularWithPeople => singular.replaceAll('people', 'person').replaceAll('People', 'Person');
+  // String get singularWithPeople => singular.replaceAll('people', 'person').replaceAll('People', 'Person');
 
   String snakeToPascal() => replaceAll('-', '_').split('_').map((s) => s.capitalized).join();
   String snakeToCamel() {
@@ -103,7 +113,7 @@ class Vertex extends JsonApiDoc {
   List<Relationship> vertexRelationships = [];
 
   // List<Action> vertexActions;
-  Map<String, Edge> edgeById = {};
+  Map<String, Edge> edgesById = {};
   List<Edge> inboundEdges = []; // refers to the endpoints that lead to this item
   List<Edge> outboundEdges = []; // refers to the endpoints that come from this item
   Edge? createEdge;
@@ -159,11 +169,11 @@ class Vertex extends JsonApiDoc {
     ];
 
     for (var edge in [...inboundEdges, ...outboundEdges]) {
-      edgeById[edge.id!] = edge;
+      edgesById[edge.id!] = edge;
     }
 
     if (vertexPermissions.canCreate && vertexPermissions.edgeIds.isNotEmpty) {
-      createEdge = edgeById[vertexPermissions.edgeIds.first];
+      createEdge = edgesById[vertexPermissions.edgeIds.first];
     }
 
     typedRelationships['per_page'] = perPage;
@@ -470,7 +480,7 @@ ${edge.availableFilters.map(queryFilterFormatter).join('\n')}''';
 }
 
 /// this function generates a Dart class from a given [Vertex]
-String classTemplate(Vertex vertex) {
+String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
   var className = classNameFromVertex(vertex.application, vertex.name);
 
   Set<String> setterNeeded = {
@@ -535,14 +545,32 @@ String classTemplate(Vertex vertex) {
   // for (var rel in vertex.vertexRelationships) {
   //   var relationshipClass = classNameFromVertex(vertex.application, rel.name);
   // }
-  relationshipGetterLines.addAll([
-    '// typed getters for each relationship',
-    '// the code generator cannot determine the resource type of the relationships, so for type safety, the user should\n',
-  ]);
+  relationshipGetterLines.add('// typed getters for each relationship\n');
   for (var inc in vertex.canInclude) {
-    relationshipGetterLines.add(
-      'List<T> included${inc.name.snakeToPascal()}<T extends PcoResource>() => relationships[\'${inc.name}\']?.cast<T>() ?? [];',
-    );
+    var functionName = 'included' + inc.name.snakeToPascal();
+    var includeIsPlural = inc.name.plural == inc.name;
+    if (inc.name == 'addresses') {
+      print('break here');
+    }
+    var targetVertex = appVertices[inc.name] ?? appVertices[inc.name.singular];
+    if (targetVertex != null) {
+      var targetType = classNameFromVertex(targetVertex.application, targetVertex.name);
+      relationshipGetterLines.add(
+        'List<$targetType> get $functionName => (relationships[\'${inc.name}\'] as List?)?.cast<$targetType>() ?? [];',
+      );
+      // if (includeIsPlural) {
+      // } else {
+      //   relationshipGetterLines.add(
+      //     '$targetType? get $functionName => _firstOrNull((relationships[\'${inc.name}\'] as List?)?.cast<$targetType>() ?? []);',
+      //   );
+      // }
+    } else {
+      relationshipGetterLines.add(
+        '/// The code generator could not automatically determine the resource type of this relationship.\n'
+        '/// For type safe code, you should specify it here.\n'
+        'List<T> $functionName<T extends PcoResource>() => (relationships[\'${inc.name}\'] as List?)?.cast<T>() ?? [];',
+      );
+    }
   }
 
   /// HANDLING EDGES...
@@ -857,7 +885,7 @@ ${assignLines.join('\n').prefixLines('    ')}
   if (fieldGetterLines.length == 1) fieldGetterLines = [];
   if (fieldSetterLines.length == 1) fieldSetterLines = [];
   if (additionalAssignableLines.length == 1) additionalAssignableLines = [];
-  if (relationshipGetterLines.length == 2) relationshipGetterLines = [];
+  if (relationshipGetterLines.length == 1) relationshipGetterLines = [];
 
   // finish the additional lines
   var allAdditionals = [];
@@ -1200,6 +1228,7 @@ void main(List<String> arguments) async {
       data = json.decode(body)['data'];
       vertex = Vertex.fromJson(app, version.id!, data); // load again with more data
       vertices[vertex.id!] = vertex;
+
       for (var e in [...vertex.inboundEdges, ...vertex.outboundEdges]) {
         edges[e.id!] = e; // might overwrite, but that's okay
       }
@@ -1232,7 +1261,7 @@ void main(List<String> arguments) async {
       appExports.add(basename);
 
       var f = File(codeFilename);
-      var code = classTemplate(vertex);
+      var code = classTemplate(vertex, vertices);
       if (!f.existsSync()) {
         f.createSync(recursive: true);
       }

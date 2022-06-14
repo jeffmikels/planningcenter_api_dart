@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.584708
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.961107
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -347,12 +347,12 @@ class PcoPeopleCampus extends PcoResource {
       (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedLists<T extends PcoResource>() =>
-      relationships['lists']?.cast<T>() ?? [];
-  List<T> includedServiceTimes<T extends PcoResource>() =>
-      relationships['service_times']?.cast<T>() ?? [];
+  List<PcoPeopleList> get includedLists =>
+      (relationships['lists'] as List?)?.cast<PcoPeopleList>() ?? [];
+  List<PcoPeopleServiceTime> get includedServiceTimes =>
+      (relationships['service_times'] as List?)?.cast<PcoPeopleServiceTime>() ??
+      [];
 
   // Class Constructors
   PcoPeopleCampus.fromJson(Map<String, dynamic> data,
@@ -474,9 +474,9 @@ class PcoPeopleCampus extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/primary_campus`
-  static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/primary_campus`
+  static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPerson(
+    String personId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeLists = false,
@@ -486,7 +486,7 @@ class PcoPeopleCampus extends PcoResource {
     if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
-    var url = '/people/v2/people/$peopleId/primary_campus';
+    var url = '/people/v2/people/$personId/primary_campus';
 
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
         query: query, apiVersion: kApiVersion);

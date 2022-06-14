@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.614630
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.015486
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -155,12 +155,11 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   String get kind => _attributes[kKind] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedHousehold<T extends PcoResource>() =>
-      relationships['household']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+  List<PcoPeopleHousehold> get includedHousehold =>
+      (relationships['household'] as List?)?.cast<PcoPeopleHousehold>() ?? [];
+  List<PcoPeoplePerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
 
   // Class Constructors
   PcoPeoplePeopleImportHistory.fromJson(Map<String, dynamic> data,

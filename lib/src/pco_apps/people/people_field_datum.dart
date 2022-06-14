@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.587307
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.963855
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -211,14 +211,16 @@ class PcoPeopleFieldDatum extends PcoResource {
   String get fieldDefinitionId => _attributes[kFieldDefinitionId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedFieldDefinition<T extends PcoResource>() =>
-      relationships['field_definition']?.cast<T>() ?? [];
-  List<T> includedFieldOption<T extends PcoResource>() =>
-      relationships['field_option']?.cast<T>() ?? [];
-  List<T> includedTab<T extends PcoResource>() =>
-      relationships['tab']?.cast<T>() ?? [];
+  List<PcoPeopleFieldDefinition> get includedFieldDefinition =>
+      (relationships['field_definition'] as List?)
+          ?.cast<PcoPeopleFieldDefinition>() ??
+      [];
+  List<PcoPeopleFieldOption> get includedFieldOption =>
+      (relationships['field_option'] as List?)?.cast<PcoPeopleFieldOption>() ??
+      [];
+  List<PcoPeopleTab> get includedTab =>
+      (relationships['tab'] as List?)?.cast<PcoPeopleTab>() ?? [];
 
   // Class Constructors
   PcoPeopleFieldDatum.fromJson(Map<String, dynamic> data,
@@ -228,14 +230,14 @@ class PcoPeopleFieldDatum extends PcoResource {
   PcoPeopleFieldDatum.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleFieldDatum] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/field_data`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleFieldDatum(String peopleId, {String? value}) {
+  factory PcoPeopleFieldDatum(String personId, {String? value}) {
     var obj = PcoPeopleFieldDatum.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/field_data';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/field_data';
     if (value != null) obj.value = value;
     return obj;
   }
@@ -267,9 +269,9 @@ class PcoPeopleFieldDatum extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$peopleId/field_data`
-  static Future<PcoCollection<PcoPeopleFieldDatum>> getFieldDataFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/field_data`
+  static Future<PcoCollection<PcoPeopleFieldDatum>> getFieldDataFromPerson(
+    String personId, {
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeFieldDefinition = false,
@@ -281,7 +283,7 @@ class PcoPeopleFieldDatum extends PcoResource {
     if (includeFieldDefinition) query.include.add('field_definition');
     if (includeFieldOption) query.include.add('field_option');
     if (includeTab) query.include.add('tab');
-    var url = '/people/v2/people/$peopleId/field_data';
+    var url = '/people/v2/people/$personId/field_data';
 
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.717214
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.133424
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -209,12 +209,15 @@ class PcoGivingPledge extends PcoResource {
   String get pledgeCampaignId => _attributes[kPledgeCampaignId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedJointGiver<T extends PcoResource>() =>
-      relationships['joint_giver']?.cast<T>() ?? [];
-  List<T> includedPledgeCampaign<T extends PcoResource>() =>
-      relationships['pledge_campaign']?.cast<T>() ?? [];
+      (relationships['joint_giver'] as List?)?.cast<T>() ?? [];
+  List<PcoGivingPledgeCampaign> get includedPledgeCampaign =>
+      (relationships['pledge_campaign'] as List?)
+          ?.cast<PcoGivingPledgeCampaign>() ??
+      [];
 
   // Class Constructors
   PcoGivingPledge.fromJson(Map<String, dynamic> data,
@@ -229,9 +232,9 @@ class PcoGivingPledge extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingPledge] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/pledges`
-  static Future<PcoCollection<PcoGivingPledge>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/pledges`
+  static Future<PcoCollection<PcoGivingPledge>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -242,7 +245,7 @@ class PcoGivingPledge extends PcoResource {
     if (includeAll) query.include.addAll(PcoGivingPledge.canInclude);
     if (includeJointGiver) query.include.add('joint_giver');
     if (includePledgeCampaign) query.include.add('pledge_campaign');
-    var url = '/giving/v2/people/$peopleId/pledges';
+    var url = '/giving/v2/people/$personId/pledges';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingPledge>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.502593
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.890383
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -215,14 +215,16 @@ class PcoCheckInsEventTime extends PcoResource {
   int get dayOfWeek => _attributes[kDayOfWeek] ?? 0;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedEventPeriod<T extends PcoResource>() =>
-      relationships['event_period']?.cast<T>() ?? [];
-  List<T> includedHeadcounts<T extends PcoResource>() =>
-      relationships['headcounts']?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
+      (relationships['event_period'] as List?)
+          ?.cast<PcoCheckInsEventPeriod>() ??
+      [];
+  List<PcoCheckInsHeadcount> get includedHeadcounts =>
+      (relationships['headcounts'] as List?)?.cast<PcoCheckInsHeadcount>() ??
+      [];
 
   // Class Constructors
   PcoCheckInsEventTime.fromJson(Map<String, dynamic> data,

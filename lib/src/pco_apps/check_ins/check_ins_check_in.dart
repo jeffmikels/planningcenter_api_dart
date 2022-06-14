@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.498709
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.887009
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -273,28 +273,41 @@ class PcoCheckInsCheckIn extends PcoResource {
       _attributes[kEmergencyContactPhoneNumber] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedCheckInTimes<T extends PcoResource>() =>
-      relationships['check_in_times']?.cast<T>() ?? [];
+  List<PcoCheckInsCheckInTime> get includedCheckInTimes =>
+      (relationships['check_in_times'] as List?)
+          ?.cast<PcoCheckInsCheckInTime>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCheckedInAt<T extends PcoResource>() =>
-      relationships['checked_in_at']?.cast<T>() ?? [];
+      (relationships['checked_in_at'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCheckedInBy<T extends PcoResource>() =>
-      relationships['checked_in_by']?.cast<T>() ?? [];
+      (relationships['checked_in_by'] as List?)?.cast<T>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedCheckedOutBy<T extends PcoResource>() =>
-      relationships['checked_out_by']?.cast<T>() ?? [];
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedEventPeriod<T extends PcoResource>() =>
-      relationships['event_period']?.cast<T>() ?? [];
-  List<T> includedEventTimes<T extends PcoResource>() =>
-      relationships['event_times']?.cast<T>() ?? [];
-  List<T> includedLocations<T extends PcoResource>() =>
-      relationships['locations']?.cast<T>() ?? [];
-  List<T> includedOptions<T extends PcoResource>() =>
-      relationships['options']?.cast<T>() ?? [];
-  List<T> includedPerson<T extends PcoResource>() =>
-      relationships['person']?.cast<T>() ?? [];
+      (relationships['checked_out_by'] as List?)?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
+      (relationships['event_period'] as List?)
+          ?.cast<PcoCheckInsEventPeriod>() ??
+      [];
+  List<PcoCheckInsEventTime> get includedEventTimes =>
+      (relationships['event_times'] as List?)?.cast<PcoCheckInsEventTime>() ??
+      [];
+  List<PcoCheckInsLocation> get includedLocations =>
+      (relationships['locations'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
+  List<PcoCheckInsOption> get includedOptions =>
+      (relationships['options'] as List?)?.cast<PcoCheckInsOption>() ?? [];
+  List<PcoCheckInsPerson> get includedPerson =>
+      (relationships['person'] as List?)?.cast<PcoCheckInsPerson>() ?? [];
 
   // Class Constructors
   PcoCheckInsCheckIn.fromJson(Map<String, dynamic> data,
@@ -680,7 +693,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   }
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
-  /// using a path like this: `/check-ins/v2/people/$peopleId/check_ins`
+  /// using a path like this: `/check-ins/v2/people/$personId/check_ins`
   ///
   /// Available Query Filters:
   /// - `attendee`
@@ -691,8 +704,8 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  static Future<PcoCollection<PcoCheckInsCheckIn>> getFromPeople(
-    String peopleId, {
+  static Future<PcoCollection<PcoCheckInsCheckIn>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -719,7 +732,7 @@ class PcoCheckInsCheckIn extends PcoResource {
     if (includeLocations) query.include.add('locations');
     if (includeOptions) query.include.add('options');
     if (includePerson) query.include.add('person');
-    var url = '/check-ins/v2/people/$peopleId/check_ins';
+    var url = '/check-ins/v2/people/$personId/check_ins';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
         query: query, apiVersion: kApiVersion);

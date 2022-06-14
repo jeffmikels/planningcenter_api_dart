@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.683191
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.057495
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -178,14 +178,18 @@ class PcoCalendarConflict extends PcoResource {
   DateTime get resolvedAt => DateTime.parse(_attributes[kResolvedAt] ?? '');
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedResolvedBy<T extends PcoResource>() =>
-      relationships['resolved_by']?.cast<T>() ?? [];
-  List<T> includedResource<T extends PcoResource>() =>
-      relationships['resource']?.cast<T>() ?? [];
+      (relationships['resolved_by'] as List?)?.cast<T>() ?? [];
+  List<PcoCalendarResource> get includedResource =>
+      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedWinner<T extends PcoResource>() =>
-      relationships['winner']?.cast<T>() ?? [];
+      (relationships['winner'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
   PcoCalendarConflict.fromJson(Map<String, dynamic> data,

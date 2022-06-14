@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.444133
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.812413
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -416,10 +416,10 @@ class PcoServicesPerson extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/controller`
+  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller`
   static Future<PcoCollection<PcoServicesPerson>>
-      getControllerFromPeopleAndRecentPlanAndLive(
-    String peopleId,
+      getControllerFromPersonAndRecentPlanAndLive(
+    String personId,
     String recentPlanId,
     String liveId, {
     PlanningCenterApiQuery? query,
@@ -427,7 +427,7 @@ class PcoServicesPerson extends PcoResource {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/controller';
+        '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller';
 
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: kApiVersion);
@@ -452,63 +452,65 @@ class PcoServicesPerson extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/plan_people/$planPeopleId/person`
-  static Future<PcoCollection<PcoServicesPerson>> getFromPeopleAndPlanPeople(
-    String peopleId,
-    String planPeopleId, {
+  /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/person`
+  static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndPlanPerson(
+    String personId,
+    String planPersonId, {
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/services/v2/people/$peopleId/plan_people/$planPeopleId/person';
+    var url = '/services/v2/people/$personId/plan_people/$planPersonId/person';
 
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/schedules/$scheduleId/respond_to`
+  /// using a path like this: `/services/v2/people/$personId/schedules/$scheduleId/respond_to`
   static Future<PcoCollection<PcoServicesPerson>>
-      getRespondToFromPeopleAndSchedule(
-    String peopleId,
+      getRespondToFromPersonAndSchedule(
+    String personId,
     String scheduleId, {
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/services/v2/people/$peopleId/schedules/$scheduleId/respond_to';
+    var url = '/services/v2/people/$personId/schedules/$scheduleId/respond_to';
 
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/assigned_team_leaders/$assignedTeamLeaderId/people`
+  /// Will get a collection of [PcoServicesPerson] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people`
   static Future<PcoCollection<PcoServicesPerson>>
-      getPeopleFromPeopleAndAssignedTeamLeader(
-    String peopleId,
+      getFromPersonAndAssignedTeamLeader(
+    String personId,
     String assignedTeamLeaderId, {
+    String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/assigned_team_leaders/$assignedTeamLeaderId/people';
-
+        '/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPerson] objects (expecting one)
+  /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/people`
-  static Future<PcoCollection<PcoServicesPerson>> getPeopleFromTeam(
+  static Future<PcoCollection<PcoServicesPerson>> getFromTeam(
     String teamId, {
+    String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url = '/services/v2/teams/$teamId/people';
-
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: kApiVersion);
   }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.459685
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.841136
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -169,20 +169,21 @@ class PcoServicesScheduledPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesScheduledPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people`
+  /// Will get a collection of [PcoServicesScheduledPerson] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people`
   static Future<PcoCollection<PcoServicesScheduledPerson>>
-      getScheduledPeopleFromPeopleAndAvailableSignupAndSignupSheet(
-    String peopleId,
+      getFromPersonAndAvailableSignupAndSignupSheet(
+    String personId,
     String availableSignupId,
     String signupSheetId, {
+    String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
     var url =
-        '/services/v2/people/$peopleId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people';
-
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people';
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url,
         query: query, apiVersion: kApiVersion);
   }

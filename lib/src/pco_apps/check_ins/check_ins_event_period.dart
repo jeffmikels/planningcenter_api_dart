@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.501883
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.889696
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -184,12 +184,12 @@ class PcoCheckInsEventPeriod extends PcoResource {
   String get note => _attributes[kNote] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
-  List<T> includedEventTimes<T extends PcoResource>() =>
-      relationships['event_times']?.cast<T>() ?? [];
+  List<PcoCheckInsEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  List<PcoCheckInsEventTime> get includedEventTimes =>
+      (relationships['event_times'] as List?)?.cast<PcoCheckInsEventTime>() ??
+      [];
 
   // Class Constructors
   PcoCheckInsEventPeriod.fromJson(Map<String, dynamic> data,

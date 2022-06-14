@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.687711
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.062662
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -181,10 +181,9 @@ class PcoCalendarEventTime extends PcoResource {
       _attributes[kVisibleOnWidgetAndIcal] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedEvent<T extends PcoResource>() =>
-      relationships['event']?.cast<T>() ?? [];
+  List<PcoCalendarEvent> get includedEvent =>
+      (relationships['event'] as List?)?.cast<PcoCalendarEvent>() ?? [];
 
   // Class Constructors
   PcoCalendarEventTime.fromJson(Map<String, dynamic> data,

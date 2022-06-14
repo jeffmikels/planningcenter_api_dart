@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.690631
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.077959
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,12 +172,11 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
       (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedPeople<T extends PcoResource>() =>
-      relationships['people']?.cast<T>() ?? [];
-  List<T> includedResources<T extends PcoResource>() =>
-      relationships['resources']?.cast<T>() ?? [];
+  List<PcoCalendarPerson> get includedPeople =>
+      (relationships['people'] as List?)?.cast<PcoCalendarPerson>() ?? [];
+  List<PcoCalendarResource> get includedResources =>
+      (relationships['resources'] as List?)?.cast<PcoCalendarResource>() ?? [];
 
   // Class Constructors
   PcoCalendarResourceApprovalGroup.fromJson(Map<String, dynamic> data,

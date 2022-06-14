@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.630343
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.029482
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,10 +152,9 @@ class PcoPeopleRule extends PcoResource {
   String get subset => _attributes[kSubset] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedConditions<T extends PcoResource>() =>
-      relationships['conditions']?.cast<T>() ?? [];
+  List<PcoPeopleCondition> get includedConditions =>
+      (relationships['conditions'] as List?)?.cast<PcoPeopleCondition>() ?? [];
 
   // Class Constructors
   PcoPeopleRule.fromJson(Map<String, dynamic> data,

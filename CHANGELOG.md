@@ -1,6 +1,7 @@
 ## 0.9.8
 
--   not yet pushed
+-   `include` items for known objects are now implemented as typed getters and no longer as instance functions;
+-   `include` items for unknown objects are still implemented as instance functions with type parameters;
 
 ## 0.9.7
 

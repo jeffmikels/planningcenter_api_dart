@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.467440
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.854389
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ part of pco;
 ///
 /// ## Instantiation
 /// - This object cannot be created through the API.
-/// - Instantiate from existing `JSON` data using the `PcoServicesSongbookStatu.fromJson()` constructor.
+/// - Instantiate from existing `JSON` data using the `PcoServicesSongbookStatus.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -82,7 +82,7 @@ part of pco;
 ///   "relationships": {}
 /// }
 /// ```
-class PcoServicesSongbookStatu extends PcoResource {
+class PcoServicesSongbookStatus extends PcoResource {
   static const String kPcoApplication = 'services';
   static const String kTypeString = 'SongbookStatus';
   static const String kTypeId = 'songbook_status';
@@ -150,7 +150,7 @@ class PcoServicesSongbookStatu extends PcoResource {
   String get url => _attributes[kUrl] ?? '';
 
   // Class Constructors
-  PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data,
+  PcoServicesSongbookStatus.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);

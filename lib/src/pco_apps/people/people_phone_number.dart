@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.626791
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.027308
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,15 +229,15 @@ class PcoPeoplePhoneNumber extends PcoResource {
   PcoPeoplePhoneNumber.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePhoneNumber] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeoplePhoneNumber(String peopleId,
+  factory PcoPeoplePhoneNumber(String personId,
       {String? number, String? carrier, String? location, bool? isPrimary}) {
     var obj = PcoPeoplePhoneNumber.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/phone_numbers';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers';
     if (number != null) obj.number = number;
     if (carrier != null) obj.carrier = carrier;
     if (location != null) obj.location = location;
@@ -251,15 +251,15 @@ class PcoPeoplePhoneNumber extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/phone_numbers`
-  static Future<PcoCollection<PcoPeoplePhoneNumber>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/phone_numbers`
+  static Future<PcoCollection<PcoPeoplePhoneNumber>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/phone_numbers';
+    var url = '/people/v2/people/$personId/phone_numbers';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url,
         query: query, apiVersion: kApiVersion);

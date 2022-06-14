@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.685504
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.058330
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -225,14 +225,17 @@ class PcoCalendarEvent extends PcoResource {
       _attributes[kVisibleInChurchCenter] == true;
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedAttachments<T extends PcoResource>() =>
-      relationships['attachments']?.cast<T>() ?? [];
+  List<PcoCalendarAttachment> get includedAttachments =>
+      (relationships['attachments'] as List?)?.cast<PcoCalendarAttachment>() ??
+      [];
+
+  /// The code generator could not automatically determine the resource type of this relationship.
+  /// For type safe code, you should specify it here.
   List<T> includedOwner<T extends PcoResource>() =>
-      relationships['owner']?.cast<T>() ?? [];
-  List<T> includedTags<T extends PcoResource>() =>
-      relationships['tags']?.cast<T>() ?? [];
+      (relationships['owner'] as List?)?.cast<T>() ?? [];
+  List<PcoCalendarTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoCalendarTag>() ?? [];
 
   // Class Constructors
   PcoCalendarEvent.fromJson(Map<String, dynamic> data,

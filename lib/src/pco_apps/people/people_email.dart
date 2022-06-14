@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.586663
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.963172
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,15 +206,15 @@ class PcoPeopleEmail extends PcoResource {
   PcoPeopleEmail.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleEmail] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/people/$peopleId/emails`
+  /// `https://api.planningcenteronline.com/people/v2/people/$personId/emails`
   ///
   /// NOTE: Creating an instance of a class this way does not save it on the server
   /// until `save()` is called on the object.
-  factory PcoPeopleEmail(String peopleId,
+  factory PcoPeopleEmail(String personId,
       {String? address, String? location, bool? isPrimary}) {
     var obj = PcoPeopleEmail.empty();
     obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$peopleId/emails';
+        'https://api.planningcenteronline.com/people/v2/people/$personId/emails';
     if (address != null) obj.address = address;
     if (location != null) obj.location = location;
     if (isPrimary != null) obj.isPrimary = isPrimary;
@@ -241,15 +241,15 @@ class PcoPeopleEmail extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
-  /// using a path like this: `/people/v2/people/$peopleId/emails`
-  static Future<PcoCollection<PcoPeopleEmail>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/people/v2/people/$personId/emails`
+  static Future<PcoCollection<PcoPeopleEmail>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/people/v2/people/$peopleId/emails';
+    var url = '/people/v2/people/$personId/emails';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleEmail>(url,
         query: query, apiVersion: kApiVersion);

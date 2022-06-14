@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.744764
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.147479
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -215,7 +215,7 @@ class PcoGroupsPerson extends PcoResource {
 
   /// Will get a collection of [PcoGroupsPerson] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/people`
-  static Future<PcoCollection<PcoGroupsPerson>> getPeopleFromGroup(
+  static Future<PcoCollection<PcoGroupsPerson>> getFromGroup(
     String groupId, {
     String? id,
     PlanningCenterApiQuery? query,

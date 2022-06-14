@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.710749
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.130575
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -369,14 +369,14 @@ class PcoGivingDonation extends PcoResource {
   String get campusId => _attributes[kCampusId] ?? '';
 
   // typed getters for each relationship
-  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
-  List<T> includedDesignations<T extends PcoResource>() =>
-      relationships['designations']?.cast<T>() ?? [];
-  List<T> includedLabels<T extends PcoResource>() =>
-      relationships['labels']?.cast<T>() ?? [];
-  List<T> includedRefund<T extends PcoResource>() =>
-      relationships['refund']?.cast<T>() ?? [];
+  List<PcoGivingDesignation> get includedDesignations =>
+      (relationships['designations'] as List?)?.cast<PcoGivingDesignation>() ??
+      [];
+  List<PcoGivingLabel> get includedLabels =>
+      (relationships['labels'] as List?)?.cast<PcoGivingLabel>() ?? [];
+  List<PcoGivingRefund> get includedRefund =>
+      (relationships['refund'] as List?)?.cast<PcoGivingRefund>() ?? [];
 
   // Class Constructors
   PcoGivingDonation.fromJson(Map<String, dynamic> data,
@@ -510,9 +510,9 @@ class PcoGivingDonation extends PcoResource {
   }
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/donations`
-  static Future<PcoCollection<PcoGivingDonation>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/donations`
+  static Future<PcoCollection<PcoGivingDonation>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
@@ -525,7 +525,7 @@ class PcoGivingDonation extends PcoResource {
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeRefund) query.include.add('refund');
-    var url = '/giving/v2/people/$peopleId/donations';
+    var url = '/giving/v2/people/$personId/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
         query: query, apiVersion: kApiVersion);

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.713894
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.132117
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -176,15 +176,15 @@ class PcoGivingPaymentMethod extends PcoResource {
   // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingPaymentMethod] objects (expecting many)
-  /// using a path like this: `/giving/v2/people/$peopleId/payment_methods`
-  static Future<PcoCollection<PcoGivingPaymentMethod>> getFromPeople(
-    String peopleId, {
+  /// using a path like this: `/giving/v2/people/$personId/payment_methods`
+  static Future<PcoCollection<PcoGivingPaymentMethod>> getFromPerson(
+    String personId, {
     String? id,
     PlanningCenterApiQuery? query,
   }) async {
     query ??= PlanningCenterApiQuery();
 
-    var url = '/giving/v2/people/$peopleId/payment_methods';
+    var url = '/giving/v2/people/$personId/payment_methods';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url,
         query: query, apiVersion: kApiVersion);

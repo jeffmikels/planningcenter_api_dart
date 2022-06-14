@@ -1,3 +1,7 @@
+## 0.9.8
+
+-   not yet pushed
+
 ## 0.9.7
 
 -   Any iterable may be used to populate the `include` and `filter` fields of a `PlanningCenterApiQuery`

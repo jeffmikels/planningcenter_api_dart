@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.835267
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.347985
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -432,4 +432,11 @@ class PcoServicesPlanTime extends PcoResource {
         query: query,
         apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.856178
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.358480
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -288,10 +288,8 @@ class PcoServicesTeam extends PcoResource {
           (relationships['person_team_position_assignments'] as List?)
               ?.cast<PcoServicesPersonTeamPositionAssignment>() ??
           [];
-  List<PcoServicesServiceType> get includedServiceType =>
-      (relationships['service_type'] as List?)
-          ?.cast<PcoServicesServiceType>() ??
-      [];
+  PcoServicesServiceType? get includedServiceType =>
+      _firstOrNull<PcoServicesServiceType>(relationships['service_type']);
   List<PcoServicesTeamLeader> get includedTeamLeaders =>
       (relationships['team_leaders'] as List?)?.cast<PcoServicesTeamLeader>() ??
       [];
@@ -695,4 +693,11 @@ class PcoServicesTeam extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesTeamPosition>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.075478
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.562897
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -197,4 +197,11 @@ class PcoCalendarReportTemplate extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

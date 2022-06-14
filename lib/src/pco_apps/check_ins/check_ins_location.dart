@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.892151
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.396035
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -245,8 +245,8 @@ class PcoCheckInsLocation extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
   List<PcoCheckInsLocation> get includedLocations =>
       (relationships['locations'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
   List<PcoCheckInsOption> get includedOptions =>
@@ -672,4 +672,11 @@ class PcoCheckInsLocation extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

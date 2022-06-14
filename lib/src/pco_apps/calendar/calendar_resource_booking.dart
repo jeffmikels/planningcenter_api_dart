@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.079109
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.566260
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -197,16 +197,13 @@ class PcoCalendarResourceBooking extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCalendarEventInstance> get includedEventInstance =>
-      (relationships['event_instance'] as List?)
-          ?.cast<PcoCalendarEventInstance>() ??
-      [];
-  List<PcoCalendarEventResourceRequest> get includedEventResourceRequest =>
-      (relationships['event_resource_request'] as List?)
-          ?.cast<PcoCalendarEventResourceRequest>() ??
-      [];
-  List<PcoCalendarResource> get includedResource =>
-      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
+  PcoCalendarEventInstance? get includedEventInstance =>
+      _firstOrNull<PcoCalendarEventInstance>(relationships['event_instance']);
+  PcoCalendarEventResourceRequest? get includedEventResourceRequest =>
+      _firstOrNull<PcoCalendarEventResourceRequest>(
+          relationships['event_resource_request']);
+  PcoCalendarResource? get includedResource =>
+      _firstOrNull<PcoCalendarResource>(relationships['resource']);
 
   // Class Constructors
   PcoCalendarResourceBooking.fromJson(Map<String, dynamic> data,
@@ -446,4 +443,11 @@ class PcoCalendarResourceBooking extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.973603
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.469992
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,4 +160,11 @@ class PcoPeopleListStar extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleListStar>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

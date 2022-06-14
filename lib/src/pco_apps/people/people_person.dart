@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.021342
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.494942
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -660,23 +660,16 @@ class PcoPeoplePerson extends PcoResource {
       (relationships['field_data'] as List?)?.cast<PcoPeopleFieldDatum>() ?? [];
   List<PcoPeopleHousehold> get includedHouseholds =>
       (relationships['households'] as List?)?.cast<PcoPeopleHousehold>() ?? [];
-  List<PcoPeopleInactiveReason> get includedInactiveReason =>
-      (relationships['inactive_reason'] as List?)
-          ?.cast<PcoPeopleInactiveReason>() ??
-      [];
-  List<PcoPeopleMaritalStatus> get includedMaritalStatus =>
-      (relationships['marital_status'] as List?)
-          ?.cast<PcoPeopleMaritalStatus>() ??
-      [];
-  List<PcoPeopleNamePrefix> get includedNamePrefix =>
-      (relationships['name_prefix'] as List?)?.cast<PcoPeopleNamePrefix>() ??
-      [];
-  List<PcoPeopleNameSuffix> get includedNameSuffix =>
-      (relationships['name_suffix'] as List?)?.cast<PcoPeopleNameSuffix>() ??
-      [];
-  List<PcoPeopleOrganization> get includedOrganization =>
-      (relationships['organization'] as List?)?.cast<PcoPeopleOrganization>() ??
-      [];
+  PcoPeopleInactiveReason? get includedInactiveReason =>
+      _firstOrNull<PcoPeopleInactiveReason>(relationships['inactive_reason']);
+  PcoPeopleMaritalStatus? get includedMaritalStatus =>
+      _firstOrNull<PcoPeopleMaritalStatus>(relationships['marital_status']);
+  PcoPeopleNamePrefix? get includedNamePrefix =>
+      _firstOrNull<PcoPeopleNamePrefix>(relationships['name_prefix']);
+  PcoPeopleNameSuffix? get includedNameSuffix =>
+      _firstOrNull<PcoPeopleNameSuffix>(relationships['name_suffix']);
+  PcoPeopleOrganization? get includedOrganization =>
+      _firstOrNull<PcoPeopleOrganization>(relationships['organization']);
   List<PcoPeoplePersonApp> get includedPersonApps =>
       (relationships['person_apps'] as List?)?.cast<PcoPeoplePersonApp>() ?? [];
   List<PcoPeoplePhoneNumber> get includedPhoneNumbers =>
@@ -686,16 +679,10 @@ class PcoPeoplePerson extends PcoResource {
       (relationships['platform_notifications'] as List?)
           ?.cast<PcoPeoplePlatformNotification>() ??
       [];
-
-  /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
-  List<T> includedPrimaryCampus<T extends PcoResource>() =>
-      (relationships['primary_campus'] as List?)?.cast<T>() ?? [];
-
-  /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
-  List<T> includedSchool<T extends PcoResource>() =>
-      (relationships['school'] as List?)?.cast<T>() ?? [];
+  PcoPeopleCampus? get includedPrimaryCampus =>
+      _firstOrNull<PcoPeopleCampus>(relationships['primary_campus']);
+  PcoPeopleSchoolOption? get includedSchool =>
+      _firstOrNull<PcoPeopleSchoolOption>(relationships['school']);
   List<PcoPeopleSocialProfile> get includedSocialProfiles =>
       (relationships['social_profiles'] as List?)
           ?.cast<PcoPeopleSocialProfile>() ??
@@ -2344,4 +2331,11 @@ class PcoPeoplePerson extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

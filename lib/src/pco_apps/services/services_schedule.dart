@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.840601
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.349563
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -486,4 +486,11 @@ class PcoServicesSchedule extends PcoResource {
     var url = '$apiEndpoint/decline';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

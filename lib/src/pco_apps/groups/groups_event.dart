@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.144178
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.611390
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,10 +235,10 @@ class PcoGroupsEvent extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoGroupsGroup> get includedGroup =>
-      (relationships['group'] as List?)?.cast<PcoGroupsGroup>() ?? [];
-  List<PcoGroupsLocation> get includedLocation =>
-      (relationships['location'] as List?)?.cast<PcoGroupsLocation>() ?? [];
+  PcoGroupsGroup? get includedGroup =>
+      _firstOrNull<PcoGroupsGroup>(relationships['group']);
+  PcoGroupsLocation? get includedLocation =>
+      _firstOrNull<PcoGroupsLocation>(relationships['location']);
 
   // Class Constructors
   PcoGroupsEvent.fromJson(Map<String, dynamic> data,
@@ -406,4 +406,11 @@ class PcoGroupsEvent extends PcoResource {
     return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.062010
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.554639
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,13 +235,12 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
       (relationships['created_by'] as List?)?.cast<T>() ?? [];
-  List<PcoCalendarEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCalendarEvent>() ?? [];
-  List<PcoCalendarResource> get includedResource =>
-      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
-  List<PcoCalendarRoomSetup> get includedRoomSetup =>
-      (relationships['room_setup'] as List?)?.cast<PcoCalendarRoomSetup>() ??
-      [];
+  PcoCalendarEvent? get includedEvent =>
+      _firstOrNull<PcoCalendarEvent>(relationships['event']);
+  PcoCalendarResource? get includedResource =>
+      _firstOrNull<PcoCalendarResource>(relationships['resource']);
+  PcoCalendarRoomSetup? get includedRoomSetup =>
+      _firstOrNull<PcoCalendarRoomSetup>(relationships['room_setup']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -549,4 +548,11 @@ class PcoCalendarEventResourceRequest extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

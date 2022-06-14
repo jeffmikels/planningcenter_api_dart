@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.129931
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.591648
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -150,9 +150,8 @@ class PcoGivingDesignationRefund extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoGivingDesignation> get includedDesignation =>
-      (relationships['designation'] as List?)?.cast<PcoGivingDesignation>() ??
-      [];
+  PcoGivingDesignation? get includedDesignation =>
+      _firstOrNull<PcoGivingDesignation>(relationships['designation']);
 
   // Class Constructors
   PcoGivingDesignationRefund.fromJson(Map<String, dynamic> data,
@@ -201,4 +200,11 @@ class PcoGivingDesignationRefund extends PcoResource {
     return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

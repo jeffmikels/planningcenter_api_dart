@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.971235
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.466967
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -278,8 +278,8 @@ class PcoPeopleList extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoPeopleCampus> get includedCampus =>
-      (relationships['campus'] as List?)?.cast<PcoPeopleCampus>() ?? [];
+  PcoPeopleCampus? get includedCampus =>
+      _firstOrNull<PcoPeopleCampus>(relationships['campus']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -290,10 +290,9 @@ class PcoPeopleList extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
       (relationships['created_by'] as List?)?.cast<T>() ?? [];
-  List<PcoPeopleMailchimpSyncStatus> get includedMailchimpSyncStatus =>
-      (relationships['mailchimp_sync_status'] as List?)
-          ?.cast<PcoPeopleMailchimpSyncStatus>() ??
-      [];
+  PcoPeopleMailchimpSyncStatus? get includedMailchimpSyncStatus =>
+      _firstOrNull<PcoPeopleMailchimpSyncStatus>(
+          relationships['mailchimp_sync_status']);
   List<PcoPeoplePerson> get includedPeople =>
       (relationships['people'] as List?)?.cast<PcoPeoplePerson>() ?? [];
   List<PcoPeopleRule> get includedRules =>
@@ -698,4 +697,11 @@ class PcoPeopleList extends PcoResource {
     var url = '$apiEndpoint/run';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -142,12 +142,14 @@ print(myProfile.items.first);
 ### Including Related Objects
 
 Whenever an API object allows a request for related objects to be included, those options are exposed by the
-relevant methods, and any included relationships can be retrieved using type-safe functions as follows:
+relevant methods, and any included relationships can be retrieved using type-safe getters. If the API exposes the
+include as a plural (i.e. 'emails') then the response will be a list, otherwise, the response will be a nullable object.
 
 ```dart
 var collection = await PcoPeoplePerson.get(id: '000000001', includeEmails: true);
 var person = collection.items.first;
-var email = person.includedEmails<PcoPeopleEmail>(); // if the Type is not specified, it will be a `PcoResource`
+List<PcoPeopleEmail> emails = person.includedEmails;
+PcoPeopleCampus? primaryCampus = person.includedPrimaryCampus;
 ```
 
 ### Instance Action Methods

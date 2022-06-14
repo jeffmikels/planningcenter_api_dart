@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.806086
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.336276
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -208,10 +208,8 @@ class PcoServicesLive extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedNextItemTime<T extends PcoResource>() =>
       (relationships['next_item_time'] as List?)?.cast<T>() ?? [];
-  List<PcoServicesServiceType> get includedServiceType =>
-      (relationships['service_type'] as List?)
-          ?.cast<PcoServicesServiceType>() ??
-      [];
+  PcoServicesServiceType? get includedServiceType =>
+      _firstOrNull<PcoServicesServiceType>(relationships['service_type']);
 
   // Class Constructors
   PcoServicesLive.fromJson(Map<String, dynamic> data,
@@ -423,4 +421,11 @@ class PcoServicesLive extends PcoResource {
     var url = '$apiEndpoint/toggle_control';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

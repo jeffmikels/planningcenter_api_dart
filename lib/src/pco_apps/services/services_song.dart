@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.853469
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.353764
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -464,4 +464,11 @@ class PcoServicesSong extends PcoResource {
     var url = '$apiEndpoint/assign_tags';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

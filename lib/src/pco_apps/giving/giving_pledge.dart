@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.133424
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.598443
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -214,10 +214,8 @@ class PcoGivingPledge extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedJointGiver<T extends PcoResource>() =>
       (relationships['joint_giver'] as List?)?.cast<T>() ?? [];
-  List<PcoGivingPledgeCampaign> get includedPledgeCampaign =>
-      (relationships['pledge_campaign'] as List?)
-          ?.cast<PcoGivingPledgeCampaign>() ??
-      [];
+  PcoGivingPledgeCampaign? get includedPledgeCampaign =>
+      _firstOrNull<PcoGivingPledgeCampaign>(relationships['pledge_campaign']);
 
   // Class Constructors
   PcoGivingPledge.fromJson(Map<String, dynamic> data,
@@ -301,4 +299,11 @@ class PcoGivingPledge extends PcoResource {
     return PcoCollection.fromApiCall<PcoGivingPledgeCampaign>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.010261
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.480668
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,4 +195,11 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

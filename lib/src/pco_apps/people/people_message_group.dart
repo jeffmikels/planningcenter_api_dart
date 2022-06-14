@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.976621
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.472180
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -210,8 +210,8 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoPeopleApp> get includedApp =>
-      (relationships['app'] as List?)?.cast<PcoPeopleApp>() ?? [];
+  PcoPeopleApp? get includedApp =>
+      _firstOrNull<PcoPeopleApp>(relationships['app']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -373,4 +373,11 @@ class PcoPeopleMessageGroup extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.148552
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.616270
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -198,4 +198,11 @@ class PcoGroupsTagGroup extends PcoResource {
     return PcoCollection.fromApiCall<PcoGroupsTag>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

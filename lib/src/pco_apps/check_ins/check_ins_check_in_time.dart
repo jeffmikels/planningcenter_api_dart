@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.887993
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.392006
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -194,4 +194,11 @@ class PcoCheckInsCheckInTime extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

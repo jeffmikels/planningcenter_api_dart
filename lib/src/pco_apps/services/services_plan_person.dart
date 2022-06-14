@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.828462
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.346010
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -355,12 +355,12 @@ class PcoServicesPlanPerson extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedDeclinedPlanTimes<T extends PcoResource>() =>
       (relationships['declined_plan_times'] as List?)?.cast<T>() ?? [];
-  List<PcoServicesPerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoServicesPerson>() ?? [];
-  List<PcoServicesPlan> get includedPlan =>
-      (relationships['plan'] as List?)?.cast<PcoServicesPlan>() ?? [];
-  List<PcoServicesTeam> get includedTeam =>
-      (relationships['team'] as List?)?.cast<PcoServicesTeam>() ?? [];
+  PcoServicesPerson? get includedPerson =>
+      _firstOrNull<PcoServicesPerson>(relationships['person']);
+  PcoServicesPlan? get includedPlan =>
+      _firstOrNull<PcoServicesPlan>(relationships['plan']);
+  PcoServicesTeam? get includedTeam =>
+      _firstOrNull<PcoServicesTeam>(relationships['team']);
 
   // Class Constructors
   PcoServicesPlanPerson.fromJson(Map<String, dynamic> data,
@@ -582,4 +582,11 @@ class PcoServicesPlanPerson extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesTeam>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

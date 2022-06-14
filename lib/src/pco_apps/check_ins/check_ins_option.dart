@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.894211
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.397945
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,8 +152,8 @@ class PcoCheckInsOption extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsLabel> get includedLabel =>
-      (relationships['label'] as List?)?.cast<PcoCheckInsLabel>() ?? [];
+  PcoCheckInsLabel? get includedLabel =>
+      _firstOrNull<PcoCheckInsLabel>(relationships['label']);
 
   // Class Constructors
   PcoCheckInsOption.fromJson(Map<String, dynamic> data,
@@ -218,4 +218,11 @@ class PcoCheckInsOption extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

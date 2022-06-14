@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.803142
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.333373
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -171,10 +171,9 @@ class PcoServicesItemNote extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoServicesItemNoteCategory> get includedItemNoteCategory =>
-      (relationships['item_note_category'] as List?)
-          ?.cast<PcoServicesItemNoteCategory>() ??
-      [];
+  PcoServicesItemNoteCategory? get includedItemNoteCategory =>
+      _firstOrNull<PcoServicesItemNoteCategory>(
+          relationships['item_note_category']);
 
   // Class Constructors
   PcoServicesItemNote.fromJson(Map<String, dynamic> data,
@@ -240,4 +239,11 @@ class PcoServicesItemNote extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

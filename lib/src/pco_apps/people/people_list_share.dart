@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.973096
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.469522
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -166,8 +166,8 @@ class PcoPeopleListShare extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoPeoplePerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
+  PcoPeoplePerson? get includedPerson =>
+      _firstOrNull<PcoPeoplePerson>(relationships['person']);
 
   // Class Constructors
   PcoPeopleListShare.fromJson(Map<String, dynamic> data,
@@ -244,4 +244,11 @@ class PcoPeopleListShare extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

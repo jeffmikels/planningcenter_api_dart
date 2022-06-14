@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.896831
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.402307
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,17 +185,17 @@ class PcoCheckInsStation extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
-  List<PcoCheckInsLocation> get includedLocation =>
-      (relationships['location'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
+  PcoCheckInsLocation? get includedLocation =>
+      _firstOrNull<PcoCheckInsLocation>(relationships['location']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
   List<T> includedPrintStation<T extends PcoResource>() =>
       (relationships['print_station'] as List?)?.cast<T>() ?? [];
-  List<PcoCheckInsTheme> get includedTheme =>
-      (relationships['theme'] as List?)?.cast<PcoCheckInsTheme>() ?? [];
+  PcoCheckInsTheme? get includedTheme =>
+      _firstOrNull<PcoCheckInsTheme>(relationships['theme']);
 
   // Class Constructors
   PcoCheckInsStation.fromJson(Map<String, dynamic> data,
@@ -449,4 +449,11 @@ class PcoCheckInsStation extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.887009
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.390663
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -293,12 +293,10 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedCheckedOutBy<T extends PcoResource>() =>
       (relationships['checked_out_by'] as List?)?.cast<T>() ?? [];
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
-  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
-      (relationships['event_period'] as List?)
-          ?.cast<PcoCheckInsEventPeriod>() ??
-      [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
+  PcoCheckInsEventPeriod? get includedEventPeriod =>
+      _firstOrNull<PcoCheckInsEventPeriod>(relationships['event_period']);
   List<PcoCheckInsEventTime> get includedEventTimes =>
       (relationships['event_times'] as List?)?.cast<PcoCheckInsEventTime>() ??
       [];
@@ -306,8 +304,8 @@ class PcoCheckInsCheckIn extends PcoResource {
       (relationships['locations'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
   List<PcoCheckInsOption> get includedOptions =>
       (relationships['options'] as List?)?.cast<PcoCheckInsOption>() ?? [];
-  List<PcoCheckInsPerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoCheckInsPerson>() ?? [];
+  PcoCheckInsPerson? get includedPerson =>
+      _firstOrNull<PcoCheckInsPerson>(relationships['person']);
 
   // Class Constructors
   PcoCheckInsCheckIn.fromJson(Map<String, dynamic> data,
@@ -1046,4 +1044,11 @@ class PcoCheckInsCheckIn extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

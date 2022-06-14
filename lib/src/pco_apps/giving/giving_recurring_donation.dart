@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.134725
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.600391
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -284,4 +284,11 @@ class PcoGivingRecurringDonation extends PcoResource {
     return PcoCollection.fromApiCall<PcoGivingRecurringDonationDesignation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

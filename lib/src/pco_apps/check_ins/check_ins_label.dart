@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.891416
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.395274
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -274,4 +274,11 @@ class PcoCheckInsLabel extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

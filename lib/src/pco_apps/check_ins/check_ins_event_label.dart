@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.889094
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.393164
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -162,10 +162,10 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
-  List<PcoCheckInsLabel> get includedLabel =>
-      (relationships['label'] as List?)?.cast<PcoCheckInsLabel>() ?? [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
+  PcoCheckInsLabel? get includedLabel =>
+      _firstOrNull<PcoCheckInsLabel>(relationships['label']);
 
   // Class Constructors
   PcoCheckInsEventLabel.fromJson(Map<String, dynamic> data,
@@ -251,4 +251,11 @@ class PcoCheckInsEventLabel extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

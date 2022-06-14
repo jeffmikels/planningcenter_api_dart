@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.076722
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.563818
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -251,10 +251,8 @@ class PcoCalendarResource extends PcoResource {
       (relationships['resource_approval_groups'] as List?)
           ?.cast<PcoCalendarResourceApprovalGroup>() ??
       [];
-  List<PcoCalendarResourceFolder> get includedResourceFolder =>
-      (relationships['resource_folder'] as List?)
-          ?.cast<PcoCalendarResourceFolder>() ??
-      [];
+  PcoCalendarResourceFolder? get includedResourceFolder =>
+      _firstOrNull<PcoCalendarResourceFolder>(relationships['resource_folder']);
   List<PcoCalendarResourceQuestion> get includedResourceQuestions =>
       (relationships['resource_questions'] as List?)
           ?.cast<PcoCalendarResourceQuestion>() ??
@@ -627,4 +625,11 @@ class PcoCalendarResource extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

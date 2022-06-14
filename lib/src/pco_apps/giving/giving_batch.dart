@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.128033
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.589618
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,9 +185,8 @@ class PcoGivingBatch extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoGivingBatchGroup> get includedBatchGroup =>
-      (relationships['batch_group'] as List?)?.cast<PcoGivingBatchGroup>() ??
-      [];
+  PcoGivingBatchGroup? get includedBatchGroup =>
+      _firstOrNull<PcoGivingBatchGroup>(relationships['batch_group']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -369,4 +368,11 @@ class PcoGivingBatch extends PcoResource {
     var url = '$apiEndpoint/commit';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

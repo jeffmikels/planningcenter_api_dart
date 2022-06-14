@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.802536
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.332228
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -379,24 +379,23 @@ class PcoServicesItem extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoServicesArrangement> get includedArrangement =>
-      (relationships['arrangement'] as List?)?.cast<PcoServicesArrangement>() ??
-      [];
+  PcoServicesArrangement? get includedArrangement =>
+      _firstOrNull<PcoServicesArrangement>(relationships['arrangement']);
   List<PcoServicesItemNote> get includedItemNotes =>
       (relationships['item_notes'] as List?)?.cast<PcoServicesItemNote>() ?? [];
   List<PcoServicesItemTime> get includedItemTimes =>
       (relationships['item_times'] as List?)?.cast<PcoServicesItemTime>() ?? [];
-  List<PcoServicesKey> get includedKey =>
-      (relationships['key'] as List?)?.cast<PcoServicesKey>() ?? [];
-  List<PcoServicesMedia> get includedMedia =>
-      (relationships['media'] as List?)?.cast<PcoServicesMedia>() ?? [];
+  PcoServicesKey? get includedKey =>
+      _firstOrNull<PcoServicesKey>(relationships['key']);
+  PcoServicesMedia? get includedMedia =>
+      _firstOrNull<PcoServicesMedia>(relationships['media']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
   List<T> includedSelectedAttachment<T extends PcoResource>() =>
       (relationships['selected_attachment'] as List?)?.cast<T>() ?? [];
-  List<PcoServicesSong> get includedSong =>
-      (relationships['song'] as List?)?.cast<PcoServicesSong>() ?? [];
+  PcoServicesSong? get includedSong =>
+      _firstOrNull<PcoServicesSong>(relationships['song']);
 
   // Class Constructors
   PcoServicesItem.fromJson(Map<String, dynamic> data,
@@ -717,4 +716,11 @@ class PcoServicesItem extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesSong>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

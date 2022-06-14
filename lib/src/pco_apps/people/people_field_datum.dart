@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.963855
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.460074
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -212,15 +212,12 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoPeopleFieldDefinition> get includedFieldDefinition =>
-      (relationships['field_definition'] as List?)
-          ?.cast<PcoPeopleFieldDefinition>() ??
-      [];
-  List<PcoPeopleFieldOption> get includedFieldOption =>
-      (relationships['field_option'] as List?)?.cast<PcoPeopleFieldOption>() ??
-      [];
-  List<PcoPeopleTab> get includedTab =>
-      (relationships['tab'] as List?)?.cast<PcoPeopleTab>() ?? [];
+  PcoPeopleFieldDefinition? get includedFieldDefinition =>
+      _firstOrNull<PcoPeopleFieldDefinition>(relationships['field_definition']);
+  PcoPeopleFieldOption? get includedFieldOption =>
+      _firstOrNull<PcoPeopleFieldOption>(relationships['field_option']);
+  PcoPeopleTab? get includedTab =>
+      _firstOrNull<PcoPeopleTab>(relationships['tab']);
 
   // Class Constructors
   PcoPeopleFieldDatum.fromJson(Map<String, dynamic> data,
@@ -268,10 +265,11 @@ class PcoPeopleFieldDatum extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting one)
+  /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/field_data`
-  static Future<PcoCollection<PcoPeopleFieldDatum>> getFieldDataFromPerson(
+  static Future<PcoCollection<PcoPeopleFieldDatum>> getFromPerson(
     String personId, {
+    String? id,
     PlanningCenterApiQuery? query,
     bool includeAll = false,
     bool includeFieldDefinition = false,
@@ -284,7 +282,7 @@ class PcoPeopleFieldDatum extends PcoResource {
     if (includeFieldOption) query.include.add('field_option');
     if (includeTab) query.include.add('tab');
     var url = '/people/v2/people/$personId/field_data';
-
+    if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
         query: query, apiVersion: kApiVersion);
   }
@@ -383,4 +381,11 @@ class PcoPeopleFieldDatum extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleTab>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

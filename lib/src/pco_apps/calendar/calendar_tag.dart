@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.086154
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.570976
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,8 +174,8 @@ class PcoCalendarTag extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCalendarTagGroup> get includedTagGroup =>
-      (relationships['tag_group'] as List?)?.cast<PcoCalendarTagGroup>() ?? [];
+  PcoCalendarTagGroup? get includedTagGroup =>
+      _firstOrNull<PcoCalendarTagGroup>(relationships['tag_group']);
 
   // Class Constructors
   PcoCalendarTag.fromJson(Map<String, dynamic> data,
@@ -319,4 +319,11 @@ class PcoCalendarTag extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.978159
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.473628
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -253,8 +253,8 @@ class PcoPeopleNote extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedCreatedBy<T extends PcoResource>() =>
       (relationships['created_by'] as List?)?.cast<T>() ?? [];
-  List<PcoPeoplePerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
+  PcoPeoplePerson? get includedPerson =>
+      _firstOrNull<PcoPeoplePerson>(relationships['person']);
 
   // Class Constructors
   PcoPeopleNote.fromJson(Map<String, dynamic> data,
@@ -444,4 +444,11 @@ class PcoPeopleNote extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

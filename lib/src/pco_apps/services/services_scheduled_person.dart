@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.841136
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.349973
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -187,4 +187,11 @@ class PcoServicesScheduledPerson extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesScheduledPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.858034
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.360756
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -192,4 +192,11 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

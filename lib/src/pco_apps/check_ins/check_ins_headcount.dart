@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.890922
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.394785
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -170,13 +170,10 @@ class PcoCheckInsHeadcount extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsAttendanceType> get includedAttendanceType =>
-      (relationships['attendance_type'] as List?)
-          ?.cast<PcoCheckInsAttendanceType>() ??
-      [];
-  List<PcoCheckInsEventTime> get includedEventTime =>
-      (relationships['event_time'] as List?)?.cast<PcoCheckInsEventTime>() ??
-      [];
+  PcoCheckInsAttendanceType? get includedAttendanceType =>
+      _firstOrNull<PcoCheckInsAttendanceType>(relationships['attendance_type']);
+  PcoCheckInsEventTime? get includedEventTime =>
+      _firstOrNull<PcoCheckInsEventTime>(relationships['event_time']);
 
   // Class Constructors
   PcoCheckInsHeadcount.fromJson(Map<String, dynamic> data,
@@ -285,4 +282,11 @@ class PcoCheckInsHeadcount extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsEventTime>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

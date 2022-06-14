@@ -10,7 +10,7 @@ final tokenEndpoint = Uri.parse('https://api.planningcenteronline.com/oauth/toke
 final redirectUrl = Uri.parse('http://localhost:64738/pco_callback');
 final credentialsFile = File('tmp/credentials.json');
 
-void debug(Object o) {
+void debug(Object? o) {
   try {
     print(JsonEncoder.withIndent('  ').convert(o));
   } on JsonUnsupportedObjectError catch (_) {
@@ -66,20 +66,25 @@ void main() async {
   }
 
   // PlanningCenter.init(appid, secret);
-  var collection = await PcoPeoplePerson.get(id: '59717092', includeEmails: true);
+  var collection = await PcoPeoplePerson.get(id: '59717092', includeEmails: true, includeMaritalStatus: true);
   if (collection.isError) {
     debug(collection.query.asMap);
     debug(collection.response.responseBody);
   }
-  var result = collection.items.first;
-  var email = result.includedEmails;
+  var person = collection.items.first;
+  var emails = person.includedEmails;
+  PcoPeopleCampus? primaryCampus = person.includedPrimaryCampus;
 
   print('\nRESULT:');
-  debug(result);
+  debug(person);
   print('\nLINKS:');
-  debug(result.links);
+  debug(person.links);
   print('\nRELATIONSHIPS:');
-  debug(result.relationships);
+  debug(person.relationships);
+  print('\nCAMPUS');
+  debug(primaryCampus);
+  print('\nMARITAL STATUS');
+  debug(person.includedMaritalStatus);
   // result.relationships.forEach((key, relationships) {
   //   print('$key - ${relationships.length} relationships');
   //   for (var relationship in relationships) {

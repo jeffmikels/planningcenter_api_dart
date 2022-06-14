@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.850807
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.352980
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,4 +185,11 @@ class PcoServicesSignupSheetMetadatum extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadatum>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

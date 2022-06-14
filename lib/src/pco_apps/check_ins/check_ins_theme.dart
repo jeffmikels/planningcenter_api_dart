@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.897268
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.402943
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -207,4 +207,11 @@ class PcoCheckInsTheme extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
         query: query, apiVersion: kApiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

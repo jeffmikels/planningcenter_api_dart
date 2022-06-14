@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.888608
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.392663
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -567,4 +567,11 @@ class PcoCheckInsEvent extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

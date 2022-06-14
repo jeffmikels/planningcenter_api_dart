@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.057495
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.549541
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoCalendarConflict extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedResolvedBy<T extends PcoResource>() =>
       (relationships['resolved_by'] as List?)?.cast<T>() ?? [];
-  List<PcoCalendarResource> get includedResource =>
-      (relationships['resource'] as List?)?.cast<PcoCalendarResource>() ?? [];
+  PcoCalendarResource? get includedResource =>
+      _firstOrNull<PcoCalendarResource>(relationships['resource']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -329,4 +329,11 @@ class PcoCalendarConflict extends PcoResource {
     return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

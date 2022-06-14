@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.037491
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.510576
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -281,10 +281,10 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedCurrentStep<T extends PcoResource>() =>
       (relationships['current_step'] as List?)?.cast<T>() ?? [];
-  List<PcoPeoplePerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoPeoplePerson>() ?? [];
-  List<PcoPeopleWorkflow> get includedWorkflow =>
-      (relationships['workflow'] as List?)?.cast<PcoPeopleWorkflow>() ?? [];
+  PcoPeoplePerson? get includedPerson =>
+      _firstOrNull<PcoPeoplePerson>(relationships['person']);
+  PcoPeopleWorkflow? get includedWorkflow =>
+      _firstOrNull<PcoPeopleWorkflow>(relationships['workflow']);
 
   // Class Constructors
   PcoPeopleWorkflowCard.fromJson(Map<String, dynamic> data,
@@ -683,4 +683,11 @@ class PcoPeopleWorkflowCard extends PcoResource {
     var url = '$apiEndpoint/unsnooze';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

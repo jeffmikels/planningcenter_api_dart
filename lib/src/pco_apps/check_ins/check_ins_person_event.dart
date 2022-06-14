@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.896253
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.400604
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -156,8 +156,8 @@ class PcoCheckInsPersonEvent extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -168,8 +168,8 @@ class PcoCheckInsPersonEvent extends PcoResource {
   /// For type safe code, you should specify it here.
   List<T> includedLastCheckIn<T extends PcoResource>() =>
       (relationships['last_check_in'] as List?)?.cast<T>() ?? [];
-  List<PcoCheckInsPerson> get includedPerson =>
-      (relationships['person'] as List?)?.cast<PcoCheckInsPerson>() ?? [];
+  PcoCheckInsPerson? get includedPerson =>
+      _firstOrNull<PcoCheckInsPerson>(relationships['person']);
 
   // Class Constructors
   PcoCheckInsPersonEvent.fromJson(Map<String, dynamic> data,
@@ -331,4 +331,11 @@ class PcoCheckInsPersonEvent extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

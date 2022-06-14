@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.893190
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.397092
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,11 +161,10 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEventTime> get includedEventTime =>
-      (relationships['event_time'] as List?)?.cast<PcoCheckInsEventTime>() ??
-      [];
-  List<PcoCheckInsLocation> get includedLocation =>
-      (relationships['location'] as List?)?.cast<PcoCheckInsLocation>() ?? [];
+  PcoCheckInsEventTime? get includedEventTime =>
+      _firstOrNull<PcoCheckInsEventTime>(relationships['event_time']);
+  PcoCheckInsLocation? get includedLocation =>
+      _firstOrNull<PcoCheckInsLocation>(relationships['location']);
 
   // Class Constructors
   PcoCheckInsLocationEventTime.fromJson(Map<String, dynamic> data,
@@ -313,4 +312,11 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

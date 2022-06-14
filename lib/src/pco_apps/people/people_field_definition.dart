@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.964664
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.460735
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -248,8 +248,8 @@ class PcoPeopleFieldDefinition extends PcoResource {
   List<PcoPeopleFieldOption> get includedFieldOptions =>
       (relationships['field_options'] as List?)?.cast<PcoPeopleFieldOption>() ??
       [];
-  List<PcoPeopleTab> get includedTab =>
-      (relationships['tab'] as List?)?.cast<PcoPeopleTab>() ?? [];
+  PcoPeopleTab? get includedTab =>
+      _firstOrNull<PcoPeopleTab>(relationships['tab']);
 
   // Class Constructors
   PcoPeopleFieldDefinition.fromJson(Map<String, dynamic> data,
@@ -386,4 +386,11 @@ class PcoPeopleFieldDefinition extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleTab>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.855463
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.355974
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,8 +161,8 @@ class PcoServicesTagGroup extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoServicesFolder> get includedFolder =>
-      (relationships['folder'] as List?)?.cast<PcoServicesFolder>() ?? [];
+  PcoServicesFolder? get includedFolder =>
+      _firstOrNull<PcoServicesFolder>(relationships['folder']);
   List<PcoServicesTag> get includedTags =>
       (relationships['tags'] as List?)?.cast<PcoServicesTag>() ?? [];
 
@@ -232,4 +232,11 @@ class PcoServicesTagGroup extends PcoResource {
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

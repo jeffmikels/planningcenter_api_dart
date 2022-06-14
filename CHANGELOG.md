@@ -1,3 +1,8 @@
+## 0.9.9
+
+-   all possible `include` items are now implemented as typed getters!
+-   `include` getters now handle plural/singular includes for you, returning either Lists or nullable objects.
+
 ## 0.9.8
 
 -   `include` items for known objects are now implemented as typed getters and no longer as instance functions;

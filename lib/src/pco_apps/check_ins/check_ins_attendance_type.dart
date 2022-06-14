@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.885876
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.389294
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -164,8 +164,8 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
   // typed getters for each relationship
 
-  List<PcoCheckInsEvent> get includedEvent =>
-      (relationships['event'] as List?)?.cast<PcoCheckInsEvent>() ?? [];
+  PcoCheckInsEvent? get includedEvent =>
+      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
 
   // Class Constructors
   PcoCheckInsAttendanceType.fromJson(Map<String, dynamic> data,
@@ -249,4 +249,11 @@ class PcoCheckInsAttendanceType extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsHeadcount>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

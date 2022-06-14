@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:15.130575
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.592611
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -375,8 +375,8 @@ class PcoGivingDonation extends PcoResource {
       [];
   List<PcoGivingLabel> get includedLabels =>
       (relationships['labels'] as List?)?.cast<PcoGivingLabel>() ?? [];
-  List<PcoGivingRefund> get includedRefund =>
-      (relationships['refund'] as List?)?.cast<PcoGivingRefund>() ?? [];
+  PcoGivingRefund? get includedRefund =>
+      _firstOrNull<PcoGivingRefund>(relationships['refund']);
 
   // Class Constructors
   PcoGivingDonation.fromJson(Map<String, dynamic> data,
@@ -624,4 +624,11 @@ class PcoGivingDonation extends PcoResource {
     var url = '$apiEndpoint/issue_refund';
     return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

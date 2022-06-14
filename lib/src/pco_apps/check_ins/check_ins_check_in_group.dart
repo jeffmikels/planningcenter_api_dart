@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T14:05:14.887636
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.391518
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -176,10 +176,8 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
   List<PcoCheckInsCheckIn> get includedCheckIns =>
       (relationships['check_ins'] as List?)?.cast<PcoCheckInsCheckIn>() ?? [];
-  List<PcoCheckInsEventPeriod> get includedEventPeriod =>
-      (relationships['event_period'] as List?)
-          ?.cast<PcoCheckInsEventPeriod>() ??
-      [];
+  PcoCheckInsEventPeriod? get includedEventPeriod =>
+      _firstOrNull<PcoCheckInsEventPeriod>(relationships['event_period']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
@@ -322,4 +320,11 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
         query: query, apiVersion: apiVersion);
   }
+
+  // little helper function
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

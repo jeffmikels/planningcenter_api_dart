@@ -1,3 +1,7 @@
+## 0.9.7
+
+-   Any iterable may be used to populate the `include` and `filter` fields of a `PlanningCenterApiQuery`
+
 ## 0.9.6
 
 -   Changed relationships, links, and attributes from `Map.unmodifiable` to my own `ReadOnlyMapView` for compile-time warnings instead of runtime exceptions.

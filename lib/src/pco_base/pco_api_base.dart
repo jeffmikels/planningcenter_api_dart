@@ -504,8 +504,8 @@ class PlanningCenterApiQuery {
   int pageOffset;
 
   PlanningCenterApiQuery({
-    Set<String> filter = const <String>{},
-    Set<String> include = const <String>{},
+    Iterable<String> filter = const <String>[],
+    Iterable<String> include = const <String>[],
     this.perPage = 25,
     this.pageOffset = 0,
     this.order,

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.025439
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.718482
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving RecurringDonation Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/recurring_donations
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoGivingRecurringDonation.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -173,8 +184,8 @@ class PcoGivingRecurringDonation extends PcoResource {
   String get schedule => _attributes[kSchedule] ?? '';
   String get amountCurrency => _attributes[kAmountCurrency] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedDesignations<T extends PcoResource>() =>
       relationships['designations']?.cast<T>() ?? [];
@@ -184,20 +195,22 @@ class PcoGivingRecurringDonation extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoGivingRecurringDonation.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/recurring_donations`
-  static Future<PcoCollection<PcoGivingRecurringDonation>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingRecurringDonation>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeDesignations = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRecurringDonation.canInclude;
+
+    if (includeDesignations) query.include.add('designations');
     var url = '/giving/v2/recurring_donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
@@ -207,12 +220,16 @@ class PcoGivingRecurringDonation extends PcoResource {
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations`
   static Future<PcoCollection<PcoGivingRecurringDonation>>
-      getFromPeopleAndPaymentMethod(String peopleId, String paymentMethodId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getFromPeopleAndPaymentMethod(
+    String peopleId,
+    String paymentMethodId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeDesignations = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRecurringDonation.canInclude;
+
+    if (includeDesignations) query.include.add('designations');
     var url =
         '/giving/v2/people/$peopleId/payment_methods/$paymentMethodId/recurring_donations';
     if (id != null) url += '/$id';
@@ -223,29 +240,32 @@ class PcoGivingRecurringDonation extends PcoResource {
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$peopleId/recurring_donations`
   static Future<PcoCollection<PcoGivingRecurringDonation>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeDesignations = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRecurringDonation.canInclude;
+
+    if (includeDesignations) query.include.add('designations');
     var url = '/giving/v2/people/$peopleId/recurring_donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGivingPaymentMethod] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/recurring_donations/1/payment_method`
-  Future<PcoCollection<PcoGivingPaymentMethod>> getPaymentMethod(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingPaymentMethod>> getPaymentMethod({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPaymentMethod.canInclude;
+
     var url = '$apiEndpoint/payment_method';
     return PcoCollection.fromApiCall<PcoGivingPaymentMethod>(url,
         query: query, apiVersion: apiVersion);
@@ -253,19 +273,15 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRecurringDonationDesignation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/recurring_donations/1/designations`
-  Future<PcoCollection<PcoGivingRecurringDonationDesignation>> getDesignations(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingRecurringDonationDesignation>> getDesignations({
+    PlanningCenterApiQuery? query,
+    bool includeFund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes)
-      query.include = PcoGivingRecurringDonationDesignation.canInclude;
+
+    if (includeFund) query.include.add('fund');
     var url = '$apiEndpoint/designations';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonationDesignation>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

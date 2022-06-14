@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.033799
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.741487
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Groups Event Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoGroupsEvent.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -222,8 +233,8 @@ class PcoGroupsEvent extends PcoResource {
   DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
   String get virtualLocationUrl => _attributes[kVirtualLocationUrl] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedGroup<T extends PcoResource>() =>
       relationships['group']?.cast<T>() ?? [];
@@ -235,11 +246,11 @@ class PcoGroupsEvent extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoGroupsEvent.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGroupsEvent] objects (expecting many)
   /// using a path like this: `/groups/v2/events`
@@ -256,12 +267,17 @@ class PcoGroupsEvent extends PcoResource {
   ///
   /// - `not_canceled`
   /// - `upcoming`
-  static Future<PcoCollection<PcoGroupsEvent>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsEvent>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroup = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
+    if (includeGroup) query.include.add('group');
+    if (includeLocation) query.include.add('location');
     var url = '/groups/v2/events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
@@ -274,12 +290,18 @@ class PcoGroupsEvent extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
-  static Future<PcoCollection<PcoGroupsEvent>> getFromGroup(String groupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsEvent>> getFromGroup(
+    String groupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroup = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
+    if (includeGroup) query.include.add('group');
+    if (includeLocation) query.include.add('location');
     var url = '/groups/v2/groups/$groupId/events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
@@ -294,12 +316,17 @@ class PcoGroupsEvent extends PcoResource {
   /// - `not_canceled`
   /// - `upcoming`
   static Future<PcoCollection<PcoGroupsEvent>> getFromGroupType(
-      String groupTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String groupTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroup = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
+    if (includeGroup) query.include.add('group');
+    if (includeLocation) query.include.add('location');
     var url = '/groups/v2/group_types/$groupTypeId/events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
@@ -312,21 +339,27 @@ class PcoGroupsEvent extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
-  static Future<PcoCollection<PcoGroupsEvent>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsEvent>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroup = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
+    if (includeGroup) query.include.add('group');
+    if (includeLocation) query.include.add('location');
     var url = '/groups/v2/people/$peopleId/events';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGroupsAttendance] objects (expecting many)
@@ -334,10 +367,13 @@ class PcoGroupsEvent extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `attended`
-  Future<PcoCollection<PcoGroupsAttendance>> getAttendances(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsAttendance>> getAttendances({
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsAttendance.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/attendances';
     return PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
         query: query, apiVersion: apiVersion);
@@ -345,10 +381,16 @@ class PcoGroupsEvent extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/group`
-  Future<PcoCollection<PcoGroupsGroup>> getGroup(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsGroup>> getGroup({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroupType = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsGroup.canInclude;
+    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
+    if (includeGroupType) query.include.add('group_type');
+    if (includeLocation) query.include.add('location');
     var url = '$apiEndpoint/group';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -356,18 +398,13 @@ class PcoGroupsEvent extends PcoResource {
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/location`
-  Future<PcoCollection<PcoGroupsLocation>> getLocation(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsLocation>> getLocation({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsLocation.canInclude;
+
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

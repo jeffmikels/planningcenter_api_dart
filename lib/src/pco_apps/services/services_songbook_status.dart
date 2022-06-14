@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.741732
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.467440
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services SongbookStatus Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesSongbookStatu.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Used to get the status of an in progress songbook action. When FINISHED, will contain the url of the songbook.
@@ -138,28 +149,9 @@ class PcoServicesSongbookStatu extends PcoResource {
   String get statusToken => _attributes[kStatusToken] ?? '';
   String get url => _attributes[kUrl] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesSongbookStatu.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesSongbookStatu.empty() : super(kPcoApplication, kTypeString);
-
-  // ---------------------------------
-  // Inbound Edges
-  // ---------------------------------
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

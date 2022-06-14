@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.038829
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.745179
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Groups Resource Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/group_types/1/resources
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoGroupsResource.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -155,19 +166,16 @@ class PcoGroupsResource extends PcoResource {
   String get type => _attributes[kType] ?? '';
   String get visibility => _attributes[kVisibility] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoGroupsResource.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoGroupsResource.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/resources`
@@ -176,12 +184,13 @@ class PcoGroupsResource extends PcoResource {
   /// - `leaders`
   /// filter resources only visible to group leaders
   ///
-  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(String groupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
+    String groupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url = '/groups/v2/groups/$groupId/resources';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
@@ -191,12 +200,12 @@ class PcoGroupsResource extends PcoResource {
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources`
   static Future<PcoCollection<PcoGroupsResource>> getFromGroupType(
-      String groupTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String groupTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url = '/groups/v2/group_types/$groupTypeId/resources';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
@@ -206,10 +215,13 @@ class PcoGroupsResource extends PcoResource {
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/download`
   static Future<PcoCollection<PcoGroupsResource>>
-      getDownloadFromGroupTypeAndResource(String groupTypeId, String resourceId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getDownloadFromGroupTypeAndResource(
+    String groupTypeId,
+    String resourceId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url =
         '/groups/v2/group_types/$groupTypeId/resources/$resourceId/download';
 
@@ -220,27 +232,31 @@ class PcoGroupsResource extends PcoResource {
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit`
   static Future<PcoCollection<PcoGroupsResource>>
-      getVisitFromGroupTypeAndResource(String groupTypeId, String resourceId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getVisitFromGroupTypeAndResource(
+    String groupTypeId,
+    String resourceId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit';
 
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/download`
-  Future<PcoCollection<PcoGroupsResource>> getDownload(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsResource>> getDownload({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url = '$apiEndpoint/download';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: apiVersion);
@@ -248,18 +264,13 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/visit`
-  Future<PcoCollection<PcoGroupsResource>> getVisit(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsResource>> getVisit({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsResource.canInclude;
+
     var url = '$apiEndpoint/visit';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

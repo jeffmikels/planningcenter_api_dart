@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.000658
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.692641
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Calendar ResourceSuggestion Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCalendarResourceSuggestion.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A resource and quantity suggested by a room setup.
@@ -145,8 +156,8 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   // getters for object attributes
   int get quantity => _attributes[kQuantity] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedResource<T extends PcoResource>() =>
       relationships['resource']?.cast<T>() ?? [];
@@ -156,46 +167,54 @@ class PcoCalendarResourceSuggestion extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCalendarResourceSuggestion.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCalendarResourceSuggestion] objects (expecting many)
   /// using a path like this: `/calendar/v2/room_setups/$roomSetupId/resource_suggestions`
   static Future<PcoCollection<PcoCalendarResourceSuggestion>> getFromRoomSetup(
-      String roomSetupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String roomSetupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeResource = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResourceSuggestion.canInclude;
+
+    if (includeResource) query.include.add('resource');
     var url = '/calendar/v2/room_setups/$roomSetupId/resource_suggestions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarResourceSuggestion>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions/1/resource`
-  Future<PcoCollection<PcoCalendarResource>> getResource(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCalendarResource>> getResource({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeResourceApprovalGroups = false,
+    bool includeResourceFolder = false,
+    bool includeResourceQuestions = false,
+    bool includeRoomSetups = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResource.canInclude;
+    if (includeAll)
+      query.include.addAll(PcoCalendarResourceSuggestion.canInclude);
+    if (includeResourceApprovalGroups)
+      query.include.add('resource_approval_groups');
+    if (includeResourceFolder) query.include.add('resource_folder');
+    if (includeResourceQuestions) query.include.add('resource_questions');
+    if (includeRoomSetups) query.include.add('room_setups');
     var url = '$apiEndpoint/resource';
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

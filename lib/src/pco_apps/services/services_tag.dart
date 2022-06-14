@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.742426
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.468205
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Tag Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media/1/tags
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesTag.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A tag belonging to a tag group.
@@ -137,29 +148,27 @@ class PcoServicesTag extends PcoResource {
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesTag.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesTag.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/tags`
   static Future<PcoCollection<PcoServicesTag>> getFromSongAndArrangement(
-      String songId, String arrangementId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String songId,
+    String arrangementId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
@@ -168,12 +177,13 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/tags`
-  static Future<PcoCollection<PcoServicesTag>> getFromMedia(String mediaId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromMedia(
+    String mediaId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '/services/v2/media/$mediaId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
@@ -182,12 +192,13 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/tags`
-  static Future<PcoCollection<PcoServicesTag>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '/services/v2/people/$peopleId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
@@ -196,12 +207,13 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/tags`
-  static Future<PcoCollection<PcoServicesTag>> getFromSong(String songId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromSong(
+    String songId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '/services/v2/songs/$songId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
@@ -211,26 +223,15 @@ class PcoServicesTag extends PcoResource {
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/tags`
   static Future<PcoCollection<PcoServicesTag>> getFromTagGroup(
-      String tagGroupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String tagGroupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '/services/v2/tag_groups/$tagGroupId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

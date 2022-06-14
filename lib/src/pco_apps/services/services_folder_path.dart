@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.717805
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.434161
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services FolderPath Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/folders/1/path
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesFolderPath.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// The Folder path of a Folder
@@ -126,28 +137,9 @@ class PcoServicesFolderPath extends PcoResource {
   // getters for object attributes
   List get path => _attributes[kPath] ?? [];
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesFolderPath.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesFolderPath.empty() : super(kPcoApplication, kTypeString);
-
-  // ---------------------------------
-  // Inbound Edges
-  // ---------------------------------
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

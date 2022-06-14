@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.741008
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.466625
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Song Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesSong()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesSong.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A song
@@ -216,35 +227,33 @@ class PcoServicesSong extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
+      (x == null) ? _attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// pass `null` to remove key from attributes
   set admin(String? x) =>
-      (x == null) ? attributes.remove(kAdmin) : _attributes[kAdmin] = x;
+      (x == null) ? _attributes.remove(kAdmin) : _attributes[kAdmin] = x;
 
   /// pass `null` to remove key from attributes
   set author(String? x) =>
-      (x == null) ? attributes.remove(kAuthor) : _attributes[kAuthor] = x;
+      (x == null) ? _attributes.remove(kAuthor) : _attributes[kAuthor] = x;
 
   /// pass `null` to remove key from attributes
-  set copyright(String? x) =>
-      (x == null) ? attributes.remove(kCopyright) : _attributes[kCopyright] = x;
+  set copyright(String? x) => (x == null)
+      ? _attributes.remove(kCopyright)
+      : _attributes[kCopyright] = x;
 
   /// pass `null` to remove key from attributes
   set isHidden(bool? x) =>
-      (x == null) ? attributes.remove(kHidden) : _attributes[kHidden] = x;
+      (x == null) ? _attributes.remove(kHidden) : _attributes[kHidden] = x;
 
   /// pass `null` to remove key from attributes
   set themes(String? x) =>
-      (x == null) ? attributes.remove(kThemes) : _attributes[kThemes] = x;
+      (x == null) ? _attributes.remove(kThemes) : _attributes[kThemes] = x;
 
   /// pass `null` to remove key from attributes
   set ccliNumber(int? x) => (x == null)
-      ? attributes.remove(kCcliNumber)
+      ? _attributes.remove(kCcliNumber)
       : _attributes[kCcliNumber] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoServicesSong.fromJson(Map<String, dynamic> data,
@@ -282,15 +291,16 @@ class PcoServicesSong extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesSong] objects (expecting many)
   /// using a path like this: `/services/v2/songs`
-  static Future<PcoCollection<PcoServicesSong>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesSong>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesSong.canInclude;
+
     var url = '/services/v2/songs';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesSong>(url,
@@ -301,12 +311,14 @@ class PcoServicesSong extends PcoResource {
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song`
   static Future<PcoCollection<PcoServicesSong>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesSong.canInclude;
+
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song';
     if (id != null) url += '/$id';
@@ -314,17 +326,23 @@ class PcoServicesSong extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements`
-  Future<PcoCollection<PcoServicesArrangement>> getArrangements(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesArrangement>> getArrangements({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeKeys = false,
+    bool includeSections = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesArrangement.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesSong.canInclude);
+    if (includeKeys) query.include.add('keys');
+    if (includeSections) query.include.add('sections');
     var url = '$apiEndpoint/arrangements';
     return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
         query: query, apiVersion: apiVersion);
@@ -332,10 +350,13 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -343,10 +364,26 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item`
-  Future<PcoCollection<PcoServicesItem>> getLastScheduledItem(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesItem>> getLastScheduledItem({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItem.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesSong.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
     var url = '$apiEndpoint/last_scheduled_item';
     return PcoCollection.fromApiCall<PcoServicesItem>(url,
         query: query, apiVersion: apiVersion);
@@ -357,10 +394,11 @@ class PcoServicesSong extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `three_most_recent`
-  Future<PcoCollection<PcoServicesSongSchedule>> getSongSchedules(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesSongSchedule>> getSongSchedules({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesSongSchedule.canInclude;
+
     var url = '$apiEndpoint/song_schedules';
     return PcoCollection.fromApiCall<PcoServicesSongSchedule>(url,
         query: query, apiVersion: apiVersion);
@@ -368,10 +406,11 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTag>> getTags({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.911512
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.613098
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People PeopleImport Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeoplePeopleImport.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A PeopleImport is a record of an ongoing or previous import from a CSV file.
@@ -145,37 +156,34 @@ class PcoPeoplePeopleImport extends PcoResource {
   DateTime get processedAt => DateTime.parse(_attributes[kProcessedAt] ?? '');
   DateTime get undoneAt => DateTime.parse(_attributes[kUndoneAt] ?? '');
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeoplePeopleImport.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePeopleImport] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports`
-  static Future<PcoCollection<PcoPeoplePeopleImport>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeoplePeopleImport>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePeopleImport.canInclude;
+
     var url = '/people/v2/people_imports';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImport>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeoplePeopleImportConflict] objects (expecting many)
@@ -191,10 +199,11 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// - `ignored`
   /// - `not_ignored`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
+
     var url = '$apiEndpoint/conflicts';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
         query: query, apiVersion: apiVersion);
@@ -209,18 +218,18 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// - `household_updates`
   /// - `identical`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePeopleImportHistory.canInclude;
+    if (includeAll) query.include.addAll(PcoPeoplePeopleImport.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/histories';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

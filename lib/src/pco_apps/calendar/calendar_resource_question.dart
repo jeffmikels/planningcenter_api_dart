@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.000033
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.692293
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Calendar ResourceQuestion Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_questions
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCalendarResourceQuestion.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A question to answer when requesting to book a room or resource.
@@ -168,28 +179,25 @@ class PcoCalendarResourceQuestion extends PcoResource {
   int get position => _attributes[kPosition] ?? 0;
   String get question => _attributes[kQuestion] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCalendarResourceQuestion.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_questions`
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarResourceQuestion>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
+
     var url = '/calendar/v2/resource_questions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url,
@@ -199,26 +207,15 @@ class PcoCalendarResourceQuestion extends PcoResource {
   /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/resource_questions`
   static Future<PcoCollection<PcoCalendarResourceQuestion>> getFromResource(
-      String resourceId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String resourceId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResourceQuestion.canInclude;
+
     var url = '/calendar/v2/resources/$resourceId/resource_questions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.811440
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.506890
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO CheckIns Option Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/options
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsOption.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An option which an attendee may select when checking in.
@@ -139,8 +150,8 @@ class PcoCheckInsOption extends PcoResource {
   String get body => _attributes[kBody] ?? '';
   int get quantity => _attributes[kQuantity] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedLabel<T extends PcoResource>() =>
       relationships['label']?.cast<T>() ?? [];
@@ -150,21 +161,23 @@ class PcoCheckInsOption extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCheckInsOption.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsOption] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/options`
   static Future<PcoCollection<PcoCheckInsOption>> getFromCheckIn(
-      String checkInId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String checkInId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeLabel = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsOption.canInclude;
+
+    if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/check_ins/$checkInId/options';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsOption>(url,
@@ -174,12 +187,15 @@ class PcoCheckInsOption extends PcoResource {
   /// Will get a collection of [PcoCheckInsOption] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/options`
   static Future<PcoCollection<PcoCheckInsOption>> getFromCheckInAndLocation(
-      String checkInId, String locationId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String checkInId,
+    String locationId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeLabel = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsOption.canInclude;
+
+    if (includeLabel) query.include.add('label');
     var url =
         '/check-ins/v2/check_ins/$checkInId/locations/$locationId/options';
     if (id != null) url += '/$id';
@@ -187,25 +203,20 @@ class PcoCheckInsOption extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/options/1/label`
-  Future<PcoCollection<PcoCheckInsLabel>> getLabel(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsLabel>> getLabel({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsLabel.canInclude;
+
     var url = '$apiEndpoint/label';
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

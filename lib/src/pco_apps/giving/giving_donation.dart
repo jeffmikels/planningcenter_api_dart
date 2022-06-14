@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.020723
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.710749
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving Donation Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations
 /// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/batches/1/donations
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoGivingDonation()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoGivingDonation.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -298,67 +309,67 @@ class PcoGivingDonation extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set paymentMethodSub(String? x) => (x == null)
-      ? attributes.remove(kPaymentMethodSub)
+      ? _attributes.remove(kPaymentMethodSub)
       : _attributes[kPaymentMethodSub] = x;
 
   /// pass `null` to remove key from attributes
   set paymentLast4(String? x) => (x == null)
-      ? attributes.remove(kPaymentLast4)
+      ? _attributes.remove(kPaymentLast4)
       : _attributes[kPaymentLast4] = x;
 
   /// For cards, this is the card brand (eg Visa, Mastercard, etc). For checks, this is the bank name
 
   /// pass `null` to remove key from attributes
   set paymentBrand(String? x) => (x == null)
-      ? attributes.remove(kPaymentBrand)
+      ? _attributes.remove(kPaymentBrand)
       : _attributes[kPaymentBrand] = x;
 
   /// pass `null` to remove key from attributes
   set paymentCheckNumber(int? x) => (x == null)
-      ? attributes.remove(kPaymentCheckNumber)
+      ? _attributes.remove(kPaymentCheckNumber)
       : _attributes[kPaymentCheckNumber] = x;
 
   /// pass `null` to remove key from attributes
   set paymentCheckDatedAt(String? x) => (x == null)
-      ? attributes.remove(kPaymentCheckDatedAt)
+      ? _attributes.remove(kPaymentCheckDatedAt)
       : _attributes[kPaymentCheckDatedAt] = x;
 
   /// pass `null` to remove key from attributes
   set feeCents(int? x) =>
-      (x == null) ? attributes.remove(kFeeCents) : _attributes[kFeeCents] = x;
+      (x == null) ? _attributes.remove(kFeeCents) : _attributes[kFeeCents] = x;
 
   /// Possible values: `ach`, `cash`, `check`, or `card`
 
   /// pass `null` to remove key from attributes
   set paymentMethod(String? x) => (x == null)
-      ? attributes.remove(kPaymentMethod)
+      ? _attributes.remove(kPaymentMethod)
       : _attributes[kPaymentMethod] = x;
 
   /// pass `null` to remove key from attributes
   set receivedAt(DateTime? x) => (x == null)
-      ? attributes.remove(kReceivedAt)
+      ? _attributes.remove(kReceivedAt)
       : _attributes[kReceivedAt] = x.toIso8601String();
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+      (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
   String get personId => _attributes[kPersonId] ?? '';
 
   /// pass `null` to remove key from attributes
   set paymentSourceId(String? x) => (x == null)
-      ? attributes.remove(kPaymentSourceId)
+      ? _attributes.remove(kPaymentSourceId)
       : _attributes[kPaymentSourceId] = x;
   String get paymentSourceId => _attributes[kPaymentSourceId] ?? '';
 
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
-      (x == null) ? attributes.remove(kCampusId) : _attributes[kCampusId] = x;
+      (x == null) ? _attributes.remove(kCampusId) : _attributes[kCampusId] = x;
   String get campusId => _attributes[kCampusId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedDesignations<T extends PcoResource>() =>
       relationships['designations']?.cast<T>() ?? [];
@@ -406,18 +417,26 @@ class PcoGivingDonation extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/donations`
   ///
   /// Available Query Filters:
   /// - `succeeded`
-  static Future<PcoCollection<PcoGivingDonation>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingDonation>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
@@ -426,12 +445,20 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/batches/$batcheId/donations`
-  static Future<PcoCollection<PcoGivingDonation>> getFromBatche(String batcheId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromBatche(
+    String batcheId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/batches/$batcheId/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
@@ -440,12 +467,20 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses/$campusId/donations`
-  static Future<PcoCollection<PcoGivingDonation>> getFromCampus(String campusId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromCampus(
+    String campusId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/campuses/$campusId/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
@@ -455,12 +490,19 @@ class PcoGivingDonation extends PcoResource {
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/payment_sources/$paymentSourceId/donations`
   static Future<PcoCollection<PcoGivingDonation>> getFromPaymentSource(
-      String paymentSourceId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String paymentSourceId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/payment_sources/$paymentSourceId/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
@@ -469,29 +511,38 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$peopleId/donations`
-  static Future<PcoCollection<PcoGivingDonation>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/people/$peopleId/donations';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/campus`
-  Future<PcoCollection<PcoGivingCampus>> getCampus(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingCampus>> getCampus({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingCampus.canInclude;
+
     var url = '$apiEndpoint/campus';
     return PcoCollection.fromApiCall<PcoGivingCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -499,10 +550,11 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/designations`
-  Future<PcoCollection<PcoGivingDesignation>> getDesignations(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingDesignation>> getDesignations({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDesignation.canInclude;
+
     var url = '$apiEndpoint/designations';
     return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
         query: query, apiVersion: apiVersion);
@@ -510,10 +562,11 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/labels`
-  Future<PcoCollection<PcoGivingLabel>> getLabels(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingLabel>> getLabels({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingLabel.canInclude;
+
     var url = '$apiEndpoint/labels';
     return PcoCollection.fromApiCall<PcoGivingLabel>(url,
         query: query, apiVersion: apiVersion);
@@ -521,10 +574,13 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRefund] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/refund`
-  Future<PcoCollection<PcoGivingRefund>> getRefund(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingRefund>> getRefund({
+    PlanningCenterApiQuery? query,
+    bool includeDesignationRefunds = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRefund.canInclude;
+
+    if (includeDesignationRefunds) query.include.add('designation_refunds');
     var url = '$apiEndpoint/refund';
     return PcoCollection.fromApiCall<PcoGivingRefund>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.896989
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.594424
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People ListShare Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/shares
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleListShare.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A list share indicates who has access to edit a list.
@@ -153,8 +164,8 @@ class PcoPeopleListShare extends PcoResource {
   String get group => _attributes[kGroup] ?? '';
   String get name => _attributes[kName] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedPerson<T extends PcoResource>() =>
       relationships['person']?.cast<T>() ?? [];
@@ -164,45 +175,74 @@ class PcoPeopleListShare extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleListShare.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleListShare] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/shares`
   static Future<PcoCollection<PcoPeopleListShare>> getSharesFromList(
-      String listId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String listId, {
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleListShare.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '/people/v2/lists/$listId/shares';
 
     return PcoCollection.fromApiCall<PcoPeopleListShare>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleListShare.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

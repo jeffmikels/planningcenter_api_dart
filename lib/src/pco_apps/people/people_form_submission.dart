@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.889763
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.590239
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People FormSubmission Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleFormSubmission.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A form submission.
@@ -158,8 +169,8 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get isVerified => _attributes[kVerified] == true;
   bool get isRequiresVerification => _attributes[kRequiresVerification] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedFormFields<T extends PcoResource>() =>
       relationships['form_fields']?.cast<T>() ?? [];
@@ -173,38 +184,49 @@ class PcoPeopleFormSubmission extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleFormSubmission.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleFormSubmission] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions`
   static Future<PcoCollection<PcoPeopleFormSubmission>> getFromForm(
-      String formId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String formId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFormFields = false,
+    bool includeFormSubmissionValues = false,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormSubmission.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFormSubmission.canInclude);
+    if (includeFormFields) query.include.add('form_fields');
+    if (includeFormSubmissionValues)
+      query.include.add('form_submission_values');
+    if (includePerson) query.include.add('person');
     var url = '/people/v2/forms/$formId/form_submissions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleFormSubmission>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_fields`
-  Future<PcoCollection<PcoPeopleFormField>> getFormFields(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFormField>> getFormFields({
+    PlanningCenterApiQuery? query,
+    bool includeOptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
+
+    if (includeOptions) query.include.add('options');
     var url = '$apiEndpoint/form_fields';
     return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
         query: query, apiVersion: apiVersion);
@@ -212,10 +234,11 @@ class PcoPeopleFormSubmission extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormSubmissionValue] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values`
-  Future<PcoCollection<PcoPeopleFormSubmissionValue>> getFormSubmissionValues(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFormSubmissionValue>> getFormSubmissionValues({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormSubmissionValue.canInclude;
+
     var url = '$apiEndpoint/form_submission_values';
     return PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(url,
         query: query, apiVersion: apiVersion);
@@ -223,18 +246,45 @@ class PcoPeopleFormSubmission extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFormSubmission.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

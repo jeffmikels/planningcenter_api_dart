@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.901105
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.597934
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Note Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/notes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/notes
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleNote()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleNote.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A note is text with a category connected to a person’s profile.
@@ -209,30 +220,30 @@ class PcoPeopleNote extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set note(String? x) =>
-      (x == null) ? attributes.remove(kNote) : _attributes[kNote] = x;
+      (x == null) ? _attributes.remove(kNote) : _attributes[kNote] = x;
 
   /// pass `null` to remove key from attributes
   set createdAt(DateTime? x) => (x == null)
-      ? attributes.remove(kCreatedAt)
+      ? _attributes.remove(kCreatedAt)
       : _attributes[kCreatedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set updatedAt(DateTime? x) => (x == null)
-      ? attributes.remove(kUpdatedAt)
+      ? _attributes.remove(kUpdatedAt)
       : _attributes[kUpdatedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set displayDate(DateTime? x) => (x == null)
-      ? attributes.remove(kDisplayDate)
+      ? _attributes.remove(kDisplayDate)
       : _attributes[kDisplayDate] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set noteCategoryId(String? x) => (x == null)
-      ? attributes.remove(kNoteCategoryId)
+      ? _attributes.remove(kNoteCategoryId)
       : _attributes[kNoteCategoryId] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedCategory<T extends PcoResource>() =>
       relationships['category']?.cast<T>() ?? [];
@@ -273,15 +284,23 @@ class PcoPeopleNote extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `/people/v2/notes`
-  static Future<PcoCollection<PcoPeopleNote>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleNote>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNote.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
     var url = '/people/v2/notes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleNote>(url,
@@ -290,29 +309,45 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/notes`
-  static Future<PcoCollection<PcoPeopleNote>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleNote>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNote.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
     var url = '/people/v2/people/$peopleId/notes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleNote>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/category`
-  Future<PcoCollection<PcoPeopleNoteCategory>> getCategory(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleNoteCategory>> getCategory({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeShares = false,
+    bool includeSubscribers = false,
+    bool includeSubscriptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNoteCategory.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeShares) query.include.add('shares');
+    if (includeSubscribers) query.include.add('subscribers');
+    if (includeSubscriptions) query.include.add('subscriptions');
     var url = '$apiEndpoint/category';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategory>(url,
         query: query, apiVersion: apiVersion);
@@ -320,10 +355,43 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/created_by`
-  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/created_by';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -331,18 +399,45 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.815465
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.510897
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO CheckIns Theme Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/themes
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsTheme.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A custom style which may be applied to stations.
@@ -157,28 +168,25 @@ class PcoCheckInsTheme extends PcoResource {
   String get backgroundColor => _attributes[kBackgroundColor] ?? '';
   String get mode => _attributes[kMode] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoCheckInsTheme.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCheckInsTheme.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `/check-ins/v2/themes`
-  static Future<PcoCollection<PcoCheckInsTheme>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsTheme>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
+
     var url = '/check-ins/v2/themes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
@@ -188,26 +196,15 @@ class PcoCheckInsTheme extends PcoResource {
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/theme`
   static Future<PcoCollection<PcoCheckInsTheme>> getFromStation(
-      String stationId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String stationId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsTheme.canInclude;
+
     var url = '/check-ins/v2/stations/$stationId/theme';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

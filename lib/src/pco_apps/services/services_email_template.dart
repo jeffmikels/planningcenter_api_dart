@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.716563
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.431600
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services EmailTemplate Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/email_templates
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/email_templates
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesEmailTemplate()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesEmailTemplate.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A EmailTemplate Resource
@@ -152,18 +163,15 @@ class PcoServicesEmailTemplate extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set kind(String? x) =>
-      (x == null) ? attributes.remove(kKind) : _attributes[kKind] = x;
+      (x == null) ? _attributes.remove(kKind) : _attributes[kKind] = x;
 
   /// pass `null` to remove key from attributes
   set htmlBody(String? x) =>
-      (x == null) ? attributes.remove(kHtmlBody) : _attributes[kHtmlBody] = x;
+      (x == null) ? _attributes.remove(kHtmlBody) : _attributes[kHtmlBody] = x;
 
   /// pass `null` to remove key from attributes
   set subject(String? x) =>
-      (x == null) ? attributes.remove(kSubject) : _attributes[kSubject] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kSubject) : _attributes[kSubject] = x;
 
   // Class Constructors
   PcoServicesEmailTemplate.fromJson(Map<String, dynamic> data,
@@ -191,25 +199,21 @@ class PcoServicesEmailTemplate extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesEmailTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/email_templates`
-  static Future<PcoCollection<PcoServicesEmailTemplate>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesEmailTemplate>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesEmailTemplate.canInclude;
+
     var url = '/services/v2/email_templates';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
 
   // --------------------------------
   // Actions

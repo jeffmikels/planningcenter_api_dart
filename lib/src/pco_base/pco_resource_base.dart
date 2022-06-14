@@ -1,5 +1,21 @@
 part of pco;
 
+class ReadOnlyMapView<K, V> extends Object {
+  final Map<K, V> _internal;
+
+  operator [](K key) => _internal[key];
+
+  ReadOnlyMapView._(this._internal);
+  factory ReadOnlyMapView(Map<K, V> map) {
+    return ReadOnlyMapView<K, V>._(map);
+  }
+
+  toJson() => _internal;
+
+  @override
+  toString() => _internal.toString();
+}
+
 // import 'pco_api_base.dart';
 // import 'pco_constructors.dart';
 
@@ -68,18 +84,19 @@ abstract class PcoResource {
   /// and allows a user to access arbitrary data in the attributes by actual api name
   ///
   /// WARNING: This [Map] cannot be modified.
-  Map<String, dynamic> get attributes => Map.unmodifiable(_attributes);
+  ReadOnlyMapView<String, dynamic> get attributes =>
+      ReadOnlyMapView(_attributes);
   final Map<String, dynamic> _attributes = {};
 
   /// contains relationships parsed into objects
   /// even though the api sends relationship objects as Maps or Lists
   /// we always put them into lists for consistency
-  Map<String, List<PcoResource>> get relationships =>
-      Map.unmodifiable(_relationships);
+  ReadOnlyMapView<String, List<PcoResource>> get relationships =>
+      ReadOnlyMapView(_relationships);
   final Map<String, List<PcoResource>> _relationships = {};
 
   /// contains the links data returned by the api if present
-  Map<String, dynamic> get links => Map.unmodifiable(_links);
+  ReadOnlyMapView<String, dynamic> get links => ReadOnlyMapView(_links);
   final Map<String, dynamic> _links = {};
 
   // all planning center resources implement at least these fields
@@ -294,17 +311,17 @@ class PcoCollection<T extends PcoResource> {
   /// requests like [getMore] and [nextPage] can be built easily off of this one.
   factory PcoCollection.fromApiResponse(
       PlanningCenterApiResponse response, endpoint, apiVersion) {
-    List<T> data = [];
+    List<T> items = [];
 
     // handle the main data
     for (var item in response.data) {
       var res = buildResource<T>(response.application, item.asMap,
           withIncludes: response.included);
-      if (res != null) data.add(res as T);
+      if (res != null) items.add(res as T);
     }
 
     return PcoCollection<T>(
-        data, response.meta, response, response.query, endpoint, apiVersion);
+        items, response.meta, response, response.query, endpoint, apiVersion);
   }
 
   /// [nextPage] will return a *new collection* representing the next page of data from

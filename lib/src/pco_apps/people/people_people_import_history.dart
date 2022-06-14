@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.913013
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.614630
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People PeopleImportHistory Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports/1/histories
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeoplePeopleImportHistory.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A PeopleImportHistory is a record of change that occurred when the parent PeopleImport was completed.
@@ -143,8 +154,8 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   String get conflictingChanges => _attributes[kConflictingChanges] ?? '';
   String get kind => _attributes[kKind] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedHousehold<T extends PcoResource>() =>
       relationships['household']?.cast<T>() ?? [];
@@ -156,11 +167,11 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeoplePeopleImportHistory.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePeopleImportHistory] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories`
@@ -172,29 +183,39 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   /// - `identical`
   /// - `updates`
   static Future<PcoCollection<PcoPeoplePeopleImportHistory>>
-      getHistoriesFromPeopleImport(String peopleImportId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getHistoriesFromPeopleImport(
+    String peopleImportId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePeopleImportHistory.canInclude;
+    if (includeAll)
+      query.include.addAll(PcoPeoplePeopleImportHistory.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
     var url = '/people/v2/people_imports/$peopleImportId/histories';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/household`
-  Future<PcoCollection<PcoPeopleHousehold>> getHousehold(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleHousehold>> getHousehold({
+    PlanningCenterApiQuery? query,
+    bool includePeople = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleHousehold.canInclude;
+
+    if (includePeople) query.include.add('people');
     var url = '$apiEndpoint/household';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url,
         query: query, apiVersion: apiVersion);
@@ -202,18 +223,46 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people_imports/1/histories/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll)
+      query.include.addAll(PcoPeoplePeopleImportHistory.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

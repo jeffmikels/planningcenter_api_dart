@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.055492
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.752793
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Webhooks Subscription Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/subscriptions
 /// - Create Endpoint:    https://api.planningcenteronline.com/webhooks/v2/subscriptions
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoWebhooksSubscription()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoWebhooksSubscription.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -153,18 +164,15 @@ class PcoWebhooksSubscription extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set url(String? x) =>
-      (x == null) ? attributes.remove(kUrl) : _attributes[kUrl] = x;
+      (x == null) ? _attributes.remove(kUrl) : _attributes[kUrl] = x;
 
   /// pass `null` to remove key from attributes
   set isActive(bool? x) =>
-      (x == null) ? attributes.remove(kActive) : _attributes[kActive] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kActive) : _attributes[kActive] = x;
 
   // Class Constructors
   PcoWebhooksSubscription.fromJson(Map<String, dynamic> data,
@@ -191,32 +199,34 @@ class PcoWebhooksSubscription extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoWebhooksSubscription] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions`
-  static Future<PcoCollection<PcoWebhooksSubscription>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoWebhooksSubscription>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoWebhooksSubscription.canInclude;
+
     var url = '/webhooks/v2/subscriptions';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoWebhooksEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events`
-  Future<PcoCollection<PcoWebhooksEvent>> getEvents(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoWebhooksEvent>> getEvents({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoWebhooksEvent.canInclude;
+
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoWebhooksEvent>(url,
         query: query, apiVersion: apiVersion);

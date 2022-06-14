@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.708385
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.424816
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Attachment Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesAttachment()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesAttachment.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A file, whether it's stored on Planning Center or linked from another location.
@@ -281,33 +292,34 @@ class PcoServicesAttachment extends PcoResource {
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
-  set pageOrder(String? x) =>
-      (x == null) ? attributes.remove(kPageOrder) : _attributes[kPageOrder] = x;
+  set pageOrder(String? x) => (x == null)
+      ? _attributes.remove(kPageOrder)
+      : _attributes[kPageOrder] = x;
 
   /// pass `null` to remove key from attributes
   set filename(String? x) =>
-      (x == null) ? attributes.remove(kFilename) : _attributes[kFilename] = x;
+      (x == null) ? _attributes.remove(kFilename) : _attributes[kFilename] = x;
 
   /// pass `null` to remove key from attributes
   set remoteLink(String? x) => (x == null)
-      ? attributes.remove(kRemoteLink)
+      ? _attributes.remove(kRemoteLink)
       : _attributes[kRemoteLink] = x;
 
   /// pass `null` to remove key from attributes
   set fileUploadIdentifier(String? x) => (x == null)
-      ? attributes.remove(kFileUploadIdentifier)
+      ? _attributes.remove(kFileUploadIdentifier)
       : _attributes[kFileUploadIdentifier] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set attachmentTypeIds(String? x) => (x == null)
-      ? attributes.remove(kAttachmentTypeIds)
+      ? _attributes.remove(kAttachmentTypeIds)
       : _attributes[kAttachmentTypeIds] = x;
   String get attachmentTypeIds => _attributes[kAttachmentTypeIds] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedZooms<T extends PcoResource>() =>
       relationships['zooms']?.cast<T>() ?? [];
@@ -343,16 +355,20 @@ class PcoServicesAttachment extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>> getFromSongAndArrangement(
-      String songId, String arrangementId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String songId,
+    String arrangementId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/songs/$songId/arrangements/$arrangementId/attachments';
     if (id != null) url += '/$id';
@@ -364,12 +380,16 @@ class PcoServicesAttachment extends PcoResource {
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments';
     if (id != null) url += '/$id';
@@ -381,10 +401,15 @@ class PcoServicesAttachment extends PcoResource {
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment`
   static Future<PcoCollection<PcoServicesAttachment>>
       getSelectedAttachmentFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment';
 
@@ -396,10 +421,15 @@ class PcoServicesAttachment extends PcoResource {
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background`
   static Future<PcoCollection<PcoServicesAttachment>>
       getSelectedBackgroundFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background';
 
@@ -411,12 +441,16 @@ class PcoServicesAttachment extends PcoResource {
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>>
       getFromSongAndArrangementAndKey(
-          String songId, String arrangementId, String keyId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String songId,
+    String arrangementId,
+    String keyId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments';
     if (id != null) url += '/$id';
@@ -427,12 +461,14 @@ class PcoServicesAttachment extends PcoResource {
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>> getFromMedia(
-      String mediaId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String mediaId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/media/$mediaId/attachments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
@@ -454,10 +490,14 @@ class PcoServicesAttachment extends PcoResource {
   ///
   static Future<PcoCollection<PcoServicesAttachment>>
       getAllAttachmentsFromServiceTypeAndPlan(
-          String serviceTypeId, String planId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId, {
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/all_attachments';
 
@@ -468,12 +508,15 @@ class PcoServicesAttachment extends PcoResource {
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>> getFromServiceTypeAndPlan(
-      String serviceTypeId, String planId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/attachments';
     if (id != null) url += '/$id';
@@ -484,12 +527,14 @@ class PcoServicesAttachment extends PcoResource {
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/attachments`
   static Future<PcoCollection<PcoServicesAttachment>> getFromServiceType(
-      String serviceTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String serviceTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/service_types/$serviceTypeId/attachments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
@@ -498,29 +543,33 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/attachments`
-  static Future<PcoCollection<PcoServicesAttachment>> getFromSong(String songId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesAttachment>> getFromSong(
+    String songId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/songs/$songId/attachments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesZoom] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/attachments/1/zooms`
-  Future<PcoCollection<PcoServicesZoom>> getZooms(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesZoom>> getZooms({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesZoom.canInclude;
+
     var url = '$apiEndpoint/zooms';
     return PcoCollection.fromApiCall<PcoServicesZoom>(url,
         query: query, apiVersion: apiVersion);

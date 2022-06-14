@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.024715
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.717925
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving PledgeCampaign Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/pledge_campaigns
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoGivingPledgeCampaign()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoGivingPledgeCampaign.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -203,45 +214,46 @@ class PcoGivingPledgeCampaign extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
-      ? attributes.remove(kDescription)
+      ? _attributes.remove(kDescription)
       : _attributes[kDescription] = x;
 
   /// pass `null` to remove key from attributes
   set startsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kStartsAt)
+      ? _attributes.remove(kStartsAt)
       : _attributes[kStartsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set endsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kEndsAt)
+      ? _attributes.remove(kEndsAt)
       : _attributes[kEndsAt] = x.toIso8601String();
 
   /// Optional. During the donation period of this campaign, the running total of donations will be tracked against this number
 
   /// pass `null` to remove key from attributes
-  set goalCents(int? x) =>
-      (x == null) ? attributes.remove(kGoalCents) : _attributes[kGoalCents] = x;
+  set goalCents(int? x) => (x == null)
+      ? _attributes.remove(kGoalCents)
+      : _attributes[kGoalCents] = x;
 
   /// In addition to seeing their personal pledge progress within their donor profile, this option allows donors to see the the collective progress towards the campaign’s overall goal (if set).
 
   /// pass `null` to remove key from attributes
   set isShowGoalInChurchCenter(bool? x) => (x == null)
-      ? attributes.remove(kShowGoalInChurchCenter)
+      ? _attributes.remove(kShowGoalInChurchCenter)
       : _attributes[kShowGoalInChurchCenter] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set fundId(String? x) =>
-      (x == null) ? attributes.remove(kFundId) : _attributes[kFundId] = x;
+      (x == null) ? _attributes.remove(kFundId) : _attributes[kFundId] = x;
   String get fundId => _attributes[kFundId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedFund<T extends PcoResource>() =>
       relationships['fund']?.cast<T>() ?? [];
@@ -256,32 +268,36 @@ class PcoGivingPledgeCampaign extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingPledgeCampaign] objects (expecting one)
   /// using a path like this: `/giving/v2/pledges/$pledgeId/pledge_campaign`
   static Future<PcoCollection<PcoGivingPledgeCampaign>> getFromPledge(
-      String pledgeId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String pledgeId, {
+    PlanningCenterApiQuery? query,
+    bool includeFund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPledgeCampaign.canInclude;
+
+    if (includeFund) query.include.add('fund');
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign';
 
     return PcoCollection.fromApiCall<PcoGivingPledgeCampaign>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGivingFund] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/pledge_campaigns/1/fund`
-  Future<PcoCollection<PcoGivingFund>> getFund(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingFund>> getFund({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url = '$apiEndpoint/fund';
     return PcoCollection.fromApiCall<PcoGivingFund>(url,
         query: query, apiVersion: apiVersion);
@@ -289,18 +305,18 @@ class PcoGivingPledgeCampaign extends PcoResource {
 
   /// Will get a collection of [PcoGivingPledge] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/pledge_campaigns/1/pledges`
-  Future<PcoCollection<PcoGivingPledge>> getPledges(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingPledge>> getPledges({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeJointGiver = false,
+    bool includePledgeCampaign = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPledge.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingPledgeCampaign.canInclude);
+    if (includeJointGiver) query.include.add('joint_giver');
+    if (includePledgeCampaign) query.include.add('pledge_campaign');
     var url = '$apiEndpoint/pledges';
     return PcoCollection.fromApiCall<PcoGivingPledge>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

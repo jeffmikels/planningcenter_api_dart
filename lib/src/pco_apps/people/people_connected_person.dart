@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.885772
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.586196
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People ConnectedPerson Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/connected_people
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleConnectedPerson.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Connected Person is an account from a different organization linked to an account in this organization.
@@ -161,41 +172,29 @@ class PcoPeopleConnectedPerson extends PcoResource {
   String get organizationName => _attributes[kOrganizationName] ?? '';
   String get organizationId => _attributes[kOrganizationId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleConnectedPerson.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/connected_people`
   static Future<PcoCollection<PcoPeopleConnectedPerson>>
-      getConnectedPeopleFromPeople(String peopleId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getConnectedPeopleFromPeople(
+    String peopleId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleConnectedPerson.canInclude;
+
     var url = '/people/v2/people/$peopleId/connected_people';
 
     return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.711558
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.427973
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Blockout Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/blockouts
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesBlockout()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesBlockout.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An object representing a blockout date, and an optional recurrence pattern
@@ -217,7 +228,7 @@ class PcoServicesBlockout extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set reason(String? x) =>
-      (x == null) ? attributes.remove(kReason) : _attributes[kReason] = x;
+      (x == null) ? _attributes.remove(kReason) : _attributes[kReason] = x;
 
   /// Possible values:
   ///
@@ -241,7 +252,7 @@ class PcoServicesBlockout extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set repeatFrequency(String? x) => (x == null)
-      ? attributes.remove(kRepeatFrequency)
+      ? _attributes.remove(kRepeatFrequency)
       : _attributes[kRepeatFrequency] = x;
 
   /// Possible values:
@@ -260,7 +271,7 @@ class PcoServicesBlockout extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set repeatInterval(String? x) => (x == null)
-      ? attributes.remove(kRepeatInterval)
+      ? _attributes.remove(kRepeatInterval)
       : _attributes[kRepeatInterval] = x;
 
   /// Possible values:
@@ -275,30 +286,27 @@ class PcoServicesBlockout extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set repeatPeriod(String? x) => (x == null)
-      ? attributes.remove(kRepeatPeriod)
+      ? _attributes.remove(kRepeatPeriod)
       : _attributes[kRepeatPeriod] = x;
 
   /// pass `null` to remove key from attributes
   set repeatUntil(String? x) => (x == null)
-      ? attributes.remove(kRepeatUntil)
+      ? _attributes.remove(kRepeatUntil)
       : _attributes[kRepeatUntil] = x;
 
   /// pass `null` to remove key from attributes
   set startsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kStartsAt)
+      ? _attributes.remove(kStartsAt)
       : _attributes[kStartsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set endsAt(DateTime? x) => (x == null)
-      ? attributes.remove(kEndsAt)
+      ? _attributes.remove(kEndsAt)
       : _attributes[kEndsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set isShare(bool? x) =>
-      (x == null) ? attributes.remove(kShare) : _attributes[kShare] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kShare) : _attributes[kShare] = x;
 
   // Class Constructors
   PcoServicesBlockout.fromJson(Map<String, dynamic> data,
@@ -338,6 +346,7 @@ class PcoServicesBlockout extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesBlockout] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/blockouts`
@@ -346,29 +355,30 @@ class PcoServicesBlockout extends PcoResource {
   /// - `future`
   /// - `past`
   static Future<PcoCollection<PcoServicesBlockout>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesBlockout.canInclude;
+
     var url = '/services/v2/people/$peopleId/blockouts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesBlockout>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesBlockoutDate] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates`
-  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesBlockoutDate.canInclude;
+
     var url = '$apiEndpoint/blockout_dates';
     return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url,
         query: query, apiVersion: apiVersion);
@@ -376,18 +386,13 @@ class PcoServicesBlockout extends PcoResource {
 
   /// Will get a collection of [PcoServicesBlockoutException] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions`
-  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesBlockoutException.canInclude;
+
     var url = '$apiEndpoint/blockout_exceptions';
     return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

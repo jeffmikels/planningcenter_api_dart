@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.720610
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.436905
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services ItemNoteCategory Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/item_note_categories
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesItemNoteCategory.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A category of plan item notes for an entire Service Type.
@@ -152,28 +163,28 @@ class PcoServicesItemNoteCategory extends PcoResource {
   int get sequence => _attributes[kSequence] ?? 0;
   bool get isFrequentlyUsed => _attributes[kFrequentlyUsed] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesItemNoteCategory.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category`
   static Future<PcoCollection<PcoServicesItemNoteCategory>>
       getFromSongAndScheduledItemAndItemNote(
-          String songId, String scheduledItemId, String itemNoteId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String songId,
+    String scheduledItemId,
+    String itemNoteId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
+
     var url =
         '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category';
 
@@ -184,26 +195,15 @@ class PcoServicesItemNoteCategory extends PcoResource {
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories`
   static Future<PcoCollection<PcoServicesItemNoteCategory>> getFromServiceType(
-      String serviceTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String serviceTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
+
     var url = '/services/v2/service_types/$serviceTypeId/item_note_categories';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

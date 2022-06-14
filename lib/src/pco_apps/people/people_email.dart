@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.886201
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.586663
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Email Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/emails
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/emails
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleEmail()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleEmail.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An email represents an email address and location.
@@ -177,18 +188,15 @@ class PcoPeopleEmail extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set address(String? x) =>
-      (x == null) ? attributes.remove(kAddress) : _attributes[kAddress] = x;
+      (x == null) ? _attributes.remove(kAddress) : _attributes[kAddress] = x;
 
   /// pass `null` to remove key from attributes
   set location(String? x) =>
-      (x == null) ? attributes.remove(kLocation) : _attributes[kLocation] = x;
+      (x == null) ? _attributes.remove(kLocation) : _attributes[kLocation] = x;
 
   /// pass `null` to remove key from attributes
   set isPrimary(bool? x) =>
-      (x == null) ? attributes.remove(kPrimary) : _attributes[kPrimary] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // Class Constructors
   PcoPeopleEmail.fromJson(Map<String, dynamic> data,
@@ -216,15 +224,16 @@ class PcoPeopleEmail extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `/people/v2/emails`
-  static Future<PcoCollection<PcoPeopleEmail>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleEmail>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleEmail.canInclude;
+
     var url = '/people/v2/emails';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleEmail>(url,
@@ -233,37 +242,65 @@ class PcoPeopleEmail extends PcoResource {
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/emails`
-  static Future<PcoCollection<PcoPeopleEmail>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleEmail>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleEmail.canInclude;
+
     var url = '/people/v2/people/$peopleId/emails';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleEmail>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/emails/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleEmail.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

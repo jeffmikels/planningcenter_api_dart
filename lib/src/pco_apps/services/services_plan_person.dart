@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.732040
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.450312
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services PlanPerson Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/plan_people
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesPlanPerson()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesPlanPerson.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A person scheduled within a specific plan.
@@ -299,47 +310,47 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set status(String? x) =>
-      (x == null) ? attributes.remove(kStatus) : _attributes[kStatus] = x;
+      (x == null) ? _attributes.remove(kStatus) : _attributes[kStatus] = x;
 
   /// pass `null` to remove key from attributes
   set notes(String? x) =>
-      (x == null) ? attributes.remove(kNotes) : _attributes[kNotes] = x;
+      (x == null) ? _attributes.remove(kNotes) : _attributes[kNotes] = x;
 
   /// pass `null` to remove key from attributes
   set declineReason(String? x) => (x == null)
-      ? attributes.remove(kDeclineReason)
+      ? _attributes.remove(kDeclineReason)
       : _attributes[kDeclineReason] = x;
 
   /// pass `null` to remove key from attributes
   set teamPositionName(String? x) => (x == null)
-      ? attributes.remove(kTeamPositionName)
+      ? _attributes.remove(kTeamPositionName)
       : _attributes[kTeamPositionName] = x;
 
   /// pass `null` to remove key from attributes
   set notificationPreparedAt(DateTime? x) => (x == null)
-      ? attributes.remove(kNotificationPreparedAt)
+      ? _attributes.remove(kNotificationPreparedAt)
       : _attributes[kNotificationPreparedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set isPrepareNotification(bool? x) => (x == null)
-      ? attributes.remove(kPrepareNotification)
+      ? _attributes.remove(kPrepareNotification)
       : _attributes[kPrepareNotification] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+      (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
   String get personId => _attributes[kPersonId] ?? '';
 
   /// pass `null` to remove key from attributes
   set respondsToId(String? x) => (x == null)
-      ? attributes.remove(kRespondsToId)
+      ? _attributes.remove(kRespondsToId)
       : _attributes[kRespondsToId] = x;
   String get respondsToId => _attributes[kRespondsToId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedDeclinedPlanTimes<T extends PcoResource>() =>
       relationships['declined_plan_times']?.cast<T>() ?? [];
@@ -386,15 +397,25 @@ class PcoServicesPlanPerson extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesPlanPerson] objects (expecting one)
   /// using a path like this: `/services/v2/people/$peopleId/plan_people`
   static Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeopleFromPeople(
-      String peopleId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDeclinedPlanTimes = false,
+    bool includePerson = false,
+    bool includePlan = false,
+    bool includeTeam = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanPerson.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanPerson.canInclude);
+    if (includeDeclinedPlanTimes) query.include.add('declined_plan_times');
+    if (includePerson) query.include.add('person');
+    if (includePlan) query.include.add('plan');
+    if (includeTeam) query.include.add('team');
     var url = '/services/v2/people/$peopleId/plan_people';
 
     return PcoCollection.fromApiCall<PcoServicesPlanPerson>(url,
@@ -409,10 +430,22 @@ class PcoServicesPlanPerson extends PcoResource {
   /// - `not_archived`
   /// - `not_deleted`
   static Future<PcoCollection<PcoServicesPlanPerson>>
-      getTeamMembersFromServiceTypeAndPlan(String serviceTypeId, String planId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getTeamMembersFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDeclinedPlanTimes = false,
+    bool includePerson = false,
+    bool includePlan = false,
+    bool includeTeam = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanPerson.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanPerson.canInclude);
+    if (includeDeclinedPlanTimes) query.include.add('declined_plan_times');
+    if (includePerson) query.include.add('person');
+    if (includePlan) query.include.add('plan');
+    if (includeTeam) query.include.add('team');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/team_members';
 
@@ -423,28 +456,41 @@ class PcoServicesPlanPerson extends PcoResource {
   /// Will get a collection of [PcoServicesPlanPerson] objects (expecting one)
   /// using a path like this: `/services/v2/teams/$teamId/plan_people`
   static Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeopleFromTeam(
-      String teamId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String teamId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDeclinedPlanTimes = false,
+    bool includePerson = false,
+    bool includePlan = false,
+    bool includeTeam = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanPerson.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanPerson.canInclude);
+    if (includeDeclinedPlanTimes) query.include.add('declined_plan_times');
+    if (includePerson) query.include.add('person');
+    if (includePlan) query.include.add('plan');
+    if (includeTeam) query.include.add('team');
     var url = '/services/v2/teams/$teamId/plan_people';
 
     return PcoCollection.fromApiCall<PcoServicesPlanPerson>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/declined_plan_times`
-  Future<PcoCollection<PcoServicesPlanTime>> getDeclinedPlanTimes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanTime>> getDeclinedPlanTimes({
+    PlanningCenterApiQuery? query,
+    bool includeSplitTeamRehearsalAssignments = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanTime.canInclude;
+
+    if (includeSplitTeamRehearsalAssignments)
+      query.include.add('split_team_rehearsal_assignments');
     var url = '$apiEndpoint/declined_plan_times';
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
         query: query, apiVersion: apiVersion);
@@ -452,10 +498,11 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/person`
-  Future<PcoCollection<PcoServicesPerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPerson>> getPerson({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPerson.canInclude;
+
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -463,10 +510,20 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan`
-  Future<PcoCollection<PcoServicesPlan>> getPlan(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlan>> getPlan({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeContributors = false,
+    bool includeMySchedules = false,
+    bool includePlanTimes = false,
+    bool includeSeries = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlan.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanPerson.canInclude);
+    if (includeContributors) query.include.add('contributors');
+    if (includeMySchedules) query.include.add('my_schedules');
+    if (includePlanTimes) query.include.add('plan_times');
+    if (includeSeries) query.include.add('series');
     var url = '$apiEndpoint/plan';
     return PcoCollection.fromApiCall<PcoServicesPlan>(url,
         query: query, apiVersion: apiVersion);
@@ -474,10 +531,11 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanPersonTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_person_times`
-  Future<PcoCollection<PcoServicesPlanPersonTime>> getPlanPersonTimes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanPersonTime>> getPlanPersonTimes({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanPersonTime.canInclude;
+
     var url = '$apiEndpoint/plan_person_times';
     return PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url,
         query: query, apiVersion: apiVersion);
@@ -485,10 +543,14 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_times`
-  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes({
+    PlanningCenterApiQuery? query,
+    bool includeSplitTeamRehearsalAssignments = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanTime.canInclude;
+
+    if (includeSplitTeamRehearsalAssignments)
+      query.include.add('split_team_rehearsal_assignments');
     var url = '$apiEndpoint/plan_times';
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
         query: query, apiVersion: apiVersion);
@@ -496,18 +558,25 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeam({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includePeople = false,
+    bool includePersonTeamPositionAssignments = false,
+    bool includeServiceType = false,
+    bool includeTeamLeaders = false,
+    bool includeTeamPositions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTeam.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanPerson.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includePersonTeamPositionAssignments)
+      query.include.add('person_team_position_assignments');
+    if (includeServiceType) query.include.add('service_type');
+    if (includeTeamLeaders) query.include.add('team_leaders');
+    if (includeTeamPositions) query.include.add('team_positions');
     var url = '$apiEndpoint/team';
     return PcoCollection.fromApiCall<PcoServicesTeam>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

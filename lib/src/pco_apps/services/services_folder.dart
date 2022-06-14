@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.717454
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.432764
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Folder Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/folders
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesFolder()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesFolder.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A folder is a container used to organize multiple Service Types or other Folders.
@@ -166,22 +177,22 @@ class PcoServicesFolder extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set parentId(String? x) =>
-      (x == null) ? attributes.remove(kParentId) : _attributes[kParentId] = x;
+      (x == null) ? _attributes.remove(kParentId) : _attributes[kParentId] = x;
   String get parentId => _attributes[kParentId] ?? '';
 
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
-      (x == null) ? attributes.remove(kCampusId) : _attributes[kCampusId] = x;
+      (x == null) ? _attributes.remove(kCampusId) : _attributes[kCampusId] = x;
   String get campusId => _attributes[kCampusId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedServiceTypes<T extends PcoResource>() =>
       relationships['service_types']?.cast<T>() ?? [];
@@ -196,15 +207,18 @@ class PcoServicesFolder extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders`
-  static Future<PcoCollection<PcoServicesFolder>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesFolder>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesFolder.canInclude;
+
+    if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
@@ -213,12 +227,15 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/folders`
-  static Future<PcoCollection<PcoServicesFolder>> getFromFolder(String folderId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesFolder>> getFromFolder(
+    String folderId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesFolder.canInclude;
+
+    if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders/$folderId/folders';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
@@ -228,28 +245,33 @@ class PcoServicesFolder extends PcoResource {
   /// Will get a collection of [PcoServicesFolder] objects (expecting one)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/folder`
   static Future<PcoCollection<PcoServicesFolder>> getFromTagGroup(
-      String tagGroupId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String tagGroupId, {
+    PlanningCenterApiQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesFolder.canInclude;
+
+    if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/tag_groups/$tagGroupId/folder';
 
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/folders/1/folders`
-  Future<PcoCollection<PcoServicesFolder>> getFolders(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesFolder>> getFolders({
+    PlanningCenterApiQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesFolder.canInclude;
+
+    if (includeServiceTypes) query.include.add('service_types');
     var url = '$apiEndpoint/folders';
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
         query: query, apiVersion: apiVersion);
@@ -257,18 +279,16 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/folders/1/service_types`
-  Future<PcoCollection<PcoServicesServiceType>> getServiceTypes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesServiceType>> getServiceTypes({
+    PlanningCenterApiQuery? query,
+    bool includeTimePreferenceOptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesServiceType.canInclude;
+
+    if (includeTimePreferenceOptions)
+      query.include.add('time_preference_options');
     var url = '$apiEndpoint/service_types';
     return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.924776
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.631113
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People SchoolOption Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/school_options
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/school_options
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleSchoolOption()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleSchoolOption.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A school option represents a school name, school type, grades, etc. and can be selected for a person.
@@ -167,29 +178,26 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
+      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
+      (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set beginningGrade(String? x) => (x == null)
-      ? attributes.remove(kBeginningGrade)
+      ? _attributes.remove(kBeginningGrade)
       : _attributes[kBeginningGrade] = x;
 
   /// pass `null` to remove key from attributes
   set endingGrade(String? x) => (x == null)
-      ? attributes.remove(kEndingGrade)
+      ? _attributes.remove(kEndingGrade)
       : _attributes[kEndingGrade] = x;
 
   /// pass `null` to remove key from attributes
   set schoolTypes(List? x) => (x == null)
-      ? attributes.remove(kSchoolTypes)
+      ? _attributes.remove(kSchoolTypes)
       : _attributes[kSchoolTypes] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoPeopleSchoolOption.fromJson(Map<String, dynamic> data,
@@ -223,15 +231,16 @@ class PcoPeopleSchoolOption extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options`
-  static Future<PcoCollection<PcoPeopleSchoolOption>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleSchoolOption>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
+
     var url = '/people/v2/school_options';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
@@ -241,12 +250,12 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/school`
   static Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
+
     var url = '/people/v2/people/$peopleId/school';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
@@ -256,37 +265,33 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school`
   static Future<PcoCollection<PcoPeopleSchoolOption>>
-      getPromotesToSchoolFromSchoolOption(String schoolOptionId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getPromotesToSchoolFromSchoolOption(
+    String schoolOptionId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
+
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school`
-  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleSchoolOption.canInclude;
+
     var url = '$apiEndpoint/promotes_to_school';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

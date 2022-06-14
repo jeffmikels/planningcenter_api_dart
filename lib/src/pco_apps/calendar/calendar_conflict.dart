@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.971005
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.683191
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Calendar Conflict Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/conflicts
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCalendarConflict.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A conflict between two events caused by overlapping event resource
@@ -166,8 +177,8 @@ class PcoCalendarConflict extends PcoResource {
   String get note => _attributes[kNote] ?? '';
   DateTime get resolvedAt => DateTime.parse(_attributes[kResolvedAt] ?? '');
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedResolvedBy<T extends PcoResource>() =>
       relationships['resolved_by']?.cast<T>() ?? [];
@@ -181,11 +192,11 @@ class PcoCalendarConflict extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCalendarConflict.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/conflicts`
@@ -194,12 +205,19 @@ class PcoCalendarConflict extends PcoResource {
   /// - `future`
   /// - `resolved`
   /// - `unresolved`
-  static Future<PcoCollection<PcoCalendarConflict>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarConflict>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
     var url = '/calendar/v2/conflicts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
@@ -208,12 +226,20 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/conflicts`
-  static Future<PcoCollection<PcoCalendarConflict>> getFromEvent(String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarConflict>> getFromEvent(
+    String eventId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
     var url = '/calendar/v2/events/$eventId/conflicts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
@@ -223,29 +249,37 @@ class PcoCalendarConflict extends PcoResource {
   /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/conflicts`
   static Future<PcoCollection<PcoCalendarConflict>> getFromResource(
-      String resourceId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String resourceId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarConflict.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
     var url = '/calendar/v2/resources/$resourceId/conflicts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by`
-  Future<PcoCollection<PcoCalendarPerson>> getResolvedBy(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCalendarPerson>> getResolvedBy({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url = '$apiEndpoint/resolved_by';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -253,10 +287,21 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource`
-  Future<PcoCollection<PcoCalendarResource>> getResource(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCalendarResource>> getResource({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeResourceApprovalGroups = false,
+    bool includeResourceFolder = false,
+    bool includeResourceQuestions = false,
+    bool includeRoomSetups = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarResource.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResourceApprovalGroups)
+      query.include.add('resource_approval_groups');
+    if (includeResourceFolder) query.include.add('resource_folder');
+    if (includeResourceQuestions) query.include.add('resource_questions');
+    if (includeRoomSetups) query.include.add('room_setups');
     var url = '$apiEndpoint/resource';
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);
@@ -264,18 +309,20 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEvent] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/winner`
-  Future<PcoCollection<PcoCalendarEvent>> getWinner(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCalendarEvent>> getWinner({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAttachments = false,
+    bool includeOwner = false,
+    bool includeTags = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeAttachments) query.include.add('attachments');
+    if (includeOwner) query.include.add('owner');
+    if (includeTags) query.include.add('tags');
     var url = '$apiEndpoint/winner';
     return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

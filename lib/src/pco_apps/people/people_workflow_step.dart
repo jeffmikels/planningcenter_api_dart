@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.951171
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.653550
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People WorkflowStep Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows/1/steps
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows/1/steps
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleWorkflowStep()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowStep.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Step
@@ -202,14 +213,14 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
+      (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedDefaultAssignee<T extends PcoResource>() =>
       relationships['default_assignee']?.cast<T>() ?? [];
@@ -239,15 +250,20 @@ class PcoPeopleWorkflowStep extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step`
   static Future<PcoCollection<PcoPeopleWorkflowStep>>
       getCurrentStepFromPeopleAndWorkflowCard(
-          String peopleId, String workflowCardId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String peopleId,
+    String workflowCardId, {
+    PlanningCenterApiQuery? query,
+    bool includeDefaultAssignee = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
+
+    if (includeDefaultAssignee) query.include.add('default_assignee');
     var url =
         '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/current_step';
 
@@ -258,30 +274,34 @@ class PcoPeopleWorkflowStep extends PcoResource {
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps`
   static Future<PcoCollection<PcoPeopleWorkflowStep>> getStepsFromWorkflow(
-      String workflowId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String workflowId, {
+    PlanningCenterApiQuery? query,
+    bool includeDefaultAssignee = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
+
+    if (includeDefaultAssignee) query.include.add('default_assignee');
     var url = '/people/v2/workflows/$workflowId/steps';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleWorkflowStepAssigneeSummary] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries`
   Future<PcoCollection<PcoPeopleWorkflowStepAssigneeSummary>>
-      getAssigneeSummaries(
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getAssigneeSummaries({
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes)
-      query.include = PcoPeopleWorkflowStepAssigneeSummary.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/assignee_summaries';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStepAssigneeSummary>(url,
         query: query, apiVersion: apiVersion);
@@ -289,18 +309,45 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/default_assignee`
-  Future<PcoCollection<PcoPeoplePerson>> getDefaultAssignee(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getDefaultAssignee({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleWorkflowStep.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/default_assignee';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.800108
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.501303
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO CheckIns EventLabel Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsEventLabel.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Says how many of a given label to print for this event and
@@ -149,8 +160,8 @@ class PcoCheckInsEventLabel extends PcoResource {
   bool get isForGuest => _attributes[kForGuest] == true;
   bool get isForVolunteer => _attributes[kForVolunteer] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedEvent<T extends PcoResource>() =>
       relationships['event']?.cast<T>() ?? [];
@@ -162,21 +173,26 @@ class PcoCheckInsEventLabel extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCheckInsEventLabel.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels`
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromEvent(
-      String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String eventId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
+    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/events/$eventId/event_labels';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
@@ -186,29 +202,40 @@ class PcoCheckInsEventLabel extends PcoResource {
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/event_labels`
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromLabel(
-      String labelId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String labelId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsEventLabel.canInclude;
+    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/labels/$labelId/event_labels';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/event`
-  Future<PcoCollection<PcoCheckInsEvent>> getEvent(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsEvent>> getEvent({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
     var url = '$apiEndpoint/event';
     return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -216,18 +243,13 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/label`
-  Future<PcoCollection<PcoCheckInsLabel>> getLabel(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsLabel>> getLabel({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsLabel.canInclude;
+
     var url = '$apiEndpoint/label';
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

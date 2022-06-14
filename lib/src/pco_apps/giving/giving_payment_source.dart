@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.023118
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.714257
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving PaymentSource Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/payment_sources
 /// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/payment_sources
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoGivingPaymentSource()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoGivingPaymentSource.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -137,10 +148,7 @@ class PcoGivingPaymentSource extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // Class Constructors
   PcoGivingPaymentSource.fromJson(Map<String, dynamic> data,
@@ -165,40 +173,43 @@ class PcoGivingPaymentSource extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingPaymentSource] objects (expecting many)
   /// using a path like this: `/giving/v2/payment_sources`
-  static Future<PcoCollection<PcoGivingPaymentSource>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingPaymentSource>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPaymentSource.canInclude;
+
     var url = '/giving/v2/payment_sources';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingPaymentSource>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/payment_sources/1/donations`
-  Future<PcoCollection<PcoGivingDonation>> getDonations(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingDonation>> getDonations({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingPaymentSource.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '$apiEndpoint/donations';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

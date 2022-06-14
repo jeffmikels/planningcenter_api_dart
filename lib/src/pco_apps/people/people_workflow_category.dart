@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.949091
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.651792
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People WorkflowCategory Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflow_categories
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleWorkflowCategory()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCategory.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Workflow Category
@@ -144,10 +155,7 @@ class PcoPeopleWorkflowCategory extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   // Class Constructors
   PcoPeopleWorkflowCategory.fromJson(Map<String, dynamic> data,
@@ -159,30 +167,21 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowCategory] objects (expecting many)
   /// using a path like this: `/people/v2/workflows/$workflowId/category`
   static Future<PcoCollection<PcoPeopleWorkflowCategory>>
-      getCategoryFromWorkflow(String workflowId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getCategoryFromWorkflow(
+    String workflowId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowCategory.canInclude;
+
     var url = '/people/v2/workflows/$workflowId/category';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCategory>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

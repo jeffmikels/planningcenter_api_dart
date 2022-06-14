@@ -483,7 +483,7 @@ class PlanningCenterApiQuery {
   ///
   /// Note: some filters require additional data that can be supplied with
   /// the [extraParams] property.
-  List<String> filter;
+  Set<String> filter = {};
 
   /// [extraParams] allows you to specify arbitrary url parameters to the API.
   ///
@@ -497,21 +497,24 @@ class PlanningCenterApiQuery {
   /// Each class has a static variable called `canInclude` that lists
   /// what can be included here, and each class also describes the possible
   /// includes in its class documentation.
-  List<String> include;
+  Set<String> include = {};
 
   /// Pagination defaults to 25, maximum allowed seems to be 100
   final int perPage;
   int pageOffset;
 
   PlanningCenterApiQuery({
-    this.filter = const [],
-    this.include = const [],
+    Set<String> filter = const <String>{},
+    Set<String> include = const <String>{},
     this.perPage = 25,
     this.pageOffset = 0,
     this.order,
     this.where = const {},
     this.extraParams = const {},
-  });
+  }) {
+    this.filter.addAll(filter);
+    this.include.addAll(include);
+  }
 
   Map<String, dynamic> toJson() => asMap;
 
@@ -570,8 +573,8 @@ class PlanningCenterApiQuery {
   /// always copied by value
   PlanningCenterApiQuery copy() {
     return PlanningCenterApiQuery(
-      filter: [...filter],
-      include: [...include],
+      filter: Set.from(filter),
+      include: Set.from(include),
       perPage: perPage,
       pageOffset: pageOffset,
       order: order,

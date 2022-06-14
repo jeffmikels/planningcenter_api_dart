@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.891729
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.592310
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People InactiveReason Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/inactive_reasons
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/inactive_reasons
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleInactiveReason()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleInactiveReason.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An inactive reason is a small bit of text indicating why a member is no longer active.
@@ -132,10 +143,7 @@ class PcoPeopleInactiveReason extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // Class Constructors
   PcoPeopleInactiveReason.fromJson(Map<String, dynamic> data,
@@ -160,15 +168,16 @@ class PcoPeopleInactiveReason extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/inactive_reasons`
-  static Future<PcoCollection<PcoPeopleInactiveReason>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleInactiveReason>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
+
     var url = '/people/v2/inactive_reasons';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
@@ -178,26 +187,15 @@ class PcoPeopleInactiveReason extends PcoResource {
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/inactive_reason`
   static Future<PcoCollection<PcoPeopleInactiveReason>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleInactiveReason.canInclude;
+
     var url = '/people/v2/people/$peopleId/inactive_reason';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

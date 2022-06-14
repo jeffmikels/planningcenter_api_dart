@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.985437
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.688122
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Calendar Feed Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/feeds
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoCalendarFeed()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoCalendarFeed.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A feed belonging to an organization.
@@ -162,25 +173,22 @@ class PcoCalendarFeed extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set defaultChurchCenterVisibility(String? x) => (x == null)
-      ? attributes.remove(kDefaultChurchCenterVisibility)
+      ? _attributes.remove(kDefaultChurchCenterVisibility)
       : _attributes[kDefaultChurchCenterVisibility] = x;
 
   /// Possible values: `registrations`, `groups`, or `ical`
 
   /// pass `null` to remove key from attributes
   set feedType(String? x) =>
-      (x == null) ? attributes.remove(kFeedType) : _attributes[kFeedType] = x;
+      (x == null) ? _attributes.remove(kFeedType) : _attributes[kFeedType] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set eventOwnerId(String? x) => (x == null)
-      ? attributes.remove(kEventOwnerId)
+      ? _attributes.remove(kEventOwnerId)
       : _attributes[kEventOwnerId] = x;
   String get eventOwnerId => _attributes[kEventOwnerId] ?? '';
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoCalendarFeed.fromJson(Map<String, dynamic> data,
@@ -192,15 +200,16 @@ class PcoCalendarFeed extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCalendarFeed] objects (expecting many)
   /// using a path like this: `/calendar/v2/feeds`
-  static Future<PcoCollection<PcoCalendarFeed>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarFeed>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
+
     var url = '/calendar/v2/feeds';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
@@ -209,24 +218,15 @@ class PcoCalendarFeed extends PcoResource {
 
   /// Will get a collection of [PcoCalendarFeed] objects (expecting one)
   /// using a path like this: `/calendar/v2/events/$eventId/feed`
-  static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(String eventId,
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(
+    String eventId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarFeed.canInclude;
+
     var url = '/calendar/v2/events/$eventId/feed';
 
     return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

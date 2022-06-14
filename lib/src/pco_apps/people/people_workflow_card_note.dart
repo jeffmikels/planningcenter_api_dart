@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.947727
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.650699
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People WorkflowCardNote Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleWorkflowCardNote()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCardNote.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Workflow Note is a note that has been made on a Workflow Card
@@ -143,18 +154,15 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set note(String? x) =>
-      (x == null) ? attributes.remove(kNote) : _attributes[kNote] = x;
+      (x == null) ? _attributes.remove(kNote) : _attributes[kNote] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set noteCategoryId(String? x) => (x == null)
-      ? attributes.remove(kNoteCategoryId)
+      ? _attributes.remove(kNoteCategoryId)
       : _attributes[kNoteCategoryId] = x;
   String get noteCategoryId => _attributes[kNoteCategoryId] ?? '';
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data,
@@ -180,29 +188,22 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes`
   static Future<PcoCollection<PcoPeopleWorkflowCardNote>>
-      getNotesFromPeopleAndWorkflowCard(String peopleId, String workflowCardId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getNotesFromPeopleAndWorkflowCard(
+    String peopleId,
+    String workflowCardId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowCardNote.canInclude;
+
     var url =
         '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/notes';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.933407
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.649569
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People WorkflowCardActivity Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCardActivity.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Workflow Card Activity is a record of an action performed on a card
@@ -172,43 +183,31 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   String get type => _attributes[kType] ?? '';
   bool get isContentIsHtml => _attributes[kContentIsHtml] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeopleWorkflowCardActivity.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleWorkflowCardActivity.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/activities`
   static Future<PcoCollection<PcoPeopleWorkflowCardActivity>>
       getActivitiesFromPeopleAndWorkflowCard(
-          String peopleId, String workflowCardId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String peopleId,
+    String workflowCardId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowCardActivity.canInclude;
+
     var url =
         '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/activities';
 
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

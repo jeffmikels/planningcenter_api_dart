@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.884371
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.584708
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Campus Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/campuses
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleCampus()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleCampus.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Campus is a location belonging to an Organization
@@ -261,81 +272,82 @@ class PcoPeopleCampus extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set latitude(double? x) =>
-      (x == null) ? attributes.remove(kLatitude) : _attributes[kLatitude] = x;
+      (x == null) ? _attributes.remove(kLatitude) : _attributes[kLatitude] = x;
 
   /// pass `null` to remove key from attributes
-  set longitude(double? x) =>
-      (x == null) ? attributes.remove(kLongitude) : _attributes[kLongitude] = x;
+  set longitude(double? x) => (x == null)
+      ? _attributes.remove(kLongitude)
+      : _attributes[kLongitude] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
-      ? attributes.remove(kDescription)
+      ? _attributes.remove(kDescription)
       : _attributes[kDescription] = x;
 
   /// pass `null` to remove key from attributes
   set street(String? x) =>
-      (x == null) ? attributes.remove(kStreet) : _attributes[kStreet] = x;
+      (x == null) ? _attributes.remove(kStreet) : _attributes[kStreet] = x;
 
   /// pass `null` to remove key from attributes
   set city(String? x) =>
-      (x == null) ? attributes.remove(kCity) : _attributes[kCity] = x;
+      (x == null) ? _attributes.remove(kCity) : _attributes[kCity] = x;
 
   /// pass `null` to remove key from attributes
   set state(String? x) =>
-      (x == null) ? attributes.remove(kState) : _attributes[kState] = x;
+      (x == null) ? _attributes.remove(kState) : _attributes[kState] = x;
 
   /// pass `null` to remove key from attributes
   set zip(String? x) =>
-      (x == null) ? attributes.remove(kZip) : _attributes[kZip] = x;
+      (x == null) ? _attributes.remove(kZip) : _attributes[kZip] = x;
 
   /// pass `null` to remove key from attributes
   set country(String? x) =>
-      (x == null) ? attributes.remove(kCountry) : _attributes[kCountry] = x;
+      (x == null) ? _attributes.remove(kCountry) : _attributes[kCountry] = x;
 
   /// pass `null` to remove key from attributes
   set phoneNumber(String? x) => (x == null)
-      ? attributes.remove(kPhoneNumber)
+      ? _attributes.remove(kPhoneNumber)
       : _attributes[kPhoneNumber] = x;
 
   /// pass `null` to remove key from attributes
   set website(String? x) =>
-      (x == null) ? attributes.remove(kWebsite) : _attributes[kWebsite] = x;
+      (x == null) ? _attributes.remove(kWebsite) : _attributes[kWebsite] = x;
 
   /// pass `null` to remove key from attributes
   set isTwentyFourHourTime(bool? x) => (x == null)
-      ? attributes.remove(kTwentyFourHourTime)
+      ? _attributes.remove(kTwentyFourHourTime)
       : _attributes[kTwentyFourHourTime] = x;
 
   /// pass `null` to remove key from attributes
   set dateFormat(int? x) => (x == null)
-      ? attributes.remove(kDateFormat)
+      ? _attributes.remove(kDateFormat)
       : _attributes[kDateFormat] = x;
 
   /// pass `null` to remove key from attributes
   set isChurchCenterEnabled(bool? x) => (x == null)
-      ? attributes.remove(kChurchCenterEnabled)
+      ? _attributes.remove(kChurchCenterEnabled)
       : _attributes[kChurchCenterEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set contactEmailAddress(String? x) => (x == null)
-      ? attributes.remove(kContactEmailAddress)
+      ? _attributes.remove(kContactEmailAddress)
       : _attributes[kContactEmailAddress] = x;
 
   /// pass `null` to remove key from attributes
   set timeZone(String? x) =>
-      (x == null) ? attributes.remove(kTimeZone) : _attributes[kTimeZone] = x;
+      (x == null) ? _attributes.remove(kTimeZone) : _attributes[kTimeZone] = x;
 
   /// pass `null` to remove key from attributes
   set isGeolocationSetManually(bool? x) => (x == null)
-      ? attributes.remove(kGeolocationSetManually)
+      ? _attributes.remove(kGeolocationSetManually)
       : _attributes[kGeolocationSetManually] = x;
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedLists<T extends PcoResource>() =>
       relationships['lists']?.cast<T>() ?? [];
@@ -402,15 +414,21 @@ class PcoPeopleCampus extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting many)
   /// using a path like this: `/people/v2/campuses`
-  static Future<PcoCollection<PcoPeopleCampus>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleCampus>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleCampus.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/campuses';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
@@ -419,10 +437,17 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/campus`
-  static Future<PcoCollection<PcoPeopleCampus>> getFromForm(String formId,
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleCampus>> getFromForm(
+    String formId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleCampus.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/forms/$formId/campus';
 
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
@@ -431,10 +456,17 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/campus`
-  static Future<PcoCollection<PcoPeopleCampus>> getFromList(String listId,
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleCampus>> getFromList(
+    String listId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleCampus.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/lists/$listId/campus';
 
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
@@ -444,28 +476,51 @@ class PcoPeopleCampus extends PcoResource {
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/primary_campus`
   static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPeople(
-      String peopleId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleCampus.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/people/$peopleId/primary_campus';
 
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/campuses/1/lists`
-  Future<PcoCollection<PcoPeopleList>> getLists(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleList>> getLists({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleList.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
     var url = '$apiEndpoint/lists';
     return PcoCollection.fromApiCall<PcoPeopleList>(url,
         query: query, apiVersion: apiVersion);
@@ -473,18 +528,13 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleServiceTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/campuses/1/service_times`
-  Future<PcoCollection<PcoPeopleServiceTime>> getServiceTimes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleServiceTime>> getServiceTimes({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
+
     var url = '$apiEndpoint/service_times';
     return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

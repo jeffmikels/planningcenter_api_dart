@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.883291
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.583128
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People App Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/apps
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleApp.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An app is one of the handful of apps that Planning Center offers that organizations can subscribe to, e.g. Services, Registrations, etc.
@@ -137,28 +148,25 @@ class PcoPeopleApp extends PcoResource {
   String get name => _attributes[kName] ?? '';
   String get url => _attributes[kUrl] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeopleApp.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleApp.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/apps`
-  static Future<PcoCollection<PcoPeopleApp>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleApp>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleApp.canInclude;
+
     var url = '/people/v2/apps';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
@@ -168,12 +176,12 @@ class PcoPeopleApp extends PcoResource {
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/app`
   static Future<PcoCollection<PcoPeopleApp>> getFromMessageGroup(
-      String messageGroupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String messageGroupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleApp.canInclude;
+
     var url = '/people/v2/message_groups/$messageGroupId/app';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
@@ -183,12 +191,13 @@ class PcoPeopleApp extends PcoResource {
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/person_apps/$personAppId/app`
   static Future<PcoCollection<PcoPeopleApp>> getFromPeopleAndPersonApp(
-      String peopleId, String personAppId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId,
+    String personAppId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleApp.canInclude;
+
     var url = '/people/v2/people/$peopleId/person_apps/$personAppId/app';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
@@ -197,26 +206,16 @@ class PcoPeopleApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/apps`
-  static Future<PcoCollection<PcoPeopleApp>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleApp>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleApp.canInclude;
+
     var url = '/people/v2/people/$peopleId/apps';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

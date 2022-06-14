@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.888923
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.589377
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People FormField Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/fields
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleFormField.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A field in a custom form.
@@ -185,8 +196,8 @@ class PcoPeopleFormField extends PcoResource {
   String get settings => _attributes[kSettings] ?? '';
   int get sequence => _attributes[kSequence] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedOptions<T extends PcoResource>() =>
       relationships['options']?.cast<T>() ?? [];
@@ -196,20 +207,22 @@ class PcoPeopleFormField extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleFormField.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/fields`
   static Future<PcoCollection<PcoPeopleFormField>> getFieldsFromForm(
-      String formId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String formId, {
+    PlanningCenterApiQuery? query,
+    bool includeOptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
+
+    if (includeOptions) query.include.add('options');
     var url = '/people/v2/forms/$formId/fields';
 
     return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
@@ -219,12 +232,15 @@ class PcoPeopleFormField extends PcoResource {
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields`
   static Future<PcoCollection<PcoPeopleFormField>> getFromFormAndFormSubmission(
-      String formId, String formSubmissionId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String formId,
+    String formSubmissionId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeOptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormField.canInclude;
+
+    if (includeOptions) query.include.add('options');
     var url =
         '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
     if (id != null) url += '/$id';
@@ -232,25 +248,20 @@ class PcoPeopleFormField extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleFormFieldOption] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/fields/1/options`
-  Future<PcoCollection<PcoPeopleFormFieldOption>> getOptions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFormFieldOption>> getOptions({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFormFieldOption.canInclude;
+
     var url = '$apiEndpoint/options';
     return PcoCollection.fromApiCall<PcoPeopleFormFieldOption>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

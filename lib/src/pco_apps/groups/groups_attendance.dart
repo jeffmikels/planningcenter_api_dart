@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.033187
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.740812
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Groups Attendance Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/attendances
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoGroupsAttendance.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -147,8 +158,8 @@ class PcoGroupsAttendance extends PcoResource {
   bool get isAttended => _attributes[kAttended] == true;
   String get role => _attributes[kRole] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedPerson<T extends PcoResource>() =>
       relationships['person']?.cast<T>() ?? [];
@@ -158,48 +169,46 @@ class PcoGroupsAttendance extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoGroupsAttendance.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGroupsAttendance] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/attendances`
   ///
   /// Available Query Filters:
   /// - `attended`
-  static Future<PcoCollection<PcoGroupsAttendance>> getFromEvent(String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGroupsAttendance>> getFromEvent(
+    String eventId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsAttendance.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '/groups/v2/events/$eventId/attendances';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGroupsPerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/attendances/1/person`
-  Future<PcoCollection<PcoGroupsPerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGroupsPerson>> getPerson({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGroupsPerson.canInclude;
+
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoGroupsPerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

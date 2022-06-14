@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.695931
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.411904
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Arrangement Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/arrangements
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesArrangement()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesArrangement.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Each arrangement belongs to a song and is a different version of that song.
@@ -310,15 +321,15 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set bpm(double? x) =>
-      (x == null) ? attributes.remove(kBpm) : _attributes[kBpm] = x;
+      (x == null) ? _attributes.remove(kBpm) : _attributes[kBpm] = x;
 
   /// pass `null` to remove key from attributes
   set isrc(String? x) =>
-      (x == null) ? attributes.remove(kIsrc) : _attributes[kIsrc] = x;
+      (x == null) ? _attributes.remove(kIsrc) : _attributes[kIsrc] = x;
 
   /// pass `null` to remove key from attributes
   set length(int? x) =>
-      (x == null) ? attributes.remove(kLength) : _attributes[kLength] = x;
+      (x == null) ? _attributes.remove(kLength) : _attributes[kLength] = x;
 
   /// Possible Values:
   ///
@@ -346,15 +357,15 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set meter(String? x) =>
-      (x == null) ? attributes.remove(kMeter) : _attributes[kMeter] = x;
+      (x == null) ? _attributes.remove(kMeter) : _attributes[kMeter] = x;
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set notes(String? x) =>
-      (x == null) ? attributes.remove(kNotes) : _attributes[kNotes] = x;
+      (x == null) ? _attributes.remove(kNotes) : _attributes[kNotes] = x;
 
   /// Possible Values:
   ///
@@ -370,7 +381,7 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set printMargin(String? x) => (x == null)
-      ? attributes.remove(kPrintMargin)
+      ? _attributes.remove(kPrintMargin)
       : _attributes[kPrintMargin] = x;
 
   /// Possible Values:
@@ -381,7 +392,7 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set printOrientation(String? x) => (x == null)
-      ? attributes.remove(kPrintOrientation)
+      ? _attributes.remove(kPrintOrientation)
       : _attributes[kPrintOrientation] = x;
 
   /// Possible Values:
@@ -400,29 +411,29 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set printPageSize(String? x) => (x == null)
-      ? attributes.remove(kPrintPageSize)
+      ? _attributes.remove(kPrintPageSize)
       : _attributes[kPrintPageSize] = x;
 
   /// A string of lyrics and chords. Supports standard and ChordPro formats.
 
   /// pass `null` to remove key from attributes
   set chordChart(String? x) => (x == null)
-      ? attributes.remove(kChordChart)
+      ? _attributes.remove(kChordChart)
       : _attributes[kChordChart] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartFont(String? x) => (x == null)
-      ? attributes.remove(kChordChartFont)
+      ? _attributes.remove(kChordChartFont)
       : _attributes[kChordChartFont] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartKey(String? x) => (x == null)
-      ? attributes.remove(kChordChartKey)
+      ? _attributes.remove(kChordChartKey)
       : _attributes[kChordChartKey] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartColumns(int? x) => (x == null)
-      ? attributes.remove(kChordChartColumns)
+      ? _attributes.remove(kChordChartColumns)
       : _attributes[kChordChartColumns] = x;
 
   /// Possible Values:
@@ -431,22 +442,22 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set chordChartFontSize(int? x) => (x == null)
-      ? attributes.remove(kChordChartFontSize)
+      ? _attributes.remove(kChordChartFontSize)
       : _attributes[kChordChartFontSize] = x;
 
   /// pass `null` to remove key from attributes
   set isLyricsEnabled(bool? x) => (x == null)
-      ? attributes.remove(kLyricsEnabled)
+      ? _attributes.remove(kLyricsEnabled)
       : _attributes[kLyricsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isNumberChartEnabled(bool? x) => (x == null)
-      ? attributes.remove(kNumberChartEnabled)
+      ? _attributes.remove(kNumberChartEnabled)
       : _attributes[kNumberChartEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isNumeralChartEnabled(bool? x) => (x == null)
-      ? attributes.remove(kNumeralChartEnabled)
+      ? _attributes.remove(kNumeralChartEnabled)
       : _attributes[kNumeralChartEnabled] = x;
 
   /// An array of strings containing a label and a number describing the section:
@@ -455,26 +466,26 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set sequence(List? x) =>
-      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
+      (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartChordColor(int? x) => (x == null)
-      ? attributes.remove(kChordChartChordColor)
+      ? _attributes.remove(kChordChartChordColor)
       : _attributes[kChordChartChordColor] = x;
 
   /// An alias for rehearsal_mix_id
 
   /// pass `null` to remove key from attributes
   set mtid(String? x) =>
-      (x == null) ? attributes.remove(kMtid) : _attributes[kMtid] = x;
+      (x == null) ? _attributes.remove(kMtid) : _attributes[kMtid] = x;
 
   /// pass `null` to remove key from attributes
   set rehearsalMixId(String? x) => (x == null)
-      ? attributes.remove(kRehearsalMixId)
+      ? _attributes.remove(kRehearsalMixId)
       : _attributes[kRehearsalMixId] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedKeys<T extends PcoResource>() =>
       relationships['keys']?.cast<T>() ?? [];
@@ -548,15 +559,24 @@ class PcoServicesArrangement extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement`
   static Future<PcoCollection<PcoServicesArrangement>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeKeys = false,
+    bool includeSections = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesArrangement.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
+    if (includeKeys) query.include.add('keys');
+    if (includeSections) query.include.add('sections');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement';
 
@@ -567,29 +587,37 @@ class PcoServicesArrangement extends PcoResource {
   /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements`
   static Future<PcoCollection<PcoServicesArrangement>> getFromSong(
-      String songId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String songId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeKeys = false,
+    bool includeSections = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesArrangement.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
+    if (includeKeys) query.include.add('keys');
+    if (includeSections) query.include.add('sections');
     var url = '/services/v2/songs/$songId/arrangements';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -597,10 +625,11 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesKey] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys`
-  Future<PcoCollection<PcoServicesKey>> getKeys(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesKey>> getKeys({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesKey.canInclude;
+
     var url = '$apiEndpoint/keys';
     return PcoCollection.fromApiCall<PcoServicesKey>(url,
         query: query, apiVersion: apiVersion);
@@ -608,10 +637,11 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangementSection] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/sections`
-  Future<PcoCollection<PcoServicesArrangementSection>> getSections(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesArrangementSection>> getSections({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesArrangementSection.canInclude;
+
     var url = '$apiEndpoint/sections';
     return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url,
         query: query, apiVersion: apiVersion);
@@ -619,10 +649,11 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTag>> getTags({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

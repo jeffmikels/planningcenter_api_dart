@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.721092
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.437522
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services ItemTime Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_times
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesItemTime.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -163,30 +174,29 @@ class PcoServicesItemTime extends PcoResource {
   int get length => _attributes[kLength] ?? 0;
   int get lengthOffset => _attributes[kLengthOffset] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesItemTime.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesItemTime.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times`
   static Future<PcoCollection<PcoServicesItemTime>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemTime.canInclude;
+
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times';
     if (id != null) url += '/$id';
@@ -198,10 +208,13 @@ class PcoServicesItemTime extends PcoResource {
   /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time`
   static Future<PcoCollection<PcoServicesItemTime>>
       getCurrentItemTimeFromPeopleAndRecentPlanAndLive(
-          String peopleId, String recentPlanId, String liveId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String peopleId,
+    String recentPlanId,
+    String liveId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemTime.canInclude;
+
     var url =
         '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
 
@@ -213,25 +226,17 @@ class PcoServicesItemTime extends PcoResource {
   /// using a path like this: `/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time`
   static Future<PcoCollection<PcoServicesItemTime>>
       getNextItemTimeFromPeopleAndRecentPlanAndLive(
-          String peopleId, String recentPlanId, String liveId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String peopleId,
+    String recentPlanId,
+    String liveId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemTime.canInclude;
+
     var url =
         '/services/v2/people/$peopleId/recent_plans/$recentPlanId/live/$liveId/next_item_time';
 
     return PcoCollection.fromApiCall<PcoServicesItemTime>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

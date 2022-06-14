@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.719585
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.435904
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services ItemNote Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesItemNote()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesItemNote.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A plan item note that belongs to a category.
@@ -156,10 +167,10 @@ class PcoServicesItemNote extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set content(String? x) =>
-      (x == null) ? attributes.remove(kContent) : _attributes[kContent] = x;
+      (x == null) ? _attributes.remove(kContent) : _attributes[kContent] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedItemNoteCategory<T extends PcoResource>() =>
       relationships['item_note_category']?.cast<T>() ?? [];
@@ -189,17 +200,22 @@ class PcoServicesItemNote extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesItemNote] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes`
   static Future<PcoCollection<PcoServicesItemNote>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeItemNoteCategory = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemNote.canInclude;
+
+    if (includeItemNoteCategory) query.include.add('item_note_category');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
     if (id != null) url += '/$id';
@@ -207,25 +223,20 @@ class PcoServicesItemNote extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category`
-  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItemNoteCategory.canInclude;
+
     var url = '$apiEndpoint/item_note_category';
     return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

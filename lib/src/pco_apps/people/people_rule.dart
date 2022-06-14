@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.923273
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.630343
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Rule Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/rules
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleRule.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A rule belongs to a List and groups conditions together.
@@ -140,8 +151,8 @@ class PcoPeopleRule extends PcoResource {
   // getters for object attributes
   String get subset => _attributes[kSubset] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedConditions<T extends PcoResource>() =>
       relationships['conditions']?.cast<T>() ?? [];
@@ -151,45 +162,45 @@ class PcoPeopleRule extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleRule.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleRule] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/rules`
-  static Future<PcoCollection<PcoPeopleRule>> getFromList(String listId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleRule>> getFromList(
+    String listId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeConditions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleRule.canInclude;
+
+    if (includeConditions) query.include.add('conditions');
     var url = '/people/v2/lists/$listId/rules';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleRule>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleCondition] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions`
-  Future<PcoCollection<PcoPeopleCondition>> getConditions(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleCondition>> getConditions({
+    PlanningCenterApiQuery? query,
+    bool includeCreatedBy = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleCondition.canInclude;
+
+    if (includeCreatedBy) query.include.add('created_by');
     var url = '$apiEndpoint/conditions';
     return PcoCollection.fromApiCall<PcoPeopleCondition>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

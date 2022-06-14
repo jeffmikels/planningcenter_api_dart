@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.725056
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.441705
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services NeededPosition Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesNeededPosition()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesNeededPosition.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// An amount of unfilled positions needed within a team in a plan.
@@ -172,24 +183,24 @@ class PcoServicesNeededPosition extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set quantity(int? x) =>
-      (x == null) ? attributes.remove(kQuantity) : _attributes[kQuantity] = x;
+      (x == null) ? _attributes.remove(kQuantity) : _attributes[kQuantity] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set timeId(String? x) =>
-      (x == null) ? attributes.remove(kTimeId) : _attributes[kTimeId] = x;
+      (x == null) ? _attributes.remove(kTimeId) : _attributes[kTimeId] = x;
   String get timeId => _attributes[kTimeId] ?? '';
 
   /// pass `null` to remove key from attributes
   set timePreferenceOptionId(String? x) => (x == null)
-      ? attributes.remove(kTimePreferenceOptionId)
+      ? _attributes.remove(kTimePreferenceOptionId)
       : _attributes[kTimePreferenceOptionId] = x;
   String get timePreferenceOptionId =>
       _attributes[kTimePreferenceOptionId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedTeam<T extends PcoResource>() =>
       relationships['team']?.cast<T>() ?? [];
@@ -220,16 +231,24 @@ class PcoServicesNeededPosition extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesNeededPosition] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
   static Future<PcoCollection<PcoServicesNeededPosition>>
-      getFromServiceTypeAndPlan(String serviceTypeId, String planId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeTeam = false,
+    bool includeTime = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesNeededPosition.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesNeededPosition.canInclude);
+    if (includeTeam) query.include.add('team');
+    if (includeTime) query.include.add('time');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions';
     if (id != null) url += '/$id';
@@ -237,17 +256,30 @@ class PcoServicesNeededPosition extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeam({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includePeople = false,
+    bool includePersonTeamPositionAssignments = false,
+    bool includeServiceType = false,
+    bool includeTeamLeaders = false,
+    bool includeTeamPositions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTeam.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesNeededPosition.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includePersonTeamPositionAssignments)
+      query.include.add('person_team_position_assignments');
+    if (includeServiceType) query.include.add('service_type');
+    if (includeTeamLeaders) query.include.add('team_leaders');
+    if (includeTeamPositions) query.include.add('team_positions');
     var url = '$apiEndpoint/team';
     return PcoCollection.fromApiCall<PcoServicesTeam>(url,
         query: query, apiVersion: apiVersion);
@@ -255,18 +287,16 @@ class PcoServicesNeededPosition extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/time`
-  Future<PcoCollection<PcoServicesPlanTime>> getTime(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanTime>> getTime({
+    PlanningCenterApiQuery? query,
+    bool includeSplitTeamRehearsalAssignments = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanTime.canInclude;
+
+    if (includeSplitTeamRehearsalAssignments)
+      query.include.add('split_team_rehearsal_assignments');
     var url = '$apiEndpoint/time';
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

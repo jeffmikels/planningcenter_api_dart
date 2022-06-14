@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.906025
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.608941
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People NoteCategoryShare Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_categories/1/shares
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/note_categories/1/shares
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleNoteCategoryShare()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleNoteCategoryShare.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A note category share defines who can view notes in a category.
@@ -150,14 +161,11 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set group(String? x) =>
-      (x == null) ? attributes.remove(kGroup) : _attributes[kGroup] = x;
+      (x == null) ? _attributes.remove(kGroup) : _attributes[kGroup] = x;
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
 
   // Class Constructors
   PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data,
@@ -184,28 +192,20 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleNoteCategoryShare] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/shares`
   static Future<PcoCollection<PcoPeopleNoteCategoryShare>>
-      getSharesFromNoteCategory(String noteCategoryId,
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getSharesFromNoteCategory(
+    String noteCategoryId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNoteCategoryShare.canInclude;
+
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
 
     return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

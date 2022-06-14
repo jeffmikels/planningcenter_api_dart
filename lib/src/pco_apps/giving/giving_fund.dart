@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.021666
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.711266
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving Fund Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/funds
 /// - Create Endpoint:    https://api.planningcenteronline.com/giving/v2/funds
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoGivingFund()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoGivingFund.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -175,32 +186,29 @@ class PcoGivingFund extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set ledgerCode(String? x) => (x == null)
-      ? attributes.remove(kLedgerCode)
+      ? _attributes.remove(kLedgerCode)
       : _attributes[kLedgerCode] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
-      ? attributes.remove(kDescription)
+      ? _attributes.remove(kDescription)
       : _attributes[kDescription] = x;
 
   /// Possible values: `everywhere`, `admin_only`, `nowhere`, or `hidden`
 
   /// pass `null` to remove key from attributes
   set visibility(String? x) => (x == null)
-      ? attributes.remove(kVisibility)
+      ? _attributes.remove(kVisibility)
       : _attributes[kVisibility] = x;
 
   /// pass `null` to remove key from attributes
   set colorIdentifier(int? x) => (x == null)
-      ? attributes.remove(kColorIdentifier)
+      ? _attributes.remove(kColorIdentifier)
       : _attributes[kColorIdentifier] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoGivingFund.fromJson(Map<String, dynamic> data,
@@ -234,15 +242,16 @@ class PcoGivingFund extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoGivingFund] objects (expecting many)
   /// using a path like this: `/giving/v2/funds`
-  static Future<PcoCollection<PcoGivingFund>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoGivingFund>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url = '/giving/v2/funds';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingFund>(url,
@@ -252,12 +261,13 @@ class PcoGivingFund extends PcoResource {
   /// Will get a collection of [PcoGivingFund] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/designations/$designationId/fund`
   static Future<PcoCollection<PcoGivingFund>> getFromDonationAndDesignation(
-      String donationId, String designationId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String donationId,
+    String designationId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url =
         '/giving/v2/donations/$donationId/designations/$designationId/fund';
     if (id != null) url += '/$id';
@@ -268,12 +278,12 @@ class PcoGivingFund extends PcoResource {
   /// Will get a collection of [PcoGivingFund] objects (expecting many)
   /// using a path like this: `/giving/v2/pledge_campaigns/$pledgeCampaignId/fund`
   static Future<PcoCollection<PcoGivingFund>> getFromPledgeCampaign(
-      String pledgeCampaignId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String pledgeCampaignId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url = '/giving/v2/pledge_campaigns/$pledgeCampaignId/fund';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingFund>(url,
@@ -284,27 +294,17 @@ class PcoGivingFund extends PcoResource {
   /// using a path like this: `/giving/v2/recurring_donations/$recurringDonationId/designations/$designationId/fund`
   static Future<PcoCollection<PcoGivingFund>>
       getFromRecurringDonationAndDesignation(
-          String recurringDonationId, String designationId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String recurringDonationId,
+    String designationId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url =
         '/giving/v2/recurring_donations/$recurringDonationId/designations/$designationId/fund';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoGivingFund>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

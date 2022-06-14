@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.988265
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.689188
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Calendar Person Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/people
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCalendarPerson.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// The people in your organization with access to Calendar.
@@ -226,31 +237,28 @@ class PcoCalendarPerson extends PcoResource {
   String get resourcesPermissionsType =>
       _attributes[kResourcesPermissionsType] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoCalendarPerson.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCalendarPerson.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/people`
   ///
   /// Available Query Filters:
   /// - `event_owners`
-  static Future<PcoCollection<PcoCalendarPerson>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCalendarPerson>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url = '/calendar/v2/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
@@ -260,12 +268,12 @@ class PcoCalendarPerson extends PcoResource {
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/conflicts/$conflictId/resolved_by`
   static Future<PcoCollection<PcoCalendarPerson>> getResolvedByFromConflict(
-      String conflictId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String conflictId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
@@ -275,12 +283,12 @@ class PcoCalendarPerson extends PcoResource {
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/owner`
   static Future<PcoCollection<PcoCalendarPerson>> getOwnerFromEvent(
-      String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String eventId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url = '/calendar/v2/events/$eventId/owner';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
@@ -290,12 +298,13 @@ class PcoCalendarPerson extends PcoResource {
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by`
   static Future<PcoCollection<PcoCalendarPerson>>
-      getCreatedByFromEventResourceRequest(String eventResourceRequestId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getCreatedByFromEventResourceRequest(
+    String eventResourceRequestId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url =
         '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by';
     if (id != null) url += '/$id';
@@ -306,12 +315,13 @@ class PcoCalendarPerson extends PcoResource {
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by`
   static Future<PcoCollection<PcoCalendarPerson>>
-      getUpdatedByFromEventResourceRequest(String eventResourceRequestId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getUpdatedByFromEventResourceRequest(
+    String eventResourceRequestId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url =
         '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by';
     if (id != null) url += '/$id';
@@ -322,12 +332,13 @@ class PcoCalendarPerson extends PcoResource {
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people`
   static Future<PcoCollection<PcoCalendarPerson>>
-      getPeopleFromResourceApprovalGroup(String resourceApprovalGroupId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getPeopleFromResourceApprovalGroup(
+    String resourceApprovalGroupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarPerson.canInclude;
+
     var url =
         '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people';
     if (id != null) url += '/$id';
@@ -335,9 +346,9 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
@@ -349,18 +360,24 @@ class PcoCalendarPerson extends PcoResource {
   /// - `not_overbooked`
   /// - `overbooked`
   Future<PcoCollection<PcoCalendarEventResourceRequest>>
-      getEventResourceRequests(
-          {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+      getEventResourceRequests({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCreatedBy = false,
+    bool includeEvent = false,
+    bool includeResource = false,
+    bool includeRoomSetup = false,
+    bool includeUpdatedBy = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCalendarEventResourceRequest.canInclude;
+    if (includeAll) query.include.addAll(PcoCalendarPerson.canInclude);
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeEvent) query.include.add('event');
+    if (includeResource) query.include.add('resource');
+    if (includeRoomSetup) query.include.add('room_setup');
+    if (includeUpdatedBy) query.include.add('updated_by');
     var url = '$apiEndpoint/event_resource_requests';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

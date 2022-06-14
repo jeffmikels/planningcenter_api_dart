@@ -3,7 +3,6 @@ import 'dart:io'; // to exit the script faster
 import 'dart:convert'; // for the pretty printing of json
 
 import 'package:planningcenter_api/planningcenter_api.dart';
-import 'package:planningcenter_api/src/pco_base/pco_file.dart';
 
 /// this is where I store my [appid], [secret], [oAuthClientId], and [oAuthClientSecret] constants
 import '../secrets.dart';

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.022440
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.713373
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Giving Organization Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoGivingOrganization.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -134,31 +145,26 @@ class PcoGivingOrganization extends PcoResource {
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoGivingOrganization.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoGivingOrganization.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
-  // Inbound Edges
-  // ---------------------------------
-
-  // --------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batch_groups`
-  Future<PcoCollection<PcoGivingBatchGroup>> getBatchGroups(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingBatchGroup>> getBatchGroups({
+    PlanningCenterApiQuery? query,
+    bool includeOwner = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatchGroup.canInclude;
+
+    if (includeOwner) query.include.add('owner');
     var url = '$apiEndpoint/batch_groups';
     return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -170,10 +176,16 @@ class PcoGivingOrganization extends PcoResource {
   /// Available Query Filters:
   /// - `committed`
   /// - `in_progress`
-  Future<PcoCollection<PcoGivingBatch>> getBatches(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingBatch>> getBatches({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingBatch.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingOrganization.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
     var url = '$apiEndpoint/batches';
     return PcoCollection.fromApiCall<PcoGivingBatch>(url,
         query: query, apiVersion: apiVersion);
@@ -181,10 +193,11 @@ class PcoGivingOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/campuses`
-  Future<PcoCollection<PcoGivingCampus>> getCampuses(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingCampus>> getCampuses({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingCampus.canInclude;
+
     var url = '$apiEndpoint/campuses';
     return PcoCollection.fromApiCall<PcoGivingCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -195,10 +208,18 @@ class PcoGivingOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `succeeded`
-  Future<PcoCollection<PcoGivingDonation>> getDonations(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingDonation>> getDonations({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeRefund = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingDonation.canInclude;
+    if (includeAll) query.include.addAll(PcoGivingOrganization.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeRefund) query.include.add('refund');
     var url = '$apiEndpoint/donations';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
         query: query, apiVersion: apiVersion);
@@ -206,10 +227,11 @@ class PcoGivingOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGivingFund] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/funds`
-  Future<PcoCollection<PcoGivingFund>> getFunds(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingFund>> getFunds({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingFund.canInclude;
+
     var url = '$apiEndpoint/funds';
     return PcoCollection.fromApiCall<PcoGivingFund>(url,
         query: query, apiVersion: apiVersion);
@@ -217,10 +239,11 @@ class PcoGivingOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGivingLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/labels`
-  Future<PcoCollection<PcoGivingLabel>> getLabels(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingLabel>> getLabels({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingLabel.canInclude;
+
     var url = '$apiEndpoint/labels';
     return PcoCollection.fromApiCall<PcoGivingLabel>(url,
         query: query, apiVersion: apiVersion);
@@ -228,10 +251,11 @@ class PcoGivingOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGivingPaymentSource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/payment_sources`
-  Future<PcoCollection<PcoGivingPaymentSource>> getPaymentSources(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingPaymentSource>> getPaymentSources({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPaymentSource.canInclude;
+
     var url = '$apiEndpoint/payment_sources';
     return PcoCollection.fromApiCall<PcoGivingPaymentSource>(url,
         query: query, apiVersion: apiVersion);
@@ -244,10 +268,11 @@ class PcoGivingOrganization extends PcoResource {
   /// - `has_donated`
   /// filter to people with at least one associated donation
   ///
-  Future<PcoCollection<PcoGivingPerson>> getPeople(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingPerson>> getPeople({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingPerson.canInclude;
+
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoGivingPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -255,18 +280,15 @@ class PcoGivingOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/recurring_donations`
-  Future<PcoCollection<PcoGivingRecurringDonation>> getRecurringDonations(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoGivingRecurringDonation>> getRecurringDonations({
+    PlanningCenterApiQuery? query,
+    bool includeDesignations = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoGivingRecurringDonation.canInclude;
+
+    if (includeDesignations) query.include.add('designations');
     var url = '$apiEndpoint/recurring_donations';
     return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.721694
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.438108
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Key Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesKey()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesKey.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Each song arrangement can have multiple keys. A key is the pitch center of the song.
@@ -169,7 +180,7 @@ class PcoServicesKey extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// An array of objects.
   ///
@@ -182,7 +193,7 @@ class PcoServicesKey extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set alternateKeys(String? x) => (x == null)
-      ? attributes.remove(kAlternateKeys)
+      ? _attributes.remove(kAlternateKeys)
       : _attributes[kAlternateKeys] = x;
 
   /// Possible Values:
@@ -192,8 +203,9 @@ class PcoServicesKey extends PcoResource {
   /// To set the key to minor append `m` to the key. e.g. `Cm`
 
   /// pass `null` to remove key from attributes
-  set endingKey(String? x) =>
-      (x == null) ? attributes.remove(kEndingKey) : _attributes[kEndingKey] = x;
+  set endingKey(String? x) => (x == null)
+      ? _attributes.remove(kEndingKey)
+      : _attributes[kEndingKey] = x;
 
   /// Possible Values:
   ///
@@ -203,11 +215,8 @@ class PcoServicesKey extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set startingKey(String? x) => (x == null)
-      ? attributes.remove(kStartingKey)
+      ? _attributes.remove(kStartingKey)
       : _attributes[kStartingKey] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoServicesKey.fromJson(Map<String, dynamic> data,
@@ -239,16 +248,18 @@ class PcoServicesKey extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesKey] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys`
   static Future<PcoCollection<PcoServicesKey>> getFromSongAndArrangement(
-      String songId, String arrangementId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String songId,
+    String arrangementId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesKey.canInclude;
+
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/keys';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesKey>(url,
@@ -258,10 +269,13 @@ class PcoServicesKey extends PcoResource {
   /// Will get a collection of [PcoServicesKey] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/key`
   static Future<PcoCollection<PcoServicesKey>> getFromServiceTypeAndPlanAndItem(
-      String serviceTypeId, String planId, String itemId,
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesKey.canInclude;
+
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/key';
 
@@ -269,25 +283,22 @@ class PcoServicesKey extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

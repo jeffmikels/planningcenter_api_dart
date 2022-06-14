@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.746295
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.471626
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Zoom Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments/1/zooms
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/attachments/1/zooms
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesZoom()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesZoom.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Describes a zoom level for an attachment
@@ -165,29 +176,27 @@ class PcoServicesZoom extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set aspectRatio(double? x) => (x == null)
-      ? attributes.remove(kAspectRatio)
+      ? _attributes.remove(kAspectRatio)
       : _attributes[kAspectRatio] = x;
 
   /// The percentage of the zoom. Must be a value between 1.0 and 5.0
 
   /// pass `null` to remove key from attributes
-  set zoomLevel(double? x) =>
-      (x == null) ? attributes.remove(kZoomLevel) : _attributes[kZoomLevel] = x;
+  set zoomLevel(double? x) => (x == null)
+      ? _attributes.remove(kZoomLevel)
+      : _attributes[kZoomLevel] = x;
 
   /// The percentage of the document's width the zoomed document should be offset by horizontally.
 
   /// pass `null` to remove key from attributes
   set xOffset(double? x) =>
-      (x == null) ? attributes.remove(kXOffset) : _attributes[kXOffset] = x;
+      (x == null) ? _attributes.remove(kXOffset) : _attributes[kXOffset] = x;
 
   /// The percentage of the document's height the zoomed document should be offset by vertically.
 
   /// pass `null` to remove key from attributes
   set yOffset(double? x) =>
-      (x == null) ? attributes.remove(kYOffset) : _attributes[kYOffset] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kYOffset) : _attributes[kYOffset] = x;
 
   // Class Constructors
   PcoServicesZoom.fromJson(Map<String, dynamic> data,
@@ -219,30 +228,20 @@ class PcoServicesZoom extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesZoom] objects (expecting many)
   /// using a path like this: `/services/v2/attachments/$attachmentId/zooms`
   static Future<PcoCollection<PcoServicesZoom>> getFromAttachment(
-      String attachmentId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String attachmentId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesZoom.canInclude;
+
     var url = '/services/v2/attachments/$attachmentId/zooms';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesZoom>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.745572
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.470842
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services TextSetting Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/text_settings
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesTextSetting.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 ///
@@ -161,61 +172,47 @@ class PcoServicesTextSetting extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set isSchedulingRequestsEnabled(bool? x) => (x == null)
-      ? attributes.remove(kSchedulingRequestsEnabled)
+      ? _attributes.remove(kSchedulingRequestsEnabled)
       : _attributes[kSchedulingRequestsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isGeneralEmailsEnabled(bool? x) => (x == null)
-      ? attributes.remove(kGeneralEmailsEnabled)
+      ? _attributes.remove(kGeneralEmailsEnabled)
       : _attributes[kGeneralEmailsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isSchedulingRepliesEnabled(bool? x) => (x == null)
-      ? attributes.remove(kSchedulingRepliesEnabled)
+      ? _attributes.remove(kSchedulingRepliesEnabled)
       : _attributes[kSchedulingRepliesEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isRemindersEnabled(bool? x) => (x == null)
-      ? attributes.remove(kRemindersEnabled)
+      ? _attributes.remove(kRemindersEnabled)
       : _attributes[kRemindersEnabled] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoServicesTextSetting.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesTextSetting.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesTextSetting] objects (expecting many)
   /// using a path like this: `/services/v2/people/$peopleId/text_settings`
   static Future<PcoCollection<PcoServicesTextSetting>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTextSetting.canInclude;
+
     var url = '/services/v2/people/$peopleId/text_settings';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTextSetting>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

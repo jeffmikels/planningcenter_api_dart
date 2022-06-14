@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.733932
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.451823
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services PlanTemplate Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoServicesPlanTemplate.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A PlanTemplate Resource
@@ -197,46 +208,59 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get isPrefersOrderView => _attributes[kPrefersOrderView] == true;
   bool get isRehearsable => _attributes[kRehearsable] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoServicesPlanTemplate.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoServicesPlanTemplate.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesPlanTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates`
   static Future<PcoCollection<PcoServicesPlanTemplate>> getFromServiceType(
-      String serviceTypeId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String serviceTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanTemplate.canInclude;
+
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPlanTemplate>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items`
-  Future<PcoCollection<PcoServicesItem>> getItems(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesItem>> getItems({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesItem.canInclude;
+    if (includeAll) query.include.addAll(PcoServicesPlanTemplate.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
     var url = '$apiEndpoint/items';
     return PcoCollection.fromApiCall<PcoServicesItem>(url,
         query: query, apiVersion: apiVersion);
@@ -244,10 +268,13 @@ class PcoServicesPlanTemplate extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanNote] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes`
-  Future<PcoCollection<PcoServicesPlanNote>> getNotes(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesPlanNote>> getNotes({
+    PlanningCenterApiQuery? query,
+    bool includePlanNoteCategory = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesPlanNote.canInclude;
+
+    if (includePlanNoteCategory) query.include.add('plan_note_category');
     var url = '$apiEndpoint/notes';
     return PcoCollection.fromApiCall<PcoServicesPlanNote>(url,
         query: query, apiVersion: apiVersion);

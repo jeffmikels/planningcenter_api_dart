@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.715920
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.431084
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services CustomSlide Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/custom_slides
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesCustomSlide()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesCustomSlide.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A CustomSlide is used for adding text intended for display on a screen.
@@ -156,22 +167,19 @@ class PcoServicesCustomSlide extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set body(String? x) =>
-      (x == null) ? attributes.remove(kBody) : _attributes[kBody] = x;
+      (x == null) ? _attributes.remove(kBody) : _attributes[kBody] = x;
 
   /// pass `null` to remove key from attributes
   set label(String? x) =>
-      (x == null) ? attributes.remove(kLabel) : _attributes[kLabel] = x;
+      (x == null) ? _attributes.remove(kLabel) : _attributes[kLabel] = x;
 
   /// pass `null` to remove key from attributes
   set order(int? x) =>
-      (x == null) ? attributes.remove(kOrder) : _attributes[kOrder] = x;
+      (x == null) ? _attributes.remove(kOrder) : _attributes[kOrder] = x;
 
   /// pass `null` to remove key from attributes
   set isEnabled(bool? x) =>
-      (x == null) ? attributes.remove(kEnabled) : _attributes[kEnabled] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kEnabled) : _attributes[kEnabled] = x;
 
   // Class Constructors
   PcoServicesCustomSlide.fromJson(Map<String, dynamic> data,
@@ -201,32 +209,24 @@ class PcoServicesCustomSlide extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesCustomSlide] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides`
   static Future<PcoCollection<PcoServicesCustomSlide>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesCustomSlide.canInclude;
+
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/custom_slides';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesCustomSlide>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

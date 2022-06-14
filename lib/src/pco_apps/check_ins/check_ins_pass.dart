@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.812366
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.508163
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO CheckIns Pass Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/passes
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsPas.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// Enables quick lookup of a person via barcode reader.
@@ -137,8 +148,8 @@ class PcoCheckInsPas extends PcoResource {
   String get code => _attributes[kCode] ?? '';
   String get kind => _attributes[kKind] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedPerson<T extends PcoResource>() =>
       relationships['person']?.cast<T>() ?? [];
@@ -148,20 +159,22 @@ class PcoCheckInsPas extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCheckInsPas.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsPas>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsPas.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '/check-ins/v2/passes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
@@ -170,37 +183,37 @@ class PcoCheckInsPas extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPas] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$peopleId/passes`
-  static Future<PcoCollection<PcoCheckInsPas>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoCheckInsPas>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsPas.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '/check-ins/v2/people/$peopleId/passes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsPas>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/passes/1/person`
-  Future<PcoCollection<PcoCheckInsPerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsPerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeOrganization = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsPerson.canInclude;
+
+    if (includeOrganization) query.include.add('organization');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

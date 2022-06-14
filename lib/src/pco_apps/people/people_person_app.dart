@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.918606
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.625224
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People PersonApp Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/person_apps
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/person_apps
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeoplePersonApp()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeoplePersonApp.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Person App is the relationship between a Person and an App.
@@ -150,11 +161,11 @@ class PcoPeoplePersonApp extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set appId(String? x) =>
-      (x == null) ? attributes.remove(kAppId) : _attributes[kAppId] = x;
+      (x == null) ? _attributes.remove(kAppId) : _attributes[kAppId] = x;
   String get appId => _attributes[kAppId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedApp<T extends PcoResource>() =>
       relationships['app']?.cast<T>() ?? [];
@@ -183,41 +194,39 @@ class PcoPeoplePersonApp extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePersonApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/person_apps`
   static Future<PcoCollection<PcoPeoplePersonApp>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeApp = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePersonApp.canInclude;
+
+    if (includeApp) query.include.add('app');
     var url = '/people/v2/people/$peopleId/person_apps';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app`
-  Future<PcoCollection<PcoPeopleApp>> getApp(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleApp>> getApp({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleApp.canInclude;
+
     var url = '$apiEndpoint/app';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.886800
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.587307
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People FieldDatum Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_data
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/field_data
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleFieldDatum()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleFieldDatum.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A field datum is an individual piece of data for a custom field.
@@ -189,18 +200,18 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
+      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set fieldDefinitionId(String? x) => (x == null)
-      ? attributes.remove(kFieldDefinitionId)
+      ? _attributes.remove(kFieldDefinitionId)
       : _attributes[kFieldDefinitionId] = x;
   String get fieldDefinitionId => _attributes[kFieldDefinitionId] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedFieldDefinition<T extends PcoResource>() =>
       relationships['field_definition']?.cast<T>() ?? [];
@@ -232,15 +243,23 @@ class PcoPeopleFieldDatum extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/field_data`
-  static Future<PcoCollection<PcoPeopleFieldDatum>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleFieldDatum>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFieldDatum.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
     var url = '/people/v2/field_data';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
@@ -250,28 +269,41 @@ class PcoPeopleFieldDatum extends PcoResource {
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/field_data`
   static Future<PcoCollection<PcoPeopleFieldDatum>> getFieldDataFromPeople(
-      String peopleId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFieldDatum.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
     var url = '/people/v2/people/$peopleId/field_data';
 
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleFieldDefinition] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/field_definition`
-  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinition(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinition({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFieldOptions = false,
+    bool includeTab = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFieldDefinition.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldOptions) query.include.add('field_options');
+    if (includeTab) query.include.add('tab');
     var url = '$apiEndpoint/field_definition';
     return PcoCollection.fromApiCall<PcoPeopleFieldDefinition>(url,
         query: query, apiVersion: apiVersion);
@@ -279,10 +311,11 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/field_option`
-  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOption(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOption({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleFieldOption.canInclude;
+
     var url = '$apiEndpoint/field_option';
     return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
         query: query, apiVersion: apiVersion);
@@ -290,10 +323,43 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getPerson({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -301,18 +367,18 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleTab] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/tab`
-  Future<PcoCollection<PcoPeopleTab>> getTab(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleTab>> getTab({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleTab.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
     var url = '$apiEndpoint/tab';
     return PcoCollection.fromApiCall<PcoPeopleTab>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

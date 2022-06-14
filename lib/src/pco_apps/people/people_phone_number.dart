@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.920261
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.626791
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People PhoneNumber Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeoplePhoneNumber()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeoplePhoneNumber.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A phone number represents a single telephone number and location.
@@ -196,22 +207,19 @@ class PcoPeoplePhoneNumber extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set number(String? x) =>
-      (x == null) ? attributes.remove(kNumber) : _attributes[kNumber] = x;
+      (x == null) ? _attributes.remove(kNumber) : _attributes[kNumber] = x;
 
   /// pass `null` to remove key from attributes
   set carrier(String? x) =>
-      (x == null) ? attributes.remove(kCarrier) : _attributes[kCarrier] = x;
+      (x == null) ? _attributes.remove(kCarrier) : _attributes[kCarrier] = x;
 
   /// pass `null` to remove key from attributes
   set location(String? x) =>
-      (x == null) ? attributes.remove(kLocation) : _attributes[kLocation] = x;
+      (x == null) ? _attributes.remove(kLocation) : _attributes[kLocation] = x;
 
   /// pass `null` to remove key from attributes
   set isPrimary(bool? x) =>
-      (x == null) ? attributes.remove(kPrimary) : _attributes[kPrimary] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // Class Constructors
   PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data,
@@ -240,30 +248,20 @@ class PcoPeoplePhoneNumber extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/phone_numbers`
   static Future<PcoCollection<PcoPeoplePhoneNumber>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePhoneNumber.canInclude;
+
     var url = '/people/v2/people/$peopleId/phone_numbers';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

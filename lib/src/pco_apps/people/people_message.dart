@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.898899
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.595980
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Message Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/messages
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleMessage.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A message is an individual email or sms text sent to a member. Every message has a parent message group.
@@ -256,8 +267,8 @@ class PcoPeopleMessage extends PcoResource {
   DateTime get readAt => DateTime.parse(_attributes[kReadAt] ?? '');
   String get appName => _attributes[kAppName] ?? '';
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedMessageGroup<T extends PcoResource>() =>
       relationships['message_group']?.cast<T>() ?? [];
@@ -269,23 +280,28 @@ class PcoPeopleMessage extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleMessage.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/messages`
   ///
   /// Available Query Filters:
   /// - `created_after`
-  static Future<PcoCollection<PcoPeopleMessage>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleMessage>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleMessage.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
     var url = '/people/v2/messages';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
@@ -295,12 +311,17 @@ class PcoPeopleMessage extends PcoResource {
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/messages`
   static Future<PcoCollection<PcoPeopleMessage>> getFromMessageGroup(
-      String messageGroupId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String messageGroupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleMessage.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
     var url = '/people/v2/message_groups/$messageGroupId/messages';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
@@ -315,29 +336,43 @@ class PcoPeopleMessage extends PcoResource {
   /// - `received`
   /// - `sent`
   /// - `unread`
-  static Future<PcoCollection<PcoPeopleMessage>> getFromPeople(String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleMessage>> getFromPeople(
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleMessage.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
     var url = '/people/v2/people/$peopleId/messages';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/message_group`
-  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroup(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroup({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeApp = false,
+    bool includeFrom = false,
+    bool includeMessages = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleMessageGroup.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeApp) query.include.add('app');
+    if (includeFrom) query.include.add('from');
+    if (includeMessages) query.include.add('messages');
     var url = '$apiEndpoint/message_group';
     return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -345,18 +380,45 @@ class PcoPeopleMessage extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/to`
-  Future<PcoCollection<PcoPeoplePerson>> getTo(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getTo({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/to';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

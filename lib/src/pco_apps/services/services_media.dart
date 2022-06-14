@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.723993
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.440652
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO Services Media Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/media
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoServicesMedia()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoServicesMedia.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A piece of media
@@ -220,11 +231,11 @@ class PcoServicesMedia extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set themes(String? x) =>
-      (x == null) ? attributes.remove(kThemes) : _attributes[kThemes] = x;
+      (x == null) ? _attributes.remove(kThemes) : _attributes[kThemes] = x;
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
+      (x == null) ? _attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// Possible Values:
   ///
@@ -251,16 +262,17 @@ class PcoServicesMedia extends PcoResource {
   /// - `video`
 
   /// pass `null` to remove key from attributes
-  set mediaType(String? x) =>
-      (x == null) ? attributes.remove(kMediaType) : _attributes[kMediaType] = x;
+  set mediaType(String? x) => (x == null)
+      ? _attributes.remove(kMediaType)
+      : _attributes[kMediaType] = x;
 
   /// pass `null` to remove key from attributes
   set creatorName(String? x) => (x == null)
-      ? attributes.remove(kCreatorName)
+      ? _attributes.remove(kCreatorName)
       : _attributes[kCreatorName] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedAttachments<T extends PcoResource>() =>
       relationships['attachments']?.cast<T>() ?? [];
@@ -292,6 +304,7 @@ class PcoServicesMedia extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoServicesMedia] objects (expecting many)
   /// using a path like this: `/services/v2/media`
@@ -310,12 +323,14 @@ class PcoServicesMedia extends PcoResource {
   /// - `powerpoint`
   /// - `song_video`
   /// - `video`
-  static Future<PcoCollection<PcoServicesMedia>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoServicesMedia>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAttachments = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesMedia.canInclude;
+
+    if (includeAttachments) query.include.add('attachments');
     var url = '/services/v2/media';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesMedia>(url,
@@ -326,12 +341,16 @@ class PcoServicesMedia extends PcoResource {
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media`
   static Future<PcoCollection<PcoServicesMedia>>
       getFromServiceTypeAndPlanAndItem(
-          String serviceTypeId, String planId, String itemId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAttachments = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesMedia.canInclude;
+
+    if (includeAttachments) query.include.add('attachments');
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media';
     if (id != null) url += '/$id';
@@ -339,17 +358,20 @@ class PcoServicesMedia extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
+    PlanningCenterApiQuery? query,
+    bool includeZooms = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesAttachment.canInclude;
+
+    if (includeZooms) query.include.add('zooms');
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -357,10 +379,11 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesMediaSchedule] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/media_schedules`
-  Future<PcoCollection<PcoServicesMediaSchedule>> getMediaSchedules(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesMediaSchedule>> getMediaSchedules({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesMediaSchedule.canInclude;
+
     var url = '$apiEndpoint/media_schedules';
     return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url,
         query: query, apiVersion: apiVersion);
@@ -368,10 +391,11 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoServicesTag>> getTags({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoServicesTag.canInclude;
+
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

@@ -1,5 +1,16 @@
+## 0.9.6
+
+-   Changed relationships, links, and attributes from `Map.unmodifiable` to my own `ReadOnlyMapView` for compile-time warnings instead of runtime exceptions.
+-   Changed `include` and `filter` to `Set<String>` to avoid api errors
+-   Added individual boolean `include` flags to each method that can return an object:
+
+```dart
+var collection = await PcoPeoplePerson.get(id: '000000001', includeEmails: true);
+```
+
 ## 0.9.5
-- Made relationships, links, and attributes private and expose them as unmodifiable Maps.
+
+-   Made relationships, links, and attributes private and expose them as unmodifiable Maps.
 
 ## 0.9.4
 

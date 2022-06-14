@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.897794
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.595086
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People MailchimpSyncStatus Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeopleMailchimpSyncStatu.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// The status of syncing a List with Mailchimp.
@@ -142,43 +153,30 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
   int get segmentId => _attributes[kSegmentId] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeopleMailchimpSyncStatu.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeopleMailchimpSyncStatu.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleMailchimpSyncStatu] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
   static Future<PcoCollection<PcoPeopleMailchimpSyncStatu>>
-      getMailchimpSyncStatusFromList(String listId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getMailchimpSyncStatusFromList(
+    String listId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleMailchimpSyncStatu.canInclude;
+
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatu>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

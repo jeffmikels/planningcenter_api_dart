@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.912276
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.613862
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People PeopleImportConflict Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people_imports/1/conflicts
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoPeoplePeopleImportConflict.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A PeopleImportConflict is a record of change that will occur if the parent PeopleImport is completed.
@@ -154,19 +165,16 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   String get conflictingChanges => _attributes[kConflictingChanges] ?? '';
   bool get isIgnore => _attributes[kIgnore] == true;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-
   // Class Constructors
   PcoPeoplePeopleImportConflict.fromJson(Map<String, dynamic> data,
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoPeoplePeopleImportConflict.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeoplePeopleImportConflict] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/conflicts`
@@ -182,26 +190,16 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   /// - `not_ignored`
   /// - `updates`
   static Future<PcoCollection<PcoPeoplePeopleImportConflict>>
-      getConflictsFromPeopleImport(String peopleImportId,
-          {String? id,
-          PlanningCenterApiQuery? query,
-          bool allIncludes = false}) async {
+      getConflictsFromPeopleImport(
+    String peopleImportId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePeopleImportConflict.canInclude;
+
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

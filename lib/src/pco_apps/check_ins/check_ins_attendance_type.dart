@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.797558
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.497344
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO CheckIns AttendanceType Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/attendance_types
 /// - Create Endpoint:    NONE
+///
+/// ## Instantiation
+/// - This object cannot be created through the API.
+/// - Instantiate from existing `JSON` data using the `PcoCheckInsAttendanceType.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A kind of attendee which is tracked by _headcount_, not by check-in.
@@ -151,8 +162,8 @@ class PcoCheckInsAttendanceType extends PcoResource {
   String get color => _attributes[kColor] ?? '';
   int get limit => _attributes[kLimit] ?? 0;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedEvent<T extends PcoResource>() =>
       relationships['event']?.cast<T>() ?? [];
@@ -162,21 +173,23 @@ class PcoCheckInsAttendanceType extends PcoResource {
       {List<Map<String, dynamic>> withIncludes = const []})
       : super.fromJson(kPcoApplication, kTypeString, data,
             withIncludes: withIncludes);
-  PcoCheckInsAttendanceType.empty() : super(kPcoApplication, kTypeString);
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoCheckInsAttendanceType] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/attendance_types`
   static Future<PcoCollection<PcoCheckInsAttendanceType>> getFromEvent(
-      String eventId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String eventId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeEvent = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsAttendanceType.canInclude;
+
+    if (includeEvent) query.include.add('event');
     var url = '/check-ins/v2/events/$eventId/attendance_types';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCheckInsAttendanceType>(url,
@@ -186,28 +199,36 @@ class PcoCheckInsAttendanceType extends PcoResource {
   /// Will get a collection of [PcoCheckInsAttendanceType] objects (expecting one)
   /// using a path like this: `/check-ins/v2/headcounts/$headcountId/attendance_type`
   static Future<PcoCollection<PcoCheckInsAttendanceType>> getFromHeadcount(
-      String headcountId,
-      {PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String headcountId, {
+    PlanningCenterApiQuery? query,
+    bool includeEvent = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsAttendanceType.canInclude;
+
+    if (includeEvent) query.include.add('event');
     var url = '/check-ins/v2/headcounts/$headcountId/attendance_type';
 
     return PcoCollection.fromApiCall<PcoCheckInsAttendanceType>(url,
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoCheckInsEvent] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/attendance_types/1/event`
-  Future<PcoCollection<PcoCheckInsEvent>> getEvent(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsEvent>> getEvent({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsEvent.canInclude;
+    if (includeAll) query.include.addAll(PcoCheckInsAttendanceType.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
     var url = '$apiEndpoint/event';
     return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -215,18 +236,18 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsHeadcount] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/attendance_types/1/headcounts`
-  Future<PcoCollection<PcoCheckInsHeadcount>> getHeadcounts(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoCheckInsHeadcount>> getHeadcounts({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAttendanceType = false,
+    bool includeEventTime = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoCheckInsHeadcount.canInclude;
+    if (includeAll) query.include.addAll(PcoCheckInsAttendanceType.canInclude);
+    if (includeAttendanceType) query.include.add('attendance_type');
+    if (includeEventTime) query.include.add('event_time');
     var url = '$apiEndpoint/headcounts';
     return PcoCollection.fromApiCall<PcoCheckInsHeadcount>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

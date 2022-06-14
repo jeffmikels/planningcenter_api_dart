@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.929587
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.634644
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People Workflow Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleWorkflow()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflow.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A Workflow
@@ -238,19 +249,19 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
+      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
-      (x == null) ? attributes.remove(kCampusId) : _attributes[kCampusId] = x;
+      (x == null) ? _attributes.remove(kCampusId) : _attributes[kCampusId] = x;
 
   /// pass `null` to remove key from attributes
   set workflowCategoryId(String? x) => (x == null)
-      ? attributes.remove(kWorkflowCategoryId)
+      ? _attributes.remove(kWorkflowCategoryId)
       : _attributes[kWorkflowCategoryId] = x;
 
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+  // typed getters for each relationship
+  // the code generator cannot determine the resource type of the relationships, so for type safety, the user should
 
   List<T> includedCategory<T extends PcoResource>() =>
       relationships['category']?.cast<T>() ?? [];
@@ -285,6 +296,7 @@ class PcoPeopleWorkflow extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting many)
   /// using a path like this: `/people/v2/workflows`
@@ -294,12 +306,19 @@ class PcoPeopleWorkflow extends PcoResource {
   /// - `with_deleted`
   /// - `with_recoverable`
   /// - `with_steps`
-  static Future<PcoCollection<PcoPeopleWorkflow>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleWorkflow>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCategory = false,
+    bool includeShares = false,
+    bool includeSteps = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflow.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleWorkflow.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeShares) query.include.add('shares');
+    if (includeSteps) query.include.add('steps');
     var url = '/people/v2/workflows';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url,
@@ -309,10 +328,19 @@ class PcoPeopleWorkflow extends PcoResource {
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
   /// using a path like this: `/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/workflow`
   static Future<PcoCollection<PcoPeopleWorkflow>> getFromPeopleAndWorkflowCard(
-      String peopleId, String workflowCardId,
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+    String peopleId,
+    String workflowCardId, {
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeCategory = false,
+    bool includeShares = false,
+    bool includeSteps = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflow.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleWorkflow.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeShares) query.include.add('shares');
+    if (includeSteps) query.include.add('steps');
     var url =
         '/people/v2/people/$peopleId/home_workflow_cards/$workflowCardId/workflow';
 
@@ -320,17 +348,27 @@ class PcoPeopleWorkflow extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  // --------------------------------
+  // ---------------------------------
   // Outbound Edges
-  // --------------------------------
+  // ---------------------------------
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleWorkflowCard] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/cards`
-  Future<PcoCollection<PcoPeopleWorkflowCard>> getCards(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleWorkflowCard>> getCards({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAssignee = false,
+    bool includeCurrentStep = false,
+    bool includePerson = false,
+    bool includeWorkflow = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowCard.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleWorkflow.canInclude);
+    if (includeAssignee) query.include.add('assignee');
+    if (includeCurrentStep) query.include.add('current_step');
+    if (includePerson) query.include.add('person');
+    if (includeWorkflow) query.include.add('workflow');
     var url = '$apiEndpoint/cards';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url,
         query: query, apiVersion: apiVersion);
@@ -338,10 +376,11 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/category`
-  Future<PcoCollection<PcoPeopleWorkflowCategory>> getCategory(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleWorkflowCategory>> getCategory({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowCategory.canInclude;
+
     var url = '$apiEndpoint/category';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCategory>(url,
         query: query, apiVersion: apiVersion);
@@ -349,10 +388,43 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/shared_people`
-  Future<PcoCollection<PcoPeoplePerson>> getSharedPeople(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getSharedPeople({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeoplePerson.canInclude;
+    if (includeAll) query.include.addAll(PcoPeopleWorkflow.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/shared_people';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -360,10 +432,13 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/shares`
-  Future<PcoCollection<PcoPeopleWorkflowShare>> getShares(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleWorkflowShare>> getShares({
+    PlanningCenterApiQuery? query,
+    bool includePerson = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowShare.canInclude;
+
+    if (includePerson) query.include.add('person');
     var url = '$apiEndpoint/shares';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
         query: query, apiVersion: apiVersion);
@@ -371,18 +446,15 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/steps`
-  Future<PcoCollection<PcoPeopleWorkflowStep>> getSteps(
-      {PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<PcoPeopleWorkflowStep>> getSteps({
+    PlanningCenterApiQuery? query,
+    bool includeDefaultAssignee = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleWorkflowStep.canInclude;
+
+    if (includeDefaultAssignee) query.include.add('default_assignee');
     var url = '$apiEndpoint/steps';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url,
         query: query, apiVersion: apiVersion);
   }
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

@@ -413,32 +413,32 @@ String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttrib
   switch (attribute.typeString) {
     case 'boolean':
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(bool? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          ? '$setterDoc\nset $varName(bool? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'bool get $varName => $targetName == true;';
       break;
     case 'float':
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(double? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          ? '$setterDoc\nset $varName(double? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'double get $varName => $targetName ?? 0;';
       break;
     case 'integer':
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(int? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          ? '$setterDoc\nset $varName(int? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'int get $varName => $targetName ?? 0;';
       break;
     case 'date_time':
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(DateTime? x) => (x == null) ? attributes.remove($keyName) : $targetName = x.toIso8601String();'
+          ? '$setterDoc\nset $varName(DateTime? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x.toIso8601String();'
           : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');';
       break;
     case 'array':
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(List? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          ? '$setterDoc\nset $varName(List? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'List get $varName => $targetName ?? [];';
       break;
     default:
       output += realMode == 'set'
-          ? '$setterDoc\nset $varName(String? x) => (x == null) ? attributes.remove($keyName) : $targetName = x;'
+          ? '$setterDoc\nset $varName(String? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'String get $varName => $targetName ?? \'\';';
       break;
   }
@@ -490,7 +490,7 @@ String classTemplate(Vertex vertex) {
   var fieldGetterLines = <String>['// getters for object attributes'];
   var fieldSetterLines = <String>['// setters for object attributes'];
   var additionalAssignableLines = <String>['// additional setters / getters for create/update attributes'];
-  var relationshipGetterLines = <String>['// lines to access typed relationships'];
+  var relationshipGetterLines = <String>[]; // see below
   var attributeDocLines = <String>[];
 
   print('  handling attributes: ${vertex.vertexAttributes.map((e) => e.name).join(', ')}');
@@ -531,9 +531,18 @@ String classTemplate(Vertex vertex) {
 
   // for related items that can be included, we want to create typed getters
   // but the api documentation doesn't map between the `can_include` field and the real edges
-  // we will need to create our own mapping. :-(
-  for (var rel in vertex.vertexRelationships) {
-    var relationshipClass = classNameFromVertex(vertex.application, rel.name);
+  // TODO: we will need to create our own mapping eventually :-(
+  // for (var rel in vertex.vertexRelationships) {
+  //   var relationshipClass = classNameFromVertex(vertex.application, rel.name);
+  // }
+  relationshipGetterLines.addAll([
+    '// typed getters for each relationship',
+    '// the code generator cannot determine the resource type of the relationships, so for type safety, the user should\n',
+  ]);
+  for (var inc in vertex.canInclude) {
+    relationshipGetterLines.add(
+      'List<T> included${inc.name.snakeToPascal()}<T extends PcoResource>() => relationships[\'${inc.name}\']?.cast<T>() ?? [];',
+    );
   }
 
   /// HANDLING EDGES...
@@ -543,9 +552,20 @@ String classTemplate(Vertex vertex) {
   Set<String> existingFunctions = {};
 
   /// OUTBOUND EDGES:
+
   /// from outbound_edges, create instance functions to get other items from this one
-  List<String> targetGetters = [];
+  List<String> outboundGetters = [];
   for (var edge in vertex.outboundEdges) {
+    /// create include booleans for each outbound class
+    var outboundIncludeArgs = [];
+    var outboundIncludeChecks = [];
+    for (var inc in edge.head.canInclude) {
+      var argName = 'include${inc.name.snakeToPascal()}';
+      outboundIncludeArgs.add('bool $argName = false,');
+      outboundIncludeChecks.add('if ($argName) query.include.add(\'${inc.name}\');');
+    }
+    var useIncludeAll = outboundIncludeArgs.length > 1;
+
     print('  handling outbound edge: ${edge.path}');
     if (edge.path.endsWith('/')) {
       print(' -- skipping, unknown edge format');
@@ -572,12 +592,13 @@ String classTemplate(Vertex vertex) {
     }
     existingFunctions.add(functionName);
 
-    targetGetters.add('''
+    outboundGetters.add('''
   /// Will get a collection of [$targetClass] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `${edge.path}`${makeMetaDoc(edge, '  /// ')}
-  Future<PcoCollection<$targetClass>> $functionName({PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  Future<PcoCollection<$targetClass>> $functionName({PlanningCenterApiQuery? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${outboundIncludeArgs.join(' ')}}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = $targetClass.canInclude;
+    ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}
+${outboundIncludeChecks.join('\n').prefixLines('    ')}
     var url = '\$apiEndpoint/$pathSuffix';
     return PcoCollection.fromApiCall<$targetClass>(url, query: query, apiVersion: apiVersion);
   }
@@ -585,6 +606,16 @@ String classTemplate(Vertex vertex) {
   }
 
   /// INBOUND EDGES:
+  /// create include booleans for each include
+  var inboundIncludeArgs = [];
+  var inboundIncludeChecks = [];
+  for (var inc in vertex.canInclude) {
+    var argName = 'include${inc.name.snakeToPascal()}';
+    inboundIncludeArgs.add('bool $argName = false,');
+    inboundIncludeChecks.add('if ($argName) query.include.add(\'${inc.name}\');');
+  }
+  var useIncludeAll = inboundIncludeArgs.length > 1;
+
   /// from inbound_edges, create static constructors to return objects of this type from various arguments
   var staticInboundFunctions = [];
   var ignoreInboundFromSameType = false;
@@ -699,9 +730,10 @@ String classTemplate(Vertex vertex) {
     var toAdd = '''\n
   /// Will get a collection of [$className] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
-  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}PlanningCenterApiQuery? query, bool allIncludes = false}) async {
+  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}PlanningCenterApiQuery? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = $className.canInclude;
+    ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}
+${inboundIncludeChecks.join('\n').prefixLines('    ')}
     var url = '$edgePathTemplate';
     ${allowIdQueries ? 'if (id != null) url += \'/\$id\';' : ''}
     return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
@@ -758,7 +790,7 @@ $details
 ''');
   }
 
-  /// NOW ASSEMBLE FACTORY CONSTRUCTORS
+  /// NOW ASSEMBLE THE FACTORY CONSTRUCTOR IF OBJECT IS CREATABLE
   var additionalConstructors = [];
 
   if (vertex.createEdge != null) {
@@ -821,22 +853,60 @@ ${assignLines.join('\n').prefixLines('    ')}
 ''');
   }
 
-  // do some cleanup
   // the first line for these is a comment, so empty out if it's the only line
   if (fieldGetterLines.length == 1) fieldGetterLines = [];
   if (fieldSetterLines.length == 1) fieldSetterLines = [];
   if (additionalAssignableLines.length == 1) additionalAssignableLines = [];
-  if (relationshipGetterLines.length == 1) relationshipGetterLines = [];
+  if (relationshipGetterLines.length == 2) relationshipGetterLines = [];
 
-  // add extra empty line between getter and setter and additional assignable lines
-  if (fieldGetterLines.isNotEmpty && fieldSetterLines.isNotEmpty) fieldSetterLines.insert(0, '\n');
-  if ((fieldGetterLines.isNotEmpty || fieldSetterLines.isNotEmpty) && additionalAssignableLines.isNotEmpty) {
-    additionalAssignableLines.insert(0, '\n');
-  }
+  // finish the additional lines
+  var allAdditionals = [];
+  if (fieldGetterLines.isNotEmpty) allAdditionals.add(fieldGetterLines.join('\n'));
+  if (fieldSetterLines.isNotEmpty) allAdditionals.add(fieldSetterLines.join('\n'));
+  if (additionalAssignableLines.isNotEmpty) allAdditionals.add(additionalAssignableLines.join('\n'));
+  if (relationshipGetterLines.isNotEmpty) allAdditionals.add(relationshipGetterLines.join('\n'));
+
+  var allAdditionalLines = allAdditionals.isEmpty ? '' : allAdditionals.join('\n\n').prefixLines('  ') + '\n';
+
+  // setup the sections
+  var inboundSection = staticInboundFunctions.isEmpty
+      ? ''
+      : '''
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+  // Static functions to obtain instances of this class
+
+${staticInboundFunctions.join()}
+
+''';
+
+  var outboundSection = outboundGetters.isEmpty
+      ? ''
+      : '''
+  // ---------------------------------
+  // Outbound Edges
+  // ---------------------------------
+  // Instance functions to traverse outbound edges
+
+${outboundGetters.join('\n')}
+
+''';
+
+  var actionsSection = actionsLines.isEmpty
+      ? ''
+      : '''
+  // --------------------------------
+  // Actions
+  // --------------------------------
+  // Instance functions to run actions from this item
+
+${actionsLines.join('\n')}
+
+''';
 
   /// HERE'S THE ACTUAL TEMPLATE ========================
   return '''${autoGeneratedHeader()}
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO ${vertex.application.snakeToPascal()} ${vertex.name} Object
@@ -849,6 +919,18 @@ part of pco;
 /// - Is Collection Only: ${vertex.collectionOnly}
 /// - Default Endpoint:   ${vertex.path}
 /// - Create Endpoint:    ${vertex.createEdge?.path ?? 'NONE'}
+/// 
+/// ## Instantiation
+/// ${vertex.vertexPermissions.canCreate ? '- Create a new instance using the `$className()` constructor' : '- This object cannot be created through the API.'}
+/// - Instantiate from existing `JSON` data using the `$className.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+/// 
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 /// 
 /// ## Description
 ${vertex.description.cleanLines().trim().prefixLines('/// ')}
@@ -946,43 +1028,13 @@ ${fieldConstantLines.join()}
   @override
   bool get canDestroy => ${vertex.vertexPermissions.canDestroy};
 
-${fieldGetterLines.join('\n').prefixLines('  ')}${fieldSetterLines.join('\n').prefixLines('  ')}${additionalAssignableLines.join('\n').prefixLines('  ')}
-
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
-  
-${vertex.canInclude.map((e) => 'List<T> included${e.name.snakeToPascal()}<T extends PcoResource>() => relationships[\'${e.name}\']?.cast<T>() ?? [];').join('\n').prefixLines('  ')}
-
-
-
-
+$allAdditionalLines
   // Class Constructors
   $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
-  $className.empty() : super(kPcoApplication, kTypeString);
-
+  ${vertex.vertexPermissions.canCreate ? '$className.empty() : super(kPcoApplication, kTypeString);\n' : ''}
 ${additionalConstructors.join()}
 
-  // ---------------------------------
-  // Inbound Edges
-  // ---------------------------------
-
-${staticInboundFunctions.join()}
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-${targetGetters.join('\n')}
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
-${actionsLines.join('\n')}
-
+${inboundSection}${outboundSection}${actionsSection}
 }
 ''';
 }
@@ -1139,18 +1191,27 @@ void main(List<String> arguments) async {
     print('Loading Data for $app Version: ${version.id}');
     for (var v in version.relationships['vertices']?['data']) {
       var vertex = Vertex.fromJson(app, version.id!, v);
+
       print('\n\nLoading Vertex and Edge data for Vertex: ${vertex.name} (${vertex.id})');
       uri = docUri(app, version.id, vertex.id!);
       print('From: $uri');
 
       body = await get(uri);
       data = json.decode(body)['data'];
-      vertex = Vertex.fromJson(app, version.id!, data);
+      vertex = Vertex.fromJson(app, version.id!, data); // load again with more data
       vertices[vertex.id!] = vertex;
       for (var e in [...vertex.inboundEdges, ...vertex.outboundEdges]) {
         edges[e.id!] = e; // might overwrite, but that's okay
       }
     }
+    // link vertex edges to the real vertex objects
+    for (var vertex in vertices.values) {
+      for (var edge in [...vertex.inboundEdges, ...vertex.outboundEdges]) {
+        edge.tail = vertices[edge.tail.id!]!;
+        edge.head = vertices[edge.head.id!]!;
+      }
+    }
+
     print('Vertices and Edges have been processed');
 
     var dirName = 'pco_apps/$app'.replaceAll('-', '_');

@@ -66,7 +66,7 @@ void main() async {
   }
 
   // PlanningCenter.init(appid, secret);
-  var collection = await PcoPeoplePerson.get(id: '59717092', allIncludes: true);
+  var collection = await PcoPeoplePerson.get(id: '59717092', includeEmails: true);
   if (collection.isError) {
     debug(collection.query.asMap);
     debug(collection.response.responseBody);

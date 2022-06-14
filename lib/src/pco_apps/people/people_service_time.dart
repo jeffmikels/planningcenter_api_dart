@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.926105
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.631945
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People ServiceTime Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses/1/service_times
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/campuses/1/service_times
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleServiceTime()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleServiceTime.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A ServiceTime Resource
@@ -151,22 +162,20 @@ class PcoPeopleServiceTime extends PcoResource {
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
-  set startTime(int? x) =>
-      (x == null) ? attributes.remove(kStartTime) : _attributes[kStartTime] = x;
+  set startTime(int? x) => (x == null)
+      ? _attributes.remove(kStartTime)
+      : _attributes[kStartTime] = x;
 
   /// Possible values: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, or `saturday`
 
   /// pass `null` to remove key from attributes
   set day(String? x) =>
-      (x == null) ? attributes.remove(kDay) : _attributes[kDay] = x;
+      (x == null) ? _attributes.remove(kDay) : _attributes[kDay] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
-      ? attributes.remove(kDescription)
+      ? _attributes.remove(kDescription)
       : _attributes[kDescription] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
 
   // Class Constructors
   PcoPeopleServiceTime.fromJson(Map<String, dynamic> data,
@@ -194,30 +203,20 @@ class PcoPeopleServiceTime extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleServiceTime] objects (expecting many)
   /// using a path like this: `/people/v2/campuses/$campusId/service_times`
   static Future<PcoCollection<PcoPeopleServiceTime>> getFromCampus(
-      String campusId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String campusId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleServiceTime.canInclude;
+
     var url = '/people/v2/campuses/$campusId/service_times';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

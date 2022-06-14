@@ -1,9 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.900606
+/// AUTO-GENERATED FILE CREATED ON 2022-06-14T11:30:57.597344
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-// import '../../pco.dart';
 part of pco;
 
 /// This class represents a PCO People NameSuffix Object
@@ -16,6 +15,18 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/name_suffixes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/name_suffixes
+///
+/// ## Instantiation
+/// - Create a new instance using the `PcoPeopleNameSuffix()` constructor
+/// - Instantiate from existing `JSON` data using the `PcoPeopleNameSuffix.fromJson()` constructor.
+/// - Load an instance from the API using one of the static methods defined on this class.
+///
+/// ## Usage
+/// - Fields exposed by the API are readable through getter methods.
+/// - Fields writable by the API are exposed through setter methods.
+/// - Original `json` data is exposed through the read-only `attributes` map.
+/// - Additional data is available through the read-only `links` and `relationships` maps.
+/// - Available relationships / includes are exposed through typed getters.
 ///
 /// ## Description
 /// A name suffix is one of Sr., Jr., etc.
@@ -132,10 +143,7 @@ class PcoPeopleNameSuffix extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
-
-  // getters for each relationship
-  // the code generator cannot determine the resource type of the relationships
+      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // Class Constructors
   PcoPeopleNameSuffix.fromJson(Map<String, dynamic> data,
@@ -160,15 +168,16 @@ class PcoPeopleNameSuffix extends PcoResource {
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
+  // Static functions to obtain instances of this class
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/name_suffixes`
-  static Future<PcoCollection<PcoPeopleNameSuffix>> get(
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+  static Future<PcoCollection<PcoPeopleNameSuffix>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNameSuffix.canInclude;
+
     var url = '/people/v2/name_suffixes';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
@@ -178,26 +187,15 @@ class PcoPeopleNameSuffix extends PcoResource {
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/people/$peopleId/name_suffix`
   static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPeople(
-      String peopleId,
-      {String? id,
-      PlanningCenterApiQuery? query,
-      bool allIncludes = false}) async {
+    String peopleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    if (allIncludes) query.include = PcoPeopleNameSuffix.canInclude;
+
     var url = '/people/v2/people/$peopleId/name_suffix';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
         query: query, apiVersion: kApiVersion);
   }
-
-  // --------------------------------
-  // Outbound Edges
-  // --------------------------------
-  // Instance functions to traverse outbound edges
-
-  // --------------------------------
-  // Actions
-  // --------------------------------
-  // Instance functions to run actions from this item
-
 }

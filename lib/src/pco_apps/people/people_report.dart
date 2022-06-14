@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.681552
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.921986
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Report Object
 ///
@@ -150,18 +151,18 @@ class PcoPeopleReport extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get body => attributes[kBody] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get body => _attributes[kBody] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set body(String? x) =>
-      (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;
+      (x == null) ? attributes.remove(kBody) : _attributes[kBody] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

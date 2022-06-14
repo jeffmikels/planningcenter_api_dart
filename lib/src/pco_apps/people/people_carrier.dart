@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.646017
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.884900
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Carrier Object
 ///
@@ -131,9 +132,9 @@ class PcoPeopleCarrier extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get value => attributes[kValue] ?? '';
-  String get name => attributes[kName] ?? '';
-  bool get isInternational => attributes[kInternational] == true;
+  String get value => _attributes[kValue] ?? '';
+  String get name => _attributes[kName] ?? '';
+  bool get isInternational => _attributes[kInternational] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

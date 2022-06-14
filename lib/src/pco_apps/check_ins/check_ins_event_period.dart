@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.568360
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.801375
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns EventPeriod Object
 ///
@@ -164,12 +165,12 @@ class PcoCheckInsEventPeriod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  int get regularCount => attributes[kRegularCount] ?? 0;
-  int get guestCount => attributes[kGuestCount] ?? 0;
-  int get volunteerCount => attributes[kVolunteerCount] ?? 0;
-  String get note => attributes[kNote] ?? '';
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  int get regularCount => _attributes[kRegularCount] ?? 0;
+  int get guestCount => _attributes[kGuestCount] ?? 0;
+  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
+  String get note => _attributes[kNote] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

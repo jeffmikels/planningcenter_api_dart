@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.817489
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.038421
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Person Object
 ///
@@ -152,13 +153,13 @@ class PcoGroupsPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get addresses => attributes[kAddresses] ?? [];
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  List get emailAddresses => attributes[kEmailAddresses] ?? [];
-  String get firstName => attributes[kFirstName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get permissions => attributes[kPermissions] ?? '';
-  List get phoneNumbers => attributes[kPhoneNumbers] ?? [];
+  List get addresses => _attributes[kAddresses] ?? [];
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  List get emailAddresses => _attributes[kEmailAddresses] ?? [];
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get permissions => _attributes[kPermissions] ?? '';
+  List get phoneNumbers => _attributes[kPhoneNumbers] ?? [];
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

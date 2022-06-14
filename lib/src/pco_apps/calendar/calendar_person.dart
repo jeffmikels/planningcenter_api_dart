@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.746451
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.988265
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Person Object
 ///
@@ -204,26 +205,26 @@ class PcoCalendarPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get firstName => attributes[kFirstName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get middleName => attributes[kMiddleName] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  bool get isChild => attributes[kChild] == true;
-  String get contactData => attributes[kContactData] ?? '';
-  String get gender => attributes[kGender] ?? '';
-  bool get isHasAccess => attributes[kHasAccess] == true;
-  String get namePrefix => attributes[kNamePrefix] ?? '';
-  String get nameSuffix => attributes[kNameSuffix] ?? '';
-  int get pendingRequestCount => attributes[kPendingRequestCount] ?? 0;
-  int get permissions => attributes[kPermissions] ?? 0;
-  bool get isResolvesConflicts => attributes[kResolvesConflicts] == true;
-  bool get isSiteAdministrator => attributes[kSiteAdministrator] == true;
-  String get status => attributes[kStatus] ?? '';
-  String get eventPermissionsType => attributes[kEventPermissionsType] ?? '';
-  String get peoplePermissionsType => attributes[kPeoplePermissionsType] ?? '';
-  String get roomPermissionsType => attributes[kRoomPermissionsType] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get middleName => _attributes[kMiddleName] ?? '';
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  bool get isChild => _attributes[kChild] == true;
+  String get contactData => _attributes[kContactData] ?? '';
+  String get gender => _attributes[kGender] ?? '';
+  bool get isHasAccess => _attributes[kHasAccess] == true;
+  String get namePrefix => _attributes[kNamePrefix] ?? '';
+  String get nameSuffix => _attributes[kNameSuffix] ?? '';
+  int get pendingRequestCount => _attributes[kPendingRequestCount] ?? 0;
+  int get permissions => _attributes[kPermissions] ?? 0;
+  bool get isResolvesConflicts => _attributes[kResolvesConflicts] == true;
+  bool get isSiteAdministrator => _attributes[kSiteAdministrator] == true;
+  String get status => _attributes[kStatus] ?? '';
+  String get eventPermissionsType => _attributes[kEventPermissionsType] ?? '';
+  String get peoplePermissionsType => _attributes[kPeoplePermissionsType] ?? '';
+  String get roomPermissionsType => _attributes[kRoomPermissionsType] ?? '';
   String get resourcesPermissionsType =>
-      attributes[kResourcesPermissionsType] ?? '';
+      _attributes[kResourcesPermissionsType] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

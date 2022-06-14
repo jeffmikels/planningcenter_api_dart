@@ -1,10 +1,9 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.829214
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.061332
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import 'pco_resource_base.dart';
-import "../pco_apps/apps.dart";
+part of pco;
 
 Map<
     String,

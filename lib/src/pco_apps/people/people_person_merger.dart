@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.679039
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.919344
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People PersonMerger Object
 ///
@@ -147,8 +148,8 @@ class PcoPeoplePersonMerger extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get personToKeepId => attributes[kPersonToKeepId] ?? '';
-  String get personToRemoveId => attributes[kPersonToRemoveId] ?? '';
+  String get personToKeepId => _attributes[kPersonToKeepId] ?? '';
+  String get personToRemoveId => _attributes[kPersonToRemoveId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

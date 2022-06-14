@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.541861
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.743602
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Team Object
 ///
@@ -215,57 +216,57 @@ class PcoServicesTeam extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  bool get isRehearsalTeam => attributes[kRehearsalTeam] == true;
-  int get sequence => attributes[kSequence] ?? 0;
-  String get scheduleTo => attributes[kScheduleTo] ?? '';
-  String get defaultStatus => attributes[kDefaultStatus] ?? '';
+  String get name => _attributes[kName] ?? '';
+  bool get isRehearsalTeam => _attributes[kRehearsalTeam] == true;
+  int get sequence => _attributes[kSequence] ?? 0;
+  String get scheduleTo => _attributes[kScheduleTo] ?? '';
+  String get defaultStatus => _attributes[kDefaultStatus] ?? '';
   bool get isDefaultPrepareNotifications =>
-      attributes[kDefaultPrepareNotifications] == true;
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  bool get isAssignedDirectly => attributes[kAssignedDirectly] == true;
-  bool get isSecureTeam => attributes[kSecureTeam] == true;
-  String get lastPlanFrom => attributes[kLastPlanFrom] ?? '';
-  String get stageColor => attributes[kStageColor] ?? '';
-  String get stageVariant => attributes[kStageVariant] ?? '';
+      _attributes[kDefaultPrepareNotifications] == true;
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  bool get isAssignedDirectly => _attributes[kAssignedDirectly] == true;
+  bool get isSecureTeam => _attributes[kSecureTeam] == true;
+  String get lastPlanFrom => _attributes[kLastPlanFrom] ?? '';
+  String get stageColor => _attributes[kStageColor] ?? '';
+  String get stageVariant => _attributes[kStageVariant] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set isRehearsalTeam(bool? x) => (x == null)
       ? attributes.remove(kRehearsalTeam)
-      : attributes[kRehearsalTeam] = x;
+      : _attributes[kRehearsalTeam] = x;
 
   /// This determines whether a team is a split team or not.Accepted values: 1. "plan" (default) 2. "time" (designates as a split team)
 
   /// pass `null` to remove key from attributes
   set scheduleTo(String? x) => (x == null)
       ? attributes.remove(kScheduleTo)
-      : attributes[kScheduleTo] = x;
+      : _attributes[kScheduleTo] = x;
 
   /// pass `null` to remove key from attributes
   set archivedAt(DateTime? x) => (x == null)
       ? attributes.remove(kArchivedAt)
-      : attributes[kArchivedAt] = x.toIso8601String();
+      : _attributes[kArchivedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set isAssignedDirectly(bool? x) => (x == null)
       ? attributes.remove(kAssignedDirectly)
-      : attributes[kAssignedDirectly] = x;
+      : _attributes[kAssignedDirectly] = x;
 
   /// pass `null` to remove key from attributes
   set stageColor(String? x) => (x == null)
       ? attributes.remove(kStageColor)
-      : attributes[kStageColor] = x;
+      : _attributes[kStageColor] = x;
 
   /// pass `null` to remove key from attributes
   set stageVariant(String? x) => (x == null)
       ? attributes.remove(kStageVariant)
-      : attributes[kStageVariant] = x;
+      : _attributes[kStageVariant] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

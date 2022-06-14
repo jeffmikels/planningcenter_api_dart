@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.684468
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.926105
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People ServiceTime Object
 ///
@@ -143,26 +144,26 @@ class PcoPeopleServiceTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get startTime => attributes[kStartTime] ?? 0;
-  String get day => attributes[kDay] ?? '';
-  String get description => attributes[kDescription] ?? '';
+  int get startTime => _attributes[kStartTime] ?? 0;
+  String get day => _attributes[kDay] ?? '';
+  String get description => _attributes[kDescription] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set startTime(int? x) =>
-      (x == null) ? attributes.remove(kStartTime) : attributes[kStartTime] = x;
+      (x == null) ? attributes.remove(kStartTime) : _attributes[kStartTime] = x;
 
   /// Possible values: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, or `saturday`
 
   /// pass `null` to remove key from attributes
   set day(String? x) =>
-      (x == null) ? attributes.remove(kDay) : attributes[kDay] = x;
+      (x == null) ? attributes.remove(kDay) : _attributes[kDay] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

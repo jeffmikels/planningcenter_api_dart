@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.540741
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.742930
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services TagGroup Object
 ///
@@ -140,12 +141,12 @@ class PcoServicesTagGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  bool get isRequired => attributes[kRequired] == true;
+  String get name => _attributes[kName] ?? '';
+  bool get isRequired => _attributes[kRequired] == true;
   bool get isAllowMultipleSelections =>
-      attributes[kAllowMultipleSelections] == true;
-  String get tagsFor => attributes[kTagsFor] ?? '';
-  String get serviceTypeFolderName => attributes[kServiceTypeFolderName] ?? '';
+      _attributes[kAllowMultipleSelections] == true;
+  String get tagsFor => _attributes[kTagsFor] ?? '';
+  String get serviceTypeFolderName => _attributes[kServiceTypeFolderName] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

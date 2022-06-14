@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.570291
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.807011
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Location Object
 ///
@@ -213,23 +214,23 @@ class PcoCheckInsLocation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get kind => attributes[kKind] ?? '';
-  bool get isOpened => attributes[kOpened] == true;
-  String get questions => attributes[kQuestions] ?? '';
-  int get ageMinInMonths => attributes[kAgeMinInMonths] ?? 0;
-  int get ageMaxInMonths => attributes[kAgeMaxInMonths] ?? 0;
-  String get ageRangeBy => attributes[kAgeRangeBy] ?? '';
-  String get ageOn => attributes[kAgeOn] ?? '';
-  String get childOrAdult => attributes[kChildOrAdult] ?? '';
-  String get effectiveDate => attributes[kEffectiveDate] ?? '';
-  String get gender => attributes[kGender] ?? '';
-  int get gradeMin => attributes[kGradeMin] ?? 0;
-  int get gradeMax => attributes[kGradeMax] ?? 0;
-  int get maxOccupancy => attributes[kMaxOccupancy] ?? 0;
-  int get minVolunteers => attributes[kMinVolunteers] ?? 0;
-  int get attendeesPerVolunteer => attributes[kAttendeesPerVolunteer] ?? 0;
-  int get position => attributes[kPosition] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  bool get isOpened => _attributes[kOpened] == true;
+  String get questions => _attributes[kQuestions] ?? '';
+  int get ageMinInMonths => _attributes[kAgeMinInMonths] ?? 0;
+  int get ageMaxInMonths => _attributes[kAgeMaxInMonths] ?? 0;
+  String get ageRangeBy => _attributes[kAgeRangeBy] ?? '';
+  String get ageOn => _attributes[kAgeOn] ?? '';
+  String get childOrAdult => _attributes[kChildOrAdult] ?? '';
+  String get effectiveDate => _attributes[kEffectiveDate] ?? '';
+  String get gender => _attributes[kGender] ?? '';
+  int get gradeMin => _attributes[kGradeMin] ?? 0;
+  int get gradeMax => _attributes[kGradeMax] ?? 0;
+  int get maxOccupancy => _attributes[kMaxOccupancy] ?? 0;
+  int get minVolunteers => _attributes[kMinVolunteers] ?? 0;
+  int get attendeesPerVolunteer => _attributes[kAttendeesPerVolunteer] ?? 0;
+  int get position => _attributes[kPosition] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.504964
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.715920
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services CustomSlide Object
 ///
@@ -146,28 +147,28 @@ class PcoServicesCustomSlide extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get body => attributes[kBody] ?? '';
-  String get label => attributes[kLabel] ?? '';
-  int get order => attributes[kOrder] ?? 0;
-  bool get isEnabled => attributes[kEnabled] == true;
+  String get body => _attributes[kBody] ?? '';
+  String get label => _attributes[kLabel] ?? '';
+  int get order => _attributes[kOrder] ?? 0;
+  bool get isEnabled => _attributes[kEnabled] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set body(String? x) =>
-      (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;
+      (x == null) ? attributes.remove(kBody) : _attributes[kBody] = x;
 
   /// pass `null` to remove key from attributes
   set label(String? x) =>
-      (x == null) ? attributes.remove(kLabel) : attributes[kLabel] = x;
+      (x == null) ? attributes.remove(kLabel) : _attributes[kLabel] = x;
 
   /// pass `null` to remove key from attributes
   set order(int? x) =>
-      (x == null) ? attributes.remove(kOrder) : attributes[kOrder] = x;
+      (x == null) ? attributes.remove(kOrder) : _attributes[kOrder] = x;
 
   /// pass `null` to remove key from attributes
   set isEnabled(bool? x) =>
-      (x == null) ? attributes.remove(kEnabled) : attributes[kEnabled] = x;
+      (x == null) ? attributes.remove(kEnabled) : _attributes[kEnabled] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

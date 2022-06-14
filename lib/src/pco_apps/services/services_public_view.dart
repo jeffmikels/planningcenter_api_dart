@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.527649
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.735156
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PublicView Object
 ///
@@ -156,18 +157,18 @@ class PcoServicesPublicView extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isSeriesAndPlanTitles => attributes[kSeriesAndPlanTitles] == true;
-  bool get isItemLengths => attributes[kItemLengths] == true;
-  bool get isServiceTimes => attributes[kServiceTimes] == true;
-  bool get isSongItems => attributes[kSongItems] == true;
-  bool get isMediaItems => attributes[kMediaItems] == true;
-  bool get isRegularItems => attributes[kRegularItems] == true;
-  bool get isHeaders => attributes[kHeaders] == true;
-  bool get isItunes => attributes[kItunes] == true;
-  bool get isAmazon => attributes[kAmazon] == true;
-  bool get isSpotify => attributes[kSpotify] == true;
-  bool get isYoutube => attributes[kYoutube] == true;
-  bool get isVimeo => attributes[kVimeo] == true;
+  bool get isSeriesAndPlanTitles => _attributes[kSeriesAndPlanTitles] == true;
+  bool get isItemLengths => _attributes[kItemLengths] == true;
+  bool get isServiceTimes => _attributes[kServiceTimes] == true;
+  bool get isSongItems => _attributes[kSongItems] == true;
+  bool get isMediaItems => _attributes[kMediaItems] == true;
+  bool get isRegularItems => _attributes[kRegularItems] == true;
+  bool get isHeaders => _attributes[kHeaders] == true;
+  bool get isItunes => _attributes[kItunes] == true;
+  bool get isAmazon => _attributes[kAmazon] == true;
+  bool get isSpotify => _attributes[kSpotify] == true;
+  bool get isYoutube => _attributes[kYoutube] == true;
+  bool get isVimeo => _attributes[kVimeo] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

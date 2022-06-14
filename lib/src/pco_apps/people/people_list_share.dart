@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.656343
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.896989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People ListShare Object
 ///
@@ -148,9 +149,9 @@ class PcoPeopleListShare extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get permission => attributes[kPermission] ?? '';
-  String get group => attributes[kGroup] ?? '';
-  String get name => attributes[kName] ?? '';
+  String get permission => _attributes[kPermission] ?? '';
+  String get group => _attributes[kGroup] ?? '';
+  String get name => _attributes[kName] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

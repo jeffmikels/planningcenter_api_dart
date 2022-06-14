@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.646428
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.885297
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Condition Object
 ///
@@ -197,12 +198,12 @@ class PcoPeopleCondition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get application => attributes[kApplication] ?? '';
-  String get definitionClass => attributes[kDefinitionClass] ?? '';
-  String get comparison => attributes[kComparison] ?? '';
-  String get settings => attributes[kSettings] ?? '';
-  String get definitionIdentifier => attributes[kDefinitionIdentifier] ?? '';
-  String get description => attributes[kDescription] ?? '';
+  String get application => _attributes[kApplication] ?? '';
+  String get definitionClass => _attributes[kDefinitionClass] ?? '';
+  String get comparison => _attributes[kComparison] ?? '';
+  String get settings => _attributes[kSettings] ?? '';
+  String get definitionIdentifier => _attributes[kDefinitionIdentifier] ?? '';
+  String get description => _attributes[kDescription] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

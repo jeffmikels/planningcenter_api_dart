@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.745218
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.985437
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Feed Object
 ///
@@ -149,11 +150,11 @@ class PcoCalendarFeed extends PcoResource {
 
   // getters for object attributes
   String get defaultChurchCenterVisibility =>
-      attributes[kDefaultChurchCenterVisibility] ?? '';
-  String get feedType => attributes[kFeedType] ?? '';
-  String get name => attributes[kName] ?? '';
-  DateTime get importedAt => DateTime.parse(attributes[kImportedAt] ?? '');
-  bool get isCanDelete => attributes[kCanDelete] == true;
+      _attributes[kDefaultChurchCenterVisibility] ?? '';
+  String get feedType => _attributes[kFeedType] ?? '';
+  String get name => _attributes[kName] ?? '';
+  DateTime get importedAt => DateTime.parse(_attributes[kImportedAt] ?? '');
+  bool get isCanDelete => _attributes[kCanDelete] == true;
 
   // setters for object attributes
 
@@ -162,21 +163,21 @@ class PcoCalendarFeed extends PcoResource {
   /// pass `null` to remove key from attributes
   set defaultChurchCenterVisibility(String? x) => (x == null)
       ? attributes.remove(kDefaultChurchCenterVisibility)
-      : attributes[kDefaultChurchCenterVisibility] = x;
+      : _attributes[kDefaultChurchCenterVisibility] = x;
 
   /// Possible values: `registrations`, `groups`, or `ical`
 
   /// pass `null` to remove key from attributes
   set feedType(String? x) =>
-      (x == null) ? attributes.remove(kFeedType) : attributes[kFeedType] = x;
+      (x == null) ? attributes.remove(kFeedType) : _attributes[kFeedType] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set eventOwnerId(String? x) => (x == null)
       ? attributes.remove(kEventOwnerId)
-      : attributes[kEventOwnerId] = x;
-  String get eventOwnerId => attributes[kEventOwnerId] ?? '';
+      : _attributes[kEventOwnerId] = x;
+  String get eventOwnerId => _attributes[kEventOwnerId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

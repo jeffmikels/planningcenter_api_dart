@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.513
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.723248
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services LiveController Object
 ///
@@ -141,8 +142,8 @@ class PcoServicesLiveController extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get fullName => attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';
+  String get fullName => _attributes[kFullName] ?? '';
+  String get photoThumbnailUrl => _attributes[kPhotoThumbnailUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.647914
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.886800
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FieldDatum Object
 ///
@@ -178,25 +179,25 @@ class PcoPeopleFieldDatum extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => attributes[kValue] ?? '';
-  String get file => attributes[kFile] ?? '';
-  int get fileSize => attributes[kFileSize] ?? 0;
-  String get fileContentType => attributes[kFileContentType] ?? '';
-  String get fileName => attributes[kFileName] ?? '';
+  String get value => _attributes[kValue] ?? '';
+  String get file => _attributes[kFile] ?? '';
+  int get fileSize => _attributes[kFileSize] ?? 0;
+  String get fileContentType => _attributes[kFileContentType] ?? '';
+  String get fileName => _attributes[kFileName] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;
+      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set fieldDefinitionId(String? x) => (x == null)
       ? attributes.remove(kFieldDefinitionId)
-      : attributes[kFieldDefinitionId] = x;
-  String get fieldDefinitionId => attributes[kFieldDefinitionId] ?? '';
+      : _attributes[kFieldDefinitionId] = x;
+  String get fieldDefinitionId => _attributes[kFieldDefinitionId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

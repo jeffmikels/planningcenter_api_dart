@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.822595
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.053972
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Webhooks AvailableEvent Object
 ///
@@ -138,12 +139,12 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get app => attributes[kApp] ?? '';
-  String get version => attributes[kVersion] ?? '';
-  String get type => attributes[kType] ?? '';
-  String get resource => attributes[kResource] ?? '';
-  String get action => attributes[kAction] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get app => _attributes[kApp] ?? '';
+  String get version => _attributes[kVersion] ?? '';
+  String get type => _attributes[kType] ?? '';
+  String get resource => _attributes[kResource] ?? '';
+  String get action => _attributes[kAction] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

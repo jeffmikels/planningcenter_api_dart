@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.744224
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.981584
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar EventResourceRequest Object
 ///
@@ -211,11 +212,11 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isApprovalSent => attributes[kApprovalSent] == true;
-  String get approvalStatus => attributes[kApprovalStatus] ?? '';
-  int get percentApproved => attributes[kPercentApproved] ?? 0;
-  int get quantity => attributes[kQuantity] ?? 0;
-  String get roomSetupInfo => attributes[kRoomSetupInfo] ?? '';
+  bool get isApprovalSent => _attributes[kApprovalSent] == true;
+  String get approvalStatus => _attributes[kApprovalStatus] ?? '';
+  int get percentApproved => _attributes[kPercentApproved] ?? 0;
+  int get quantity => _attributes[kQuantity] ?? 0;
+  String get roomSetupInfo => _attributes[kRoomSetupInfo] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

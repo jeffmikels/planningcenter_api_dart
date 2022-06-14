@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.573560
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.813714
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Person Object
 ///
@@ -215,29 +216,29 @@ class PcoCheckInsPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get addresses => attributes[kAddresses] ?? [];
-  List get emailAddresses => attributes[kEmailAddresses] ?? [];
-  List get phoneNumbers => attributes[kPhoneNumbers] ?? [];
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  String get namePrefix => attributes[kNamePrefix] ?? '';
-  String get firstName => attributes[kFirstName] ?? '';
-  String get middleName => attributes[kMiddleName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get nameSuffix => attributes[kNameSuffix] ?? '';
-  String get birthdate => attributes[kBirthdate] ?? '';
-  int get grade => attributes[kGrade] ?? 0;
-  String get gender => attributes[kGender] ?? '';
-  String get medicalNotes => attributes[kMedicalNotes] ?? '';
-  bool get isChild => attributes[kChild] == true;
-  String get permission => attributes[kPermission] ?? '';
-  bool get isHeadcounter => attributes[kHeadcounter] == true;
+  List get addresses => _attributes[kAddresses] ?? [];
+  List get emailAddresses => _attributes[kEmailAddresses] ?? [];
+  List get phoneNumbers => _attributes[kPhoneNumbers] ?? [];
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  String get namePrefix => _attributes[kNamePrefix] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get middleName => _attributes[kMiddleName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get nameSuffix => _attributes[kNameSuffix] ?? '';
+  String get birthdate => _attributes[kBirthdate] ?? '';
+  int get grade => _attributes[kGrade] ?? 0;
+  String get gender => _attributes[kGender] ?? '';
+  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
+  bool get isChild => _attributes[kChild] == true;
+  String get permission => _attributes[kPermission] ?? '';
+  bool get isHeadcounter => _attributes[kHeadcounter] == true;
   DateTime get lastCheckedInAt =>
-      DateTime.parse(attributes[kLastCheckedInAt] ?? '');
-  int get checkInCount => attributes[kCheckInCount] ?? 0;
-  String get demographicAvatarUrl => attributes[kDemographicAvatarUrl] ?? '';
-  String get name => attributes[kName] ?? '';
-  String get topPermission => attributes[kTopPermission] ?? '';
-  String get searchName => attributes[kSearchName] ?? '';
+      DateTime.parse(_attributes[kLastCheckedInAt] ?? '');
+  int get checkInCount => _attributes[kCheckInCount] ?? 0;
+  String get demographicAvatarUrl => _attributes[kDemographicAvatarUrl] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get topPermission => _attributes[kTopPermission] ?? '';
+  String get searchName => _attributes[kSearchName] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

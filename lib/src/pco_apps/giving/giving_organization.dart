@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.777414
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.022440
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving Organization Object
 ///
@@ -131,7 +132,7 @@ class PcoGivingOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
+  String get name => _attributes[kName] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

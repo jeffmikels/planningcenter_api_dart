@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.542777
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.744664
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services TeamPosition Object
 ///
@@ -150,10 +151,10 @@ class PcoServicesTeamPosition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  List get tags => attributes[kTags] ?? [];
-  List get negativeTagGroups => attributes[kNegativeTagGroups] ?? [];
-  List get tagGroups => attributes[kTagGroups] ?? [];
+  String get name => _attributes[kName] ?? '';
+  List get tags => _attributes[kTags] ?? [];
+  List get negativeTagGroups => _attributes[kNegativeTagGroups] ?? [];
+  List get tagGroups => _attributes[kTagGroups] ?? [];
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

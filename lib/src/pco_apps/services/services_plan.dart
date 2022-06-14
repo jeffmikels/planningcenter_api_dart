@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.521810
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.729693
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Plan Object
 ///
@@ -294,59 +295,59 @@ class PcoServicesPlan extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => attributes[kTitle] ?? '';
-  bool get isPublic => attributes[kPublic] == true;
-  String get seriesTitle => attributes[kSeriesTitle] ?? '';
-  int get planNotesCount => attributes[kPlanNotesCount] ?? 0;
-  int get otherTimeCount => attributes[kOtherTimeCount] ?? 0;
-  int get rehearsalTimeCount => attributes[kRehearsalTimeCount] ?? 0;
-  int get serviceTimeCount => attributes[kServiceTimeCount] ?? 0;
-  int get planPeopleCount => attributes[kPlanPeopleCount] ?? 0;
-  int get neededPositionsCount => attributes[kNeededPositionsCount] ?? 0;
-  int get itemsCount => attributes[kItemsCount] ?? 0;
-  int get totalLength => attributes[kTotalLength] ?? 0;
-  bool get isCanViewOrder => attributes[kCanViewOrder] == true;
-  bool get isMultiDay => attributes[kMultiDay] == true;
-  bool get isPrefersOrderView => attributes[kPrefersOrderView] == true;
-  bool get isRehearsable => attributes[kRehearsable] == true;
+  String get title => _attributes[kTitle] ?? '';
+  bool get isPublic => _attributes[kPublic] == true;
+  String get seriesTitle => _attributes[kSeriesTitle] ?? '';
+  int get planNotesCount => _attributes[kPlanNotesCount] ?? 0;
+  int get otherTimeCount => _attributes[kOtherTimeCount] ?? 0;
+  int get rehearsalTimeCount => _attributes[kRehearsalTimeCount] ?? 0;
+  int get serviceTimeCount => _attributes[kServiceTimeCount] ?? 0;
+  int get planPeopleCount => _attributes[kPlanPeopleCount] ?? 0;
+  int get neededPositionsCount => _attributes[kNeededPositionsCount] ?? 0;
+  int get itemsCount => _attributes[kItemsCount] ?? 0;
+  int get totalLength => _attributes[kTotalLength] ?? 0;
+  bool get isCanViewOrder => _attributes[kCanViewOrder] == true;
+  bool get isMultiDay => _attributes[kMultiDay] == true;
+  bool get isPrefersOrderView => _attributes[kPrefersOrderView] == true;
+  bool get isRehearsable => _attributes[kRehearsable] == true;
   DateTime get filesExpireAt =>
-      DateTime.parse(attributes[kFilesExpireAt] ?? '');
-  DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
-  DateTime get lastTimeAt => DateTime.parse(attributes[kLastTimeAt] ?? '');
-  String get permissions => attributes[kPermissions] ?? '';
-  String get dates => attributes[kDates] ?? '';
-  String get shortDates => attributes[kShortDates] ?? '';
-  String get planningCenterUrl => attributes[kPlanningCenterUrl] ?? '';
-  bool get isRemindersDisabled => attributes[kRemindersDisabled] == true;
+      DateTime.parse(_attributes[kFilesExpireAt] ?? '');
+  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
+  DateTime get lastTimeAt => DateTime.parse(_attributes[kLastTimeAt] ?? '');
+  String get permissions => _attributes[kPermissions] ?? '';
+  String get dates => _attributes[kDates] ?? '';
+  String get shortDates => _attributes[kShortDates] ?? '';
+  String get planningCenterUrl => _attributes[kPlanningCenterUrl] ?? '';
+  bool get isRemindersDisabled => _attributes[kRemindersDisabled] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// True if Public Access has been enabled.
 
   /// pass `null` to remove key from attributes
   set isPublic(bool? x) =>
-      (x == null) ? attributes.remove(kPublic) : attributes[kPublic] = x;
+      (x == null) ? attributes.remove(kPublic) : _attributes[kPublic] = x;
 
   /// pass `null` to remove key from attributes
   set seriesTitle(String? x) => (x == null)
       ? attributes.remove(kSeriesTitle)
-      : attributes[kSeriesTitle] = x;
+      : _attributes[kSeriesTitle] = x;
 
   /// pass `null` to remove key from attributes
   set isRemindersDisabled(bool? x) => (x == null)
       ? attributes.remove(kRemindersDisabled)
-      : attributes[kRemindersDisabled] = x;
+      : _attributes[kRemindersDisabled] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set seriesId(String? x) =>
-      (x == null) ? attributes.remove(kSeriesId) : attributes[kSeriesId] = x;
-  String get seriesId => attributes[kSeriesId] ?? '';
+      (x == null) ? attributes.remove(kSeriesId) : _attributes[kSeriesId] = x;
+  String get seriesId => _attributes[kSeriesId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.750863
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.996271
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar ResourceBooking Object
 ///
@@ -179,9 +180,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  int get quantity => attributes[kQuantity] ?? 0;
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  int get quantity => _attributes[kQuantity] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

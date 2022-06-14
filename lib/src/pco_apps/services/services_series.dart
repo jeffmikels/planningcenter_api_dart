@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.531710
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.737619
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Series Object
 ///
@@ -153,14 +154,14 @@ class PcoServicesSeries extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get artworkFileName => attributes[kArtworkFileName] ?? '';
-  String get artworkContentType => attributes[kArtworkContentType] ?? '';
-  int get artworkFileSize => attributes[kArtworkFileSize] ?? 0;
-  String get title => attributes[kTitle] ?? '';
-  String get artworkForDashboard => attributes[kArtworkForDashboard] ?? '';
-  String get artworkForMobile => attributes[kArtworkForMobile] ?? '';
-  String get artworkForPlan => attributes[kArtworkForPlan] ?? '';
-  String get artworkOriginal => attributes[kArtworkOriginal] ?? '';
+  String get artworkFileName => _attributes[kArtworkFileName] ?? '';
+  String get artworkContentType => _attributes[kArtworkContentType] ?? '';
+  int get artworkFileSize => _attributes[kArtworkFileSize] ?? 0;
+  String get title => _attributes[kTitle] ?? '';
+  String get artworkForDashboard => _attributes[kArtworkForDashboard] ?? '';
+  String get artworkForMobile => _attributes[kArtworkForMobile] ?? '';
+  String get artworkForPlan => _attributes[kArtworkForPlan] ?? '';
+  String get artworkOriginal => _attributes[kArtworkOriginal] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

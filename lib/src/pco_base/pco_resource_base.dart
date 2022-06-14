@@ -1,7 +1,7 @@
-import 'dart:convert';
+part of pco;
 
-import 'pco_api_base.dart';
-import 'pco_constructors.dart';
+// import 'pco_api_base.dart';
+// import 'pco_constructors.dart';
 
 /// follows the implementation of a JSON:API resource object
 ///
@@ -67,22 +67,24 @@ abstract class PcoResource {
   /// contains the underlying attributes returned by the api
   /// and allows a user to access arbitrary data in the attributes by actual api name
   ///
-  /// WARNING: Accessing attributes directly is discouraged.
-  final Map<String, dynamic> attributes = {};
+  /// WARNING: This [Map] cannot be modified.
+  Map<String, dynamic> get attributes => Map.unmodifiable(_attributes);
+  final Map<String, dynamic> _attributes = {};
 
   /// contains relationships parsed into objects
   /// even though the api sends relationship objects as Maps or Lists
   /// we always put them into lists for consistency
-  Map<String, List<PcoResource>> get relationships => _relationships;
+  Map<String, List<PcoResource>> get relationships =>
+      Map.unmodifiable(_relationships);
   final Map<String, List<PcoResource>> _relationships = {};
 
   /// contains the links data returned by the api if present
+  Map<String, dynamic> get links => Map.unmodifiable(_links);
   final Map<String, dynamic> _links = {};
-  Map<String, dynamic> get links => _links;
 
   // all planning center resources implement at least these fields
-  DateTime get createdAt => DateTime.parse(attributes[kCreatedAt]!);
-  DateTime get updatedAt => DateTime.parse(attributes[kUpdatedAt]!);
+  DateTime get createdAt => DateTime.parse(_attributes[kCreatedAt]!);
+  DateTime get updatedAt => DateTime.parse(_attributes[kUpdatedAt]!);
 
   PcoResource(this.pcoApplication, this.resourceType);
   PcoResource.fromJson(
@@ -162,22 +164,22 @@ abstract class PcoResource {
 
     // update the attributes
     if (data.containsKey('attributes')) {
-      attributes
+      _attributes
         ..clear()
         ..addAll(data['attributes']);
     }
 
     // update the links
     if (data.containsKey('links')) {
-      links.addAll(data['links']);
+      _links.addAll(data['links']);
     }
 
     // process relationships, but first ensure
     // all relationship objects are actually lists
     if (data.containsKey('relationships')) {
-      relationships.clear();
+      _relationships.clear();
       // parse each relationship into its relevant object
-      relationships.addAll(handleItems(data['relationships']));
+      _relationships.addAll(handleItems(data['relationships']));
     }
   }
 
@@ -186,7 +188,7 @@ abstract class PcoResource {
   void handleIncludes(List<Map<String, dynamic>> included) {
     // make a quick mapping for later reference into nested objects
     Map<String, PcoResource> relDataMap = {};
-    relationships.forEach((key, items) {
+    _relationships.forEach((key, items) {
       for (var item in items) {
         if (item.id == null) continue;
         relDataMap[item.id! + '-' + item.resourceType] = item;
@@ -347,129 +349,3 @@ class PcoCollection<T extends PcoResource> {
     return false;
   }
 }
-
-// class PcoChildTemplate extends PcoResource {
-//   static const String typeString = 'TYPESTRING';
-//   static const String endpoint = 'ENDPOINT';
-//   static const String apiVersion = 'APIVERSION';
-
-//   // field mapping constants
-//   static const kFIELDCONSTANTDARTNAME = 'FIELDCONSTANTJSONNAME';
-
-//   // getters and setters
-//   @override
-//   List<String> get createAllowed => CREATEALLOWEDLIST;
-//   @override
-//   List<String> get updateAllowed => UPDATEALLOWEDLIST;
-//   @override
-//   Map<String, dynamic> get defaultAttributes => DEFAULTATTRIBUTESMAP;
-
-//   TYPE get FIELDNAME => FIELDGETTER;
-
-//   PcoChildTemplate() : super(typeString);
-
-// }
-
-// --- the old way ---
-/* -- DATA CLASSES -- */
-// class DataClass {
-//   Map<String, dynamic> data = {};
-
-//   DataClass();
-
-//   DataClass.fromData(this.data);
-
-//   dynamic get(String key) => data[key];
-//   set(String key, dynamic value) => data[key] = value;
-
-//   Object toJson() => data;
-// }
-
-// abstract class PlanningCenterResource extends DataClass {
-//   final List apiIncludedAttributes = [];
-
-//   String itemEndpoint();
-
-//   String? id; // will not show up in json fields
-//   String get type => get('type');
-//   DateTime get createdAt => DateTime.parse(attributes.get('created_at')!);
-//   DateTime get updatedAt => DateTime.parse(attributes.get('updated_at')!);
-
-//   late DataClass attributes;
-//   late DataClass relationships;
-//   // Map<String, String> get attributes => _get('attributes') ?? {};
-
-//   Map<String, String> links = {};
-
-//   /// returns a string ready for the api wrapped in a "data" object
-//   /// {"data": ...}
-//   /// never includes relationships
-//   String get apiEncoded {
-//     var filteredAttributes = <String, dynamic>{};
-//     attributes.data.forEach((key, value) {
-//       if (apiIncludedAttributes.contains(key) && value != null) filteredAttributes[key] = value;
-//     });
-//     return json.encode({
-//       'data': {
-//         'type': type,
-//         'attributes': filteredAttributes,
-//       }
-//     });
-//   }
-
-//   // ensure there is an "attributes" item in the data
-//   PlanningCenterResource() : super() {
-//     attributes = DataClass();
-//     relationships = DataClass();
-//     finishSetup();
-//   }
-
-//   PlanningCenterResource.fromData(Map<String, dynamic> data) : super.fromData(data) {
-//     id = data['id']; // might be null
-//     attributes = DataClass.fromData(this.data['attributes']);
-//     relationships = DataClass.fromData(this.data['relationships'] ?? {});
-//     finishSetup();
-//   }
-
-//   /// by doing things this way, we update the underlying data objects
-//   /// inside the dataclasses
-//   void updateFromData(Map<String, dynamic> data) {
-//     data.forEach((key, value) {
-//       if (key == 'attributes') {
-//         (value as Map).forEach((key, value) {
-//           data['attributes'][key] = value;
-//         });
-//       } else if (key == 'links') {
-//         (value as Map).forEach((key, value) {
-//           data['links'][key] = value;
-//         });
-//       } else if (key == 'relationships') {
-//         (value as Map).forEach((key, value) {
-//           data['relationships'][key] = value;
-//         });
-//       } else if (key == 'id') {
-//         id = value;
-//       } else {
-//         data[key] = value;
-//       }
-//     });
-//   }
-
-//   /// just to make sure our local data object
-//   /// is properly referencing the real data
-//   void finishSetup() {
-//     // make sure we import all the proper 'links' if there are any
-//     if (data.containsKey('links') && data['links'] is Map) {
-//       (data['links'] as Map).forEach((k, v) {
-//         links[k.toString()] = v.toString();
-//       });
-//     }
-//     // properly associate the data
-//     data['links'] = links;
-
-//     // also make sure to associate the data classes
-//     // with their root data
-//     data['attributes'] = attributes.data;
-//     data['relationships'] = relationships.data;
-//   }
-// }

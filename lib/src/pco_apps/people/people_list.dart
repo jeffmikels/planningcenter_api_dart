@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.654684
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.892387
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People List Object
 ///
@@ -244,25 +245,25 @@ class PcoPeopleList extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  bool get isAutoRefresh => attributes[kAutoRefresh] == true;
-  String get status => attributes[kStatus] ?? '';
-  bool get isHasInactiveResults => attributes[kHasInactiveResults] == true;
-  bool get isIncludeInactive => attributes[kIncludeInactive] == true;
-  String get returns => attributes[kReturns] ?? '';
-  bool get isReturnOriginalIfNone => attributes[kReturnOriginalIfNone] == true;
-  String get subset => attributes[kSubset] ?? '';
-  bool get isAutomationsActive => attributes[kAutomationsActive] == true;
-  int get automationsCount => attributes[kAutomationsCount] ?? 0;
-  String get description => attributes[kDescription] ?? '';
-  bool get isInvalid => attributes[kInvalid] == true;
-  String get nameOrDescription => attributes[kNameOrDescription] ?? '';
-  bool get isRecentlyViewed => attributes[kRecentlyViewed] == true;
-  DateTime get refreshedAt => DateTime.parse(attributes[kRefreshedAt] ?? '');
-  bool get isStarred => attributes[kStarred] == true;
-  int get totalPeople => attributes[kTotalPeople] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  bool get isAutoRefresh => _attributes[kAutoRefresh] == true;
+  String get status => _attributes[kStatus] ?? '';
+  bool get isHasInactiveResults => _attributes[kHasInactiveResults] == true;
+  bool get isIncludeInactive => _attributes[kIncludeInactive] == true;
+  String get returns => _attributes[kReturns] ?? '';
+  bool get isReturnOriginalIfNone => _attributes[kReturnOriginalIfNone] == true;
+  String get subset => _attributes[kSubset] ?? '';
+  bool get isAutomationsActive => _attributes[kAutomationsActive] == true;
+  int get automationsCount => _attributes[kAutomationsCount] ?? 0;
+  String get description => _attributes[kDescription] ?? '';
+  bool get isInvalid => _attributes[kInvalid] == true;
+  String get nameOrDescription => _attributes[kNameOrDescription] ?? '';
+  bool get isRecentlyViewed => _attributes[kRecentlyViewed] == true;
+  DateTime get refreshedAt => DateTime.parse(_attributes[kRefreshedAt] ?? '');
+  bool get isStarred => _attributes[kStarred] == true;
+  int get totalPeople => _attributes[kTotalPeople] ?? 0;
   DateTime get batchCompletedAt =>
-      DateTime.parse(attributes[kBatchCompletedAt] ?? '');
+      DateTime.parse(_attributes[kBatchCompletedAt] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.533475
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.738626
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services ServiceType Object
 ///
@@ -213,45 +214,45 @@ class PcoServicesServiceType extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  String get name => _attributes[kName] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
   bool get isAttachmentTypesEnabled =>
-      attributes[kAttachmentTypesEnabled] == true;
+      _attributes[kAttachmentTypesEnabled] == true;
   String get backgroundCheckPermissions =>
-      attributes[kBackgroundCheckPermissions] ?? '';
-  String get commentPermissions => attributes[kCommentPermissions] ?? '';
-  String get customItemTypes => attributes[kCustomItemTypes] ?? '';
-  String get frequency => attributes[kFrequency] ?? '';
-  String get lastPlanFrom => attributes[kLastPlanFrom] ?? '';
-  String get permissions => attributes[kPermissions] ?? '';
-  String get standardItemTypes => attributes[kStandardItemTypes] ?? '';
+      _attributes[kBackgroundCheckPermissions] ?? '';
+  String get commentPermissions => _attributes[kCommentPermissions] ?? '';
+  String get customItemTypes => _attributes[kCustomItemTypes] ?? '';
+  String get frequency => _attributes[kFrequency] ?? '';
+  String get lastPlanFrom => _attributes[kLastPlanFrom] ?? '';
+  String get permissions => _attributes[kPermissions] ?? '';
+  String get standardItemTypes => _attributes[kStandardItemTypes] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set isAttachmentTypesEnabled(bool? x) => (x == null)
       ? attributes.remove(kAttachmentTypesEnabled)
-      : attributes[kAttachmentTypesEnabled] = x;
+      : _attributes[kAttachmentTypesEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set backgroundCheckPermissions(String? x) => (x == null)
       ? attributes.remove(kBackgroundCheckPermissions)
-      : attributes[kBackgroundCheckPermissions] = x;
+      : _attributes[kBackgroundCheckPermissions] = x;
 
   /// pass `null` to remove key from attributes
   set commentPermissions(String? x) => (x == null)
       ? attributes.remove(kCommentPermissions)
-      : attributes[kCommentPermissions] = x;
+      : _attributes[kCommentPermissions] = x;
 
   /// A array of hashes that maps an item title substring matcher to a color:
   ///
@@ -265,16 +266,16 @@ class PcoServicesServiceType extends PcoResource {
   /// pass `null` to remove key from attributes
   set customItemTypes(String? x) => (x == null)
       ? attributes.remove(kCustomItemTypes)
-      : attributes[kCustomItemTypes] = x;
+      : _attributes[kCustomItemTypes] = x;
 
   /// pass `null` to remove key from attributes
   set frequency(String? x) =>
-      (x == null) ? attributes.remove(kFrequency) : attributes[kFrequency] = x;
+      (x == null) ? attributes.remove(kFrequency) : _attributes[kFrequency] = x;
 
   /// pass `null` to remove key from attributes
   set lastPlanFrom(String? x) => (x == null)
       ? attributes.remove(kLastPlanFrom)
-      : attributes[kLastPlanFrom] = x;
+      : _attributes[kLastPlanFrom] = x;
 
   /// An array of hashes that maps an item type to a color:
   ///
@@ -288,14 +289,14 @@ class PcoServicesServiceType extends PcoResource {
   /// pass `null` to remove key from attributes
   set standardItemTypes(String? x) => (x == null)
       ? attributes.remove(kStandardItemTypes)
-      : attributes[kStandardItemTypes] = x;
+      : _attributes[kStandardItemTypes] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set parentId(String? x) =>
-      (x == null) ? attributes.remove(kParentId) : attributes[kParentId] = x;
-  String get parentId => attributes[kParentId] ?? '';
+      (x == null) ? attributes.remove(kParentId) : _attributes[kParentId] = x;
+  String get parentId => _attributes[kParentId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.652265
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.890208
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FormSubmissionValue Object
 ///
@@ -142,7 +143,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get displayValue => attributes[kDisplayValue] ?? '';
+  String get displayValue => _attributes[kDisplayValue] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

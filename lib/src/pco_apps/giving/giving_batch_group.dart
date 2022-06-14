@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.771877
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.018219
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving BatchGroup Object
 ///
@@ -145,18 +146,18 @@ class PcoGivingBatchGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get description => attributes[kDescription] ?? '';
-  bool get isCommitted => attributes[kCommitted] == true;
-  int get totalCents => attributes[kTotalCents] ?? 0;
-  String get totalCurrency => attributes[kTotalCurrency] ?? '';
-  String get status => attributes[kStatus] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  bool get isCommitted => _attributes[kCommitted] == true;
+  int get totalCents => _attributes[kTotalCents] ?? 0;
+  String get totalCurrency => _attributes[kTotalCurrency] ?? '';
+  String get status => _attributes[kStatus] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

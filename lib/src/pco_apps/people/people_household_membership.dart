@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.653467
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.891336
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People HouseholdMembership Object
 ///
@@ -144,8 +145,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get personName => attributes[kPersonName] ?? '';
-  bool get isPending => attributes[kPending] == true;
+  String get personName => _attributes[kPersonName] ?? '';
+  bool get isPending => _attributes[kPending] == true;
 
   // setters for object attributes
 
@@ -153,14 +154,14 @@ class PcoPeopleHouseholdMembership extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set isPending(bool? x) =>
-      (x == null) ? attributes.remove(kPending) : attributes[kPending] = x;
+      (x == null) ? attributes.remove(kPending) : _attributes[kPending] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.648575
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.887406
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FieldDefinition Object
 ///
@@ -196,40 +197,40 @@ class PcoPeopleFieldDefinition extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get dataType => attributes[kDataType] ?? '';
-  String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  String get slug => attributes[kSlug] ?? '';
-  String get config => attributes[kConfig] ?? '';
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get tabId => attributes[kTabId] ?? '';
+  String get dataType => _attributes[kDataType] ?? '';
+  String get name => _attributes[kName] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
+  String get slug => _attributes[kSlug] ?? '';
+  String get config => _attributes[kConfig] ?? '';
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  String get tabId => _attributes[kTabId] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set dataType(String? x) =>
-      (x == null) ? attributes.remove(kDataType) : attributes[kDataType] = x;
+      (x == null) ? attributes.remove(kDataType) : _attributes[kDataType] = x;
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set slug(String? x) =>
-      (x == null) ? attributes.remove(kSlug) : attributes[kSlug] = x;
+      (x == null) ? attributes.remove(kSlug) : _attributes[kSlug] = x;
 
   /// pass `null` to remove key from attributes
   set config(String? x) =>
-      (x == null) ? attributes.remove(kConfig) : attributes[kConfig] = x;
+      (x == null) ? attributes.remove(kConfig) : _attributes[kConfig] = x;
 
   /// pass `null` to remove key from attributes
   set deletedAt(DateTime? x) => (x == null)
       ? attributes.remove(kDeletedAt)
-      : attributes[kDeletedAt] = x.toIso8601String();
+      : _attributes[kDeletedAt] = x.toIso8601String();
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

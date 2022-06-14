@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.544269
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.745929
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services TimePreferenceOption Object
 ///
@@ -146,12 +147,12 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get dayOfWeek => attributes[kDayOfWeek] ?? 0;
-  String get description => attributes[kDescription] ?? '';
-  String get sortIndex => attributes[kSortIndex] ?? '';
-  String get timeType => attributes[kTimeType] ?? '';
-  int get minuteOfDay => attributes[kMinuteOfDay] ?? 0;
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
+  int get dayOfWeek => _attributes[kDayOfWeek] ?? 0;
+  String get description => _attributes[kDescription] ?? '';
+  String get sortIndex => _attributes[kSortIndex] ?? '';
+  String get timeType => _attributes[kTimeType] ?? '';
+  int get minuteOfDay => _attributes[kMinuteOfDay] ?? 0;
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

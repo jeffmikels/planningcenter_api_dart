@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.528038
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.735515
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services ReportTemplate Object
 ///
@@ -132,10 +133,10 @@ class PcoServicesReportTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => attributes[kBody] ?? '';
-  String get title => attributes[kTitle] ?? '';
-  String get type => attributes[kType] ?? '';
-  bool get isDefault => attributes[kDefault] == true;
+  String get body => _attributes[kBody] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  String get type => _attributes[kType] ?? '';
+  bool get isDefault => _attributes[kDefault] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

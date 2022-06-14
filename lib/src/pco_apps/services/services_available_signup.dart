@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.500036
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.710721
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services AvailableSignup Object
 ///
@@ -151,10 +152,10 @@ class PcoServicesAvailableSignup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get organizationName => attributes[kOrganizationName] ?? '';
-  String get planningCenterUrl => attributes[kPlanningCenterUrl] ?? '';
-  String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  bool get isSignupsAvailable => attributes[kSignupsAvailable] == true;
+  String get organizationName => _attributes[kOrganizationName] ?? '';
+  String get planningCenterUrl => _attributes[kPlanningCenterUrl] ?? '';
+  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
+  bool get isSignupsAvailable => _attributes[kSignupsAvailable] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

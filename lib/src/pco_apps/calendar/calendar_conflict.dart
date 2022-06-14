@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.728336
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.971005
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Conflict Object
 ///
@@ -162,8 +163,8 @@ class PcoCalendarConflict extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get note => attributes[kNote] ?? '';
-  DateTime get resolvedAt => DateTime.parse(attributes[kResolvedAt] ?? '');
+  String get note => _attributes[kNote] ?? '';
+  DateTime get resolvedAt => DateTime.parse(_attributes[kResolvedAt] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

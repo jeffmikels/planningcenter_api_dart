@@ -1,3 +1,6 @@
+## 0.9.5
+- Made relationships, links, and attributes private and expose them as unmodifiable Maps.
+
 ## 0.9.4
 
 -   Fixed typed relationship getters for each class

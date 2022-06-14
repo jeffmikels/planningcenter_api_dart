@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.780116
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.024115
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving Pledge Object
 ///
@@ -167,12 +168,12 @@ class PcoGivingPledge extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get amountCents => attributes[kAmountCents] ?? 0;
-  String get amountCurrency => attributes[kAmountCurrency] ?? '';
-  int get jointGiverAmountCents => attributes[kJointGiverAmountCents] ?? 0;
-  int get donatedTotalCents => attributes[kDonatedTotalCents] ?? 0;
+  int get amountCents => _attributes[kAmountCents] ?? 0;
+  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
+  int get jointGiverAmountCents => _attributes[kJointGiverAmountCents] ?? 0;
+  int get donatedTotalCents => _attributes[kDonatedTotalCents] ?? 0;
   int get jointGiverDonatedTotalCents =>
-      attributes[kJointGiverDonatedTotalCents] ?? 0;
+      _attributes[kJointGiverDonatedTotalCents] ?? 0;
 
   // setters for object attributes
 
@@ -181,20 +182,20 @@ class PcoGivingPledge extends PcoResource {
   /// pass `null` to remove key from attributes
   set amountCents(int? x) => (x == null)
       ? attributes.remove(kAmountCents)
-      : attributes[kAmountCents] = x;
+      : _attributes[kAmountCents] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   /// pass `null` to remove key from attributes
   set pledgeCampaignId(String? x) => (x == null)
       ? attributes.remove(kPledgeCampaignId)
-      : attributes[kPledgeCampaignId] = x;
-  String get pledgeCampaignId => attributes[kPledgeCampaignId] ?? '';
+      : _attributes[kPledgeCampaignId] = x;
+  String get pledgeCampaignId => _attributes[kPledgeCampaignId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

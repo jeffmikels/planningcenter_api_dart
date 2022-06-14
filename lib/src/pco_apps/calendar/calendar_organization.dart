@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.745862
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.986426
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Organization Object
 ///
@@ -148,10 +149,10 @@ class PcoCalendarOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get timeZone => attributes[kTimeZone] ?? '';
-  bool get isTwentyFourHourTime => attributes[kTwentyFourHourTime] == true;
-  String get dateFormat => attributes[kDateFormat] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get timeZone => _attributes[kTimeZone] ?? '';
+  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
+  String get dateFormat => _attributes[kDateFormat] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

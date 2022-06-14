@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.813874
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.033799
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Event Object
 ///
@@ -203,23 +204,23 @@ class PcoGroupsEvent extends PcoResource {
 
   // getters for object attributes
   bool get isAttendanceRequestsEnabled =>
-      attributes[kAttendanceRequestsEnabled] == true;
+      _attributes[kAttendanceRequestsEnabled] == true;
   bool get isAutomatedReminderEnabled =>
-      attributes[kAutomatedReminderEnabled] == true;
-  bool get isCanceled => attributes[kCanceled] == true;
-  DateTime get canceledAt => DateTime.parse(attributes[kCanceledAt] ?? '');
-  String get description => attributes[kDescription] ?? '';
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
+      _attributes[kAutomatedReminderEnabled] == true;
+  bool get isCanceled => _attributes[kCanceled] == true;
+  DateTime get canceledAt => DateTime.parse(_attributes[kCanceledAt] ?? '');
+  String get description => _attributes[kDescription] ?? '';
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
   String get locationTypePreference =>
-      attributes[kLocationTypePreference] ?? '';
-  bool get isMultiDay => attributes[kMultiDay] == true;
-  String get name => attributes[kName] ?? '';
-  bool get isRemindersSent => attributes[kRemindersSent] == true;
+      _attributes[kLocationTypePreference] ?? '';
+  bool get isMultiDay => _attributes[kMultiDay] == true;
+  String get name => _attributes[kName] ?? '';
+  bool get isRemindersSent => _attributes[kRemindersSent] == true;
   DateTime get remindersSentAt =>
-      DateTime.parse(attributes[kRemindersSentAt] ?? '');
-  bool get isRepeating => attributes[kRepeating] == true;
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  String get virtualLocationUrl => attributes[kVirtualLocationUrl] ?? '';
+      DateTime.parse(_attributes[kRemindersSentAt] ?? '');
+  bool get isRepeating => _attributes[kRepeating] == true;
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  String get virtualLocationUrl => _attributes[kVirtualLocationUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

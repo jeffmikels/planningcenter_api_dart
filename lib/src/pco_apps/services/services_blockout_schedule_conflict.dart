@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.502376
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.713020
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services BlockoutScheduleConflict Object
 ///
@@ -187,18 +188,18 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get dates => attributes[kDates] ?? '';
-  String get organizationName => attributes[kOrganizationName] ?? '';
-  String get personAvatar => attributes[kPersonAvatar] ?? '';
-  String get personName => attributes[kPersonName] ?? '';
-  String get positionDisplayTimes => attributes[kPositionDisplayTimes] ?? '';
-  String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  String get shortDates => attributes[kShortDates] ?? '';
-  String get status => attributes[kStatus] ?? '';
-  String get teamName => attributes[kTeamName] ?? '';
-  String get teamPositionName => attributes[kTeamPositionName] ?? '';
-  DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
-  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
+  String get dates => _attributes[kDates] ?? '';
+  String get organizationName => _attributes[kOrganizationName] ?? '';
+  String get personAvatar => _attributes[kPersonAvatar] ?? '';
+  String get personName => _attributes[kPersonName] ?? '';
+  String get positionDisplayTimes => _attributes[kPositionDisplayTimes] ?? '';
+  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
+  String get shortDates => _attributes[kShortDates] ?? '';
+  String get status => _attributes[kStatus] ?? '';
+  String get teamName => _attributes[kTeamName] ?? '';
+  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
+  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
+  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

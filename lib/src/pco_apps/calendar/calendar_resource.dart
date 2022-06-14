@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.747998
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.992758
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Resource Object
 ///
@@ -202,15 +203,15 @@ class PcoCalendarResource extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get kind => attributes[kKind] ?? '';
-  String get name => attributes[kName] ?? '';
-  String get serialNumber => attributes[kSerialNumber] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  DateTime get expiresAt => DateTime.parse(attributes[kExpiresAt] ?? '');
-  String get homeLocation => attributes[kHomeLocation] ?? '';
-  String get image => attributes[kImage] ?? '';
-  int get quantity => attributes[kQuantity] ?? 0;
-  String get pathName => attributes[kPathName] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get serialNumber => _attributes[kSerialNumber] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  DateTime get expiresAt => DateTime.parse(_attributes[kExpiresAt] ?? '');
+  String get homeLocation => _attributes[kHomeLocation] ?? '';
+  String get image => _attributes[kImage] ?? '';
+  int get quantity => _attributes[kQuantity] ?? 0;
+  String get pathName => _attributes[kPathName] ?? '';
 
   // setters for object attributes
 
@@ -218,20 +219,20 @@ class PcoCalendarResource extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// Where the resource is normally kept
 
   /// pass `null` to remove key from attributes
   set homeLocation(String? x) => (x == null)
       ? attributes.remove(kHomeLocation)
-      : attributes[kHomeLocation] = x;
+      : _attributes[kHomeLocation] = x;
 
   /// The quantity of the resource
 
   /// pass `null` to remove key from attributes
   set quantity(int? x) =>
-      (x == null) ? attributes.remove(kQuantity) : attributes[kQuantity] = x;
+      (x == null) ? attributes.remove(kQuantity) : _attributes[kQuantity] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

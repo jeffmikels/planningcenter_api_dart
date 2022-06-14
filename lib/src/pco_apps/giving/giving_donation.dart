@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.776064
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.020723
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving Donation Object
 ///
@@ -273,21 +274,21 @@ class PcoGivingDonation extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get paymentMethodSub => attributes[kPaymentMethodSub] ?? '';
-  String get paymentLast4 => attributes[kPaymentLast4] ?? '';
-  String get paymentBrand => attributes[kPaymentBrand] ?? '';
-  int get paymentCheckNumber => attributes[kPaymentCheckNumber] ?? 0;
-  String get paymentCheckDatedAt => attributes[kPaymentCheckDatedAt] ?? '';
-  int get feeCents => attributes[kFeeCents] ?? 0;
-  String get paymentMethod => attributes[kPaymentMethod] ?? '';
-  DateTime get receivedAt => DateTime.parse(attributes[kReceivedAt] ?? '');
-  int get amountCents => attributes[kAmountCents] ?? 0;
-  String get paymentStatus => attributes[kPaymentStatus] ?? '';
-  DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
-  String get amountCurrency => attributes[kAmountCurrency] ?? '';
-  String get feeCurrency => attributes[kFeeCurrency] ?? '';
-  bool get isRefunded => attributes[kRefunded] == true;
-  bool get isRefundable => attributes[kRefundable] == true;
+  String get paymentMethodSub => _attributes[kPaymentMethodSub] ?? '';
+  String get paymentLast4 => _attributes[kPaymentLast4] ?? '';
+  String get paymentBrand => _attributes[kPaymentBrand] ?? '';
+  int get paymentCheckNumber => _attributes[kPaymentCheckNumber] ?? 0;
+  String get paymentCheckDatedAt => _attributes[kPaymentCheckDatedAt] ?? '';
+  int get feeCents => _attributes[kFeeCents] ?? 0;
+  String get paymentMethod => _attributes[kPaymentMethod] ?? '';
+  DateTime get receivedAt => DateTime.parse(_attributes[kReceivedAt] ?? '');
+  int get amountCents => _attributes[kAmountCents] ?? 0;
+  String get paymentStatus => _attributes[kPaymentStatus] ?? '';
+  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
+  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
+  String get feeCurrency => _attributes[kFeeCurrency] ?? '';
+  bool get isRefunded => _attributes[kRefunded] == true;
+  bool get isRefundable => _attributes[kRefundable] == true;
 
   // setters for object attributes
 
@@ -298,63 +299,63 @@ class PcoGivingDonation extends PcoResource {
   /// pass `null` to remove key from attributes
   set paymentMethodSub(String? x) => (x == null)
       ? attributes.remove(kPaymentMethodSub)
-      : attributes[kPaymentMethodSub] = x;
+      : _attributes[kPaymentMethodSub] = x;
 
   /// pass `null` to remove key from attributes
   set paymentLast4(String? x) => (x == null)
       ? attributes.remove(kPaymentLast4)
-      : attributes[kPaymentLast4] = x;
+      : _attributes[kPaymentLast4] = x;
 
   /// For cards, this is the card brand (eg Visa, Mastercard, etc). For checks, this is the bank name
 
   /// pass `null` to remove key from attributes
   set paymentBrand(String? x) => (x == null)
       ? attributes.remove(kPaymentBrand)
-      : attributes[kPaymentBrand] = x;
+      : _attributes[kPaymentBrand] = x;
 
   /// pass `null` to remove key from attributes
   set paymentCheckNumber(int? x) => (x == null)
       ? attributes.remove(kPaymentCheckNumber)
-      : attributes[kPaymentCheckNumber] = x;
+      : _attributes[kPaymentCheckNumber] = x;
 
   /// pass `null` to remove key from attributes
   set paymentCheckDatedAt(String? x) => (x == null)
       ? attributes.remove(kPaymentCheckDatedAt)
-      : attributes[kPaymentCheckDatedAt] = x;
+      : _attributes[kPaymentCheckDatedAt] = x;
 
   /// pass `null` to remove key from attributes
   set feeCents(int? x) =>
-      (x == null) ? attributes.remove(kFeeCents) : attributes[kFeeCents] = x;
+      (x == null) ? attributes.remove(kFeeCents) : _attributes[kFeeCents] = x;
 
   /// Possible values: `ach`, `cash`, `check`, or `card`
 
   /// pass `null` to remove key from attributes
   set paymentMethod(String? x) => (x == null)
       ? attributes.remove(kPaymentMethod)
-      : attributes[kPaymentMethod] = x;
+      : _attributes[kPaymentMethod] = x;
 
   /// pass `null` to remove key from attributes
   set receivedAt(DateTime? x) => (x == null)
       ? attributes.remove(kReceivedAt)
-      : attributes[kReceivedAt] = x.toIso8601String();
+      : _attributes[kReceivedAt] = x.toIso8601String();
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   /// pass `null` to remove key from attributes
   set paymentSourceId(String? x) => (x == null)
       ? attributes.remove(kPaymentSourceId)
-      : attributes[kPaymentSourceId] = x;
-  String get paymentSourceId => attributes[kPaymentSourceId] ?? '';
+      : _attributes[kPaymentSourceId] = x;
+  String get paymentSourceId => _attributes[kPaymentSourceId] ?? '';
 
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
-      (x == null) ? attributes.remove(kCampusId) : attributes[kCampusId] = x;
-  String get campusId => attributes[kCampusId] ?? '';
+      (x == null) ? attributes.remove(kCampusId) : _attributes[kCampusId] = x;
+  String get campusId => _attributes[kCampusId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

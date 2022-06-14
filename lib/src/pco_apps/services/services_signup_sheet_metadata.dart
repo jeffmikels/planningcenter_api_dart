@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.534736
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.740019
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services SignupSheetMetadata Object
 ///
@@ -139,10 +140,10 @@ class PcoServicesSignupSheetMetadata extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get conflicts => attributes[kConflicts] ?? '';
-  String get timeType => attributes[kTimeType] ?? '';
-  String get timeName => attributes[kTimeName] ?? '';
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
+  String get conflicts => _attributes[kConflicts] ?? '';
+  String get timeType => _attributes[kTimeType] ?? '';
+  String get timeName => _attributes[kTimeName] ?? '';
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

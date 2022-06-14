@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.672324
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.913013
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People PeopleImportHistory Object
 ///
@@ -138,9 +139,9 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get conflictingChanges => attributes[kConflictingChanges] ?? '';
-  String get kind => attributes[kKind] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get conflictingChanges => _attributes[kConflictingChanges] ?? '';
+  String get kind => _attributes[kKind] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

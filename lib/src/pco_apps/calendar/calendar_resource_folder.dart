@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.751311
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.998460
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar ResourceFolder Object
 ///
@@ -147,9 +148,9 @@ class PcoCalendarResourceFolder extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get kind => attributes[kKind] ?? '';
-  String get pathName => attributes[kPathName] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  String get pathName => _attributes[kPathName] ?? '';
 
   // setters for object attributes
 
@@ -157,7 +158,7 @@ class PcoCalendarResourceFolder extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

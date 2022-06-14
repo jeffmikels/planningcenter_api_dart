@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.658345
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.898899
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Message Object
 ///
@@ -240,20 +241,20 @@ class PcoPeopleMessage extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get kind => attributes[kKind] ?? '';
-  String get toAddresses => attributes[kToAddresses] ?? '';
-  String get subject => attributes[kSubject] ?? '';
-  String get file => attributes[kFile] ?? '';
-  String get deliveryStatus => attributes[kDeliveryStatus] ?? '';
-  String get rejectReason => attributes[kRejectReason] ?? '';
-  DateTime get sentAt => DateTime.parse(attributes[kSentAt] ?? '');
-  DateTime get bouncedAt => DateTime.parse(attributes[kBouncedAt] ?? '');
+  String get kind => _attributes[kKind] ?? '';
+  String get toAddresses => _attributes[kToAddresses] ?? '';
+  String get subject => _attributes[kSubject] ?? '';
+  String get file => _attributes[kFile] ?? '';
+  String get deliveryStatus => _attributes[kDeliveryStatus] ?? '';
+  String get rejectReason => _attributes[kRejectReason] ?? '';
+  DateTime get sentAt => DateTime.parse(_attributes[kSentAt] ?? '');
+  DateTime get bouncedAt => DateTime.parse(_attributes[kBouncedAt] ?? '');
   DateTime get rejectionNotificationSentAt =>
-      DateTime.parse(attributes[kRejectionNotificationSentAt] ?? '');
-  String get fromName => attributes[kFromName] ?? '';
-  String get fromAddress => attributes[kFromAddress] ?? '';
-  DateTime get readAt => DateTime.parse(attributes[kReadAt] ?? '');
-  String get appName => attributes[kAppName] ?? '';
+      DateTime.parse(_attributes[kRejectionNotificationSentAt] ?? '');
+  String get fromName => _attributes[kFromName] ?? '';
+  String get fromAddress => _attributes[kFromAddress] ?? '';
+  DateTime get readAt => DateTime.parse(_attributes[kReadAt] ?? '');
+  String get appName => _attributes[kAppName] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

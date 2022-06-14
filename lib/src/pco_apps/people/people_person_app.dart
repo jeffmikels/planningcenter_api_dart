@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.678233
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.918606
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People PersonApp Object
 ///
@@ -142,15 +143,15 @@ class PcoPeoplePersonApp extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isAllowPcoLogin => attributes[kAllowPcoLogin] == true;
-  String get peoplePermissions => attributes[kPeoplePermissions] ?? '';
+  bool get isAllowPcoLogin => _attributes[kAllowPcoLogin] == true;
+  String get peoplePermissions => _attributes[kPeoplePermissions] ?? '';
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set appId(String? x) =>
-      (x == null) ? attributes.remove(kAppId) : attributes[kAppId] = x;
-  String get appId => attributes[kAppId] ?? '';
+      (x == null) ? attributes.remove(kAppId) : _attributes[kAppId] = x;
+  String get appId => _attributes[kAppId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.501456
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.712146
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services BlockoutDate Object
 ///
@@ -157,14 +158,14 @@ class PcoServicesBlockoutDate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get groupIdentifier => attributes[kGroupIdentifier] ?? '';
-  String get reason => attributes[kReason] ?? '';
-  String get timeZone => attributes[kTimeZone] ?? '';
-  bool get isShare => attributes[kShare] == true;
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  DateTime get endsAtUtc => DateTime.parse(attributes[kEndsAtUtc] ?? '');
-  DateTime get startsAtUtc => DateTime.parse(attributes[kStartsAtUtc] ?? '');
+  String get groupIdentifier => _attributes[kGroupIdentifier] ?? '';
+  String get reason => _attributes[kReason] ?? '';
+  String get timeZone => _attributes[kTimeZone] ?? '';
+  bool get isShare => _attributes[kShare] == true;
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  DateTime get endsAtUtc => DateTime.parse(_attributes[kEndsAtUtc] ?? '');
+  DateTime get startsAtUtc => DateTime.parse(_attributes[kStartsAtUtc] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

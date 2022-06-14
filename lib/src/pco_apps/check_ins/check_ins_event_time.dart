@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.568901
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.803434
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns EventTime Object
 ///
@@ -190,17 +191,17 @@ class PcoCheckInsEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get totalCount => attributes[kTotalCount] ?? 0;
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get showsAt => DateTime.parse(attributes[kShowsAt] ?? '');
-  DateTime get hidesAt => DateTime.parse(attributes[kHidesAt] ?? '');
-  int get regularCount => attributes[kRegularCount] ?? 0;
-  int get guestCount => attributes[kGuestCount] ?? 0;
-  int get volunteerCount => attributes[kVolunteerCount] ?? 0;
-  String get name => attributes[kName] ?? '';
-  int get hour => attributes[kHour] ?? 0;
-  int get minute => attributes[kMinute] ?? 0;
-  int get dayOfWeek => attributes[kDayOfWeek] ?? 0;
+  int get totalCount => _attributes[kTotalCount] ?? 0;
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get showsAt => DateTime.parse(_attributes[kShowsAt] ?? '');
+  DateTime get hidesAt => DateTime.parse(_attributes[kHidesAt] ?? '');
+  int get regularCount => _attributes[kRegularCount] ?? 0;
+  int get guestCount => _attributes[kGuestCount] ?? 0;
+  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  int get hour => _attributes[kHour] ?? 0;
+  int get minute => _attributes[kMinute] ?? 0;
+  int get dayOfWeek => _attributes[kDayOfWeek] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

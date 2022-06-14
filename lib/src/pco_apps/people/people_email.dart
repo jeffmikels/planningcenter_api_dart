@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.647321
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.886201
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Email Object
 ///
@@ -167,24 +168,24 @@ class PcoPeopleEmail extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get address => attributes[kAddress] ?? '';
-  String get location => attributes[kLocation] ?? '';
-  bool get isPrimary => attributes[kPrimary] == true;
-  bool get isBlocked => attributes[kBlocked] == true;
+  String get address => _attributes[kAddress] ?? '';
+  String get location => _attributes[kLocation] ?? '';
+  bool get isPrimary => _attributes[kPrimary] == true;
+  bool get isBlocked => _attributes[kBlocked] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set address(String? x) =>
-      (x == null) ? attributes.remove(kAddress) : attributes[kAddress] = x;
+      (x == null) ? attributes.remove(kAddress) : _attributes[kAddress] = x;
 
   /// pass `null` to remove key from attributes
   set location(String? x) =>
-      (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+      (x == null) ? attributes.remove(kLocation) : _attributes[kLocation] = x;
 
   /// pass `null` to remove key from attributes
   set isPrimary(bool? x) =>
-      (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;
+      (x == null) ? attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

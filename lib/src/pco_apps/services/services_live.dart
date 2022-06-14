@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.512478
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.722665
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Live Object
 ///
@@ -168,15 +169,15 @@ class PcoServicesLive extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get seriesTitle => attributes[kSeriesTitle] ?? '';
-  String get title => attributes[kTitle] ?? '';
-  String get dates => attributes[kDates] ?? '';
-  String get liveChannel => attributes[kLiveChannel] ?? '';
-  String get chatRoomChannel => attributes[kChatRoomChannel] ?? '';
-  bool get isCanControl => attributes[kCanControl] == true;
-  bool get isCanTakeControl => attributes[kCanTakeControl] == true;
-  bool get isCanChat => attributes[kCanChat] == true;
-  bool get isCanControlVideoFeed => attributes[kCanControlVideoFeed] == true;
+  String get seriesTitle => _attributes[kSeriesTitle] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  String get dates => _attributes[kDates] ?? '';
+  String get liveChannel => _attributes[kLiveChannel] ?? '';
+  String get chatRoomChannel => _attributes[kChatRoomChannel] ?? '';
+  bool get isCanControl => _attributes[kCanControl] == true;
+  bool get isCanTakeControl => _attributes[kCanTakeControl] == true;
+  bool get isCanChat => _attributes[kCanChat] == true;
+  bool get isCanControlVideoFeed => _attributes[kCanControlVideoFeed] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

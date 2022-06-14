@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.687560
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.929587
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Workflow Object
 ///
@@ -220,33 +221,33 @@ class PcoPeopleWorkflow extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get myReadyCardCount => attributes[kMyReadyCardCount] ?? 0;
-  int get totalReadyCardCount => attributes[kTotalReadyCardCount] ?? 0;
-  int get completedCardCount => attributes[kCompletedCardCount] ?? 0;
-  int get totalCardsCount => attributes[kTotalCardsCount] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  int get myReadyCardCount => _attributes[kMyReadyCardCount] ?? 0;
+  int get totalReadyCardCount => _attributes[kTotalReadyCardCount] ?? 0;
+  int get completedCardCount => _attributes[kCompletedCardCount] ?? 0;
+  int get totalCardsCount => _attributes[kTotalCardsCount] ?? 0;
   int get totalReadyAndSnoozedCardCount =>
-      attributes[kTotalReadyAndSnoozedCardCount] ?? 0;
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get campusId => attributes[kCampusId] ?? '';
-  String get workflowCategoryId => attributes[kWorkflowCategoryId] ?? '';
-  int get myOverdueCardCount => attributes[kMyOverdueCardCount] ?? 0;
-  int get myDueSoonCardCount => attributes[kMyDueSoonCardCount] ?? 0;
+      _attributes[kTotalReadyAndSnoozedCardCount] ?? 0;
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  String get campusId => _attributes[kCampusId] ?? '';
+  String get workflowCategoryId => _attributes[kWorkflowCategoryId] ?? '';
+  int get myOverdueCardCount => _attributes[kMyOverdueCardCount] ?? 0;
+  int get myDueSoonCardCount => _attributes[kMyDueSoonCardCount] ?? 0;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
-      (x == null) ? attributes.remove(kCampusId) : attributes[kCampusId] = x;
+      (x == null) ? attributes.remove(kCampusId) : _attributes[kCampusId] = x;
 
   /// pass `null` to remove key from attributes
   set workflowCategoryId(String? x) => (x == null)
       ? attributes.remove(kWorkflowCategoryId)
-      : attributes[kWorkflowCategoryId] = x;
+      : _attributes[kWorkflowCategoryId] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

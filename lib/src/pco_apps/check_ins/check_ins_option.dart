@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.572023
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.811440
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Option Object
 ///
@@ -135,8 +136,8 @@ class PcoCheckInsOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => attributes[kBody] ?? '';
-  int get quantity => attributes[kQuantity] ?? 0;
+  String get body => _attributes[kBody] ?? '';
+  int get quantity => _attributes[kQuantity] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

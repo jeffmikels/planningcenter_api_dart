@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.823908
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.055492
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Webhooks Subscription Object
 ///
@@ -142,25 +143,25 @@ class PcoWebhooksSubscription extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get url => attributes[kUrl] ?? '';
-  bool get isActive => attributes[kActive] == true;
-  String get authenticitySecret => attributes[kAuthenticitySecret] ?? '';
-  String get applicationId => attributes[kApplicationId] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get url => _attributes[kUrl] ?? '';
+  bool get isActive => _attributes[kActive] == true;
+  String get authenticitySecret => _attributes[kAuthenticitySecret] ?? '';
+  String get applicationId => _attributes[kApplicationId] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set url(String? x) =>
-      (x == null) ? attributes.remove(kUrl) : attributes[kUrl] = x;
+      (x == null) ? attributes.remove(kUrl) : _attributes[kUrl] = x;
 
   /// pass `null` to remove key from attributes
   set isActive(bool? x) =>
-      (x == null) ? attributes.remove(kActive) : attributes[kActive] = x;
+      (x == null) ? attributes.remove(kActive) : _attributes[kActive] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

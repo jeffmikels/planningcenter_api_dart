@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.505616
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.716563
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services EmailTemplate Object
 ///
@@ -143,23 +144,23 @@ class PcoServicesEmailTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get kind => attributes[kKind] ?? '';
-  String get htmlBody => attributes[kHtmlBody] ?? '';
-  String get subject => attributes[kSubject] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  String get htmlBody => _attributes[kHtmlBody] ?? '';
+  String get subject => _attributes[kSubject] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set kind(String? x) =>
-      (x == null) ? attributes.remove(kKind) : attributes[kKind] = x;
+      (x == null) ? attributes.remove(kKind) : _attributes[kKind] = x;
 
   /// pass `null` to remove key from attributes
   set htmlBody(String? x) =>
-      (x == null) ? attributes.remove(kHtmlBody) : attributes[kHtmlBody] = x;
+      (x == null) ? attributes.remove(kHtmlBody) : _attributes[kHtmlBody] = x;
 
   /// pass `null` to remove key from attributes
   set subject(String? x) =>
-      (x == null) ? attributes.remove(kSubject) : attributes[kSubject] = x;
+      (x == null) ? attributes.remove(kSubject) : _attributes[kSubject] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

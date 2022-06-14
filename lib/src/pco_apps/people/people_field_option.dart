@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.649152
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.887906
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FieldOption Object
 ///
@@ -140,18 +141,18 @@ class PcoPeopleFieldOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => attributes[kValue] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  String get value => _attributes[kValue] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;
+      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

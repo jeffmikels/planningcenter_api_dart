@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.534372
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.739589
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services SignupSheet Object
 ///
@@ -164,13 +165,13 @@ class PcoServicesSignupSheet extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
-  String get groupKey => attributes[kGroupKey] ?? '';
-  String get teamName => attributes[kTeamName] ?? '';
-  String get displayTimes => attributes[kDisplayTimes] ?? '';
-  String get positionName => attributes[kPositionName] ?? '';
-  String get title => attributes[kTitle] ?? '';
-  int get sortIndex => attributes[kSortIndex] ?? 0;
+  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
+  String get groupKey => _attributes[kGroupKey] ?? '';
+  String get teamName => _attributes[kTeamName] ?? '';
+  String get displayTimes => _attributes[kDisplayTimes] ?? '';
+  String get positionName => _attributes[kPositionName] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  int get sortIndex => _attributes[kSortIndex] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

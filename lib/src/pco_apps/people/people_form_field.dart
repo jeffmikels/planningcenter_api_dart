@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.650414
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.888923
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FormField Object
 ///
@@ -177,12 +178,12 @@ class PcoPeopleFormField extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get fieldType => attributes[kFieldType] ?? '';
-  String get label => attributes[kLabel] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  bool get isRequired => attributes[kRequired] == true;
-  String get settings => attributes[kSettings] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  String get fieldType => _attributes[kFieldType] ?? '';
+  String get label => _attributes[kLabel] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  bool get isRequired => _attributes[kRequired] == true;
+  String get settings => _attributes[kSettings] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

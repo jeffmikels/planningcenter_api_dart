@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.538249
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.741418
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services SongSchedule Object
 ///
@@ -166,11 +167,11 @@ class PcoServicesSongSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get arrangementName => attributes[kArrangementName] ?? '';
-  String get keyName => attributes[kKeyName] ?? '';
-  String get planDates => attributes[kPlanDates] ?? '';
-  String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  String get planSortDate => attributes[kPlanSortDate] ?? '';
+  String get arrangementName => _attributes[kArrangementName] ?? '';
+  String get keyName => _attributes[kKeyName] ?? '';
+  String get planDates => _attributes[kPlanDates] ?? '';
+  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
+  String get planSortDate => _attributes[kPlanSortDate] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

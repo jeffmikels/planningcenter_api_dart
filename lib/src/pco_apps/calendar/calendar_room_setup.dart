@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.752870
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.001789
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar RoomSetup Object
 ///
@@ -176,11 +177,11 @@ class PcoCalendarRoomSetup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  String get diagram => attributes[kDiagram] ?? '';
-  String get diagramUrl => attributes[kDiagramUrl] ?? '';
-  String get diagramThumbnailUrl => attributes[kDiagramThumbnailUrl] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  String get diagram => _attributes[kDiagram] ?? '';
+  String get diagramUrl => _attributes[kDiagramUrl] ?? '';
+  String get diagramThumbnailUrl => _attributes[kDiagramThumbnailUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

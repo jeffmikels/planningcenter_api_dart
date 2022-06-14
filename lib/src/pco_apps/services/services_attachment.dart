@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.497729
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.708385
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Attachment Object
 ///
@@ -255,55 +256,55 @@ class PcoServicesAttachment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get pageOrder => attributes[kPageOrder] ?? '';
-  String get filename => attributes[kFilename] ?? '';
-  int get fileSize => attributes[kFileSize] ?? 0;
-  int get licensesPurchased => attributes[kLicensesPurchased] ?? 0;
-  int get licensesRemaining => attributes[kLicensesRemaining] ?? 0;
-  int get licensesUsed => attributes[kLicensesUsed] ?? 0;
-  String get contentType => attributes[kContentType] ?? '';
-  String get displayName => attributes[kDisplayName] ?? '';
-  String get filetype => attributes[kFiletype] ?? '';
-  String get linkedUrl => attributes[kLinkedUrl] ?? '';
-  String get pcoType => attributes[kPcoType] ?? '';
-  String get remoteLink => attributes[kRemoteLink] ?? '';
-  String get thumbnailUrl => attributes[kThumbnailUrl] ?? '';
-  String get url => attributes[kUrl] ?? '';
-  bool get isAllowMp3Download => attributes[kAllowMp3Download] == true;
-  bool get isWebStreamable => attributes[kWebStreamable] == true;
-  bool get isDownloadable => attributes[kDownloadable] == true;
-  bool get isTransposable => attributes[kTransposable] == true;
-  bool get isStreamable => attributes[kStreamable] == true;
-  bool get isHasPreview => attributes[kHasPreview] == true;
-  String get fileUploadIdentifier => attributes[kFileUploadIdentifier] ?? '';
+  String get pageOrder => _attributes[kPageOrder] ?? '';
+  String get filename => _attributes[kFilename] ?? '';
+  int get fileSize => _attributes[kFileSize] ?? 0;
+  int get licensesPurchased => _attributes[kLicensesPurchased] ?? 0;
+  int get licensesRemaining => _attributes[kLicensesRemaining] ?? 0;
+  int get licensesUsed => _attributes[kLicensesUsed] ?? 0;
+  String get contentType => _attributes[kContentType] ?? '';
+  String get displayName => _attributes[kDisplayName] ?? '';
+  String get filetype => _attributes[kFiletype] ?? '';
+  String get linkedUrl => _attributes[kLinkedUrl] ?? '';
+  String get pcoType => _attributes[kPcoType] ?? '';
+  String get remoteLink => _attributes[kRemoteLink] ?? '';
+  String get thumbnailUrl => _attributes[kThumbnailUrl] ?? '';
+  String get url => _attributes[kUrl] ?? '';
+  bool get isAllowMp3Download => _attributes[kAllowMp3Download] == true;
+  bool get isWebStreamable => _attributes[kWebStreamable] == true;
+  bool get isDownloadable => _attributes[kDownloadable] == true;
+  bool get isTransposable => _attributes[kTransposable] == true;
+  bool get isStreamable => _attributes[kStreamable] == true;
+  bool get isHasPreview => _attributes[kHasPreview] == true;
+  String get fileUploadIdentifier => _attributes[kFileUploadIdentifier] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set pageOrder(String? x) =>
-      (x == null) ? attributes.remove(kPageOrder) : attributes[kPageOrder] = x;
+      (x == null) ? attributes.remove(kPageOrder) : _attributes[kPageOrder] = x;
 
   /// pass `null` to remove key from attributes
   set filename(String? x) =>
-      (x == null) ? attributes.remove(kFilename) : attributes[kFilename] = x;
+      (x == null) ? attributes.remove(kFilename) : _attributes[kFilename] = x;
 
   /// pass `null` to remove key from attributes
   set remoteLink(String? x) => (x == null)
       ? attributes.remove(kRemoteLink)
-      : attributes[kRemoteLink] = x;
+      : _attributes[kRemoteLink] = x;
 
   /// pass `null` to remove key from attributes
   set fileUploadIdentifier(String? x) => (x == null)
       ? attributes.remove(kFileUploadIdentifier)
-      : attributes[kFileUploadIdentifier] = x;
+      : _attributes[kFileUploadIdentifier] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set attachmentTypeIds(String? x) => (x == null)
       ? attributes.remove(kAttachmentTypeIds)
-      : attributes[kAttachmentTypeIds] = x;
-  String get attachmentTypeIds => attributes[kAttachmentTypeIds] ?? '';
+      : _attributes[kAttachmentTypeIds] = x;
+  String get attachmentTypeIds => _attributes[kAttachmentTypeIds] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.528642
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.736091
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Schedule Object
 ///
@@ -231,26 +232,26 @@ class PcoServicesSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get sortDate => DateTime.parse(attributes[kSortDate] ?? '');
-  String get dates => attributes[kDates] ?? '';
-  String get declineReason => attributes[kDeclineReason] ?? '';
-  String get organizationName => attributes[kOrganizationName] ?? '';
-  String get organizationTimeZone => attributes[kOrganizationTimeZone] ?? '';
+  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
+  String get dates => _attributes[kDates] ?? '';
+  String get declineReason => _attributes[kDeclineReason] ?? '';
+  String get organizationName => _attributes[kOrganizationName] ?? '';
+  String get organizationTimeZone => _attributes[kOrganizationTimeZone] ?? '';
   String get organizationTwentyFourHourTime =>
-      attributes[kOrganizationTwentyFourHourTime] ?? '';
-  String get personName => attributes[kPersonName] ?? '';
-  String get positionDisplayTimes => attributes[kPositionDisplayTimes] ?? '';
-  String get respondsToName => attributes[kRespondsToName] ?? '';
-  String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  String get shortDates => attributes[kShortDates] ?? '';
-  String get status => attributes[kStatus] ?? '';
-  String get teamName => attributes[kTeamName] ?? '';
-  String get teamPositionName => attributes[kTeamPositionName] ?? '';
-  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
+      _attributes[kOrganizationTwentyFourHourTime] ?? '';
+  String get personName => _attributes[kPersonName] ?? '';
+  String get positionDisplayTimes => _attributes[kPositionDisplayTimes] ?? '';
+  String get respondsToName => _attributes[kRespondsToName] ?? '';
+  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
+  String get shortDates => _attributes[kShortDates] ?? '';
+  String get status => _attributes[kStatus] ?? '';
+  String get teamName => _attributes[kTeamName] ?? '';
+  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
+  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
   bool get isCanAcceptPartialOneTime =>
-      attributes[kCanAcceptPartialOneTime] == true;
-  bool get isPlanVisible => attributes[kPlanVisible] == true;
-  bool get isPlanVisibleToMe => attributes[kPlanVisibleToMe] == true;
+      _attributes[kCanAcceptPartialOneTime] == true;
+  bool get isPlanVisible => _attributes[kPlanVisible] == true;
+  bool get isPlanVisibleToMe => _attributes[kPlanVisibleToMe] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

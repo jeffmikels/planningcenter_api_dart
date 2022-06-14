@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.571229
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.809450
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns LocationEventTime Object
 ///
@@ -143,9 +144,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get regularCount => attributes[kRegularCount] ?? 0;
-  int get guestCount => attributes[kGuestCount] ?? 0;
-  int get volunteerCount => attributes[kVolunteerCount] ?? 0;
+  int get regularCount => _attributes[kRegularCount] ?? 0;
+  int get guestCount => _attributes[kGuestCount] ?? 0;
+  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

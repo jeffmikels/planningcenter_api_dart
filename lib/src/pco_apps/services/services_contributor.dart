@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.503292
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.713989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Contributor Object
 ///
@@ -156,11 +157,11 @@ class PcoServicesContributor extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get contributableAction => attributes[kContributableAction] ?? '';
-  String get contributableCategory => attributes[kContributableCategory] ?? '';
-  String get contributableType => attributes[kContributableType] ?? '';
-  String get fullName => attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => attributes[kPhotoThumbnailUrl] ?? '';
+  String get contributableAction => _attributes[kContributableAction] ?? '';
+  String get contributableCategory => _attributes[kContributableCategory] ?? '';
+  String get contributableType => _attributes[kContributableType] ?? '';
+  String get fullName => _attributes[kFullName] ?? '';
+  String get photoThumbnailUrl => _attributes[kPhotoThumbnailUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

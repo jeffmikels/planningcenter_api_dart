@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.730869
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.975749
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Event Object
 ///
@@ -201,16 +202,16 @@ class PcoCalendarEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get approvalStatus => attributes[kApprovalStatus] ?? '';
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  String get details => attributes[kDetails] ?? '';
-  String get imageUrl => attributes[kImageUrl] ?? '';
-  String get name => attributes[kName] ?? '';
-  int get percentApproved => attributes[kPercentApproved] ?? 0;
-  int get percentRejected => attributes[kPercentRejected] ?? 0;
-  String get registrationUrl => attributes[kRegistrationUrl] ?? '';
+  String get approvalStatus => _attributes[kApprovalStatus] ?? '';
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  String get details => _attributes[kDetails] ?? '';
+  String get imageUrl => _attributes[kImageUrl] ?? '';
+  String get name => _attributes[kName] ?? '';
+  int get percentApproved => _attributes[kPercentApproved] ?? 0;
+  int get percentRejected => _attributes[kPercentRejected] ?? 0;
+  String get registrationUrl => _attributes[kRegistrationUrl] ?? '';
   bool get isVisibleInChurchCenter =>
-      attributes[kVisibleInChurchCenter] == true;
+      _attributes[kVisibleInChurchCenter] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

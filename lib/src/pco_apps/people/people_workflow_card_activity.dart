@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.698306
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.933407
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People WorkflowCardActivity Object
 ///
@@ -160,16 +161,16 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get comment => attributes[kComment] ?? '';
-  String get content => attributes[kContent] ?? '';
-  String get formSubmissionUrl => attributes[kFormSubmissionUrl] ?? '';
-  String get personAvatarUrl => attributes[kPersonAvatarUrl] ?? '';
-  String get personName => attributes[kPersonName] ?? '';
-  String get reassignedToAvatarUrl => attributes[kReassignedToAvatarUrl] ?? '';
-  String get reassignedToName => attributes[kReassignedToName] ?? '';
-  String get subject => attributes[kSubject] ?? '';
-  String get type => attributes[kType] ?? '';
-  bool get isContentIsHtml => attributes[kContentIsHtml] == true;
+  String get comment => _attributes[kComment] ?? '';
+  String get content => _attributes[kContent] ?? '';
+  String get formSubmissionUrl => _attributes[kFormSubmissionUrl] ?? '';
+  String get personAvatarUrl => _attributes[kPersonAvatarUrl] ?? '';
+  String get personName => _attributes[kPersonName] ?? '';
+  String get reassignedToAvatarUrl => _attributes[kReassignedToAvatarUrl] ?? '';
+  String get reassignedToName => _attributes[kReassignedToName] ?? '';
+  String get subject => _attributes[kSubject] ?? '';
+  String get type => _attributes[kType] ?? '';
+  bool get isContentIsHtml => _attributes[kContentIsHtml] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.513788
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.723993
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Media Object
 ///
@@ -195,35 +196,35 @@ class PcoServicesMedia extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get themes => attributes[kThemes] ?? '';
-  String get title => attributes[kTitle] ?? '';
-  String get thumbnailFileName => attributes[kThumbnailFileName] ?? '';
-  String get thumbnailContentType => attributes[kThumbnailContentType] ?? '';
-  int get thumbnailFileSize => attributes[kThumbnailFileSize] ?? 0;
+  String get themes => _attributes[kThemes] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  String get thumbnailFileName => _attributes[kThumbnailFileName] ?? '';
+  String get thumbnailContentType => _attributes[kThumbnailContentType] ?? '';
+  int get thumbnailFileSize => _attributes[kThumbnailFileSize] ?? 0;
   DateTime get thumbnailUpdatedAt =>
-      DateTime.parse(attributes[kThumbnailUpdatedAt] ?? '');
-  String get previewFileName => attributes[kPreviewFileName] ?? '';
-  String get previewContentType => attributes[kPreviewContentType] ?? '';
-  int get previewFileSize => attributes[kPreviewFileSize] ?? 0;
+      DateTime.parse(_attributes[kThumbnailUpdatedAt] ?? '');
+  String get previewFileName => _attributes[kPreviewFileName] ?? '';
+  String get previewContentType => _attributes[kPreviewContentType] ?? '';
+  int get previewFileSize => _attributes[kPreviewFileSize] ?? 0;
   DateTime get previewUpdatedAt =>
-      DateTime.parse(attributes[kPreviewUpdatedAt] ?? '');
-  int get length => attributes[kLength] ?? 0;
-  String get mediaType => attributes[kMediaType] ?? '';
-  String get mediaTypeName => attributes[kMediaTypeName] ?? '';
-  String get thumbnailUrl => attributes[kThumbnailUrl] ?? '';
-  String get creatorName => attributes[kCreatorName] ?? '';
-  String get previewUrl => attributes[kPreviewUrl] ?? '';
-  String get imageUrl => attributes[kImageUrl] ?? '';
+      DateTime.parse(_attributes[kPreviewUpdatedAt] ?? '');
+  int get length => _attributes[kLength] ?? 0;
+  String get mediaType => _attributes[kMediaType] ?? '';
+  String get mediaTypeName => _attributes[kMediaTypeName] ?? '';
+  String get thumbnailUrl => _attributes[kThumbnailUrl] ?? '';
+  String get creatorName => _attributes[kCreatorName] ?? '';
+  String get previewUrl => _attributes[kPreviewUrl] ?? '';
+  String get imageUrl => _attributes[kImageUrl] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set themes(String? x) =>
-      (x == null) ? attributes.remove(kThemes) : attributes[kThemes] = x;
+      (x == null) ? attributes.remove(kThemes) : _attributes[kThemes] = x;
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// Possible Values:
   ///
@@ -251,12 +252,12 @@ class PcoServicesMedia extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set mediaType(String? x) =>
-      (x == null) ? attributes.remove(kMediaType) : attributes[kMediaType] = x;
+      (x == null) ? attributes.remove(kMediaType) : _attributes[kMediaType] = x;
 
   /// pass `null` to remove key from attributes
   set creatorName(String? x) => (x == null)
       ? attributes.remove(kCreatorName)
-      : attributes[kCreatorName] = x;
+      : _attributes[kCreatorName] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.566494
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.798851
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns CheckInGroup Object
 ///
@@ -155,10 +156,10 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get nameLabelsCount => attributes[kNameLabelsCount] ?? 0;
-  int get securityLabelsCount => attributes[kSecurityLabelsCount] ?? 0;
-  int get checkInsCount => attributes[kCheckInsCount] ?? 0;
-  String get printStatus => attributes[kPrintStatus] ?? '';
+  int get nameLabelsCount => _attributes[kNameLabelsCount] ?? 0;
+  int get securityLabelsCount => _attributes[kSecurityLabelsCount] ?? 0;
+  int get checkInsCount => _attributes[kCheckInsCount] ?? 0;
+  String get printStatus => _attributes[kPrintStatus] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

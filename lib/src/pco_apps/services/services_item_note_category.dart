@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.509755
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.720610
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services ItemNoteCategory Object
 ///
@@ -146,10 +147,10 @@ class PcoServicesItemNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  bool get isFrequentlyUsed => attributes[kFrequentlyUsed] == true;
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  String get name => _attributes[kName] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
+  bool get isFrequentlyUsed => _attributes[kFrequentlyUsed] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

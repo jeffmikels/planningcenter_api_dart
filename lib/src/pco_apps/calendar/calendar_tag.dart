@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.753287
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.002655
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar Tag Object
 ///
@@ -156,9 +157,9 @@ class PcoCalendarTag extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get color => attributes[kColor] ?? '';
-  String get name => attributes[kName] ?? '';
-  double get position => attributes[kPosition] ?? 0;
+  String get color => _attributes[kColor] ?? '';
+  String get name => _attributes[kName] ?? '';
+  double get position => _attributes[kPosition] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

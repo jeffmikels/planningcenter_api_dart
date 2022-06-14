@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.500865
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.711558
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Blockout Object
 ///
@@ -198,25 +199,25 @@ class PcoServicesBlockout extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get description => attributes[kDescription] ?? '';
-  String get groupIdentifier => attributes[kGroupIdentifier] ?? '';
-  String get organizationName => attributes[kOrganizationName] ?? '';
-  String get reason => attributes[kReason] ?? '';
-  String get repeatFrequency => attributes[kRepeatFrequency] ?? '';
-  String get repeatInterval => attributes[kRepeatInterval] ?? '';
-  String get repeatPeriod => attributes[kRepeatPeriod] ?? '';
-  String get settings => attributes[kSettings] ?? '';
-  String get timeZone => attributes[kTimeZone] ?? '';
-  String get repeatUntil => attributes[kRepeatUntil] ?? '';
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  bool get isShare => attributes[kShare] == true;
+  String get description => _attributes[kDescription] ?? '';
+  String get groupIdentifier => _attributes[kGroupIdentifier] ?? '';
+  String get organizationName => _attributes[kOrganizationName] ?? '';
+  String get reason => _attributes[kReason] ?? '';
+  String get repeatFrequency => _attributes[kRepeatFrequency] ?? '';
+  String get repeatInterval => _attributes[kRepeatInterval] ?? '';
+  String get repeatPeriod => _attributes[kRepeatPeriod] ?? '';
+  String get settings => _attributes[kSettings] ?? '';
+  String get timeZone => _attributes[kTimeZone] ?? '';
+  String get repeatUntil => _attributes[kRepeatUntil] ?? '';
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  bool get isShare => _attributes[kShare] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set reason(String? x) =>
-      (x == null) ? attributes.remove(kReason) : attributes[kReason] = x;
+      (x == null) ? attributes.remove(kReason) : _attributes[kReason] = x;
 
   /// Possible values:
   ///
@@ -241,7 +242,7 @@ class PcoServicesBlockout extends PcoResource {
   /// pass `null` to remove key from attributes
   set repeatFrequency(String? x) => (x == null)
       ? attributes.remove(kRepeatFrequency)
-      : attributes[kRepeatFrequency] = x;
+      : _attributes[kRepeatFrequency] = x;
 
   /// Possible values:
   ///
@@ -260,7 +261,7 @@ class PcoServicesBlockout extends PcoResource {
   /// pass `null` to remove key from attributes
   set repeatInterval(String? x) => (x == null)
       ? attributes.remove(kRepeatInterval)
-      : attributes[kRepeatInterval] = x;
+      : _attributes[kRepeatInterval] = x;
 
   /// Possible values:
   ///
@@ -275,26 +276,26 @@ class PcoServicesBlockout extends PcoResource {
   /// pass `null` to remove key from attributes
   set repeatPeriod(String? x) => (x == null)
       ? attributes.remove(kRepeatPeriod)
-      : attributes[kRepeatPeriod] = x;
+      : _attributes[kRepeatPeriod] = x;
 
   /// pass `null` to remove key from attributes
   set repeatUntil(String? x) => (x == null)
       ? attributes.remove(kRepeatUntil)
-      : attributes[kRepeatUntil] = x;
+      : _attributes[kRepeatUntil] = x;
 
   /// pass `null` to remove key from attributes
   set startsAt(DateTime? x) => (x == null)
       ? attributes.remove(kStartsAt)
-      : attributes[kStartsAt] = x.toIso8601String();
+      : _attributes[kStartsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set endsAt(DateTime? x) => (x == null)
       ? attributes.remove(kEndsAt)
-      : attributes[kEndsAt] = x.toIso8601String();
+      : _attributes[kEndsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set isShare(bool? x) =>
-      (x == null) ? attributes.remove(kShare) : attributes[kShare] = x;
+      (x == null) ? attributes.remove(kShare) : _attributes[kShare] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

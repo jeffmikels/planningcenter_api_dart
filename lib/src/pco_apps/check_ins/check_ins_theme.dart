@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.575008
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.815465
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Theme Object
 ///
@@ -148,13 +149,13 @@ class PcoCheckInsTheme extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get imageThumbnail => attributes[kImageThumbnail] ?? '';
-  String get name => attributes[kName] ?? '';
-  String get color => attributes[kColor] ?? '';
-  String get textColor => attributes[kTextColor] ?? '';
-  String get image => attributes[kImage] ?? '';
-  String get backgroundColor => attributes[kBackgroundColor] ?? '';
-  String get mode => attributes[kMode] ?? '';
+  String get imageThumbnail => _attributes[kImageThumbnail] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get color => _attributes[kColor] ?? '';
+  String get textColor => _attributes[kTextColor] ?? '';
+  String get image => _attributes[kImage] ?? '';
+  String get backgroundColor => _attributes[kBackgroundColor] ?? '';
+  String get mode => _attributes[kMode] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

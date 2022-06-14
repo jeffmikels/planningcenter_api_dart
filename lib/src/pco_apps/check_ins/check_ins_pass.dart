@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.572916
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.812366
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Pass Object
 ///
@@ -133,8 +134,8 @@ class PcoCheckInsPas extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get code => attributes[kCode] ?? '';
-  String get kind => attributes[kKind] ?? '';
+  String get code => _attributes[kCode] ?? '';
+  String get kind => _attributes[kKind] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

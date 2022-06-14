@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.685359
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.927263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People SocialProfile Object
 ///
@@ -155,23 +156,23 @@ class PcoPeopleSocialProfile extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get site => attributes[kSite] ?? '';
-  String get url => attributes[kUrl] ?? '';
-  bool get isVerified => attributes[kVerified] == true;
+  String get site => _attributes[kSite] ?? '';
+  String get url => _attributes[kUrl] ?? '';
+  bool get isVerified => _attributes[kVerified] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set site(String? x) =>
-      (x == null) ? attributes.remove(kSite) : attributes[kSite] = x;
+      (x == null) ? attributes.remove(kSite) : _attributes[kSite] = x;
 
   /// pass `null` to remove key from attributes
   set url(String? x) =>
-      (x == null) ? attributes.remove(kUrl) : attributes[kUrl] = x;
+      (x == null) ? attributes.remove(kUrl) : _attributes[kUrl] = x;
 
   /// pass `null` to remove key from attributes
   set isVerified(bool? x) =>
-      (x == null) ? attributes.remove(kVerified) : attributes[kVerified] = x;
+      (x == null) ? attributes.remove(kVerified) : _attributes[kVerified] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

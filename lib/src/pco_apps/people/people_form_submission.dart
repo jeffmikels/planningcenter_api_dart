@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.651830
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.889763
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FormSubmission Object
 ///
@@ -154,8 +155,8 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isVerified => attributes[kVerified] == true;
-  bool get isRequiresVerification => attributes[kRequiresVerification] == true;
+  bool get isVerified => _attributes[kVerified] == true;
+  bool get isRequiresVerification => _attributes[kRequiresVerification] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.746963
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.991265
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar ReportTemplate Object
 ///
@@ -135,9 +136,9 @@ class PcoCalendarReportTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get body => attributes[kBody] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  String get title => attributes[kTitle] ?? '';
+  String get body => _attributes[kBody] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  String get title => _attributes[kTitle] ?? '';
 
   // setters for object attributes
 
@@ -145,20 +146,20 @@ class PcoCalendarReportTemplate extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set body(String? x) =>
-      (x == null) ? attributes.remove(kBody) : attributes[kBody] = x;
+      (x == null) ? attributes.remove(kBody) : _attributes[kBody] = x;
 
   /// A summarization of the report
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   /// The title of the report
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.569301
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.803964
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Headcount Object
 ///
@@ -154,7 +155,7 @@ class PcoCheckInsHeadcount extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get total => attributes[kTotal] ?? 0;
+  int get total => _attributes[kTotal] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

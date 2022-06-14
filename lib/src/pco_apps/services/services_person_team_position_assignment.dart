@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.520400
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.728171
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PersonTeamPositionAssignment Object
 ///
@@ -171,8 +172,8 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get schedulePreference => attributes[kSchedulePreference] ?? '';
-  List get preferredWeeks => attributes[kPreferredWeeks] ?? [];
+  String get schedulePreference => _attributes[kSchedulePreference] ?? '';
+  List get preferredWeeks => _attributes[kPreferredWeeks] ?? [];
 
   // setters for object attributes
 
@@ -191,7 +192,7 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// pass `null` to remove key from attributes
   set schedulePreference(String? x) => (x == null)
       ? attributes.remove(kSchedulePreference)
-      : attributes[kSchedulePreference] = x;
+      : _attributes[kSchedulePreference] = x;
 
   /// When `schedule_preference` is set to "Choose Weeks" then this
   /// indicates which weeks are preferred (checked).
@@ -201,21 +202,21 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// pass `null` to remove key from attributes
   set preferredWeeks(List? x) => (x == null)
       ? attributes.remove(kPreferredWeeks)
-      : attributes[kPreferredWeeks] = x;
+      : _attributes[kPreferredWeeks] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set timePreferenceOptionIds(String? x) => (x == null)
       ? attributes.remove(kTimePreferenceOptionIds)
-      : attributes[kTimePreferenceOptionIds] = x;
+      : _attributes[kTimePreferenceOptionIds] = x;
   String get timePreferenceOptionIds =>
-      attributes[kTimePreferenceOptionIds] ?? '';
+      _attributes[kTimePreferenceOptionIds] ?? '';
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

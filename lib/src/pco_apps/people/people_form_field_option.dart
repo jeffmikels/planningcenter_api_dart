@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.651280
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.889374
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People FormFieldOption Object
 ///
@@ -150,8 +151,8 @@ class PcoPeopleFormFieldOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get label => attributes[kLabel] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  String get label => _attributes[kLabel] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

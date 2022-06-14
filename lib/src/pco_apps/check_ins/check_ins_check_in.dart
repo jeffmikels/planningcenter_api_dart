@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.565946
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.798312
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns CheckIn Object
 ///
@@ -249,16 +250,16 @@ class PcoCheckInsCheckIn extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get firstName => attributes[kFirstName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get medicalNotes => attributes[kMedicalNotes] ?? '';
-  String get kind => attributes[kKind] ?? '';
-  int get number => attributes[kNumber] ?? 0;
-  String get securityCode => attributes[kSecurityCode] ?? '';
-  DateTime get checkedOutAt => DateTime.parse(attributes[kCheckedOutAt] ?? '');
-  String get emergencyContactName => attributes[kEmergencyContactName] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  int get number => _attributes[kNumber] ?? 0;
+  String get securityCode => _attributes[kSecurityCode] ?? '';
+  DateTime get checkedOutAt => DateTime.parse(_attributes[kCheckedOutAt] ?? '');
+  String get emergencyContactName => _attributes[kEmergencyContactName] ?? '';
   String get emergencyContactPhoneNumber =>
-      attributes[kEmergencyContactPhoneNumber] ?? '';
+      _attributes[kEmergencyContactPhoneNumber] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

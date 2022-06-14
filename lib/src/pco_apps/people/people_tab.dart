@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.686380
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.928327
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Tab Object
 ///
@@ -143,23 +144,23 @@ class PcoPeopleTab extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  String get slug => attributes[kSlug] ?? '';
+  String get name => _attributes[kName] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
+  String get slug => _attributes[kSlug] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set slug(String? x) =>
-      (x == null) ? attributes.remove(kSlug) : attributes[kSlug] = x;
+      (x == null) ? attributes.remove(kSlug) : _attributes[kSlug] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

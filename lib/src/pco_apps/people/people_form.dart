@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.649778
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.888415
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Form Object
 ///
@@ -188,15 +189,15 @@ class PcoPeopleForm extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  bool get isActive => attributes[kActive] == true;
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  int get submissionCount => attributes[kSubmissionCount] ?? 0;
-  String get publicUrl => attributes[kPublicUrl] ?? '';
-  bool get isRecentlyViewed => attributes[kRecentlyViewed] == true;
-  bool get isArchived => attributes[kArchived] == true;
+  String get name => _attributes[kName] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  bool get isActive => _attributes[kActive] == true;
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  int get submissionCount => _attributes[kSubmissionCount] ?? 0;
+  String get publicUrl => _attributes[kPublicUrl] ?? '';
+  bool get isRecentlyViewed => _attributes[kRecentlyViewed] == true;
+  bool get isArchived => _attributes[kArchived] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

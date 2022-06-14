@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.659561
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.899722
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People MessageGroup Object
 ///
@@ -189,12 +190,12 @@ class PcoPeopleMessageGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get uuid => attributes[kUuid] ?? '';
-  String get messageType => attributes[kMessageType] ?? '';
-  String get fromAddress => attributes[kFromAddress] ?? '';
-  String get subject => attributes[kSubject] ?? '';
-  int get messageCount => attributes[kMessageCount] ?? 0;
-  bool get isSystemMessage => attributes[kSystemMessage] == true;
+  String get uuid => _attributes[kUuid] ?? '';
+  String get messageType => _attributes[kMessageType] ?? '';
+  String get fromAddress => _attributes[kFromAddress] ?? '';
+  String get subject => _attributes[kSubject] ?? '';
+  int get messageCount => _attributes[kMessageCount] ?? 0;
+  bool get isSystemMessage => _attributes[kSystemMessage] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

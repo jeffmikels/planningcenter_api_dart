@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.777013
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.022062
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving Label Object
 ///
@@ -124,7 +125,7 @@ class PcoGivingLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get slug => attributes[kSlug] ?? '';
+  String get slug => _attributes[kSlug] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.502787
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.713418
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services CcliReporting Object
 ///
@@ -139,10 +140,10 @@ class PcoServicesCcliReporting extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get digital => attributes[kDigital] ?? 0;
-  int get print => attributes[kPrint] ?? 0;
-  int get recording => attributes[kRecording] ?? 0;
-  int get translation => attributes[kTranslation] ?? 0;
+  int get digital => _attributes[kDigital] ?? 0;
+  int get print => _attributes[kPrint] ?? 0;
+  int get recording => _attributes[kRecording] ?? 0;
+  int get translation => _attributes[kTranslation] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

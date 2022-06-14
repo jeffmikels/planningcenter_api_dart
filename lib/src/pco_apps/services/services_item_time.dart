@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.510340
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.721092
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services ItemTime Object
 ///
@@ -156,11 +157,11 @@ class PcoServicesItemTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get liveStartAt => DateTime.parse(attributes[kLiveStartAt] ?? '');
-  DateTime get liveEndAt => DateTime.parse(attributes[kLiveEndAt] ?? '');
-  bool get isExclude => attributes[kExclude] == true;
-  int get length => attributes[kLength] ?? 0;
-  int get lengthOffset => attributes[kLengthOffset] ?? 0;
+  DateTime get liveStartAt => DateTime.parse(_attributes[kLiveStartAt] ?? '');
+  DateTime get liveEndAt => DateTime.parse(_attributes[kLiveEndAt] ?? '');
+  bool get isExclude => _attributes[kExclude] == true;
+  int get length => _attributes[kLength] ?? 0;
+  int get lengthOffset => _attributes[kLengthOffset] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

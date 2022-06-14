@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.683399
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.924776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People SchoolOption Object
 ///
@@ -156,36 +157,36 @@ class PcoPeopleSchoolOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => attributes[kValue] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  String get beginningGrade => attributes[kBeginningGrade] ?? '';
-  String get endingGrade => attributes[kEndingGrade] ?? '';
-  List get schoolTypes => attributes[kSchoolTypes] ?? [];
+  String get value => _attributes[kValue] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
+  String get beginningGrade => _attributes[kBeginningGrade] ?? '';
+  String get endingGrade => _attributes[kEndingGrade] ?? '';
+  List get schoolTypes => _attributes[kSchoolTypes] ?? [];
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set value(String? x) =>
-      (x == null) ? attributes.remove(kValue) : attributes[kValue] = x;
+      (x == null) ? attributes.remove(kValue) : _attributes[kValue] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set beginningGrade(String? x) => (x == null)
       ? attributes.remove(kBeginningGrade)
-      : attributes[kBeginningGrade] = x;
+      : _attributes[kBeginningGrade] = x;
 
   /// pass `null` to remove key from attributes
   set endingGrade(String? x) => (x == null)
       ? attributes.remove(kEndingGrade)
-      : attributes[kEndingGrade] = x;
+      : _attributes[kEndingGrade] = x;
 
   /// pass `null` to remove key from attributes
   set schoolTypes(List? x) => (x == null)
       ? attributes.remove(kSchoolTypes)
-      : attributes[kSchoolTypes] = x;
+      : _attributes[kSchoolTypes] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

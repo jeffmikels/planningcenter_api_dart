@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.819243
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.039548
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups TagGroup Object
 ///
@@ -134,11 +135,11 @@ class PcoGroupsTagGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isDisplayPublicly => attributes[kDisplayPublicly] == true;
+  bool get isDisplayPublicly => _attributes[kDisplayPublicly] == true;
   bool get isMultipleOptionsEnabled =>
-      attributes[kMultipleOptionsEnabled] == true;
-  String get name => attributes[kName] ?? '';
-  int get position => attributes[kPosition] ?? 0;
+      _attributes[kMultipleOptionsEnabled] == true;
+  String get name => _attributes[kName] ?? '';
+  int get position => _attributes[kPosition] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

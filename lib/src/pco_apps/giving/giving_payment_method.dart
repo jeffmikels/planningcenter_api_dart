@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.777764
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.022829
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving PaymentMethod Object
 ///
@@ -145,12 +146,12 @@ class PcoGivingPaymentMethod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get methodType => attributes[kMethodType] ?? '';
-  String get methodSubtype => attributes[kMethodSubtype] ?? '';
-  String get last4 => attributes[kLast4] ?? '';
-  String get brand => attributes[kBrand] ?? '';
-  String get expiration => attributes[kExpiration] ?? '';
-  bool get isVerified => attributes[kVerified] == true;
+  String get methodType => _attributes[kMethodType] ?? '';
+  String get methodSubtype => _attributes[kMethodSubtype] ?? '';
+  String get last4 => _attributes[kLast4] ?? '';
+  String get brand => _attributes[kBrand] ?? '';
+  String get expiration => _attributes[kExpiration] ?? '';
+  bool get isVerified => _attributes[kVerified] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

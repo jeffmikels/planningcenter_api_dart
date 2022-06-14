@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.516627
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.726041
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Organization Object
 ///
@@ -213,35 +214,35 @@ class PcoServicesOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get ccli => attributes[kCcli] ?? '';
-  int get dateFormat => attributes[kDateFormat] ?? 0;
-  bool get isMusicStandEnabled => attributes[kMusicStandEnabled] == true;
-  String get name => attributes[kName] ?? '';
-  bool get isProjectorEnabled => attributes[kProjectorEnabled] == true;
-  String get timeZone => attributes[kTimeZone] ?? '';
-  bool get isTwentyFourHourTime => attributes[kTwentyFourHourTime] == true;
-  String get ownerName => attributes[kOwnerName] ?? '';
+  String get ccli => _attributes[kCcli] ?? '';
+  int get dateFormat => _attributes[kDateFormat] ?? 0;
+  bool get isMusicStandEnabled => _attributes[kMusicStandEnabled] == true;
+  String get name => _attributes[kName] ?? '';
+  bool get isProjectorEnabled => _attributes[kProjectorEnabled] == true;
+  String get timeZone => _attributes[kTimeZone] ?? '';
+  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
+  String get ownerName => _attributes[kOwnerName] ?? '';
   String get requiredToSetDownloadPermission =>
-      attributes[kRequiredToSetDownloadPermission] ?? '';
-  String get secret => attributes[kSecret] ?? '';
-  bool get isAllowMp3Download => attributes[kAllowMp3Download] == true;
+      _attributes[kRequiredToSetDownloadPermission] ?? '';
+  String get secret => _attributes[kSecret] ?? '';
+  bool get isAllowMp3Download => _attributes[kAllowMp3Download] == true;
   bool get isCalendarStartsOnSunday =>
-      attributes[kCalendarStartsOnSunday] == true;
-  bool get isCcliConnected => attributes[kCcliConnected] == true;
-  bool get isCcliReportingEnabled => attributes[kCcliReportingEnabled] == true;
+      _attributes[kCalendarStartsOnSunday] == true;
+  bool get isCcliConnected => _attributes[kCcliConnected] == true;
+  bool get isCcliReportingEnabled => _attributes[kCcliReportingEnabled] == true;
   bool get isExtraFileStorageAllowed =>
-      attributes[kExtraFileStorageAllowed] == true;
-  bool get isFileStorageExceeded => attributes[kFileStorageExceeded] == true;
-  bool get isFileStorageSize => attributes[kFileStorageSize] == true;
-  bool get isFileStorageSizeUsed => attributes[kFileStorageSizeUsed] == true;
+      _attributes[kExtraFileStorageAllowed] == true;
+  bool get isFileStorageExceeded => _attributes[kFileStorageExceeded] == true;
+  bool get isFileStorageSize => _attributes[kFileStorageSize] == true;
+  bool get isFileStorageSizeUsed => _attributes[kFileStorageSizeUsed] == true;
   bool get isFileStorageExtraEnabled =>
-      attributes[kFileStorageExtraEnabled] == true;
-  bool get isRehearsalMixEnabled => attributes[kRehearsalMixEnabled] == true;
-  String get legacyId => attributes[kLegacyId] ?? '';
-  int get fileStorageExtraCharges => attributes[kFileStorageExtraCharges] ?? 0;
-  int get peopleAllowed => attributes[kPeopleAllowed] ?? 0;
-  int get peopleRemaining => attributes[kPeopleRemaining] ?? 0;
-  bool get isBeta => attributes[kBeta] == true;
+      _attributes[kFileStorageExtraEnabled] == true;
+  bool get isRehearsalMixEnabled => _attributes[kRehearsalMixEnabled] == true;
+  String get legacyId => _attributes[kLegacyId] ?? '';
+  int get fileStorageExtraCharges => _attributes[kFileStorageExtraCharges] ?? 0;
+  int get peopleAllowed => _attributes[kPeopleAllowed] ?? 0;
+  int get peopleRemaining => _attributes[kPeopleRemaining] ?? 0;
+  bool get isBeta => _attributes[kBeta] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

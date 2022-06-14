@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.544703
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.746295
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Zoom Object
 ///
@@ -153,10 +154,10 @@ class PcoServicesZoom extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get aspectRatio => attributes[kAspectRatio] ?? 0;
-  double get zoomLevel => attributes[kZoomLevel] ?? 0;
-  double get xOffset => attributes[kXOffset] ?? 0;
-  double get yOffset => attributes[kYOffset] ?? 0;
+  double get aspectRatio => _attributes[kAspectRatio] ?? 0;
+  double get zoomLevel => _attributes[kZoomLevel] ?? 0;
+  double get xOffset => _attributes[kXOffset] ?? 0;
+  double get yOffset => _attributes[kYOffset] ?? 0;
 
   // setters for object attributes
 
@@ -165,25 +166,25 @@ class PcoServicesZoom extends PcoResource {
   /// pass `null` to remove key from attributes
   set aspectRatio(double? x) => (x == null)
       ? attributes.remove(kAspectRatio)
-      : attributes[kAspectRatio] = x;
+      : _attributes[kAspectRatio] = x;
 
   /// The percentage of the zoom. Must be a value between 1.0 and 5.0
 
   /// pass `null` to remove key from attributes
   set zoomLevel(double? x) =>
-      (x == null) ? attributes.remove(kZoomLevel) : attributes[kZoomLevel] = x;
+      (x == null) ? attributes.remove(kZoomLevel) : _attributes[kZoomLevel] = x;
 
   /// The percentage of the document's width the zoomed document should be offset by horizontally.
 
   /// pass `null` to remove key from attributes
   set xOffset(double? x) =>
-      (x == null) ? attributes.remove(kXOffset) : attributes[kXOffset] = x;
+      (x == null) ? attributes.remove(kXOffset) : _attributes[kXOffset] = x;
 
   /// The percentage of the document's height the zoomed document should be offset by vertically.
 
   /// pass `null` to remove key from attributes
   set yOffset(double? x) =>
-      (x == null) ? attributes.remove(kYOffset) : attributes[kYOffset] = x;
+      (x == null) ? attributes.remove(kYOffset) : _attributes[kYOffset] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

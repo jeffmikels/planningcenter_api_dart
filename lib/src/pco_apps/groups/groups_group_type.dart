@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.815548
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.035013
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups GroupType Object
 ///
@@ -146,14 +147,14 @@ class PcoGroupsGroupType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isChurchCenterVisible => attributes[kChurchCenterVisible] == true;
+  bool get isChurchCenterVisible => _attributes[kChurchCenterVisible] == true;
   bool get isChurchCenterMapVisible =>
-      attributes[kChurchCenterMapVisible] == true;
-  String get color => attributes[kColor] ?? '';
-  String get defaultGroupSettings => attributes[kDefaultGroupSettings] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  String get name => attributes[kName] ?? '';
-  int get position => attributes[kPosition] ?? 0;
+      _attributes[kChurchCenterMapVisible] == true;
+  String get color => _attributes[kColor] ?? '';
+  String get defaultGroupSettings => _attributes[kDefaultGroupSettings] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  String get name => _attributes[kName] ?? '';
+  int get position => _attributes[kPosition] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

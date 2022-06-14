@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.675068
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.915297
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Person Object
 ///
@@ -500,140 +501,140 @@ class PcoPeoplePerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get givenName => attributes[kGivenName] ?? '';
-  String get firstName => attributes[kFirstName] ?? '';
-  String get nickname => attributes[kNickname] ?? '';
-  String get middleName => attributes[kMiddleName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get birthdate => attributes[kBirthdate] ?? '';
-  String get anniversary => attributes[kAnniversary] ?? '';
-  String get gender => attributes[kGender] ?? '';
-  int get grade => attributes[kGrade] ?? 0;
-  bool get isChild => attributes[kChild] == true;
-  int get graduationYear => attributes[kGraduationYear] ?? 0;
-  bool get isSiteAdministrator => attributes[kSiteAdministrator] == true;
+  String get givenName => _attributes[kGivenName] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get nickname => _attributes[kNickname] ?? '';
+  String get middleName => _attributes[kMiddleName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get birthdate => _attributes[kBirthdate] ?? '';
+  String get anniversary => _attributes[kAnniversary] ?? '';
+  String get gender => _attributes[kGender] ?? '';
+  int get grade => _attributes[kGrade] ?? 0;
+  bool get isChild => _attributes[kChild] == true;
+  int get graduationYear => _attributes[kGraduationYear] ?? 0;
+  bool get isSiteAdministrator => _attributes[kSiteAdministrator] == true;
   bool get isAccountingAdministrator =>
-      attributes[kAccountingAdministrator] == true;
-  String get peoplePermissions => attributes[kPeoplePermissions] ?? '';
-  String get membership => attributes[kMembership] ?? '';
+      _attributes[kAccountingAdministrator] == true;
+  String get peoplePermissions => _attributes[kPeoplePermissions] ?? '';
+  String get membership => _attributes[kMembership] ?? '';
   DateTime get inactivatedAt =>
-      DateTime.parse(attributes[kInactivatedAt] ?? '');
-  String get status => attributes[kStatus] ?? '';
-  String get medicalNotes => attributes[kMedicalNotes] ?? '';
-  String get avatar => attributes[kAvatar] ?? '';
-  String get name => attributes[kName] ?? '';
-  String get demographicAvatarUrl => attributes[kDemographicAvatarUrl] ?? '';
-  String get directoryStatus => attributes[kDirectoryStatus] ?? '';
+      DateTime.parse(_attributes[kInactivatedAt] ?? '');
+  String get status => _attributes[kStatus] ?? '';
+  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
+  String get avatar => _attributes[kAvatar] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get demographicAvatarUrl => _attributes[kDemographicAvatarUrl] ?? '';
+  String get directoryStatus => _attributes[kDirectoryStatus] ?? '';
   bool get isPassedBackgroundCheck =>
-      attributes[kPassedBackgroundCheck] == true;
-  bool get isCanCreateForms => attributes[kCanCreateForms] == true;
-  String get schoolType => attributes[kSchoolType] ?? '';
-  int get remoteId => attributes[kRemoteId] ?? 0;
-  String get searchName => attributes[kSearchName] ?? '';
-  String get searchPhoneNumber => attributes[kSearchPhoneNumber] ?? '';
-  String get searchPhoneNumberE164 => attributes[kSearchPhoneNumberE164] ?? '';
-  String get searchNameOrEmail => attributes[kSearchNameOrEmail] ?? '';
+      _attributes[kPassedBackgroundCheck] == true;
+  bool get isCanCreateForms => _attributes[kCanCreateForms] == true;
+  String get schoolType => _attributes[kSchoolType] ?? '';
+  int get remoteId => _attributes[kRemoteId] ?? 0;
+  String get searchName => _attributes[kSearchName] ?? '';
+  String get searchPhoneNumber => _attributes[kSearchPhoneNumber] ?? '';
+  String get searchPhoneNumberE164 => _attributes[kSearchPhoneNumberE164] ?? '';
+  String get searchNameOrEmail => _attributes[kSearchNameOrEmail] ?? '';
   String get searchNameOrEmailOrPhoneNumber =>
-      attributes[kSearchNameOrEmailOrPhoneNumber] ?? '';
+      _attributes[kSearchNameOrEmailOrPhoneNumber] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set givenName(String? x) =>
-      (x == null) ? attributes.remove(kGivenName) : attributes[kGivenName] = x;
+      (x == null) ? attributes.remove(kGivenName) : _attributes[kGivenName] = x;
 
   /// pass `null` to remove key from attributes
   set firstName(String? x) =>
-      (x == null) ? attributes.remove(kFirstName) : attributes[kFirstName] = x;
+      (x == null) ? attributes.remove(kFirstName) : _attributes[kFirstName] = x;
 
   /// pass `null` to remove key from attributes
   set nickname(String? x) =>
-      (x == null) ? attributes.remove(kNickname) : attributes[kNickname] = x;
+      (x == null) ? attributes.remove(kNickname) : _attributes[kNickname] = x;
 
   /// pass `null` to remove key from attributes
   set middleName(String? x) => (x == null)
       ? attributes.remove(kMiddleName)
-      : attributes[kMiddleName] = x;
+      : _attributes[kMiddleName] = x;
 
   /// pass `null` to remove key from attributes
   set lastName(String? x) =>
-      (x == null) ? attributes.remove(kLastName) : attributes[kLastName] = x;
+      (x == null) ? attributes.remove(kLastName) : _attributes[kLastName] = x;
 
   /// pass `null` to remove key from attributes
   set birthdate(String? x) =>
-      (x == null) ? attributes.remove(kBirthdate) : attributes[kBirthdate] = x;
+      (x == null) ? attributes.remove(kBirthdate) : _attributes[kBirthdate] = x;
 
   /// pass `null` to remove key from attributes
   set anniversary(String? x) => (x == null)
       ? attributes.remove(kAnniversary)
-      : attributes[kAnniversary] = x;
+      : _attributes[kAnniversary] = x;
 
   /// pass `null` to remove key from attributes
   set gender(String? x) =>
-      (x == null) ? attributes.remove(kGender) : attributes[kGender] = x;
+      (x == null) ? attributes.remove(kGender) : _attributes[kGender] = x;
 
   /// pass `null` to remove key from attributes
   set grade(int? x) =>
-      (x == null) ? attributes.remove(kGrade) : attributes[kGrade] = x;
+      (x == null) ? attributes.remove(kGrade) : _attributes[kGrade] = x;
 
   /// pass `null` to remove key from attributes
   set isChild(bool? x) =>
-      (x == null) ? attributes.remove(kChild) : attributes[kChild] = x;
+      (x == null) ? attributes.remove(kChild) : _attributes[kChild] = x;
 
   /// pass `null` to remove key from attributes
   set graduationYear(int? x) => (x == null)
       ? attributes.remove(kGraduationYear)
-      : attributes[kGraduationYear] = x;
+      : _attributes[kGraduationYear] = x;
 
   /// pass `null` to remove key from attributes
   set isSiteAdministrator(bool? x) => (x == null)
       ? attributes.remove(kSiteAdministrator)
-      : attributes[kSiteAdministrator] = x;
+      : _attributes[kSiteAdministrator] = x;
 
   /// pass `null` to remove key from attributes
   set isAccountingAdministrator(bool? x) => (x == null)
       ? attributes.remove(kAccountingAdministrator)
-      : attributes[kAccountingAdministrator] = x;
+      : _attributes[kAccountingAdministrator] = x;
 
   /// pass `null` to remove key from attributes
   set peoplePermissions(String? x) => (x == null)
       ? attributes.remove(kPeoplePermissions)
-      : attributes[kPeoplePermissions] = x;
+      : _attributes[kPeoplePermissions] = x;
 
   /// pass `null` to remove key from attributes
   set membership(String? x) => (x == null)
       ? attributes.remove(kMembership)
-      : attributes[kMembership] = x;
+      : _attributes[kMembership] = x;
 
   /// pass `null` to remove key from attributes
   set inactivatedAt(DateTime? x) => (x == null)
       ? attributes.remove(kInactivatedAt)
-      : attributes[kInactivatedAt] = x.toIso8601String();
+      : _attributes[kInactivatedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set status(String? x) =>
-      (x == null) ? attributes.remove(kStatus) : attributes[kStatus] = x;
+      (x == null) ? attributes.remove(kStatus) : _attributes[kStatus] = x;
 
   /// pass `null` to remove key from attributes
   set medicalNotes(String? x) => (x == null)
       ? attributes.remove(kMedicalNotes)
-      : attributes[kMedicalNotes] = x;
+      : _attributes[kMedicalNotes] = x;
 
   /// pass `null` to remove key from attributes
   set avatar(String? x) =>
-      (x == null) ? attributes.remove(kAvatar) : attributes[kAvatar] = x;
+      (x == null) ? attributes.remove(kAvatar) : _attributes[kAvatar] = x;
 
   /// pass `null` to remove key from attributes
   set remoteId(int? x) =>
-      (x == null) ? attributes.remove(kRemoteId) : attributes[kRemoteId] = x;
+      (x == null) ? attributes.remove(kRemoteId) : _attributes[kRemoteId] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set primaryCampusId(String? x) => (x == null)
       ? attributes.remove(kPrimaryCampusId)
-      : attributes[kPrimaryCampusId] = x;
-  String get primaryCampusId => attributes[kPrimaryCampusId] ?? '';
+      : _attributes[kPrimaryCampusId] = x;
+  String get primaryCampusId => _attributes[kPrimaryCampusId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

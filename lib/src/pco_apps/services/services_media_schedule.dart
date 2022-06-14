@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.514319
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.724579
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services MediaSchedule Object
 ///
@@ -145,10 +146,10 @@ class PcoServicesMediaSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get planDates => attributes[kPlanDates] ?? '';
-  String get planShortDates => attributes[kPlanShortDates] ?? '';
-  String get serviceTypeName => attributes[kServiceTypeName] ?? '';
-  DateTime get planSortDate => DateTime.parse(attributes[kPlanSortDate] ?? '');
+  String get planDates => _attributes[kPlanDates] ?? '';
+  String get planShortDates => _attributes[kPlanShortDates] ?? '';
+  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
+  DateTime get planSortDate => DateTime.parse(_attributes[kPlanSortDate] ?? '');
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

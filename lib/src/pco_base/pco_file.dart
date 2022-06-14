@@ -1,4 +1,6 @@
-import 'pco_api_base.dart';
+part of pco;
+
+// import 'pco_api_base.dart';
 
 /// This class represents a PCO File Object
 ///

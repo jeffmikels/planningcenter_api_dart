@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.645485
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.884371
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Campus Object
 ///
@@ -236,102 +237,102 @@ class PcoPeopleCampus extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get latitude => attributes[kLatitude] ?? 0;
-  double get longitude => attributes[kLongitude] ?? 0;
-  String get description => attributes[kDescription] ?? '';
-  String get street => attributes[kStreet] ?? '';
-  String get city => attributes[kCity] ?? '';
-  String get state => attributes[kState] ?? '';
-  String get zip => attributes[kZip] ?? '';
-  String get country => attributes[kCountry] ?? '';
-  String get phoneNumber => attributes[kPhoneNumber] ?? '';
-  String get website => attributes[kWebsite] ?? '';
-  bool get isTwentyFourHourTime => attributes[kTwentyFourHourTime] == true;
-  int get dateFormat => attributes[kDateFormat] ?? 0;
-  bool get isChurchCenterEnabled => attributes[kChurchCenterEnabled] == true;
-  String get contactEmailAddress => attributes[kContactEmailAddress] ?? '';
-  String get timeZone => attributes[kTimeZone] ?? '';
+  double get latitude => _attributes[kLatitude] ?? 0;
+  double get longitude => _attributes[kLongitude] ?? 0;
+  String get description => _attributes[kDescription] ?? '';
+  String get street => _attributes[kStreet] ?? '';
+  String get city => _attributes[kCity] ?? '';
+  String get state => _attributes[kState] ?? '';
+  String get zip => _attributes[kZip] ?? '';
+  String get country => _attributes[kCountry] ?? '';
+  String get phoneNumber => _attributes[kPhoneNumber] ?? '';
+  String get website => _attributes[kWebsite] ?? '';
+  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
+  int get dateFormat => _attributes[kDateFormat] ?? 0;
+  bool get isChurchCenterEnabled => _attributes[kChurchCenterEnabled] == true;
+  String get contactEmailAddress => _attributes[kContactEmailAddress] ?? '';
+  String get timeZone => _attributes[kTimeZone] ?? '';
   bool get isGeolocationSetManually =>
-      attributes[kGeolocationSetManually] == true;
-  String get name => attributes[kName] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
+      _attributes[kGeolocationSetManually] == true;
+  String get name => _attributes[kName] ?? '';
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set latitude(double? x) =>
-      (x == null) ? attributes.remove(kLatitude) : attributes[kLatitude] = x;
+      (x == null) ? attributes.remove(kLatitude) : _attributes[kLatitude] = x;
 
   /// pass `null` to remove key from attributes
   set longitude(double? x) =>
-      (x == null) ? attributes.remove(kLongitude) : attributes[kLongitude] = x;
+      (x == null) ? attributes.remove(kLongitude) : _attributes[kLongitude] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   /// pass `null` to remove key from attributes
   set street(String? x) =>
-      (x == null) ? attributes.remove(kStreet) : attributes[kStreet] = x;
+      (x == null) ? attributes.remove(kStreet) : _attributes[kStreet] = x;
 
   /// pass `null` to remove key from attributes
   set city(String? x) =>
-      (x == null) ? attributes.remove(kCity) : attributes[kCity] = x;
+      (x == null) ? attributes.remove(kCity) : _attributes[kCity] = x;
 
   /// pass `null` to remove key from attributes
   set state(String? x) =>
-      (x == null) ? attributes.remove(kState) : attributes[kState] = x;
+      (x == null) ? attributes.remove(kState) : _attributes[kState] = x;
 
   /// pass `null` to remove key from attributes
   set zip(String? x) =>
-      (x == null) ? attributes.remove(kZip) : attributes[kZip] = x;
+      (x == null) ? attributes.remove(kZip) : _attributes[kZip] = x;
 
   /// pass `null` to remove key from attributes
   set country(String? x) =>
-      (x == null) ? attributes.remove(kCountry) : attributes[kCountry] = x;
+      (x == null) ? attributes.remove(kCountry) : _attributes[kCountry] = x;
 
   /// pass `null` to remove key from attributes
   set phoneNumber(String? x) => (x == null)
       ? attributes.remove(kPhoneNumber)
-      : attributes[kPhoneNumber] = x;
+      : _attributes[kPhoneNumber] = x;
 
   /// pass `null` to remove key from attributes
   set website(String? x) =>
-      (x == null) ? attributes.remove(kWebsite) : attributes[kWebsite] = x;
+      (x == null) ? attributes.remove(kWebsite) : _attributes[kWebsite] = x;
 
   /// pass `null` to remove key from attributes
   set isTwentyFourHourTime(bool? x) => (x == null)
       ? attributes.remove(kTwentyFourHourTime)
-      : attributes[kTwentyFourHourTime] = x;
+      : _attributes[kTwentyFourHourTime] = x;
 
   /// pass `null` to remove key from attributes
   set dateFormat(int? x) => (x == null)
       ? attributes.remove(kDateFormat)
-      : attributes[kDateFormat] = x;
+      : _attributes[kDateFormat] = x;
 
   /// pass `null` to remove key from attributes
   set isChurchCenterEnabled(bool? x) => (x == null)
       ? attributes.remove(kChurchCenterEnabled)
-      : attributes[kChurchCenterEnabled] = x;
+      : _attributes[kChurchCenterEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set contactEmailAddress(String? x) => (x == null)
       ? attributes.remove(kContactEmailAddress)
-      : attributes[kContactEmailAddress] = x;
+      : _attributes[kContactEmailAddress] = x;
 
   /// pass `null` to remove key from attributes
   set timeZone(String? x) =>
-      (x == null) ? attributes.remove(kTimeZone) : attributes[kTimeZone] = x;
+      (x == null) ? attributes.remove(kTimeZone) : _attributes[kTimeZone] = x;
 
   /// pass `null` to remove key from attributes
   set isGeolocationSetManually(bool? x) => (x == null)
       ? attributes.remove(kGeolocationSetManually)
-      : attributes[kGeolocationSetManually] = x;
+      : _attributes[kGeolocationSetManually] = x;
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

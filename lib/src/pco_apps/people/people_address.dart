@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.643538
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.881916
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Address Object
 ///
@@ -189,38 +190,38 @@ class PcoPeopleAddres extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get city => attributes[kCity] ?? '';
-  String get state => attributes[kState] ?? '';
-  String get zip => attributes[kZip] ?? '';
-  String get street => attributes[kStreet] ?? '';
-  String get location => attributes[kLocation] ?? '';
-  bool get isPrimary => attributes[kPrimary] == true;
+  String get city => _attributes[kCity] ?? '';
+  String get state => _attributes[kState] ?? '';
+  String get zip => _attributes[kZip] ?? '';
+  String get street => _attributes[kStreet] ?? '';
+  String get location => _attributes[kLocation] ?? '';
+  bool get isPrimary => _attributes[kPrimary] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set city(String? x) =>
-      (x == null) ? attributes.remove(kCity) : attributes[kCity] = x;
+      (x == null) ? attributes.remove(kCity) : _attributes[kCity] = x;
 
   /// pass `null` to remove key from attributes
   set state(String? x) =>
-      (x == null) ? attributes.remove(kState) : attributes[kState] = x;
+      (x == null) ? attributes.remove(kState) : _attributes[kState] = x;
 
   /// pass `null` to remove key from attributes
   set zip(String? x) =>
-      (x == null) ? attributes.remove(kZip) : attributes[kZip] = x;
+      (x == null) ? attributes.remove(kZip) : _attributes[kZip] = x;
 
   /// pass `null` to remove key from attributes
   set street(String? x) =>
-      (x == null) ? attributes.remove(kStreet) : attributes[kStreet] = x;
+      (x == null) ? attributes.remove(kStreet) : _attributes[kStreet] = x;
 
   /// pass `null` to remove key from attributes
   set location(String? x) =>
-      (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+      (x == null) ? attributes.remove(kLocation) : _attributes[kLocation] = x;
 
   /// pass `null` to remove key from attributes
   set isPrimary(bool? x) =>
-      (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;
+      (x == null) ? attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

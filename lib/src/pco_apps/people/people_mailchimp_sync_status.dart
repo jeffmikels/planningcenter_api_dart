@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.657087
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.897794
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People MailchimpSyncStatus Object
 ///
@@ -135,11 +136,11 @@ class PcoPeopleMailchimpSyncStatu extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get status => attributes[kStatus] ?? '';
-  String get error => attributes[kError] ?? '';
-  int get progress => attributes[kProgress] ?? 0;
-  DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
-  int get segmentId => attributes[kSegmentId] ?? 0;
+  String get status => _attributes[kStatus] ?? '';
+  String get error => _attributes[kError] ?? '';
+  int get progress => _attributes[kProgress] ?? 0;
+  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
+  int get segmentId => _attributes[kSegmentId] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

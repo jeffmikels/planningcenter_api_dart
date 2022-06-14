@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.543158
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.745572
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services TextSetting Object
 ///
@@ -147,36 +148,36 @@ class PcoServicesTextSetting extends PcoResource {
 
   // getters for object attributes
   bool get isSchedulingRequestsEnabled =>
-      attributes[kSchedulingRequestsEnabled] == true;
-  bool get isGeneralEmailsEnabled => attributes[kGeneralEmailsEnabled] == true;
+      _attributes[kSchedulingRequestsEnabled] == true;
+  bool get isGeneralEmailsEnabled => _attributes[kGeneralEmailsEnabled] == true;
   bool get isSchedulingRepliesEnabled =>
-      attributes[kSchedulingRepliesEnabled] == true;
-  bool get isRemindersEnabled => attributes[kRemindersEnabled] == true;
-  String get carrier => attributes[kCarrier] ?? '';
-  String get displayNumber => attributes[kDisplayNumber] ?? '';
-  String get normalizedNumber => attributes[kNormalizedNumber] ?? '';
+      _attributes[kSchedulingRepliesEnabled] == true;
+  bool get isRemindersEnabled => _attributes[kRemindersEnabled] == true;
+  String get carrier => _attributes[kCarrier] ?? '';
+  String get displayNumber => _attributes[kDisplayNumber] ?? '';
+  String get normalizedNumber => _attributes[kNormalizedNumber] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set isSchedulingRequestsEnabled(bool? x) => (x == null)
       ? attributes.remove(kSchedulingRequestsEnabled)
-      : attributes[kSchedulingRequestsEnabled] = x;
+      : _attributes[kSchedulingRequestsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isGeneralEmailsEnabled(bool? x) => (x == null)
       ? attributes.remove(kGeneralEmailsEnabled)
-      : attributes[kGeneralEmailsEnabled] = x;
+      : _attributes[kGeneralEmailsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isSchedulingRepliesEnabled(bool? x) => (x == null)
       ? attributes.remove(kSchedulingRepliesEnabled)
-      : attributes[kSchedulingRepliesEnabled] = x;
+      : _attributes[kSchedulingRepliesEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isRemindersEnabled(bool? x) => (x == null)
       ? attributes.remove(kRemindersEnabled)
-      : attributes[kRemindersEnabled] = x;
+      : _attributes[kRemindersEnabled] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

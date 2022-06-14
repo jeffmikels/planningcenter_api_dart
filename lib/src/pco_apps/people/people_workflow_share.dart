@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.704802
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.949925
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People WorkflowShare Object
 ///
@@ -144,9 +145,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get group => attributes[kGroup] ?? '';
-  String get permission => attributes[kPermission] ?? '';
-  String get personId => attributes[kPersonId] ?? '';
+  String get group => _attributes[kGroup] ?? '';
+  String get permission => _attributes[kPermission] ?? '';
+  String get personId => _attributes[kPersonId] ?? '';
 
   // setters for object attributes
 
@@ -154,18 +155,18 @@ class PcoPeopleWorkflowShare extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set group(String? x) =>
-      (x == null) ? attributes.remove(kGroup) : attributes[kGroup] = x;
+      (x == null) ? attributes.remove(kGroup) : _attributes[kGroup] = x;
 
   /// Possible values: `view`, `manage_cards`, or `manage`
 
   /// pass `null` to remove key from attributes
   set permission(String? x) => (x == null)
       ? attributes.remove(kPermission)
-      : attributes[kPermission] = x;
+      : _attributes[kPermission] = x;
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

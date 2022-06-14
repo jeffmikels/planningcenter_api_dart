@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.574569
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.815049
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns Station Object
 ///
@@ -163,13 +164,13 @@ class PcoCheckInsStation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isOnline => attributes[kOnline] == true;
-  int get mode => attributes[kMode] ?? 0;
-  String get name => attributes[kName] ?? '';
-  int get timeoutSeconds => attributes[kTimeoutSeconds] ?? 0;
-  String get inputType => attributes[kInputType] ?? '';
-  String get inputTypeOptions => attributes[kInputTypeOptions] ?? '';
-  int get checkInCount => attributes[kCheckInCount] ?? 0;
+  bool get isOnline => _attributes[kOnline] == true;
+  int get mode => _attributes[kMode] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  int get timeoutSeconds => _attributes[kTimeoutSeconds] ?? 0;
+  String get inputType => _attributes[kInputType] ?? '';
+  String get inputTypeOptions => _attributes[kInputTypeOptions] ?? '';
+  int get checkInCount => _attributes[kCheckInCount] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

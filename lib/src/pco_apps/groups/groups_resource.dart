@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.817876
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.038829
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Resource Object
 ///
@@ -148,11 +149,11 @@ class PcoGroupsResource extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get description => attributes[kDescription] ?? '';
-  DateTime get lastUpdated => DateTime.parse(attributes[kLastUpdated] ?? '');
-  String get name => attributes[kName] ?? '';
-  String get type => attributes[kType] ?? '';
-  String get visibility => attributes[kVisibility] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  DateTime get lastUpdated => DateTime.parse(_attributes[kLastUpdated] ?? '');
+  String get name => _attributes[kName] ?? '';
+  String get type => _attributes[kType] ?? '';
+  String get visibility => _attributes[kVisibility] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

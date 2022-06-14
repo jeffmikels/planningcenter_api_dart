@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.668471
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.908781
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Organization Object
 ///
@@ -168,12 +169,12 @@ class PcoPeopleOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get countryCode => attributes[kCountryCode] ?? '';
-  int get dateFormat => attributes[kDateFormat] ?? 0;
-  String get timeZone => attributes[kTimeZone] ?? '';
-  String get contactWebsite => attributes[kContactWebsite] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get countryCode => _attributes[kCountryCode] ?? '';
+  int get dateFormat => _attributes[kDateFormat] ?? 0;
+  String get timeZone => _attributes[kTimeZone] ?? '';
+  String get contactWebsite => _attributes[kContactWebsite] ?? '';
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

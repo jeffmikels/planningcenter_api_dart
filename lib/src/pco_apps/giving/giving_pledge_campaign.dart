@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.780971
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.024715
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving PledgeCampaign Object
 ///
@@ -185,59 +186,59 @@ class PcoGivingPledgeCampaign extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  int get goalCents => attributes[kGoalCents] ?? 0;
-  String get goalCurrency => attributes[kGoalCurrency] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  int get goalCents => _attributes[kGoalCents] ?? 0;
+  String get goalCurrency => _attributes[kGoalCurrency] ?? '';
   bool get isShowGoalInChurchCenter =>
-      attributes[kShowGoalInChurchCenter] == true;
+      _attributes[kShowGoalInChurchCenter] == true;
   int get receivedTotalFromPledgesCents =>
-      attributes[kReceivedTotalFromPledgesCents] ?? 0;
+      _attributes[kReceivedTotalFromPledgesCents] ?? 0;
   int get receivedTotalOutsideOfPledgesCents =>
-      attributes[kReceivedTotalOutsideOfPledgesCents] ?? 0;
+      _attributes[kReceivedTotalOutsideOfPledgesCents] ?? 0;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   /// pass `null` to remove key from attributes
   set startsAt(DateTime? x) => (x == null)
       ? attributes.remove(kStartsAt)
-      : attributes[kStartsAt] = x.toIso8601String();
+      : _attributes[kStartsAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set endsAt(DateTime? x) => (x == null)
       ? attributes.remove(kEndsAt)
-      : attributes[kEndsAt] = x.toIso8601String();
+      : _attributes[kEndsAt] = x.toIso8601String();
 
   /// Optional. During the donation period of this campaign, the running total of donations will be tracked against this number
 
   /// pass `null` to remove key from attributes
   set goalCents(int? x) =>
-      (x == null) ? attributes.remove(kGoalCents) : attributes[kGoalCents] = x;
+      (x == null) ? attributes.remove(kGoalCents) : _attributes[kGoalCents] = x;
 
   /// In addition to seeing their personal pledge progress within their donor profile, this option allows donors to see the the collective progress towards the campaign’s overall goal (if set).
 
   /// pass `null` to remove key from attributes
   set isShowGoalInChurchCenter(bool? x) => (x == null)
       ? attributes.remove(kShowGoalInChurchCenter)
-      : attributes[kShowGoalInChurchCenter] = x;
+      : _attributes[kShowGoalInChurchCenter] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set fundId(String? x) =>
-      (x == null) ? attributes.remove(kFundId) : attributes[kFundId] = x;
-  String get fundId => attributes[kFundId] ?? '';
+      (x == null) ? attributes.remove(kFundId) : _attributes[kFundId] = x;
+  String get fundId => _attributes[kFundId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

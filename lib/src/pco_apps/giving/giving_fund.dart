@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.776684
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.021666
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving Fund Object
 ///
@@ -161,42 +162,42 @@ class PcoGivingFund extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get ledgerCode => attributes[kLedgerCode] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  String get visibility => attributes[kVisibility] ?? '';
-  int get colorIdentifier => attributes[kColorIdentifier] ?? 0;
-  bool get isDefault => attributes[kDefault] == true;
-  String get color => attributes[kColor] ?? '';
-  bool get isDeletable => attributes[kDeletable] == true;
+  String get name => _attributes[kName] ?? '';
+  String get ledgerCode => _attributes[kLedgerCode] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  String get visibility => _attributes[kVisibility] ?? '';
+  int get colorIdentifier => _attributes[kColorIdentifier] ?? 0;
+  bool get isDefault => _attributes[kDefault] == true;
+  String get color => _attributes[kColor] ?? '';
+  bool get isDeletable => _attributes[kDeletable] == true;
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set ledgerCode(String? x) => (x == null)
       ? attributes.remove(kLedgerCode)
-      : attributes[kLedgerCode] = x;
+      : _attributes[kLedgerCode] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   /// Possible values: `everywhere`, `admin_only`, `nowhere`, or `hidden`
 
   /// pass `null` to remove key from attributes
   set visibility(String? x) => (x == null)
       ? attributes.remove(kVisibility)
-      : attributes[kVisibility] = x;
+      : _attributes[kVisibility] = x;
 
   /// pass `null` to remove key from attributes
   set colorIdentifier(int? x) => (x == null)
       ? attributes.remove(kColorIdentifier)
-      : attributes[kColorIdentifier] = x;
+      : _attributes[kColorIdentifier] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

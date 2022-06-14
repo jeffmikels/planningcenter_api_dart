@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.815910
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.035407
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Location Object
 ///
@@ -142,13 +143,13 @@ class PcoGroupsLocation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get displayPreference => attributes[kDisplayPreference] ?? '';
-  String get fullFormattedAddress => attributes[kFullFormattedAddress] ?? '';
-  double get latitude => attributes[kLatitude] ?? 0;
-  double get longitude => attributes[kLongitude] ?? 0;
-  String get name => attributes[kName] ?? '';
-  String get radius => attributes[kRadius] ?? '';
-  String get strategy => attributes[kStrategy] ?? '';
+  String get displayPreference => _attributes[kDisplayPreference] ?? '';
+  String get fullFormattedAddress => _attributes[kFullFormattedAddress] ?? '';
+  double get latitude => _attributes[kLatitude] ?? 0;
+  double get longitude => _attributes[kLongitude] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  String get radius => _attributes[kRadius] ?? '';
+  String get strategy => _attributes[kStrategy] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

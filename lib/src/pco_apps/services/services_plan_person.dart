@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.524662
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.732040
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PlanPerson Object
 ///
@@ -269,28 +270,28 @@ class PcoServicesPlanPerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get status => attributes[kStatus] ?? '';
-  String get notes => attributes[kNotes] ?? '';
-  String get declineReason => attributes[kDeclineReason] ?? '';
-  String get name => attributes[kName] ?? '';
+  String get status => _attributes[kStatus] ?? '';
+  String get notes => _attributes[kNotes] ?? '';
+  String get declineReason => _attributes[kDeclineReason] ?? '';
+  String get name => _attributes[kName] ?? '';
   String get notificationChangedByName =>
-      attributes[kNotificationChangedByName] ?? '';
+      _attributes[kNotificationChangedByName] ?? '';
   String get notificationSenderName =>
-      attributes[kNotificationSenderName] ?? '';
-  String get teamPositionName => attributes[kTeamPositionName] ?? '';
-  String get photoThumbnail => attributes[kPhotoThumbnail] ?? '';
+      _attributes[kNotificationSenderName] ?? '';
+  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
+  String get photoThumbnail => _attributes[kPhotoThumbnail] ?? '';
   DateTime get statusUpdatedAt =>
-      DateTime.parse(attributes[kStatusUpdatedAt] ?? '');
+      DateTime.parse(_attributes[kStatusUpdatedAt] ?? '');
   DateTime get notificationChangedAt =>
-      DateTime.parse(attributes[kNotificationChangedAt] ?? '');
+      DateTime.parse(_attributes[kNotificationChangedAt] ?? '');
   DateTime get notificationPreparedAt =>
-      DateTime.parse(attributes[kNotificationPreparedAt] ?? '');
+      DateTime.parse(_attributes[kNotificationPreparedAt] ?? '');
   DateTime get notificationReadAt =>
-      DateTime.parse(attributes[kNotificationReadAt] ?? '');
+      DateTime.parse(_attributes[kNotificationReadAt] ?? '');
   DateTime get notificationSentAt =>
-      DateTime.parse(attributes[kNotificationSentAt] ?? '');
-  bool get isPrepareNotification => attributes[kPrepareNotification] == true;
-  bool get isCanAcceptPartial => attributes[kCanAcceptPartial] == true;
+      DateTime.parse(_attributes[kNotificationSentAt] ?? '');
+  bool get isPrepareNotification => _attributes[kPrepareNotification] == true;
+  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
 
   // setters for object attributes
 
@@ -298,44 +299,44 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set status(String? x) =>
-      (x == null) ? attributes.remove(kStatus) : attributes[kStatus] = x;
+      (x == null) ? attributes.remove(kStatus) : _attributes[kStatus] = x;
 
   /// pass `null` to remove key from attributes
   set notes(String? x) =>
-      (x == null) ? attributes.remove(kNotes) : attributes[kNotes] = x;
+      (x == null) ? attributes.remove(kNotes) : _attributes[kNotes] = x;
 
   /// pass `null` to remove key from attributes
   set declineReason(String? x) => (x == null)
       ? attributes.remove(kDeclineReason)
-      : attributes[kDeclineReason] = x;
+      : _attributes[kDeclineReason] = x;
 
   /// pass `null` to remove key from attributes
   set teamPositionName(String? x) => (x == null)
       ? attributes.remove(kTeamPositionName)
-      : attributes[kTeamPositionName] = x;
+      : _attributes[kTeamPositionName] = x;
 
   /// pass `null` to remove key from attributes
   set notificationPreparedAt(DateTime? x) => (x == null)
       ? attributes.remove(kNotificationPreparedAt)
-      : attributes[kNotificationPreparedAt] = x.toIso8601String();
+      : _attributes[kNotificationPreparedAt] = x.toIso8601String();
 
   /// pass `null` to remove key from attributes
   set isPrepareNotification(bool? x) => (x == null)
       ? attributes.remove(kPrepareNotification)
-      : attributes[kPrepareNotification] = x;
+      : _attributes[kPrepareNotification] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   /// pass `null` to remove key from attributes
   set respondsToId(String? x) => (x == null)
       ? attributes.remove(kRespondsToId)
-      : attributes[kRespondsToId] = x;
-  String get respondsToId => attributes[kRespondsToId] ?? '';
+      : _attributes[kRespondsToId] = x;
+  String get respondsToId => _attributes[kRespondsToId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

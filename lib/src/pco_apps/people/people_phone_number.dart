@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.679906
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.920261
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People PhoneNumber Object
 ///
@@ -182,32 +183,32 @@ class PcoPeoplePhoneNumber extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get number => attributes[kNumber] ?? '';
-  String get carrier => attributes[kCarrier] ?? '';
-  String get location => attributes[kLocation] ?? '';
-  bool get isPrimary => attributes[kPrimary] == true;
-  String get e164 => attributes[kE164] ?? '';
-  String get international => attributes[kInternational] ?? '';
-  String get national => attributes[kNational] ?? '';
-  String get countryCode => attributes[kCountryCode] ?? '';
+  String get number => _attributes[kNumber] ?? '';
+  String get carrier => _attributes[kCarrier] ?? '';
+  String get location => _attributes[kLocation] ?? '';
+  bool get isPrimary => _attributes[kPrimary] == true;
+  String get e164 => _attributes[kE164] ?? '';
+  String get international => _attributes[kInternational] ?? '';
+  String get national => _attributes[kNational] ?? '';
+  String get countryCode => _attributes[kCountryCode] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set number(String? x) =>
-      (x == null) ? attributes.remove(kNumber) : attributes[kNumber] = x;
+      (x == null) ? attributes.remove(kNumber) : _attributes[kNumber] = x;
 
   /// pass `null` to remove key from attributes
   set carrier(String? x) =>
-      (x == null) ? attributes.remove(kCarrier) : attributes[kCarrier] = x;
+      (x == null) ? attributes.remove(kCarrier) : _attributes[kCarrier] = x;
 
   /// pass `null` to remove key from attributes
   set location(String? x) =>
-      (x == null) ? attributes.remove(kLocation) : attributes[kLocation] = x;
+      (x == null) ? attributes.remove(kLocation) : _attributes[kLocation] = x;
 
   /// pass `null` to remove key from attributes
   set isPrimary(bool? x) =>
-      (x == null) ? attributes.remove(kPrimary) : attributes[kPrimary] = x;
+      (x == null) ? attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

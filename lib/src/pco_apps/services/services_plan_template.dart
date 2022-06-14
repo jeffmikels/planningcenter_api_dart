@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.526418
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.733932
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PlanTemplate Object
 ///
@@ -187,14 +188,14 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get itemCount => attributes[kItemCount] ?? 0;
-  int get teamCount => attributes[kTeamCount] ?? 0;
-  int get noteCount => attributes[kNoteCount] ?? 0;
-  bool get isCanViewOrder => attributes[kCanViewOrder] == true;
-  bool get isMultiDay => attributes[kMultiDay] == true;
-  bool get isPrefersOrderView => attributes[kPrefersOrderView] == true;
-  bool get isRehearsable => attributes[kRehearsable] == true;
+  String get name => _attributes[kName] ?? '';
+  int get itemCount => _attributes[kItemCount] ?? 0;
+  int get teamCount => _attributes[kTeamCount] ?? 0;
+  int get noteCount => _attributes[kNoteCount] ?? 0;
+  bool get isCanViewOrder => _attributes[kCanViewOrder] == true;
+  bool get isMultiDay => _attributes[kMultiDay] == true;
+  bool get isPrefersOrderView => _attributes[kPrefersOrderView] == true;
+  bool get isRehearsable => _attributes[kRehearsable] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

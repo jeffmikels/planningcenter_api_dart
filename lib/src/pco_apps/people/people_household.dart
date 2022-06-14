@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.652810
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.890776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People Household Object
 ///
@@ -191,31 +192,31 @@ class PcoPeopleHousehold extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get memberCount => attributes[kMemberCount] ?? 0;
-  String get primaryContactName => attributes[kPrimaryContactName] ?? '';
-  String get avatar => attributes[kAvatar] ?? '';
-  String get primaryContactId => attributes[kPrimaryContactId] ?? '';
+  String get name => _attributes[kName] ?? '';
+  int get memberCount => _attributes[kMemberCount] ?? 0;
+  String get primaryContactName => _attributes[kPrimaryContactName] ?? '';
+  String get avatar => _attributes[kAvatar] ?? '';
+  String get primaryContactId => _attributes[kPrimaryContactId] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set memberCount(int? x) => (x == null)
       ? attributes.remove(kMemberCount)
-      : attributes[kMemberCount] = x;
+      : _attributes[kMemberCount] = x;
 
   /// pass `null` to remove key from attributes
   set avatar(String? x) =>
-      (x == null) ? attributes.remove(kAvatar) : attributes[kAvatar] = x;
+      (x == null) ? attributes.remove(kAvatar) : _attributes[kAvatar] = x;
 
   /// pass `null` to remove key from attributes
   set primaryContactId(String? x) => (x == null)
       ? attributes.remove(kPrimaryContactId)
-      : attributes[kPrimaryContactId] = x;
+      : _attributes[kPrimaryContactId] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

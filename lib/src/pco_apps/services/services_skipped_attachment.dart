@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.536664
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.740348
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services SkippedAttachment Object
 ///
@@ -136,7 +137,7 @@ class PcoServicesSkippedAttachment extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isSkipped => attributes[kSkipped] == true;
+  bool get isSkipped => _attributes[kSkipped] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

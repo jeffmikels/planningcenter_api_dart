@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.567906
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.800108
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO CheckIns EventLabel Object
 ///
@@ -143,10 +144,10 @@ class PcoCheckInsEventLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get quantity => attributes[kQuantity] ?? 0;
-  bool get isForRegular => attributes[kForRegular] == true;
-  bool get isForGuest => attributes[kForGuest] == true;
-  bool get isForVolunteer => attributes[kForVolunteer] == true;
+  int get quantity => _attributes[kQuantity] ?? 0;
+  bool get isForRegular => _attributes[kForRegular] == true;
+  bool get isForGuest => _attributes[kForGuest] == true;
+  bool get isForVolunteer => _attributes[kForVolunteer] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

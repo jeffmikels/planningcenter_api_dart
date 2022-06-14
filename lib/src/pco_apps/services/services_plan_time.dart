@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.527122
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.734652
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PlanTime Object
 ///
@@ -168,20 +169,20 @@ class PcoServicesPlanTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get timeType => attributes[kTimeType] ?? 0;
-  bool get isRecorded => attributes[kRecorded] == true;
-  List get teamReminders => attributes[kTeamReminders] ?? [];
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  DateTime get liveStartsAt => DateTime.parse(attributes[kLiveStartsAt] ?? '');
-  DateTime get liveEndsAt => DateTime.parse(attributes[kLiveEndsAt] ?? '');
+  String get name => _attributes[kName] ?? '';
+  int get timeType => _attributes[kTimeType] ?? 0;
+  bool get isRecorded => _attributes[kRecorded] == true;
+  List get teamReminders => _attributes[kTeamReminders] ?? [];
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  DateTime get liveStartsAt => DateTime.parse(_attributes[kLiveStartsAt] ?? '');
+  DateTime get liveEndsAt => DateTime.parse(_attributes[kLiveEndsAt] ?? '');
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// Possible values are:
   ///
@@ -193,28 +194,28 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set timeType(int? x) =>
-      (x == null) ? attributes.remove(kTimeType) : attributes[kTimeType] = x;
+      (x == null) ? attributes.remove(kTimeType) : _attributes[kTimeType] = x;
 
   /// A Hash that maps a Team ID to a reminder value. If nothing is specified, no reminder is set for that team. A reminder value is an integer (0-7) equal to the number of days before the selected time a reminder should be sent.
 
   /// pass `null` to remove key from attributes
   set teamReminders(List? x) => (x == null)
       ? attributes.remove(kTeamReminders)
-      : attributes[kTeamReminders] = x;
+      : _attributes[kTeamReminders] = x;
 
   /// Planned start time.
 
   /// pass `null` to remove key from attributes
   set startsAt(DateTime? x) => (x == null)
       ? attributes.remove(kStartsAt)
-      : attributes[kStartsAt] = x.toIso8601String();
+      : _attributes[kStartsAt] = x.toIso8601String();
 
   /// Planned end time.
 
   /// pass `null` to remove key from attributes
   set endsAt(DateTime? x) => (x == null)
       ? attributes.remove(kEndsAt)
-      : attributes[kEndsAt] = x.toIso8601String();
+      : _attributes[kEndsAt] = x.toIso8601String();
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.816325
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.036289
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Membership Object
 ///
@@ -172,35 +173,35 @@ class PcoGroupsMembership extends PcoResource {
 
   // getters for object attributes
   String get accountCenterIdentifier =>
-      attributes[kAccountCenterIdentifier] ?? '';
-  String get avatarUrl => attributes[kAvatarUrl] ?? '';
-  String get colorIdentifier => attributes[kColorIdentifier] ?? '';
-  String get emailAddress => attributes[kEmailAddress] ?? '';
-  String get firstName => attributes[kFirstName] ?? '';
-  DateTime get joinedAt => DateTime.parse(attributes[kJoinedAt] ?? '');
-  String get lastName => attributes[kLastName] ?? '';
-  String get phoneNumber => attributes[kPhoneNumber] ?? '';
-  String get role => attributes[kRole] ?? '';
+      _attributes[kAccountCenterIdentifier] ?? '';
+  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  String get colorIdentifier => _attributes[kColorIdentifier] ?? '';
+  String get emailAddress => _attributes[kEmailAddress] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  DateTime get joinedAt => DateTime.parse(_attributes[kJoinedAt] ?? '');
+  String get lastName => _attributes[kLastName] ?? '';
+  String get phoneNumber => _attributes[kPhoneNumber] ?? '';
+  String get role => _attributes[kRole] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set joinedAt(DateTime? x) => (x == null)
       ? attributes.remove(kJoinedAt)
-      : attributes[kJoinedAt] = x.toIso8601String();
+      : _attributes[kJoinedAt] = x.toIso8601String();
 
   /// Can be either `leader` or `member`
 
   /// pass `null` to remove key from attributes
   set role(String? x) =>
-      (x == null) ? attributes.remove(kRole) : attributes[kRole] = x;
+      (x == null) ? attributes.remove(kRole) : _attributes[kRole] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

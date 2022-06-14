@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.537739
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.741008
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Song Object
 ///
@@ -194,18 +195,18 @@ class PcoServicesSong extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => attributes[kTitle] ?? '';
-  String get admin => attributes[kAdmin] ?? '';
-  String get author => attributes[kAuthor] ?? '';
-  String get copyright => attributes[kCopyright] ?? '';
-  bool get isHidden => attributes[kHidden] == true;
-  String get notes => attributes[kNotes] ?? '';
-  String get themes => attributes[kThemes] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  String get admin => _attributes[kAdmin] ?? '';
+  String get author => _attributes[kAuthor] ?? '';
+  String get copyright => _attributes[kCopyright] ?? '';
+  bool get isHidden => _attributes[kHidden] == true;
+  String get notes => _attributes[kNotes] ?? '';
+  String get themes => _attributes[kThemes] ?? '';
   String get lastScheduledShortDates =>
-      attributes[kLastScheduledShortDates] ?? '';
+      _attributes[kLastScheduledShortDates] ?? '';
   DateTime get lastScheduledAt =>
-      DateTime.parse(attributes[kLastScheduledAt] ?? '');
-  int get ccliNumber => attributes[kCcliNumber] ?? 0;
+      DateTime.parse(_attributes[kLastScheduledAt] ?? '');
+  int get ccliNumber => _attributes[kCcliNumber] ?? 0;
 
   // setters for object attributes
 
@@ -215,32 +216,32 @@ class PcoServicesSong extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// pass `null` to remove key from attributes
   set admin(String? x) =>
-      (x == null) ? attributes.remove(kAdmin) : attributes[kAdmin] = x;
+      (x == null) ? attributes.remove(kAdmin) : _attributes[kAdmin] = x;
 
   /// pass `null` to remove key from attributes
   set author(String? x) =>
-      (x == null) ? attributes.remove(kAuthor) : attributes[kAuthor] = x;
+      (x == null) ? attributes.remove(kAuthor) : _attributes[kAuthor] = x;
 
   /// pass `null` to remove key from attributes
   set copyright(String? x) =>
-      (x == null) ? attributes.remove(kCopyright) : attributes[kCopyright] = x;
+      (x == null) ? attributes.remove(kCopyright) : _attributes[kCopyright] = x;
 
   /// pass `null` to remove key from attributes
   set isHidden(bool? x) =>
-      (x == null) ? attributes.remove(kHidden) : attributes[kHidden] = x;
+      (x == null) ? attributes.remove(kHidden) : _attributes[kHidden] = x;
 
   /// pass `null` to remove key from attributes
   set themes(String? x) =>
-      (x == null) ? attributes.remove(kThemes) : attributes[kThemes] = x;
+      (x == null) ? attributes.remove(kThemes) : _attributes[kThemes] = x;
 
   /// pass `null` to remove key from attributes
   set ccliNumber(int? x) => (x == null)
       ? attributes.remove(kCcliNumber)
-      : attributes[kCcliNumber] = x;
+      : _attributes[kCcliNumber] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

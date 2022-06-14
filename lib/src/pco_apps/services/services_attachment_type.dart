@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.499574
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.710235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services AttachmentType Object
 ///
@@ -154,15 +155,15 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  String get aliases => attributes[kAliases] ?? '';
-  bool get isCapoedChordCharts => attributes[kCapoedChordCharts] == true;
-  bool get isChordCharts => attributes[kChordCharts] == true;
-  String get exclusions => attributes[kExclusions] ?? '';
-  bool get isLyrics => attributes[kLyrics] == true;
-  bool get isNumberCharts => attributes[kNumberCharts] == true;
-  bool get isNumeralCharts => attributes[kNumeralCharts] == true;
-  bool get isBuiltIn => attributes[kBuiltIn] == true;
+  String get name => _attributes[kName] ?? '';
+  String get aliases => _attributes[kAliases] ?? '';
+  bool get isCapoedChordCharts => _attributes[kCapoedChordCharts] == true;
+  bool get isChordCharts => _attributes[kChordCharts] == true;
+  String get exclusions => _attributes[kExclusions] ?? '';
+  bool get isLyrics => _attributes[kLyrics] == true;
+  bool get isNumberCharts => _attributes[kNumberCharts] == true;
+  bool get isNumeralCharts => _attributes[kNumeralCharts] == true;
+  bool get isBuiltIn => _attributes[kBuiltIn] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.744771
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.984072
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar EventTime Object
 ///
@@ -161,12 +162,12 @@ class PcoCalendarEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  DateTime get name => DateTime.parse(attributes[kName] ?? '');
-  bool get isVisibleOnKiosks => attributes[kVisibleOnKiosks] == true;
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  DateTime get name => DateTime.parse(_attributes[kName] ?? '');
+  bool get isVisibleOnKiosks => _attributes[kVisibleOnKiosks] == true;
   bool get isVisibleOnWidgetAndIcal =>
-      attributes[kVisibleOnWidgetAndIcal] == true;
+      _attributes[kVisibleOnWidgetAndIcal] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

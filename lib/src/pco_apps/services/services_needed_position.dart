@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.515215
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.725056
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services NeededPosition Object
 ///
@@ -163,29 +164,29 @@ class PcoServicesNeededPosition extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get quantity => attributes[kQuantity] ?? 0;
-  String get teamPositionName => attributes[kTeamPositionName] ?? '';
-  String get scheduledTo => attributes[kScheduledTo] ?? '';
+  int get quantity => _attributes[kQuantity] ?? 0;
+  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
+  String get scheduledTo => _attributes[kScheduledTo] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set quantity(int? x) =>
-      (x == null) ? attributes.remove(kQuantity) : attributes[kQuantity] = x;
+      (x == null) ? attributes.remove(kQuantity) : _attributes[kQuantity] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set timeId(String? x) =>
-      (x == null) ? attributes.remove(kTimeId) : attributes[kTimeId] = x;
-  String get timeId => attributes[kTimeId] ?? '';
+      (x == null) ? attributes.remove(kTimeId) : _attributes[kTimeId] = x;
+  String get timeId => _attributes[kTimeId] ?? '';
 
   /// pass `null` to remove key from attributes
   set timePreferenceOptionId(String? x) => (x == null)
       ? attributes.remove(kTimePreferenceOptionId)
-      : attributes[kTimePreferenceOptionId] = x;
+      : _attributes[kTimePreferenceOptionId] = x;
   String get timePreferenceOptionId =>
-      attributes[kTimePreferenceOptionId] ?? '';
+      _attributes[kTimePreferenceOptionId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

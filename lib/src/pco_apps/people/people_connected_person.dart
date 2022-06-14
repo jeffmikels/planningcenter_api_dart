@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.646890
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.885772
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People ConnectedPerson Object
 ///
@@ -151,14 +152,14 @@ class PcoPeopleConnectedPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get givenName => attributes[kGivenName] ?? '';
-  String get firstName => attributes[kFirstName] ?? '';
-  String get nickname => attributes[kNickname] ?? '';
-  String get middleName => attributes[kMiddleName] ?? '';
-  String get lastName => attributes[kLastName] ?? '';
-  String get gender => attributes[kGender] ?? '';
-  String get organizationName => attributes[kOrganizationName] ?? '';
-  String get organizationId => attributes[kOrganizationId] ?? '';
+  String get givenName => _attributes[kGivenName] ?? '';
+  String get firstName => _attributes[kFirstName] ?? '';
+  String get nickname => _attributes[kNickname] ?? '';
+  String get middleName => _attributes[kMiddleName] ?? '';
+  String get lastName => _attributes[kLastName] ?? '';
+  String get gender => _attributes[kGender] ?? '';
+  String get organizationName => _attributes[kOrganizationName] ?? '';
+  String get organizationId => _attributes[kOrganizationId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

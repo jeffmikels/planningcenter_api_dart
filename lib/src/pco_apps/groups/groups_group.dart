@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.815058
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.034457
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Groups Group Object
 ///
@@ -192,23 +193,23 @@ class PcoGroupsGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get archiveStatus => attributes[kArchiveStatus] ?? '';
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  String get contactEmail => attributes[kContactEmail] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  bool get isEnrollmentOpen => attributes[kEnrollmentOpen] == true;
-  String get enrollmentStrategy => attributes[kEnrollmentStrategy] ?? '';
-  String get eventsVisibility => attributes[kEventsVisibility] ?? '';
-  String get headerImage => attributes[kHeaderImage] ?? '';
+  String get archiveStatus => _attributes[kArchiveStatus] ?? '';
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  String get contactEmail => _attributes[kContactEmail] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  bool get isEnrollmentOpen => _attributes[kEnrollmentOpen] == true;
+  String get enrollmentStrategy => _attributes[kEnrollmentStrategy] ?? '';
+  String get eventsVisibility => _attributes[kEventsVisibility] ?? '';
+  String get headerImage => _attributes[kHeaderImage] ?? '';
   String get locationTypePreference =>
-      attributes[kLocationTypePreference] ?? '';
-  int get membershipsCount => attributes[kMembershipsCount] ?? 0;
-  String get name => attributes[kName] ?? '';
+      _attributes[kLocationTypePreference] ?? '';
+  int get membershipsCount => _attributes[kMembershipsCount] ?? 0;
+  String get name => _attributes[kName] ?? '';
   String get publicChurchCenterWebUrl =>
-      attributes[kPublicChurchCenterWebUrl] ?? '';
-  String get schedule => attributes[kSchedule] ?? '';
-  String get virtualLocationUrl => attributes[kVirtualLocationUrl] ?? '';
-  String get widgetStatus => attributes[kWidgetStatus] ?? '';
+      _attributes[kPublicChurchCenterWebUrl] ?? '';
+  String get schedule => _attributes[kSchedule] ?? '';
+  String get virtualLocationUrl => _attributes[kVirtualLocationUrl] ?? '';
+  String get widgetStatus => _attributes[kWidgetStatus] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

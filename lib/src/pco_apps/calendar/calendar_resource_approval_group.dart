@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.750089
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.995426
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar ResourceApprovalGroup Object
 ///
@@ -147,9 +148,9 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => attributes[kName] ?? '';
-  int get resourceCount => attributes[kResourceCount] ?? 0;
-  int get roomCount => attributes[kRoomCount] ?? 0;
+  String get name => _attributes[kName] ?? '';
+  int get resourceCount => _attributes[kResourceCount] ?? 0;
+  int get roomCount => _attributes[kRoomCount] ?? 0;
 
   // setters for object attributes
 
@@ -157,7 +158,7 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

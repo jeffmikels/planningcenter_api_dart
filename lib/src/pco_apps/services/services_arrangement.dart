@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.485288
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.695931
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Arrangement Object
 ///
@@ -277,47 +278,47 @@ class PcoServicesArrangement extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get bpm => attributes[kBpm] ?? 0;
-  String get isrc => attributes[kIsrc] ?? '';
-  bool get isHasChords => attributes[kHasChords] == true;
-  int get length => attributes[kLength] ?? 0;
-  String get meter => attributes[kMeter] ?? '';
-  String get name => attributes[kName] ?? '';
-  String get notes => attributes[kNotes] ?? '';
-  String get printMargin => attributes[kPrintMargin] ?? '';
-  String get printOrientation => attributes[kPrintOrientation] ?? '';
-  String get printPageSize => attributes[kPrintPageSize] ?? '';
-  String get chordChart => attributes[kChordChart] ?? '';
-  String get chordChartFont => attributes[kChordChartFont] ?? '';
-  String get chordChartKey => attributes[kChordChartKey] ?? '';
-  int get chordChartColumns => attributes[kChordChartColumns] ?? 0;
-  int get chordChartFontSize => attributes[kChordChartFontSize] ?? 0;
-  bool get isHasChordChart => attributes[kHasChordChart] == true;
-  bool get isLyricsEnabled => attributes[kLyricsEnabled] == true;
-  bool get isNumberChartEnabled => attributes[kNumberChartEnabled] == true;
-  bool get isNumeralChartEnabled => attributes[kNumeralChartEnabled] == true;
-  List get sequence => attributes[kSequence] ?? [];
-  List get sequenceShort => attributes[kSequenceShort] ?? [];
-  List get sequenceFull => attributes[kSequenceFull] ?? [];
-  int get chordChartChordColor => attributes[kChordChartChordColor] ?? 0;
-  DateTime get archivedAt => DateTime.parse(attributes[kArchivedAt] ?? '');
-  String get lyrics => attributes[kLyrics] ?? '';
-  String get mtid => attributes[kMtid] ?? '';
-  String get rehearsalMixId => attributes[kRehearsalMixId] ?? '';
+  double get bpm => _attributes[kBpm] ?? 0;
+  String get isrc => _attributes[kIsrc] ?? '';
+  bool get isHasChords => _attributes[kHasChords] == true;
+  int get length => _attributes[kLength] ?? 0;
+  String get meter => _attributes[kMeter] ?? '';
+  String get name => _attributes[kName] ?? '';
+  String get notes => _attributes[kNotes] ?? '';
+  String get printMargin => _attributes[kPrintMargin] ?? '';
+  String get printOrientation => _attributes[kPrintOrientation] ?? '';
+  String get printPageSize => _attributes[kPrintPageSize] ?? '';
+  String get chordChart => _attributes[kChordChart] ?? '';
+  String get chordChartFont => _attributes[kChordChartFont] ?? '';
+  String get chordChartKey => _attributes[kChordChartKey] ?? '';
+  int get chordChartColumns => _attributes[kChordChartColumns] ?? 0;
+  int get chordChartFontSize => _attributes[kChordChartFontSize] ?? 0;
+  bool get isHasChordChart => _attributes[kHasChordChart] == true;
+  bool get isLyricsEnabled => _attributes[kLyricsEnabled] == true;
+  bool get isNumberChartEnabled => _attributes[kNumberChartEnabled] == true;
+  bool get isNumeralChartEnabled => _attributes[kNumeralChartEnabled] == true;
+  List get sequence => _attributes[kSequence] ?? [];
+  List get sequenceShort => _attributes[kSequenceShort] ?? [];
+  List get sequenceFull => _attributes[kSequenceFull] ?? [];
+  int get chordChartChordColor => _attributes[kChordChartChordColor] ?? 0;
+  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
+  String get lyrics => _attributes[kLyrics] ?? '';
+  String get mtid => _attributes[kMtid] ?? '';
+  String get rehearsalMixId => _attributes[kRehearsalMixId] ?? '';
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set bpm(double? x) =>
-      (x == null) ? attributes.remove(kBpm) : attributes[kBpm] = x;
+      (x == null) ? attributes.remove(kBpm) : _attributes[kBpm] = x;
 
   /// pass `null` to remove key from attributes
   set isrc(String? x) =>
-      (x == null) ? attributes.remove(kIsrc) : attributes[kIsrc] = x;
+      (x == null) ? attributes.remove(kIsrc) : _attributes[kIsrc] = x;
 
   /// pass `null` to remove key from attributes
   set length(int? x) =>
-      (x == null) ? attributes.remove(kLength) : attributes[kLength] = x;
+      (x == null) ? attributes.remove(kLength) : _attributes[kLength] = x;
 
   /// Possible Values:
   ///
@@ -345,15 +346,15 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set meter(String? x) =>
-      (x == null) ? attributes.remove(kMeter) : attributes[kMeter] = x;
+      (x == null) ? attributes.remove(kMeter) : _attributes[kMeter] = x;
 
   /// pass `null` to remove key from attributes
   set name(String? x) =>
-      (x == null) ? attributes.remove(kName) : attributes[kName] = x;
+      (x == null) ? attributes.remove(kName) : _attributes[kName] = x;
 
   /// pass `null` to remove key from attributes
   set notes(String? x) =>
-      (x == null) ? attributes.remove(kNotes) : attributes[kNotes] = x;
+      (x == null) ? attributes.remove(kNotes) : _attributes[kNotes] = x;
 
   /// Possible Values:
   ///
@@ -370,7 +371,7 @@ class PcoServicesArrangement extends PcoResource {
   /// pass `null` to remove key from attributes
   set printMargin(String? x) => (x == null)
       ? attributes.remove(kPrintMargin)
-      : attributes[kPrintMargin] = x;
+      : _attributes[kPrintMargin] = x;
 
   /// Possible Values:
   ///
@@ -381,7 +382,7 @@ class PcoServicesArrangement extends PcoResource {
   /// pass `null` to remove key from attributes
   set printOrientation(String? x) => (x == null)
       ? attributes.remove(kPrintOrientation)
-      : attributes[kPrintOrientation] = x;
+      : _attributes[kPrintOrientation] = x;
 
   /// Possible Values:
   ///
@@ -400,29 +401,29 @@ class PcoServicesArrangement extends PcoResource {
   /// pass `null` to remove key from attributes
   set printPageSize(String? x) => (x == null)
       ? attributes.remove(kPrintPageSize)
-      : attributes[kPrintPageSize] = x;
+      : _attributes[kPrintPageSize] = x;
 
   /// A string of lyrics and chords. Supports standard and ChordPro formats.
 
   /// pass `null` to remove key from attributes
   set chordChart(String? x) => (x == null)
       ? attributes.remove(kChordChart)
-      : attributes[kChordChart] = x;
+      : _attributes[kChordChart] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartFont(String? x) => (x == null)
       ? attributes.remove(kChordChartFont)
-      : attributes[kChordChartFont] = x;
+      : _attributes[kChordChartFont] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartKey(String? x) => (x == null)
       ? attributes.remove(kChordChartKey)
-      : attributes[kChordChartKey] = x;
+      : _attributes[kChordChartKey] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartColumns(int? x) => (x == null)
       ? attributes.remove(kChordChartColumns)
-      : attributes[kChordChartColumns] = x;
+      : _attributes[kChordChartColumns] = x;
 
   /// Possible Values:
   ///
@@ -431,22 +432,22 @@ class PcoServicesArrangement extends PcoResource {
   /// pass `null` to remove key from attributes
   set chordChartFontSize(int? x) => (x == null)
       ? attributes.remove(kChordChartFontSize)
-      : attributes[kChordChartFontSize] = x;
+      : _attributes[kChordChartFontSize] = x;
 
   /// pass `null` to remove key from attributes
   set isLyricsEnabled(bool? x) => (x == null)
       ? attributes.remove(kLyricsEnabled)
-      : attributes[kLyricsEnabled] = x;
+      : _attributes[kLyricsEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isNumberChartEnabled(bool? x) => (x == null)
       ? attributes.remove(kNumberChartEnabled)
-      : attributes[kNumberChartEnabled] = x;
+      : _attributes[kNumberChartEnabled] = x;
 
   /// pass `null` to remove key from attributes
   set isNumeralChartEnabled(bool? x) => (x == null)
       ? attributes.remove(kNumeralChartEnabled)
-      : attributes[kNumeralChartEnabled] = x;
+      : _attributes[kNumeralChartEnabled] = x;
 
   /// An array of strings containing a label and a number describing the section:
   ///
@@ -454,23 +455,23 @@ class PcoServicesArrangement extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set sequence(List? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set chordChartChordColor(int? x) => (x == null)
       ? attributes.remove(kChordChartChordColor)
-      : attributes[kChordChartChordColor] = x;
+      : _attributes[kChordChartChordColor] = x;
 
   /// An alias for rehearsal_mix_id
 
   /// pass `null` to remove key from attributes
   set mtid(String? x) =>
-      (x == null) ? attributes.remove(kMtid) : attributes[kMtid] = x;
+      (x == null) ? attributes.remove(kMtid) : _attributes[kMtid] = x;
 
   /// pass `null` to remove key from attributes
   set rehearsalMixId(String? x) => (x == null)
       ? attributes.remove(kRehearsalMixId)
-      : attributes[kRehearsalMixId] = x;
+      : _attributes[kRehearsalMixId] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

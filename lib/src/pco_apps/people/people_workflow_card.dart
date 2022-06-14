@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.689092
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.931121
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People WorkflowCard Object
 ///
@@ -225,38 +226,38 @@ class PcoPeopleWorkflowCard extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  DateTime get snoozeUntil => DateTime.parse(attributes[kSnoozeUntil] ?? '');
-  bool get isOverdue => attributes[kOverdue] == true;
-  String get stage => attributes[kStage] ?? '';
+  DateTime get snoozeUntil => DateTime.parse(_attributes[kSnoozeUntil] ?? '');
+  bool get isOverdue => _attributes[kOverdue] == true;
+  String get stage => _attributes[kStage] ?? '';
   int get calculatedDueAtInDaysAgo =>
-      attributes[kCalculatedDueAtInDaysAgo] ?? 0;
-  bool get isStickyAssignment => attributes[kStickyAssignment] == true;
-  DateTime get completedAt => DateTime.parse(attributes[kCompletedAt] ?? '');
+      _attributes[kCalculatedDueAtInDaysAgo] ?? 0;
+  bool get isStickyAssignment => _attributes[kStickyAssignment] == true;
+  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
   DateTime get flaggedForNotificationAt =>
-      DateTime.parse(attributes[kFlaggedForNotificationAt] ?? '');
-  DateTime get removedAt => DateTime.parse(attributes[kRemovedAt] ?? '');
+      DateTime.parse(_attributes[kFlaggedForNotificationAt] ?? '');
+  DateTime get removedAt => DateTime.parse(_attributes[kRemovedAt] ?? '');
   DateTime get movedToStepAt =>
-      DateTime.parse(attributes[kMovedToStepAt] ?? '');
+      DateTime.parse(_attributes[kMovedToStepAt] ?? '');
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set isStickyAssignment(bool? x) => (x == null)
       ? attributes.remove(kStickyAssignment)
-      : attributes[kStickyAssignment] = x;
+      : _attributes[kStickyAssignment] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set assigneeId(String? x) => (x == null)
       ? attributes.remove(kAssigneeId)
-      : attributes[kAssigneeId] = x;
-  String get assigneeId => attributes[kAssigneeId] ?? '';
+      : _attributes[kAssigneeId] = x;
+  String get assigneeId => _attributes[kAssigneeId] ?? '';
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
-  String get personId => attributes[kPersonId] ?? '';
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

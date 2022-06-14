@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.507074
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.717805
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services FolderPath Object
 ///
@@ -123,7 +124,7 @@ class PcoServicesFolderPath extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get path => attributes[kPath] ?? [];
+  List get path => _attributes[kPath] ?? [];
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

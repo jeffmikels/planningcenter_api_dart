@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.508140
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.718831
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services Item Object
 ///
@@ -264,34 +265,34 @@ class PcoServicesItem extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => attributes[kTitle] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
-  int get length => attributes[kLength] ?? 0;
-  String get itemType => attributes[kItemType] ?? '';
-  String get htmlDetails => attributes[kHtmlDetails] ?? '';
-  String get servicePosition => attributes[kServicePosition] ?? '';
-  String get description => attributes[kDescription] ?? '';
-  String get keyName => attributes[kKeyName] ?? '';
+  String get title => _attributes[kTitle] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
+  int get length => _attributes[kLength] ?? 0;
+  String get itemType => _attributes[kItemType] ?? '';
+  String get htmlDetails => _attributes[kHtmlDetails] ?? '';
+  String get servicePosition => _attributes[kServicePosition] ?? '';
+  String get description => _attributes[kDescription] ?? '';
+  String get keyName => _attributes[kKeyName] ?? '';
   List get customArrangementSequence =>
-      attributes[kCustomArrangementSequence] ?? [];
+      _attributes[kCustomArrangementSequence] ?? [];
   List get customArrangementSequenceShort =>
-      attributes[kCustomArrangementSequenceShort] ?? [];
+      _attributes[kCustomArrangementSequenceShort] ?? [];
   List get customArrangementSequenceFull =>
-      attributes[kCustomArrangementSequenceFull] ?? [];
+      _attributes[kCustomArrangementSequenceFull] ?? [];
 
   // setters for object attributes
 
   /// pass `null` to remove key from attributes
   set title(String? x) =>
-      (x == null) ? attributes.remove(kTitle) : attributes[kTitle] = x;
+      (x == null) ? attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   /// pass `null` to remove key from attributes
   set sequence(int? x) =>
-      (x == null) ? attributes.remove(kSequence) : attributes[kSequence] = x;
+      (x == null) ? attributes.remove(kSequence) : _attributes[kSequence] = x;
 
   /// pass `null` to remove key from attributes
   set length(int? x) =>
-      (x == null) ? attributes.remove(kLength) : attributes[kLength] = x;
+      (x == null) ? attributes.remove(kLength) : _attributes[kLength] = x;
 
   /// There are 4 possible values:
   ///
@@ -307,12 +308,12 @@ class PcoServicesItem extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set itemType(String? x) =>
-      (x == null) ? attributes.remove(kItemType) : attributes[kItemType] = x;
+      (x == null) ? attributes.remove(kItemType) : _attributes[kItemType] = x;
 
   /// pass `null` to remove key from attributes
   set htmlDetails(String? x) => (x == null)
       ? attributes.remove(kHtmlDetails)
-      : attributes[kHtmlDetails] = x;
+      : _attributes[kHtmlDetails] = x;
 
   /// There are 3 possible values:
   ///
@@ -325,12 +326,12 @@ class PcoServicesItem extends PcoResource {
   /// pass `null` to remove key from attributes
   set servicePosition(String? x) => (x == null)
       ? attributes.remove(kServicePosition)
-      : attributes[kServicePosition] = x;
+      : _attributes[kServicePosition] = x;
 
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null)
       ? attributes.remove(kDescription)
-      : attributes[kDescription] = x;
+      : _attributes[kDescription] = x;
 
   /// An array of strings containing a label and a number describing the section:
   ///
@@ -339,31 +340,31 @@ class PcoServicesItem extends PcoResource {
   /// pass `null` to remove key from attributes
   set customArrangementSequence(List? x) => (x == null)
       ? attributes.remove(kCustomArrangementSequence)
-      : attributes[kCustomArrangementSequence] = x;
+      : _attributes[kCustomArrangementSequence] = x;
 
   // additional setters / getters for create/update attributes
 
   /// pass `null` to remove key from attributes
   set arrangementId(String? x) => (x == null)
       ? attributes.remove(kArrangementId)
-      : attributes[kArrangementId] = x;
-  String get arrangementId => attributes[kArrangementId] ?? '';
+      : _attributes[kArrangementId] = x;
+  String get arrangementId => _attributes[kArrangementId] ?? '';
 
   /// pass `null` to remove key from attributes
   set keyId(String? x) =>
-      (x == null) ? attributes.remove(kKeyId) : attributes[kKeyId] = x;
-  String get keyId => attributes[kKeyId] ?? '';
+      (x == null) ? attributes.remove(kKeyId) : _attributes[kKeyId] = x;
+  String get keyId => _attributes[kKeyId] ?? '';
 
   /// pass `null` to remove key from attributes
   set selectedLayoutId(String? x) => (x == null)
       ? attributes.remove(kSelectedLayoutId)
-      : attributes[kSelectedLayoutId] = x;
-  String get selectedLayoutId => attributes[kSelectedLayoutId] ?? '';
+      : _attributes[kSelectedLayoutId] = x;
+  String get selectedLayoutId => _attributes[kSelectedLayoutId] ?? '';
 
   /// pass `null` to remove key from attributes
   set songId(String? x) =>
-      (x == null) ? attributes.remove(kSongId) : attributes[kSongId] = x;
-  String get songId => attributes[kSongId] ?? '';
+      (x == null) ? attributes.remove(kSongId) : _attributes[kSongId] = x;
+  String get songId => _attributes[kSongId] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

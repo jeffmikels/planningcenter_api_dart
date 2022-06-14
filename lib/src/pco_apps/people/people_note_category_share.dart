@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.666198
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.906025
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO People NoteCategoryShare Object
 ///
@@ -140,8 +141,8 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get group => attributes[kGroup] ?? '';
-  String get personId => attributes[kPersonId] ?? '';
+  String get group => _attributes[kGroup] ?? '';
+  String get personId => _attributes[kPersonId] ?? '';
 
   // setters for object attributes
 
@@ -149,11 +150,11 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
 
   /// pass `null` to remove key from attributes
   set group(String? x) =>
-      (x == null) ? attributes.remove(kGroup) : attributes[kGroup] = x;
+      (x == null) ? attributes.remove(kGroup) : _attributes[kGroup] = x;
 
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
-      (x == null) ? attributes.remove(kPersonId) : attributes[kPersonId] = x;
+      (x == null) ? attributes.remove(kPersonId) : _attributes[kPersonId] = x;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

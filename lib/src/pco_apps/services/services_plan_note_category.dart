@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.523144
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.730890
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services PlanNoteCategory Object
 ///
@@ -143,9 +144,9 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get deletedAt => DateTime.parse(attributes[kDeletedAt] ?? '');
-  String get name => attributes[kName] ?? '';
-  int get sequence => attributes[kSequence] ?? 0;
+  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
+  String get name => _attributes[kName] ?? '';
+  int get sequence => _attributes[kSequence] ?? 0;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

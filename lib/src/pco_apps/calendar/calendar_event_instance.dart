@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.741424
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.978698
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Calendar EventInstance Object
 ///
@@ -184,13 +185,13 @@ class PcoCalendarEventInstance extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isAllDayEvent => attributes[kAllDayEvent] == true;
-  DateTime get endsAt => DateTime.parse(attributes[kEndsAt] ?? '');
-  String get location => attributes[kLocation] ?? '';
-  String get recurrence => attributes[kRecurrence] ?? '';
-  String get recurrenceDescription => attributes[kRecurrenceDescription] ?? '';
-  DateTime get startsAt => DateTime.parse(attributes[kStartsAt] ?? '');
-  String get churchCenterUrl => attributes[kChurchCenterUrl] ?? '';
+  bool get isAllDayEvent => _attributes[kAllDayEvent] == true;
+  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
+  String get location => _attributes[kLocation] ?? '';
+  String get recurrence => _attributes[kRecurrence] ?? '';
+  String get recurrenceDescription => _attributes[kRecurrenceDescription] ?? '';
+  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  String get churchCenterUrl => _attributes[kChurchCenterUrl] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.781602
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:39.025439
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Giving RecurringDonation Object
 ///
@@ -162,15 +163,15 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   // getters for object attributes
   DateTime get releaseHoldAt =>
-      DateTime.parse(attributes[kReleaseHoldAt] ?? '');
-  int get amountCents => attributes[kAmountCents] ?? 0;
-  String get status => attributes[kStatus] ?? '';
+      DateTime.parse(_attributes[kReleaseHoldAt] ?? '');
+  int get amountCents => _attributes[kAmountCents] ?? 0;
+  String get status => _attributes[kStatus] ?? '';
   DateTime get lastDonationReceivedAt =>
-      DateTime.parse(attributes[kLastDonationReceivedAt] ?? '');
+      DateTime.parse(_attributes[kLastDonationReceivedAt] ?? '');
   DateTime get nextOccurrence =>
-      DateTime.parse(attributes[kNextOccurrence] ?? '');
-  String get schedule => attributes[kSchedule] ?? '';
-  String get amountCurrency => attributes[kAmountCurrency] ?? '';
+      DateTime.parse(_attributes[kNextOccurrence] ?? '');
+  String get schedule => _attributes[kSchedule] ?? '';
+  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

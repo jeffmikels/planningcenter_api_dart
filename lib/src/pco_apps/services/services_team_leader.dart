@@ -1,9 +1,10 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-13T18:58:55.542364
+/// AUTO-GENERATED FILE CREATED ON 2022-06-13T21:46:38.744183
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-import '../../pco.dart';
+// import '../../pco.dart';
+part of pco;
 
 /// This class represents a PCO Services TeamLeader Object
 ///
@@ -149,11 +150,11 @@ class PcoServicesTeamLeader extends PcoResource {
 
   // getters for object attributes
   bool get isSendResponsesForAccepts =>
-      attributes[kSendResponsesForAccepts] == true;
+      _attributes[kSendResponsesForAccepts] == true;
   bool get isSendResponsesForDeclines =>
-      attributes[kSendResponsesForDeclines] == true;
+      _attributes[kSendResponsesForDeclines] == true;
   bool get isSendResponsesForBlockouts =>
-      attributes[kSendResponsesForBlockouts] == true;
+      _attributes[kSendResponsesForBlockouts] == true;
 
   // getters for each relationship
   // the code generator cannot determine the resource type of the relationships

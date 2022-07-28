@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People NamePrefix Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 name_prefix
 /// - Type:               NamePrefix
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/name_prefixes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/name_prefixes
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNamePrefix()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNamePrefix.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeopleNamePrefix.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,42 +29,42 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A name prefix is one of Mr., Mrs., etc.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `nameprefix-organization-name_prefixes`: https://api.planningcenteronline.com/people/v2/name_prefixes
 /// - `nameprefix-person-name_prefix`: https://api.planningcenteronline.com/people/v2/people/1/name_prefix
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -85,11 +84,13 @@ class PcoPeopleNamePrefix extends PcoResource {
   static const String kTypeString = 'NamePrefix';
   static const String kTypeId = 'name_prefix';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/name_prefixes';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/people/v2/name_prefixes';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -121,7 +122,6 @@ class PcoPeopleNamePrefix extends PcoResource {
   static const kId = 'id';
   static const kValue = 'value';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['value'];
@@ -140,23 +140,26 @@ class PcoPeopleNamePrefix extends PcoResource {
 
   // getters for object attributes
   String get value => _attributes[kValue] ?? '';
-  
+
   // setters for object attributes
-  
+
   /// pass `null` to remove key from attributes
-  set value(String? x) => (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
+  set value(String? x) =>
+      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // Class Constructors
-  PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleNamePrefix.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   PcoPeopleNamePrefix.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleNamePrefix] object using this endpoint: `https://api.planningcenteronline.com/people/v2/name_prefixes`
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
@@ -164,10 +167,15 @@ class PcoPeopleNamePrefix extends PcoResource {
   /// - FIELDS USED WHEN CREATING: `value`
   /// - FIELDS USED WHEN UPDATING: `value`
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleNamePrefix({String? id, String? value, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleNamePrefix(
+      {String? id,
+      String? value,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleNamePrefix.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_prefixes';
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/people/v2/name_prefixes';
     if (value != null) obj._attributes['value'] = value;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -182,40 +190,44 @@ class PcoPeopleNamePrefix extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleNamePrefix] objects (expecting many)
   /// using a path like this: `/people/v2/name_prefixes`
-  static Future<PcoCollection<PcoPeopleNamePrefix>> get( {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoPeopleNamePrefix>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/people/v2/name_prefixes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoPeopleNamePrefix] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/name_prefix`
-  static Future<PcoCollection<PcoPeopleNamePrefix>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoPeopleNamePrefix>> getFromPerson(
+    String personId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/people/v2/people/$personId/name_prefix';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

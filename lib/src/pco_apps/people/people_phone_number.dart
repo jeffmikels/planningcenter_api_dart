@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People PhoneNumber Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 phone_number
 /// - Type:               PhoneNumber
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeoplePhoneNumber()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePhoneNumber.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeoplePhoneNumber.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A phone number represents a single telephone number and location.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `number` (rw) -> PCO: `number`
@@ -46,29 +45,29 @@ part of pco;
 /// - `international` (ro) -> PCO: `international`
 /// - `national` (ro) -> PCO: `national`
 /// - `countryCode` (ro) -> PCO: `country_code`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `carrier`: (URLParameter), query on a specific carrier, example: ?where[carrier]=string
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
 /// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
 /// - `number`: (URLParameter), query on a specific number, example: ?where[number]=string
 /// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
 /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `carrier`: (URLParameter), prefix with a hyphen (-carrier) to reverse the order
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 /// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
@@ -77,13 +76,13 @@ part of pco;
 /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -119,11 +118,13 @@ class PcoPeoplePhoneNumber extends PcoResource {
   static const String kTypeString = 'PhoneNumber';
   static const String kTypeId = 'phone_number';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -133,7 +134,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// - `number`: (URLParameter), query on a specific number, example: ?where[number]=string
   /// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['carrier','created_at','location','number','primary','updated_at'];
+  static List<String> get canQuery =>
+      ['carrier', 'created_at', 'location', 'number', 'primary', 'updated_at'];
 
   /// possible orderings with parameter ?order=
   /// - `carrier`: (URLParameter), prefix with a hyphen (-carrier) to reverse the order
@@ -142,7 +144,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// - `number`: (URLParameter), prefix with a hyphen (-number) to reverse the order
   /// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['carrier','created_at','location','number','primary','updated_at'];
+  static List<String> get canOrderBy =>
+      ['carrier', 'created_at', 'location', 'number', 'primary', 'updated_at'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -174,13 +177,14 @@ class PcoPeoplePhoneNumber extends PcoResource {
   static const kNational = 'national';
   static const kCountryCode = 'country_code';
 
-
   // getters and setters
   @override
-  List<String> get createAllowed => ['number', 'carrier', 'location', 'primary'];
+  List<String> get createAllowed =>
+      ['number', 'carrier', 'location', 'primary'];
 
   @override
-  List<String> get updateAllowed => ['number', 'carrier', 'location', 'primary'];
+  List<String> get updateAllowed =>
+      ['number', 'carrier', 'location', 'primary'];
 
   @override
   bool get canCreate => true;
@@ -200,32 +204,38 @@ class PcoPeoplePhoneNumber extends PcoResource {
   String get international => _attributes[kInternational] ?? '';
   String get national => _attributes[kNational] ?? '';
   String get countryCode => _attributes[kCountryCode] ?? '';
-  
+
   // setters for object attributes
-  
+
   /// pass `null` to remove key from attributes
-  set number(String? x) => (x == null) ? _attributes.remove(kNumber) : _attributes[kNumber] = x;
-  
+  set number(String? x) =>
+      (x == null) ? _attributes.remove(kNumber) : _attributes[kNumber] = x;
+
   /// pass `null` to remove key from attributes
-  set carrier(String? x) => (x == null) ? _attributes.remove(kCarrier) : _attributes[kCarrier] = x;
-  
+  set carrier(String? x) =>
+      (x == null) ? _attributes.remove(kCarrier) : _attributes[kCarrier] = x;
+
   /// pass `null` to remove key from attributes
-  set location(String? x) => (x == null) ? _attributes.remove(kLocation) : _attributes[kLocation] = x;
-  
+  set location(String? x) =>
+      (x == null) ? _attributes.remove(kLocation) : _attributes[kLocation] = x;
+
   /// pass `null` to remove key from attributes
-  set isPrimary(bool? x) => (x == null) ? _attributes.remove(kPrimary) : _attributes[kPrimary] = x;
+  set isPrimary(bool? x) =>
+      (x == null) ? _attributes.remove(kPrimary) : _attributes[kPrimary] = x;
 
   // Class Constructors
-  PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeoplePhoneNumber.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   PcoPeoplePhoneNumber.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePhoneNumber] object using this endpoint: `https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers`
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
@@ -233,16 +243,33 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// - FIELDS USED WHEN CREATING: `number`, `carrier`, `location`, `isPrimary`
   /// - FIELDS USED WHEN UPDATING: `number`, `carrier`, `location`, `isPrimary`
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeoplePhoneNumber({required String personId, String? id, String? number, String? carrier, String? location, bool? isPrimary, DateTime? createdAt, DateTime? updatedAt, String? e164, String? international, String? national, String? countryCode, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeoplePhoneNumber(
+      {required String personId,
+      String? id,
+      String? number,
+      String? carrier,
+      String? location,
+      bool? isPrimary,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      String? e164,
+      String? international,
+      String? national,
+      String? countryCode,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeoplePhoneNumber.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers';
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers';
     if (number != null) obj._attributes['number'] = number;
     if (carrier != null) obj._attributes['carrier'] = carrier;
     if (location != null) obj._attributes['location'] = location;
     if (isPrimary != null) obj._attributes['primary'] = isPrimary;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (e164 != null) obj._attributes['e164'] = e164;
     if (international != null) obj._attributes['international'] = international;
     if (national != null) obj._attributes['national'] = national;
@@ -260,28 +287,30 @@ class PcoPeoplePhoneNumber extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/phone_numbers`
-  static Future<PcoCollection<PcoPeoplePhoneNumber>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoPeoplePhoneNumber>> getFromPerson(
+    String personId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/people/v2/people/$personId/phone_numbers';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

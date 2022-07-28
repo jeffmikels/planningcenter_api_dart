@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services SongbookStatus Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 songbook_status
 /// - Type:               SongbookStatus
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesSongbookStatus.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesSongbookStatus.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,44 +29,44 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// Used to get the status of an in progress songbook action. When FINISHED, will contain the url of the songbook.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
 /// - `statusCode` (ro) -> PCO: `status_code`
 /// - `statusToken` (ro) -> PCO: `status_token`
 /// - `url` (ro) -> PCO: `url`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -90,19 +89,20 @@ class PcoServicesSongbookStatus extends PcoResource {
   static const String kTypeString = 'SongbookStatus';
   static const String kTypeId = 'songbook_status';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -129,7 +129,6 @@ class PcoServicesSongbookStatus extends PcoResource {
   static const kStatusToken = 'status_token';
   static const kUrl = 'url';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -153,17 +152,19 @@ class PcoServicesSongbookStatus extends PcoResource {
   String get url => _attributes[kUrl] ?? '';
 
   // Class Constructors
-  PcoServicesSongbookStatus.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesSongbookStatus.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesSongbookStatus.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSongbookStatus] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -171,7 +172,14 @@ class PcoServicesSongbookStatus extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesSongbookStatus({String? id, String? status, String? statusCode, String? statusToken, String? url, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesSongbookStatus(
+      {String? id,
+      String? status,
+      String? statusCode,
+      String? statusToken,
+      String? url,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesSongbookStatus.empty();
     obj._id = id;
     if (status != null) obj._attributes['status'] = status;
@@ -191,9 +199,10 @@ class PcoServicesSongbookStatus extends PcoResource {
     return obj;
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Calendar TagGroup Object
-/// 
+///
 /// - Application:        calendar
 /// - Id:                 tag_group
 /// - Type:               TagGroup
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/tag_groups
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarTagGroup.fromJson()` constructor.
 /// - Manually create an object using the `PcoCalendarTagGroup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,49 +29,49 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A grouping of tags for organizational purposes.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (ro) -> PCO: `name`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isRequired` (ro) -> PCO: `required`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `events`: include associated events 
-/// - `tags`: include associated tags 
+///
+/// - `events`: include associated events
+/// - `tags`: include associated tags
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
 /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `event-taggroup-events`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/events
 /// - `tag-taggroup-tags`: https://api.planningcenteronline.com/calendar/v2/tag_groups/1/tags
-/// 
+///
 /// Inbound Edges:
 /// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/calendar/v2/tag_groups
 /// - `taggroup-tag-tag_group`: https://api.planningcenteronline.com/calendar/v2/tags/1/tag_group
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -95,19 +94,20 @@ class PcoCalendarTagGroup extends PcoResource {
   static const String kTypeString = 'TagGroup';
   static const String kTypeId = 'tag_group';
   static const String kApiVersion = '2020-04-08';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tag_groups';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/calendar/v2/tag_groups';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `events`: include associated events 
-  /// - `tags`: include associated tags 
-  static List<String> get canInclude => ['events','tags'];
+  /// - `events`: include associated events
+  /// - `tags`: include associated tags
+  static List<String> get canInclude => ['events', 'tags'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['created_at','name','updated_at'];
+  static List<String> get canQuery => ['created_at', 'name', 'updated_at'];
 
   /// possible orderings with parameter ?order=
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
@@ -137,7 +137,6 @@ class PcoCalendarTagGroup extends PcoResource {
   static const kUpdatedAt = 'updated_at';
   static const kRequired = 'required';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -157,24 +156,28 @@ class PcoCalendarTagGroup extends PcoResource {
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
   bool get isRequired => _attributes[kRequired] == true;
-  
+
   // typed getters for each relationship
-  
-  List<PcoCalendarEvent> get includedEvents => (relationships['events'] as List?)?.cast<PcoCalendarEvent>() ?? [];
-  List<PcoCalendarTag> get includedTags => (relationships['tags'] as List?)?.cast<PcoCalendarTag>() ?? [];
+
+  List<PcoCalendarEvent> get includedEvents =>
+      (relationships['events'] as List?)?.cast<PcoCalendarEvent>() ?? [];
+  List<PcoCalendarTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoCalendarTag>() ?? [];
 
   // Class Constructors
-  PcoCalendarTagGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoCalendarTagGroup.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCalendarTagGroup.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCalendarTagGroup] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -182,12 +185,21 @@ class PcoCalendarTagGroup extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoCalendarTagGroup({String? id, DateTime? createdAt, String? name, DateTime? updatedAt, bool? isRequired, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarTagGroup(
+      {String? id,
+      DateTime? createdAt,
+      String? name,
+      DateTime? updatedAt,
+      bool? isRequired,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoCalendarTagGroup.empty();
     obj._id = id;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (isRequired != null) obj._attributes['required'] = isRequired;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -202,42 +214,52 @@ class PcoCalendarTagGroup extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoCalendarTagGroup] objects (expecting many)
   /// using a path like this: `/calendar/v2/tag_groups`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `required`
-  static Future<PcoCollection<PcoCalendarTagGroup>> get( {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeEvents = false, bool includeTags = false,}) async {
+  static Future<PcoCollection<PcoCalendarTagGroup>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeEvents = false,
+    bool includeTags = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoCalendarTagGroup.canInclude);
     if (includeEvents) query.include.add('events');
     if (includeTags) query.include.add('tags');
     var url = '/calendar/v2/tag_groups';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCalendarTagGroup] objects (expecting many)
   /// using a path like this: `/calendar/v2/tags/$tagId/tag_group`
-  static Future<PcoCollection<PcoCalendarTagGroup>> getFromTag(String tagId, {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeEvents = false, bool includeTags = false,}) async {
+  static Future<PcoCollection<PcoCalendarTagGroup>> getFromTag(
+    String tagId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeEvents = false,
+    bool includeTags = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoCalendarTagGroup.canInclude);
     if (includeEvents) query.include.add('events');
     if (includeTags) query.include.add('tags');
     var url = '/calendar/v2/tags/$tagId/tag_group';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -246,29 +268,41 @@ class PcoCalendarTagGroup extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/tag_groups/1/events`
-  Future<PcoCollection<PcoCalendarEvent>> getEvents({PlanningCenterApiQuery? query, bool includeAll = false, bool includeAttachments = false, bool includeOwner = false, bool includeTags = false,}) async {
+  Future<PcoCollection<PcoCalendarEvent>> getEvents({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAttachments = false,
+    bool includeOwner = false,
+    bool includeTags = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoCalendarTagGroup.canInclude);
     if (includeAttachments) query.include.add('attachments');
     if (includeOwner) query.include.add('owner');
     if (includeTags) query.include.add('tags');
     var url = '$apiEndpoint/events';
-    return PcoCollection.fromApiCall<PcoCalendarEvent>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/tag_groups/1/tags`
-  Future<PcoCollection<PcoCalendarTag>> getTags({PlanningCenterApiQuery? query, bool includeTagGroup = false,}) async {
+  Future<PcoCollection<PcoCalendarTag>> getTags({
+    PlanningCenterApiQuery? query,
+    bool includeTagGroup = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
+
     if (includeTagGroup) query.include.add('tag_group');
     var url = '$apiEndpoint/tags';
-    return PcoCollection.fromApiCall<PcoCalendarTag>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

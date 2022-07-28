@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People PersonApp Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 person_app
 /// - Type:               PersonApp
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/person_apps
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/person_apps
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeoplePersonApp()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePersonApp.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeoplePersonApp.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,43 +29,43 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A Person App is the relationship between a Person and an App.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isAllowPcoLogin` (ro) -> PCO: `allow_pco_login`
 /// - `peoplePermissions` (ro) -> PCO: `people_permissions`
 /// - `appId` (wo) -> PCO: `app_id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `app`: include associated app 
+///
+/// - `app`: include associated app
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `app-personapp-app`: https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app
-/// 
+///
 /// Inbound Edges:
 /// - `personapp-person-person_apps`: https://api.planningcenteronline.com/people/v2/people/1/person_apps
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -100,19 +99,21 @@ class PcoPeoplePersonApp extends PcoResource {
   static const String kTypeString = 'PersonApp';
   static const String kTypeId = 'person_app';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/person_apps';
 
   /// possible includes with parameter ?include=a,b
-  /// - `app`: include associated app 
+  /// - `app`: include associated app
   static List<String> get canInclude => ['app'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -138,7 +139,6 @@ class PcoPeoplePersonApp extends PcoResource {
   static const kPeoplePermissions = 'people_permissions';
   static const kAppId = 'app_id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['app_id'];
@@ -158,28 +158,32 @@ class PcoPeoplePersonApp extends PcoResource {
   // getters for object attributes
   bool get isAllowPcoLogin => _attributes[kAllowPcoLogin] == true;
   String get peoplePermissions => _attributes[kPeoplePermissions] ?? '';
-  
+
   // additional setters / getters for create/update attributes
-  
+
   /// pass `null` to remove key from attributes
-  set appId(String? x) => (x == null) ? _attributes.remove(kAppId) : _attributes[kAppId] = x;
+  set appId(String? x) =>
+      (x == null) ? _attributes.remove(kAppId) : _attributes[kAppId] = x;
   String get appId => _attributes[kAppId] ?? '';
-  
+
   // typed getters for each relationship
-  
-  PcoPeopleApp? get includedApp => _firstOrNull<PcoPeopleApp>(relationships['app']);
+
+  PcoPeopleApp? get includedApp =>
+      _firstOrNull<PcoPeopleApp>(relationships['app']);
 
   // Class Constructors
-  PcoPeoplePersonApp.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeoplePersonApp.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   PcoPeoplePersonApp.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePersonApp] object using this endpoint: `https://api.planningcenteronline.com/people/v2/people/$personId/person_apps`
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
@@ -187,12 +191,22 @@ class PcoPeoplePersonApp extends PcoResource {
   /// - FIELDS USED WHEN CREATING: `appId`
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeoplePersonApp({required String personId, String? id, bool? isAllowPcoLogin, String? peoplePermissions, String? appId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeoplePersonApp(
+      {required String personId,
+      String? id,
+      bool? isAllowPcoLogin,
+      String? peoplePermissions,
+      String? appId,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeoplePersonApp.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/person_apps';
-    if (isAllowPcoLogin != null) obj._attributes['allow_pco_login'] = isAllowPcoLogin;
-    if (peoplePermissions != null) obj._attributes['people_permissions'] = peoplePermissions;
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/people/v2/people/$personId/person_apps';
+    if (isAllowPcoLogin != null)
+      obj._attributes['allow_pco_login'] = isAllowPcoLogin;
+    if (peoplePermissions != null)
+      obj._attributes['people_permissions'] = peoplePermissions;
     if (appId != null) obj._attributes['app_id'] = appId;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -207,25 +221,27 @@ class PcoPeoplePersonApp extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeoplePersonApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/person_apps`
-  static Future<PcoCollection<PcoPeoplePersonApp>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, bool includeApp = false,}) async {
+  static Future<PcoCollection<PcoPeoplePersonApp>> getFromPerson(
+    String personId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeApp = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
+
     if (includeApp) query.include.add('app');
     var url = '/people/v2/people/$personId/person_apps';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -234,17 +250,20 @@ class PcoPeoplePersonApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app`
-  Future<PcoCollection<PcoPeopleApp>> getApp({PlanningCenterApiQuery? query, }) async {
+  Future<PcoCollection<PcoPeopleApp>> getApp({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '$apiEndpoint/app';
-    return PcoCollection.fromApiCall<PcoPeopleApp>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

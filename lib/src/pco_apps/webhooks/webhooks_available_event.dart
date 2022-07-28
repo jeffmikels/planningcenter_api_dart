@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Webhooks AvailableEvent Object
-/// 
+///
 /// - Application:        webhooks
 /// - Id:                 available_event
 /// - Type:               AvailableEvent
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/available_events
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksAvailableEvent.fromJson()` constructor.
 /// - Manually create an object using the `PcoWebhooksAvailableEvent.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// An event supported by webhooks
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -42,34 +41,34 @@ part of pco;
 /// - `type` (ro) -> PCO: `type`
 /// - `resource` (ro) -> PCO: `resource`
 /// - `action` (ro) -> PCO: `action`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `availableevent-organization-available_events`: https://api.planningcenteronline.com/webhooks/v2/available_events
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -94,19 +93,20 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   static const String kTypeString = 'AvailableEvent';
   static const String kTypeId = 'available_event';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/available_events';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/webhooks/v2/available_events';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -135,7 +135,6 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   static const kResource = 'resource';
   static const kAction = 'action';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -161,17 +160,19 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   String get action => _attributes[kAction] ?? '';
 
   // Class Constructors
-  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoWebhooksAvailableEvent.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoWebhooksAvailableEvent] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -179,7 +180,15 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoWebhooksAvailableEvent({String? id, String? name, String? app, String? version, String? resource, String? action, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoWebhooksAvailableEvent(
+      {String? id,
+      String? name,
+      String? app,
+      String? version,
+      String? resource,
+      String? action,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoWebhooksAvailableEvent.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
@@ -200,28 +209,29 @@ class PcoWebhooksAvailableEvent extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/available_events`
-  static Future<PcoCollection<PcoWebhooksAvailableEvent>> get( {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoWebhooksAvailableEvent>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/webhooks/v2/available_events';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

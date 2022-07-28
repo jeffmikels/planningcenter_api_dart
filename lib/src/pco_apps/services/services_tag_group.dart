@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services TagGroup Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 tag_group
 /// - Type:               TagGroup
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/tag_groups
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTagGroup.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesTagGroup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A tag group contains tags
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -41,37 +40,37 @@ part of pco;
 /// - `isAllowMultipleSelections` (ro) -> PCO: `allow_multiple_selections`
 /// - `tagsFor` (ro) -> PCO: `tags_for`
 /// - `serviceTypeFolderName` (ro) -> PCO: `service_type_folder_name`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `folder`: include associated folder 
-/// - `tags`: include associated tags 
+///
+/// - `folder`: include associated folder
+/// - `tags`: include associated tags
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
 /// - `tags_for`: (URLParameter), query on a specific tags_for, example: ?where[tags_for]=string
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `folder-taggroup-folder`: https://api.planningcenteronline.com/services/v2/tag_groups/1/folder
 /// - `tag-taggroup-tags`: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
-/// 
+///
 /// Inbound Edges:
 /// - `taggroup-organization-tag_groups`: https://api.planningcenteronline.com/services/v2/tag_groups
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -95,21 +94,22 @@ class PcoServicesTagGroup extends PcoResource {
   static const String kTypeString = 'TagGroup';
   static const String kTypeId = 'tag_group';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/tag_groups';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/tag_groups';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `folder`: include associated folder 
-  /// - `tags`: include associated tags 
-  static List<String> get canInclude => ['folder','tags'];
+  /// - `folder`: include associated folder
+  /// - `tags`: include associated tags
+  static List<String> get canInclude => ['folder', 'tags'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   /// - `tags_for`: (URLParameter), query on a specific tags_for, example: ?where[tags_for]=string
-  static List<String> get canQuery => ['name','tags_for'];
+  static List<String> get canQuery => ['name', 'tags_for'];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -137,7 +137,6 @@ class PcoServicesTagGroup extends PcoResource {
   static const kTagsFor = 'tags_for';
   static const kServiceTypeFolderName = 'service_type_folder_name';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -157,27 +156,32 @@ class PcoServicesTagGroup extends PcoResource {
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
   bool get isRequired => _attributes[kRequired] == true;
-  bool get isAllowMultipleSelections => _attributes[kAllowMultipleSelections] == true;
+  bool get isAllowMultipleSelections =>
+      _attributes[kAllowMultipleSelections] == true;
   String get tagsFor => _attributes[kTagsFor] ?? '';
   String get serviceTypeFolderName => _attributes[kServiceTypeFolderName] ?? '';
-  
+
   // typed getters for each relationship
-  
-  PcoServicesFolder? get includedFolder => _firstOrNull<PcoServicesFolder>(relationships['folder']);
-  List<PcoServicesTag> get includedTags => (relationships['tags'] as List?)?.cast<PcoServicesTag>() ?? [];
+
+  PcoServicesFolder? get includedFolder =>
+      _firstOrNull<PcoServicesFolder>(relationships['folder']);
+  List<PcoServicesTag> get includedTags =>
+      (relationships['tags'] as List?)?.cast<PcoServicesTag>() ?? [];
 
   // Class Constructors
-  PcoServicesTagGroup.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesTagGroup.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesTagGroup.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesTagGroup] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -185,14 +189,24 @@ class PcoServicesTagGroup extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesTagGroup({String? id, String? name, bool? isRequired, bool? isAllowMultipleSelections, String? tagsFor, String? serviceTypeFolderName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesTagGroup(
+      {String? id,
+      String? name,
+      bool? isRequired,
+      bool? isAllowMultipleSelections,
+      String? tagsFor,
+      String? serviceTypeFolderName,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesTagGroup.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
     if (isRequired != null) obj._attributes['required'] = isRequired;
-    if (isAllowMultipleSelections != null) obj._attributes['allow_multiple_selections'] = isAllowMultipleSelections;
+    if (isAllowMultipleSelections != null)
+      obj._attributes['allow_multiple_selections'] = isAllowMultipleSelections;
     if (tagsFor != null) obj._attributes['tags_for'] = tagsFor;
-    if (serviceTypeFolderName != null) obj._attributes['service_type_folder_name'] = serviceTypeFolderName;
+    if (serviceTypeFolderName != null)
+      obj._attributes['service_type_folder_name'] = serviceTypeFolderName;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -206,32 +220,35 @@ class PcoServicesTagGroup extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesTagGroup] objects (expecting many)
   /// using a path like this: `/services/v2/tag_groups`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `arrangement`
   /// - `media`
   /// - `person`
   /// - `song`
-  static Future<PcoCollection<PcoServicesTagGroup>> get( {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeFolder = false, bool includeTags = false,}) async {
+  static Future<PcoCollection<PcoServicesTagGroup>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeFolder = false,
+    bool includeTags = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoServicesTagGroup.canInclude);
     if (includeFolder) query.include.add('folder');
     if (includeTags) query.include.add('tags');
     var url = '/services/v2/tag_groups';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTagGroup>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTagGroup>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -240,27 +257,34 @@ class PcoServicesTagGroup extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/tag_groups/1/folder`
-  Future<PcoCollection<PcoServicesFolder>> getFolder({PlanningCenterApiQuery? query, bool includeServiceTypes = false,}) async {
+  Future<PcoCollection<PcoServicesFolder>> getFolder({
+    PlanningCenterApiQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
+
     if (includeServiceTypes) query.include.add('service_types');
     var url = '$apiEndpoint/folder';
-    return PcoCollection.fromApiCall<PcoServicesFolder>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesFolder>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/tag_groups/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({PlanningCenterApiQuery? query, }) async {
+  Future<PcoCollection<PcoServicesTag>> getTags({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '$apiEndpoint/tags';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

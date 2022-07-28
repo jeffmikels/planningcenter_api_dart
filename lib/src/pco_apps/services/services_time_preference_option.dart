@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services TimePreferenceOption Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 time_preference_option
 /// - Type:               TimePreferenceOption
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTimePreferenceOption.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesTimePreferenceOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A Service Time a person prefers to be scheduled to.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dayOfWeek` (ro) -> PCO: `day_of_week`
@@ -44,35 +43,35 @@ part of pco;
 /// - `timeType` (ro) -> PCO: `time_type`
 /// - `minuteOfDay` (ro) -> PCO: `minute_of_day`
 /// - `startsAt` (ro) -> PCO: `starts_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `day_of_week`: (URLParameter), prefix with a hyphen (-day_of_week) to reverse the order
 /// - `hour_of_day`: (URLParameter), prefix with a hyphen (-hour_of_day) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `timepreferenceoption-servicetype-time_preference_options`: https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -99,21 +98,22 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   static const String kTypeString = 'TimePreferenceOption';
   static const String kTypeId = 'time_preference_option';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/time_preference_options';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `day_of_week`: (URLParameter), prefix with a hyphen (-day_of_week) to reverse the order
   /// - `hour_of_day`: (URLParameter), prefix with a hyphen (-hour_of_day) to reverse the order
-  static List<String> get canOrderBy => ['day_of_week','hour_of_day'];
+  static List<String> get canOrderBy => ['day_of_week', 'hour_of_day'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -143,7 +143,6 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   static const kMinuteOfDay = 'minute_of_day';
   static const kStartsAt = 'starts_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -169,17 +168,19 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
 
   // Class Constructors
-  PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesTimePreferenceOption.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesTimePreferenceOption] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -187,17 +188,31 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesTimePreferenceOption({String? id, int? dayOfWeek, DateTime? createdAt, DateTime? updatedAt, String? description, String? sortIndex, String? timeType, int? minuteOfDay, DateTime? startsAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesTimePreferenceOption(
+      {String? id,
+      int? dayOfWeek,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      String? description,
+      String? sortIndex,
+      String? timeType,
+      int? minuteOfDay,
+      DateTime? startsAt,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesTimePreferenceOption.empty();
     obj._id = id;
     if (dayOfWeek != null) obj._attributes['day_of_week'] = dayOfWeek;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (description != null) obj._attributes['description'] = description;
     if (sortIndex != null) obj._attributes['sort_index'] = sortIndex;
     if (timeType != null) obj._attributes['time_type'] = timeType;
     if (minuteOfDay != null) obj._attributes['minute_of_day'] = minuteOfDay;
-    if (startsAt != null) obj._attributes['starts_at'] = startsAt.toIso8601String();
+    if (startsAt != null)
+      obj._attributes['starts_at'] = startsAt.toIso8601String();
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -211,28 +226,32 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesTimePreferenceOption] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/time_preference_options`
-  static Future<PcoCollection<PcoServicesTimePreferenceOption>> getFromServiceType(String serviceTypeId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesTimePreferenceOption>>
+      getFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
-    var url = '/services/v2/service_types/$serviceTypeId/time_preference_options';
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/time_preference_options';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

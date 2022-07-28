@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Calendar ResourceQuestion Object
-/// 
+///
 /// - Application:        calendar
 /// - Id:                 resource_question
 /// - Type:               ResourceQuestion
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_questions
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarResourceQuestion.fromJson()` constructor.
 /// - Manually create an object using the `PcoCalendarResourceQuestion.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A question to answer when requesting to book a room or resource.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -45,37 +44,37 @@ part of pco;
 /// - `isOptional` (ro) -> PCO: `optional`
 /// - `position` (ro) -> PCO: `position`
 /// - `question` (ro) -> PCO: `question`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
 /// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
 /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `resourcequestion-organization-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resource_questions
 /// - `resourcequestion-resource-resource_questions`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_questions
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -110,21 +109,22 @@ class PcoCalendarResourceQuestion extends PcoResource {
   static const String kTypeString = 'ResourceQuestion';
   static const String kTypeId = 'resource_question';
   static const String kApiVersion = '2020-04-08';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_questions';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/calendar/v2/resource_questions';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
   /// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['created_at','kind','updated_at'];
+  static List<String> get canQuery => ['created_at', 'kind', 'updated_at'];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -156,7 +156,6 @@ class PcoCalendarResourceQuestion extends PcoResource {
   static const kPosition = 'position';
   static const kQuestion = 'question';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -183,17 +182,19 @@ class PcoCalendarResourceQuestion extends PcoResource {
   String get question => _attributes[kQuestion] ?? '';
 
   // Class Constructors
-  PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCalendarResourceQuestion.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCalendarResourceQuestion] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -201,15 +202,30 @@ class PcoCalendarResourceQuestion extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoCalendarResourceQuestion({String? id, DateTime? createdAt, String? kind, DateTime? updatedAt, String? choices, String? description, bool? isMultipleSelect, bool? isOptional, int? position, String? question, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarResourceQuestion(
+      {String? id,
+      DateTime? createdAt,
+      String? kind,
+      DateTime? updatedAt,
+      String? choices,
+      String? description,
+      bool? isMultipleSelect,
+      bool? isOptional,
+      int? position,
+      String? question,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoCalendarResourceQuestion.empty();
     obj._id = id;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
     if (kind != null) obj._attributes['kind'] = kind;
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (choices != null) obj._attributes['choices'] = choices;
     if (description != null) obj._attributes['description'] = description;
-    if (isMultipleSelect != null) obj._attributes['multiple_select'] = isMultipleSelect;
+    if (isMultipleSelect != null)
+      obj._attributes['multiple_select'] = isMultipleSelect;
     if (isOptional != null) obj._attributes['optional'] = isOptional;
     if (position != null) obj._attributes['position'] = position;
     if (question != null) obj._attributes['question'] = question;
@@ -226,40 +242,44 @@ class PcoCalendarResourceQuestion extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_questions`
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> get( {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarResourceQuestion>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/calendar/v2/resource_questions';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/resource_questions`
-  static Future<PcoCollection<PcoCalendarResourceQuestion>> getFromResource(String resourceId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarResourceQuestion>> getFromResource(
+    String resourceId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/calendar/v2/resources/$resourceId/resource_questions';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

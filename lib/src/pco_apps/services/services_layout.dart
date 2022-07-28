@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services Layout Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 layout
 /// - Type:               Layout
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/layouts
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesLayout.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesLayout.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,40 +29,40 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A Layout is used for formatting text for each item in Projector.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `layout-servicetype-layouts`: https://api.planningcenteronline.com/services/v2/service_types/1/layouts
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -81,19 +80,20 @@ class PcoServicesLayout extends PcoResource {
   static const String kTypeString = 'Layout';
   static const String kTypeId = 'layout';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/layouts';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/layouts';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -116,7 +116,6 @@ class PcoServicesLayout extends PcoResource {
   // field mapping constants
   static const kId = 'id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -133,19 +132,20 @@ class PcoServicesLayout extends PcoResource {
   @override
   bool get canDestroy => false;
 
-
   // Class Constructors
-  PcoServicesLayout.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesLayout.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesLayout.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesLayout] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -153,10 +153,13 @@ class PcoServicesLayout extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesLayout({String? id, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesLayout(
+      {String? id,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesLayout.empty();
     obj._id = id;
-    
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -170,28 +173,30 @@ class PcoServicesLayout extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesLayout] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/layouts`
-  static Future<PcoCollection<PcoServicesLayout>> getFromServiceType(String serviceTypeId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesLayout>> getFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/services/v2/service_types/$serviceTypeId/layouts';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesLayout>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesLayout>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services BlockoutScheduleConflict Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 blockout_schedule_conflict
 /// - Type:               BlockoutScheduleConflict
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesBlockoutScheduleConflict.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesBlockoutScheduleConflict.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `dates` (ro) -> PCO: `dates`
@@ -48,34 +47,34 @@ part of pco;
 /// - `teamPositionName` (ro) -> PCO: `team_position_name`
 /// - `sortDate` (ro) -> PCO: `sort_date`
 /// - `isCanAcceptPartial` (ro) -> PCO: `can_accept_partial`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -137,19 +136,20 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   static const String kTypeString = 'BlockoutScheduleConflict';
   static const String kTypeId = 'blockout_schedule_conflict';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -184,7 +184,6 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   static const kSortDate = 'sort_date';
   static const kCanAcceptPartial = 'can_accept_partial';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -216,17 +215,20 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
 
   // Class Constructors
-  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
-  PcoServicesBlockoutScheduleConflict.empty() : super(kPcoApplication, kTypeString);
+  PcoServicesBlockoutScheduleConflict.empty()
+      : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesBlockoutScheduleConflict] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -234,21 +236,42 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesBlockoutScheduleConflict({String? id, String? dates, String? organizationName, String? personAvatar, String? personName, String? positionDisplayTimes, String? serviceTypeName, String? shortDates, String? status, String? teamName, String? teamPositionName, DateTime? sortDate, bool? isCanAcceptPartial, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesBlockoutScheduleConflict(
+      {String? id,
+      String? dates,
+      String? organizationName,
+      String? personAvatar,
+      String? personName,
+      String? positionDisplayTimes,
+      String? serviceTypeName,
+      String? shortDates,
+      String? status,
+      String? teamName,
+      String? teamPositionName,
+      DateTime? sortDate,
+      bool? isCanAcceptPartial,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesBlockoutScheduleConflict.empty();
     obj._id = id;
     if (dates != null) obj._attributes['dates'] = dates;
-    if (organizationName != null) obj._attributes['organization_name'] = organizationName;
+    if (organizationName != null)
+      obj._attributes['organization_name'] = organizationName;
     if (personAvatar != null) obj._attributes['person_avatar'] = personAvatar;
     if (personName != null) obj._attributes['person_name'] = personName;
-    if (positionDisplayTimes != null) obj._attributes['position_display_times'] = positionDisplayTimes;
-    if (serviceTypeName != null) obj._attributes['service_type_name'] = serviceTypeName;
+    if (positionDisplayTimes != null)
+      obj._attributes['position_display_times'] = positionDisplayTimes;
+    if (serviceTypeName != null)
+      obj._attributes['service_type_name'] = serviceTypeName;
     if (shortDates != null) obj._attributes['short_dates'] = shortDates;
     if (status != null) obj._attributes['status'] = status;
     if (teamName != null) obj._attributes['team_name'] = teamName;
-    if (teamPositionName != null) obj._attributes['team_position_name'] = teamPositionName;
-    if (sortDate != null) obj._attributes['sort_date'] = sortDate.toIso8601String();
-    if (isCanAcceptPartial != null) obj._attributes['can_accept_partial'] = isCanAcceptPartial;
+    if (teamPositionName != null)
+      obj._attributes['team_position_name'] = teamPositionName;
+    if (sortDate != null)
+      obj._attributes['sort_date'] = sortDate.toIso8601String();
+    if (isCanAcceptPartial != null)
+      obj._attributes['can_accept_partial'] = isCanAcceptPartial;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -262,9 +285,10 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
     return obj;
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

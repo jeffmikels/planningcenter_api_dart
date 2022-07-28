@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People Message Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 message
 /// - Type:               Message
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/messages
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleMessage.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeopleMessage.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A message is an individual email or sms text sent to a member. Every message has a parent message group.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (ro) -> PCO: `kind`
@@ -50,19 +49,19 @@ part of pco;
 /// - `fromAddress` (ro) -> PCO: `from_address`
 /// - `readAt` (ro) -> PCO: `read_at`
 /// - `appName` (ro) -> PCO: `app_name`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `message_group`: include associated message_group 
-/// - `to`: include associated to 
+///
+/// - `message_group`: include associated message_group
+/// - `to`: include associated to
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `app_name`: (URLParameter), query on a specific app_name, example: ?where[app_name]=string
 /// - `bounced_at`: (URLParameter), query on a specific bounced_at, example: ?where[bounced_at]=2000-01-01T12:00:00Z
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -75,11 +74,11 @@ part of pco;
 /// - `sent_at`: (URLParameter), query on a specific sent_at, example: ?where[sent_at]=2000-01-01T12:00:00Z
 /// - `subject`: (URLParameter), query on a specific subject, example: ?where[subject]=string
 /// - `to_addresses`: (URLParameter), query on a specific to_addresses, example: ?where[to_addresses]=string
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `app_name`: (URLParameter), prefix with a hyphen (-app_name) to reverse the order
 /// - `bounced_at`: (URLParameter), prefix with a hyphen (-bounced_at) to reverse the order
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
@@ -95,16 +94,16 @@ part of pco;
 /// - `to_addresses`: (URLParameter), prefix with a hyphen (-to_addresses) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `messagegroup-message-message_group`: https://api.planningcenteronline.com/people/v2/messages/1/message_group
 /// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
-/// 
+///
 /// Inbound Edges:
 /// - `message-messagegroup-messages`: https://api.planningcenteronline.com/people/v2/message_groups/1/messages
 /// - `message-organization-messages`: https://api.planningcenteronline.com/people/v2/messages
 /// - `message-person-messages`: https://api.planningcenteronline.com/people/v2/people/1/messages
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -137,13 +136,14 @@ class PcoPeopleMessage extends PcoResource {
   static const String kTypeString = 'Message';
   static const String kTypeId = 'message';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/messages';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `message_group`: include associated message_group 
-  /// - `to`: include associated to 
-  static List<String> get canInclude => ['message_group','to'];
+  /// - `message_group`: include associated message_group
+  /// - `to`: include associated to
+  static List<String> get canInclude => ['message_group', 'to'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `app_name`: (URLParameter), query on a specific app_name, example: ?where[app_name]=string
@@ -158,7 +158,20 @@ class PcoPeopleMessage extends PcoResource {
   /// - `sent_at`: (URLParameter), query on a specific sent_at, example: ?where[sent_at]=2000-01-01T12:00:00Z
   /// - `subject`: (URLParameter), query on a specific subject, example: ?where[subject]=string
   /// - `to_addresses`: (URLParameter), query on a specific to_addresses, example: ?where[to_addresses]=string
-  static List<String> get canQuery => ['app_name','bounced_at','created_at','delivery_status','file','from_address','kind','reject_reason','rejection_notification_sent_at','sent_at','subject','to_addresses'];
+  static List<String> get canQuery => [
+        'app_name',
+        'bounced_at',
+        'created_at',
+        'delivery_status',
+        'file',
+        'from_address',
+        'kind',
+        'reject_reason',
+        'rejection_notification_sent_at',
+        'sent_at',
+        'subject',
+        'to_addresses'
+      ];
 
   /// possible orderings with parameter ?order=
   /// - `app_name`: (URLParameter), prefix with a hyphen (-app_name) to reverse the order
@@ -174,7 +187,21 @@ class PcoPeopleMessage extends PcoResource {
   /// - `sent_at`: (URLParameter), prefix with a hyphen (-sent_at) to reverse the order
   /// - `subject`: (URLParameter), prefix with a hyphen (-subject) to reverse the order
   /// - `to_addresses`: (URLParameter), prefix with a hyphen (-to_addresses) to reverse the order
-  static List<String> get canOrderBy => ['app_name','bounced_at','created_at','delivery_status','file','from_address','from_name','kind','reject_reason','rejection_notification_sent_at','sent_at','subject','to_addresses'];
+  static List<String> get canOrderBy => [
+        'app_name',
+        'bounced_at',
+        'created_at',
+        'delivery_status',
+        'file',
+        'from_address',
+        'from_name',
+        'kind',
+        'reject_reason',
+        'rejection_notification_sent_at',
+        'sent_at',
+        'subject',
+        'to_addresses'
+      ];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -210,7 +237,6 @@ class PcoPeopleMessage extends PcoResource {
   static const kReadAt = 'read_at';
   static const kAppName = 'app_name';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -236,31 +262,37 @@ class PcoPeopleMessage extends PcoResource {
   String get rejectReason => _attributes[kRejectReason] ?? '';
   DateTime get sentAt => DateTime.parse(_attributes[kSentAt] ?? '');
   DateTime get bouncedAt => DateTime.parse(_attributes[kBouncedAt] ?? '');
-  DateTime get rejectionNotificationSentAt => DateTime.parse(_attributes[kRejectionNotificationSentAt] ?? '');
+  DateTime get rejectionNotificationSentAt =>
+      DateTime.parse(_attributes[kRejectionNotificationSentAt] ?? '');
   String get fromName => _attributes[kFromName] ?? '';
   String get fromAddress => _attributes[kFromAddress] ?? '';
   DateTime get readAt => DateTime.parse(_attributes[kReadAt] ?? '');
   String get appName => _attributes[kAppName] ?? '';
-  
+
   // typed getters for each relationship
-  
-  PcoPeopleMessageGroup? get includedMessageGroup => _firstOrNull<PcoPeopleMessageGroup>(relationships['message_group']);
+
+  PcoPeopleMessageGroup? get includedMessageGroup =>
+      _firstOrNull<PcoPeopleMessageGroup>(relationships['message_group']);
+
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
-  List<T> includedTo<T extends PcoResource>() => (relationships['to'] as List?)?.cast<T>() ?? [];
+  List<T> includedTo<T extends PcoResource>() =>
+      (relationships['to'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
-  PcoPeopleMessage.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleMessage.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleMessage.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleMessage] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -268,19 +300,41 @@ class PcoPeopleMessage extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleMessage({String? id, String? kind, String? toAddresses, String? subject, String? file, String? deliveryStatus, String? rejectReason, DateTime? createdAt, DateTime? sentAt, DateTime? bouncedAt, DateTime? rejectionNotificationSentAt, String? fromName, String? fromAddress, DateTime? readAt, String? appName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleMessage(
+      {String? id,
+      String? kind,
+      String? toAddresses,
+      String? subject,
+      String? file,
+      String? deliveryStatus,
+      String? rejectReason,
+      DateTime? createdAt,
+      DateTime? sentAt,
+      DateTime? bouncedAt,
+      DateTime? rejectionNotificationSentAt,
+      String? fromName,
+      String? fromAddress,
+      DateTime? readAt,
+      String? appName,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleMessage.empty();
     obj._id = id;
     if (kind != null) obj._attributes['kind'] = kind;
     if (toAddresses != null) obj._attributes['to_addresses'] = toAddresses;
     if (subject != null) obj._attributes['subject'] = subject;
     if (file != null) obj._attributes['file'] = file;
-    if (deliveryStatus != null) obj._attributes['delivery_status'] = deliveryStatus;
+    if (deliveryStatus != null)
+      obj._attributes['delivery_status'] = deliveryStatus;
     if (rejectReason != null) obj._attributes['reject_reason'] = rejectReason;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
     if (sentAt != null) obj._attributes['sent_at'] = sentAt.toIso8601String();
-    if (bouncedAt != null) obj._attributes['bounced_at'] = bouncedAt.toIso8601String();
-    if (rejectionNotificationSentAt != null) obj._attributes['rejection_notification_sent_at'] = rejectionNotificationSentAt.toIso8601String();
+    if (bouncedAt != null)
+      obj._attributes['bounced_at'] = bouncedAt.toIso8601String();
+    if (rejectionNotificationSentAt != null)
+      obj._attributes['rejection_notification_sent_at'] =
+          rejectionNotificationSentAt.toIso8601String();
     if (fromName != null) obj._attributes['from_name'] = fromName;
     if (fromAddress != null) obj._attributes['from_address'] = fromAddress;
     if (readAt != null) obj._attributes['read_at'] = readAt.toIso8601String();
@@ -298,61 +352,78 @@ class PcoPeopleMessage extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/messages`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `created_after`
-  static Future<PcoCollection<PcoPeopleMessage>> get( {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeMessageGroup = false, bool includeTo = false,}) async {
+  static Future<PcoCollection<PcoPeopleMessage>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/messages';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMessage>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/messages`
-  static Future<PcoCollection<PcoPeopleMessage>> getFromMessageGroup(String messageGroupId, {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeMessageGroup = false, bool includeTo = false,}) async {
+  static Future<PcoCollection<PcoPeopleMessage>> getFromMessageGroup(
+    String messageGroupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/message_groups/$messageGroupId/messages';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMessage>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/messages`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `created_after`
   /// - `received`
   /// - `sent`
   /// - `unread`
-  static Future<PcoCollection<PcoPeopleMessage>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, bool includeAll = false, bool includeMessageGroup = false, bool includeTo = false,}) async {
+  static Future<PcoCollection<PcoPeopleMessage>> getFromPerson(
+    String personId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/people/$personId/messages';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMessage>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -361,19 +432,44 @@ class PcoPeopleMessage extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/message_group`
-  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroup({PlanningCenterApiQuery? query, bool includeAll = false, bool includeApp = false, bool includeFrom = false, bool includeMessages = false,}) async {
+  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroup({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeApp = false,
+    bool includeFrom = false,
+    bool includeMessages = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeApp) query.include.add('app');
     if (includeFrom) query.include.add('from');
     if (includeMessages) query.include.add('messages');
     var url = '$apiEndpoint/message_group';
-    return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/to`
-  Future<PcoCollection<PcoPeoplePerson>> getTo({PlanningCenterApiQuery? query, bool includeAll = false, bool includeAddresses = false, bool includeEmails = false, bool includeFieldData = false, bool includeHouseholds = false, bool includeInactiveReason = false, bool includeMaritalStatus = false, bool includeNamePrefix = false, bool includeNameSuffix = false, bool includeOrganization = false, bool includePersonApps = false, bool includePhoneNumbers = false, bool includePlatformNotifications = false, bool includePrimaryCampus = false, bool includeSchool = false, bool includeSocialProfiles = false,}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getTo({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeAddresses) query.include.add('addresses');
@@ -387,17 +483,20 @@ class PcoPeopleMessage extends PcoResource {
     if (includeOrganization) query.include.add('organization');
     if (includePersonApps) query.include.add('person_apps');
     if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications) query.include.add('platform_notifications');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
     if (includePrimaryCampus) query.include.add('primary_campus');
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/to';
-    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

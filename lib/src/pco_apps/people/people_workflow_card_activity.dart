@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People WorkflowCardActivity Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 workflow_card_activity
 /// - Type:               WorkflowCardActivity
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCardActivity.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeopleWorkflowCardActivity.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// Workflow Card Activity is a record of an action performed on a card
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `comment` (ro) -> PCO: `comment`
@@ -47,34 +46,34 @@ part of pco;
 /// - `type` (ro) -> PCO: `type`
 /// - `isContentIsHtml` (ro) -> PCO: `content_is_html`
 /// - `createdAt` (ro) -> PCO: `created_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `id`: (URLParameter), prefix with a hyphen (-id) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `workflowcardactivity-workflowcard-activities`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -111,15 +110,16 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   static const String kTypeString = 'WorkflowCardActivity';
   static const String kTypeId = 'workflow_card_activity';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -157,7 +157,6 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   static const kContentIsHtml = 'content_is_html';
   static const kCreatedAt = 'created_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -187,17 +186,19 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   bool get isContentIsHtml => _attributes[kContentIsHtml] == true;
 
   // Class Constructors
-  PcoPeopleWorkflowCardActivity.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleWorkflowCardActivity.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleWorkflowCardActivity.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowCardActivity] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -205,19 +206,38 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleWorkflowCardActivity({String? id, String? comment, String? content, String? formSubmissionUrl, String? personAvatarUrl, String? personName, String? reassignedToAvatarUrl, String? reassignedToName, String? subject, bool? isContentIsHtml, DateTime? createdAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleWorkflowCardActivity(
+      {String? id,
+      String? comment,
+      String? content,
+      String? formSubmissionUrl,
+      String? personAvatarUrl,
+      String? personName,
+      String? reassignedToAvatarUrl,
+      String? reassignedToName,
+      String? subject,
+      bool? isContentIsHtml,
+      DateTime? createdAt,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleWorkflowCardActivity.empty();
     obj._id = id;
     if (comment != null) obj._attributes['comment'] = comment;
     if (content != null) obj._attributes['content'] = content;
-    if (formSubmissionUrl != null) obj._attributes['form_submission_url'] = formSubmissionUrl;
-    if (personAvatarUrl != null) obj._attributes['person_avatar_url'] = personAvatarUrl;
+    if (formSubmissionUrl != null)
+      obj._attributes['form_submission_url'] = formSubmissionUrl;
+    if (personAvatarUrl != null)
+      obj._attributes['person_avatar_url'] = personAvatarUrl;
     if (personName != null) obj._attributes['person_name'] = personName;
-    if (reassignedToAvatarUrl != null) obj._attributes['reassigned_to_avatar_url'] = reassignedToAvatarUrl;
-    if (reassignedToName != null) obj._attributes['reassigned_to_name'] = reassignedToName;
+    if (reassignedToAvatarUrl != null)
+      obj._attributes['reassigned_to_avatar_url'] = reassignedToAvatarUrl;
+    if (reassignedToName != null)
+      obj._attributes['reassigned_to_name'] = reassignedToName;
     if (subject != null) obj._attributes['subject'] = subject;
-    if (isContentIsHtml != null) obj._attributes['content_is_html'] = isContentIsHtml;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (isContentIsHtml != null)
+      obj._attributes['content_is_html'] = isContentIsHtml;
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -231,28 +251,32 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities`
-  static Future<PcoCollection<PcoPeopleWorkflowCardActivity>> getActivitiesFromPersonAndWorkflowCard(String personId,String workflowCardId, {PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoPeopleWorkflowCardActivity>>
+      getActivitiesFromPersonAndWorkflowCard(
+    String personId,
+    String workflowCardId, {
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities';
-    
-    return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url, query: query, apiVersion:kApiVersion);
+
+    var url =
+        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities';
+
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

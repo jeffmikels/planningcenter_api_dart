@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People Condition Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 condition
 /// - Type:               Condition
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleCondition.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeopleCondition.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A condition is an individual criterion used by a List Rule.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `application` (ro) -> PCO: `application`
@@ -44,18 +43,18 @@ part of pco;
 /// - `description` (ro) -> PCO: `description`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
-/// - `created_by`: include associated created_by 
+///
+/// - `created_by`: include associated created_by
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `application`: (URLParameter), query on a specific application, example: ?where[application]=string
 /// - `comparison`: (URLParameter), query on a specific comparison, example: ?where[comparison]=string
 /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -64,11 +63,11 @@ part of pco;
 /// - `description`: (URLParameter), query on a specific description, example: ?where[description]=string
 /// - `settings`: (URLParameter), query on a specific settings, example: ?where[settings]=string
 /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `application`: (URLParameter), prefix with a hyphen (-application) to reverse the order
 /// - `comparison`: (URLParameter), prefix with a hyphen (-comparison) to reverse the order
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
@@ -79,13 +78,13 @@ part of pco;
 /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `person-condition-created_by`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by
-/// 
+///
 /// Inbound Edges:
 /// - `condition-rule-conditions`: https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -119,11 +118,12 @@ class PcoPeopleCondition extends PcoResource {
   static const String kTypeString = 'Condition';
   static const String kTypeId = 'condition';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `created_by`: include associated created_by 
+  /// - `created_by`: include associated created_by
   static List<String> get canInclude => ['created_by'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -135,7 +135,16 @@ class PcoPeopleCondition extends PcoResource {
   /// - `description`: (URLParameter), query on a specific description, example: ?where[description]=string
   /// - `settings`: (URLParameter), query on a specific settings, example: ?where[settings]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['application','comparison','created_at','definition_class','definition_identifier','description','settings','updated_at'];
+  static List<String> get canQuery => [
+        'application',
+        'comparison',
+        'created_at',
+        'definition_class',
+        'definition_identifier',
+        'description',
+        'settings',
+        'updated_at'
+      ];
 
   /// possible orderings with parameter ?order=
   /// - `application`: (URLParameter), prefix with a hyphen (-application) to reverse the order
@@ -146,7 +155,16 @@ class PcoPeopleCondition extends PcoResource {
   /// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
   /// - `settings`: (URLParameter), prefix with a hyphen (-settings) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['application','comparison','created_at','definition_class','definition_identifier','description','settings','updated_at'];
+  static List<String> get canOrderBy => [
+        'application',
+        'comparison',
+        'created_at',
+        'definition_class',
+        'definition_identifier',
+        'description',
+        'settings',
+        'updated_at'
+      ];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -176,7 +194,6 @@ class PcoPeopleCondition extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -200,25 +217,28 @@ class PcoPeopleCondition extends PcoResource {
   String get settings => _attributes[kSettings] ?? '';
   String get definitionIdentifier => _attributes[kDefinitionIdentifier] ?? '';
   String get description => _attributes[kDescription] ?? '';
-  
+
   // typed getters for each relationship
-  
+
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it here.
-  List<T> includedCreatedBy<T extends PcoResource>() => (relationships['created_by'] as List?)?.cast<T>() ?? [];
+  List<T> includedCreatedBy<T extends PcoResource>() =>
+      (relationships['created_by'] as List?)?.cast<T>() ?? [];
 
   // Class Constructors
-  PcoPeopleCondition.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleCondition.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleCondition.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleCondition] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -226,17 +246,32 @@ class PcoPeopleCondition extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleCondition({String? id, String? application, String? definitionClass, String? comparison, String? settings, String? definitionIdentifier, String? description, DateTime? createdAt, DateTime? updatedAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleCondition(
+      {String? id,
+      String? application,
+      String? definitionClass,
+      String? comparison,
+      String? settings,
+      String? definitionIdentifier,
+      String? description,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleCondition.empty();
     obj._id = id;
     if (application != null) obj._attributes['application'] = application;
-    if (definitionClass != null) obj._attributes['definition_class'] = definitionClass;
+    if (definitionClass != null)
+      obj._attributes['definition_class'] = definitionClass;
     if (comparison != null) obj._attributes['comparison'] = comparison;
     if (settings != null) obj._attributes['settings'] = settings;
-    if (definitionIdentifier != null) obj._attributes['definition_identifier'] = definitionIdentifier;
+    if (definitionIdentifier != null)
+      obj._attributes['definition_identifier'] = definitionIdentifier;
     if (description != null) obj._attributes['description'] = description;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -250,25 +285,28 @@ class PcoPeopleCondition extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleCondition] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/rules/$ruleId/conditions`
-  static Future<PcoCollection<PcoPeopleCondition>> getFromListAndRule(String listId,String ruleId, {String? id, PlanningCenterApiQuery? query, bool includeCreatedBy = false,}) async {
+  static Future<PcoCollection<PcoPeopleCondition>> getFromListAndRule(
+    String listId,
+    String ruleId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+    bool includeCreatedBy = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
+
     if (includeCreatedBy) query.include.add('created_by');
     var url = '/people/v2/lists/$listId/rules/$ruleId/conditions';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleCondition>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleCondition>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -277,7 +315,25 @@ class PcoPeopleCondition extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions/1/created_by`
-  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy({PlanningCenterApiQuery? query, bool includeAll = false, bool includeAddresses = false, bool includeEmails = false, bool includeFieldData = false, bool includeHouseholds = false, bool includeInactiveReason = false, bool includeMaritalStatus = false, bool includeNamePrefix = false, bool includeNameSuffix = false, bool includeOrganization = false, bool includePersonApps = false, bool includePhoneNumbers = false, bool includePlatformNotifications = false, bool includePrimaryCampus = false, bool includeSchool = false, bool includeSocialProfiles = false,}) async {
+  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoPeopleCondition.canInclude);
     if (includeAddresses) query.include.add('addresses');
@@ -291,17 +347,20 @@ class PcoPeopleCondition extends PcoResource {
     if (includeOrganization) query.include.add('organization');
     if (includePersonApps) query.include.add('person_apps');
     if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications) query.include.add('platform_notifications');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
     if (includePrimaryCampus) query.include.add('primary_campus');
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
     var url = '$apiEndpoint/created_by';
-    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

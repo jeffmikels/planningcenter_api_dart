@@ -1,3 +1,13 @@
+## 1.0.0
+
+-   revised the architecture of class constructors so that you can now add any attribute exposed by the api in the constructor
+-   `relationships` and `includes` can be added to objects directly through the use of the class constructors
+-   all class constructor arguments are named parameters now
+-   extension methods are now being used to customize code beyond what is automatically generated, this is especially useful when creating and saving donation items since the api requires specific `relationships` and `included` values
+-   modified the OAuth2 workflow to include a built-in default http server to make authentication callbacks work more easily.
+-   The entire Planning Center API should now be accessible through type-safe Dart code, and there should never be a need to call `PlanningCenter.instance.call()` directly.
+-   TODO... there should be different `PlanningCenterApiQuery` options for each class... will work on that.
+
 ## 0.9.9
 
 -   all possible `include` items are now implemented as typed getters!

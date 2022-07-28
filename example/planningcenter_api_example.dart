@@ -16,25 +16,13 @@ void debug(Object o) {
   }
 }
 
-Future<String> authRedirector(String url) async {
-  var completer = Completer<String>();
-  var server = await HttpServer.bind('0.0.0.0', 64738);
-  server.listen((HttpRequest req) async {
-    req.response.write('Thanks! You can close this window now.');
-    req.response.close();
-    server.close();
-    print(req.requestedUri);
-    print(req.requestedUri.queryParameters);
-    completer.complete(req.requestedUri.queryParameters['code'] ?? '');
-  });
-
-  print('visit the following url in your browser');
-  print(url);
-
-  // Once the user is redirected to `redirectUrl`, pass the query parameters to
-  // the AuthorizationCodeGrant. It will validate them and extract the
-  // authorization code to create a new Client.
-  return completer.future;
+Future checkResponseError(PlanningCenterApiResponse res) async {
+  if (res is PlanningCenterApiError) {
+    debug(res.message);
+    debug(res.responseBody);
+  } else {
+    debug('Success!');
+  }
 }
 
 /// here's the real example code
@@ -61,9 +49,8 @@ void main() async {
     await PlanningCenter.authorize(
       oAuthClientId,
       oAuthClientSecret,
-      'http://localhost:64738/pco_callback',
       PlanningCenter.oAuthScopes,
-      authRedirector,
+      redirectUri: 'http://localhost:64738/pco_callback',
     );
   }
 
@@ -107,10 +94,7 @@ void main() async {
   // to call the API directly, you can do this, but it will not return
   // typed data... just a moderately parsed PlanningCenterApiResponse object
   var res = await PlanningCenter.instance.call('/services/v2/songs');
-  if (res is PlanningCenterApiError) {
-    debug(res.message);
-    debug(res.responseBody);
-  }
+  checkResponseError(res);
   debug(res.toJson());
 
   // Once we're done with the client, save the credentials file. This ensures
@@ -135,22 +119,56 @@ void main() async {
     var r2 = await plan.itemReorder(PlanningCenterApiData('PlanItemReorder', attributes: {
       'sequence': ['5', '1', '3']
     }));
-    if (r2.isError) {
-      print(r2.errorMessage);
-    } else {
-      print('success');
-    }
+    checkResponseError(r2);
+    debug(r2.toJson());
   }
 
   var r3 = await PlanningCenterApiFile.upload('myImage.jpg');
   if (r3.isError) {
-    print(r3.errorMessage);
+    debug(r3.errorMessage);
+    debug(r3.responseBody);
   } else {
     var f = (r3.data.first);
     print('File was successfully uploaded... it can now be attached to other objects by using its UUID');
     print('UUID: ${f.id}');
     print('CONTENT-TYPE: ${f.contentType}');
   }
+
+  /// Here's an example for how to add a donation to the giving module
+
+  // first, add a batch
+  var batch = PcoGivingBatch();
+  await batch.save();
+
+  // now create a donation object
+  var don = PcoGivingDonation(
+    batchId: batch.id!,
+    personId: '1234',
+    paymentMethod: 'cash',
+    paymentCheckNumber: 1234,
+    paymentSourceId: '289',
+    receivedAt: DateTime.now(),
+  );
+
+  // now save it to the server with two designations
+  // note that saving donations without a designation
+  // will fail.
+  var r4 = await don.saveWithDesignations([
+    PcoGivingDesignation(
+      amountCents: 1234,
+      withRelationships: {
+        'fund': [PcoGivingFund(id: '1')]
+      },
+    ),
+    PcoGivingDesignation(
+      amountCents: 5678,
+      withRelationships: {
+        'fund': [PcoGivingFund(id: '2')]
+      },
+    )
+  ]);
+  checkResponseError(r4);
+  debug(r4.toJson());
 
   exit(0);
 }

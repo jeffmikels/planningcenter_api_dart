@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO People ConnectedPerson Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 connected_person
 /// - Type:               ConnectedPerson
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/connected_people
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleConnectedPerson.fromJson()` constructor.
 /// - Manually create an object using the `PcoPeopleConnectedPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A Connected Person is an account from a different organization linked to an account in this organization.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `givenName` (ro) -> PCO: `given_name`
@@ -44,34 +43,34 @@ part of pco;
 /// - `gender` (ro) -> PCO: `gender`
 /// - `organizationName` (ro) -> PCO: `organization_name`
 /// - `organizationId` (ro) -> PCO: `organization_id`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `connectedperson-person-connected_people`: https://api.planningcenteronline.com/people/v2/people/1/connected_people
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -105,19 +104,20 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const String kTypeString = 'ConnectedPerson';
   static const String kTypeId = 'connected_person';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/people/1/connected_people';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -148,7 +148,6 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static const kOrganizationName = 'organization_name';
   static const kOrganizationId = 'organization_id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -176,17 +175,19 @@ class PcoPeopleConnectedPerson extends PcoResource {
   String get organizationId => _attributes[kOrganizationId] ?? '';
 
   // Class Constructors
-  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleConnectedPerson.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleConnectedPerson] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -194,7 +195,18 @@ class PcoPeopleConnectedPerson extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleConnectedPerson({String? id, String? givenName, String? firstName, String? nickname, String? middleName, String? lastName, String? gender, String? organizationName, String? organizationId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleConnectedPerson(
+      {String? id,
+      String? givenName,
+      String? firstName,
+      String? nickname,
+      String? middleName,
+      String? lastName,
+      String? gender,
+      String? organizationName,
+      String? organizationId,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleConnectedPerson.empty();
     obj._id = id;
     if (givenName != null) obj._attributes['given_name'] = givenName;
@@ -203,8 +215,10 @@ class PcoPeopleConnectedPerson extends PcoResource {
     if (middleName != null) obj._attributes['middle_name'] = middleName;
     if (lastName != null) obj._attributes['last_name'] = lastName;
     if (gender != null) obj._attributes['gender'] = gender;
-    if (organizationName != null) obj._attributes['organization_name'] = organizationName;
-    if (organizationId != null) obj._attributes['organization_id'] = organizationId;
+    if (organizationName != null)
+      obj._attributes['organization_name'] = organizationName;
+    if (organizationId != null)
+      obj._attributes['organization_id'] = organizationId;
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -218,28 +232,30 @@ class PcoPeopleConnectedPerson extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/connected_people`
-  static Future<PcoCollection<PcoPeopleConnectedPerson>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoPeopleConnectedPerson>> getFromPerson(
+    String personId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/people/v2/people/$personId/connected_people';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

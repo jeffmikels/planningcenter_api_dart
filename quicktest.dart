@@ -19,27 +19,6 @@ void debug(Object? o) {
   }
 }
 
-Future<String> authRedirector(String url) async {
-  var completer = Completer<String>();
-  var server = await HttpServer.bind('0.0.0.0', 64738);
-  server.listen((HttpRequest req) async {
-    req.response.write('Thanks! You can close this window now.');
-    req.response.close();
-    server.close();
-    print(req.requestedUri);
-    print(req.requestedUri.queryParameters);
-    completer.complete(req.requestedUri.queryParameters['code'] ?? '');
-  });
-
-  print('visit the following url in your browser');
-  print(url);
-
-  // Once the user is redirected to `redirectUrl`, pass the query parameters to
-  // the AuthorizationCodeGrant. It will validate them and extract the
-  // authorization code to create a new Client.
-  return completer.future;
-}
-
 void main() async {
   print('checking credentials');
   if (await credentialsFile.exists()) {
@@ -53,13 +32,7 @@ void main() async {
   /// unless the user supplies their own
   if (!PlanningCenter.initialized) {
     print('initiating oAuth workflow');
-    await PlanningCenter.authorize(
-      oAuthClientId,
-      oAuthClientSecret,
-      'http://localhost:64738/pco_callback',
-      PlanningCenter.oAuthScopes,
-      authRedirector,
-    );
+    await PlanningCenter.authorize(oAuthClientId, oAuthClientSecret, PlanningCenter.oAuthScopes);
     if (!PlanningCenter.initialized) {
       print('Planning Center authentication failed.');
       exit(1);

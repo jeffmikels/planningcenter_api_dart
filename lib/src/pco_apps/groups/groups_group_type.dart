@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Groups GroupType Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 group_type
 /// - Type:               GroupType
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/group_types
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsGroupType.fromJson()` constructor.
 /// - Manually create an object using the `PcoGroupsGroupType.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,10 +29,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isChurchCenterVisible` (ro) -> PCO: `church_center_visible`
@@ -43,38 +42,38 @@ part of pco;
 /// - `description` (ro) -> PCO: `description`
 /// - `name` (ro) -> PCO: `name`
 /// - `position` (ro) -> PCO: `position`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 /// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `event-grouptype-events`: https://api.planningcenteronline.com/groups/v2/group_types/1/events
 /// - `group-grouptype-groups`: https://api.planningcenteronline.com/groups/v2/group_types/1/groups
 /// - `resource-grouptype-resources`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources
-/// 
+///
 /// Inbound Edges:
 /// - `grouptype-group-group_type`: https://api.planningcenteronline.com/groups/v2/groups/1/group_type
 /// - `grouptype-organization-group_types`: https://api.planningcenteronline.com/groups/v2/group_types
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -100,11 +99,12 @@ class PcoGroupsGroupType extends PcoResource {
   static const String kTypeString = 'GroupType';
   static const String kTypeId = 'group_type';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/group_types';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -114,7 +114,7 @@ class PcoGroupsGroupType extends PcoResource {
   /// possible orderings with parameter ?order=
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
-  static List<String> get canOrderBy => ['name','position'];
+  static List<String> get canOrderBy => ['name', 'position'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -143,7 +143,6 @@ class PcoGroupsGroupType extends PcoResource {
   static const kName = 'name';
   static const kPosition = 'position';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -162,7 +161,8 @@ class PcoGroupsGroupType extends PcoResource {
 
   // getters for object attributes
   bool get isChurchCenterVisible => _attributes[kChurchCenterVisible] == true;
-  bool get isChurchCenterMapVisible => _attributes[kChurchCenterMapVisible] == true;
+  bool get isChurchCenterMapVisible =>
+      _attributes[kChurchCenterMapVisible] == true;
   String get color => _attributes[kColor] ?? '';
   String get defaultGroupSettings => _attributes[kDefaultGroupSettings] ?? '';
   String get description => _attributes[kDescription] ?? '';
@@ -170,17 +170,19 @@ class PcoGroupsGroupType extends PcoResource {
   int get position => _attributes[kPosition] ?? 0;
 
   // Class Constructors
-  PcoGroupsGroupType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoGroupsGroupType.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoGroupsGroupType.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGroupsGroupType] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -188,13 +190,26 @@ class PcoGroupsGroupType extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoGroupsGroupType({String? id, bool? isChurchCenterVisible, bool? isChurchCenterMapVisible, String? color, String? defaultGroupSettings, String? description, String? name, int? position, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGroupsGroupType(
+      {String? id,
+      bool? isChurchCenterVisible,
+      bool? isChurchCenterMapVisible,
+      String? color,
+      String? defaultGroupSettings,
+      String? description,
+      String? name,
+      int? position,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoGroupsGroupType.empty();
     obj._id = id;
-    if (isChurchCenterVisible != null) obj._attributes['church_center_visible'] = isChurchCenterVisible;
-    if (isChurchCenterMapVisible != null) obj._attributes['church_center_map_visible'] = isChurchCenterMapVisible;
+    if (isChurchCenterVisible != null)
+      obj._attributes['church_center_visible'] = isChurchCenterVisible;
+    if (isChurchCenterMapVisible != null)
+      obj._attributes['church_center_map_visible'] = isChurchCenterMapVisible;
     if (color != null) obj._attributes['color'] = color;
-    if (defaultGroupSettings != null) obj._attributes['default_group_settings'] = defaultGroupSettings;
+    if (defaultGroupSettings != null)
+      obj._attributes['default_group_settings'] = defaultGroupSettings;
     if (description != null) obj._attributes['description'] = description;
     if (name != null) obj._attributes['name'] = name;
     if (position != null) obj._attributes['position'] = position;
@@ -211,41 +226,43 @@ class PcoGroupsGroupType extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoGroupsGroupType] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `church_center_visible`
   /// - `not_church_center_visible`
-  static Future<PcoCollection<PcoGroupsGroupType>> get( {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsGroupType>> get({
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/groups/v2/group_types';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsGroupType>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsGroupType>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoGroupsGroupType] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/group_type`
-  static Future<PcoCollection<PcoGroupsGroupType>> getFromGroup(String groupId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsGroupType>> getFromGroup(
+    String groupId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/groups/v2/groups/$groupId/group_type';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsGroupType>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsGroupType>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -254,44 +271,59 @@ class PcoGroupsGroupType extends PcoResource {
 
   /// Will get a collection of [PcoGroupsEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/events`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
   /// - `upcoming`
-  Future<PcoCollection<PcoGroupsEvent>> getEvents({PlanningCenterApiQuery? query, bool includeAll = false, bool includeGroup = false, bool includeLocation = false,}) async {
+  Future<PcoCollection<PcoGroupsEvent>> getEvents({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroup = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroupType.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
     var url = '$apiEndpoint/events';
-    return PcoCollection.fromApiCall<PcoGroupsEvent>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/groups`
-  Future<PcoCollection<PcoGroupsGroup>> getGroups({PlanningCenterApiQuery? query, bool includeAll = false, bool includeGroupType = false, bool includeLocation = false,}) async {
+  Future<PcoCollection<PcoGroupsGroup>> getGroups({
+    PlanningCenterApiQuery? query,
+    bool includeAll = false,
+    bool includeGroupType = false,
+    bool includeLocation = false,
+  }) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroupType.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
     var url = '$apiEndpoint/groups';
-    return PcoCollection.fromApiCall<PcoGroupsGroup>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources`
-  Future<PcoCollection<PcoGroupsResource>> getResources({PlanningCenterApiQuery? query, }) async {
+  Future<PcoCollection<PcoGroupsResource>> getResources({
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '$apiEndpoint/resources';
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,11 +3,10 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// This class represents a PCO Services MediaSchedule Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 media_schedule
 /// - Type:               MediaSchedule
@@ -16,13 +15,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media/1/media_schedules
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesMediaSchedule.fromJson()` constructor.
 /// - Manually create an object using the `PcoServicesMediaSchedule.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -30,44 +29,44 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `planDates` (ro) -> PCO: `plan_dates`
 /// - `planShortDates` (ro) -> PCO: `plan_short_dates`
 /// - `serviceTypeName` (ro) -> PCO: `service_type_name`
 /// - `planSortDate` (ro) -> PCO: `plan_sort_date`
-/// 
+///
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-/// 
+///
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
+///
 /// NONE
-/// 
+///
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// NONE
 ///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `mediaschedule-media-media_schedules`: https://api.planningcenteronline.com/services/v2/media/1/media_schedules
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -103,19 +102,20 @@ class PcoServicesMediaSchedule extends PcoResource {
   static const String kTypeString = 'MediaSchedule';
   static const String kTypeId = 'media_schedule';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/media/1/media_schedules';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -142,7 +142,6 @@ class PcoServicesMediaSchedule extends PcoResource {
   static const kServiceTypeName = 'service_type_name';
   static const kPlanSortDate = 'plan_sort_date';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -166,17 +165,19 @@ class PcoServicesMediaSchedule extends PcoResource {
   DateTime get planSortDate => DateTime.parse(_attributes[kPlanSortDate] ?? '');
 
   // Class Constructors
-  PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesMediaSchedule.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesMediaSchedule] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -184,13 +185,23 @@ class PcoServicesMediaSchedule extends PcoResource {
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesMediaSchedule({String? id, String? planDates, String? planShortDates, String? serviceTypeName, DateTime? planSortDate, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesMediaSchedule(
+      {String? id,
+      String? planDates,
+      String? planShortDates,
+      String? serviceTypeName,
+      DateTime? planSortDate,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesMediaSchedule.empty();
     obj._id = id;
     if (planDates != null) obj._attributes['plan_dates'] = planDates;
-    if (planShortDates != null) obj._attributes['plan_short_dates'] = planShortDates;
-    if (serviceTypeName != null) obj._attributes['service_type_name'] = serviceTypeName;
-    if (planSortDate != null) obj._attributes['plan_sort_date'] = planSortDate.toIso8601String();
+    if (planShortDates != null)
+      obj._attributes['plan_short_dates'] = planShortDates;
+    if (serviceTypeName != null)
+      obj._attributes['service_type_name'] = serviceTypeName;
+    if (planSortDate != null)
+      obj._attributes['plan_sort_date'] = planSortDate.toIso8601String();
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
@@ -204,28 +215,30 @@ class PcoServicesMediaSchedule extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesMediaSchedule] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/media_schedules`
-  static Future<PcoCollection<PcoServicesMediaSchedule>> getFromMedia(String mediaId, {String? id, PlanningCenterApiQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesMediaSchedule>> getFromMedia(
+    String mediaId, {
+    String? id,
+    PlanningCenterApiQuery? query,
+  }) async {
     query ??= PlanningCenterApiQuery();
-    
-    
+
     var url = '/services/v2/media/$mediaId/media_schedules';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

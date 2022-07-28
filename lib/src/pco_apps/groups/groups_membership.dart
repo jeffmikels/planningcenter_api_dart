@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.614007
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.839041
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO Groups Membership Object
-///
+/// 
 /// - Application:        groups
 /// - Id:                 membership
 /// - Type:               Membership
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/groups/1/memberships
 /// - Create Endpoint:    https://api.planningcenteronline.com/groups/v2/groups/1/memberships
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoGroupsMembership()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGroupsMembership.fromJson()` constructor.
+/// - Manually create an object using the `PcoGroupsMembership.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,9 +30,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `accountCenterIdentifier` (ro) -> PCO: `account_center_identifier`
@@ -43,38 +46,38 @@ part of pco;
 /// - `phoneNumber` (ro) -> PCO: `phone_number`
 /// - `role` (rw) -> PCO: `role`
 /// - `personId` (wo) -> PCO: `person_id`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `role`: (URLParameter), query on a specific role, example: ?where[role]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
 /// - `joined_at`: (URLParameter), prefix with a hyphen (-joined_at) to reverse the order
 /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
 /// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `group-membership-group`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group
-///
+/// 
 /// Inbound Edges:
 /// - `membership-group-memberships`: https://api.planningcenteronline.com/groups/v2/groups/1/memberships
 /// - `membership-person-memberships`: https://api.planningcenteronline.com/groups/v2/people/1/memberships
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -115,13 +118,11 @@ class PcoGroupsMembership extends PcoResource {
   static const String kTypeString = 'Membership';
   static const String kTypeId = 'membership';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/groups/v2/groups/1/memberships';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -133,8 +134,7 @@ class PcoGroupsMembership extends PcoResource {
   /// - `joined_at`: (URLParameter), prefix with a hyphen (-joined_at) to reverse the order
   /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
   /// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
-  static List<String> get canOrderBy =>
-      ['first_name', 'joined_at', 'last_name', 'role'];
+  static List<String> get canOrderBy => ['first_name','joined_at','last_name','role'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -166,6 +166,7 @@ class PcoGroupsMembership extends PcoResource {
   static const kRole = 'role';
   static const kPersonId = 'person_id';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['person_id', 'role', 'joined_at'];
@@ -183,8 +184,7 @@ class PcoGroupsMembership extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get accountCenterIdentifier =>
-      _attributes[kAccountCenterIdentifier] ?? '';
+  String get accountCenterIdentifier => _attributes[kAccountCenterIdentifier] ?? '';
   String get avatarUrl => _attributes[kAvatarUrl] ?? '';
   String get colorIdentifier => _attributes[kColorIdentifier] ?? '';
   String get emailAddress => _attributes[kEmailAddress] ?? '';
@@ -193,83 +193,99 @@ class PcoGroupsMembership extends PcoResource {
   String get lastName => _attributes[kLastName] ?? '';
   String get phoneNumber => _attributes[kPhoneNumber] ?? '';
   String get role => _attributes[kRole] ?? '';
-
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set joinedAt(DateTime? x) => (x == null)
-      ? _attributes.remove(kJoinedAt)
-      : _attributes[kJoinedAt] = x.toIso8601String();
-
+  set joinedAt(DateTime? x) => (x == null) ? _attributes.remove(kJoinedAt) : _attributes[kJoinedAt] = x.toIso8601String();
+  
   /// Can be either `leader` or `member`
-
+  
   /// pass `null` to remove key from attributes
-  set role(String? x) =>
-      (x == null) ? _attributes.remove(kRole) : _attributes[kRole] = x;
-
+  set role(String? x) => (x == null) ? _attributes.remove(kRole) : _attributes[kRole] = x;
+  
   // additional setters / getters for create/update attributes
-
+  
   /// pass `null` to remove key from attributes
-  set personId(String? x) =>
-      (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  set personId(String? x) => (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
   String get personId => _attributes[kPersonId] ?? '';
 
   // Class Constructors
-  PcoGroupsMembership.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoGroupsMembership.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
   PcoGroupsMembership.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoGroupsMembership] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships`
-  ///
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoGroupsMembership(String groupId,
-      {String? role, DateTime? joinedAt}) {
+  /// Create a new [PcoGroupsMembership] object using this endpoint: `https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships`
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - Call `save()` on the object to save it to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: `personId`, `role`, `joinedAt`
+  /// - FIELDS USED WHEN UPDATING: `role`, `joinedAt`
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoGroupsMembership({required String groupId, String? id, String? accountCenterIdentifier, String? avatarUrl, String? colorIdentifier, String? emailAddress, String? firstName, DateTime? joinedAt, String? lastName, String? phoneNumber, String? role, String? personId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoGroupsMembership.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
-    if (role != null) obj.role = role;
-    if (joinedAt != null) obj.joinedAt = joinedAt;
+    obj._id = id;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/groups/v2/groups/$groupId/memberships';
+    if (accountCenterIdentifier != null) obj._attributes['account_center_identifier'] = accountCenterIdentifier;
+    if (avatarUrl != null) obj._attributes['avatar_url'] = avatarUrl;
+    if (colorIdentifier != null) obj._attributes['color_identifier'] = colorIdentifier;
+    if (emailAddress != null) obj._attributes['email_address'] = emailAddress;
+    if (firstName != null) obj._attributes['first_name'] = firstName;
+    if (joinedAt != null) obj._attributes['joined_at'] = joinedAt.toIso8601String();
+    if (lastName != null) obj._attributes['last_name'] = lastName;
+    if (phoneNumber != null) obj._attributes['phone_number'] = phoneNumber;
+    if (role != null) obj._attributes['role'] = role;
+    if (personId != null) obj._attributes['person_id'] = personId;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
     return obj;
   }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/memberships`
-  static Future<PcoCollection<PcoGroupsMembership>> getFromGroup(
-    String groupId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoGroupsMembership>> getFromGroup(String groupId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/groups/v2/groups/$groupId/memberships';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsMembership>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `/groups/v2/people/$personId/memberships`
-  static Future<PcoCollection<PcoGroupsMembership>> getFromPerson(
-    String personId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoGroupsMembership>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/groups/v2/people/$personId/memberships';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsMembership>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -278,25 +294,18 @@ class PcoGroupsMembership extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group`
-  Future<PcoCollection<PcoGroupsGroup>> getGroup({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroupType = false,
-    bool includeLocation = false,
-  }) async {
+  Future<PcoCollection<PcoGroupsGroup>> getGroup({PlanningCenterApiQuery? query, bool includeAll = false, bool includeGroupType = false, bool includeLocation = false,}) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoGroupsMembership.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
     var url = '$apiEndpoint/group';
-    return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsGroup>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

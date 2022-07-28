@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.505616
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.756207
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO People ServiceTime Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 service_time
 /// - Type:               ServiceTime
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses/1/service_times
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/campuses/1/service_times
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleServiceTime()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleServiceTime.fromJson()` constructor.
+/// - Manually create an object using the `PcoPeopleServiceTime.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,42 +30,54 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+/// ### Extra Instructions
+/// #### CREATING
+/// Must be an Organization Administrator
+/// 
+/// 
+/// #### UPDATING
+/// Must be an Organization Administrator
+/// 
+/// 
+/// #### DELETING
+/// Must be an Organization Administrator
+///   
 /// ## Description
 /// A ServiceTime Resource
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `startTime` (rw) -> PCO: `start_time`
 /// - `day` (rw) -> PCO: `day`
 /// - `description` (rw) -> PCO: `description`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `time`: (URLParameter), prefix with a hyphen (-time) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `servicetime-campus-service_times`: https://api.planningcenteronline.com/people/v2/campuses/1/service_times
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -98,17 +112,15 @@ class PcoPeopleServiceTime extends PcoResource {
   static const String kTypeString = 'ServiceTime';
   static const String kTypeId = 'service_time';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -138,6 +150,7 @@ class PcoPeopleServiceTime extends PcoResource {
   static const kDay = 'day';
   static const kDescription = 'description';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['start_time', 'day', 'description'];
@@ -158,72 +171,80 @@ class PcoPeopleServiceTime extends PcoResource {
   int get startTime => _attributes[kStartTime] ?? 0;
   String get day => _attributes[kDay] ?? '';
   String get description => _attributes[kDescription] ?? '';
-
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set startTime(int? x) => (x == null)
-      ? _attributes.remove(kStartTime)
-      : _attributes[kStartTime] = x;
-
+  set startTime(int? x) => (x == null) ? _attributes.remove(kStartTime) : _attributes[kStartTime] = x;
+  
   /// Possible values: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, or `saturday`
-
+  
   /// pass `null` to remove key from attributes
-  set day(String? x) =>
-      (x == null) ? _attributes.remove(kDay) : _attributes[kDay] = x;
-
+  set day(String? x) => (x == null) ? _attributes.remove(kDay) : _attributes[kDay] = x;
+  
   /// pass `null` to remove key from attributes
-  set description(String? x) => (x == null)
-      ? _attributes.remove(kDescription)
-      : _attributes[kDescription] = x;
+  set description(String? x) => (x == null) ? _attributes.remove(kDescription) : _attributes[kDescription] = x;
 
   // Class Constructors
-  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeopleServiceTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
   PcoPeopleServiceTime.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleServiceTime] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times`
-  ///
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoPeopleServiceTime(String campusId,
-      {int? startTime, String? day, String? description}) {
+  /// Create a new [PcoPeopleServiceTime] object using this endpoint: `https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times`
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - Call `save()` on the object to save it to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: `startTime`, `day`, `description`
+  /// - FIELDS USED WHEN UPDATING: `startTime`, `day`, `description`
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoPeopleServiceTime({required String campusId, String? id, int? startTime, String? day, String? description, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleServiceTime.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times';
-    if (startTime != null) obj.startTime = startTime;
-    if (day != null) obj.day = day;
-    if (description != null) obj.description = description;
+    obj._id = id;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/campuses/$campusId/service_times';
+    if (startTime != null) obj._attributes['start_time'] = startTime;
+    if (day != null) obj._attributes['day'] = day;
+    if (description != null) obj._attributes['description'] = description;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
     return obj;
   }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleServiceTime] objects (expecting many)
   /// using a path like this: `/people/v2/campuses/$campusId/service_times`
-  static Future<PcoCollection<PcoPeopleServiceTime>> getFromCampus(
-    String campusId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleServiceTime>> getFromCampus(String campusId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/campuses/$campusId/service_times';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

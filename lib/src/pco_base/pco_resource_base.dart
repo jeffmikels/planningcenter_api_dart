@@ -62,8 +62,7 @@ abstract class PcoResource {
   /// but this might be null if we haven't created/fetched the object yet
   /// Child classes should redefine this getter to allow for manual path overrides
   String? get apiPath => links['self'] ?? defaultPathTemplate;
-  String get apiEndpoint =>
-      '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
+  String get apiEndpoint => '/' + (apiPath?.split('/').sublist(3).join('/') ?? '');
 
   /// indicate whether an item is full or partial
   bool fetched = false;
@@ -78,22 +77,29 @@ abstract class PcoResource {
   bool get canCreate => true;
   bool get canUpdate => true;
 
+  // indicate if an item was created 'manually'
+  bool _isManual = false;
+  bool _hasManualRelationships = false;
+  bool _hasManualIncluded = false;
+
   // -- DATA FIELDS WITH GETTERS AND SETTERS --
 
   /// contains the underlying attributes returned by the api
   /// and allows a user to access arbitrary data in the attributes by actual api name
   ///
   /// WARNING: This [Map] cannot be modified.
-  ReadOnlyMapView<String, dynamic> get attributes =>
-      ReadOnlyMapView(_attributes);
+  ReadOnlyMapView<String, dynamic> get attributes => ReadOnlyMapView(_attributes);
   final Map<String, dynamic> _attributes = {};
 
   /// contains relationships parsed into objects
   /// even though the api sends relationship objects as Maps or Lists
   /// we always put them into lists for consistency
-  ReadOnlyMapView<String, List<PcoResource>> get relationships =>
-      ReadOnlyMapView(_relationships);
+  ReadOnlyMapView<String, List<PcoResource>> get relationships => ReadOnlyMapView(_relationships);
   final Map<String, List<PcoResource>> _relationships = {};
+
+  /// contains included items parsed into objects
+  List<PcoResource> get included => _included;
+  final List<PcoResource> _included = [];
 
   /// contains the links data returned by the api if present
   ReadOnlyMapView<String, dynamic> get links => ReadOnlyMapView(_links);
@@ -108,19 +114,16 @@ abstract class PcoResource {
     this.pcoApplication,
     this.resourceType,
     Map<String, dynamic> data, {
-    List<Map<String, dynamic>> withIncludes = const [],
+    List<Map<String, dynamic>>? withIncluded,
   }) {
     if (!data.containsKey('type')) {
       print(data);
-      throw FormatException(
-          'data supplied does not meet JSON:API specs. No "type" field found');
+      throw FormatException('data supplied does not meet JSON:API specs. No "type" field found');
     }
-    fromJson(data);
-    handleIncludes(withIncludes);
+    fromJson(data, withIncluded: withIncluded);
   }
 
-  Future<PlanningCenterApiResponse> _selfcall<T extends PcoResource>(verb,
-      [String data = '']) async {
+  Future<PlanningCenterApiResponse> _selfcall<T extends PcoResource>(verb, [String data = '']) async {
     late PlanningCenterApiResponse res;
     if (apiPath == null) {
       res = PlanningCenterApiError(
@@ -133,8 +136,7 @@ abstract class PcoResource {
         '',
       );
     } else {
-      res = await api.call(apiEndpoint,
-          verb: verb, apiVersion: apiVersion, data: data);
+      res = await api.call(apiEndpoint, verb: verb, apiVersion: apiVersion, data: data);
       if (!res.isError) {
         if (res.data.isNotEmpty) {
           // apiresponses now always give data as a list
@@ -146,16 +148,28 @@ abstract class PcoResource {
     return res;
   }
 
-  Future<PlanningCenterApiResponse> save() async {
+  /// Many Planning Center endpoints allow or require additional relationships and/or included items
+  /// to be sent with a create/update operation. Since these cannot always be determined by the automatic
+  /// code generation, they may be included as arguments to the save operation.
+  ///
+  /// if [withRelated] or [withIncluded] are specified, the returned map will include
+  /// json-api compatible relationship / included fields too since some post/patch
+  /// endpoints may require them
+  ///
+  /// if either of the `manual` arguments are specified, they will be used as is
+  Future<PlanningCenterApiResponse> save({
+    Map<String, PcoResource>? withRelated,
+    List<PcoResource>? withIncluded,
+  }) async {
     if (id == null && !canCreate) {
-      return PlanningCenterApiError.messageOnly('cannot create object');
+      return PlanningCenterApiError.messageOnly('Planning Center disallows creating this object through the API');
     }
     if (id != null && !canUpdate) {
-      return PlanningCenterApiError.messageOnly('cannot update object');
+      return PlanningCenterApiError.messageOnly('Planning Center disallows updating this object through the API');
     }
 
-    var jsonString = json
-        .encode({'data': id == null ? toCreateResource() : toUpdateResource()});
+    var dataMap = toDataMap(withRelated: withRelated, withIncluded: withIncluded);
+    var jsonString = json.encode(dataMap);
     return _selfcall(id == null ? 'post' : 'patch', jsonString);
   }
 
@@ -166,10 +180,9 @@ abstract class PcoResource {
 
   /// Takes a full JSON:API Response Object (the contents of a "data" field)
   /// will clear and update [id], [apiPath], [attributes] and [_relationships]
-  fromJson(Map<String, dynamic> data) {
+  fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) {
     if (data['type'] != resourceType) {
-      throw FormatException(
-          'Incorrect data type: ${data['type']} given, but $resourceType expected.');
+      throw FormatException('Incorrect data type: ${data['type']} given, but $resourceType expected.');
     }
 
     // responses will always have an id, but we shouldn't update this data
@@ -198,10 +211,17 @@ abstract class PcoResource {
       // parse each relationship into its relevant object
       _relationships.addAll(handleItems(data['relationships']));
     }
+
+    // and process additional included items
+    if (withIncluded != null) {
+      handleIncludes(withIncluded);
+    }
   }
 
-  /// this assumes that the relationship object has already been populated
-  /// because it updates the relationships objects with the included data
+  /// This function populates the relationships with typed resource objects
+  /// based on the data in the `included` map of the json.
+  ///
+  /// This assumes that the relationship object has already been populated
   void handleIncludes(List<Map<String, dynamic>> included) {
     // make a quick mapping for later reference into nested objects
     Map<String, PcoResource> relDataMap = {};
@@ -212,11 +232,19 @@ abstract class PcoResource {
       }
     });
 
-    // walk the relationships tree to find a matching item id and type
+    _included.clear();
+    // pair the included items with the previously defined relationships
     for (var data in included) {
       if (data['type'] == null || data['id'] == null) continue;
+      var res = handleItem(data);
+      if (res == null) continue;
+      _included.add(res);
+
       var key = data['id'] + '-' + data['type'];
-      relDataMap[key]?.fromJson(data);
+
+      // we call .fromJson to modify the existing object in the _relationships Map
+      // but only if the relationship was already mapped.
+      if (relDataMap.containsKey(key)) relDataMap[key]!.fromJson(res.toJson());
     }
   }
 
@@ -225,22 +253,55 @@ abstract class PcoResource {
     for (var key in items.keys) {
       retval[key] = <PcoResource>[];
       var value = items[key];
-      if (value['data'] == null) continue; // no data, leave empty
-      if (value['data'] is! List) value['data'] = [value['data']];
-      for (var data in value['data']) {
-        try {
-          var res = buildResource(pcoApplication, data);
-          if (res != null) retval[key]?.add(res);
-        } on FormatException catch (e) {
-          print(e);
-        }
+      var data = value['data'];
+      if (data == null) continue; // no data, leave empty
+      List wrapped = (data is List) ? data : [data];
+      if (wrapped.isEmpty) continue;
+      for (var data in wrapped) {
+        var res = handleItem(data);
+        if (res != null) retval[key]?.add(res);
       }
     }
     return retval;
   }
 
-  Map<String, dynamic> toJson() {
-    return {'type': resourceType, 'id': id, 'attributes': attributes};
+  PcoResource? handleItem(Map<String, dynamic> data) {
+    try {
+      var res = buildResource(pcoApplication, data);
+      return res;
+    } on FormatException catch (e) {
+      print(e);
+    }
+  }
+
+  /// Some api requests only want the type and id of an object.
+  /// In those cases, set [includeAttributes] to false or call
+  /// [toIdResource] instead.
+  Map<String, dynamic> toJson({
+    includeAttributes = true,
+    includeRelationships = false,
+  }) {
+    // // DateTime objects are not json serializable, so we need to convert them first
+    // var attribs = <String, dynamic>{};
+    // for (var a in _attributes.entries) {
+    //   if (a.value is DateTime) {
+    //     attribs[a.key] = (a.value as DateTime).toIso8601String();
+    //   } else {
+    //     attribs[a.key] = a.value;
+    //   }
+    // }
+    return {
+      'type': resourceType,
+      if (id != null) 'id': id,
+      if (includeAttributes) 'attributes': _attributes,
+      if (includeRelationships)
+        'relationships': {
+          for (var r in _relationships.entries)
+            r.key: {
+              'data': r.value.length == 1 ? r.value.first.toIdResource() : [for (var v in r.value) v.toIdResource()]
+            }
+        },
+    };
   }
 
   Map<String, dynamic> filteredAttributes(List<String> allowedKeys) {
@@ -251,6 +312,16 @@ abstract class PcoResource {
     return filtered;
   }
 
+  /// returns the simplest representation of this resource with
+  /// only the type and the id:
+  ///
+  /// `{'type': 'Type', 'id': id}`
+  Map<String, dynamic> toIdResource() {
+    return toJson(includeAttributes: false);
+  }
+
+  /// create the attributes Map for this object without the `id` field
+  /// using only the attributes allowed in create (post) operations
   Map<String, dynamic> toCreateResource() {
     var retval = toJson();
     retval['attributes'] = filteredAttributes(createAllowed);
@@ -259,10 +330,56 @@ abstract class PcoResource {
     return retval;
   }
 
+  /// create the attributes Map for this object using only
+  /// the attributes allowed in update (patch) operations
   Map<String, dynamic> toUpdateResource() {
     var retval = toJson();
     retval['attributes'] = filteredAttributes(updateAllowed);
     return retval;
+  }
+
+  /// create a json-api Map for this object automatically selecting create or update
+  /// based on the existence of the `id` field. Will result in something like this:
+  ///
+  /// `{'data': {'type': 'Type', 'attributes': {...attributes}}}`
+  ///
+  /// if [withRelated] or [withIncluded] are specified, the returned map will include
+  /// json-api compatible relationship / included fields too since some post/patch
+  /// endpoints may require them
+  ///
+  /// if any of the `manual` arguments are specified, they will override the `with` arguments
+  Map<String, dynamic> toDataMap({
+    Map<String, PcoResource>? withRelated,
+    List<PcoResource>? withIncluded,
+  }) {
+    var resource = id == null ? toCreateResource() : toUpdateResource();
+
+    Map<String, dynamic>? related = {};
+    // add the relationships if requested
+    if (withRelated != null) {
+      related = {
+        for (var e in withRelated.entries) e.key: {'data': e.value.toIdResource()},
+      };
+    }
+
+    if (_hasManualRelationships) {
+      related = {
+        ...related,
+        for (var e in _relationships.entries)
+          e.key: {
+            'data': e.value.length == 1 ? e.value.first.toIdResource() : [for (var v in e.value) v.toIdResource()]
+          },
+      };
+    }
+    if (related.isNotEmpty) resource['relationships'] = related;
+
+    List<Map<String, dynamic>> included = [];
+    if (withIncluded != null) included = [for (var i in withIncluded) i.toJson(includeRelationships: true)];
+    if (_hasManualIncluded) included = [...included, for (var i in _included) i.toJson(includeRelationships: true)];
+    return {
+      'data': resource,
+      if (included.isNotEmpty) 'included': included,
+    };
   }
 }
 
@@ -294,34 +411,27 @@ class PcoCollection<T extends PcoResource> {
   PlanningCenterApiError? get error => response.error;
   String get errorMessage => error?.message ?? '';
 
-  PcoCollection(this.items, this.meta, this.response, this.query, this.endpoint,
-      this.apiVersion);
+  PcoCollection(this.items, this.meta, this.response, this.query, this.endpoint, this.apiVersion);
 
   /// url, query: query, apiVersion:kApiVersion
-  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(
-      String endpoint,
-      {PlanningCenterApiQuery? query,
-      required String apiVersion}) async {
-    var res = await PlanningCenter.instance
-        .call(endpoint, query: query, apiVersion: apiVersion);
+  static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(String endpoint,
+      {PlanningCenterApiQuery? query, required String apiVersion}) async {
+    var res = await PlanningCenter.instance.call(endpoint, query: query, apiVersion: apiVersion);
     return PcoCollection<T>.fromApiResponse(res, endpoint, apiVersion);
   }
 
   /// we also require the original endpoint and the apiversion so that subsequent
   /// requests like [getMore] and [nextPage] can be built easily off of this one.
-  factory PcoCollection.fromApiResponse(
-      PlanningCenterApiResponse response, endpoint, apiVersion) {
+  factory PcoCollection.fromApiResponse(PlanningCenterApiResponse response, endpoint, apiVersion) {
     List<T> items = [];
 
     // handle the main data
     for (var item in response.data) {
-      var res = buildResource<T>(response.application, item.asMap,
-          withIncludes: response.included);
+      var res = buildResource<T>(response.application, item.asMap, withIncluded: response.included);
       if (res != null) items.add(res as T);
     }
 
-    return PcoCollection<T>(
-        items, response.meta, response, response.query, endpoint, apiVersion);
+    return PcoCollection<T>(items, response.meta, response, response.query, endpoint, apiVersion);
   }
 
   /// [nextPage] will return a *new collection* representing the next page of data from
@@ -333,8 +443,7 @@ class PcoCollection<T extends PcoResource> {
   /// new resources have been added on the server. Otherwise it might be a wasted request.
   Future<PcoCollection<T>> nextPage() {
     return PcoCollection.fromApiCall<T>(endpoint,
-        query: query.withOffset(meta.nextOffset ?? meta.totalCount),
-        apiVersion: apiVersion);
+        query: query.withOffset(meta.nextOffset ?? meta.totalCount), apiVersion: apiVersion);
   }
 
   /// If a collection has more items available on the server

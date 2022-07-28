@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.504250
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.755466
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO People SchoolOption Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 school_option
 /// - Type:               SchoolOption
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/school_options
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/school_options
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleSchoolOption()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleSchoolOption.fromJson()` constructor.
+/// - Manually create an object using the `PcoPeopleSchoolOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,9 +30,10 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
 /// A school option represents a school name, school type, grades, etc. and can be selected for a person.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
@@ -38,43 +41,43 @@ part of pco;
 /// - `beginningGrade` (rw) -> PCO: `beginning_grade`
 /// - `endingGrade` (rw) -> PCO: `ending_grade`
 /// - `schoolTypes` (rw) -> PCO: `school_types`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `beginning_grade`: (URLParameter), query on a specific beginning_grade, example: ?where[beginning_grade]=string
 /// - `ending_grade`: (URLParameter), query on a specific ending_grade, example: ?where[ending_grade]=string
 /// - `school_types`: (URLParameter), query on a specific school_types, example: ?where[school_types]=[]
 /// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
 /// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `beginning_grade`: (URLParameter), prefix with a hyphen (-beginning_grade) to reverse the order
 /// - `ending_grade`: (URLParameter), prefix with a hyphen (-ending_grade) to reverse the order
 /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
 /// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
-///
+/// 
 /// Inbound Edges:
 /// - `schooloption-organization-school_options`: https://api.planningcenteronline.com/people/v2/school_options
 /// - `schooloption-person-school`: https://api.planningcenteronline.com/people/v2/people/1/school
 /// - `schooloption-schooloption-promotes_to_school`: https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -98,13 +101,11 @@ class PcoPeopleSchoolOption extends PcoResource {
   static const String kTypeString = 'SchoolOption';
   static const String kTypeId = 'school_option';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/school_options';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/people/v2/school_options';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/school_options';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/school_options';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -113,16 +114,14 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// - `school_types`: (URLParameter), query on a specific school_types, example: ?where[school_types]=[]
   /// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
   /// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-  static List<String> get canQuery =>
-      ['beginning_grade', 'ending_grade', 'school_types', 'sequence', 'value'];
+  static List<String> get canQuery => ['beginning_grade','ending_grade','school_types','sequence','value'];
 
   /// possible orderings with parameter ?order=
   /// - `beginning_grade`: (URLParameter), prefix with a hyphen (-beginning_grade) to reverse the order
   /// - `ending_grade`: (URLParameter), prefix with a hyphen (-ending_grade) to reverse the order
   /// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
   /// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
-  static List<String> get canOrderBy =>
-      ['beginning_grade', 'ending_grade', 'sequence', 'value'];
+  static List<String> get canOrderBy => ['beginning_grade','ending_grade','sequence','value'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -149,14 +148,13 @@ class PcoPeopleSchoolOption extends PcoResource {
   static const kEndingGrade = 'ending_grade';
   static const kSchoolTypes = 'school_types';
 
+
   // getters and setters
   @override
-  List<String> get createAllowed =>
-      ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
+  List<String> get createAllowed => ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
 
   @override
-  List<String> get updateAllowed =>
-      ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
+  List<String> get updateAllowed => ['value', 'sequence', 'beginning_grade', 'ending_grade', 'school_types'];
 
   @override
   bool get canCreate => true;
@@ -173,110 +171,107 @@ class PcoPeopleSchoolOption extends PcoResource {
   String get beginningGrade => _attributes[kBeginningGrade] ?? '';
   String get endingGrade => _attributes[kEndingGrade] ?? '';
   List get schoolTypes => _attributes[kSchoolTypes] ?? [];
-
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set value(String? x) =>
-      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
-
+  set value(String? x) => (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
+  
   /// pass `null` to remove key from attributes
-  set sequence(int? x) =>
-      (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
-
+  set sequence(int? x) => (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
+  
   /// pass `null` to remove key from attributes
-  set beginningGrade(String? x) => (x == null)
-      ? _attributes.remove(kBeginningGrade)
-      : _attributes[kBeginningGrade] = x;
-
+  set beginningGrade(String? x) => (x == null) ? _attributes.remove(kBeginningGrade) : _attributes[kBeginningGrade] = x;
+  
   /// pass `null` to remove key from attributes
-  set endingGrade(String? x) => (x == null)
-      ? _attributes.remove(kEndingGrade)
-      : _attributes[kEndingGrade] = x;
-
+  set endingGrade(String? x) => (x == null) ? _attributes.remove(kEndingGrade) : _attributes[kEndingGrade] = x;
+  
   /// pass `null` to remove key from attributes
-  set schoolTypes(List? x) => (x == null)
-      ? _attributes.remove(kSchoolTypes)
-      : _attributes[kSchoolTypes] = x;
+  set schoolTypes(List? x) => (x == null) ? _attributes.remove(kSchoolTypes) : _attributes[kSchoolTypes] = x;
 
   // Class Constructors
-  PcoPeopleSchoolOption.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeopleSchoolOption.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
   PcoPeopleSchoolOption.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleSchoolOption] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/school_options`
-  ///
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoPeopleSchoolOption(
-      {String? value,
-      int? sequence,
-      String? beginningGrade,
-      String? endingGrade,
-      List? schoolTypes}) {
+  /// Create a new [PcoPeopleSchoolOption] object using this endpoint: `https://api.planningcenteronline.com/people/v2/school_options`
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - Call `save()` on the object to save it to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: `value`, `sequence`, `beginningGrade`, `endingGrade`, `schoolTypes`
+  /// - FIELDS USED WHEN UPDATING: `value`, `sequence`, `beginningGrade`, `endingGrade`, `schoolTypes`
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoPeopleSchoolOption({String? id, String? value, int? sequence, String? beginningGrade, String? endingGrade, List? schoolTypes, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleSchoolOption.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/school_options';
-    if (value != null) obj.value = value;
-    if (sequence != null) obj.sequence = sequence;
-    if (beginningGrade != null) obj.beginningGrade = beginningGrade;
-    if (endingGrade != null) obj.endingGrade = endingGrade;
-    if (schoolTypes != null) obj.schoolTypes = schoolTypes;
+    obj._id = id;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/school_options';
+    if (value != null) obj._attributes['value'] = value;
+    if (sequence != null) obj._attributes['sequence'] = sequence;
+    if (beginningGrade != null) obj._attributes['beginning_grade'] = beginningGrade;
+    if (endingGrade != null) obj._attributes['ending_grade'] = endingGrade;
+    if (schoolTypes != null) obj._attributes['school_types'] = schoolTypes;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
     return obj;
   }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options`
-  static Future<PcoCollection<PcoPeopleSchoolOption>> get({
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleSchoolOption>> get( {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/school_options';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/school`
-  static Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolFromPerson(
-    String personId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/people/$personId/school';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school`
-  static Future<PcoCollection<PcoPeopleSchoolOption>>
-      getPromotesToSchoolFromSchoolOption(
-    String schoolOptionId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchoolFromSchoolOption(String schoolOptionId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -285,20 +280,17 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school`
-  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool({
-    PlanningCenterApiQuery? query,
-  }) async {
+  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool({PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '$apiEndpoint/promotes_to_school';
-    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.621656
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.863932
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO Webhooks Event Object
-///
+/// 
 /// - Application:        webhooks
 /// - Id:                 event
 /// - Type:               Event
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksEvent.fromJson()` constructor.
+/// - Manually create an object using the `PcoWebhooksEvent.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,43 +30,44 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `uuid` (ro) -> PCO: `uuid`
 /// - `payload` (ro) -> PCO: `payload`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `uuid`: (URLParameter), query on a specific uuid, example: ?where[uuid]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `delivery-event-deliveries`: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries
-///
+/// 
 /// Inbound Edges:
 /// - `event-subscription-events`: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events
-///
+/// 
 /// Actions:
 /// - `redeliver`: https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/redeliver
 ///
@@ -94,12 +97,11 @@ class PcoWebhooksEvent extends PcoResource {
   static const String kTypeString = 'Event';
   static const String kTypeId = 'event';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -134,6 +136,7 @@ class PcoWebhooksEvent extends PcoResource {
   static const kUuid = 'uuid';
   static const kPayload = 'payload';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -155,30 +158,63 @@ class PcoWebhooksEvent extends PcoResource {
   String get payload => _attributes[kPayload] ?? '';
 
   // Class Constructors
-  PcoWebhooksEvent.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoWebhooksEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
+  /// NOTE: This object cannot be saved directly to Planning Center
+  PcoWebhooksEvent.empty() : super(kPcoApplication, kTypeString);
+
+  /// Create a new [PcoWebhooksEvent] object. This object cannot be created with the API
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - This object cannot be saved directly to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: none
+  /// - FIELDS USED WHEN UPDATING: none
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoWebhooksEvent({String? id, DateTime? createdAt, DateTime? updatedAt, String? uuid, String? payload, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+    var obj = PcoWebhooksEvent.empty();
+    obj._id = id;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (uuid != null) obj._attributes['uuid'] = uuid;
+    if (payload != null) obj._attributes['payload'] = payload;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
+    return obj;
+  }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoWebhooksEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions/$subscriptionId/events`
-  static Future<PcoCollection<PcoWebhooksEvent>> getFromSubscription(
-    String subscriptionId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoWebhooksEvent>> getFromSubscription(String subscriptionId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/webhooks/v2/subscriptions/$subscriptionId/events';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoWebhooksEvent>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksEvent>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -187,15 +223,14 @@ class PcoWebhooksEvent extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksDelivery] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries`
-  Future<PcoCollection<PcoWebhooksDelivery>> getDeliveries({
-    PlanningCenterApiQuery? query,
-  }) async {
+  Future<PcoCollection<PcoWebhooksDelivery>> getDeliveries({PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '$apiEndpoint/deliveries';
-    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
@@ -203,14 +238,14 @@ class PcoWebhooksEvent extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `redeliver`
-  ///
-  ///
+  /// 
+  /// 
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/redeliver`
-  ///
+  /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
-  ///
+  /// 
   /// Details:
   /// *PlanningCenter API docs do not have a description for this action.*
   Future<PlanningCenterApiResponse> redeliver(Object data) async {
@@ -220,13 +255,12 @@ class PcoWebhooksEvent extends PcoResource {
       );
     }
     var url = '$apiEndpoint/redeliver';
-    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

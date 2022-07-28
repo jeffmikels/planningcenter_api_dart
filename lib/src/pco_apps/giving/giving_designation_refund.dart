@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.591648
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.813768
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO Giving DesignationRefund Object
-///
+/// 
 /// - Application:        giving
 /// - Id:                 designation_refund
 /// - Type:               DesignationRefund
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGivingDesignationRefund.fromJson()` constructor.
+/// - Manually create an object using the `PcoGivingDesignationRefund.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,41 +30,42 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `amountCents` (ro) -> PCO: `amount_cents`
 /// - `amountCurrency` (ro) -> PCO: `amount_currency`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
-/// - `designation`: include associated designation
+/// 
+/// - `designation`: include associated designation 
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `designation-designationrefund-designation`: https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds/1/designation
-///
+/// 
 /// Inbound Edges:
 /// - `designationrefund-refund-designation_refunds`: https://api.planningcenteronline.com/giving/v2/donations/1/refund/1/designation_refunds
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -90,20 +93,19 @@ class PcoGivingDesignationRefund extends PcoResource {
   static const String kTypeString = 'DesignationRefund';
   static const String kTypeId = 'designation_refund';
   static const String kApiVersion = '2019-10-18';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `designation`: include associated designation
+  /// - `designation`: include associated designation 
   static List<String> get canInclude => ['designation'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -128,6 +130,7 @@ class PcoGivingDesignationRefund extends PcoResource {
   static const kAmountCents = 'amount_cents';
   static const kAmountCurrency = 'amount_currency';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -147,42 +150,67 @@ class PcoGivingDesignationRefund extends PcoResource {
   // getters for object attributes
   int get amountCents => _attributes[kAmountCents] ?? 0;
   String get amountCurrency => _attributes[kAmountCurrency] ?? '';
-
+  
   // typed getters for each relationship
-
-  PcoGivingDesignation? get includedDesignation =>
-      _firstOrNull<PcoGivingDesignation>(relationships['designation']);
+  
+  PcoGivingDesignation? get includedDesignation => _firstOrNull<PcoGivingDesignation>(relationships['designation']);
 
   // Class Constructors
-  PcoGivingDesignationRefund.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoGivingDesignationRefund.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
+  /// NOTE: This object cannot be saved directly to Planning Center
+  PcoGivingDesignationRefund.empty() : super(kPcoApplication, kTypeString);
+
+  /// Create a new [PcoGivingDesignationRefund] object. This object cannot be created with the API
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - This object cannot be saved directly to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: none
+  /// - FIELDS USED WHEN UPDATING: none
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoGivingDesignationRefund({String? id, int? amountCents, String? amountCurrency, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+    var obj = PcoGivingDesignationRefund.empty();
+    obj._id = id;
+    if (amountCents != null) obj._attributes['amount_cents'] = amountCents;
+    if (amountCurrency != null) obj._attributes['amount_currency'] = amountCurrency;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
+    return obj;
+  }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoGivingDesignationRefund] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/refund/$refundId/designation_refunds`
-  static Future<PcoCollection<PcoGivingDesignationRefund>>
-      getFromDonationAndRefund(
-    String donationId,
-    String refundId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-    bool includeDesignation = false,
-  }) async {
+  static Future<PcoCollection<PcoGivingDesignationRefund>> getFromDonationAndRefund(String donationId,String refundId, {String? id, PlanningCenterApiQuery? query, bool includeDesignation = false,}) async {
     query ??= PlanningCenterApiQuery();
-
+    
     if (includeDesignation) query.include.add('designation');
-    var url =
-        '/giving/v2/donations/$donationId/refund/$refundId/designation_refunds';
+    var url = '/giving/v2/donations/$donationId/refund/$refundId/designation_refunds';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGivingDesignationRefund>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGivingDesignationRefund>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -191,20 +219,17 @@ class PcoGivingDesignationRefund extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds/1/designation`
-  Future<PcoCollection<PcoGivingDesignation>> getDesignation({
-    PlanningCenterApiQuery? query,
-  }) async {
+  Future<PcoCollection<PcoGivingDesignation>> getDesignation({PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '$apiEndpoint/designation';
-    return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGivingDesignation>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

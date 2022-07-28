@@ -13,7 +13,8 @@ final credentialsFile = File('tmp/credentials.json');
 void debug(Object? o) {
   try {
     print(JsonEncoder.withIndent('  ').convert(o));
-  } on JsonUnsupportedObjectError catch (_) {
+  } on JsonUnsupportedObjectError catch (e) {
+    print(e);
     print(o);
   }
 }
@@ -66,7 +67,8 @@ void main() async {
   }
 
   // PlanningCenter.init(appid, secret);
-  var collection = await PcoPeoplePerson.get(id: '59717092', includeEmails: true, includeMaritalStatus: true);
+  var personId = '59717092';
+  var collection = await PcoPeoplePerson.get(id: personId, includeEmails: true, includeMaritalStatus: true);
   if (collection.isError) {
     debug(collection.query.asMap);
     debug(collection.response.responseBody);
@@ -91,6 +93,37 @@ void main() async {
   //     print(relationship.toJson());
   //   }
   // });
+
+  var batches = await PcoGivingBatch.get(
+      query: PlanningCenterApiQuery(
+    filter: ['in_progress'],
+  ));
+  for (var batch in batches.items) {
+    if (batch.donationsCount == 0) await batch.delete();
+  }
+
+  var batch = PcoGivingBatch();
+  await batch.save();
+
+  print('Testing donations');
+  var don = PcoGivingDonation(
+    batchId: batch.id!,
+    personId: personId,
+    paymentMethod: 'cash',
+    paymentCheckNumber: 1234,
+    paymentSourceId: '289',
+    receivedAt: DateTime.now(),
+  );
+  var des = PcoGivingDesignation(
+    amountCents: 12345,
+    withRelationships: {
+      'fund': [PcoGivingFund(id: '40585')]
+    },
+  );
+  var test = don.toDataMap(withIncluded: [des]);
+  debug(test);
+  var res = await don.saveWithDesignations([des]);
+  debug(res);
 
   // Once we're done with the client, save the credentials file. This ensures
   // that if the credentials were automatically refreshed while using the

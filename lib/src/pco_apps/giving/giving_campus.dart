@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.590771
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.813090
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO Giving Campus Object
-///
+/// 
 /// - Application:        giving
 /// - Id:                 campus
 /// - Type:               Campus
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/campuses
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGivingCampus.fromJson()` constructor.
+/// - Manually create an object using the `PcoGivingCampus.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,43 +30,44 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
-///
-///
+/// 
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `address` (ro) -> PCO: `address`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// NONE
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// NONE
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `donation-campus-donations`: https://api.planningcenteronline.com/giving/v2/campuses/1/donations
-///
+/// 
 /// Inbound Edges:
 /// - `campus-donation-campus`: https://api.planningcenteronline.com/giving/v2/donations/1/campus
 /// - `campus-organization-campuses`: https://api.planningcenteronline.com/giving/v2/campuses
 /// - `campus-person-primary_campus`: https://api.planningcenteronline.com/giving/v2/people/1/primary_campus
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -85,20 +88,19 @@ class PcoGivingCampus extends PcoResource {
   static const String kTypeString = 'Campus';
   static const String kTypeId = 'campus';
   static const String kApiVersion = '2019-10-18';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/giving/v2/campuses';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/campuses';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -123,6 +125,7 @@ class PcoGivingCampus extends PcoResource {
   static const kName = 'name';
   static const kAddress = 'address';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -144,59 +147,85 @@ class PcoGivingCampus extends PcoResource {
   String get address => _attributes[kAddress] ?? '';
 
   // Class Constructors
-  PcoGivingCampus.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoGivingCampus.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
+  /// NOTE: This object cannot be saved directly to Planning Center
+  PcoGivingCampus.empty() : super(kPcoApplication, kTypeString);
+
+  /// Create a new [PcoGivingCampus] object. This object cannot be created with the API
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - This object cannot be saved directly to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: none
+  /// - FIELDS USED WHEN UPDATING: none
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoGivingCampus({String? id, String? name, String? address, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+    var obj = PcoGivingCampus.empty();
+    obj._id = id;
+    if (name != null) obj._attributes['name'] = name;
+    if (address != null) obj._attributes['address'] = address;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
+    return obj;
+  }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses`
-  static Future<PcoCollection<PcoGivingCampus>> get({
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoGivingCampus>> get( {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/giving/v2/campuses';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/campus`
-  static Future<PcoCollection<PcoGivingCampus>> getFromDonation(
-    String donationId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoGivingCampus>> getFromDonation(String donationId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/giving/v2/donations/$donationId/campus';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/primary_campus`
-  static Future<PcoCollection<PcoGivingCampus>> getPrimaryCampusFromPerson(
-    String personId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoGivingCampus>> getPrimaryCampusFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/giving/v2/people/$personId/primary_campus';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -205,27 +234,19 @@ class PcoGivingCampus extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/campuses/1/donations`
-  Future<PcoCollection<PcoGivingDonation>> getDonations({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeDesignations = false,
-    bool includeLabels = false,
-    bool includeRefund = false,
-  }) async {
+  Future<PcoCollection<PcoGivingDonation>> getDonations({PlanningCenterApiQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
     query ??= PlanningCenterApiQuery();
     if (includeAll) query.include.addAll(PcoGivingCampus.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeRefund) query.include.add('refund');
     var url = '$apiEndpoint/donations';
-    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

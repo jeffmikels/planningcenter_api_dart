@@ -9,32 +9,45 @@ extension MyStringExtensions on String {
   String get capitalized => length == 0 ? this : this[0].toUpperCase() + substring(1);
   String get titleCase => toLowerCase().split(" ").map((str) => str.capitalized).join(" ");
   String get singular {
+    // already singular
     if (endsWith('eries')) return this;
     if (endsWith('ampus')) return this;
     if (endsWith('ss')) return this;
     if (endsWith('atus')) return this;
+    if (endsWith('datum')) return this;
+    if (endsWith('erson')) return this;
+
+    // special plurals
+    if (endsWith('data')) return replaceFirst('data', 'datum');
+    if (endsWith('eople')) return replaceFirst('eople', 'erson');
+
+    // suffixes
     if (endsWith('ies')) return substring(0, length - 3) + 'y';
     if (endsWith('sses')) return substring(0, length - 2);
     if (endsWith('ses')) return substring(0, length - 2);
     if (endsWith('xes')) return substring(0, length - 2);
-    if (endsWith('datum')) return this;
-    if (endsWith('data')) return replaceFirst('data', 'datum');
-    if (endsWith('erson')) return this;
-    if (endsWith('eople')) return replaceFirst('eople', 'erson');
+    if (endsWith('ches')) return substring(0, length - 2);
     return endsWith('s') ? substring(0, length - 1) : this;
   }
 
   String get plural {
+    // already plural
     if (endsWith('es')) return this; // covers ies, ses, sses, xes
+    if (endsWith('data')) return this;
+    if (endsWith('eople')) return this;
+
+    // need other transformation
+    if (endsWith('datum')) return replaceFirst('datum', 'data');
+    if (endsWith('erson')) return replaceFirst('erson', 'eople');
+
+    // need a suffix
+    if (endsWith('y')) return substring(0, length - 1) + 'ies';
+    if (endsWith('s') || endsWith('x') || endsWith('ch')) return this + 'es';
+
+    // need an s
     if (endsWith('ey')) return this + 's';
     if (endsWith('ay')) return this + 's';
     if (endsWith('oy')) return this + 's';
-    if (endsWith('y')) return substring(0, length - 1) + 'ies';
-    if (endsWith('s') || endsWith('x')) return this + 'es';
-    if (endsWith('data')) return this;
-    if (endsWith('datum')) return replaceFirst('datum', 'data');
-    if (endsWith('eople')) return this;
-    if (endsWith('erson')) return replaceFirst('erson', 'eople');
     return this + 's';
   }
 
@@ -191,6 +204,12 @@ class Vertex extends JsonApiDoc {
 
     /// the [Edge]s that lead away from this [Vertex]
     typedRelationships['outbound_edges'] = outboundEdges;
+
+    // Fix vertex attribute duplicates
+    var seenAttributes = <String>{};
+    vertexAttributes = vertexAttributes.where((element) {
+      return seenAttributes.add(element.name);
+    }).toList();
   }
 }
 
@@ -290,10 +309,10 @@ class Permission extends JsonApiDoc {
   List get createAssignable => attributes['create_assignable'] ?? [];
   List get updateAssignable => attributes['update_assignable'] ?? [];
   // appear to be unused
-  dynamic get read => attributes['read'] == true;
-  dynamic get create => attributes['create'] == true;
-  dynamic get update => attributes['update'] == true;
-  dynamic get destroy => attributes['destroy'] == true;
+  String? get readDoc => attributes['read'];
+  String? get createDoc => attributes['create'];
+  String? get updateDoc => attributes['update'];
+  String? get destroyDoc => attributes['destroy'];
 
   Permission.fromJson(Map<String, dynamic> data) : super.fromJson(data);
 }
@@ -821,68 +840,187 @@ $details
 ''');
   }
 
-  /// NOW ASSEMBLE THE FACTORY CONSTRUCTOR IF OBJECT IS CREATABLE
+  /// NOW ASSEMBLE THE DEFAULT FACTORY CONSTRUCTOR (IF CREATABLE) AND THE `MANUAL` CONSTRUCTOR.
   var additionalConstructors = [];
 
-  if (vertex.createEdge != null) {
-    // first, parse the createPath so we know where to post on create
-    // and also so we know what variables we need in the constructor
+  List<String> pathParts = vertex.createEdge?.path.split('/') ?? [];
 
-    // ignore everything up through /appname/v2
-    var pathParts = vertex.createEdge!.path.split('/');
-    var idArgs = <String>[];
-    var pathNames = [];
-    var varNames = [];
+  // if (vertex.createEdge != null) {
+  // first, parse the createPath so we know where to post on create
+  // and also so we know what variables we need in the constructor
 
-    for (var i = 5; i < pathParts.length - 1; i++) {
-      if (pathParts[i] == '1') {
-        var varname = pathNames.last + 'Id';
-        varNames.add(varname);
-        pathParts[i] = '\$$varname'; // modify the pathParts for the template string
-        idArgs.add('String $varname');
-      } else {
-        var camelName = edgeToVertexId(pathParts[i]).snakeToCamel().singular;
-        pathNames.add(camelName);
-      }
+  var idArgs = <String>[];
+  var pathNames = [];
+  var idVarNames = <String>{};
+  var defaultAssignLines = <String>[];
+  var defaultNamedParams = <String>[];
+  var constructorAssignLines = <String>[];
+  var constructorNamedParams = <String>[];
+  var allAttributes = <Attribute>[];
+  var createAttributes = <Attribute>[];
+  var updateAttributes = <Attribute>[];
+  var constructorParamsNeeded = <String>{};
+
+  // ignore everything up through /appname/v2
+  for (var i = 5; i < pathParts.length - 1; i++) {
+    if (pathParts[i] == '1') {
+      var varname = pathNames.last + 'Id';
+      idVarNames.add(varname);
+      pathParts[i] = '\$$varname'; // modify the pathParts for the template string
+      idArgs.add('required String $varname');
+    } else {
+      var camelName = edgeToVertexId(pathParts[i]).snakeToCamel().singular;
+      pathNames.add(camelName);
     }
-    var createPath = pathParts.join('/');
+  }
+  var createPath = pathParts.join('/');
 
-    // now pay attention to the assignable parameters
-    var assignLines = <String>[];
-    assignLines.add('obj._apiPathOverride = \'$createPath\';');
+  // now pay attention to the assignable parameters
+  if (createPath.isNotEmpty) {
+    constructorAssignLines.add('obj._apiPathOverride = \'$createPath\';');
+  }
 
-    var factoryAttributes = <Attribute>[];
-    for (var attribName in vertex.vertexPermissions.createAssignable) {
-      var attrib = attributesByName[attribName];
-      if (attrib == null) continue;
-      factoryAttributes.add(attrib);
-    }
-    var namedParams = <String>[];
-    for (var fa in factoryAttributes) {
-      var typeString = fa.dartTypeString;
-      var varName = fieldVarName(fa);
-      namedParams.add('$typeString? $varName');
-      assignLines.add('if ($varName != null) obj.$varName = $varName;');
-    }
-    var extras = '';
-    if (namedParams.isNotEmpty) {
-      extras = '{ ${namedParams.join(', ')} }';
-    }
-    if (idArgs.isNotEmpty) extras = ', ' + extras;
+  if (className == 'PcoGivingDonation') {
+    print('breakpoint');
+  }
 
-    additionalConstructors.add('''
-  /// Create a new [$className] object based on this request endpoint:
-  /// `$createPath`
+  // attributes allowed when creating
+  for (var attribName in vertex.vertexPermissions.createAssignable) {
+    var attrib = attributesByName[attribName];
+    attrib ??= Attribute.nameOnly(attribName);
+    createAttributes.add(attrib);
+    constructorParamsNeeded.add(attribName);
+  }
+
+  // attributes allowed when updating
+  for (var attribName in vertex.vertexPermissions.updateAssignable) {
+    var attrib = attributesByName[attribName];
+    attrib ??= Attribute.nameOnly(attribName);
+    updateAttributes.add(attrib);
+    constructorParamsNeeded.add(attribName);
+  }
+
+  // all attributes converted into function parameters and assignment lines
+  int idInsert = 1;
+  for (var fa in vertex.vertexAttributes) {
+    var typeString = fa.dartTypeString;
+    var varName = fieldVarName(fa);
+    var attribName = fa.name;
+
+    // ignore 'type' and 'id' attributes... handled elsewhere
+    if (attribName == 'type' || attribName == 'id') continue;
+
+    // if the varname already exists because of the idArgs, we don't
+    // put it in the function args a second time.
+    var target = varName;
+    if (typeString == 'DateTime') target = '$target.toIso8601String()';
+    if (!idVarNames.contains(varName)) {
+      constructorNamedParams.add('$typeString? $varName');
+      constructorAssignLines.add('if ($varName != null) obj._attributes[\'${fa.name}\'] = $target;');
+    } else {
+      constructorAssignLines.insert(idInsert++, 'obj._attributes[\'${fa.name}\'] = $target;');
+    }
+    constructorParamsNeeded.remove(attribName);
+  }
+
+  // create or update params that are still available to us
+  for (var attribName in constructorParamsNeeded) {
+    var attrib = attributesByName[attribName];
+    attrib ??= Attribute.nameOnly(attribName);
+    var typeString = attrib.dartTypeString;
+    var varName = fieldVarName(attrib);
+
+    // if the varname already exists because of the idArgs, we don't
+    // put it in the function args a second time.
+    if (!idVarNames.contains(varName)) {
+      constructorNamedParams.add('$typeString? $varName');
+      constructorAssignLines.add('if ($varName != null) obj._attributes[\'${attrib.name}\'] = $varName;');
+    } else {
+      constructorAssignLines.insert(idInsert++, 'obj._attributes[\'${attrib.name}\'] = $varName;');
+    }
+  }
+
+  // allow user to specify an id for this object if it is already known
+  idArgs.add('String? id');
+  var constructorArgs =
+      '${idArgs.join(', ')}${constructorNamedParams.isNotEmpty ? ', ' : ''}${constructorNamedParams.join(', ')}';
+  // var defaultExtras = '';
+  // if (defaultNamedParams.isNotEmpty) {
+  //   defaultExtras = '{ ${defaultNamedParams.join(', ')} }';
+  // }
+  // if (idArgs.isNotEmpty) defaultExtras = ', ' + defaultExtras;
+
+  additionalConstructors.add('''
+  /// Create a new [$className] object${createPath.isNotEmpty ? ' using this endpoint: `$createPath`' : '. This object cannot be created with the API'}
   /// 
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory $className(${idArgs.join(', ')}$extras) {
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - ${createPath.isNotEmpty ? 'Call `save()` on the object to save it to the server.' : 'This object cannot be saved directly to the server.'}
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: ${createAttributes.isEmpty ? 'none' : createAttributes.map((e) => '`${fieldVarName(e)}`').join(', ')}
+  /// - FIELDS USED WHEN UPDATING: ${updateAttributes.isEmpty ? 'none' : updateAttributes.map((e) => '`${fieldVarName(e)}`').join(', ')}
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory $className({$constructorArgs, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = $className.empty();
-${assignLines.join('\n').prefixLines('    ')}
+    obj._id = id;
+${constructorAssignLines.join('\n').prefixLines('    ')}
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
     return obj;
   }
 ''');
-  }
+
+//   // always create a `manual` constructor
+//   additionalConstructors.add('''
+//   /// Create a new [$className] object manually
+//   ///
+//   /// NOTE: Creating an instance of a class this way does not save it on the server
+//   /// until `save()` is called on the object.
+//   factory $className.manual({ ${constructorNamedParams.join(', ')}, Map<String, PcoResource>? withRelationships, List<PcoResource>? withIncluded }) {
+//     var data = <String, dynamic>{'type': '${vertex.name}'${constructorNamedParams.isNotEmpty ? ', \'attributes\': <String, dynamic>{}' : ''}};
+// ${constructorAssignLines.join('\n').prefixLines('    ')}
+//     if (withRelationships != null) {
+//       data['relationships'] = <String, dynamic>{};
+//       for (var r in withRelationships.entries) {
+//         data['relationships'][r.key] = {'data': r.value.toIdResource()};
+//       }
+//     }
+//     List<Map<String, dynamic>>? included = withIncluded?.map((e) => e.toJson(includeAttributes: true, includeRelationships: true)).toList();
+//     return $className.fromJson(data, withIncluded: included)
+//       .._hasManualRelationships = withRelationships != null
+//       .._hasManualIncluded = withIncluded != null
+//       .._isManual = true;
+//   }
+// ''');
+
+//   // always create a `static` json builder
+//   additionalConstructors.add('''
+//   /// Create a full JSON-API map compatible with [$className] objects.
+//   ///
+//   /// NOTE: This function returns fully wrapped JSON like this: {'data': {'attributes': {}, 'relationships': {}}, 'included': []}
+//   static Map<String, dynamic> buildDataMap({ ${constructorNamedParams.join(', ')}, Map<String, PcoResource>? withRelationships, List<PcoResource>? withIncluded }) {
+//     var data = <String, dynamic>{'type': '${vertex.name}'${constructorNamedParams.isNotEmpty ? ', \'attributes\': <String, dynamic>{}' : ''}};
+// ${constructorAssignLines.join('\n').prefixLines('    ')}
+//     if (withRelationships != null) {
+//       data['relationships'] = <String, dynamic>{};
+//       for (var r in withRelationships.entries) {
+//         data['relationships'][r.key] = {'data': r.value.toIdResource()};
+//       }
+//     }
+//     List<Map<String, dynamic>>? included = withIncluded?.map((e) => e.toJson(includeAttributes: true, includeRelationships: true)).toList();
+//     return {'data': data, if (included != null) 'included': included};
+//   }
+// ''');
+
+  // }
 
   // the first line for these is a comment, so empty out if it's the only line
   if (fieldGetterLines.length == 1) fieldGetterLines = [];
@@ -936,7 +1074,30 @@ ${actionsLines.join('\n')}
 
 ''';
 
-  /// HERE'S THE ACTUAL TEMPLATE ========================
+  var additionalInstructionLines = <String>[];
+  if (vertex.vertexPermissions.readDoc != null) {
+    additionalInstructionLines.add('#### READING');
+    additionalInstructionLines.add(vertex.vertexPermissions.readDoc!);
+  }
+  if (vertex.vertexPermissions.createDoc != null) {
+    if (additionalInstructionLines.isNotEmpty) additionalInstructionLines.add('\n');
+    additionalInstructionLines.add('#### CREATING');
+    additionalInstructionLines.add(vertex.vertexPermissions.createDoc!);
+  }
+  if (vertex.vertexPermissions.updateDoc != null) {
+    if (additionalInstructionLines.isNotEmpty) additionalInstructionLines.add('\n');
+    additionalInstructionLines.add('#### UPDATING');
+    additionalInstructionLines.add(vertex.vertexPermissions.updateDoc!);
+  }
+  if (vertex.vertexPermissions.destroyDoc != null) {
+    if (additionalInstructionLines.isNotEmpty) additionalInstructionLines.add('\n');
+    additionalInstructionLines.add('#### DELETING');
+    additionalInstructionLines.add(vertex.vertexPermissions.destroyDoc!);
+  }
+  var additionalInstructions = additionalInstructionLines.join('\n').trim();
+  if (additionalInstructions.isNotEmpty) additionalInstructions += '\n';
+
+  /// HERE'S THE ACTUAL CLASS TEMPLATE ========================
   return '''${autoGeneratedHeader()}
 part of pco;
 
@@ -954,6 +1115,7 @@ part of pco;
 /// ## Instantiation
 /// ${vertex.vertexPermissions.canCreate ? '- Create a new instance using the `$className()` constructor' : '- This object cannot be created through the API.'}
 /// - Instantiate from existing `JSON` data using the `$className.fromJson()` constructor.
+/// - Manually create an object using the `$className.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 /// 
 /// ## Usage
@@ -962,7 +1124,8 @@ part of pco;
 /// - Original `json` data is exposed through the read-only `attributes` map.
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
-/// 
+///
+/// ${additionalInstructions.isNotEmpty ? '### Extra Instructions\n' + additionalInstructions.cleanLines().prefixLines('/// ') : ''}  
 /// ## Description
 ${vertex.description.cleanLines().trim().prefixLines('/// ')}
 /// 
@@ -1061,8 +1224,14 @@ ${fieldConstantLines.join()}
 
 $allAdditionalLines
   // Class Constructors
-  $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const []}): super.fromJson(kPcoApplication, kTypeString, data, withIncludes: withIncludes);
-  ${vertex.vertexPermissions.canCreate ? '$className.empty() : super(kPcoApplication, kTypeString);\n' : ''}
+  $className.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// ${vertex.vertexPermissions.canCreate ? '' : '\n  /// NOTE: This object cannot be saved directly to Planning Center'}
+  $className.empty() : super(kPcoApplication, kTypeString);
+
 ${additionalConstructors.join()}
 
 ${inboundSection}${outboundSection}${actionsSection}
@@ -1086,20 +1255,20 @@ String constructorsTemplate(Map<String, String> map) {
   var lines = [];
   map.forEach((key, value) {
     lines.add(
-        '''    '$key': (Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const[]}) => $value.fromJson(data, withIncludes: withIncludes),''');
+        '''    '$key': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => $value.fromJson(data, withIncluded: withIncluded),''');
   });
 
   return '''${autoGeneratedHeader()}
 part of pco;
 
-Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes})> _constructors = {
+Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dynamic>> withIncluded})> _constructors = {
 ${lines.join('\n')}
 };
 
-PcoResource? buildResource<T extends PcoResource>(String application, Map<String, dynamic> data, {List<Map<String, dynamic>> withIncludes = const[]}) {
+PcoResource? buildResource<T extends PcoResource>(String application, Map<String, dynamic> data, {List<Map<String, dynamic>> withIncluded = const[]}) {
   var key = application + '-' + (data['type'] ?? 'null');
   if (_constructors.containsKey(key)) {
-    return _constructors[key]!(data, withIncludes: withIncludes);
+    return _constructors[key]!(data, withIncluded: withIncluded);
   }
   return null;
 }
@@ -1320,6 +1489,7 @@ part 'pco_base/pco_api_base.dart';
 part 'pco_base/pco_constructors.dart';
 part 'pco_base/pco_file.dart';
 part 'pco_base/pco_resource_base.dart';
+part 'pco_base/pco_class_extensions.dart';
 
 ''';
   for (var key in libraryFiles.keys) {

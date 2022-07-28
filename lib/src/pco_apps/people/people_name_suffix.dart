@@ -1,12 +1,13 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-06-14T15:04:46.472995
+/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.726859
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
 /// This class represents a PCO People NameSuffix Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 name_suffix
 /// - Type:               NameSuffix
@@ -15,12 +16,13 @@ part of pco;
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/name_suffixes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/name_suffixes
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNameSuffix()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNameSuffix.fromJson()` constructor.
+/// - Manually create an object using the `PcoPeopleNameSuffix.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -28,41 +30,42 @@ part of pco;
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+///   
 /// ## Description
 /// A name suffix is one of Sr., Jr., etc.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
-///
+/// 
 /// ## Possible Includes
 /// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
 /// (translates to url parameter: `?include=a,b` )
-///
+/// 
 /// NONE
 ///
 /// ## Possible Query Fields
 /// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
+/// 
 /// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
+/// 
 /// ## Possible Ordering
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `namesuffix-organization-name_suffixes`: https://api.planningcenteronline.com/people/v2/name_suffixes
 /// - `namesuffix-person-name_suffix`: https://api.planningcenteronline.com/people/v2/people/1/name_suffix
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -82,13 +85,11 @@ class PcoPeopleNameSuffix extends PcoResource {
   static const String kTypeString = 'NameSuffix';
   static const String kTypeId = 'name_suffix';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/name_suffixes';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/people/v2/name_suffixes';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/name_suffixes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/name_suffixes';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -120,6 +121,7 @@ class PcoPeopleNameSuffix extends PcoResource {
   static const kId = 'id';
   static const kValue = 'value';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['value'];
@@ -138,71 +140,82 @@ class PcoPeopleNameSuffix extends PcoResource {
 
   // getters for object attributes
   String get value => _attributes[kValue] ?? '';
-
+  
   // setters for object attributes
-
+  
   /// pass `null` to remove key from attributes
-  set value(String? x) =>
-      (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
+  set value(String? x) => (x == null) ? _attributes.remove(kValue) : _attributes[kValue] = x;
 
   // Class Constructors
-  PcoPeopleNameSuffix.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>> withIncludes = const []})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncludes: withIncludes);
+  PcoPeopleNameSuffix.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
+
+  /// Create an empty instance of this class. This is only useful when an endpoint requires
+  /// related or included data.
+  /// 
   PcoPeopleNameSuffix.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleNameSuffix] object based on this request endpoint:
-  /// `https://api.planningcenteronline.com/people/v2/name_suffixes`
-  ///
-  /// NOTE: Creating an instance of a class this way does not save it on the server
-  /// until `save()` is called on the object.
-  factory PcoPeopleNameSuffix({String? value}) {
+  /// Create a new [PcoPeopleNameSuffix] object using this endpoint: `https://api.planningcenteronline.com/people/v2/name_suffixes`
+  /// 
+  /// ### NOTES:
+  /// - Creating an instance of a class this way does not save it on the server.
+  /// - Call `save()` on the object to save it to the server.
+  /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - FIELDS USED WHEN CREATING: `value`
+  /// - FIELDS USED WHEN UPDATING: `value`
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
+  factory PcoPeopleNameSuffix({String? id, String? value, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleNameSuffix.empty();
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/name_suffixes';
-    if (value != null) obj.value = value;
+    obj._id = id;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/name_suffixes';
+    if (value != null) obj._attributes['value'] = value;
+    if (withRelationships != null) {
+      for (var r in withRelationships.entries) {
+        obj._relationships[r.key] = r.value;
+      }
+      obj._hasManualRelationships = true;
+    }
+    if (withIncluded != null) {
+      obj._included.addAll(withIncluded);
+      obj._hasManualIncluded = true;
+    }
     return obj;
   }
+
 
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/name_suffixes`
-  static Future<PcoCollection<PcoPeopleNameSuffix>> get({
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleNameSuffix>> get( {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/name_suffixes';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/name_suffix`
-  static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPerson(
-    String personId, {
-    String? id,
-    PlanningCenterApiQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPerson(String personId, {String? id, PlanningCenterApiQuery? query, }) async {
     query ??= PlanningCenterApiQuery();
-
+    
+    
     var url = '/people/v2/people/$personId/name_suffix';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

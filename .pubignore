@@ -7,16 +7,19 @@ tmp
 js_out
 
 # -- MORE RESTRICTIVE FOR DART PUB PUBLISH
-push-and-publish.sh
 quicktest.dart
 planningcenter_resource.template
 planningcenter_services.dart.old
 api_codegen_dart.dart
 api_codegen_js.dart
-make_doc.sh
+
 build.sh
 doc.html
 docCache
+make_doc.sh
+launch_docs.sh
+push-and-publish.sh
+
 
 # Files and directories created by pub.
 .dart_tool/

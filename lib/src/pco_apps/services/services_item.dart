@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.416940
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.729530
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -564,6 +564,9 @@ class PcoServicesItem extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItem>>
       getFromPersonAndRecentPlanAndLive(
     String personId,
@@ -598,6 +601,9 @@ class PcoServicesItem extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItem>> getFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
@@ -629,6 +635,9 @@ class PcoServicesItem extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItem>>
       getFromServiceTypeAndPlanTemplate(
     String serviceTypeId,
@@ -662,6 +671,9 @@ class PcoServicesItem extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItem>> getLastScheduledItemFromSong(
     String songId, {
     PcoServicesItemQuery? query,

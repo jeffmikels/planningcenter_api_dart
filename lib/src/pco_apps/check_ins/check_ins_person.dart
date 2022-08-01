@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.520792
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.829203
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -456,6 +456,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> get({
     String? id,
     PcoCheckInsPersonQuery? query,
@@ -472,6 +475,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> getCheckedInByFromCheckIn(
     String checkInId, {
     String? id,
@@ -489,6 +495,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_out_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> getCheckedOutByFromCheckIn(
     String checkInId, {
     String? id,
@@ -506,6 +515,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> getFromCheckIn(
     String checkInId, {
     String? id,
@@ -523,6 +535,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes/$passId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> getFromPass(
     String passId, {
     String? id,
@@ -540,6 +555,9 @@ class PcoCheckInsPerson extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> getFromEventAndPersonEvent(
     String eventId,
     String personEventId, {

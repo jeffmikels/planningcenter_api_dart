@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.521433
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.829904
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -282,6 +282,9 @@ class PcoCheckInsPersonEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPersonEvent>> getFromEvent(
     String eventId, {
     String? id,
@@ -306,6 +309,9 @@ class PcoCheckInsPersonEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$personId/person_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPersonEvent>> getFromPerson(
     String personId, {
     String? id,

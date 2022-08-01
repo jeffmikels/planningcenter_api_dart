@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.607784
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.925968
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -489,6 +489,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `assigned`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowCard>> getFromPerson(
     String personId, {
     String? id,
@@ -513,6 +516,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowCard] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/cards`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowCard>> getCardsFromWorkflow(
     String workflowId, {
     PcoPeopleWorkflowCardQuery? query,

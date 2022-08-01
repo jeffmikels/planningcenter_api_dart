@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.585499
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.903274
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -322,6 +322,9 @@ class PcoPeopleListShare extends PcoResource {
 
   /// Will get a collection of [PcoPeopleListShare] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/shares`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListShare>> getSharesFromList(
     String listId, {
     PcoPeopleListShareQuery? query,

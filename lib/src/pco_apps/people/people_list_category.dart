@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.584580
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.902319
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -342,6 +342,9 @@ class PcoPeopleListCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleListCategory] objects (expecting many)
   /// using a path like this: `/people/v2/list_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListCategory>> get({
     String? id,
     PcoPeopleListCategoryQuery? query,
@@ -358,6 +361,9 @@ class PcoPeopleListCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleListCategory] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListCategory>> getCategoryFromList(
     String listId, {
     PcoPeopleListCategoryQuery? query,

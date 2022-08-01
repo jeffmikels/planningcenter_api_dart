@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.668356
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.993191
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -455,6 +455,9 @@ class PcoGroupsEvent extends PcoResource {
   ///
   /// - `not_canceled`
   /// - `upcoming`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsEvent>> get({
     String? id,
     PcoGroupsEventQuery? query,
@@ -478,6 +481,9 @@ class PcoGroupsEvent extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsEvent>> getFromGroup(
     String groupId, {
     String? id,
@@ -503,6 +509,9 @@ class PcoGroupsEvent extends PcoResource {
   /// - `canceled`
   /// - `not_canceled`
   /// - `upcoming`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsEvent>> getFromGroupType(
     String groupTypeId, {
     String? id,
@@ -527,6 +536,9 @@ class PcoGroupsEvent extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsEvent>> getFromPerson(
     String personId, {
     String? id,

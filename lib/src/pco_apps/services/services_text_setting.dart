@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.455020
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.758410
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -279,6 +279,9 @@ class PcoServicesTextSetting extends PcoResource {
 
   /// Will get a collection of [PcoServicesTextSetting] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/text_settings`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTextSetting>> getFromPerson(
     String personId, {
     String? id,

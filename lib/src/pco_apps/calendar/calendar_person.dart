@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.630744
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.950871
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -435,6 +435,9 @@ class PcoCalendarPerson extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `event_owners`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>> get({
     String? id,
     PcoCalendarPersonQuery? query,
@@ -449,6 +452,9 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/conflicts/$conflictId/resolved_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>> getResolvedByFromConflict(
     String conflictId, {
     String? id,
@@ -464,6 +470,9 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/owner`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>> getOwnerFromEvent(
     String eventId, {
     String? id,
@@ -479,6 +488,9 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>>
       getCreatedByFromEventResourceRequest(
     String eventResourceRequestId, {
@@ -496,6 +508,9 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>>
       getUpdatedByFromEventResourceRequest(
     String eventResourceRequestId, {
@@ -513,6 +528,9 @@ class PcoCalendarPerson extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>> getFromResourceApprovalGroup(
     String resourceApprovalGroupId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.432691
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.744914
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -239,6 +239,9 @@ class PcoServicesPlanNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanNoteCategory] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/notes/$noteId/plan_note_category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanNoteCategory>>
       getFromServiceTypeAndPlanTemplateAndNote(
     String serviceTypeId,
@@ -257,6 +260,9 @@ class PcoServicesPlanNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanNoteCategory] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_note_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanNoteCategory>> getFromServiceType(
     String serviceTypeId, {
     String? id,

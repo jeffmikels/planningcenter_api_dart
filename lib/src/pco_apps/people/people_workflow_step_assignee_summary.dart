@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.611704
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.929674
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -251,6 +251,9 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowStepAssigneeSummary] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowStepAssigneeSummary>>
       getAssigneeSummariesFromWorkflowAndStep(
     String workflowId,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.403675
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.716907
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -520,6 +520,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>> getFromSongAndArrangement(
     String songId,
     String arrangementId, {
@@ -539,6 +542,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
       getFromServiceTypeAndPlanAndItem(
     String serviceTypeId,
@@ -560,6 +566,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
       getSelectedAttachmentFromServiceTypeAndPlanAndItem(
     String serviceTypeId,
@@ -580,6 +589,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
       getSelectedBackgroundFromServiceTypeAndPlanAndItem(
     String serviceTypeId,
@@ -600,6 +612,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
       getFromSongAndArrangementAndKey(
     String songId,
@@ -621,6 +636,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>> getFromMedia(
     String mediaId, {
     String? id,
@@ -649,6 +667,9 @@ class PcoServicesAttachment extends PcoResource {
   /// filter to attachments with a file extension specified in the `extensions` parameter.
   /// e.g. `?filter=extensions&extensions=pdf,txt`
   ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
       getAllAttachmentsFromServiceTypeAndPlan(
     String serviceTypeId,
@@ -668,6 +689,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>> getFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
@@ -687,6 +711,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>> getFromServiceType(
     String serviceTypeId, {
     String? id,
@@ -704,6 +731,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>> getFromSong(
     String songId, {
     String? id,

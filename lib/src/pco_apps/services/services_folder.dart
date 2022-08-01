@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.414954
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.727635
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -312,6 +312,9 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesFolder>> get({
     String? id,
     PcoServicesFolderQuery? query,
@@ -328,6 +331,9 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/folders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesFolder>> getFromFolder(
     String folderId, {
     String? id,
@@ -345,6 +351,9 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting one)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/folder`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesFolder>> getFromTagGroup(
     String tagGroupId, {
     PcoServicesFolderQuery? query,

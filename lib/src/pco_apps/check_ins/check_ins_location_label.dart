@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.518309
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.824576
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -274,6 +274,9 @@ class PcoCheckInsLocationLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationLabel>> getFromLabel(
     String labelId, {
     String? id,
@@ -294,6 +297,9 @@ class PcoCheckInsLocationLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationLabel>>
       getFromCheckInAndLocation(
     String checkInId,

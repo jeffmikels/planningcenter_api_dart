@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.628421
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.948104
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -427,6 +427,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>> get({
     String? id,
     PcoCalendarEventResourceRequestQuery? query,
@@ -453,6 +456,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/event_resource_requests`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>> getFromEvent(
     String eventId, {
     String? id,
@@ -486,6 +492,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   /// - `future`
   /// - `not_overbooked`
   /// - `overbooked`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>> getFromPerson(
     String personId, {
     String? id,
@@ -513,6 +522,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/event_resource_requests`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>>
       getFromResourceApprovalGroup(
     String resourceApprovalGroupId, {
@@ -542,6 +554,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting one)
   /// using a path like this: `/calendar/v2/resource_bookings/$resourceBookingId/event_resource_request`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>>
       getFromResourceBooking(
     String resourceBookingId, {
@@ -570,6 +585,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/event_resource_requests`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarEventResourceRequest>> getFromResource(
     String resourceId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.658923
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.981819
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,6 +268,9 @@ class PcoGivingRefund extends PcoResource {
 
   /// Will get a collection of [PcoGivingRefund] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/refund`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingRefund>> getFromDonation(
     String donationId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.588379
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.906502
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -252,6 +252,9 @@ class PcoPeopleNameSuffix extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/name_suffixes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNameSuffix>> get({
     String? id,
     PcoPeopleNameSuffixQuery? query,
@@ -266,6 +269,9 @@ class PcoPeopleNameSuffix extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/name_suffix`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNameSuffix>> getFromPerson(
     String personId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.409344
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.722582
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -265,6 +265,9 @@ class PcoServicesBlockoutDate extends PcoResource {
 
   /// Will get a collection of [PcoServicesBlockoutDate] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/blockouts/$blockoutId/blockout_dates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesBlockoutDate>>
       getFromPersonAndBlockout(
     String personId,

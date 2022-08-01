@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.599773
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.917366
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -1236,6 +1236,9 @@ class PcoPeoplePerson extends PcoResource {
   /// filter people created in the last 24 hours; pass an additional `time` parameter in ISO 8601 format to specify your own timeframe
   ///
   /// - `organization_admins`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> get({
     String? id,
     PcoPeoplePersonQuery? query,
@@ -1282,6 +1285,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/rules/$ruleId/conditions/$conditionId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>>
       getCreatedByFromListAndRuleAndCondition(
     String listId,
@@ -1332,6 +1338,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/emails/$emailId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromEmail(
     String emailId, {
     PcoPeoplePersonQuery? query,
@@ -1378,6 +1387,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromFieldData(
     String fieldDataId, {
     PcoPeoplePersonQuery? query,
@@ -1424,6 +1436,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromFormAndFormSubmission(
     String formId,
     String formSubmissionId, {
@@ -1472,6 +1487,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/households/$householdId/household_memberships/$householdMembershipId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>>
       getFromHouseholdAndHouseholdMembership(
     String householdId,
@@ -1525,6 +1543,9 @@ class PcoPeoplePerson extends PcoResource {
   /// Available Query Filters:
   /// - `non_pending`
   /// - `without_deceased`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromHousehold(
     String householdId, {
     String? id,
@@ -1572,6 +1593,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromList(
     String listId, {
     PcoPeoplePersonQuery? query,
@@ -1618,6 +1642,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromList(
     String listId, {
     String? id,
@@ -1665,6 +1692,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/shares/$shareId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromListAndShare(
     String listId,
     String shareId, {
@@ -1712,6 +1742,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/updated_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromList(
     String listId, {
     PcoPeoplePersonQuery? query,
@@ -1758,6 +1791,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/from`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromFromMessageGroup(
     String messageGroupId, {
     PcoPeoplePersonQuery? query,
@@ -1804,6 +1840,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/messages/$messageId/to`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getToFromMessage(
     String messageId, {
     PcoPeoplePersonQuery? query,
@@ -1850,6 +1889,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscribers`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getSubscribersFromNoteCategory(
     String noteCategoryId, {
     PcoPeoplePersonQuery? query,
@@ -1896,6 +1938,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/notes/$noteId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromNote(
     String noteId, {
     PcoPeoplePersonQuery? query,
@@ -1942,6 +1987,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/notes/$noteId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromNote(
     String noteId, {
     PcoPeoplePersonQuery? query,
@@ -1988,6 +2036,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories/$historyId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromPeopleImportAndHistory(
     String peopleImportId,
     String historyId, {
@@ -2036,6 +2087,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/reports/$reportId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromReport(
     String reportId, {
     PcoPeoplePersonQuery? query,
@@ -2082,6 +2136,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/reports/$reportId/updated_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromReport(
     String reportId, {
     PcoPeoplePersonQuery? query,
@@ -2128,6 +2185,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/social_profiles/$socialProfileId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromSocialProfile(
     String socialProfileId, {
     PcoPeoplePersonQuery? query,
@@ -2174,6 +2234,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/assignee`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>>
       getAssigneeFromPersonAndWorkflowCard(
     String personId,
@@ -2223,6 +2286,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowCard(
     String personId,
     String workflowCardId, {
@@ -2271,6 +2337,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_shares/$workflowShareId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowShare(
     String personId,
     String workflowShareId, {
@@ -2319,6 +2388,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/shared_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getSharedPeopleFromWorkflow(
     String workflowId, {
     PcoPeoplePersonQuery? query,
@@ -2365,6 +2437,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries/$assigneeSummaryId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>>
       getFromWorkflowAndStepAndAssigneeSummary(
     String workflowId,
@@ -2415,6 +2490,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps/$stepId/default_assignee`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>>
       getDefaultAssigneeFromWorkflowAndStep(
     String workflowId,

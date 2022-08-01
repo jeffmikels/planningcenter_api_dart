@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.436648
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.748501
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -241,6 +241,9 @@ class PcoServicesReportTemplate extends PcoResource {
   /// - `people`
   /// - `plans`
   /// - `without_defaults`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesReportTemplate>> get({
     String? id,
     PcoServicesReportTemplateQuery? query,

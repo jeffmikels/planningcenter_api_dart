@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.431337
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.743421
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -631,6 +631,9 @@ class PcoServicesPlan extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/watchable_plans`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>>
       getWatchablePlansFromPersonAndRecentPlanAndLive(
     String personId,
@@ -658,6 +661,9 @@ class PcoServicesPlan extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/next_plan`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>>
       getNextPlanFromServiceTypeAndPlan(
     String serviceTypeId,
@@ -684,6 +690,9 @@ class PcoServicesPlan extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>> getFromPersonAndPlanPerson(
     String personId,
     String planPersonId, {
@@ -708,6 +717,9 @@ class PcoServicesPlan extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/previous_plan`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>>
       getPreviousPlanFromServiceTypeAndPlan(
     String serviceTypeId,
@@ -734,6 +746,9 @@ class PcoServicesPlan extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `/services/v2/series/$seriesId/plans`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>> getFromSeries(
     String seriesId, {
     String? id,
@@ -769,6 +784,9 @@ class PcoServicesPlan extends PcoResource {
   /// - `future`
   /// - `no_dates`
   /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>> getFromServiceType(
     String serviceTypeId, {
     String? id,
@@ -796,6 +814,9 @@ class PcoServicesPlan extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>> getUnscopedPlansFromServiceType(
     String serviceTypeId, {
     PcoServicesPlanQuery? query,

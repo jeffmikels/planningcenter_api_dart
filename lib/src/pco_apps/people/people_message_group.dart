@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.587663
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.905762
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -435,6 +435,9 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMessageGroup>> get({
     String? id,
     PcoPeopleMessageGroupQuery? query,
@@ -456,6 +459,9 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `/people/v2/messages/$messageId/message_group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMessageGroup>> getFromMessage(
     String messageId, {
     String? id,
@@ -478,6 +484,9 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/message_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMessageGroup>> getFromPerson(
     String personId, {
     String? id,

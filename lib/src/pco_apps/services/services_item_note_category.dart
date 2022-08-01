@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.418464
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.731098
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -246,6 +246,9 @@ class PcoServicesItemNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItemNoteCategory>>
       getFromSongAndScheduledItemAndItemNote(
     String songId,
@@ -264,6 +267,9 @@ class PcoServicesItemNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItemNoteCategory>> getFromServiceType(
     String serviceTypeId, {
     String? id,

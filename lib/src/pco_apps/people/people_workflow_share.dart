@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.610636
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.928560
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -296,6 +296,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/workflow_shares`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowShare>> getFromPerson(
     String personId, {
     String? id,
@@ -313,6 +316,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/shares`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowShare>> getSharesFromWorkflow(
     String workflowId, {
     PcoPeopleWorkflowShareQuery? query,

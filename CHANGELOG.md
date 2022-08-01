@@ -1,3 +1,7 @@
+## 1.1.1
+
+-   Minor documentation update to the static `ClassName.get` functions.
+
 ## 1.1.0
 
 -   All previous `PlanningCenterApiQuery` options have now been replaced with class specific query objects.

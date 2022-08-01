@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.633853
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.953934
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -344,6 +344,9 @@ class PcoCalendarResourceFolder extends PcoResource {
   /// Available Query Filters:
   /// - `resources`
   /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceFolder>> get({
     String? id,
     PcoCalendarResourceFolderQuery? query,
@@ -360,6 +363,9 @@ class PcoCalendarResourceFolder extends PcoResource {
 
   /// Will get a collection of [PcoCalendarResourceFolder] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/resource_folder`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceFolder>> getFromResource(
     String resourceId, {
     String? id,

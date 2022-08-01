@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.579621
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.898151
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -326,6 +326,9 @@ class PcoPeopleFormField extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/fields`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFormField>> getFieldsFromForm(
     String formId, {
     PcoPeopleFormFieldQuery? query,
@@ -342,6 +345,9 @@ class PcoPeopleFormField extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFormField>> getFromFormAndFormSubmission(
     String formId,
     String formSubmissionId, {

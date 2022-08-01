@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.576647
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.896224
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -471,6 +471,9 @@ class PcoPeopleFieldDefinition extends PcoResource {
   /// - `include_deleted`
   /// By default, deleted fields are not included. Pass filter=include_deleted to include them.
   ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDefinition>> get({
     String? id,
     PcoPeopleFieldDefinitionQuery? query,
@@ -490,6 +493,9 @@ class PcoPeopleFieldDefinition extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDefinition] objects (expecting one)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/field_definition`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDefinition>> getFromFieldData(
     String fieldDataId, {
     PcoPeopleFieldDefinitionQuery? query,
@@ -512,6 +518,9 @@ class PcoPeopleFieldDefinition extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `with_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDefinition>> getFromTab(
     String tabId, {
     String? id,

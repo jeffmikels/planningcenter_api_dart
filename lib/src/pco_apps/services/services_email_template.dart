@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.413666
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.726482
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -253,6 +253,9 @@ class PcoServicesEmailTemplate extends PcoResource {
 
   /// Will get a collection of [PcoServicesEmailTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/email_templates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesEmailTemplate>> get({
     String? id,
     PcoServicesEmailTemplateQuery? query,

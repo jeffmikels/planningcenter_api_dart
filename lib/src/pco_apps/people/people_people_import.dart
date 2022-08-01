@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.596389
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.914035
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -259,6 +259,9 @@ class PcoPeoplePeopleImport extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePeopleImport] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePeopleImport>> get({
     String? id,
     PcoPeoplePeopleImportQuery? query,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.667212
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.992050
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -300,6 +300,9 @@ class PcoGroupsAttendance extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `attended`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsAttendance>> getFromEvent(
     String eventId, {
     String? id,

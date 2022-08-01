@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.578945
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.897595
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -412,6 +412,9 @@ class PcoPeopleForm extends PcoResource {
   /// - `open`
   /// - `recently_viewed`
   /// - `with_recoverable`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleForm>> get({
     String? id,
     PcoPeopleFormQuery? query,

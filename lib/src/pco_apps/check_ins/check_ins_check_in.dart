@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.509665
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.784726
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -575,6 +575,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> get({
     String? id,
     PcoCheckInsCheckInQuery? query,
@@ -610,6 +613,9 @@ class PcoCheckInsCheckIn extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group/$checkInGroupId/check_ins`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getFromCheckInAndCheckInGroup(
     String checkInId,
@@ -659,6 +665,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> getFromEvent(
     String eventId, {
     String? id,
@@ -706,6 +715,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> getFromCheckInAndEventPeriod(
     String checkInId,
     String eventPeriodId, {
@@ -754,6 +766,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> getFromEventTime(
     String eventTimeId, {
     String? id,
@@ -800,6 +815,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> getFromCheckInAndLocation(
     String checkInId,
     String locationId, {
@@ -848,6 +866,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getFromCheckInAndEventPeriodAndLocationEventPeriod(
     String checkInId,
@@ -898,6 +919,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getFromEventTimeAndLocationEventTime(
     String eventTimeId,
@@ -947,6 +971,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>> getFromPerson(
     String personId, {
     String? id,
@@ -983,6 +1010,9 @@ class PcoCheckInsCheckIn extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting one)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/first_check_in`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getFirstCheckInFromEventAndPersonEvent(
     String eventId,
@@ -1021,6 +1051,9 @@ class PcoCheckInsCheckIn extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting one)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/last_check_in`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getLastCheckInFromEventAndPersonEvent(
     String eventId,
@@ -1069,6 +1102,9 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckIn>>
       getCheckedInAtCheckInsFromStation(
     String stationId, {

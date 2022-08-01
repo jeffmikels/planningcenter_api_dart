@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.609538
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.927779
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -286,6 +286,9 @@ class PcoPeopleWorkflowCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowCategory] objects (expecting many)
   /// using a path like this: `/people/v2/workflows/$workflowId/category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowCategory>>
       getCategoryFromWorkflow(
     String workflowId, {

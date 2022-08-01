@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.601454
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.919006
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -291,6 +291,9 @@ class PcoPeoplePersonMerger extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePersonMerger] objects (expecting many)
   /// using a path like this: `/people/v2/person_mergers`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePersonMerger>> get({
     String? id,
     PcoPeoplePersonMergerQuery? query,

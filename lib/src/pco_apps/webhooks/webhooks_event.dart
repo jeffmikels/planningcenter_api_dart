@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.679582
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:04.032228
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,6 +268,9 @@ class PcoWebhooksEvent extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions/$subscriptionId/events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoWebhooksEvent>> getFromSubscription(
     String subscriptionId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.427852
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.740821
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -608,6 +608,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `/services/v2/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>> get({
     String? id,
     PcoServicesPersonQuery? query,
@@ -622,6 +625,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>>
       getControllerFromPersonAndRecentPlanAndLive(
     String personId,
@@ -640,6 +646,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments/$personTeamPositionAssignmentId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>>
       getFromServiceTypeAndTeamPositionAndPersonTeamPositionAssignment(
     String serviceTypeId,
@@ -658,6 +667,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndPlanPerson(
     String personId,
     String planPersonId, {
@@ -673,6 +685,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/schedules/$scheduleId/respond_to`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>>
       getRespondToFromPersonAndSchedule(
     String personId,
@@ -689,6 +704,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>>
       getFromPersonAndAssignedTeamLeader(
     String personId,
@@ -707,6 +725,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPerson>> getFromTeam(
     String teamId, {
     String? id,

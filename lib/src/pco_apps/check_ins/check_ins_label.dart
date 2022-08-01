@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.515451
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.791280
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -244,6 +244,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLabel>> get({
     String? id,
     PcoCheckInsLabelQuery? query,
@@ -258,6 +261,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLabel>> getFromEventAndEventLabel(
     String eventId,
     String eventLabelId, {
@@ -274,6 +280,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLabel>> getFromLabelAndLocationLabel(
     String labelId,
     String locationLabelId, {
@@ -291,6 +300,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/options/$optionId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLabel>> getFromOption(
     String optionId, {
     String? id,

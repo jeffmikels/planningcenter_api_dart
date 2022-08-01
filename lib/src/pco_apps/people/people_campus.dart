@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.569654
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.886267
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -552,6 +552,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting many)
   /// using a path like this: `/people/v2/campuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> get({
     String? id,
     PcoPeopleCampusQuery? query,
@@ -571,6 +574,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getFromForm(
     String formId, {
     PcoPeopleCampusQuery? query,
@@ -590,6 +596,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getFromList(
     String listId, {
     PcoPeopleCampusQuery? query,
@@ -609,6 +618,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/primary_campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPerson(
     String personId, {
     PcoPeopleCampusQuery? query,

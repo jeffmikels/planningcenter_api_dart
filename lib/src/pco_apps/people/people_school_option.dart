@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.604154
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.921982
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -350,6 +350,9 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleSchoolOption>> get({
     String? id,
     PcoPeopleSchoolOptionQuery? query,
@@ -364,6 +367,9 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/school`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolFromPerson(
     String personId, {
     String? id,
@@ -379,6 +385,9 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleSchoolOption>>
       getPromotesToSchoolFromSchoolOption(
     String schoolOptionId, {

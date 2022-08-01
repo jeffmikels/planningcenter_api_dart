@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.635745
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.955760
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -354,6 +354,9 @@ class PcoCalendarTag extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `individual`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarTag>> get({
     String? id,
     PcoCalendarTagQuery? query,
@@ -370,6 +373,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarTag>> getFromEventInstance(
     String eventInstanceId, {
     String? id,
@@ -387,6 +393,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarTag>> getFromEvent(
     String eventId, {
     String? id,
@@ -404,6 +413,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarTag>> getFromTagGroup(
     String tagGroupId, {
     String? id,

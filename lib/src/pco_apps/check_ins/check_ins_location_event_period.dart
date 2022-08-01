@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.517182
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.821949
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -269,6 +269,9 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationEventPeriod] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationEventPeriod>>
       getFromCheckInAndEventPeriod(
     String checkInId,
@@ -293,6 +296,9 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationEventPeriod] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_periods`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationEventPeriod>>
       getFromCheckInAndLocation(
     String checkInId,

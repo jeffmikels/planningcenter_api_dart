@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.522605
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.831184
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -257,6 +257,9 @@ class PcoCheckInsTheme extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `/check-ins/v2/themes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsTheme>> get({
     String? id,
     PcoCheckInsThemeQuery? query,
@@ -271,6 +274,9 @@ class PcoCheckInsTheme extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/theme`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsTheme>> getFromStation(
     String stationId, {
     String? id,

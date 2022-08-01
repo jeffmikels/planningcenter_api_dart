@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.669311
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.994235
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -402,6 +402,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> get({
     String? id,
     PcoGroupsGroupQuery? query,
@@ -421,6 +424,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `/groups/v2/events/$eventId/group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> getFromEvent(
     String eventId, {
     PcoGroupsGroupQuery? query,
@@ -440,6 +446,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> getFromGroupType(
     String groupTypeId, {
     String? id,
@@ -460,6 +469,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `/groups/v2/groups/$groupId/memberships/$membershipId/group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> getFromGroupAndMembership(
     String groupId,
     String membershipId, {
@@ -480,6 +492,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/people/$personId/groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> getFromPerson(
     String personId, {
     String? id,
@@ -500,6 +515,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/tags/$tagId/groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroup>> getFromTag(
     String tagId, {
     String? id,

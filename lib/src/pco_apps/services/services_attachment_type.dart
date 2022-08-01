@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.406244
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.719245
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -282,6 +282,9 @@ class PcoServicesAttachmentType extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachmentType] objects (expecting many)
   /// using a path like this: `/services/v2/attachment_types`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachmentType>> get({
     String? id,
     PcoServicesAttachmentTypeQuery? query,

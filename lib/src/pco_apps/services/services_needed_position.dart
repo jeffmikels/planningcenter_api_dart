@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.424638
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.737330
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -316,6 +316,9 @@ class PcoServicesNeededPosition extends PcoResource {
 
   /// Will get a collection of [PcoServicesNeededPosition] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesNeededPosition>>
       getFromServiceTypeAndPlan(
     String serviceTypeId,

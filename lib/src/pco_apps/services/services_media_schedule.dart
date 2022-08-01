@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.423751
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.736641
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -240,6 +240,9 @@ class PcoServicesMediaSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesMediaSchedule] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/media_schedules`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesMediaSchedule>> getFromMedia(
     String mediaId, {
     String? id,

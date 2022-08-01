@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.657799
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.980831
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -299,6 +299,9 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingRecurringDonation>> get({
     String? id,
     PcoGivingRecurringDonationQuery? query,
@@ -315,6 +318,9 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingRecurringDonation>>
       getFromPersonAndPaymentMethod(
     String personId,
@@ -335,6 +341,9 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingRecurringDonation>> getFromPerson(
     String personId, {
     String? id,

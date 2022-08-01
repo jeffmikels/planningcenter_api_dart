@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.451377
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.754989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -242,6 +242,9 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>>
       getFromPersonAndPlanTime(
     String personId,

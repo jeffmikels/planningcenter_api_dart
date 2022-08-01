@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.437911
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.749703
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -231,6 +231,9 @@ class PcoServicesScheduledPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesScheduledPerson] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesScheduledPerson>>
       getFromPersonAndAvailableSignupAndSignupSheet(
     String personId,

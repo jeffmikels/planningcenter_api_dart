@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.582095
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.899989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -421,6 +421,9 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
   /// using a path like this: `/people/v2/households`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHousehold>> get({
     String? id,
     PcoPeopleHouseholdQuery? query,
@@ -437,6 +440,9 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting one)
   /// using a path like this: `/people/v2/households/$householdId/household_memberships/$householdMembershipId/household`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHousehold>>
       getFromHouseholdAndHouseholdMembership(
     String householdId,
@@ -456,6 +462,9 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting one)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories/$historyId/household`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHousehold>>
       getFromPeopleImportAndHistory(
     String peopleImportId,
@@ -475,6 +484,9 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/households`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHousehold>> getFromPerson(
     String personId, {
     String? id,

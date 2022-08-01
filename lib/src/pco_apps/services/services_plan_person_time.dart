@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.434266
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.746362
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -237,6 +237,9 @@ class PcoServicesPlanPersonTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanPersonTime] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanPersonTime>>
       getFromPersonAndPlanPerson(
     String personId,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.626055
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.945713
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -331,6 +331,9 @@ class PcoCalendarConflict extends PcoResource {
   /// - `future`
   /// - `resolved`
   /// - `unresolved`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarConflict>> get({
     String? id,
     PcoCalendarConflictQuery? query,
@@ -352,6 +355,9 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/conflicts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarConflict>> getFromEvent(
     String eventId, {
     String? id,
@@ -374,6 +380,9 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/conflicts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarConflict>> getFromResource(
     String resourceId, {
     String? id,

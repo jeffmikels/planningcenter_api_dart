@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.517776
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.823023
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -298,6 +298,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationEventTime] objects (expecting many)
   /// using a path like this: `/check-ins/v2/event_times/$eventTimeId/location_event_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationEventTime>> getFromEventTime(
     String eventTimeId, {
     String? id,
@@ -319,6 +322,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationEventTime] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLocationEventTime>>
       getFromCheckInAndLocation(
     String checkInId,

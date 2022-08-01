@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.453989
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.757324
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -300,6 +300,9 @@ class PcoServicesTeamLeader extends PcoResource {
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTeamLeader>> getFromPerson(
     String personId, {
     String? id,
@@ -320,6 +323,9 @@ class PcoServicesTeamLeader extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/team_leaders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTeamLeader>> getFromTeam(
     String teamId, {
     String? id,

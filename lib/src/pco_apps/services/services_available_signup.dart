@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.407768
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.720969
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -280,6 +280,9 @@ class PcoServicesAvailableSignup extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `current_organization`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAvailableSignup>> getFromPerson(
     String personId, {
     String? id,

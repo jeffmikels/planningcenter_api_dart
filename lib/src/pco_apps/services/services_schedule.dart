@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.437347
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.749167
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -455,6 +455,9 @@ class PcoServicesSchedule extends PcoResource {
   /// - `future`
   /// - `not_across_organizations`
   /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesSchedule>> getFromPerson(
     String personId, {
     String? id,
@@ -472,6 +475,9 @@ class PcoServicesSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesSchedule] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/my_schedules`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesSchedule>>
       getMySchedulesFromServiceTypeAndPlan(
     String serviceTypeId,

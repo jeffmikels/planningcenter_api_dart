@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.428757
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.741755
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -382,6 +382,9 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPersonTeamPositionAssignment>>
       getFromPerson(
     String personId, {
@@ -406,6 +409,9 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
 
   /// Will get a collection of [PcoServicesPersonTeamPositionAssignment] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/person_team_position_assignments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPersonTeamPositionAssignment>>
       getFromTeam(
     String teamId, {
@@ -435,6 +441,9 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   /// - `time_preference_options`
   /// pass an additonal array of `time_preference_option_ids` as a param to filter to people who prefer those times.use id 'none' to filter people who have no preferred times
   ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPersonTeamPositionAssignment>>
       getFromServiceTypeAndTeamPosition(
     String serviceTypeId,

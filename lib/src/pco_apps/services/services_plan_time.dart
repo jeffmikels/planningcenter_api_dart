@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.435623
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.747660
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -387,6 +387,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/next_up_plans/$upPlanId/needed_positions/$neededPositionId/time`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>>
       getTimeFromPersonAndUpPlanAndNeededPosition(
     String personId,
@@ -408,6 +411,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/declined_plan_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>>
       getDeclinedPlanTimesFromPersonAndPlanPerson(
     String personId,
@@ -428,6 +434,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>> getFromPersonAndPlanPerson(
     String personId,
     String planPersonId, {
@@ -448,6 +457,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/plan_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>> getFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
@@ -468,6 +480,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/schedules/$scheduleId/declined_plan_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>>
       getDeclinedPlanTimesFromPersonAndSchedule(
     String personId,
@@ -488,6 +503,9 @@ class PcoServicesPlanTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/schedules/$scheduleId/plan_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>> getFromPersonAndSchedule(
     String personId,
     String scheduleId, {
@@ -512,6 +530,9 @@ class PcoServicesPlanTime extends PcoResource {
   /// - `future`
   /// - `named`
   /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanTime>> getFromServiceType(
     String serviceTypeId, {
     String? id,

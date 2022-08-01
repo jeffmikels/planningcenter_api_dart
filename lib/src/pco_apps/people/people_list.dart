@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.584006
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.901726
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -581,6 +581,9 @@ class PcoPeopleList extends PcoResource {
   /// - `can_manage`
   /// - `recently_viewed`
   /// - `starred`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleList>> get({
     String? id,
     PcoPeopleListQuery? query,
@@ -612,6 +615,9 @@ class PcoPeopleList extends PcoResource {
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/campuses/$campusId/lists`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleList>> getFromCampus(
     String campusId, {
     String? id,
@@ -644,6 +650,9 @@ class PcoPeopleList extends PcoResource {
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleList>> getFromListCategory(
     String listCategoryId, {
     String? id,

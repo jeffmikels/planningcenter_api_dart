@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.647294
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.969998
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -214,6 +214,9 @@ class PcoGivingCampus extends PcoResource {
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingCampus>> get({
     String? id,
     PcoGivingCampusQuery? query,
@@ -228,6 +231,9 @@ class PcoGivingCampus extends PcoResource {
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingCampus>> getFromDonation(
     String donationId, {
     String? id,
@@ -243,6 +249,9 @@ class PcoGivingCampus extends PcoResource {
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/primary_campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingCampus>> getPrimaryCampusFromPerson(
     String personId, {
     String? id,

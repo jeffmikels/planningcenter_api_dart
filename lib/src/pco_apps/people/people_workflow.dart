@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.606809
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.924936
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -531,6 +531,9 @@ class PcoPeopleWorkflow extends PcoResource {
   /// - `with_deleted`
   /// - `with_recoverable`
   /// - `with_steps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflow>> get({
     String? id,
     PcoPeopleWorkflowQuery? query,
@@ -552,6 +555,9 @@ class PcoPeopleWorkflow extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/workflow`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflow>> getFromPersonAndWorkflowCard(
     String personId,
     String workflowCardId, {

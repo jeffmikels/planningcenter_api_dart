@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.522130
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.830623
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -322,6 +322,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsStation>> get({
     String? id,
     PcoCheckInsStationQuery? query,
@@ -345,6 +348,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_at`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsStation>> getCheckedInAtFromCheckIn(
     String checkInId, {
     String? id,
@@ -369,6 +375,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group/$checkInGroupId/print_station`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsStation>>
       getPrintStationFromCheckInAndCheckInGroup(
     String checkInId,
@@ -396,6 +405,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/print_station`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsStation>> getPrintStationFromStation(
     String stationId, {
     String? id,

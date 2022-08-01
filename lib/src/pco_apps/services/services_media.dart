@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.423153
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.735697
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -532,6 +532,9 @@ class PcoServicesMedia extends PcoResource {
   /// - `powerpoint`
   /// - `song_video`
   /// - `video`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesMedia>> get({
     String? id,
     PcoServicesMediaQuery? query,
@@ -548,6 +551,9 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesMedia] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesMedia>>
       getFromServiceTypeAndPlanAndItem(
     String serviceTypeId,

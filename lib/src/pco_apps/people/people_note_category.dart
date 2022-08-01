@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.592005
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.910373
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -399,6 +399,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `/people/v2/note_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNoteCategory>> get({
     String? id,
     PcoPeopleNoteCategoryQuery? query,
@@ -420,6 +423,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting one)
   /// using a path like this: `/people/v2/notes/$noteId/category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNoteCategory>> getCategoryFromNote(
     String noteId, {
     PcoPeopleNoteCategoryQuery? query,

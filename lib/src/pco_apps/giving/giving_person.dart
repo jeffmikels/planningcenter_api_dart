@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.651576
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.974202
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -299,6 +299,9 @@ class PcoGivingPerson extends PcoResource {
   /// - `has_donated`
   /// filter to people with at least one associated donation
   ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> get({
     String? id,
     PcoGivingPersonQuery? query,
@@ -313,6 +316,9 @@ class PcoGivingPerson extends PcoResource {
 
   /// Will get a collection of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/owner`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getOwnerFromBatchGroup(
     String batchGroupId, {
     PcoGivingPersonQuery? query,
@@ -327,6 +333,9 @@ class PcoGivingPerson extends PcoResource {
 
   /// Will get a collection of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/batches/$batchId/owner`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getOwnerFromBatch(
     String batchId, {
     PcoGivingPersonQuery? query,
@@ -341,6 +350,9 @@ class PcoGivingPerson extends PcoResource {
 
   /// Will get a collection of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/pledges/$pledgeId/joint_giver`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getJointGiverFromPledge(
     String pledgeId, {
     PcoGivingPersonQuery? query,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.676932
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:04.003155
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -234,6 +234,9 @@ class PcoWebhooksAvailableEvent extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/available_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoWebhooksAvailableEvent>> get({
     String? id,
     PcoWebhooksAvailableEventQuery? query,

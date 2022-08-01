@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.510628
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.785806
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -298,6 +298,9 @@ class PcoCheckInsCheckInGroup extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckInGroup] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckInGroup>> getFromCheckIn(
     String checkInId, {
     String? id,
@@ -326,6 +329,9 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   /// - `printed`
   /// - `ready`
   /// - `skipped`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsCheckInGroup>> getFromStation(
     String stationId, {
     String? id,

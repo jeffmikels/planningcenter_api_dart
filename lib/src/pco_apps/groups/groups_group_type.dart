@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.669996
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.994898
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -302,6 +302,9 @@ class PcoGroupsGroupType extends PcoResource {
   /// Available Query Filters:
   /// - `church_center_visible`
   /// - `not_church_center_visible`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroupType>> get({
     String? id,
     PcoGroupsGroupTypeQuery? query,
@@ -316,6 +319,9 @@ class PcoGroupsGroupType extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroupType] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/group_type`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsGroupType>> getFromGroup(
     String groupId, {
     String? id,

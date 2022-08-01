@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.586472
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.904337
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -252,6 +252,9 @@ class PcoPeopleMaritalStatus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `/people/v2/marital_statuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMaritalStatus>> get({
     String? id,
     PcoPeopleMaritalStatusQuery? query,
@@ -266,6 +269,9 @@ class PcoPeopleMaritalStatus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/marital_status`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMaritalStatus>> getFromPerson(
     String personId, {
     String? id,

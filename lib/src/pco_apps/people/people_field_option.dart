@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.577226
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.896737
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -284,6 +284,9 @@ class PcoPeopleFieldOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting one)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/field_option`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromFieldData(
     String fieldDataId, {
     PcoPeopleFieldOptionQuery? query,
@@ -298,6 +301,9 @@ class PcoPeopleFieldOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/field_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromFieldDefinition(
     String fieldDefinitionId, {
     String? id,
@@ -313,6 +319,9 @@ class PcoPeopleFieldOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `/people/v2/tabs/$tabId/field_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromTab(
     String tabId, {
     String? id,

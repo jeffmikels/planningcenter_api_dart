@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.433709
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.745887
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -526,6 +526,9 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanPerson] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/plan_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanPerson>> getFromPerson(
     String personId, {
     String? id,
@@ -555,6 +558,9 @@ class PcoServicesPlanPerson extends PcoResource {
   /// - `confirmed`
   /// - `not_archived`
   /// - `not_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanPerson>>
       getTeamMembersFromServiceTypeAndPlan(
     String serviceTypeId,
@@ -581,6 +587,9 @@ class PcoServicesPlanPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanPerson] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/plan_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlanPerson>> getFromTeam(
     String teamId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.647650
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.970345
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -221,6 +221,9 @@ class PcoGivingDesignation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting one)
   /// using a path like this: `/giving/v2/donations/$donationId/refund/designation_refunds/$designationRefundId/designation`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDesignation>>
       getFromDonationAndRefundAndDesignationRefund(
     String donationId,
@@ -238,6 +241,9 @@ class PcoGivingDesignation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/designations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDesignation>> getFromDonation(
     String donationId, {
     String? id,

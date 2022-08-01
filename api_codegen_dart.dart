@@ -792,6 +792,9 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
     var toAdd = '''\n
   /// Will get a collection of [$className] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}${className}Query? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
     query ??= ${className}Query();
     ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}

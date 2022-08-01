@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.512529
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.788155
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -274,6 +274,9 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromEvent(
     String eventId, {
     String? id,
@@ -294,6 +297,9 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/event_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromLabel(
     String labelId, {
     String? id,

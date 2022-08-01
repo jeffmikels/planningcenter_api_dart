@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.648873
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.971497
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -668,6 +668,9 @@ class PcoGivingDonation extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `succeeded`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> get({
     String? id,
     PcoGivingDonationQuery? query,
@@ -689,6 +692,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/batches/$batchId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> getFromBatch(
     String batchId, {
     String? id,
@@ -711,6 +717,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses/$campusId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> getFromCampus(
     String campusId, {
     String? id,
@@ -733,6 +742,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/payment_sources/$paymentSourceId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> getFromPaymentSource(
     String paymentSourceId, {
     String? id,
@@ -755,6 +767,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> getFromPerson(
     String personId, {
     String? id,

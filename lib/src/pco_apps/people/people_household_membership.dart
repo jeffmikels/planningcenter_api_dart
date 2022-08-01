@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.582704
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.900542
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -331,6 +331,9 @@ class PcoPeopleHouseholdMembership extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `/people/v2/households/$householdId/household_memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHouseholdMembership>> getFromHousehold(
     String householdId, {
     String? id,
@@ -352,6 +355,9 @@ class PcoPeopleHouseholdMembership extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/household_memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleHouseholdMembership>> getFromPerson(
     String personId, {
     String? id,

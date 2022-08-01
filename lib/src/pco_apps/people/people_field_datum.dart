@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.575884
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.895393
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -412,6 +412,9 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/field_data`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDatum>> get({
     String? id,
     PcoPeopleFieldDatumQuery? query,
@@ -433,6 +436,9 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/field_data`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDatum>> getFromPerson(
     String personId, {
     String? id,

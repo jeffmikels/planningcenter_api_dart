@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.436218
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.748132
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -275,6 +275,9 @@ class PcoServicesPublicView extends PcoResource {
 
   /// Will get a collection of [PcoServicesPublicView] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/public_view`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPublicView>> getFromServiceType(
     String serviceTypeId, {
     String? id,

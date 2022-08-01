@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.646849
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.969591
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -279,6 +279,9 @@ class PcoGivingBatchGroup extends PcoResource {
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/batch_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingBatchGroup>> get({
     String? id,
     PcoGivingBatchGroupQuery? query,
@@ -295,6 +298,9 @@ class PcoGivingBatchGroup extends PcoResource {
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/batches/$batchId/batch_group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingBatchGroup>> getFromBatch(
     String batchId, {
     String? id,
@@ -312,6 +318,9 @@ class PcoGivingBatchGroup extends PcoResource {
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/batch_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingBatchGroup>> getFromPerson(
     String personId, {
     String? id,

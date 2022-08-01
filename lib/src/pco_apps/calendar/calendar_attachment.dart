@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.625425
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.945127
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -395,6 +395,9 @@ class PcoCalendarAttachment extends PcoResource {
 
   /// Will get a collection of [PcoCalendarAttachment] objects (expecting many)
   /// using a path like this: `/calendar/v2/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarAttachment>> get({
     String? id,
     PcoCalendarAttachmentQuery? query,
@@ -411,6 +414,9 @@ class PcoCalendarAttachment extends PcoResource {
 
   /// Will get a collection of [PcoCalendarAttachment] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarAttachment>> getFromEvent(
     String eventId, {
     String? id,

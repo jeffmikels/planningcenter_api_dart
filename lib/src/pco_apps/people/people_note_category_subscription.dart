@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.593858
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.912134
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -277,6 +277,9 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting many)
   /// using a path like this: `/people/v2/note_category_subscriptions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> get({
     String? id,
     PcoPeopleNoteCategorySubscriptionQuery? query,
@@ -291,6 +294,9 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscriptions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNoteCategorySubscription>>
       getSubscriptionsFromNoteCategory(
     String noteCategoryId, {

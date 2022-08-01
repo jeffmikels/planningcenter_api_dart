@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.389838
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.702933
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -662,6 +662,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesArrangement>>
       getFromServiceTypeAndPlanAndItem(
     String serviceTypeId,
@@ -685,6 +688,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesArrangement>> getFromSong(
     String songId, {
     String? id,

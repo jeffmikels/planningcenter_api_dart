@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.574920
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.892467
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -361,6 +361,9 @@ class PcoPeopleEmail extends PcoResource {
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `/people/v2/emails`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleEmail>> get({
     String? id,
     PcoPeopleEmailQuery? query,
@@ -375,6 +378,9 @@ class PcoPeopleEmail extends PcoResource {
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/emails`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleEmail>> getFromPerson(
     String personId, {
     String? id,

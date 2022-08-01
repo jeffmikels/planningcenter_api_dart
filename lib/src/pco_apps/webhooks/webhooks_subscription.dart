@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.680687
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:04.033884
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -281,6 +281,9 @@ class PcoWebhooksSubscription extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksSubscription] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoWebhooksSubscription>> get({
     String? id,
     PcoWebhooksSubscriptionQuery? query,

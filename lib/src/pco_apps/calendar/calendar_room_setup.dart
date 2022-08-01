@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.635229
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.955245
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -380,6 +380,9 @@ class PcoCalendarRoomSetup extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `shared_room_setups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarRoomSetup>> get({
     String? id,
     PcoCalendarRoomSetupQuery? query,
@@ -399,6 +402,9 @@ class PcoCalendarRoomSetup extends PcoResource {
 
   /// Will get a collection of [PcoCalendarRoomSetup] objects (expecting one)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/room_setup`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarRoomSetup>>
       getFromEventResourceRequest(
     String eventResourceRequestId, {
@@ -420,6 +426,9 @@ class PcoCalendarRoomSetup extends PcoResource {
 
   /// Will get a collection of [PcoCalendarRoomSetup] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/room_setups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarRoomSetup>> getFromResource(
     String resourceId, {
     String? id,

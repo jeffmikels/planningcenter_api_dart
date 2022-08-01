@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.452442
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.755797
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -314,6 +314,9 @@ class PcoServicesTagGroup extends PcoResource {
   /// - `media`
   /// - `person`
   /// - `song`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTagGroup>> get({
     String? id,
     PcoServicesTagGroupQuery? query,

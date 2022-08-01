@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.583146
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.900910
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -252,6 +252,9 @@ class PcoPeopleInactiveReason extends PcoResource {
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/inactive_reasons`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleInactiveReason>> get({
     String? id,
     PcoPeopleInactiveReasonQuery? query,
@@ -266,6 +269,9 @@ class PcoPeopleInactiveReason extends PcoResource {
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/inactive_reason`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleInactiveReason>> getFromPerson(
     String personId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.400071
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.712914
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,6 +206,9 @@ class PcoServicesArrangementSection extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangementSection] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/sections`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesArrangementSection>>
       getSectionsFromSongAndArrangement(
     String songId,

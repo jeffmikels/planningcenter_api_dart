@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.672602
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.997562
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -267,6 +267,9 @@ class PcoGroupsResource extends PcoResource {
   /// - `leaders`
   /// filter resources only visible to group leaders
   ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
     String groupId, {
     String? id,
@@ -282,6 +285,9 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsResource>> getFromGroupType(
     String groupTypeId, {
     String? id,
@@ -297,6 +303,9 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/download`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsResource>>
       getDownloadFromGroupTypeAndResource(
     String groupTypeId,
@@ -314,6 +323,9 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsResource>>
       getVisitFromGroupTypeAndResource(
     String groupTypeId,

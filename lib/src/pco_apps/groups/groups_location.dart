@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.670504
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.995367
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -245,6 +245,9 @@ class PcoGroupsLocation extends PcoResource {
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/location`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(
     String eventId, {
     String? id,
@@ -260,6 +263,9 @@ class PcoGroupsLocation extends PcoResource {
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/location`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(
     String groupId, {
     String? id,

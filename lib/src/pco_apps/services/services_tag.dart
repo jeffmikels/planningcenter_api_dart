@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.451896
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.755358
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -217,6 +217,9 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTag>> getFromSongAndArrangement(
     String songId,
     String arrangementId, {
@@ -233,6 +236,9 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTag>> getFromMedia(
     String mediaId, {
     String? id,
@@ -248,6 +254,9 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTag>> getFromPerson(
     String personId, {
     String? id,
@@ -263,6 +272,9 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTag>> getFromSong(
     String songId, {
     String? id,
@@ -278,6 +290,9 @@ class PcoServicesTag extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesTag>> getFromTagGroup(
     String tagGroupId, {
     String? id,

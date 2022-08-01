@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.514867
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.790662
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -323,6 +323,9 @@ class PcoCheckInsHeadcount extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsHeadcount] objects (expecting many)
   /// using a path like this: `/check-ins/v2/headcounts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsHeadcount>> get({
     String? id,
     PcoCheckInsHeadcountQuery? query,
@@ -342,6 +345,9 @@ class PcoCheckInsHeadcount extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsHeadcount] objects (expecting many)
   /// using a path like this: `/check-ins/v2/attendance_types/$attendanceTypeId/headcounts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsHeadcount>> getFromAttendanceType(
     String attendanceTypeId, {
     String? id,
@@ -362,6 +368,9 @@ class PcoCheckInsHeadcount extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsHeadcount] objects (expecting many)
   /// using a path like this: `/check-ins/v2/event_times/$eventTimeId/headcounts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsHeadcount>> getFromEventTime(
     String eventTimeId, {
     String? id,

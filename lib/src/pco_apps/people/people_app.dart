@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.568319
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.884909
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -263,6 +263,9 @@ class PcoPeopleApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/apps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleApp>> get({
     String? id,
     PcoPeopleAppQuery? query,
@@ -277,6 +280,9 @@ class PcoPeopleApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/app`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleApp>> getFromMessageGroup(
     String messageGroupId, {
     String? id,
@@ -292,6 +298,9 @@ class PcoPeopleApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/person_apps/$personAppId/app`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleApp>> getFromPersonAndPersonApp(
     String personId,
     String personAppId, {
@@ -308,6 +317,9 @@ class PcoPeopleApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/apps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleApp>> getFromPerson(
     String personId, {
     String? id,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.439376
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.751258
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -495,6 +495,9 @@ class PcoServicesServiceType extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `no_parent`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>> get({
     String? id,
     PcoServicesServiceTypeQuery? query,
@@ -512,6 +515,9 @@ class PcoServicesServiceType extends PcoResource {
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/service_types`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>> getFromFolder(
     String folderId, {
     String? id,
@@ -530,6 +536,9 @@ class PcoServicesServiceType extends PcoResource {
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/service_type`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>>
       getFromPersonAndRecentPlanAndLive(
     String personId,
@@ -551,6 +560,9 @@ class PcoServicesServiceType extends PcoResource {
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/teams/$teamId/service_type`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>> getFromTeam(
     String teamId, {
     PcoServicesServiceTypeQuery? query,

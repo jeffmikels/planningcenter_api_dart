@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.507956
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.783150
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -289,6 +289,9 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsAttendanceType] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/attendance_types`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsAttendanceType>> getFromEvent(
     String eventId, {
     String? id,
@@ -306,6 +309,9 @@ class PcoCheckInsAttendanceType extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsAttendanceType] objects (expecting one)
   /// using a path like this: `/check-ins/v2/headcounts/$headcountId/attendance_type`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsAttendanceType>> getFromHeadcount(
     String headcountId, {
     PcoCheckInsAttendanceTypeQuery? query,

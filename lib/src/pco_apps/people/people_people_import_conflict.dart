@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.596906
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.914494
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -322,6 +322,9 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   /// - `ignored`
   /// - `not_ignored`
   /// - `updates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePeopleImportConflict>>
       getConflictsFromPeopleImport(
     String peopleImportId, {

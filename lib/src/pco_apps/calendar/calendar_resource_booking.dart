@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.633297
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.953410
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -427,6 +427,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `rejected`
   /// - `resources`
   /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>> get({
     String? id,
     PcoCalendarResourceBookingQuery? query,
@@ -454,6 +457,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `future`
   /// - `resources`
   /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromEventInstance(
     String eventInstanceId, {
     String? id,
@@ -480,6 +486,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `future`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromEvent(
     String eventId, {
     String? id,
@@ -513,6 +522,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `pending`
   /// - `pending_rejected`
   /// - `rejected`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>>
       getFromEventResourceRequest(
     String eventResourceRequestId, {
@@ -548,6 +560,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `pending`
   /// - `pending_rejected`
   /// - `rejected`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromResource(
     String resourceId, {
     String? id,

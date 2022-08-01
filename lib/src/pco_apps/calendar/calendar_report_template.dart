@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.631181
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.951388
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -248,6 +248,9 @@ class PcoCalendarReportTemplate extends PcoResource {
 
   /// Will get a collection of [PcoCalendarReportTemplate] objects (expecting many)
   /// using a path like this: `/calendar/v2/report_templates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarReportTemplate>> get({
     String? id,
     PcoCalendarReportTemplateQuery? query,

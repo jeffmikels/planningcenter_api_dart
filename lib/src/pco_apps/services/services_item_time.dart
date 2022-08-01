@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.418969
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.731654
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -253,6 +253,9 @@ class PcoServicesItemTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItemTime>>
       getFromServiceTypeAndPlanAndItem(
     String serviceTypeId,
@@ -272,6 +275,9 @@ class PcoServicesItemTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItemTime>>
       getCurrentItemTimeFromPersonAndRecentPlanAndLive(
     String personId,
@@ -290,6 +296,9 @@ class PcoServicesItemTime extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesItemTime>>
       getNextItemTimeFromPersonAndRecentPlanAndLive(
     String personId,

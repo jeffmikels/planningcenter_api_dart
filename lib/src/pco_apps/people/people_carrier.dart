@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.704815
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.570217
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `international` -> `?order=international`
+/// - `name` -> `?order=name`
+enum PcoPeopleCarrierOrder { international, name }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleCarrierFilter { none }
+
+/// Creates a [PcoPeopleCarrierQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleCarrierOrder.international` : will order by `international`
+/// - `PcoPeopleCarrierOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleCarrierOrder, String> _orderMap = {
+    PcoPeopleCarrierOrder.international: 'international',
+    PcoPeopleCarrierOrder.name: 'name',
+  };
+  static String orderString(PcoPeopleCarrierOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleCarrierFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleCarrierFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleCarrierQuery({
+    PcoPeopleCarrierOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Carrier Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleCarrier.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleCarrier.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,26 +93,6 @@ part of pco;
 /// - `value` (ro) -> PCO: `value`
 /// - `name` (ro) -> PCO: `name`
 /// - `isInternational` (ro) -> PCO: `international`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `international`: (URLParameter), prefix with a hyphen (-international) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -183,16 +218,19 @@ class PcoPeopleCarrier extends PcoResource {
     if (name != null) obj._attributes['name'] = name;
     if (isInternational != null)
       obj._attributes['international'] = isInternational;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -205,9 +243,9 @@ class PcoPeopleCarrier extends PcoResource {
   /// using a path like this: `/people/v2/carriers`
   static Future<PcoCollection<PcoPeopleCarrier>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleCarrierQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleCarrierQuery();
 
     var url = '/people/v2/carriers';
     if (id != null) url += '/$id';

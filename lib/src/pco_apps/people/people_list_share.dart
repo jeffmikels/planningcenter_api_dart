@@ -1,9 +1,125 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.724191
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.585499
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `group` -> `?order=group`
+enum PcoPeopleListShareOrder { createdAt, group }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleListShareFilter { none }
+
+/// Creates a [PcoPeopleListShareQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePerson`: include associated person
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleListShareQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleListShare] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereGroup`: query on a specific group, example: ?where[group]=value
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `wherePermission`: query on a specific permission, example: ?where[permission]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleListShareOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleListShareOrder.group` : will order by `group`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleListShareQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleListShareOrder, String> _orderMap = {
+    PcoPeopleListShareOrder.createdAt: 'created_at',
+    PcoPeopleListShareOrder.group: 'group',
+  };
+  static String orderString(PcoPeopleListShareOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleListShareFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleListShareFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleListShareQuery({
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `group`
+    /// query on a specific group, url example: ?where[group]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGroup,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `permission`
+    /// query on a specific permission, url example: ?where[permission]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePermission,
+    PcoPeopleListShareOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includePerson) include.add('person');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereGroup != null)
+      where.add(PlanningCenterApiWhere.parse('group', whereGroup));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (wherePermission != null)
+      where.add(PlanningCenterApiWhere.parse('permission', wherePermission));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People ListShare Object
 ///
@@ -19,7 +135,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleListShare.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleListShare.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,29 +154,6 @@ part of pco;
 /// - `group` (ro) -> PCO: `group`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (ro) -> PCO: `name`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `person`: include associated person
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `group`: (URLParameter), query on a specific group, example: ?where[group]=value
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `group`: (URLParameter), prefix with a hyphen (-group) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -207,16 +299,19 @@ class PcoPeopleListShare extends PcoResource {
     if (createdAt != null)
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -229,10 +324,10 @@ class PcoPeopleListShare extends PcoResource {
   /// using a path like this: `/people/v2/lists/$listId/shares`
   static Future<PcoCollection<PcoPeopleListShare>> getSharesFromList(
     String listId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleListShareQuery? query,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleListShareQuery();
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/lists/$listId/shares';
@@ -248,43 +343,9 @@ class PcoPeopleListShare extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/shares/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleListShare.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

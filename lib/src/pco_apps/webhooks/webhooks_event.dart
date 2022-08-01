@@ -1,9 +1,81 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.863932
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.679582
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+enum PcoWebhooksEventOrder { createdAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoWebhooksEventFilter { none }
+
+/// Creates a [PcoWebhooksEventQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoWebhooksEvent] objects can be requested with one or more of the following criteria:
+/// - `whereUuid`: query on a specific uuid, example: ?where[uuid]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoWebhooksEventOrder.createdAt` : will order by `created_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoWebhooksEventQuery extends PlanningCenterApiQuery {
+  static final Map<PcoWebhooksEventOrder, String> _orderMap = {
+    PcoWebhooksEventOrder.createdAt: 'created_at',
+  };
+  static String orderString(PcoWebhooksEventOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoWebhooksEventFilter, String> _filterMap = {};
+  static String filterString(PcoWebhooksEventFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoWebhooksEventQuery({
+    /// Query by `uuid`
+    /// query on a specific uuid, url example: ?where[uuid]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUuid,
+    PcoWebhooksEventOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereUuid != null)
+      where.add(PlanningCenterApiWhere.parse('uuid', whereUuid));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Webhooks Event Object
 ///
@@ -19,7 +91,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksEvent.fromJson()` constructor.
-/// - Manually create an object using the `PcoWebhooksEvent.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,25 +110,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `uuid` (ro) -> PCO: `uuid`
 /// - `payload` (ro) -> PCO: `payload`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `uuid`: (URLParameter), query on a specific uuid, example: ?where[uuid]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +245,19 @@ class PcoWebhooksEvent extends PcoResource {
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (uuid != null) obj._attributes['uuid'] = uuid;
     if (payload != null) obj._attributes['payload'] = payload;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -216,9 +271,9 @@ class PcoWebhooksEvent extends PcoResource {
   static Future<PcoCollection<PcoWebhooksEvent>> getFromSubscription(
     String subscriptionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoWebhooksEventQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoWebhooksEventQuery();
 
     var url = '/webhooks/v2/subscriptions/$subscriptionId/events';
     if (id != null) url += '/$id';
@@ -233,11 +288,9 @@ class PcoWebhooksEvent extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksDelivery] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events/1/deliveries`
-  Future<PcoCollection<PcoWebhooksDelivery>> getDeliveries({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoWebhooksDelivery>> getDeliveries(
+      {PcoWebhooksDeliveryQuery? query}) async {
+    query ??= PcoWebhooksDeliveryQuery();
     var url = '$apiEndpoint/deliveries';
     return PcoCollection.fromApiCall<PcoWebhooksDelivery>(url,
         query: query, apiVersion: apiVersion);

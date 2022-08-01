@@ -1,9 +1,92 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.841009
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.672126
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `firstName` -> `?order=first_name`
+/// - `lastName` -> `?order=last_name`
+enum PcoGroupsPersonOrder { firstName, lastName }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsPersonFilter { none }
+
+/// Creates a [PcoGroupsPersonQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGroupsPerson] objects can be requested with one or more of the following criteria:
+/// - `whereFirstName`: query on a specific first_name, example: ?where[first_name]=string
+/// - `whereLastName`: query on a specific last_name, example: ?where[last_name]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsPersonOrder.firstName` : will order by `first_name`
+/// - `PcoGroupsPersonOrder.lastName` : will order by `last_name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsPersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsPersonOrder, String> _orderMap = {
+    PcoGroupsPersonOrder.firstName: 'first_name',
+    PcoGroupsPersonOrder.lastName: 'last_name',
+  };
+  static String orderString(PcoGroupsPersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsPersonFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsPersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsPersonQuery({
+    /// Query by `first_name`
+    /// query on a specific first_name, url example: ?where[first_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFirstName,
+
+    /// Query by `last_name`
+    /// query on a specific last_name, url example: ?where[last_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLastName,
+    PcoGroupsPersonOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereFirstName != null)
+      where.add(PlanningCenterApiWhere.parse('first_name', whereFirstName));
+    if (whereLastName != null)
+      where.add(PlanningCenterApiWhere.parse('last_name', whereLastName));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Person Object
 ///
@@ -19,7 +102,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsPerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,27 +125,6 @@ part of pco;
 /// - `lastName` (ro) -> PCO: `last_name`
 /// - `permissions` (ro) -> PCO: `permissions`
 /// - `phoneNumbers` (ro) -> PCO: `phone_numbers`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -219,16 +280,19 @@ class PcoGroupsPerson extends PcoResource {
     if (lastName != null) obj._attributes['last_name'] = lastName;
     if (permissions != null) obj._attributes['permissions'] = permissions;
     if (phoneNumbers != null) obj._attributes['phone_numbers'] = phoneNumbers;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -241,9 +305,9 @@ class PcoGroupsPerson extends PcoResource {
   /// using a path like this: `/groups/v2/people`
   static Future<PcoCollection<PcoGroupsPerson>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsPersonQuery();
 
     var url = '/groups/v2/people';
     if (id != null) url += '/$id';
@@ -257,9 +321,9 @@ class PcoGroupsPerson extends PcoResource {
     String eventId,
     String attendanceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsPersonQuery();
 
     var url = '/groups/v2/events/$eventId/attendances/$attendanceId/person';
     if (id != null) url += '/$id';
@@ -272,9 +336,9 @@ class PcoGroupsPerson extends PcoResource {
   static Future<PcoCollection<PcoGroupsPerson>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsPersonQuery();
 
     var url = '/groups/v2/groups/$groupId/people';
     if (id != null) url += '/$id';
@@ -293,16 +357,9 @@ class PcoGroupsPerson extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
-  Future<PcoCollection<PcoGroupsEvent>> getEvents({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroup = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsPerson.canInclude);
-    if (includeGroup) query.include.add('group');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsEvent>> getEvents(
+      {PcoGroupsEventQuery? query}) async {
+    query ??= PcoGroupsEventQuery();
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -310,16 +367,9 @@ class PcoGroupsPerson extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/people/1/groups`
-  Future<PcoCollection<PcoGroupsGroup>> getGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroupType = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsPerson.canInclude);
-    if (includeGroupType) query.include.add('group_type');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsGroup>> getGroups(
+      {PcoGroupsGroupQuery? query}) async {
+    query ??= PcoGroupsGroupQuery();
     var url = '$apiEndpoint/groups';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -327,11 +377,9 @@ class PcoGroupsPerson extends PcoResource {
 
   /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/people/1/memberships`
-  Future<PcoCollection<PcoGroupsMembership>> getMemberships({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsMembership>> getMemberships(
+      {PcoGroupsMembershipQuery? query}) async {
+    query ??= PcoGroupsMembershipQuery();
     var url = '$apiEndpoint/memberships';
     return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
         query: query, apiVersion: apiVersion);

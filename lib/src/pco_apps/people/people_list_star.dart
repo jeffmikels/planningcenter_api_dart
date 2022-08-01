@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.724504
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.585840
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleListStarOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleListStarFilter { none }
+
+/// Creates a [PcoPeopleListStarQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleListStarQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleListStarOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleListStarOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleListStarFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleListStarFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleListStarQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People ListStar Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleListStar()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleListStar.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleListStar.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -36,25 +70,6 @@ part of pco;
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -165,16 +180,19 @@ class PcoPeopleListStar extends PcoResource {
     obj._id = id;
     if (createdAt != null)
       obj._attributes['created_at'] = createdAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -188,9 +206,9 @@ class PcoPeopleListStar extends PcoResource {
   static Future<PcoCollection<PcoPeopleListStar>> getStarFromList(
     String listId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleListStarQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleListStarQuery();
 
     var url = '/people/v2/lists/$listId/star';
     if (id != null) url += '/$id';

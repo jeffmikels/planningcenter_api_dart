@@ -1,9 +1,61 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.813768
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.647999
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoGivingDesignationRefundOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGivingDesignationRefundFilter { none }
+
+/// Creates a [PcoGivingDesignationRefundQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeDesignation`: include associated designation
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGivingDesignationRefundQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingDesignationRefundQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingDesignationRefundOrder, String> _orderMap = {};
+  static String orderString(PcoGivingDesignationRefundOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingDesignationRefundFilter, String> _filterMap = {};
+  static String filterString(PcoGivingDesignationRefundFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGivingDesignationRefundQuery({
+    /// include associated designation
+    /// when true, adds `?include=designation` to url
+    bool includeDesignation = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeDesignation) include.add('designation');
+  }
+}
 
 /// This class represents a PCO Giving DesignationRefund Object
 ///
@@ -19,7 +71,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGivingDesignationRefund.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingDesignationRefund.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,25 +88,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `amountCents` (ro) -> PCO: `amount_cents`
 /// - `amountCurrency` (ro) -> PCO: `amount_currency`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `designation`: include associated designation
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -187,16 +219,19 @@ class PcoGivingDesignationRefund extends PcoResource {
     if (amountCents != null) obj._attributes['amount_cents'] = amountCents;
     if (amountCurrency != null)
       obj._attributes['amount_currency'] = amountCurrency;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -212,10 +247,10 @@ class PcoGivingDesignationRefund extends PcoResource {
     String donationId,
     String refundId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDesignationRefundQuery? query,
     bool includeDesignation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDesignationRefundQuery();
 
     if (includeDesignation) query.include.add('designation');
     var url =
@@ -232,11 +267,9 @@ class PcoGivingDesignationRefund extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/refund/designation_refunds/1/designation`
-  Future<PcoCollection<PcoGivingDesignation>> getDesignation({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingDesignation>> getDesignation(
+      {PcoGivingDesignationQuery? query}) async {
+    query ??= PcoGivingDesignationQuery();
     var url = '$apiEndpoint/designation';
     return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
         query: query, apiVersion: apiVersion);

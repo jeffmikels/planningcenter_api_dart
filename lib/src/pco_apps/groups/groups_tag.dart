@@ -1,9 +1,89 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.856522
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.673103
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+/// - `position` -> `?order=position`
+enum PcoGroupsTagOrder { name, position }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsTagFilter { none }
+
+/// Creates a [PcoGroupsTagQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGroupsTag] objects can be requested with one or more of the following criteria:
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsTagOrder.name` : will order by `name`
+/// - `PcoGroupsTagOrder.position` : will order by `position`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsTagQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsTagOrder, String> _orderMap = {
+    PcoGroupsTagOrder.name: 'name',
+    PcoGroupsTagOrder.position: 'position',
+  };
+  static String orderString(PcoGroupsTagOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsTagFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsTagFilter filter) => _filterMap[filter]!;
+
+  PcoGroupsTagQuery({
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+    PcoGroupsTagOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Tag Object
 ///
@@ -19,7 +99,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsTag.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsTag.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,27 +116,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
 /// - `position` (ro) -> PCO: `position`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -186,16 +244,19 @@ class PcoGroupsTag extends PcoResource {
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
     if (position != null) obj._attributes['position'] = position;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -209,9 +270,9 @@ class PcoGroupsTag extends PcoResource {
   static Future<PcoCollection<PcoGroupsTag>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsTagQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsTagQuery();
 
     var url = '/groups/v2/groups/$groupId/tags';
     if (id != null) url += '/$id';
@@ -224,9 +285,9 @@ class PcoGroupsTag extends PcoResource {
   static Future<PcoCollection<PcoGroupsTag>> getFromTagGroup(
     String tagGroupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsTagQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsTagQuery();
 
     var url = '/groups/v2/tag_groups/$tagGroupId/tags';
     if (id != null) url += '/$id';
@@ -241,16 +302,9 @@ class PcoGroupsTag extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/tags/1/groups`
-  Future<PcoCollection<PcoGroupsGroup>> getGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroupType = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsTag.canInclude);
-    if (includeGroupType) query.include.add('group_type');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsGroup>> getGroups(
+      {PcoGroupsGroupQuery? query}) async {
+    query ??= PcoGroupsGroupQuery();
     var url = '$apiEndpoint/groups';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: apiVersion);

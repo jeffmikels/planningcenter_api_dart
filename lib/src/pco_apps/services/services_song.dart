@@ -1,9 +1,122 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.608356
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.442121
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `lastScheduledAt` -> `?order=last_scheduled_at`
+/// - `title` -> `?order=title`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesSongOrder { createdAt, lastScheduledAt, title, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesSongFilter { none }
+
+/// Creates a [PcoServicesSongQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesSong] objects can be requested with one or more of the following criteria:
+/// - `whereAuthor`: query on a specific author, example: ?where[author]=string
+/// - `whereCcliNumber`: query on a specific ccli_number, example: ?where[ccli_number]=1
+/// - `whereHidden`: query on a specific hidden, example: ?where[hidden]=true
+/// - `whereThemes`: query on a specific themes, example: ?where[themes]=string
+/// - `whereTitle`: query on a specific title, example: ?where[title]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesSongOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesSongOrder.lastScheduledAt` : will order by `last_scheduled_at`
+/// - `PcoServicesSongOrder.title` : will order by `title`
+/// - `PcoServicesSongOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesSongQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesSongOrder, String> _orderMap = {
+    PcoServicesSongOrder.createdAt: 'created_at',
+    PcoServicesSongOrder.lastScheduledAt: 'last_scheduled_at',
+    PcoServicesSongOrder.title: 'title',
+    PcoServicesSongOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesSongOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesSongFilter, String> _filterMap = {};
+  static String filterString(PcoServicesSongFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesSongQuery({
+    /// Query by `author`
+    /// query on a specific author, url example: ?where[author]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAuthor,
+
+    /// Query by `ccli_number`
+    /// query on a specific ccli_number, url example: ?where[ccli_number]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCcliNumber,
+
+    /// Query by `hidden`
+    /// query on a specific hidden, url example: ?where[hidden]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereHidden,
+
+    /// Query by `themes`
+    /// query on a specific themes, url example: ?where[themes]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereThemes,
+
+    /// Query by `title`
+    /// query on a specific title, url example: ?where[title]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereTitle,
+    PcoServicesSongOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereAuthor != null)
+      where.add(PlanningCenterApiWhere.parse('author', whereAuthor));
+    if (whereCcliNumber != null)
+      where.add(PlanningCenterApiWhere.parse('ccli_number', whereCcliNumber));
+    if (whereHidden != null)
+      where.add(PlanningCenterApiWhere.parse('hidden', whereHidden));
+    if (whereThemes != null)
+      where.add(PlanningCenterApiWhere.parse('themes', whereThemes));
+    if (whereTitle != null)
+      where.add(PlanningCenterApiWhere.parse('title', whereTitle));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Song Object
 ///
@@ -19,7 +132,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesSong()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesSong.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesSong.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -47,32 +159,6 @@ part of pco;
 /// - `lastScheduledShortDates` (ro) -> PCO: `last_scheduled_short_dates`
 /// - `lastScheduledAt` (ro) -> PCO: `last_scheduled_at`
 /// - `ccliNumber` (rw) -> PCO: `ccli_number`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `author`: (URLParameter), query on a specific author, example: ?where[author]=string
-/// - `ccli_number`: (URLParameter), query on a specific ccli_number, example: ?where[ccli_number]=1
-/// - `hidden`: (URLParameter), query on a specific hidden, example: ?where[hidden]=true
-/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
-/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `last_scheduled_at`: (URLParameter), prefix with a hyphen (-last_scheduled_at) to reverse the order
-/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -313,16 +399,19 @@ class PcoServicesSong extends PcoResource {
     if (lastScheduledAt != null)
       obj._attributes['last_scheduled_at'] = lastScheduledAt.toIso8601String();
     if (ccliNumber != null) obj._attributes['ccli_number'] = ccliNumber;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -335,9 +424,9 @@ class PcoServicesSong extends PcoResource {
   /// using a path like this: `/services/v2/songs`
   static Future<PcoCollection<PcoServicesSong>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesSongQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesSongQuery();
 
     var url = '/services/v2/songs';
     if (id != null) url += '/$id';
@@ -353,9 +442,9 @@ class PcoServicesSong extends PcoResource {
     String planId,
     String itemId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesSongQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesSongQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song';
@@ -371,16 +460,9 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements`
-  Future<PcoCollection<PcoServicesArrangement>> getArrangements({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeKeys = false,
-    bool includeSections = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesSong.canInclude);
-    if (includeKeys) query.include.add('keys');
-    if (includeSections) query.include.add('sections');
+  Future<PcoCollection<PcoServicesArrangement>> getArrangements(
+      {PcoServicesArrangementQuery? query}) async {
+    query ??= PcoServicesArrangementQuery();
     var url = '$apiEndpoint/arrangements';
     return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
         query: query, apiVersion: apiVersion);
@@ -388,13 +470,9 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
-    PlanningCenterApiQuery? query,
-    bool includeZooms = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeZooms) query.include.add('zooms');
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
+      {PcoServicesAttachmentQuery? query}) async {
+    query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -402,26 +480,9 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item`
-  Future<PcoCollection<PcoServicesItem>> getLastScheduledItem({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeArrangement = false,
-    bool includeItemNotes = false,
-    bool includeItemTimes = false,
-    bool includeKey = false,
-    bool includeMedia = false,
-    bool includeSelectedAttachment = false,
-    bool includeSong = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesSong.canInclude);
-    if (includeArrangement) query.include.add('arrangement');
-    if (includeItemNotes) query.include.add('item_notes');
-    if (includeItemTimes) query.include.add('item_times');
-    if (includeKey) query.include.add('key');
-    if (includeMedia) query.include.add('media');
-    if (includeSelectedAttachment) query.include.add('selected_attachment');
-    if (includeSong) query.include.add('song');
+  Future<PcoCollection<PcoServicesItem>> getLastScheduledItem(
+      {PcoServicesItemQuery? query}) async {
+    query ??= PcoServicesItemQuery();
     var url = '$apiEndpoint/last_scheduled_item';
     return PcoCollection.fromApiCall<PcoServicesItem>(url,
         query: query, apiVersion: apiVersion);
@@ -432,11 +493,9 @@ class PcoServicesSong extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `three_most_recent`
-  Future<PcoCollection<PcoServicesSongSchedule>> getSongSchedules({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesSongSchedule>> getSongSchedules(
+      {PcoServicesSongScheduleQuery? query}) async {
+    query ??= PcoServicesSongScheduleQuery();
     var url = '$apiEndpoint/song_schedules';
     return PcoCollection.fromApiCall<PcoServicesSongSchedule>(url,
         query: query, apiVersion: apiVersion);
@@ -444,11 +503,9 @@ class PcoServicesSong extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTag>> getTags(
+      {PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.569871
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.418969
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesItemTimeOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesItemTimeFilter { none }
+
+/// Creates a [PcoServicesItemTimeQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesItemTimeQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesItemTimeOrder, String> _orderMap = {};
+  static String orderString(PcoServicesItemTimeOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesItemTimeFilter, String> _filterMap = {};
+  static String filterString(PcoServicesItemTimeFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesItemTimeQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services ItemTime Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesItemTime.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesItemTime.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,25 +74,6 @@ part of pco;
 /// - `isExclude` (ro) -> PCO: `exclude`
 /// - `length` (ro) -> PCO: `length`
 /// - `lengthOffset` (ro) -> PCO: `length_offset`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -215,16 +230,19 @@ class PcoServicesItemTime extends PcoResource {
     if (isExclude != null) obj._attributes['exclude'] = isExclude;
     if (length != null) obj._attributes['length'] = length;
     if (lengthOffset != null) obj._attributes['length_offset'] = lengthOffset;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -241,9 +259,9 @@ class PcoServicesItemTime extends PcoResource {
     String planId,
     String itemId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesItemTimeQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesItemTimeQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_times';
@@ -259,9 +277,9 @@ class PcoServicesItemTime extends PcoResource {
     String personId,
     String recentPlanId,
     String liveId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesItemTimeQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesItemTimeQuery();
 
     var url =
         '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
@@ -277,9 +295,9 @@ class PcoServicesItemTime extends PcoResource {
     String personId,
     String recentPlanId,
     String liveId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesItemTimeQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesItemTimeQuery();
 
     var url =
         '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time';

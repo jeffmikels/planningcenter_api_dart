@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.558704
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.409344
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesBlockoutDateOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesBlockoutDateFilter { none }
+
+/// Creates a [PcoServicesBlockoutDateQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesBlockoutDateQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesBlockoutDateOrder, String> _orderMap = {};
+  static String orderString(PcoServicesBlockoutDateOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesBlockoutDateFilter, String> _filterMap = {};
+  static String filterString(PcoServicesBlockoutDateFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesBlockoutDateQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services BlockoutDate Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesBlockoutDate.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesBlockoutDate.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,25 +77,6 @@ part of pco;
 /// - `endsAt` (ro) -> PCO: `ends_at`
 /// - `endsAtUtc` (ro) -> PCO: `ends_at_utc`
 /// - `startsAtUtc` (ro) -> PCO: `starts_at_utc`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -227,16 +242,19 @@ class PcoServicesBlockoutDate extends PcoResource {
       obj._attributes['ends_at_utc'] = endsAtUtc.toIso8601String();
     if (startsAtUtc != null)
       obj._attributes['starts_at_utc'] = startsAtUtc.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -252,9 +270,9 @@ class PcoServicesBlockoutDate extends PcoResource {
     String personId,
     String blockoutId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesBlockoutDateQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesBlockoutDateQuery();
 
     var url =
         '/services/v2/people/$personId/blockouts/$blockoutId/blockout_dates';

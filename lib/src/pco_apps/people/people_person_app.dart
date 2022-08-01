@@ -1,9 +1,61 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.752498
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.600970
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeoplePersonAppOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeoplePersonAppFilter { none }
+
+/// Creates a [PcoPeoplePersonAppQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeApp`: include associated app
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeoplePersonAppQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeoplePersonAppQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeoplePersonAppOrder, String> _orderMap = {};
+  static String orderString(PcoPeoplePersonAppOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeoplePersonAppFilter, String> _filterMap = {};
+  static String filterString(PcoPeoplePersonAppFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeoplePersonAppQuery({
+    /// include associated app
+    /// when true, adds `?include=app` to url
+    bool includeApp = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeApp) include.add('app');
+  }
+}
 
 /// This class represents a PCO People PersonApp Object
 ///
@@ -19,7 +71,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeoplePersonApp()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePersonApp.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeoplePersonApp.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,25 +89,6 @@ part of pco;
 /// - `isAllowPcoLogin` (ro) -> PCO: `allow_pco_login`
 /// - `peoplePermissions` (ro) -> PCO: `people_permissions`
 /// - `appId` (wo) -> PCO: `app_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `app`: include associated app
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -208,16 +240,19 @@ class PcoPeoplePersonApp extends PcoResource {
     if (peoplePermissions != null)
       obj._attributes['people_permissions'] = peoplePermissions;
     if (appId != null) obj._attributes['app_id'] = appId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -231,10 +266,10 @@ class PcoPeoplePersonApp extends PcoResource {
   static Future<PcoCollection<PcoPeoplePersonApp>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonAppQuery? query,
     bool includeApp = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonAppQuery();
 
     if (includeApp) query.include.add('app');
     var url = '/people/v2/people/$personId/person_apps';
@@ -250,11 +285,8 @@ class PcoPeoplePersonApp extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/person_apps/1/app`
-  Future<PcoCollection<PcoPeopleApp>> getApp({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleApp>> getApp({PcoPeopleAppQuery? query}) async {
+    query ??= PcoPeopleAppQuery();
     var url = '$apiEndpoint/app';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,78 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.565986
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.414954
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+enum PcoServicesFolderOrder { name }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesFolderFilter { none }
+
+/// Creates a [PcoServicesFolderQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeServiceTypes`: include associated service_types
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesFolderQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesFolderOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesFolderQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesFolderOrder, String> _orderMap = {
+    PcoServicesFolderOrder.name: 'name',
+  };
+  static String orderString(PcoServicesFolderOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesFolderFilter, String> _filterMap = {};
+  static String filterString(PcoServicesFolderFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesFolderQuery({
+    /// include associated service_types
+    /// when true, adds `?include=service_types` to url
+    bool includeServiceTypes = false,
+    PcoServicesFolderOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeServiceTypes) include.add('service_types');
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Folder Object
 ///
@@ -19,7 +88,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesFolder()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesFolder.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesFolder.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +109,6 @@ part of pco;
 /// - `container` (ro) -> PCO: `container`
 /// - `parentId` (wo) -> PCO: `parent_id`
 /// - `campusId` (wo) -> PCO: `campus_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `service_types`: include associated service_types
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -240,16 +289,19 @@ class PcoServicesFolder extends PcoResource {
     if (container != null) obj._attributes['container'] = container;
     if (parentId != null) obj._attributes['parent_id'] = parentId;
     if (campusId != null) obj._attributes['campus_id'] = campusId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -262,10 +314,10 @@ class PcoServicesFolder extends PcoResource {
   /// using a path like this: `/services/v2/folders`
   static Future<PcoCollection<PcoServicesFolder>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesFolderQuery? query,
     bool includeServiceTypes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesFolderQuery();
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders';
@@ -279,10 +331,10 @@ class PcoServicesFolder extends PcoResource {
   static Future<PcoCollection<PcoServicesFolder>> getFromFolder(
     String folderId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesFolderQuery? query,
     bool includeServiceTypes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesFolderQuery();
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders/$folderId/folders';
@@ -295,10 +347,10 @@ class PcoServicesFolder extends PcoResource {
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/folder`
   static Future<PcoCollection<PcoServicesFolder>> getFromTagGroup(
     String tagGroupId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesFolderQuery? query,
     bool includeServiceTypes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesFolderQuery();
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/tag_groups/$tagGroupId/folder';
@@ -314,13 +366,9 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/folders/1/folders`
-  Future<PcoCollection<PcoServicesFolder>> getFolders({
-    PlanningCenterApiQuery? query,
-    bool includeServiceTypes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeServiceTypes) query.include.add('service_types');
+  Future<PcoCollection<PcoServicesFolder>> getFolders(
+      {PcoServicesFolderQuery? query}) async {
+    query ??= PcoServicesFolderQuery();
     var url = '$apiEndpoint/folders';
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
         query: query, apiVersion: apiVersion);
@@ -328,14 +376,9 @@ class PcoServicesFolder extends PcoResource {
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/folders/1/service_types`
-  Future<PcoCollection<PcoServicesServiceType>> getServiceTypes({
-    PlanningCenterApiQuery? query,
-    bool includeTimePreferenceOptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeTimePreferenceOptions)
-      query.include.add('time_preference_options');
+  Future<PcoCollection<PcoServicesServiceType>> getServiceTypes(
+      {PcoServicesServiceTypeQuery? query}) async {
+    query ??= PcoServicesServiceTypeQuery();
     var url = '$apiEndpoint/service_types';
     return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
         query: query, apiVersion: apiVersion);

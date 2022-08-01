@@ -1,9 +1,126 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.634508
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.511915
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `name` -> `?order=name`
+enum PcoCheckInsEventOrder { createdAt, name }
+
+/// Possible Inbound Filters:
+/// - `archived` -> `?filter=archived` : -- no description
+/// - `forHeadcounts` -> `?filter=for_headcounts` : -- no description
+/// - `notArchived` -> `?filter=not_archived` : -- no description
+enum PcoCheckInsEventFilter { archived, forHeadcounts, notArchived }
+
+/// Creates a [PcoCheckInsEventQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeAttendanceTypes`: include associated attendance_types
+/// - `includeEventPeriods`: include associated event_periods
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCheckInsEventQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCheckInsEvent] objects can be requested with one or more of the following criteria:
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCheckInsEventOrder.createdAt` : will order by `created_at`
+/// - `PcoCheckInsEventOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsEventQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsEventOrder, String> _orderMap = {
+    PcoCheckInsEventOrder.createdAt: 'created_at',
+    PcoCheckInsEventOrder.name: 'name',
+  };
+  static String orderString(PcoCheckInsEventOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsEventFilter, String> _filterMap = {
+    PcoCheckInsEventFilter.archived: 'archived',
+    PcoCheckInsEventFilter.forHeadcounts: 'for_headcounts',
+    PcoCheckInsEventFilter.notArchived: 'not_archived',
+  };
+  static String filterString(PcoCheckInsEventFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsEventQuery({
+    /// include associated attendance_types
+    /// when true, adds `?include=attendance_types` to url
+    bool includeAttendanceTypes = false,
+
+    /// include associated event_periods
+    /// when true, adds `?include=event_periods` to url
+    bool includeEventPeriods = false,
+
+    /// when true, adds `?include=attendance_types,event_periods` to url parameters
+    bool includeAll = false,
+
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+    PcoCheckInsEventFilter? filterBy,
+    PcoCheckInsEventOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeAttendanceTypes) include.add('attendance_types');
+    if (includeAll || includeEventPeriods) include.add('event_periods');
+
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO CheckIns Event Object
 ///
@@ -19,7 +136,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsEvent.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsEvent.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -49,28 +165,6 @@ part of pco;
 /// - `isLocationTimesEnabled` (ro) -> PCO: `location_times_enabled`
 /// - `isPreSelectEnabled` (ro) -> PCO: `pre_select_enabled`
 /// - `appSource` (ro) -> PCO: `app_source`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `attendance_types`: include associated attendance_types
-/// - `event_periods`: include associated event_periods
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -263,16 +357,19 @@ class PcoCheckInsEvent extends PcoResource {
     if (isPreSelectEnabled != null)
       obj._attributes['pre_select_enabled'] = isPreSelectEnabled;
     if (appSource != null) obj._attributes['app_source'] = appSource;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -290,12 +387,12 @@ class PcoCheckInsEvent extends PcoResource {
   /// - `not_archived`
   static Future<PcoCollection<PcoCheckInsEvent>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -310,12 +407,12 @@ class PcoCheckInsEvent extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEvent>> getFromAttendanceType(
     String attendanceTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -330,12 +427,12 @@ class PcoCheckInsEvent extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEvent>> getFromCheckIn(
     String checkInId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -351,12 +448,12 @@ class PcoCheckInsEvent extends PcoResource {
     String eventId,
     String eventLabelId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -372,12 +469,12 @@ class PcoCheckInsEvent extends PcoResource {
     String checkInId,
     String eventPeriodId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -393,12 +490,12 @@ class PcoCheckInsEvent extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEvent>> getFromEventTime(
     String eventTimeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -414,12 +511,12 @@ class PcoCheckInsEvent extends PcoResource {
     String checkInId,
     String locationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -435,12 +532,12 @@ class PcoCheckInsEvent extends PcoResource {
     String eventId,
     String personEventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -456,12 +553,12 @@ class PcoCheckInsEvent extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEvent>> getFromStation(
     String stationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventQuery? query,
     bool includeAll = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
@@ -478,13 +575,9 @@ class PcoCheckInsEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsAttendanceType] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/attendance_types`
-  Future<PcoCollection<PcoCheckInsAttendanceType>> getAttendanceTypes({
-    PlanningCenterApiQuery? query,
-    bool includeEvent = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeEvent) query.include.add('event');
+  Future<PcoCollection<PcoCheckInsAttendanceType>> getAttendanceTypes(
+      {PcoCheckInsAttendanceTypeQuery? query}) async {
+    query ??= PcoCheckInsAttendanceTypeQuery();
     var url = '$apiEndpoint/attendance_types';
     return PcoCollection.fromApiCall<PcoCheckInsAttendanceType>(url,
         query: query, apiVersion: apiVersion);
@@ -502,32 +595,9 @@ class PcoCheckInsEvent extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCheckInTimes = false,
-    bool includeCheckedInAt = false,
-    bool includeCheckedInBy = false,
-    bool includeCheckedOutBy = false,
-    bool includeEvent = false,
-    bool includeEventPeriod = false,
-    bool includeEventTimes = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeCheckInTimes) query.include.add('check_in_times');
-    if (includeCheckedInAt) query.include.add('checked_in_at');
-    if (includeCheckedInBy) query.include.add('checked_in_by');
-    if (includeCheckedOutBy) query.include.add('checked_out_by');
-    if (includeEvent) query.include.add('event');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns(
+      {PcoCheckInsCheckInQuery? query}) async {
+    query ??= PcoCheckInsCheckInQuery();
     var url = '$apiEndpoint/check_ins';
     return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
         query: query, apiVersion: apiVersion);
@@ -535,18 +605,9 @@ class PcoCheckInsEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/current_event_times`
-  Future<PcoCollection<PcoCheckInsEventTime>> getCurrentEventTimes({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventPeriod = false,
-    bool includeHeadcounts = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includeHeadcounts) query.include.add('headcounts');
+  Future<PcoCollection<PcoCheckInsEventTime>> getCurrentEventTimes(
+      {PcoCheckInsEventTimeQuery? query}) async {
+    query ??= PcoCheckInsEventTimeQuery();
     var url = '$apiEndpoint/current_event_times';
     return PcoCollection.fromApiCall<PcoCheckInsEventTime>(url,
         query: query, apiVersion: apiVersion);
@@ -554,16 +615,9 @@ class PcoCheckInsEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels`
-  Future<PcoCollection<PcoCheckInsEventLabel>> getEventLabels({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLabel = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLabel) query.include.add('label');
+  Future<PcoCollection<PcoCheckInsEventLabel>> getEventLabels(
+      {PcoCheckInsEventLabelQuery? query}) async {
+    query ??= PcoCheckInsEventLabelQuery();
     var url = '$apiEndpoint/event_labels';
     return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
         query: query, apiVersion: apiVersion);
@@ -571,16 +625,9 @@ class PcoCheckInsEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventPeriod] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_periods`
-  Future<PcoCollection<PcoCheckInsEventPeriod>> getEventPeriods({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventTimes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventTimes) query.include.add('event_times');
+  Future<PcoCollection<PcoCheckInsEventPeriod>> getEventPeriods(
+      {PcoCheckInsEventPeriodQuery? query}) async {
+    query ??= PcoCheckInsEventPeriodQuery();
     var url = '$apiEndpoint/event_periods';
     return PcoCollection.fromApiCall<PcoCheckInsEventPeriod>(url,
         query: query, apiVersion: apiVersion);
@@ -592,20 +639,9 @@ class PcoCheckInsEvent extends PcoResource {
   /// Available Query Filters:
   /// - `locations`
   /// - `root`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocations({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includeParent = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includeParent) query.include.add('parent');
+  Future<PcoCollection<PcoCheckInsLocation>> getLocations(
+      {PcoCheckInsLocationQuery? query}) async {
+    query ??= PcoCheckInsLocationQuery();
     var url = '$apiEndpoint/locations';
     return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
         query: query, apiVersion: apiVersion);
@@ -613,20 +649,9 @@ class PcoCheckInsEvent extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/person_events`
-  Future<PcoCollection<PcoCheckInsPersonEvent>> getPersonEvents({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeFirstCheckIn = false,
-    bool includeLastCheckIn = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeFirstCheckIn) query.include.add('first_check_in');
-    if (includeLastCheckIn) query.include.add('last_check_in');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoCheckInsPersonEvent>> getPersonEvents(
+      {PcoCheckInsPersonEventQuery? query}) async {
+    query ??= PcoCheckInsPersonEventQuery();
     var url = '$apiEndpoint/person_events';
     return PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
         query: query, apiVersion: apiVersion);

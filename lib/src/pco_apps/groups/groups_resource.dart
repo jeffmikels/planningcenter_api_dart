@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.855770
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.672602
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `lastUpdated` -> `?order=last_updated`
+/// - `name` -> `?order=name`
+enum PcoGroupsResourceOrder { lastUpdated, name }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsResourceFilter { none }
+
+/// Creates a [PcoGroupsResourceQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsResourceOrder.lastUpdated` : will order by `last_updated`
+/// - `PcoGroupsResourceOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsResourceOrder, String> _orderMap = {
+    PcoGroupsResourceOrder.lastUpdated: 'last_updated',
+    PcoGroupsResourceOrder.name: 'name',
+  };
+  static String orderString(PcoGroupsResourceOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsResourceFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsResourceFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsResourceQuery({
+    PcoGroupsResourceOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Resource Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsResource.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsResource.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,26 +95,6 @@ part of pco;
 /// - `name` (ro) -> PCO: `name`
 /// - `type` (ro) -> PCO: `type`
 /// - `visibility` (ro) -> PCO: `visibility`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `last_updated`: (URLParameter), prefix with a hyphen (-last_updated) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -204,16 +239,19 @@ class PcoGroupsResource extends PcoResource {
       obj._attributes['last_updated'] = lastUpdated.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
     if (visibility != null) obj._attributes['visibility'] = visibility;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -232,9 +270,9 @@ class PcoGroupsResource extends PcoResource {
   static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsResourceQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsResourceQuery();
 
     var url = '/groups/v2/groups/$groupId/resources';
     if (id != null) url += '/$id';
@@ -247,9 +285,9 @@ class PcoGroupsResource extends PcoResource {
   static Future<PcoCollection<PcoGroupsResource>> getFromGroupType(
     String groupTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsResourceQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsResourceQuery();
 
     var url = '/groups/v2/group_types/$groupTypeId/resources';
     if (id != null) url += '/$id';
@@ -263,9 +301,9 @@ class PcoGroupsResource extends PcoResource {
       getDownloadFromGroupTypeAndResource(
     String groupTypeId,
     String resourceId, {
-    PlanningCenterApiQuery? query,
+    PcoGroupsResourceQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsResourceQuery();
 
     var url =
         '/groups/v2/group_types/$groupTypeId/resources/$resourceId/download';
@@ -280,9 +318,9 @@ class PcoGroupsResource extends PcoResource {
       getVisitFromGroupTypeAndResource(
     String groupTypeId,
     String resourceId, {
-    PlanningCenterApiQuery? query,
+    PcoGroupsResourceQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsResourceQuery();
 
     var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit';
 
@@ -297,11 +335,9 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/download`
-  Future<PcoCollection<PcoGroupsResource>> getDownload({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsResource>> getDownload(
+      {PcoGroupsResourceQuery? query}) async {
+    query ??= PcoGroupsResourceQuery();
     var url = '$apiEndpoint/download';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: apiVersion);
@@ -309,11 +345,9 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/visit`
-  Future<PcoCollection<PcoGroupsResource>> getVisit({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsResource>> getVisit(
+      {PcoGroupsResourceQuery? query}) async {
+    query ??= PcoGroupsResourceQuery();
     var url = '$apiEndpoint/visit';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: apiVersion);

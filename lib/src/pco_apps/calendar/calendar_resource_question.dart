@@ -1,9 +1,80 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.796055
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.634340
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCalendarResourceQuestionOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCalendarResourceQuestionFilter { none }
+
+/// Creates a [PcoCalendarResourceQuestionQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCalendarResourceQuestion] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereKind`: query on a specific kind, example: ?where[kind]=string
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarResourceQuestionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarResourceQuestionOrder, String> _orderMap = {};
+  static String orderString(PcoCalendarResourceQuestionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarResourceQuestionFilter, String> _filterMap = {};
+  static String filterString(PcoCalendarResourceQuestionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarResourceQuestionQuery({
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `kind`
+    /// query on a specific kind, url example: ?where[kind]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereKind,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereKind != null)
+      where.add(PlanningCenterApiWhere.parse('kind', whereKind));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+  }
+}
 
 /// This class represents a PCO Calendar ResourceQuestion Object
 ///
@@ -19,7 +90,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarResourceQuestion.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarResourceQuestion.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -44,27 +114,6 @@ part of pco;
 /// - `isOptional` (ro) -> PCO: `optional`
 /// - `position` (ro) -> PCO: `position`
 /// - `question` (ro) -> PCO: `question`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -229,16 +278,19 @@ class PcoCalendarResourceQuestion extends PcoResource {
     if (isOptional != null) obj._attributes['optional'] = isOptional;
     if (position != null) obj._attributes['position'] = position;
     if (question != null) obj._attributes['question'] = question;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -251,9 +303,9 @@ class PcoCalendarResourceQuestion extends PcoResource {
   /// using a path like this: `/calendar/v2/resource_questions`
   static Future<PcoCollection<PcoCalendarResourceQuestion>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceQuestionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceQuestionQuery();
 
     var url = '/calendar/v2/resource_questions';
     if (id != null) url += '/$id';
@@ -266,9 +318,9 @@ class PcoCalendarResourceQuestion extends PcoResource {
   static Future<PcoCollection<PcoCalendarResourceQuestion>> getFromResource(
     String resourceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceQuestionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceQuestionQuery();
 
     var url = '/calendar/v2/resources/$resourceId/resource_questions';
     if (id != null) url += '/$id';

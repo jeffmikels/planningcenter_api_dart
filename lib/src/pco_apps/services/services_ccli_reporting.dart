@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.560178
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.412098
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesCcliReportingOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesCcliReportingFilter { none }
+
+/// Creates a [PcoServicesCcliReportingQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesCcliReportingQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesCcliReportingOrder, String> _orderMap = {};
+  static String orderString(PcoServicesCcliReportingOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesCcliReportingFilter, String> _filterMap = {};
+  static String filterString(PcoServicesCcliReportingFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesCcliReportingQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services CcliReporting Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesCcliReporting.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesCcliReporting.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,25 +73,6 @@ part of pco;
 /// - `print` (ro) -> PCO: `print`
 /// - `recording` (ro) -> PCO: `recording`
 /// - `translation` (ro) -> PCO: `translation`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +208,19 @@ class PcoServicesCcliReporting extends PcoResource {
     if (print != null) obj._attributes['print'] = print;
     if (recording != null) obj._attributes['recording'] = recording;
     if (translation != null) obj._attributes['translation'] = translation;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -218,9 +236,9 @@ class PcoServicesCcliReporting extends PcoResource {
     String serviceTypeId,
     String planId,
     String itemId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesCcliReportingQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesCcliReportingQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/ccli_reporting';

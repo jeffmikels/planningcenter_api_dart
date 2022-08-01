@@ -1,3 +1,7 @@
+## 1.1.0
+
+-   All previous `PlanningCenterApiQuery` options have now been replaced with class specific query objects.
+
 ## 1.0.0
 
 -   revised the architecture of class constructors so that you can now add any attribute exposed by the api in the constructor

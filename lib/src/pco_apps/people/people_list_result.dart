@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.723798
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.584966
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleListResultOrder { createdAt, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleListResultFilter { none }
+
+/// Creates a [PcoPeopleListResultQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleListResultOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleListResultOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleListResultQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleListResultOrder, String> _orderMap = {
+    PcoPeopleListResultOrder.createdAt: 'created_at',
+    PcoPeopleListResultOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleListResultOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleListResultFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleListResultFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleListResultQuery({
+    PcoPeopleListResultOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People ListResult Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleListResult.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleListResult.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,26 +92,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -187,16 +222,19 @@ class PcoPeopleListResult extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -210,9 +248,9 @@ class PcoPeopleListResult extends PcoResource {
   static Future<PcoCollection<PcoPeopleListResult>> getFromList(
     String listId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleListResultQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleListResultQuery();
 
     var url = '/people/v2/lists/$listId/list_results';
     if (id != null) url += '/$id';

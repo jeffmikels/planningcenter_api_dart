@@ -1,9 +1,105 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.734609
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.596906
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeoplePeopleImportConflictOrder { none }
+
+/// Possible Inbound Filters:
+/// - `creates` -> `?filter=creates` : -- no description
+/// - `createsAndUpdates` -> `?filter=creates_and_updates` : -- no description
+/// - `errors` -> `?filter=errors` : -- no description
+/// - `householdCreates` -> `?filter=household_creates` : -- no description
+/// - `householdUpdates` -> `?filter=household_updates` : -- no description
+/// - `identical` -> `?filter=identical` : -- no description
+/// - `ignored` -> `?filter=ignored` : -- no description
+/// - `notIgnored` -> `?filter=not_ignored` : -- no description
+/// - `updates` -> `?filter=updates` : -- no description
+enum PcoPeoplePeopleImportConflictFilter {
+  creates,
+  createsAndUpdates,
+  errors,
+  householdCreates,
+  householdUpdates,
+  identical,
+  ignored,
+  notIgnored,
+  updates
+}
+
+/// Creates a [PcoPeoplePeopleImportConflictQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeoplePeopleImportConflict] objects can be requested with one or more of the following criteria:
+/// - `whereKind`: query on a specific kind, example: ?where[kind]=string
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeoplePeopleImportConflictQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeoplePeopleImportConflictOrder, String> _orderMap = {};
+  static String orderString(PcoPeoplePeopleImportConflictOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeoplePeopleImportConflictFilter, String> _filterMap = {
+    PcoPeoplePeopleImportConflictFilter.creates: 'creates',
+    PcoPeoplePeopleImportConflictFilter.createsAndUpdates:
+        'creates_and_updates',
+    PcoPeoplePeopleImportConflictFilter.errors: 'errors',
+    PcoPeoplePeopleImportConflictFilter.householdCreates: 'household_creates',
+    PcoPeoplePeopleImportConflictFilter.householdUpdates: 'household_updates',
+    PcoPeoplePeopleImportConflictFilter.identical: 'identical',
+    PcoPeoplePeopleImportConflictFilter.ignored: 'ignored',
+    PcoPeoplePeopleImportConflictFilter.notIgnored: 'not_ignored',
+    PcoPeoplePeopleImportConflictFilter.updates: 'updates',
+  };
+  static String filterString(PcoPeoplePeopleImportConflictFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeoplePeopleImportConflictQuery({
+    /// Query by `kind`
+    /// query on a specific kind, url example: ?where[kind]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereKind,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+    PcoPeoplePeopleImportConflictFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+
+    if (whereKind != null)
+      where.add(PlanningCenterApiWhere.parse('kind', whereKind));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+  }
+}
 
 /// This class represents a PCO People PeopleImportConflict Object
 ///
@@ -19,7 +115,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePeopleImportConflict.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeoplePeopleImportConflict.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,26 +138,6 @@ part of pco;
 /// - `isIgnore` (ro) -> PCO: `ignore`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `kind`: (URLParameter), query on a specific kind, example: ?where[kind]=string
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -213,16 +288,19 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -248,9 +326,9 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
       getConflictsFromPeopleImport(
     String peopleImportId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePeopleImportConflictQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePeopleImportConflictQuery();
 
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
     if (id != null) url += '/$id';

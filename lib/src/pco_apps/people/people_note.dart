@@ -1,9 +1,142 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.727368
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.588924
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `displayDate` -> `?order=display_date`
+/// - `id` -> `?order=id`
+/// - `note` -> `?order=note`
+/// - `noteCategoryId` -> `?order=note_category_id`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleNoteOrder {
+  createdAt,
+  displayDate,
+  id,
+  note,
+  noteCategoryId,
+  updatedAt
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleNoteFilter { none }
+
+/// Creates a [PcoPeopleNoteQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeCategory`: include associated category
+/// - `includeCreatedBy`: include associated created_by
+/// - `includePerson`: include associated person
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleNoteQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleNote] objects can be requested with one or more of the following criteria:
+/// - `whereNote`: query on a specific note, example: ?where[note]=string
+/// - `whereNoteCategoryId`: query on a specific note_category_id, example: ?where[note_category_id]=primary_key
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleNoteOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleNoteOrder.displayDate` : will order by `display_date`
+/// - `PcoPeopleNoteOrder.id` : will order by `id`
+/// - `PcoPeopleNoteOrder.note` : will order by `note`
+/// - `PcoPeopleNoteOrder.noteCategoryId` : will order by `note_category_id`
+/// - `PcoPeopleNoteOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleNoteQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleNoteOrder, String> _orderMap = {
+    PcoPeopleNoteOrder.createdAt: 'created_at',
+    PcoPeopleNoteOrder.displayDate: 'display_date',
+    PcoPeopleNoteOrder.id: 'id',
+    PcoPeopleNoteOrder.note: 'note',
+    PcoPeopleNoteOrder.noteCategoryId: 'note_category_id',
+    PcoPeopleNoteOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleNoteOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleNoteFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleNoteFilter filter) => _filterMap[filter]!;
+
+  PcoPeopleNoteQuery({
+    /// include associated category
+    /// when true, adds `?include=category` to url
+    bool includeCategory = false,
+
+    /// include associated created_by
+    /// when true, adds `?include=created_by` to url
+    bool includeCreatedBy = false,
+
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// when true, adds `?include=category,created_by,person` to url parameters
+    bool includeAll = false,
+
+    /// Query by `note`
+    /// query on a specific note, url example: ?where[note]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereNote,
+
+    /// Query by `note_category_id`
+    /// query on a specific note_category_id, url example: ?where[note_category_id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereNoteCategoryId,
+    PcoPeopleNoteOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeCategory) include.add('category');
+    if (includeAll || includeCreatedBy) include.add('created_by');
+    if (includeAll || includePerson) include.add('person');
+
+    if (whereNote != null)
+      where.add(PlanningCenterApiWhere.parse('note', whereNote));
+    if (whereNoteCategoryId != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'note_category_id', whereNoteCategoryId));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Note Object
 ///
@@ -19,7 +152,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNote()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNote.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleNote.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,33 +175,6 @@ part of pco;
 /// - `organizationId` (ro) -> PCO: `organization_id`
 /// - `personId` (ro) -> PCO: `person_id`
 /// - `createdById` (ro) -> PCO: `created_by_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `category`: include associated category
-/// - `created_by`: include associated created_by
-/// - `person`: include associated person
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `note`: (URLParameter), query on a specific note, example: ?where[note]=string
-/// - `note_category_id`: (URLParameter), query on a specific note_category_id, example: ?where[note_category_id]=primary_key
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `display_date`: (URLParameter), prefix with a hyphen (-display_date) to reverse the order
-/// - `id`: (URLParameter), prefix with a hyphen (-id) to reverse the order
-/// - `note`: (URLParameter), prefix with a hyphen (-note) to reverse the order
-/// - `note_category_id`: (URLParameter), prefix with a hyphen (-note_category_id) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -247,14 +352,15 @@ class PcoPeopleNote extends PcoResource {
   // typed getters for each relationship
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedCategory<T extends PcoResource>() =>
       (relationships['category'] as List?)?.cast<T>() ?? [];
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedCreatedBy<T extends PcoResource>() =>
       (relationships['created_by'] as List?)?.cast<T>() ?? [];
+
   PcoPeoplePerson? get includedPerson =>
       _firstOrNull<PcoPeoplePerson>(relationships['person']);
 
@@ -307,16 +413,19 @@ class PcoPeopleNote extends PcoResource {
     if (organizationId != null)
       obj._attributes['organization_id'] = organizationId;
     if (createdById != null) obj._attributes['created_by_id'] = createdById;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -329,13 +438,13 @@ class PcoPeopleNote extends PcoResource {
   /// using a path like this: `/people/v2/notes`
   static Future<PcoCollection<PcoPeopleNote>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleNoteQuery? query,
     bool includeAll = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleNoteQuery();
     if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
@@ -351,13 +460,13 @@ class PcoPeopleNote extends PcoResource {
   static Future<PcoCollection<PcoPeopleNote>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleNoteQuery? query,
     bool includeAll = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleNoteQuery();
     if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
@@ -375,18 +484,9 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/category`
-  Future<PcoCollection<PcoPeopleNoteCategory>> getCategory({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeShares = false,
-    bool includeSubscribers = false,
-    bool includeSubscriptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
-    if (includeShares) query.include.add('shares');
-    if (includeSubscribers) query.include.add('subscribers');
-    if (includeSubscriptions) query.include.add('subscriptions');
+  Future<PcoCollection<PcoPeopleNoteCategory>> getCategory(
+      {PcoPeopleNoteCategoryQuery? query}) async {
+    query ??= PcoPeopleNoteCategoryQuery();
     var url = '$apiEndpoint/category';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategory>(url,
         query: query, apiVersion: apiVersion);
@@ -394,43 +494,9 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/created_by`
-  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getCreatedBy(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/created_by';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -438,43 +504,9 @@ class PcoPeopleNote extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,144 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.714124
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.578945
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `active` -> `?order=active`
+/// - `archivedAt` -> `?order=archived_at`
+/// - `createdAt` -> `?order=created_at`
+/// - `deletedAt` -> `?order=deleted_at`
+/// - `description` -> `?order=description`
+/// - `name` -> `?order=name`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleFormOrder {
+  active,
+  archivedAt,
+  createdAt,
+  deletedAt,
+  description,
+  name,
+  updatedAt
+}
+
+/// Possible Inbound Filters:
+/// - `archived` -> `?filter=archived` : -- no description
+/// - `closed` -> `?filter=closed` : -- no description
+/// - `notArchived` -> `?filter=not_archived` : -- no description
+/// - `open` -> `?filter=open` : -- no description
+/// - `recentlyViewed` -> `?filter=recently_viewed` : -- no description
+/// - `withRecoverable` -> `?filter=with_recoverable` : -- no description
+enum PcoPeopleFormFilter {
+  archived,
+  closed,
+  notArchived,
+  open,
+  recentlyViewed,
+  withRecoverable
+}
+
+/// Creates a [PcoPeopleFormQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeCampus`: include associated campus
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleFormQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleForm] objects can be requested with one or more of the following criteria:
+/// - `whereActive`: query on a specific active, example: ?where[active]=true
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleFormOrder.active` : will order by `active`
+/// - `PcoPeopleFormOrder.archivedAt` : will order by `archived_at`
+/// - `PcoPeopleFormOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleFormOrder.deletedAt` : will order by `deleted_at`
+/// - `PcoPeopleFormOrder.description` : will order by `description`
+/// - `PcoPeopleFormOrder.name` : will order by `name`
+/// - `PcoPeopleFormOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleFormQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleFormOrder, String> _orderMap = {
+    PcoPeopleFormOrder.active: 'active',
+    PcoPeopleFormOrder.archivedAt: 'archived_at',
+    PcoPeopleFormOrder.createdAt: 'created_at',
+    PcoPeopleFormOrder.deletedAt: 'deleted_at',
+    PcoPeopleFormOrder.description: 'description',
+    PcoPeopleFormOrder.name: 'name',
+    PcoPeopleFormOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleFormOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleFormFilter, String> _filterMap = {
+    PcoPeopleFormFilter.archived: 'archived',
+    PcoPeopleFormFilter.closed: 'closed',
+    PcoPeopleFormFilter.notArchived: 'not_archived',
+    PcoPeopleFormFilter.open: 'open',
+    PcoPeopleFormFilter.recentlyViewed: 'recently_viewed',
+    PcoPeopleFormFilter.withRecoverable: 'with_recoverable',
+  };
+  static String filterString(PcoPeopleFormFilter filter) => _filterMap[filter]!;
+
+  PcoPeopleFormQuery({
+    /// include associated campus
+    /// when true, adds `?include=campus` to url
+    bool includeCampus = false,
+
+    /// Query by `active`
+    /// query on a specific active, url example: ?where[active]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereActive,
+    PcoPeopleFormFilter? filterBy,
+    PcoPeopleFormOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeCampus) include.add('campus');
+
+    if (whereActive != null)
+      where.add(PlanningCenterApiWhere.parse('active', whereActive));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Form Object
 ///
@@ -19,7 +154,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleForm.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleForm.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -46,31 +180,6 @@ part of pco;
 /// - `publicUrl` (ro) -> PCO: `public_url`
 /// - `isRecentlyViewed` (ro) -> PCO: `recently_viewed`
 /// - `isArchived` (ro) -> PCO: `archived`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `campus`: include associated campus
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `active`: (URLParameter), query on a specific active, example: ?where[active]=true
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `active`: (URLParameter), prefix with a hyphen (-active) to reverse the order
-/// - `archived_at`: (URLParameter), prefix with a hyphen (-archived_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `deleted_at`: (URLParameter), prefix with a hyphen (-deleted_at) to reverse the order
-/// - `description`: (URLParameter), prefix with a hyphen (-description) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -272,16 +381,19 @@ class PcoPeopleForm extends PcoResource {
     if (isRecentlyViewed != null)
       obj._attributes['recently_viewed'] = isRecentlyViewed;
     if (isArchived != null) obj._attributes['archived'] = isArchived;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -302,10 +414,10 @@ class PcoPeopleForm extends PcoResource {
   /// - `with_recoverable`
   static Future<PcoCollection<PcoPeopleForm>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFormQuery? query,
     bool includeCampus = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFormQuery();
 
     if (includeCampus) query.include.add('campus');
     var url = '/people/v2/forms';
@@ -321,16 +433,9 @@ class PcoPeopleForm extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/campus`
-  Future<PcoCollection<PcoPeopleCampus>> getCampus({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeLists = false,
-    bool includeServiceTimes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleForm.canInclude);
-    if (includeLists) query.include.add('lists');
-    if (includeServiceTimes) query.include.add('service_times');
+  Future<PcoCollection<PcoPeopleCampus>> getCampus(
+      {PcoPeopleCampusQuery? query}) async {
+    query ??= PcoPeopleCampusQuery();
     var url = '$apiEndpoint/campus';
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -338,13 +443,9 @@ class PcoPeopleForm extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/fields`
-  Future<PcoCollection<PcoPeopleFormField>> getFields({
-    PlanningCenterApiQuery? query,
-    bool includeOptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeOptions) query.include.add('options');
+  Future<PcoCollection<PcoPeopleFormField>> getFields(
+      {PcoPeopleFormFieldQuery? query}) async {
+    query ??= PcoPeopleFormFieldQuery();
     var url = '$apiEndpoint/fields';
     return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
         query: query, apiVersion: apiVersion);
@@ -352,19 +453,9 @@ class PcoPeopleForm extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormSubmission] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions`
-  Future<PcoCollection<PcoPeopleFormSubmission>> getFormSubmissions({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFormFields = false,
-    bool includeFormSubmissionValues = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleForm.canInclude);
-    if (includeFormFields) query.include.add('form_fields');
-    if (includeFormSubmissionValues)
-      query.include.add('form_submission_values');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleFormSubmission>> getFormSubmissions(
+      {PcoPeopleFormSubmissionQuery? query}) async {
+    query ??= PcoPeopleFormSubmissionQuery();
     var url = '$apiEndpoint/form_submissions';
     return PcoCollection.fromApiCall<PcoPeopleFormSubmission>(url,
         query: query, apiVersion: apiVersion);

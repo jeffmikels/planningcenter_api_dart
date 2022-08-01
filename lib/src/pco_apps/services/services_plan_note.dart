@@ -1,9 +1,109 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.584272
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.432190
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesPlanNoteOrder { createdAt, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesPlanNoteFilter { none }
+
+/// Creates a [PcoServicesPlanNoteQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePlanNoteCategory`: include associated plan_note_category
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesPlanNoteQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesPlanNote] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesPlanNoteOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesPlanNoteOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesPlanNoteQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesPlanNoteOrder, String> _orderMap = {
+    PcoServicesPlanNoteOrder.createdAt: 'created_at',
+    PcoServicesPlanNoteOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesPlanNoteOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesPlanNoteFilter, String> _filterMap = {};
+  static String filterString(PcoServicesPlanNoteFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesPlanNoteQuery({
+    /// include associated plan_note_category
+    /// when true, adds `?include=plan_note_category` to url
+    bool includePlanNoteCategory = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoServicesPlanNoteOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includePlanNoteCategory) include.add('plan_note_category');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services PlanNote Object
 ///
@@ -19,7 +119,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesPlanNote()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesPlanNote.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesPlanNote.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,27 +138,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `categoryName` (ro) -> PCO: `category_name`
 /// - `content` (rw) -> PCO: `content`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `plan_note_category`: include associated plan_note_category
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -220,16 +298,19 @@ class PcoServicesPlanNote extends PcoResource {
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (categoryName != null) obj._attributes['category_name'] = categoryName;
     if (content != null) obj._attributes['content'] = content;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -244,10 +325,10 @@ class PcoServicesPlanNote extends PcoResource {
       getNotesFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanNoteQuery? query,
     bool includePlanNoteCategory = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanNoteQuery();
 
     if (includePlanNoteCategory) query.include.add('plan_note_category');
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/notes';
@@ -262,10 +343,10 @@ class PcoServicesPlanNote extends PcoResource {
       getNotesFromServiceTypeAndPlanTemplate(
     String serviceTypeId,
     String planTemplateId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanNoteQuery? query,
     bool includePlanNoteCategory = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanNoteQuery();
 
     if (includePlanNoteCategory) query.include.add('plan_note_category');
     var url =
@@ -282,11 +363,9 @@ class PcoServicesPlanNote extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanNoteCategory] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes/1/plan_note_category`
-  Future<PcoCollection<PcoServicesPlanNoteCategory>> getPlanNoteCategory({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesPlanNoteCategory>> getPlanNoteCategory(
+      {PcoServicesPlanNoteCategoryQuery? query}) async {
+    query ??= PcoServicesPlanNoteCategoryQuery();
     var url = '$apiEndpoint/plan_note_category';
     return PcoCollection.fromApiCall<PcoServicesPlanNoteCategory>(url,
         query: query, apiVersion: apiVersion);

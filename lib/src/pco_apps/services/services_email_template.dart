@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.564803
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.413666
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesEmailTemplateOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesEmailTemplateFilter { none }
+
+/// Creates a [PcoServicesEmailTemplateQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesEmailTemplateQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesEmailTemplateOrder, String> _orderMap = {};
+  static String orderString(PcoServicesEmailTemplateOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesEmailTemplateFilter, String> _filterMap = {};
+  static String filterString(PcoServicesEmailTemplateFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesEmailTemplateQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services EmailTemplate Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesEmailTemplate()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesEmailTemplate.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesEmailTemplate.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,25 +74,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `htmlBody` (rw) -> PCO: `html_body`
 /// - `subject` (rw) -> PCO: `subject`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -215,16 +230,19 @@ class PcoServicesEmailTemplate extends PcoResource {
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (htmlBody != null) obj._attributes['html_body'] = htmlBody;
     if (subject != null) obj._attributes['subject'] = subject;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -237,9 +255,9 @@ class PcoServicesEmailTemplate extends PcoResource {
   /// using a path like this: `/services/v2/email_templates`
   static Future<PcoCollection<PcoServicesEmailTemplate>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesEmailTemplateQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesEmailTemplateQuery();
 
     var url = '/services/v2/email_templates';
     if (id != null) url += '/$id';

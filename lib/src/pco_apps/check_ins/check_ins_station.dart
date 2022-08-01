@@ -1,9 +1,82 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.658774
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.522130
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCheckInsStationOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCheckInsStationFilter { none }
+
+/// Creates a [PcoCheckInsStationQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeEvent`: include associated event
+/// - `includeLocation`: include associated location
+/// - `includePrintStation`: include associated print_station
+/// - `includeTheme`: include associated theme
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCheckInsStationQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsStationOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsStationOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsStationFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsStationFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsStationQuery({
+    /// include associated event
+    /// when true, adds `?include=event` to url
+    bool includeEvent = false,
+
+    /// include associated location
+    /// when true, adds `?include=location` to url
+    bool includeLocation = false,
+
+    /// include associated print_station
+    /// when true, adds `?include=print_station` to url
+    bool includePrintStation = false,
+
+    /// include associated theme
+    /// when true, adds `?include=theme` to url
+    bool includeTheme = false,
+
+    /// when true, adds `?include=event,location,print_station,theme` to url parameters
+    bool includeAll = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeEvent) include.add('event');
+    if (includeAll || includeLocation) include.add('location');
+    if (includeAll || includePrintStation) include.add('print_station');
+    if (includeAll || includeTheme) include.add('theme');
+  }
+}
 
 /// This class represents a PCO CheckIns Station Object
 ///
@@ -19,7 +92,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsStation.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsStation.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -46,28 +118,6 @@ part of pco;
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `checkInCount` (ro) -> PCO: `check_in_count`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `event`: include associated event
-/// - `location`: include associated location
-/// - `print_station`: include associated print_station
-/// - `theme`: include associated theme
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -193,9 +243,10 @@ class PcoCheckInsStation extends PcoResource {
       _firstOrNull<PcoCheckInsLocation>(relationships['location']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedPrintStation<T extends PcoResource>() =>
       (relationships['print_station'] as List?)?.cast<T>() ?? [];
+
   PcoCheckInsTheme? get includedTheme =>
       _firstOrNull<PcoCheckInsTheme>(relationships['theme']);
 
@@ -248,16 +299,19 @@ class PcoCheckInsStation extends PcoResource {
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (checkInCount != null) obj._attributes['check_in_count'] = checkInCount;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -270,14 +324,14 @@ class PcoCheckInsStation extends PcoResource {
   /// using a path like this: `/check-ins/v2/stations`
   static Future<PcoCollection<PcoCheckInsStation>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsStationQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLocation = false,
     bool includePrintStation = false,
     bool includeTheme = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLocation) query.include.add('location');
@@ -294,14 +348,14 @@ class PcoCheckInsStation extends PcoResource {
   static Future<PcoCollection<PcoCheckInsStation>> getCheckedInAtFromCheckIn(
     String checkInId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsStationQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLocation = false,
     bool includePrintStation = false,
     bool includeTheme = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLocation) query.include.add('location');
@@ -320,14 +374,14 @@ class PcoCheckInsStation extends PcoResource {
     String checkInId,
     String checkInGroupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsStationQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLocation = false,
     bool includePrintStation = false,
     bool includeTheme = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLocation) query.include.add('location');
@@ -345,14 +399,14 @@ class PcoCheckInsStation extends PcoResource {
   static Future<PcoCollection<PcoCheckInsStation>> getPrintStationFromStation(
     String stationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsStationQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLocation = false,
     bool includePrintStation = false,
     bool includeTheme = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLocation) query.include.add('location');
@@ -377,18 +431,9 @@ class PcoCheckInsStation extends PcoResource {
   /// - `printed`
   /// - `ready`
   /// - `skipped`
-  Future<PcoCollection<PcoCheckInsCheckInGroup>> getCheckInGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCheckIns = false,
-    bool includeEventPeriod = false,
-    bool includePrintStation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
-    if (includeCheckIns) query.include.add('check_ins');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includePrintStation) query.include.add('print_station');
+  Future<PcoCollection<PcoCheckInsCheckInGroup>> getCheckInGroups(
+      {PcoCheckInsCheckInGroupQuery? query}) async {
+    query ??= PcoCheckInsCheckInGroupQuery();
     var url = '$apiEndpoint/check_in_groups';
     return PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -406,32 +451,9 @@ class PcoCheckInsStation extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckedInAtCheckIns({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCheckInTimes = false,
-    bool includeCheckedInAt = false,
-    bool includeCheckedInBy = false,
-    bool includeCheckedOutBy = false,
-    bool includeEvent = false,
-    bool includeEventPeriod = false,
-    bool includeEventTimes = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
-    if (includeCheckInTimes) query.include.add('check_in_times');
-    if (includeCheckedInAt) query.include.add('checked_in_at');
-    if (includeCheckedInBy) query.include.add('checked_in_by');
-    if (includeCheckedOutBy) query.include.add('checked_out_by');
-    if (includeEvent) query.include.add('event');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckedInAtCheckIns(
+      {PcoCheckInsCheckInQuery? query}) async {
+    query ??= PcoCheckInsCheckInQuery();
     var url = '$apiEndpoint/checked_in_at_check_ins';
     return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
         query: query, apiVersion: apiVersion);
@@ -439,16 +461,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/event`
-  Future<PcoCollection<PcoCheckInsEvent>> getEvent({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAttendanceTypes = false,
-    bool includeEventPeriods = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
-    if (includeAttendanceTypes) query.include.add('attendance_types');
-    if (includeEventPeriods) query.include.add('event_periods');
+  Future<PcoCollection<PcoCheckInsEvent>> getEvent(
+      {PcoCheckInsEventQuery? query}) async {
+    query ??= PcoCheckInsEventQuery();
     var url = '$apiEndpoint/event';
     return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -456,20 +471,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/location`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocation({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includeParent = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includeParent) query.include.add('parent');
+  Future<PcoCollection<PcoCheckInsLocation>> getLocation(
+      {PcoCheckInsLocationQuery? query}) async {
+    query ??= PcoCheckInsLocationQuery();
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
         query: query, apiVersion: apiVersion);
@@ -477,20 +481,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/print_station`
-  Future<PcoCollection<PcoCheckInsStation>> getPrintStation({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocation = false,
-    bool includePrintStation = false,
-    bool includeTheme = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLocation) query.include.add('location');
-    if (includePrintStation) query.include.add('print_station');
-    if (includeTheme) query.include.add('theme');
+  Future<PcoCollection<PcoCheckInsStation>> getPrintStation(
+      {PcoCheckInsStationQuery? query}) async {
+    query ??= PcoCheckInsStationQuery();
     var url = '$apiEndpoint/print_station';
     return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
         query: query, apiVersion: apiVersion);
@@ -498,11 +491,9 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/theme`
-  Future<PcoCollection<PcoCheckInsTheme>> getTheme({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCheckInsTheme>> getTheme(
+      {PcoCheckInsThemeQuery? query}) async {
+    query ??= PcoCheckInsThemeQuery();
     var url = '$apiEndpoint/theme';
     return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
         query: query, apiVersion: apiVersion);

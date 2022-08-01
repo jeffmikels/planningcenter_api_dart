@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.586085
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.434266
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesPlanPersonTimeOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesPlanPersonTimeFilter { none }
+
+/// Creates a [PcoServicesPlanPersonTimeQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesPlanPersonTimeQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesPlanPersonTimeOrder, String> _orderMap = {};
+  static String orderString(PcoServicesPlanPersonTimeOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesPlanPersonTimeFilter, String> _filterMap = {};
+  static String filterString(PcoServicesPlanPersonTimeFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesPlanPersonTimeQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services PlanPersonTime Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesPlanPersonTime.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesPlanPersonTime.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,25 +72,6 @@ part of pco;
 /// - `status` (ro) -> PCO: `status`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -199,16 +214,19 @@ class PcoServicesPlanPersonTime extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -224,9 +242,9 @@ class PcoServicesPlanPersonTime extends PcoResource {
     String personId,
     String planPersonId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanPersonTimeQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanPersonTimeQuery();
 
     var url =
         '/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times';

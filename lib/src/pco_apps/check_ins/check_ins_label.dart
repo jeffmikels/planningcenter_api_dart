@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.637290
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.515451
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCheckInsLabelOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCheckInsLabelFilter { none }
+
+/// Creates a [PcoCheckInsLabelQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsLabelQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsLabelOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsLabelOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsLabelFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsLabelFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsLabelQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO CheckIns Label Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsLabel.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsLabel.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -45,25 +79,6 @@ part of pco;
 /// - `roll` (ro) -> PCO: `roll`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -206,16 +221,19 @@ class PcoCheckInsLabel extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -228,9 +246,9 @@ class PcoCheckInsLabel extends PcoResource {
   /// using a path like this: `/check-ins/v2/labels`
   static Future<PcoCollection<PcoCheckInsLabel>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLabelQuery();
 
     var url = '/check-ins/v2/labels';
     if (id != null) url += '/$id';
@@ -244,9 +262,9 @@ class PcoCheckInsLabel extends PcoResource {
     String eventId,
     String eventLabelId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLabelQuery();
 
     var url = '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label';
     if (id != null) url += '/$id';
@@ -260,9 +278,9 @@ class PcoCheckInsLabel extends PcoResource {
     String labelId,
     String locationLabelId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLabelQuery();
 
     var url =
         '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label';
@@ -276,9 +294,9 @@ class PcoCheckInsLabel extends PcoResource {
   static Future<PcoCollection<PcoCheckInsLabel>> getFromOption(
     String optionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLabelQuery();
 
     var url = '/check-ins/v2/options/$optionId/label';
     if (id != null) url += '/$id';
@@ -293,16 +311,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/labels/1/event_labels`
-  Future<PcoCollection<PcoCheckInsEventLabel>> getEventLabels({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLabel = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsLabel.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLabel) query.include.add('label');
+  Future<PcoCollection<PcoCheckInsEventLabel>> getEventLabels(
+      {PcoCheckInsEventLabelQuery? query}) async {
+    query ??= PcoCheckInsEventLabelQuery();
     var url = '$apiEndpoint/event_labels';
     return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
         query: query, apiVersion: apiVersion);
@@ -310,16 +321,9 @@ class PcoCheckInsLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocationLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/labels/1/location_labels`
-  Future<PcoCollection<PcoCheckInsLocationLabel>> getLocationLabels({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeLabel = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsLabel.canInclude);
-    if (includeLabel) query.include.add('label');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoCheckInsLocationLabel>> getLocationLabels(
+      {PcoCheckInsLocationLabelQuery? query}) async {
+    query ??= PcoCheckInsLocationLabelQuery();
     var url = '$apiEndpoint/location_labels';
     return PcoCollection.fromApiCall<PcoCheckInsLocationLabel>(url,
         query: query, apiVersion: apiVersion);

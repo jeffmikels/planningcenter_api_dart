@@ -1,9 +1,61 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.640192
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.518760
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCheckInsOptionOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCheckInsOptionFilter { none }
+
+/// Creates a [PcoCheckInsOptionQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeLabel`: include associated label
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCheckInsOptionQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsOptionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsOptionOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsOptionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsOptionFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsOptionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsOptionQuery({
+    /// include associated label
+    /// when true, adds `?include=label` to url
+    bool includeLabel = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeLabel) include.add('label');
+  }
+}
 
 /// This class represents a PCO CheckIns Option Object
 ///
@@ -19,7 +71,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsOption.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +92,6 @@ part of pco;
 /// - `quantity` (ro) -> PCO: `quantity`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `label`: include associated label
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -194,16 +226,19 @@ class PcoCheckInsOption extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -217,10 +252,10 @@ class PcoCheckInsOption extends PcoResource {
   static Future<PcoCollection<PcoCheckInsOption>> getFromCheckIn(
     String checkInId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsOptionQuery? query,
     bool includeLabel = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsOptionQuery();
 
     if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/check_ins/$checkInId/options';
@@ -235,10 +270,10 @@ class PcoCheckInsOption extends PcoResource {
     String checkInId,
     String locationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsOptionQuery? query,
     bool includeLabel = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsOptionQuery();
 
     if (includeLabel) query.include.add('label');
     var url =
@@ -255,11 +290,9 @@ class PcoCheckInsOption extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/options/1/label`
-  Future<PcoCollection<PcoCheckInsLabel>> getLabel({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCheckInsLabel>> getLabel(
+      {PcoCheckInsLabelQuery? query}) async {
+    query ??= PcoCheckInsLabelQuery();
     var url = '$apiEndpoint/label';
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);

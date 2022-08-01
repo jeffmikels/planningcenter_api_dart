@@ -1,9 +1,64 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.763258
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.611704
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleWorkflowStepAssigneeSummaryOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleWorkflowStepAssigneeSummaryFilter { none }
+
+/// Creates a [PcoPeopleWorkflowStepAssigneeSummaryQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePerson`: include associated person
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleWorkflowStepAssigneeSummaryQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleWorkflowStepAssigneeSummaryQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleWorkflowStepAssigneeSummaryOrder, String>
+      _orderMap = {};
+  static String orderString(PcoPeopleWorkflowStepAssigneeSummaryOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleWorkflowStepAssigneeSummaryFilter, String>
+      _filterMap = {};
+  static String filterString(
+          PcoPeopleWorkflowStepAssigneeSummaryFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleWorkflowStepAssigneeSummaryQuery({
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includePerson) include.add('person');
+  }
+}
 
 /// This class represents a PCO People WorkflowStepAssigneeSummary Object
 ///
@@ -19,7 +74,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowStepAssigneeSummary.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleWorkflowStepAssigneeSummary.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,25 +91,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `readyCount` (ro) -> PCO: `ready_count`
 /// - `snoozedCount` (ro) -> PCO: `snoozed_count`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `person`: include associated person
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +228,19 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
     obj._id = id;
     if (readyCount != null) obj._attributes['ready_count'] = readyCount;
     if (snoozedCount != null) obj._attributes['snoozed_count'] = snoozedCount;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -217,10 +255,10 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
       getAssigneeSummariesFromWorkflowAndStep(
     String workflowId,
     String stepId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowStepAssigneeSummaryQuery? query,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowStepAssigneeSummaryQuery();
 
     if (includePerson) query.include.add('person');
     var url =
@@ -237,44 +275,9 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll)
-      query.include.addAll(PcoPeopleWorkflowStepAssigneeSummary.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.591955
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.437911
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesScheduledPersonOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesScheduledPersonFilter { none }
+
+/// Creates a [PcoServicesScheduledPersonQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesScheduledPersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesScheduledPersonOrder, String> _orderMap = {};
+  static String orderString(PcoServicesScheduledPersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesScheduledPersonFilter, String> _filterMap = {};
+  static String filterString(PcoServicesScheduledPersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesScheduledPersonQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services ScheduledPerson Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesScheduledPerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesScheduledPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,25 +72,6 @@ part of pco;
 /// - `fullName` (ro) -> PCO: `full_name`
 /// - `status` (ro) -> PCO: `status`
 /// - `thumbnail` (ro) -> PCO: `thumbnail`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +208,19 @@ class PcoServicesScheduledPerson extends PcoResource {
     if (fullName != null) obj._attributes['full_name'] = fullName;
     if (status != null) obj._attributes['status'] = status;
     if (thumbnail != null) obj._attributes['thumbnail'] = thumbnail;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -219,9 +237,9 @@ class PcoServicesScheduledPerson extends PcoResource {
     String availableSignupId,
     String signupSheetId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesScheduledPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesScheduledPersonQuery();
 
     var url =
         '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/scheduled_people';

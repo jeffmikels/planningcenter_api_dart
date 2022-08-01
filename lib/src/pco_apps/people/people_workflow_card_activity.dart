@@ -1,9 +1,62 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.760044
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.608646
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `id` -> `?order=id`
+enum PcoPeopleWorkflowCardActivityOrder { id }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleWorkflowCardActivityFilter { none }
+
+/// Creates a [PcoPeopleWorkflowCardActivityQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleWorkflowCardActivityOrder.id` : will order by `id`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleWorkflowCardActivityQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleWorkflowCardActivityOrder, String> _orderMap = {
+    PcoPeopleWorkflowCardActivityOrder.id: 'id',
+  };
+  static String orderString(PcoPeopleWorkflowCardActivityOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleWorkflowCardActivityFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleWorkflowCardActivityFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleWorkflowCardActivityQuery({
+    PcoPeopleWorkflowCardActivityOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People WorkflowCardActivity Object
 ///
@@ -19,7 +72,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCardActivity.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleWorkflowCardActivity.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -46,25 +98,6 @@ part of pco;
 /// - `type` (ro) -> PCO: `type`
 /// - `isContentIsHtml` (ro) -> PCO: `content_is_html`
 /// - `createdAt` (ro) -> PCO: `created_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `id`: (URLParameter), prefix with a hyphen (-id) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -238,16 +271,19 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
       obj._attributes['content_is_html'] = isContentIsHtml;
     if (createdAt != null)
       obj._attributes['created_at'] = createdAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -262,9 +298,9 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
       getActivitiesFromPersonAndWorkflowCard(
     String personId,
     String workflowCardId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowCardActivityQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowCardActivityQuery();
 
     var url =
         '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities';

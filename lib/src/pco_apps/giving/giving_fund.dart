@@ -1,9 +1,85 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.815138
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.649540
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoGivingFundOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGivingFundFilter { none }
+
+/// Creates a [PcoGivingFundQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGivingFund] objects can be requested with one or more of the following criteria:
+/// - `whereDefault`: query on a specific default, example: ?where[default]=true
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `whereVisibility`: query on a specific visibility, example: ?where[visibility]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingFundQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingFundOrder, String> _orderMap = {};
+  static String orderString(PcoGivingFundOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingFundFilter, String> _filterMap = {};
+  static String filterString(PcoGivingFundFilter filter) => _filterMap[filter]!;
+
+  PcoGivingFundQuery({
+    /// Query by `default`
+    /// query on a specific default, url example: ?where[default]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereDefault,
+
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `visibility`
+    /// query on a specific visibility, url example: ?where[visibility]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereVisibility,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereDefault != null)
+      where.add(PlanningCenterApiWhere.parse('default', whereDefault));
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereVisibility != null)
+      where.add(PlanningCenterApiWhere.parse('visibility', whereVisibility));
+  }
+}
 
 /// This class represents a PCO Giving Fund Object
 ///
@@ -19,7 +95,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoGivingFund()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGivingFund.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingFund.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -66,28 +141,6 @@ part of pco;
 /// - `isDefault` (ro) -> PCO: `default`
 /// - `color` (ro) -> PCO: `color`
 /// - `isDeletable` (ro) -> PCO: `deletable`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `default`: (URLParameter), query on a specific default, example: ?where[default]=true
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `visibility`: (URLParameter), query on a specific visibility, example: ?where[visibility]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -284,16 +337,19 @@ class PcoGivingFund extends PcoResource {
     if (isDefault != null) obj._attributes['default'] = isDefault;
     if (color != null) obj._attributes['color'] = color;
     if (isDeletable != null) obj._attributes['deletable'] = isDeletable;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -306,9 +362,9 @@ class PcoGivingFund extends PcoResource {
   /// using a path like this: `/giving/v2/funds`
   static Future<PcoCollection<PcoGivingFund>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingFundQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingFundQuery();
 
     var url = '/giving/v2/funds';
     if (id != null) url += '/$id';
@@ -322,9 +378,9 @@ class PcoGivingFund extends PcoResource {
     String donationId,
     String designationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingFundQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingFundQuery();
 
     var url =
         '/giving/v2/donations/$donationId/designations/$designationId/fund';
@@ -338,9 +394,9 @@ class PcoGivingFund extends PcoResource {
   static Future<PcoCollection<PcoGivingFund>> getFromPledgeCampaign(
     String pledgeCampaignId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingFundQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingFundQuery();
 
     var url = '/giving/v2/pledge_campaigns/$pledgeCampaignId/fund';
     if (id != null) url += '/$id';
@@ -355,9 +411,9 @@ class PcoGivingFund extends PcoResource {
     String recurringDonationId,
     String designationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingFundQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingFundQuery();
 
     var url =
         '/giving/v2/recurring_donations/$recurringDonationId/designations/$designationId/fund';

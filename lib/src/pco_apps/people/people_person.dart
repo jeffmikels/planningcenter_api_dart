@@ -1,9 +1,491 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.749649
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.599773
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `accountingAdministrator` -> `?order=accounting_administrator`
+/// - `anniversary` -> `?order=anniversary`
+/// - `birthdate` -> `?order=birthdate`
+/// - `child` -> `?order=child`
+/// - `createdAt` -> `?order=created_at`
+/// - `firstName` -> `?order=first_name`
+/// - `gender` -> `?order=gender`
+/// - `givenName` -> `?order=given_name`
+/// - `grade` -> `?order=grade`
+/// - `graduationYear` -> `?order=graduation_year`
+/// - `inactivatedAt` -> `?order=inactivated_at`
+/// - `lastName` -> `?order=last_name`
+/// - `membership` -> `?order=membership`
+/// - `middleName` -> `?order=middle_name`
+/// - `nickname` -> `?order=nickname`
+/// - `peoplePermissions` -> `?order=people_permissions`
+/// - `remoteId` -> `?order=remote_id`
+/// - `siteAdministrator` -> `?order=site_administrator`
+/// - `status` -> `?order=status`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeoplePersonOrder {
+  accountingAdministrator,
+  anniversary,
+  birthdate,
+  child,
+  createdAt,
+  firstName,
+  gender,
+  givenName,
+  grade,
+  graduationYear,
+  inactivatedAt,
+  lastName,
+  membership,
+  middleName,
+  nickname,
+  peoplePermissions,
+  remoteId,
+  siteAdministrator,
+  status,
+  updatedAt
+}
+
+/// Possible Inbound Filters:
+/// - `admins` -> `?filter=admins` : -- no description
+/// - `createdSince` -> `?filter=created_since` : filter people created in the last 24 hours; pass an additional `time` parameter in ISO 8601 format to specify your own timeframe
+/// - `organizationAdmins` -> `?filter=organization_admins` : -- no description
+enum PcoPeoplePersonFilter { admins, createdSince, organizationAdmins }
+
+/// Creates a [PcoPeoplePersonQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeAddresses`: include associated addresses
+/// - `includeEmails`: include associated emails
+/// - `includeFieldData`: include associated field_data
+/// - `includeHouseholds`: include associated households
+/// - `includeInactiveReason`: include associated inactive_reason
+/// - `includeMaritalStatus`: include associated marital_status
+/// - `includeNamePrefix`: include associated name_prefix
+/// - `includeNameSuffix`: include associated name_suffix
+/// - `includeOrganization`: include associated organization
+/// - `includePersonApps`: include associated person_apps
+/// - `includePhoneNumbers`: include associated phone_numbers
+/// - `includePlatformNotifications`: include associated platform_notifications
+/// - `includePrimaryCampus`: include associated primary_campus
+/// - `includeSchool`: include associated school
+/// - `includeSocialProfiles`: include associated social_profiles
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeoplePersonQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeoplePerson] objects can be requested with one or more of the following criteria:
+/// - `whereAccountingAdministrator`: query on a specific accounting_administrator, example: ?where[accounting_administrator]=true
+/// - `whereAnniversary`: query on a specific anniversary, example: ?where[anniversary]=2000-01-01
+/// - `whereBirthdate`: query on a specific birthdate, example: ?where[birthdate]=2000-01-01
+/// - `whereChild`: query on a specific child, example: ?where[child]=true
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereFirstName`: query on a specific first_name, example: ?where[first_name]=string
+/// - `whereGender`: query on a specific gender, example: ?where[gender]=string
+/// - `whereGivenName`: query on a specific given_name, example: ?where[given_name]=string
+/// - `whereGrade`: query on a specific grade, example: ?where[grade]=1
+/// - `whereGraduationYear`: query on a specific graduation_year, example: ?where[graduation_year]=1
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereInactivatedAt`: Set to an ISO 8601 date or time to make the profile inactive. Set to "null" to reactivate the profile., example: ?where[inactivated_at]=2000-01-01T12:00:00Z
+/// - `whereLastName`: query on a specific last_name, example: ?where[last_name]=string
+/// - `whereMedicalNotes`: query on a specific medical_notes, example: ?where[medical_notes]=string
+/// - `whereMembership`: query on a specific membership, example: ?where[membership]=string
+/// - `whereMiddleName`: query on a specific middle_name, example: ?where[middle_name]=string
+/// - `whereNickname`: query on a specific nickname, example: ?where[nickname]=string
+/// - `wherePeoplePermissions`: query on a specific people_permissions, example: ?where[people_permissions]=string
+/// - `whereRemoteId`: query on a specific remote_id, example: ?where[remote_id]=1
+/// - `whereSearchName`: Search by Name (first, last, combination), example: ?where[search_name]=string
+/// - `whereSearchNameOrEmail`: Search by Name (first, last, combination) or Email, example: ?where[search_name_or_email]=string
+/// - `whereSearchNameOrEmailOrPhoneNumber`: Search by Name (first, last, combination), Email, or Phone Number, example: ?where[search_name_or_email_or_phone_number]=string
+/// - `whereSearchPhoneNumber`: Search by Phone Number, example: ?where[search_phone_number]=string
+/// - `whereSearchPhoneNumberE164`: Search by Phone Number E164, example: ?where[search_phone_number_e164]=string
+/// - `whereSiteAdministrator`: query on a specific site_administrator, example: ?where[site_administrator]=true
+/// - `whereStatus`: Set to "inactive" to set "inactivated_at" to the current time and make the profile inactive. Set to anything else to clear "inactivated_at" and reactivate the profile., example: ?where[status]=string
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeoplePersonOrder.accountingAdministrator` : will order by `accounting_administrator`
+/// - `PcoPeoplePersonOrder.anniversary` : will order by `anniversary`
+/// - `PcoPeoplePersonOrder.birthdate` : will order by `birthdate`
+/// - `PcoPeoplePersonOrder.child` : will order by `child`
+/// - `PcoPeoplePersonOrder.createdAt` : will order by `created_at`
+/// - `PcoPeoplePersonOrder.firstName` : will order by `first_name`
+/// - `PcoPeoplePersonOrder.gender` : will order by `gender`
+/// - `PcoPeoplePersonOrder.givenName` : will order by `given_name`
+/// - `PcoPeoplePersonOrder.grade` : will order by `grade`
+/// - `PcoPeoplePersonOrder.graduationYear` : will order by `graduation_year`
+/// - `PcoPeoplePersonOrder.inactivatedAt` : will order by `inactivated_at`
+/// - `PcoPeoplePersonOrder.lastName` : will order by `last_name`
+/// - `PcoPeoplePersonOrder.membership` : will order by `membership`
+/// - `PcoPeoplePersonOrder.middleName` : will order by `middle_name`
+/// - `PcoPeoplePersonOrder.nickname` : will order by `nickname`
+/// - `PcoPeoplePersonOrder.peoplePermissions` : will order by `people_permissions`
+/// - `PcoPeoplePersonOrder.remoteId` : will order by `remote_id`
+/// - `PcoPeoplePersonOrder.siteAdministrator` : will order by `site_administrator`
+/// - `PcoPeoplePersonOrder.status` : will order by `status`
+/// - `PcoPeoplePersonOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeoplePersonOrder, String> _orderMap = {
+    PcoPeoplePersonOrder.accountingAdministrator: 'accounting_administrator',
+    PcoPeoplePersonOrder.anniversary: 'anniversary',
+    PcoPeoplePersonOrder.birthdate: 'birthdate',
+    PcoPeoplePersonOrder.child: 'child',
+    PcoPeoplePersonOrder.createdAt: 'created_at',
+    PcoPeoplePersonOrder.firstName: 'first_name',
+    PcoPeoplePersonOrder.gender: 'gender',
+    PcoPeoplePersonOrder.givenName: 'given_name',
+    PcoPeoplePersonOrder.grade: 'grade',
+    PcoPeoplePersonOrder.graduationYear: 'graduation_year',
+    PcoPeoplePersonOrder.inactivatedAt: 'inactivated_at',
+    PcoPeoplePersonOrder.lastName: 'last_name',
+    PcoPeoplePersonOrder.membership: 'membership',
+    PcoPeoplePersonOrder.middleName: 'middle_name',
+    PcoPeoplePersonOrder.nickname: 'nickname',
+    PcoPeoplePersonOrder.peoplePermissions: 'people_permissions',
+    PcoPeoplePersonOrder.remoteId: 'remote_id',
+    PcoPeoplePersonOrder.siteAdministrator: 'site_administrator',
+    PcoPeoplePersonOrder.status: 'status',
+    PcoPeoplePersonOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeoplePersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeoplePersonFilter, String> _filterMap = {
+    PcoPeoplePersonFilter.admins: 'admins',
+    PcoPeoplePersonFilter.createdSince: 'created_since',
+    PcoPeoplePersonFilter.organizationAdmins: 'organization_admins',
+  };
+  static String filterString(PcoPeoplePersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeoplePersonQuery({
+    /// include associated addresses
+    /// when true, adds `?include=addresses` to url
+    bool includeAddresses = false,
+
+    /// include associated emails
+    /// when true, adds `?include=emails` to url
+    bool includeEmails = false,
+
+    /// include associated field_data
+    /// when true, adds `?include=field_data` to url
+    bool includeFieldData = false,
+
+    /// include associated households
+    /// when true, adds `?include=households` to url
+    bool includeHouseholds = false,
+
+    /// include associated inactive_reason
+    /// when true, adds `?include=inactive_reason` to url
+    bool includeInactiveReason = false,
+
+    /// include associated marital_status
+    /// when true, adds `?include=marital_status` to url
+    bool includeMaritalStatus = false,
+
+    /// include associated name_prefix
+    /// when true, adds `?include=name_prefix` to url
+    bool includeNamePrefix = false,
+
+    /// include associated name_suffix
+    /// when true, adds `?include=name_suffix` to url
+    bool includeNameSuffix = false,
+
+    /// include associated organization
+    /// when true, adds `?include=organization` to url
+    bool includeOrganization = false,
+
+    /// include associated person_apps
+    /// when true, adds `?include=person_apps` to url
+    bool includePersonApps = false,
+
+    /// include associated phone_numbers
+    /// when true, adds `?include=phone_numbers` to url
+    bool includePhoneNumbers = false,
+
+    /// include associated platform_notifications
+    /// when true, adds `?include=platform_notifications` to url
+    bool includePlatformNotifications = false,
+
+    /// include associated primary_campus
+    /// when true, adds `?include=primary_campus` to url
+    bool includePrimaryCampus = false,
+
+    /// include associated school
+    /// when true, adds `?include=school` to url
+    bool includeSchool = false,
+
+    /// include associated social_profiles
+    /// when true, adds `?include=social_profiles` to url
+    bool includeSocialProfiles = false,
+
+    /// when true, adds `?include=addresses,emails,field_data,households,inactive_reason,marital_status,name_prefix,name_suffix,organization,person_apps,phone_numbers,platform_notifications,primary_campus,school,social_profiles` to url parameters
+    bool includeAll = false,
+
+    /// Query by `accounting_administrator`
+    /// query on a specific accounting_administrator, url example: ?where[accounting_administrator]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAccountingAdministrator,
+
+    /// Query by `anniversary`
+    /// query on a specific anniversary, url example: ?where[anniversary]=2000-01-01
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAnniversary,
+
+    /// Query by `birthdate`
+    /// query on a specific birthdate, url example: ?where[birthdate]=2000-01-01
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereBirthdate,
+
+    /// Query by `child`
+    /// query on a specific child, url example: ?where[child]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereChild,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `first_name`
+    /// query on a specific first_name, url example: ?where[first_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFirstName,
+
+    /// Query by `gender`
+    /// query on a specific gender, url example: ?where[gender]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGender,
+
+    /// Query by `given_name`
+    /// query on a specific given_name, url example: ?where[given_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGivenName,
+
+    /// Query by `grade`
+    /// query on a specific grade, url example: ?where[grade]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGrade,
+
+    /// Query by `graduation_year`
+    /// query on a specific graduation_year, url example: ?where[graduation_year]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGraduationYear,
+
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `inactivated_at`
+    /// Set to an ISO 8601 date or time to make the profile inactive. Set to "null" to reactivate the profile., url example: ?where[inactivated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereInactivatedAt,
+
+    /// Query by `last_name`
+    /// query on a specific last_name, url example: ?where[last_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLastName,
+
+    /// Query by `medical_notes`
+    /// query on a specific medical_notes, url example: ?where[medical_notes]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMedicalNotes,
+
+    /// Query by `membership`
+    /// query on a specific membership, url example: ?where[membership]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMembership,
+
+    /// Query by `middle_name`
+    /// query on a specific middle_name, url example: ?where[middle_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMiddleName,
+
+    /// Query by `nickname`
+    /// query on a specific nickname, url example: ?where[nickname]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereNickname,
+
+    /// Query by `people_permissions`
+    /// query on a specific people_permissions, url example: ?where[people_permissions]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePeoplePermissions,
+
+    /// Query by `remote_id`
+    /// query on a specific remote_id, url example: ?where[remote_id]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereRemoteId,
+
+    /// Query by `search_name`
+    /// Search by Name (first, last, combination), url example: ?where[search_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSearchName,
+
+    /// Query by `search_name_or_email`
+    /// Search by Name (first, last, combination) or Email, url example: ?where[search_name_or_email]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSearchNameOrEmail,
+
+    /// Query by `search_name_or_email_or_phone_number`
+    /// Search by Name (first, last, combination), Email, or Phone Number, url example: ?where[search_name_or_email_or_phone_number]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSearchNameOrEmailOrPhoneNumber,
+
+    /// Query by `search_phone_number`
+    /// Search by Phone Number, url example: ?where[search_phone_number]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSearchPhoneNumber,
+
+    /// Query by `search_phone_number_e164`
+    /// Search by Phone Number E164, url example: ?where[search_phone_number_e164]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSearchPhoneNumberE164,
+
+    /// Query by `site_administrator`
+    /// query on a specific site_administrator, url example: ?where[site_administrator]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSiteAdministrator,
+
+    /// Query by `status`
+    /// Set to "inactive" to set "inactivated_at" to the current time and make the profile inactive. Set to anything else to clear "inactivated_at" and reactivate the profile., url example: ?where[status]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStatus,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeoplePersonFilter? filterBy,
+    PcoPeoplePersonOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeAddresses) include.add('addresses');
+    if (includeAll || includeEmails) include.add('emails');
+    if (includeAll || includeFieldData) include.add('field_data');
+    if (includeAll || includeHouseholds) include.add('households');
+    if (includeAll || includeInactiveReason) include.add('inactive_reason');
+    if (includeAll || includeMaritalStatus) include.add('marital_status');
+    if (includeAll || includeNamePrefix) include.add('name_prefix');
+    if (includeAll || includeNameSuffix) include.add('name_suffix');
+    if (includeAll || includeOrganization) include.add('organization');
+    if (includeAll || includePersonApps) include.add('person_apps');
+    if (includeAll || includePhoneNumbers) include.add('phone_numbers');
+    if (includeAll || includePlatformNotifications)
+      include.add('platform_notifications');
+    if (includeAll || includePrimaryCampus) include.add('primary_campus');
+    if (includeAll || includeSchool) include.add('school');
+    if (includeAll || includeSocialProfiles) include.add('social_profiles');
+
+    if (whereAccountingAdministrator != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'accounting_administrator', whereAccountingAdministrator));
+    if (whereAnniversary != null)
+      where.add(PlanningCenterApiWhere.parse('anniversary', whereAnniversary));
+    if (whereBirthdate != null)
+      where.add(PlanningCenterApiWhere.parse('birthdate', whereBirthdate));
+    if (whereChild != null)
+      where.add(PlanningCenterApiWhere.parse('child', whereChild));
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereFirstName != null)
+      where.add(PlanningCenterApiWhere.parse('first_name', whereFirstName));
+    if (whereGender != null)
+      where.add(PlanningCenterApiWhere.parse('gender', whereGender));
+    if (whereGivenName != null)
+      where.add(PlanningCenterApiWhere.parse('given_name', whereGivenName));
+    if (whereGrade != null)
+      where.add(PlanningCenterApiWhere.parse('grade', whereGrade));
+    if (whereGraduationYear != null)
+      where.add(
+          PlanningCenterApiWhere.parse('graduation_year', whereGraduationYear));
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereInactivatedAt != null)
+      where.add(
+          PlanningCenterApiWhere.parse('inactivated_at', whereInactivatedAt));
+    if (whereLastName != null)
+      where.add(PlanningCenterApiWhere.parse('last_name', whereLastName));
+    if (whereMedicalNotes != null)
+      where.add(
+          PlanningCenterApiWhere.parse('medical_notes', whereMedicalNotes));
+    if (whereMembership != null)
+      where.add(PlanningCenterApiWhere.parse('membership', whereMembership));
+    if (whereMiddleName != null)
+      where.add(PlanningCenterApiWhere.parse('middle_name', whereMiddleName));
+    if (whereNickname != null)
+      where.add(PlanningCenterApiWhere.parse('nickname', whereNickname));
+    if (wherePeoplePermissions != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'people_permissions', wherePeoplePermissions));
+    if (whereRemoteId != null)
+      where.add(PlanningCenterApiWhere.parse('remote_id', whereRemoteId));
+    if (whereSearchName != null)
+      where.add(PlanningCenterApiWhere.parse('search_name', whereSearchName));
+    if (whereSearchNameOrEmail != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'search_name_or_email', whereSearchNameOrEmail));
+    if (whereSearchNameOrEmailOrPhoneNumber != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'search_name_or_email_or_phone_number',
+          whereSearchNameOrEmailOrPhoneNumber));
+    if (whereSearchPhoneNumber != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'search_phone_number', whereSearchPhoneNumber));
+    if (whereSearchPhoneNumberE164 != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'search_phone_number_e164', whereSearchPhoneNumberE164));
+    if (whereSiteAdministrator != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'site_administrator', whereSiteAdministrator));
+    if (whereStatus != null)
+      where.add(PlanningCenterApiWhere.parse('status', whereStatus));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Person Object
 ///
@@ -19,7 +501,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeoplePerson()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeoplePerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -69,84 +550,6 @@ part of pco;
 /// - `searchNameOrEmail` (ro) -> PCO: `search_name_or_email`
 /// - `searchNameOrEmailOrPhoneNumber` (ro) -> PCO: `search_name_or_email_or_phone_number`
 /// - `primaryCampusId` (wo) -> PCO: `primary_campus_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `addresses`: include associated addresses
-/// - `emails`: include associated emails
-/// - `field_data`: include associated field_data
-/// - `households`: include associated households
-/// - `inactive_reason`: include associated inactive_reason
-/// - `marital_status`: include associated marital_status
-/// - `name_prefix`: include associated name_prefix
-/// - `name_suffix`: include associated name_suffix
-/// - `organization`: include associated organization
-/// - `person_apps`: include associated person_apps
-/// - `phone_numbers`: include associated phone_numbers
-/// - `platform_notifications`: include associated platform_notifications
-/// - `primary_campus`: include associated primary_campus
-/// - `school`: include associated school
-/// - `social_profiles`: include associated social_profiles
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `accounting_administrator`: (URLParameter), query on a specific accounting_administrator, example: ?where[accounting_administrator]=true
-/// - `anniversary`: (URLParameter), query on a specific anniversary, example: ?where[anniversary]=2000-01-01
-/// - `birthdate`: (URLParameter), query on a specific birthdate, example: ?where[birthdate]=2000-01-01
-/// - `child`: (URLParameter), query on a specific child, example: ?where[child]=true
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `gender`: (URLParameter), query on a specific gender, example: ?where[gender]=string
-/// - `given_name`: (URLParameter), query on a specific given_name, example: ?where[given_name]=string
-/// - `grade`: (URLParameter), query on a specific grade, example: ?where[grade]=1
-/// - `graduation_year`: (URLParameter), query on a specific graduation_year, example: ?where[graduation_year]=1
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `inactivated_at`: (URLParameter), Set to an ISO 8601 date or time to make the profile inactive. Set to "null" to reactivate the profile., example: ?where[inactivated_at]=2000-01-01T12:00:00Z
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-/// - `medical_notes`: (URLParameter), query on a specific medical_notes, example: ?where[medical_notes]=string
-/// - `membership`: (URLParameter), query on a specific membership, example: ?where[membership]=string
-/// - `middle_name`: (URLParameter), query on a specific middle_name, example: ?where[middle_name]=string
-/// - `nickname`: (URLParameter), query on a specific nickname, example: ?where[nickname]=string
-/// - `people_permissions`: (URLParameter), query on a specific people_permissions, example: ?where[people_permissions]=string
-/// - `remote_id`: (URLParameter), query on a specific remote_id, example: ?where[remote_id]=1
-/// - `search_name`: (URLParameter), Search by Name (first, last, combination), example: ?where[search_name]=string
-/// - `search_name_or_email`: (URLParameter), Search by Name (first, last, combination) or Email, example: ?where[search_name_or_email]=string
-/// - `search_name_or_email_or_phone_number`: (URLParameter), Search by Name (first, last, combination), Email, or Phone Number, example: ?where[search_name_or_email_or_phone_number]=string
-/// - `search_phone_number`: (URLParameter), Search by Phone Number, example: ?where[search_phone_number]=string
-/// - `search_phone_number_e164`: (URLParameter), Search by Phone Number E164, example: ?where[search_phone_number_e164]=string
-/// - `site_administrator`: (URLParameter), query on a specific site_administrator, example: ?where[site_administrator]=true
-/// - `status`: (URLParameter), Set to "inactive" to set "inactivated_at" to the current time and make the profile inactive. Set to anything else to clear "inactivated_at" and reactivate the profile., example: ?where[status]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `accounting_administrator`: (URLParameter), prefix with a hyphen (-accounting_administrator) to reverse the order
-/// - `anniversary`: (URLParameter), prefix with a hyphen (-anniversary) to reverse the order
-/// - `birthdate`: (URLParameter), prefix with a hyphen (-birthdate) to reverse the order
-/// - `child`: (URLParameter), prefix with a hyphen (-child) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `gender`: (URLParameter), prefix with a hyphen (-gender) to reverse the order
-/// - `given_name`: (URLParameter), prefix with a hyphen (-given_name) to reverse the order
-/// - `grade`: (URLParameter), prefix with a hyphen (-grade) to reverse the order
-/// - `graduation_year`: (URLParameter), prefix with a hyphen (-graduation_year) to reverse the order
-/// - `inactivated_at`: (URLParameter), prefix with a hyphen (-inactivated_at) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `membership`: (URLParameter), prefix with a hyphen (-membership) to reverse the order
-/// - `middle_name`: (URLParameter), prefix with a hyphen (-middle_name) to reverse the order
-/// - `nickname`: (URLParameter), prefix with a hyphen (-nickname) to reverse the order
-/// - `people_permissions`: (URLParameter), prefix with a hyphen (-people_permissions) to reverse the order
-/// - `remote_id`: (URLParameter), prefix with a hyphen (-remote_id) to reverse the order
-/// - `site_administrator`: (URLParameter), prefix with a hyphen (-site_administrator) to reverse the order
-/// - `status`: (URLParameter), prefix with a hyphen (-status) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -803,16 +1206,19 @@ class PcoPeoplePerson extends PcoResource {
           searchNameOrEmailOrPhoneNumber;
     if (primaryCampusId != null)
       obj._attributes['primary_campus_id'] = primaryCampusId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -832,7 +1238,7 @@ class PcoPeoplePerson extends PcoResource {
   /// - `organization_admins`
   static Future<PcoCollection<PcoPeoplePerson>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -850,7 +1256,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -881,7 +1287,7 @@ class PcoPeoplePerson extends PcoResource {
     String listId,
     String ruleId,
     String conditionId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -899,7 +1305,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -928,7 +1334,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/emails/$emailId/person`
   static Future<PcoCollection<PcoPeoplePerson>> getFromEmail(
     String emailId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -946,7 +1352,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -974,7 +1380,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/field_data/$fieldDataId/person`
   static Future<PcoCollection<PcoPeoplePerson>> getFromFieldData(
     String fieldDataId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -992,7 +1398,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1021,7 +1427,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromFormAndFormSubmission(
     String formId,
     String formSubmissionId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1039,7 +1445,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1070,7 +1476,7 @@ class PcoPeoplePerson extends PcoResource {
       getFromHouseholdAndHouseholdMembership(
     String householdId,
     String householdMembershipId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1088,7 +1494,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1122,7 +1528,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromHousehold(
     String householdId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1140,7 +1546,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1168,7 +1574,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/lists/$listId/created_by`
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromList(
     String listId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1186,7 +1592,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1215,7 +1621,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromList(
     String listId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1233,7 +1639,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1262,7 +1668,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromListAndShare(
     String listId,
     String shareId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1280,7 +1686,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1308,7 +1714,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/lists/$listId/updated_by`
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromList(
     String listId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1326,7 +1732,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1354,7 +1760,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/from`
   static Future<PcoCollection<PcoPeoplePerson>> getFromFromMessageGroup(
     String messageGroupId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1372,7 +1778,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1400,7 +1806,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/messages/$messageId/to`
   static Future<PcoCollection<PcoPeoplePerson>> getToFromMessage(
     String messageId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1418,7 +1824,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1446,7 +1852,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscribers`
   static Future<PcoCollection<PcoPeoplePerson>> getSubscribersFromNoteCategory(
     String noteCategoryId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1464,7 +1870,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1492,7 +1898,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/notes/$noteId/created_by`
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromNote(
     String noteId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1510,7 +1916,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1538,7 +1944,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/notes/$noteId/person`
   static Future<PcoCollection<PcoPeoplePerson>> getFromNote(
     String noteId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1556,7 +1962,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1585,7 +1991,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromPeopleImportAndHistory(
     String peopleImportId,
     String historyId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1603,7 +2009,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1632,7 +2038,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/reports/$reportId/created_by`
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromReport(
     String reportId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1650,7 +2056,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1678,7 +2084,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/reports/$reportId/updated_by`
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromReport(
     String reportId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1696,7 +2102,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1724,7 +2130,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/social_profiles/$socialProfileId/person`
   static Future<PcoCollection<PcoPeoplePerson>> getFromSocialProfile(
     String socialProfileId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1742,7 +2148,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1772,7 +2178,7 @@ class PcoPeoplePerson extends PcoResource {
       getAssigneeFromPersonAndWorkflowCard(
     String personId,
     String workflowCardId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1790,7 +2196,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1820,7 +2226,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowCard(
     String personId,
     String workflowCardId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1838,7 +2244,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1868,7 +2274,7 @@ class PcoPeoplePerson extends PcoResource {
   static Future<PcoCollection<PcoPeoplePerson>> getFromPersonAndWorkflowShare(
     String personId,
     String workflowShareId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1886,7 +2292,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1915,7 +2321,7 @@ class PcoPeoplePerson extends PcoResource {
   /// using a path like this: `/people/v2/workflows/$workflowId/shared_people`
   static Future<PcoCollection<PcoPeoplePerson>> getSharedPeopleFromWorkflow(
     String workflowId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1933,7 +2339,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -1964,7 +2370,7 @@ class PcoPeoplePerson extends PcoResource {
     String workflowId,
     String stepId,
     String assigneeSummaryId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -1982,7 +2388,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -2013,7 +2419,7 @@ class PcoPeoplePerson extends PcoResource {
       getDefaultAssigneeFromWorkflowAndStep(
     String workflowId,
     String stepId, {
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonQuery? query,
     bool includeAll = false,
     bool includeAddresses = false,
     bool includeEmails = false,
@@ -2031,7 +2437,7 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSchool = false,
     bool includeSocialProfiles = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonQuery();
     if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
@@ -2062,11 +2468,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/addresses`
-  Future<PcoCollection<PcoPeopleAddress>> getAddresses({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleAddress>> getAddresses(
+      {PcoPeopleAddressQuery? query}) async {
+    query ??= PcoPeopleAddressQuery();
     var url = '$apiEndpoint/addresses';
     return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: apiVersion);
@@ -2074,11 +2478,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/apps`
-  Future<PcoCollection<PcoPeopleApp>> getApps({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleApp>> getApps(
+      {PcoPeopleAppQuery? query}) async {
+    query ??= PcoPeopleAppQuery();
     var url = '$apiEndpoint/apps';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: apiVersion);
@@ -2086,11 +2488,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/connected_people`
-  Future<PcoCollection<PcoPeopleConnectedPerson>> getConnectedPeople({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleConnectedPerson>> getConnectedPeople(
+      {PcoPeopleConnectedPersonQuery? query}) async {
+    query ??= PcoPeopleConnectedPersonQuery();
     var url = '$apiEndpoint/connected_people';
     return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -2098,11 +2498,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/emails`
-  Future<PcoCollection<PcoPeopleEmail>> getEmails({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleEmail>> getEmails(
+      {PcoPeopleEmailQuery? query}) async {
+    query ??= PcoPeopleEmailQuery();
     var url = '$apiEndpoint/emails';
     return PcoCollection.fromApiCall<PcoPeopleEmail>(url,
         query: query, apiVersion: apiVersion);
@@ -2110,18 +2508,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/field_data`
-  Future<PcoCollection<PcoPeopleFieldDatum>> getFieldData({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldDefinition = false,
-    bool includeFieldOption = false,
-    bool includeTab = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeFieldDefinition) query.include.add('field_definition');
-    if (includeFieldOption) query.include.add('field_option');
-    if (includeTab) query.include.add('tab');
+  Future<PcoCollection<PcoPeopleFieldDatum>> getFieldData(
+      {PcoPeopleFieldDatumQuery? query}) async {
+    query ??= PcoPeopleFieldDatumQuery();
     var url = '$apiEndpoint/field_data';
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
         query: query, apiVersion: apiVersion);
@@ -2129,16 +2518,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/household_memberships`
-  Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeHousehold = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeHousehold) query.include.add('household');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships(
+      {PcoPeopleHouseholdMembershipQuery? query}) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
     var url = '$apiEndpoint/household_memberships';
     return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url,
         query: query, apiVersion: apiVersion);
@@ -2146,13 +2528,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/households`
-  Future<PcoCollection<PcoPeopleHousehold>> getHouseholds({
-    PlanningCenterApiQuery? query,
-    bool includePeople = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePeople) query.include.add('people');
+  Future<PcoCollection<PcoPeopleHousehold>> getHouseholds(
+      {PcoPeopleHouseholdQuery? query}) async {
+    query ??= PcoPeopleHouseholdQuery();
     var url = '$apiEndpoint/households';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url,
         query: query, apiVersion: apiVersion);
@@ -2160,11 +2538,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/inactive_reason`
-  Future<PcoCollection<PcoPeopleInactiveReason>> getInactiveReason({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleInactiveReason>> getInactiveReason(
+      {PcoPeopleInactiveReasonQuery? query}) async {
+    query ??= PcoPeopleInactiveReasonQuery();
     var url = '$apiEndpoint/inactive_reason';
     return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
         query: query, apiVersion: apiVersion);
@@ -2172,11 +2548,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/marital_status`
-  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatus({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatus(
+      {PcoPeopleMaritalStatusQuery? query}) async {
+    query ??= PcoPeopleMaritalStatusQuery();
     var url = '$apiEndpoint/marital_status';
     return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: apiVersion);
@@ -2184,18 +2558,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/message_groups`
-  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeApp = false,
-    bool includeFrom = false,
-    bool includeMessages = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeApp) query.include.add('app');
-    if (includeFrom) query.include.add('from');
-    if (includeMessages) query.include.add('messages');
+  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroups(
+      {PcoPeopleMessageGroupQuery? query}) async {
+    query ??= PcoPeopleMessageGroupQuery();
     var url = '$apiEndpoint/message_groups';
     return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -2209,16 +2574,9 @@ class PcoPeoplePerson extends PcoResource {
   /// - `received`
   /// - `sent`
   /// - `unread`
-  Future<PcoCollection<PcoPeopleMessage>> getMessages({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeMessageGroup = false,
-    bool includeTo = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeMessageGroup) query.include.add('message_group');
-    if (includeTo) query.include.add('to');
+  Future<PcoCollection<PcoPeopleMessage>> getMessages(
+      {PcoPeopleMessageQuery? query}) async {
+    query ??= PcoPeopleMessageQuery();
     var url = '$apiEndpoint/messages';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: apiVersion);
@@ -2226,11 +2584,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNamePrefix] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/name_prefix`
-  Future<PcoCollection<PcoPeopleNamePrefix>> getNamePrefix({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNamePrefix>> getNamePrefix(
+      {PcoPeopleNamePrefixQuery? query}) async {
+    query ??= PcoPeopleNamePrefixQuery();
     var url = '$apiEndpoint/name_prefix';
     return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url,
         query: query, apiVersion: apiVersion);
@@ -2238,11 +2594,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/name_suffix`
-  Future<PcoCollection<PcoPeopleNameSuffix>> getNameSuffix({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNameSuffix>> getNameSuffix(
+      {PcoPeopleNameSuffixQuery? query}) async {
+    query ??= PcoPeopleNameSuffixQuery();
     var url = '$apiEndpoint/name_suffix';
     return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
         query: query, apiVersion: apiVersion);
@@ -2250,18 +2604,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/notes`
-  Future<PcoCollection<PcoPeopleNote>> getNotes({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCategory = false,
-    bool includeCreatedBy = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeCategory) query.include.add('category');
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleNote>> getNotes(
+      {PcoPeopleNoteQuery? query}) async {
+    query ??= PcoPeopleNoteQuery();
     var url = '$apiEndpoint/notes';
     return PcoCollection.fromApiCall<PcoPeopleNote>(url,
         query: query, apiVersion: apiVersion);
@@ -2269,11 +2614,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleOrganization] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/organization`
-  Future<PcoCollection<PcoPeopleOrganization>> getOrganization({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleOrganization>> getOrganization(
+      {PcoPeopleOrganizationQuery? query}) async {
+    query ??= PcoPeopleOrganizationQuery();
     var url = '$apiEndpoint/organization';
     return PcoCollection.fromApiCall<PcoPeopleOrganization>(url,
         query: query, apiVersion: apiVersion);
@@ -2281,13 +2624,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePersonApp] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/person_apps`
-  Future<PcoCollection<PcoPeoplePersonApp>> getPersonApps({
-    PlanningCenterApiQuery? query,
-    bool includeApp = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeApp) query.include.add('app');
+  Future<PcoCollection<PcoPeoplePersonApp>> getPersonApps(
+      {PcoPeoplePersonAppQuery? query}) async {
+    query ??= PcoPeoplePersonAppQuery();
     var url = '$apiEndpoint/person_apps';
     return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
         query: query, apiVersion: apiVersion);
@@ -2295,11 +2634,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/phone_numbers`
-  Future<PcoCollection<PcoPeoplePhoneNumber>> getPhoneNumbers({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeoplePhoneNumber>> getPhoneNumbers(
+      {PcoPeoplePhoneNumberQuery? query}) async {
+    query ??= PcoPeoplePhoneNumberQuery();
     var url = '$apiEndpoint/phone_numbers';
     return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url,
         query: query, apiVersion: apiVersion);
@@ -2307,12 +2644,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePlatformNotification] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/platform_notifications`
-  Future<PcoCollection<PcoPeoplePlatformNotification>>
-      getPlatformNotifications({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeoplePlatformNotification>> getPlatformNotifications(
+      {PcoPeoplePlatformNotificationQuery? query}) async {
+    query ??= PcoPeoplePlatformNotificationQuery();
     var url = '$apiEndpoint/platform_notifications';
     return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url,
         query: query, apiVersion: apiVersion);
@@ -2320,16 +2654,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/primary_campus`
-  Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampus({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeLists = false,
-    bool includeServiceTimes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeLists) query.include.add('lists');
-    if (includeServiceTimes) query.include.add('service_times');
+  Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampus(
+      {PcoPeopleCampusQuery? query}) async {
+    query ??= PcoPeopleCampusQuery();
     var url = '$apiEndpoint/primary_campus';
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -2337,11 +2664,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/school`
-  Future<PcoCollection<PcoPeopleSchoolOption>> getSchool({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleSchoolOption>> getSchool(
+      {PcoPeopleSchoolOptionQuery? query}) async {
+    query ??= PcoPeopleSchoolOptionQuery();
     var url = '$apiEndpoint/school';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
         query: query, apiVersion: apiVersion);
@@ -2349,13 +2674,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSocialProfile] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/social_profiles`
-  Future<PcoCollection<PcoPeopleSocialProfile>> getSocialProfiles({
-    PlanningCenterApiQuery? query,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleSocialProfile>> getSocialProfiles(
+      {PcoPeopleSocialProfileQuery? query}) async {
+    query ??= PcoPeopleSocialProfileQuery();
     var url = '$apiEndpoint/social_profiles';
     return PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
         query: query, apiVersion: apiVersion);
@@ -2366,20 +2687,9 @@ class PcoPeoplePerson extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `assigned`
-  Future<PcoCollection<PcoPeopleWorkflowCard>> getWorkflowCards({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAssignee = false,
-    bool includeCurrentStep = false,
-    bool includePerson = false,
-    bool includeWorkflow = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
-    if (includeAssignee) query.include.add('assignee');
-    if (includeCurrentStep) query.include.add('current_step');
-    if (includePerson) query.include.add('person');
-    if (includeWorkflow) query.include.add('workflow');
+  Future<PcoCollection<PcoPeopleWorkflowCard>> getWorkflowCards(
+      {PcoPeopleWorkflowCardQuery? query}) async {
+    query ??= PcoPeopleWorkflowCardQuery();
     var url = '$apiEndpoint/workflow_cards';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url,
         query: query, apiVersion: apiVersion);
@@ -2387,13 +2697,9 @@ class PcoPeoplePerson extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_shares`
-  Future<PcoCollection<PcoPeopleWorkflowShare>> getWorkflowShares({
-    PlanningCenterApiQuery? query,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleWorkflowShare>> getWorkflowShares(
+      {PcoPeopleWorkflowShareQuery? query}) async {
+    query ??= PcoPeopleWorkflowShareQuery();
     var url = '$apiEndpoint/workflow_shares';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
         query: query, apiVersion: apiVersion);

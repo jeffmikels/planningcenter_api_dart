@@ -1,9 +1,108 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.836837
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.669311
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+enum PcoGroupsGroupOrder { name }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsGroupFilter { none }
+
+/// Creates a [PcoGroupsGroupQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeGroupType`: include associated group_type
+/// - `includeLocation`: include associated location
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGroupsGroupQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGroupsGroup] objects can be requested with one or more of the following criteria:
+/// - `whereArchiveStatus`: Used for querying only. Defaults to `not_archived`., example: ?where[archive_status]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsGroupOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsGroupQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsGroupOrder, String> _orderMap = {
+    PcoGroupsGroupOrder.name: 'name',
+  };
+  static String orderString(PcoGroupsGroupOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsGroupFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsGroupFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsGroupQuery({
+    /// include associated group_type
+    /// when true, adds `?include=group_type` to url
+    bool includeGroupType = false,
+
+    /// include associated location
+    /// when true, adds `?include=location` to url
+    bool includeLocation = false,
+
+    /// when true, adds `?include=group_type,location` to url parameters
+    bool includeAll = false,
+
+    /// Query by `archive_status`
+    /// Used for querying only. Defaults to `not_archived`., url example: ?where[archive_status]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereArchiveStatus,
+    PcoGroupsGroupOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeGroupType) include.add('group_type');
+    if (includeAll || includeLocation) include.add('location');
+
+    if (whereArchiveStatus != null)
+      where.add(
+          PlanningCenterApiWhere.parse('archive_status', whereArchiveStatus));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Group Object
 ///
@@ -19,7 +118,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsGroup.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsGroup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -51,26 +149,6 @@ part of pco;
 /// - `schedule` (ro) -> PCO: `schedule`
 /// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
 /// - `widgetStatus` (ro) -> PCO: `widget_status`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `group_type`: include associated group_type
-/// - `location`: include associated location
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `archive_status`: (URLParameter), Used for querying only. Defaults to `not_archived`., example: ?where[archive_status]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -301,16 +379,19 @@ class PcoGroupsGroup extends PcoResource {
     if (virtualLocationUrl != null)
       obj._attributes['virtual_location_url'] = virtualLocationUrl;
     if (widgetStatus != null) obj._attributes['widget_status'] = widgetStatus;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -323,12 +404,12 @@ class PcoGroupsGroup extends PcoResource {
   /// using a path like this: `/groups/v2/groups`
   static Future<PcoCollection<PcoGroupsGroup>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -342,12 +423,12 @@ class PcoGroupsGroup extends PcoResource {
   /// using a path like this: `/groups/v2/events/$eventId/group`
   static Future<PcoCollection<PcoGroupsGroup>> getFromEvent(
     String eventId, {
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -362,12 +443,12 @@ class PcoGroupsGroup extends PcoResource {
   static Future<PcoCollection<PcoGroupsGroup>> getFromGroupType(
     String groupTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -382,12 +463,12 @@ class PcoGroupsGroup extends PcoResource {
   static Future<PcoCollection<PcoGroupsGroup>> getFromGroupAndMembership(
     String groupId,
     String membershipId, {
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -402,12 +483,12 @@ class PcoGroupsGroup extends PcoResource {
   static Future<PcoCollection<PcoGroupsGroup>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -422,12 +503,12 @@ class PcoGroupsGroup extends PcoResource {
   static Future<PcoCollection<PcoGroupsGroup>> getFromTag(
     String tagId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsGroupQuery? query,
     bool includeAll = false,
     bool includeGroupType = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsGroupQuery();
     if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
     if (includeGroupType) query.include.add('group_type');
     if (includeLocation) query.include.add('location');
@@ -448,16 +529,9 @@ class PcoGroupsGroup extends PcoResource {
   /// Available Query Filters:
   /// - `canceled`
   /// - `not_canceled`
-  Future<PcoCollection<PcoGroupsEvent>> getEvents({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroup = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsGroup.canInclude);
-    if (includeGroup) query.include.add('group');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsEvent>> getEvents(
+      {PcoGroupsEventQuery? query}) async {
+    query ??= PcoGroupsEventQuery();
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoGroupsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -465,11 +539,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroupType] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/group_type`
-  Future<PcoCollection<PcoGroupsGroupType>> getGroupType({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsGroupType>> getGroupType(
+      {PcoGroupsGroupTypeQuery? query}) async {
+    query ??= PcoGroupsGroupTypeQuery();
     var url = '$apiEndpoint/group_type';
     return PcoCollection.fromApiCall<PcoGroupsGroupType>(url,
         query: query, apiVersion: apiVersion);
@@ -477,11 +549,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/location`
-  Future<PcoCollection<PcoGroupsLocation>> getLocation({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsLocation>> getLocation(
+      {PcoGroupsLocationQuery? query}) async {
+    query ??= PcoGroupsLocationQuery();
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
         query: query, apiVersion: apiVersion);
@@ -489,11 +559,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/memberships`
-  Future<PcoCollection<PcoGroupsMembership>> getMemberships({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsMembership>> getMemberships(
+      {PcoGroupsMembershipQuery? query}) async {
+    query ??= PcoGroupsMembershipQuery();
     var url = '$apiEndpoint/memberships';
     return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
         query: query, apiVersion: apiVersion);
@@ -501,11 +569,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/people`
-  Future<PcoCollection<PcoGroupsPerson>> getPeople({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsPerson>> getPeople(
+      {PcoGroupsPersonQuery? query}) async {
+    query ??= PcoGroupsPersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoGroupsPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -518,11 +584,9 @@ class PcoGroupsGroup extends PcoResource {
   /// - `leaders`
   /// filter resources only visible to group leaders
   ///
-  Future<PcoCollection<PcoGroupsResource>> getResources({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsResource>> getResources(
+      {PcoGroupsResourceQuery? query}) async {
+    query ??= PcoGroupsResourceQuery();
     var url = '$apiEndpoint/resources';
     return PcoCollection.fromApiCall<PcoGroupsResource>(url,
         query: query, apiVersion: apiVersion);
@@ -530,11 +594,9 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/tags`
-  Future<PcoCollection<PcoGroupsTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsTag>> getTags(
+      {PcoGroupsTagQuery? query}) async {
+    query ??= PcoGroupsTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoGroupsTag>(url,
         query: query, apiVersion: apiVersion);

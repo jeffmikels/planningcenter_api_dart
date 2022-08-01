@@ -1,9 +1,98 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.639206
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.517776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCheckInsLocationEventTimeOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCheckInsLocationEventTimeFilter { none }
+
+/// Creates a [PcoCheckInsLocationEventTimeQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeEventTime`: include associated event_time
+/// - `includeLocation`: include associated location
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCheckInsLocationEventTimeQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCheckInsLocationEventTime] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsLocationEventTimeQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsLocationEventTimeOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsLocationEventTimeOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsLocationEventTimeFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsLocationEventTimeFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsLocationEventTimeQuery({
+    /// include associated event_time
+    /// when true, adds `?include=event_time` to url
+    bool includeEventTime = false,
+
+    /// include associated location
+    /// when true, adds `?include=location` to url
+    bool includeLocation = false,
+
+    /// when true, adds `?include=event_time,location` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeEventTime) include.add('event_time');
+    if (includeAll || includeLocation) include.add('location');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+  }
+}
 
 /// This class represents a PCO CheckIns LocationEventTime Object
 ///
@@ -19,7 +108,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsLocationEventTime.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsLocationEventTime.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,27 +129,6 @@ part of pco;
 /// - `volunteerCount` (ro) -> PCO: `volunteer_count`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `event_time`: include associated event_time
-/// - `location`: include associated location
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -208,16 +275,19 @@ class PcoCheckInsLocationEventTime extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -231,12 +301,12 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   static Future<PcoCollection<PcoCheckInsLocationEventTime>> getFromEventTime(
     String eventTimeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLocationEventTimeQuery? query,
     bool includeAll = false,
     bool includeEventTime = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLocationEventTimeQuery();
     if (includeAll)
       query.include.addAll(PcoCheckInsLocationEventTime.canInclude);
     if (includeEventTime) query.include.add('event_time');
@@ -254,12 +324,12 @@ class PcoCheckInsLocationEventTime extends PcoResource {
     String checkInId,
     String locationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsLocationEventTimeQuery? query,
     bool includeAll = false,
     bool includeEventTime = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsLocationEventTimeQuery();
     if (includeAll)
       query.include.addAll(PcoCheckInsLocationEventTime.canInclude);
     if (includeEventTime) query.include.add('event_time');
@@ -288,33 +358,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCheckInTimes = false,
-    bool includeCheckedInAt = false,
-    bool includeCheckedInBy = false,
-    bool includeCheckedOutBy = false,
-    bool includeEvent = false,
-    bool includeEventPeriod = false,
-    bool includeEventTimes = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll)
-      query.include.addAll(PcoCheckInsLocationEventTime.canInclude);
-    if (includeCheckInTimes) query.include.add('check_in_times');
-    if (includeCheckedInAt) query.include.add('checked_in_at');
-    if (includeCheckedInBy) query.include.add('checked_in_by');
-    if (includeCheckedOutBy) query.include.add('checked_out_by');
-    if (includeEvent) query.include.add('event');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns(
+      {PcoCheckInsCheckInQuery? query}) async {
+    query ??= PcoCheckInsCheckInQuery();
     var url = '$apiEndpoint/check_ins';
     return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
         query: query, apiVersion: apiVersion);
@@ -322,19 +368,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEventTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/event_time`
-  Future<PcoCollection<PcoCheckInsEventTime>> getEventTime({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventPeriod = false,
-    bool includeHeadcounts = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll)
-      query.include.addAll(PcoCheckInsLocationEventTime.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventPeriod) query.include.add('event_period');
-    if (includeHeadcounts) query.include.add('headcounts');
+  Future<PcoCollection<PcoCheckInsEventTime>> getEventTime(
+      {PcoCheckInsEventTimeQuery? query}) async {
+    query ??= PcoCheckInsEventTimeQuery();
     var url = '$apiEndpoint/event_time';
     return PcoCollection.fromApiCall<PcoCheckInsEventTime>(url,
         query: query, apiVersion: apiVersion);
@@ -342,21 +378,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLocation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/location`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocation({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocations = false,
-    bool includeOptions = false,
-    bool includeParent = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll)
-      query.include.addAll(PcoCheckInsLocationEventTime.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeLocations) query.include.add('locations');
-    if (includeOptions) query.include.add('options');
-    if (includeParent) query.include.add('parent');
+  Future<PcoCollection<PcoCheckInsLocation>> getLocation(
+      {PcoCheckInsLocationQuery? query}) async {
+    query ??= PcoCheckInsLocationQuery();
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.707558
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.574412
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleConnectedPersonOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleConnectedPersonFilter { none }
+
+/// Creates a [PcoPeopleConnectedPersonQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleConnectedPersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleConnectedPersonOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleConnectedPersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleConnectedPersonFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleConnectedPersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleConnectedPersonQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People ConnectedPerson Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleConnectedPerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleConnectedPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,25 +77,6 @@ part of pco;
 /// - `gender` (ro) -> PCO: `gender`
 /// - `organizationName` (ro) -> PCO: `organization_name`
 /// - `organizationId` (ro) -> PCO: `organization_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -219,16 +234,19 @@ class PcoPeopleConnectedPerson extends PcoResource {
       obj._attributes['organization_name'] = organizationName;
     if (organizationId != null)
       obj._attributes['organization_id'] = organizationId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -242,9 +260,9 @@ class PcoPeopleConnectedPerson extends PcoResource {
   static Future<PcoCollection<PcoPeopleConnectedPerson>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleConnectedPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleConnectedPersonQuery();
 
     var url = '/people/v2/people/$personId/connected_people';
     if (id != null) url += '/$id';

@@ -1,9 +1,146 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.759266
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.607784
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `completedAt` -> `?order=completed_at`
+/// - `createdAt` -> `?order=created_at`
+/// - `flaggedForNotificationAt` -> `?order=flagged_for_notification_at`
+/// - `movedToStepAt` -> `?order=moved_to_step_at`
+/// - `removedAt` -> `?order=removed_at`
+/// - `stage` -> `?order=stage`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleWorkflowCardOrder {
+  completedAt,
+  createdAt,
+  flaggedForNotificationAt,
+  movedToStepAt,
+  removedAt,
+  stage,
+  updatedAt
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleWorkflowCardFilter { none }
+
+/// Creates a [PcoPeopleWorkflowCardQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeAssignee`: include associated assignee
+/// - `includeCurrentStep`: include associated current_step
+/// - `includePerson`: include associated person
+/// - `includeWorkflow`: include associated workflow
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleWorkflowCardQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleWorkflowCard] objects can be requested with one or more of the following criteria:
+/// - `whereStage`: query on a specific stage, example: ?where[stage]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleWorkflowCardOrder.completedAt` : will order by `completed_at`
+/// - `PcoPeopleWorkflowCardOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleWorkflowCardOrder.flaggedForNotificationAt` : will order by `flagged_for_notification_at`
+/// - `PcoPeopleWorkflowCardOrder.movedToStepAt` : will order by `moved_to_step_at`
+/// - `PcoPeopleWorkflowCardOrder.removedAt` : will order by `removed_at`
+/// - `PcoPeopleWorkflowCardOrder.stage` : will order by `stage`
+/// - `PcoPeopleWorkflowCardOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleWorkflowCardOrder, String> _orderMap = {
+    PcoPeopleWorkflowCardOrder.completedAt: 'completed_at',
+    PcoPeopleWorkflowCardOrder.createdAt: 'created_at',
+    PcoPeopleWorkflowCardOrder.flaggedForNotificationAt:
+        'flagged_for_notification_at',
+    PcoPeopleWorkflowCardOrder.movedToStepAt: 'moved_to_step_at',
+    PcoPeopleWorkflowCardOrder.removedAt: 'removed_at',
+    PcoPeopleWorkflowCardOrder.stage: 'stage',
+    PcoPeopleWorkflowCardOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleWorkflowCardOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleWorkflowCardFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleWorkflowCardFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleWorkflowCardQuery({
+    /// include associated assignee
+    /// when true, adds `?include=assignee` to url
+    bool includeAssignee = false,
+
+    /// include associated current_step
+    /// when true, adds `?include=current_step` to url
+    bool includeCurrentStep = false,
+
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// include associated workflow
+    /// when true, adds `?include=workflow` to url
+    bool includeWorkflow = false,
+
+    /// when true, adds `?include=assignee,current_step,person,workflow` to url parameters
+    bool includeAll = false,
+
+    /// Query by `stage`
+    /// query on a specific stage, url example: ?where[stage]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStage,
+    PcoPeopleWorkflowCardOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeAssignee) include.add('assignee');
+    if (includeAll || includeCurrentStep) include.add('current_step');
+    if (includeAll || includePerson) include.add('person');
+    if (includeAll || includeWorkflow) include.add('workflow');
+
+    if (whereStage != null)
+      where.add(PlanningCenterApiWhere.parse('stage', whereStage));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People WorkflowCard Object
 ///
@@ -19,7 +156,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleWorkflowCard()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCard.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleWorkflowCard.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -48,34 +184,6 @@ part of pco;
 /// - `movedToStepAt` (ro) -> PCO: `moved_to_step_at`
 /// - `assigneeId` (wo) -> PCO: `assignee_id`
 /// - `personId` (wo) -> PCO: `person_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `assignee`: include associated assignee
-/// - `current_step`: include associated current_step
-/// - `person`: include associated person
-/// - `workflow`: include associated workflow
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `stage`: (URLParameter), query on a specific stage, example: ?where[stage]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `completed_at`: (URLParameter), prefix with a hyphen (-completed_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `flagged_for_notification_at`: (URLParameter), prefix with a hyphen (-flagged_for_notification_at) to reverse the order
-/// - `moved_to_step_at`: (URLParameter), prefix with a hyphen (-moved_to_step_at) to reverse the order
-/// - `removed_at`: (URLParameter), prefix with a hyphen (-removed_at) to reverse the order
-/// - `stage`: (URLParameter), prefix with a hyphen (-stage) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -275,14 +383,15 @@ class PcoPeopleWorkflowCard extends PcoResource {
   // typed getters for each relationship
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedAssignee<T extends PcoResource>() =>
       (relationships['assignee'] as List?)?.cast<T>() ?? [];
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedCurrentStep<T extends PcoResource>() =>
       (relationships['current_step'] as List?)?.cast<T>() ?? [];
+
   PcoPeoplePerson? get includedPerson =>
       _firstOrNull<PcoPeoplePerson>(relationships['person']);
   PcoPeopleWorkflow? get includedWorkflow =>
@@ -354,16 +463,19 @@ class PcoPeopleWorkflowCard extends PcoResource {
       obj._attributes['moved_to_step_at'] = movedToStepAt.toIso8601String();
     if (assigneeId != null) obj._attributes['assignee_id'] = assigneeId;
     if (personId != null) obj._attributes['person_id'] = personId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -380,14 +492,14 @@ class PcoPeopleWorkflowCard extends PcoResource {
   static Future<PcoCollection<PcoPeopleWorkflowCard>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowCardQuery? query,
     bool includeAll = false,
     bool includeAssignee = false,
     bool includeCurrentStep = false,
     bool includePerson = false,
     bool includeWorkflow = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowCardQuery();
     if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
     if (includeAssignee) query.include.add('assignee');
     if (includeCurrentStep) query.include.add('current_step');
@@ -403,14 +515,14 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// using a path like this: `/people/v2/workflows/$workflowId/cards`
   static Future<PcoCollection<PcoPeopleWorkflowCard>> getCardsFromWorkflow(
     String workflowId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowCardQuery? query,
     bool includeAll = false,
     bool includeAssignee = false,
     bool includeCurrentStep = false,
     bool includePerson = false,
     bool includeWorkflow = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowCardQuery();
     if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
     if (includeAssignee) query.include.add('assignee');
     if (includeCurrentStep) query.include.add('current_step');
@@ -429,11 +541,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities`
-  Future<PcoCollection<PcoPeopleWorkflowCardActivity>> getActivities({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleWorkflowCardActivity>> getActivities(
+      {PcoPeopleWorkflowCardActivityQuery? query}) async {
+    query ??= PcoPeopleWorkflowCardActivityQuery();
     var url = '$apiEndpoint/activities';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url,
         query: query, apiVersion: apiVersion);
@@ -441,43 +551,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee`
-  Future<PcoCollection<PcoPeoplePerson>> getAssignee({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getAssignee(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/assignee';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -485,13 +561,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step`
-  Future<PcoCollection<PcoPeopleWorkflowStep>> getCurrentStep({
-    PlanningCenterApiQuery? query,
-    bool includeDefaultAssignee = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeDefaultAssignee) query.include.add('default_assignee');
+  Future<PcoCollection<PcoPeopleWorkflowStep>> getCurrentStep(
+      {PcoPeopleWorkflowStepQuery? query}) async {
+    query ??= PcoPeopleWorkflowStepQuery();
     var url = '$apiEndpoint/current_step';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url,
         query: query, apiVersion: apiVersion);
@@ -499,11 +571,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes`
-  Future<PcoCollection<PcoPeopleWorkflowCardNote>> getNotes({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleWorkflowCardNote>> getNotes(
+      {PcoPeopleWorkflowCardNoteQuery? query}) async {
+    query ??= PcoPeopleWorkflowCardNoteQuery();
     var url = '$apiEndpoint/notes';
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url,
         query: query, apiVersion: apiVersion);
@@ -511,43 +581,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -555,18 +591,9 @@ class PcoPeopleWorkflowCard extends PcoResource {
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/workflow`
-  Future<PcoCollection<PcoPeopleWorkflow>> getWorkflow({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCategory = false,
-    bool includeShares = false,
-    bool includeSteps = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
-    if (includeCategory) query.include.add('category');
-    if (includeShares) query.include.add('shares');
-    if (includeSteps) query.include.add('steps');
+  Future<PcoCollection<PcoPeopleWorkflow>> getWorkflow(
+      {PcoPeopleWorkflowQuery? query}) async {
+    query ??= PcoPeopleWorkflowQuery();
     var url = '$apiEndpoint/workflow';
     return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url,
         query: query, apiVersion: apiVersion);

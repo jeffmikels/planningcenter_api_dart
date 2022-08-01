@@ -1,9 +1,92 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.713514
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.577226
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `sequence` -> `?order=sequence`
+/// - `value` -> `?order=value`
+enum PcoPeopleFieldOptionOrder { sequence, value }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleFieldOptionFilter { none }
+
+/// Creates a [PcoPeopleFieldOptionQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleFieldOption] objects can be requested with one or more of the following criteria:
+/// - `whereSequence`: query on a specific sequence, example: ?where[sequence]=1
+/// - `whereValue`: query on a specific value, example: ?where[value]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleFieldOptionOrder.sequence` : will order by `sequence`
+/// - `PcoPeopleFieldOptionOrder.value` : will order by `value`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleFieldOptionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleFieldOptionOrder, String> _orderMap = {
+    PcoPeopleFieldOptionOrder.sequence: 'sequence',
+    PcoPeopleFieldOptionOrder.value: 'value',
+  };
+  static String orderString(PcoPeopleFieldOptionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleFieldOptionFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleFieldOptionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleFieldOptionQuery({
+    /// Query by `sequence`
+    /// query on a specific sequence, url example: ?where[sequence]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSequence,
+
+    /// Query by `value`
+    /// query on a specific value, url example: ?where[value]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereValue,
+    PcoPeopleFieldOptionOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereSequence != null)
+      where.add(PlanningCenterApiWhere.parse('sequence', whereSequence));
+    if (whereValue != null)
+      where.add(PlanningCenterApiWhere.parse('value', whereValue));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People FieldOption Object
 ///
@@ -19,7 +102,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleFieldOption()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleFieldOption.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleFieldOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,27 +119,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
 /// - `sequence` (rw) -> PCO: `sequence`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -200,16 +261,19 @@ class PcoPeopleFieldOption extends PcoResource {
         'https://api.planningcenteronline.com/people/v2/field_definitions/$fieldDefinitionId/field_options';
     if (value != null) obj._attributes['value'] = value;
     if (sequence != null) obj._attributes['sequence'] = sequence;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -222,9 +286,9 @@ class PcoPeopleFieldOption extends PcoResource {
   /// using a path like this: `/people/v2/field_data/$fieldDataId/field_option`
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromFieldData(
     String fieldDataId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleFieldOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFieldOptionQuery();
 
     var url = '/people/v2/field_data/$fieldDataId/field_option';
 
@@ -237,9 +301,9 @@ class PcoPeopleFieldOption extends PcoResource {
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromFieldDefinition(
     String fieldDefinitionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFieldOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFieldOptionQuery();
 
     var url = '/people/v2/field_definitions/$fieldDefinitionId/field_options';
     if (id != null) url += '/$id';
@@ -252,9 +316,9 @@ class PcoPeopleFieldOption extends PcoResource {
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromTab(
     String tabId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFieldOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFieldOptionQuery();
 
     var url = '/people/v2/tabs/$tabId/field_options';
     if (id != null) url += '/$id';

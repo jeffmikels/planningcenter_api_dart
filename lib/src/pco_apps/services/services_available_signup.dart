@@ -1,9 +1,67 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.556431
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.407768
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesAvailableSignupOrder { none }
+
+/// Possible Inbound Filters:
+/// - `currentOrganization` -> `?filter=current_organization` : -- no description
+enum PcoServicesAvailableSignupFilter { currentOrganization }
+
+/// Creates a [PcoServicesAvailableSignupQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeSignupSheets`: include associated signup_sheets
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesAvailableSignupQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesAvailableSignupQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesAvailableSignupOrder, String> _orderMap = {};
+  static String orderString(PcoServicesAvailableSignupOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesAvailableSignupFilter, String> _filterMap = {
+    PcoServicesAvailableSignupFilter.currentOrganization:
+        'current_organization',
+  };
+  static String filterString(PcoServicesAvailableSignupFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesAvailableSignupQuery({
+    /// include associated signup_sheets
+    /// when true, adds `?include=signup_sheets` to url
+    bool includeSignupSheets = false,
+    PcoServicesAvailableSignupFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeSignupSheets) include.add('signup_sheets');
+  }
+}
 
 /// This class represents a PCO Services AvailableSignup Object
 ///
@@ -19,7 +77,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesAvailableSignup.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesAvailableSignup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,25 +96,6 @@ part of pco;
 /// - `planningCenterUrl` (ro) -> PCO: `planning_center_url`
 /// - `serviceTypeName` (ro) -> PCO: `service_type_name`
 /// - `isSignupsAvailable` (ro) -> PCO: `signups_available`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `signup_sheets`: include associated signup_sheets
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -216,16 +254,19 @@ class PcoServicesAvailableSignup extends PcoResource {
       obj._attributes['service_type_name'] = serviceTypeName;
     if (isSignupsAvailable != null)
       obj._attributes['signups_available'] = isSignupsAvailable;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -242,10 +283,10 @@ class PcoServicesAvailableSignup extends PcoResource {
   static Future<PcoCollection<PcoServicesAvailableSignup>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAvailableSignupQuery? query,
     bool includeSignupSheets = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAvailableSignupQuery();
 
     if (includeSignupSheets) query.include.add('signup_sheets');
     var url = '/services/v2/people/$personId/available_signups';
@@ -261,16 +302,9 @@ class PcoServicesAvailableSignup extends PcoResource {
 
   /// Will get a collection of [PcoServicesSignupSheet] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/available_signups/1/signup_sheets`
-  Future<PcoCollection<PcoServicesSignupSheet>> getSignupSheets({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeScheduledPeople = false,
-    bool includeSignupSheetMetadata = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesAvailableSignup.canInclude);
-    if (includeScheduledPeople) query.include.add('scheduled_people');
-    if (includeSignupSheetMetadata) query.include.add('signup_sheet_metadata');
+  Future<PcoCollection<PcoServicesSignupSheet>> getSignupSheets(
+      {PcoServicesSignupSheetQuery? query}) async {
+    query ??= PcoServicesSignupSheetQuery();
     var url = '$apiEndpoint/signup_sheets';
     return PcoCollection.fromApiCall<PcoServicesSignupSheet>(url,
         query: query, apiVersion: apiVersion);

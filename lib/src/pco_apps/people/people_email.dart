@@ -1,9 +1,133 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.708250
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.574920
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `address` -> `?order=address`
+/// - `createdAt` -> `?order=created_at`
+/// - `location` -> `?order=location`
+/// - `primary` -> `?order=primary`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleEmailOrder { address, createdAt, location, primary, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleEmailFilter { none }
+
+/// Creates a [PcoPeopleEmailQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleEmail] objects can be requested with one or more of the following criteria:
+/// - `whereAddress`: query on a specific address, example: ?where[address]=string
+/// - `whereBlocked`: query on a specific blocked, example: ?where[blocked]=true
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereLocation`: query on a specific location, example: ?where[location]=string
+/// - `wherePrimary`: query on a specific primary, example: ?where[primary]=true
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleEmailOrder.address` : will order by `address`
+/// - `PcoPeopleEmailOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleEmailOrder.location` : will order by `location`
+/// - `PcoPeopleEmailOrder.primary` : will order by `primary`
+/// - `PcoPeopleEmailOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleEmailQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleEmailOrder, String> _orderMap = {
+    PcoPeopleEmailOrder.address: 'address',
+    PcoPeopleEmailOrder.createdAt: 'created_at',
+    PcoPeopleEmailOrder.location: 'location',
+    PcoPeopleEmailOrder.primary: 'primary',
+    PcoPeopleEmailOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleEmailOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleEmailFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleEmailFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleEmailQuery({
+    /// Query by `address`
+    /// query on a specific address, url example: ?where[address]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAddress,
+
+    /// Query by `blocked`
+    /// query on a specific blocked, url example: ?where[blocked]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereBlocked,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `location`
+    /// query on a specific location, url example: ?where[location]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLocation,
+
+    /// Query by `primary`
+    /// query on a specific primary, url example: ?where[primary]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePrimary,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeopleEmailOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereAddress != null)
+      where.add(PlanningCenterApiWhere.parse('address', whereAddress));
+    if (whereBlocked != null)
+      where.add(PlanningCenterApiWhere.parse('blocked', whereBlocked));
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereLocation != null)
+      where.add(PlanningCenterApiWhere.parse('location', whereLocation));
+    if (wherePrimary != null)
+      where.add(PlanningCenterApiWhere.parse('primary', wherePrimary));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Email Object
 ///
@@ -19,7 +143,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleEmail()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleEmail.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleEmail.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,34 +164,6 @@ part of pco;
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isBlocked` (ro) -> PCO: `blocked`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `address`: (URLParameter), query on a specific address, example: ?where[address]=string
-/// - `blocked`: (URLParameter), query on a specific blocked, example: ?where[blocked]=true
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
-/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `address`: (URLParameter), prefix with a hyphen (-address) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
-/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -243,16 +338,19 @@ class PcoPeopleEmail extends PcoResource {
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (isBlocked != null) obj._attributes['blocked'] = isBlocked;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -265,9 +363,9 @@ class PcoPeopleEmail extends PcoResource {
   /// using a path like this: `/people/v2/emails`
   static Future<PcoCollection<PcoPeopleEmail>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleEmailQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleEmailQuery();
 
     var url = '/people/v2/emails';
     if (id != null) url += '/$id';
@@ -280,9 +378,9 @@ class PcoPeopleEmail extends PcoResource {
   static Future<PcoCollection<PcoPeopleEmail>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleEmailQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleEmailQuery();
 
     var url = '/people/v2/people/$personId/emails';
     if (id != null) url += '/$id';
@@ -297,43 +395,9 @@ class PcoPeopleEmail extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/emails/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleEmail.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

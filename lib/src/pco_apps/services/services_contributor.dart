@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.561189
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.412595
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesContributorOrder { createdAt, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesContributorFilter { none }
+
+/// Creates a [PcoServicesContributorQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesContributorOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesContributorOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesContributorQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesContributorOrder, String> _orderMap = {
+    PcoServicesContributorOrder.createdAt: 'created_at',
+    PcoServicesContributorOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesContributorOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesContributorFilter, String> _filterMap = {};
+  static String filterString(PcoServicesContributorFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesContributorQuery({
+    PcoServicesContributorOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Contributor Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesContributor.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesContributor.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,26 +97,6 @@ part of pco;
 /// - `contributableType` (ro) -> PCO: `contributable_type`
 /// - `fullName` (ro) -> PCO: `full_name`
 /// - `photoThumbnailUrl` (ro) -> PCO: `photo_thumbnail_url`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -223,16 +258,19 @@ class PcoServicesContributor extends PcoResource {
     if (fullName != null) obj._attributes['full_name'] = fullName;
     if (photoThumbnailUrl != null)
       obj._attributes['photo_thumbnail_url'] = photoThumbnailUrl;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -248,9 +286,9 @@ class PcoServicesContributor extends PcoResource {
     String serviceTypeId,
     String planId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesContributorQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesContributorQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors';

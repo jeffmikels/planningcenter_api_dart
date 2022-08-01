@@ -1,9 +1,117 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.551217
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.403675
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `attachableType` -> `?order=attachable_type`
+/// - `createdAt` -> `?order=created_at`
+/// - `filename` -> `?order=filename`
+/// - `filetype` -> `?order=filetype`
+/// - `size` -> `?order=size`
+enum PcoServicesAttachmentOrder {
+  attachableType,
+  createdAt,
+  filename,
+  filetype,
+  size
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesAttachmentFilter { none }
+
+/// Creates a [PcoServicesAttachmentQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeZooms`: include associated zooms
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesAttachmentQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesAttachment] objects can be requested with one or more of the following criteria:
+/// - `whereLicensesPurchased`: query on a specific licenses_purchased, example: ?where[licenses_purchased]=1
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesAttachmentOrder.attachableType` : will order by `attachable_type`
+/// - `PcoServicesAttachmentOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesAttachmentOrder.filename` : will order by `filename`
+/// - `PcoServicesAttachmentOrder.filetype` : will order by `filetype`
+/// - `PcoServicesAttachmentOrder.size` : will order by `size`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesAttachmentQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesAttachmentOrder, String> _orderMap = {
+    PcoServicesAttachmentOrder.attachableType: 'attachable_type',
+    PcoServicesAttachmentOrder.createdAt: 'created_at',
+    PcoServicesAttachmentOrder.filename: 'filename',
+    PcoServicesAttachmentOrder.filetype: 'filetype',
+    PcoServicesAttachmentOrder.size: 'size',
+  };
+  static String orderString(PcoServicesAttachmentOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesAttachmentFilter, String> _filterMap = {};
+  static String filterString(PcoServicesAttachmentFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesAttachmentQuery({
+    /// include associated zooms
+    /// when true, adds `?include=zooms` to url
+    bool includeZooms = false,
+
+    /// Query by `licenses_purchased`
+    /// query on a specific licenses_purchased, url example: ?where[licenses_purchased]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLicensesPurchased,
+    PcoServicesAttachmentOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeZooms) include.add('zooms');
+
+    if (whereLicensesPurchased != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'licenses_purchased', whereLicensesPurchased));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Attachment Object
 ///
@@ -19,7 +127,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesAttachment()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesAttachment.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesAttachment.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -59,29 +166,6 @@ part of pco;
 /// - `isHasPreview` (ro) -> PCO: `has_preview`
 /// - `fileUploadIdentifier` (rw) -> PCO: `file_upload_identifier`
 /// - `attachmentTypeIds` (wo) -> PCO: `attachment_type_ids`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `zooms`: include associated zooms
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `licenses_purchased`: (URLParameter), query on a specific licenses_purchased, example: ?where[licenses_purchased]=1
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `attachable_type`: (URLParameter), prefix with a hyphen (-attachable_type) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `filename`: (URLParameter), prefix with a hyphen (-filename) to reverse the order
-/// - `filetype`: (URLParameter), prefix with a hyphen (-filetype) to reverse the order
-/// - `size`: (URLParameter), prefix with a hyphen (-size) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -413,16 +497,19 @@ class PcoServicesAttachment extends PcoResource {
       obj._attributes['file_upload_identifier'] = fileUploadIdentifier;
     if (attachmentTypeIds != null)
       obj._attributes['attachment_type_ids'] = attachmentTypeIds;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -437,10 +524,10 @@ class PcoServicesAttachment extends PcoResource {
     String songId,
     String arrangementId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -458,10 +545,10 @@ class PcoServicesAttachment extends PcoResource {
     String planId,
     String itemId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -478,10 +565,10 @@ class PcoServicesAttachment extends PcoResource {
     String serviceTypeId,
     String planId,
     String itemId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -498,10 +585,10 @@ class PcoServicesAttachment extends PcoResource {
     String serviceTypeId,
     String planId,
     String itemId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -519,10 +606,10 @@ class PcoServicesAttachment extends PcoResource {
     String arrangementId,
     String keyId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -537,10 +624,10 @@ class PcoServicesAttachment extends PcoResource {
   static Future<PcoCollection<PcoServicesAttachment>> getFromMedia(
     String mediaId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/media/$mediaId/attachments';
@@ -566,10 +653,10 @@ class PcoServicesAttachment extends PcoResource {
       getAllAttachmentsFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -585,10 +672,10 @@ class PcoServicesAttachment extends PcoResource {
     String serviceTypeId,
     String planId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -603,10 +690,10 @@ class PcoServicesAttachment extends PcoResource {
   static Future<PcoCollection<PcoServicesAttachment>> getFromServiceType(
     String serviceTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/service_types/$serviceTypeId/attachments';
@@ -620,10 +707,10 @@ class PcoServicesAttachment extends PcoResource {
   static Future<PcoCollection<PcoServicesAttachment>> getFromSong(
     String songId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesAttachmentQuery? query,
     bool includeZooms = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesAttachmentQuery();
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/songs/$songId/attachments';
@@ -639,11 +726,9 @@ class PcoServicesAttachment extends PcoResource {
 
   /// Will get a collection of [PcoServicesZoom] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/attachments/1/zooms`
-  Future<PcoCollection<PcoServicesZoom>> getZooms({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesZoom>> getZooms(
+      {PcoServicesZoomQuery? query}) async {
+    query ??= PcoServicesZoomQuery();
     var url = '$apiEndpoint/zooms';
     return PcoCollection.fromApiCall<PcoServicesZoom>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.552762
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.405496
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesAttachmentActivityOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesAttachmentActivityFilter { none }
+
+/// Creates a [PcoServicesAttachmentActivityQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesAttachmentActivityQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesAttachmentActivityOrder, String> _orderMap = {};
+  static String orderString(PcoServicesAttachmentActivityOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesAttachmentActivityFilter, String> _filterMap = {};
+  static String filterString(PcoServicesAttachmentActivityFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesAttachmentActivityQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services AttachmentActivity Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesAttachmentActivity.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesAttachmentActivity.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,25 +72,6 @@ part of pco;
 /// - `date` (ro) -> PCO: `date`
 /// - `attachmentUrl` (ro) -> PCO: `attachment_url`
 /// - `activityType` (ro) -> PCO: `activity_type`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -188,16 +203,19 @@ class PcoServicesAttachmentActivity extends PcoResource {
     if (attachmentUrl != null)
       obj._attributes['attachment_url'] = attachmentUrl;
     if (activityType != null) obj._attributes['activity_type'] = activityType;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 

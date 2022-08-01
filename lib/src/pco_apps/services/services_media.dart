@@ -1,9 +1,170 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.575846
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.423153
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `title` -> `?order=title`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesMediaOrder { createdAt, title, updatedAt }
+
+/// Possible Inbound Filters:
+/// - `archived` -> `?filter=archived` : -- no description
+/// - `audio` -> `?filter=audio` : -- no description
+/// - `backgroundAudio` -> `?filter=background_audio` : -- no description
+/// - `backgroundImage` -> `?filter=background_image` : -- no description
+/// - `backgroundVideo` -> `?filter=background_video` : -- no description
+/// - `countdown` -> `?filter=countdown` : -- no description
+/// - `document` -> `?filter=document` : -- no description
+/// - `drama` -> `?filter=drama` : -- no description
+/// - `image` -> `?filter=image` : -- no description
+/// - `notArchived` -> `?filter=not_archived` : -- no description
+/// - `powerpoint` -> `?filter=powerpoint` : -- no description
+/// - `songVideo` -> `?filter=song_video` : -- no description
+/// - `video` -> `?filter=video` : -- no description
+enum PcoServicesMediaFilter {
+  archived,
+  audio,
+  backgroundAudio,
+  backgroundImage,
+  backgroundVideo,
+  countdown,
+  document,
+  drama,
+  image,
+  notArchived,
+  powerpoint,
+  songVideo,
+  video
+}
+
+/// Creates a [PcoServicesMediaQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeAttachments`: include associated attachments
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesMediaQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesMedia] objects can be requested with one or more of the following criteria:
+/// - `whereCreatorName`: query on a specific creator_name, example: ?where[creator_name]=string
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereThemes`: query on a specific themes, example: ?where[themes]=string
+/// - `whereTitle`: query on a specific title, example: ?where[title]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesMediaOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesMediaOrder.title` : will order by `title`
+/// - `PcoServicesMediaOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesMediaQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesMediaOrder, String> _orderMap = {
+    PcoServicesMediaOrder.createdAt: 'created_at',
+    PcoServicesMediaOrder.title: 'title',
+    PcoServicesMediaOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesMediaOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesMediaFilter, String> _filterMap = {
+    PcoServicesMediaFilter.archived: 'archived',
+    PcoServicesMediaFilter.audio: 'audio',
+    PcoServicesMediaFilter.backgroundAudio: 'background_audio',
+    PcoServicesMediaFilter.backgroundImage: 'background_image',
+    PcoServicesMediaFilter.backgroundVideo: 'background_video',
+    PcoServicesMediaFilter.countdown: 'countdown',
+    PcoServicesMediaFilter.document: 'document',
+    PcoServicesMediaFilter.drama: 'drama',
+    PcoServicesMediaFilter.image: 'image',
+    PcoServicesMediaFilter.notArchived: 'not_archived',
+    PcoServicesMediaFilter.powerpoint: 'powerpoint',
+    PcoServicesMediaFilter.songVideo: 'song_video',
+    PcoServicesMediaFilter.video: 'video',
+  };
+  static String filterString(PcoServicesMediaFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesMediaQuery({
+    /// include associated attachments
+    /// when true, adds `?include=attachments` to url
+    bool includeAttachments = false,
+
+    /// Query by `creator_name`
+    /// query on a specific creator_name, url example: ?where[creator_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatorName,
+
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `themes`
+    /// query on a specific themes, url example: ?where[themes]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereThemes,
+
+    /// Query by `title`
+    /// query on a specific title, url example: ?where[title]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereTitle,
+    PcoServicesMediaFilter? filterBy,
+    PcoServicesMediaOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAttachments) include.add('attachments');
+
+    if (whereCreatorName != null)
+      where.add(PlanningCenterApiWhere.parse('creator_name', whereCreatorName));
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereThemes != null)
+      where.add(PlanningCenterApiWhere.parse('themes', whereThemes));
+    if (whereTitle != null)
+      where.add(PlanningCenterApiWhere.parse('title', whereTitle));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Media Object
 ///
@@ -19,7 +180,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesMedia()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesMedia.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesMedia.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -54,30 +214,6 @@ part of pco;
 /// - `creatorName` (rw) -> PCO: `creator_name`
 /// - `previewUrl` (ro) -> PCO: `preview_url`
 /// - `imageUrl` (ro) -> PCO: `image_url`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `attachments`: include associated attachments
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `creator_name`: (URLParameter), query on a specific creator_name, example: ?where[creator_name]=string
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `themes`: (URLParameter), query on a specific themes, example: ?where[themes]=string
-/// - `title`: (URLParameter), query on a specific title, example: ?where[title]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `title`: (URLParameter), prefix with a hyphen (-title) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -358,16 +494,19 @@ class PcoServicesMedia extends PcoResource {
     if (creatorName != null) obj._attributes['creator_name'] = creatorName;
     if (previewUrl != null) obj._attributes['preview_url'] = previewUrl;
     if (imageUrl != null) obj._attributes['image_url'] = imageUrl;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -395,10 +534,10 @@ class PcoServicesMedia extends PcoResource {
   /// - `video`
   static Future<PcoCollection<PcoServicesMedia>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesMediaQuery? query,
     bool includeAttachments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesMediaQuery();
 
     if (includeAttachments) query.include.add('attachments');
     var url = '/services/v2/media';
@@ -415,10 +554,10 @@ class PcoServicesMedia extends PcoResource {
     String planId,
     String itemId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesMediaQuery? query,
     bool includeAttachments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesMediaQuery();
 
     if (includeAttachments) query.include.add('attachments');
     var url =
@@ -435,13 +574,9 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
-    PlanningCenterApiQuery? query,
-    bool includeZooms = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeZooms) query.include.add('zooms');
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
+      {PcoServicesAttachmentQuery? query}) async {
+    query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -449,11 +584,9 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesMediaSchedule] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/media_schedules`
-  Future<PcoCollection<PcoServicesMediaSchedule>> getMediaSchedules({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesMediaSchedule>> getMediaSchedules(
+      {PcoServicesMediaScheduleQuery? query}) async {
+    query ??= PcoServicesMediaScheduleQuery();
     var url = '$apiEndpoint/media_schedules';
     return PcoCollection.fromApiCall<PcoServicesMediaSchedule>(url,
         query: query, apiVersion: apiVersion);
@@ -461,11 +594,9 @@ class PcoServicesMedia extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/media/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTag>> getTags(
+      {PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,81 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.790896
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.629506
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+enum PcoCalendarFeedOrder { name }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCalendarFeedFilter { none }
+
+/// Creates a [PcoCalendarFeedQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCalendarFeed] objects can be requested with one or more of the following criteria:
+/// - `whereFeedType`: query on a specific feed_type, example: ?where[feed_type]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarFeedOrder.name` : will order by `name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarFeedQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarFeedOrder, String> _orderMap = {
+    PcoCalendarFeedOrder.name: 'name',
+  };
+  static String orderString(PcoCalendarFeedOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarFeedFilter, String> _filterMap = {};
+  static String filterString(PcoCalendarFeedFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarFeedQuery({
+    /// Query by `feed_type`
+    /// query on a specific feed_type, url example: ?where[feed_type]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFeedType,
+    PcoCalendarFeedOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereFeedType != null)
+      where.add(PlanningCenterApiWhere.parse('feed_type', whereFeedType));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Calendar Feed Object
 ///
@@ -19,7 +91,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoCalendarFeed()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoCalendarFeed.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarFeed.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +112,6 @@ part of pco;
 /// - `importedAt` (ro) -> PCO: `imported_at`
 /// - `isCanDelete` (ro) -> PCO: `can_delete`
 /// - `eventOwnerId` (wo) -> PCO: `event_owner_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `feed_type`: (URLParameter), query on a specific feed_type, example: ?where[feed_type]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -233,16 +285,19 @@ class PcoCalendarFeed extends PcoResource {
       obj._attributes['imported_at'] = importedAt.toIso8601String();
     if (isCanDelete != null) obj._attributes['can_delete'] = isCanDelete;
     if (eventOwnerId != null) obj._attributes['event_owner_id'] = eventOwnerId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -255,9 +310,9 @@ class PcoCalendarFeed extends PcoResource {
   /// using a path like this: `/calendar/v2/feeds`
   static Future<PcoCollection<PcoCalendarFeed>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarFeedQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarFeedQuery();
 
     var url = '/calendar/v2/feeds';
     if (id != null) url += '/$id';
@@ -269,9 +324,9 @@ class PcoCalendarFeed extends PcoResource {
   /// using a path like this: `/calendar/v2/events/$eventId/feed`
   static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(
     String eventId, {
-    PlanningCenterApiQuery? query,
+    PcoCalendarFeedQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarFeedQuery();
 
     var url = '/calendar/v2/events/$eventId/feed';
 

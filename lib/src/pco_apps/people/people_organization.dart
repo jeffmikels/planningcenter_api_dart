@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.733332
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.595336
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleOrganizationOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleOrganizationFilter { none }
+
+/// Creates a [PcoPeopleOrganizationQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleOrganizationQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleOrganizationOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleOrganizationOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleOrganizationFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleOrganizationFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleOrganizationQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People Organization Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleOrganization.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleOrganization.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +75,6 @@ part of pco;
 /// - `timeZone` (ro) -> PCO: `time_zone`
 /// - `contactWebsite` (ro) -> PCO: `contact_website`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -229,16 +244,19 @@ class PcoPeopleOrganization extends PcoResource {
     if (contactWebsite != null)
       obj._attributes['contact_website'] = contactWebsite;
     if (avatarUrl != null) obj._attributes['avatar_url'] = avatarUrl;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -252,9 +270,9 @@ class PcoPeopleOrganization extends PcoResource {
   static Future<PcoCollection<PcoPeopleOrganization>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleOrganizationQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleOrganizationQuery();
 
     var url = '/people/v2/people/$personId/organization';
     if (id != null) url += '/$id';
@@ -269,11 +287,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleAddress] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/addresses`
-  Future<PcoCollection<PcoPeopleAddress>> getAddresses({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleAddress>> getAddresses(
+      {PcoPeopleAddressQuery? query}) async {
+    query ??= PcoPeopleAddressQuery();
     var url = '$apiEndpoint/addresses';
     return PcoCollection.fromApiCall<PcoPeopleAddress>(url,
         query: query, apiVersion: apiVersion);
@@ -281,11 +297,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleAnniversaryCouple] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/anniversary_couples`
-  Future<PcoCollection<PcoPeopleAnniversaryCouple>> getAnniversaryCouples({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleAnniversaryCouple>> getAnniversaryCouples(
+      {PcoPeopleAnniversaryCoupleQuery? query}) async {
+    query ??= PcoPeopleAnniversaryCoupleQuery();
     var url = '$apiEndpoint/anniversary_couples';
     return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url,
         query: query, apiVersion: apiVersion);
@@ -293,11 +307,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/apps`
-  Future<PcoCollection<PcoPeopleApp>> getApps({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleApp>> getApps(
+      {PcoPeopleAppQuery? query}) async {
+    query ??= PcoPeopleAppQuery();
     var url = '$apiEndpoint/apps';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: apiVersion);
@@ -305,11 +317,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleBirthdayPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/birthday_people`
-  Future<PcoCollection<PcoPeopleBirthdayPerson>> getBirthdayPeople({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleBirthdayPerson>> getBirthdayPeople(
+      {PcoPeopleBirthdayPersonQuery? query}) async {
+    query ??= PcoPeopleBirthdayPersonQuery();
     var url = '$apiEndpoint/birthday_people';
     return PcoCollection.fromApiCall<PcoPeopleBirthdayPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -317,16 +327,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCampus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/campuses`
-  Future<PcoCollection<PcoPeopleCampus>> getCampuses({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeLists = false,
-    bool includeServiceTimes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeLists) query.include.add('lists');
-    if (includeServiceTimes) query.include.add('service_times');
+  Future<PcoCollection<PcoPeopleCampus>> getCampuses(
+      {PcoPeopleCampusQuery? query}) async {
+    query ??= PcoPeopleCampusQuery();
     var url = '$apiEndpoint/campuses';
     return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -334,11 +337,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCarrier] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/carriers`
-  Future<PcoCollection<PcoPeopleCarrier>> getCarriers({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleCarrier>> getCarriers(
+      {PcoPeopleCarrierQuery? query}) async {
+    query ??= PcoPeopleCarrierQuery();
     var url = '$apiEndpoint/carriers';
     return PcoCollection.fromApiCall<PcoPeopleCarrier>(url,
         query: query, apiVersion: apiVersion);
@@ -346,11 +347,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleEmail] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/emails`
-  Future<PcoCollection<PcoPeopleEmail>> getEmails({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleEmail>> getEmails(
+      {PcoPeopleEmailQuery? query}) async {
+    query ??= PcoPeopleEmailQuery();
     var url = '$apiEndpoint/emails';
     return PcoCollection.fromApiCall<PcoPeopleEmail>(url,
         query: query, apiVersion: apiVersion);
@@ -358,18 +357,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data`
-  Future<PcoCollection<PcoPeopleFieldDatum>> getFieldData({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldDefinition = false,
-    bool includeFieldOption = false,
-    bool includeTab = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeFieldDefinition) query.include.add('field_definition');
-    if (includeFieldOption) query.include.add('field_option');
-    if (includeTab) query.include.add('tab');
+  Future<PcoCollection<PcoPeopleFieldDatum>> getFieldData(
+      {PcoPeopleFieldDatumQuery? query}) async {
+    query ??= PcoPeopleFieldDatumQuery();
     var url = '$apiEndpoint/field_data';
     return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
         query: query, apiVersion: apiVersion);
@@ -382,16 +372,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// - `include_deleted`
   /// By default, deleted fields are not included. Pass filter=include_deleted to include them.
   ///
-  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinitions({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldOptions = false,
-    bool includeTab = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeFieldOptions) query.include.add('field_options');
-    if (includeTab) query.include.add('tab');
+  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinitions(
+      {PcoPeopleFieldDefinitionQuery? query}) async {
+    query ??= PcoPeopleFieldDefinitionQuery();
     var url = '$apiEndpoint/field_definitions';
     return PcoCollection.fromApiCall<PcoPeopleFieldDefinition>(url,
         query: query, apiVersion: apiVersion);
@@ -407,13 +390,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// - `open`
   /// - `recently_viewed`
   /// - `with_recoverable`
-  Future<PcoCollection<PcoPeopleForm>> getForms({
-    PlanningCenterApiQuery? query,
-    bool includeCampus = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeCampus) query.include.add('campus');
+  Future<PcoCollection<PcoPeopleForm>> getForms(
+      {PcoPeopleFormQuery? query}) async {
+    query ??= PcoPeopleFormQuery();
     var url = '$apiEndpoint/forms';
     return PcoCollection.fromApiCall<PcoPeopleForm>(url,
         query: query, apiVersion: apiVersion);
@@ -421,13 +400,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHousehold] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/households`
-  Future<PcoCollection<PcoPeopleHousehold>> getHouseholds({
-    PlanningCenterApiQuery? query,
-    bool includePeople = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePeople) query.include.add('people');
+  Future<PcoCollection<PcoPeopleHousehold>> getHouseholds(
+      {PcoPeopleHouseholdQuery? query}) async {
+    query ??= PcoPeopleHouseholdQuery();
     var url = '$apiEndpoint/households';
     return PcoCollection.fromApiCall<PcoPeopleHousehold>(url,
         query: query, apiVersion: apiVersion);
@@ -435,11 +410,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/inactive_reasons`
-  Future<PcoCollection<PcoPeopleInactiveReason>> getInactiveReasons({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleInactiveReason>> getInactiveReasons(
+      {PcoPeopleInactiveReasonQuery? query}) async {
+    query ??= PcoPeopleInactiveReasonQuery();
     var url = '$apiEndpoint/inactive_reasons';
     return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
         query: query, apiVersion: apiVersion);
@@ -447,13 +420,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleListCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/list_categories`
-  Future<PcoCollection<PcoPeopleListCategory>> getListCategories({
-    PlanningCenterApiQuery? query,
-    bool includeLists = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeLists) query.include.add('lists');
+  Future<PcoCollection<PcoPeopleListCategory>> getListCategories(
+      {PcoPeopleListCategoryQuery? query}) async {
+    query ??= PcoPeopleListCategoryQuery();
     var url = '$apiEndpoint/list_categories';
     return PcoCollection.fromApiCall<PcoPeopleListCategory>(url,
         query: query, apiVersion: apiVersion);
@@ -466,28 +435,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// - `can_manage`
   /// - `recently_viewed`
   /// - `starred`
-  Future<PcoCollection<PcoPeopleList>> getLists({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCampus = false,
-    bool includeCategory = false,
-    bool includeCreatedBy = false,
-    bool includeMailchimpSyncStatus = false,
-    bool includePeople = false,
-    bool includeRules = false,
-    bool includeShares = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeCampus) query.include.add('campus');
-    if (includeCategory) query.include.add('category');
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
-    if (includePeople) query.include.add('people');
-    if (includeRules) query.include.add('rules');
-    if (includeShares) query.include.add('shares');
-    if (includeUpdatedBy) query.include.add('updated_by');
+  Future<PcoCollection<PcoPeopleList>> getLists(
+      {PcoPeopleListQuery? query}) async {
+    query ??= PcoPeopleListQuery();
     var url = '$apiEndpoint/lists';
     return PcoCollection.fromApiCall<PcoPeopleList>(url,
         query: query, apiVersion: apiVersion);
@@ -495,11 +445,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/marital_statuses`
-  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatuses({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleMaritalStatus>> getMaritalStatuses(
+      {PcoPeopleMaritalStatusQuery? query}) async {
+    query ??= PcoPeopleMaritalStatusQuery();
     var url = '$apiEndpoint/marital_statuses';
     return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
         query: query, apiVersion: apiVersion);
@@ -507,18 +455,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/message_groups`
-  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeApp = false,
-    bool includeFrom = false,
-    bool includeMessages = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeApp) query.include.add('app');
-    if (includeFrom) query.include.add('from');
-    if (includeMessages) query.include.add('messages');
+  Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroups(
+      {PcoPeopleMessageGroupQuery? query}) async {
+    query ??= PcoPeopleMessageGroupQuery();
     var url = '$apiEndpoint/message_groups';
     return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -529,16 +468,9 @@ class PcoPeopleOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `created_after`
-  Future<PcoCollection<PcoPeopleMessage>> getMessages({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeMessageGroup = false,
-    bool includeTo = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeMessageGroup) query.include.add('message_group');
-    if (includeTo) query.include.add('to');
+  Future<PcoCollection<PcoPeopleMessage>> getMessages(
+      {PcoPeopleMessageQuery? query}) async {
+    query ??= PcoPeopleMessageQuery();
     var url = '$apiEndpoint/messages';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: apiVersion);
@@ -546,11 +478,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNamePrefix] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/name_prefixes`
-  Future<PcoCollection<PcoPeopleNamePrefix>> getNamePrefixes({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNamePrefix>> getNamePrefixes(
+      {PcoPeopleNamePrefixQuery? query}) async {
+    query ??= PcoPeopleNamePrefixQuery();
     var url = '$apiEndpoint/name_prefixes';
     return PcoCollection.fromApiCall<PcoPeopleNamePrefix>(url,
         query: query, apiVersion: apiVersion);
@@ -558,11 +488,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/name_suffixes`
-  Future<PcoCollection<PcoPeopleNameSuffix>> getNameSuffixes({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNameSuffix>> getNameSuffixes(
+      {PcoPeopleNameSuffixQuery? query}) async {
+    query ??= PcoPeopleNameSuffixQuery();
     var url = '$apiEndpoint/name_suffixes';
     return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
         query: query, apiVersion: apiVersion);
@@ -570,18 +498,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_categories`
-  Future<PcoCollection<PcoPeopleNoteCategory>> getNoteCategories({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeShares = false,
-    bool includeSubscribers = false,
-    bool includeSubscriptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeShares) query.include.add('shares');
-    if (includeSubscribers) query.include.add('subscribers');
-    if (includeSubscriptions) query.include.add('subscriptions');
+  Future<PcoCollection<PcoPeopleNoteCategory>> getNoteCategories(
+      {PcoPeopleNoteCategoryQuery? query}) async {
+    query ??= PcoPeopleNoteCategoryQuery();
     var url = '$apiEndpoint/note_categories';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategory>(url,
         query: query, apiVersion: apiVersion);
@@ -590,11 +509,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_category_subscriptions`
   Future<PcoCollection<PcoPeopleNoteCategorySubscription>>
-      getNoteCategorySubscriptions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+      getNoteCategorySubscriptions(
+          {PcoPeopleNoteCategorySubscriptionQuery? query}) async {
+    query ??= PcoPeopleNoteCategorySubscriptionQuery();
     var url = '$apiEndpoint/note_category_subscriptions';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url,
         query: query, apiVersion: apiVersion);
@@ -602,18 +519,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/notes`
-  Future<PcoCollection<PcoPeopleNote>> getNotes({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCategory = false,
-    bool includeCreatedBy = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeCategory) query.include.add('category');
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleNote>> getNotes(
+      {PcoPeopleNoteQuery? query}) async {
+    query ??= PcoPeopleNoteQuery();
     var url = '$apiEndpoint/notes';
     return PcoCollection.fromApiCall<PcoPeopleNote>(url,
         query: query, apiVersion: apiVersion);
@@ -628,43 +536,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// filter people created in the last 24 hours; pass an additional `time` parameter in ISO 8601 format to specify your own timeframe
   ///
   /// - `organization_admins`
-  Future<PcoCollection<PcoPeoplePerson>> getPeople({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPeople(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -672,11 +546,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePeopleImport] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people_imports`
-  Future<PcoCollection<PcoPeoplePeopleImport>> getPeopleImports({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeoplePeopleImport>> getPeopleImports(
+      {PcoPeoplePeopleImportQuery? query}) async {
+    query ??= PcoPeoplePeopleImportQuery();
     var url = '$apiEndpoint/people_imports';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImport>(url,
         query: query, apiVersion: apiVersion);
@@ -684,11 +556,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePersonMerger] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/person_mergers`
-  Future<PcoCollection<PcoPeoplePersonMerger>> getPersonMergers({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeoplePersonMerger>> getPersonMergers(
+      {PcoPeoplePersonMergerQuery? query}) async {
+    query ??= PcoPeoplePersonMergerQuery();
     var url = '$apiEndpoint/person_mergers';
     return PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url,
         query: query, apiVersion: apiVersion);
@@ -696,16 +566,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleReport] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/reports`
-  Future<PcoCollection<PcoPeopleReport>> getReports({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCreatedBy = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeUpdatedBy) query.include.add('updated_by');
+  Future<PcoCollection<PcoPeopleReport>> getReports(
+      {PcoPeopleReportQuery? query}) async {
+    query ??= PcoPeopleReportQuery();
     var url = '$apiEndpoint/reports';
     return PcoCollection.fromApiCall<PcoPeopleReport>(url,
         query: query, apiVersion: apiVersion);
@@ -713,11 +576,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/school_options`
-  Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolOptions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolOptions(
+      {PcoPeopleSchoolOptionQuery? query}) async {
+    query ??= PcoPeopleSchoolOptionQuery();
     var url = '$apiEndpoint/school_options';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
         query: query, apiVersion: apiVersion);
@@ -725,13 +586,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSocialProfile] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/social_profiles`
-  Future<PcoCollection<PcoPeopleSocialProfile>> getSocialProfiles({
-    PlanningCenterApiQuery? query,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleSocialProfile>> getSocialProfiles(
+      {PcoPeopleSocialProfileQuery? query}) async {
+    query ??= PcoPeopleSocialProfileQuery();
     var url = '$apiEndpoint/social_profiles';
     return PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
         query: query, apiVersion: apiVersion);
@@ -739,11 +596,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleOrganizationStatistic] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/stats`
-  Future<PcoCollection<PcoPeopleOrganizationStatistic>> getStats({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleOrganizationStatistic>> getStats(
+      {PcoPeopleOrganizationStatisticQuery? query}) async {
+    query ??= PcoPeopleOrganizationStatisticQuery();
     var url = '$apiEndpoint/stats';
     return PcoCollection.fromApiCall<PcoPeopleOrganizationStatistic>(url,
         query: query, apiVersion: apiVersion);
@@ -754,16 +609,9 @@ class PcoPeopleOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `with_field_definitions`
-  Future<PcoCollection<PcoPeopleTab>> getTabs({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldDefinitions = false,
-    bool includeFieldOptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeFieldDefinitions) query.include.add('field_definitions');
-    if (includeFieldOptions) query.include.add('field_options');
+  Future<PcoCollection<PcoPeopleTab>> getTabs(
+      {PcoPeopleTabQuery? query}) async {
+    query ??= PcoPeopleTabQuery();
     var url = '$apiEndpoint/tabs';
     return PcoCollection.fromApiCall<PcoPeopleTab>(url,
         query: query, apiVersion: apiVersion);
@@ -777,18 +625,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// - `with_deleted`
   /// - `with_recoverable`
   /// - `with_steps`
-  Future<PcoCollection<PcoPeopleWorkflow>> getWorkflows({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCategory = false,
-    bool includeShares = false,
-    bool includeSteps = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleOrganization.canInclude);
-    if (includeCategory) query.include.add('category');
-    if (includeShares) query.include.add('shares');
-    if (includeSteps) query.include.add('steps');
+  Future<PcoCollection<PcoPeopleWorkflow>> getWorkflows(
+      {PcoPeopleWorkflowQuery? query}) async {
+    query ??= PcoPeopleWorkflowQuery();
     var url = '$apiEndpoint/workflows';
     return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url,
         query: query, apiVersion: apiVersion);

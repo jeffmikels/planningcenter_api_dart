@@ -1,9 +1,109 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.613596
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.452442
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesTagGroupOrder { none }
+
+/// Possible Inbound Filters:
+/// - `arrangement` -> `?filter=arrangement` : -- no description
+/// - `media` -> `?filter=media` : -- no description
+/// - `person` -> `?filter=person` : -- no description
+/// - `song` -> `?filter=song` : -- no description
+enum PcoServicesTagGroupFilter { arrangement, media, person, song }
+
+/// Creates a [PcoServicesTagGroupQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeFolder`: include associated folder
+/// - `includeTags`: include associated tags
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesTagGroupQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesTagGroup] objects can be requested with one or more of the following criteria:
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `whereTagsFor`: query on a specific tags_for, example: ?where[tags_for]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesTagGroupQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesTagGroupOrder, String> _orderMap = {};
+  static String orderString(PcoServicesTagGroupOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesTagGroupFilter, String> _filterMap = {
+    PcoServicesTagGroupFilter.arrangement: 'arrangement',
+    PcoServicesTagGroupFilter.media: 'media',
+    PcoServicesTagGroupFilter.person: 'person',
+    PcoServicesTagGroupFilter.song: 'song',
+  };
+  static String filterString(PcoServicesTagGroupFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesTagGroupQuery({
+    /// include associated folder
+    /// when true, adds `?include=folder` to url
+    bool includeFolder = false,
+
+    /// include associated tags
+    /// when true, adds `?include=tags` to url
+    bool includeTags = false,
+
+    /// when true, adds `?include=folder,tags` to url parameters
+    bool includeAll = false,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `tags_for`
+    /// query on a specific tags_for, url example: ?where[tags_for]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereTagsFor,
+    PcoServicesTagGroupFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeFolder) include.add('folder');
+    if (includeAll || includeTags) include.add('tags');
+
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereTagsFor != null)
+      where.add(PlanningCenterApiWhere.parse('tags_for', whereTagsFor));
+  }
+}
 
 /// This class represents a PCO Services TagGroup Object
 ///
@@ -19,7 +119,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTagGroup.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesTagGroup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,27 +139,6 @@ part of pco;
 /// - `isAllowMultipleSelections` (ro) -> PCO: `allow_multiple_selections`
 /// - `tagsFor` (ro) -> PCO: `tags_for`
 /// - `serviceTypeFolderName` (ro) -> PCO: `service_type_folder_name`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `folder`: include associated folder
-/// - `tags`: include associated tags
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `tags_for`: (URLParameter), query on a specific tags_for, example: ?where[tags_for]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -207,16 +285,19 @@ class PcoServicesTagGroup extends PcoResource {
     if (tagsFor != null) obj._attributes['tags_for'] = tagsFor;
     if (serviceTypeFolderName != null)
       obj._attributes['service_type_folder_name'] = serviceTypeFolderName;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -235,12 +316,12 @@ class PcoServicesTagGroup extends PcoResource {
   /// - `song`
   static Future<PcoCollection<PcoServicesTagGroup>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesTagGroupQuery? query,
     bool includeAll = false,
     bool includeFolder = false,
     bool includeTags = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesTagGroupQuery();
     if (includeAll) query.include.addAll(PcoServicesTagGroup.canInclude);
     if (includeFolder) query.include.add('folder');
     if (includeTags) query.include.add('tags');
@@ -257,13 +338,9 @@ class PcoServicesTagGroup extends PcoResource {
 
   /// Will get a collection of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/tag_groups/1/folder`
-  Future<PcoCollection<PcoServicesFolder>> getFolder({
-    PlanningCenterApiQuery? query,
-    bool includeServiceTypes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeServiceTypes) query.include.add('service_types');
+  Future<PcoCollection<PcoServicesFolder>> getFolder(
+      {PcoServicesFolderQuery? query}) async {
+    query ??= PcoServicesFolderQuery();
     var url = '$apiEndpoint/folder';
     return PcoCollection.fromApiCall<PcoServicesFolder>(url,
         query: query, apiVersion: apiVersion);
@@ -271,11 +348,9 @@ class PcoServicesTagGroup extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/tag_groups/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTag>> getTags(
+      {PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

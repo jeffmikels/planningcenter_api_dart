@@ -1,9 +1,102 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.783275
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.626055
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `resolvedAt` -> `?order=resolved_at`
+enum PcoCalendarConflictOrder { resolvedAt }
+
+/// Possible Inbound Filters:
+/// - `future` -> `?filter=future` : -- no description
+/// - `resolved` -> `?filter=resolved` : -- no description
+/// - `unresolved` -> `?filter=unresolved` : -- no description
+enum PcoCalendarConflictFilter { future, resolved, unresolved }
+
+/// Creates a [PcoCalendarConflictQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeResolvedBy`: include associated resolved_by
+/// - `includeResource`: include associated resource
+/// - `includeWinner`: include associated winner
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCalendarConflictQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarConflictOrder.resolvedAt` : will order by `resolved_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarConflictQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarConflictOrder, String> _orderMap = {
+    PcoCalendarConflictOrder.resolvedAt: 'resolved_at',
+  };
+  static String orderString(PcoCalendarConflictOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarConflictFilter, String> _filterMap = {
+    PcoCalendarConflictFilter.future: 'future',
+    PcoCalendarConflictFilter.resolved: 'resolved',
+    PcoCalendarConflictFilter.unresolved: 'unresolved',
+  };
+  static String filterString(PcoCalendarConflictFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarConflictQuery({
+    /// include associated resolved_by
+    /// when true, adds `?include=resolved_by` to url
+    bool includeResolvedBy = false,
+
+    /// include associated resource
+    /// when true, adds `?include=resource` to url
+    bool includeResource = false,
+
+    /// include associated winner
+    /// when true, adds `?include=winner` to url
+    bool includeWinner = false,
+
+    /// when true, adds `?include=resolved_by,resource,winner` to url parameters
+    bool includeAll = false,
+    PcoCalendarConflictFilter? filterBy,
+    PcoCalendarConflictOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeResolvedBy) include.add('resolved_by');
+    if (includeAll || includeResource) include.add('resource');
+    if (includeAll || includeWinner) include.add('winner');
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Calendar Conflict Object
 ///
@@ -19,7 +112,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarConflict.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarConflict.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,27 +134,6 @@ part of pco;
 /// - `note` (ro) -> PCO: `note`
 /// - `resolvedAt` (ro) -> PCO: `resolved_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `resolved_by`: include associated resolved_by
-/// - `resource`: include associated resource
-/// - `winner`: include associated winner
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `resolved_at`: (URLParameter), prefix with a hyphen (-resolved_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -182,14 +253,15 @@ class PcoCalendarConflict extends PcoResource {
   // typed getters for each relationship
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedResolvedBy<T extends PcoResource>() =>
       (relationships['resolved_by'] as List?)?.cast<T>() ?? [];
+
   PcoCalendarResource? get includedResource =>
       _firstOrNull<PcoCalendarResource>(relationships['resource']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedWinner<T extends PcoResource>() =>
       (relationships['winner'] as List?)?.cast<T>() ?? [];
 
@@ -231,16 +303,19 @@ class PcoCalendarConflict extends PcoResource {
       obj._attributes['resolved_at'] = resolvedAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -258,13 +333,13 @@ class PcoCalendarConflict extends PcoResource {
   /// - `unresolved`
   static Future<PcoCollection<PcoCalendarConflict>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarConflictQuery? query,
     bool includeAll = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarConflictQuery();
     if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
@@ -280,13 +355,13 @@ class PcoCalendarConflict extends PcoResource {
   static Future<PcoCollection<PcoCalendarConflict>> getFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarConflictQuery? query,
     bool includeAll = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarConflictQuery();
     if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
@@ -302,13 +377,13 @@ class PcoCalendarConflict extends PcoResource {
   static Future<PcoCollection<PcoCalendarConflict>> getFromResource(
     String resourceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarConflictQuery? query,
     bool includeAll = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarConflictQuery();
     if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
@@ -326,11 +401,9 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarPerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by`
-  Future<PcoCollection<PcoCalendarPerson>> getResolvedBy({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCalendarPerson>> getResolvedBy(
+      {PcoCalendarPersonQuery? query}) async {
+    query ??= PcoCalendarPersonQuery();
     var url = '$apiEndpoint/resolved_by';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -338,21 +411,9 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource`
-  Future<PcoCollection<PcoCalendarResource>> getResource({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeResourceApprovalGroups = false,
-    bool includeResourceFolder = false,
-    bool includeResourceQuestions = false,
-    bool includeRoomSetups = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
-    if (includeResourceApprovalGroups)
-      query.include.add('resource_approval_groups');
-    if (includeResourceFolder) query.include.add('resource_folder');
-    if (includeResourceQuestions) query.include.add('resource_questions');
-    if (includeRoomSetups) query.include.add('room_setups');
+  Future<PcoCollection<PcoCalendarResource>> getResource(
+      {PcoCalendarResourceQuery? query}) async {
+    query ??= PcoCalendarResourceQuery();
     var url = '$apiEndpoint/resource';
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);
@@ -360,18 +421,9 @@ class PcoCalendarConflict extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEvent] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/conflicts/1/winner`
-  Future<PcoCollection<PcoCalendarEvent>> getWinner({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAttachments = false,
-    bool includeOwner = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
-    if (includeAttachments) query.include.add('attachments');
-    if (includeOwner) query.include.add('owner');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEvent>> getWinner(
+      {PcoCalendarEventQuery? query}) async {
+    query ??= PcoCalendarEventQuery();
     var url = '$apiEndpoint/winner';
     return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
         query: query, apiVersion: apiVersion);

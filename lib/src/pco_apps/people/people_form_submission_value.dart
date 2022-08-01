@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.716029
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.581346
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleFormSubmissionValueOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleFormSubmissionValueFilter { none }
+
+/// Creates a [PcoPeopleFormSubmissionValueQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleFormSubmissionValueQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleFormSubmissionValueOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleFormSubmissionValueOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleFormSubmissionValueFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleFormSubmissionValueFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleFormSubmissionValueQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People FormSubmissionValue Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleFormSubmissionValue.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleFormSubmissionValue.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -36,25 +70,6 @@ part of pco;
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayValue` (ro) -> PCO: `display_value`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -187,16 +202,19 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
     var obj = PcoPeopleFormSubmissionValue.empty();
     obj._id = id;
     if (displayValue != null) obj._attributes['display_value'] = displayValue;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -212,9 +230,9 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
     String formId,
     String formSubmissionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFormSubmissionValueQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFormSubmissionValueQuery();
 
     var url =
         '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';

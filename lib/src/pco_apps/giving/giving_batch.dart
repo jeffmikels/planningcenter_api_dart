@@ -1,9 +1,77 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.812084
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.646271
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoGivingBatchOrder { none }
+
+/// Possible Inbound Filters:
+/// - `committed` -> `?filter=committed` : -- no description
+/// - `inProgress` -> `?filter=in_progress` : -- no description
+enum PcoGivingBatchFilter { committed, inProgress }
+
+/// Creates a [PcoGivingBatchQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeBatchGroup`: include associated batch_group
+/// - `includeOwner`: include associated owner
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGivingBatchQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingBatchQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingBatchOrder, String> _orderMap = {};
+  static String orderString(PcoGivingBatchOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingBatchFilter, String> _filterMap = {
+    PcoGivingBatchFilter.committed: 'committed',
+    PcoGivingBatchFilter.inProgress: 'in_progress',
+  };
+  static String filterString(PcoGivingBatchFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGivingBatchQuery({
+    /// include associated batch_group
+    /// when true, adds `?include=batch_group` to url
+    bool includeBatchGroup = false,
+
+    /// include associated owner
+    /// when true, adds `?include=owner` to url
+    bool includeOwner = false,
+
+    /// when true, adds `?include=batch_group,owner` to url parameters
+    bool includeAll = false,
+    PcoGivingBatchFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeBatchGroup) include.add('batch_group');
+    if (includeAll || includeOwner) include.add('owner');
+  }
+}
 
 /// This class represents a PCO Giving Batch Object
 ///
@@ -19,7 +87,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoGivingBatch()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGivingBatch.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingBatch.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,26 +110,6 @@ part of pco;
 /// - `totalCents` (ro) -> PCO: `total_cents`
 /// - `totalCurrency` (ro) -> PCO: `total_currency`
 /// - `status` (ro) -> PCO: `status`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `batch_group`: include associated batch_group
-/// - `owner`: include associated owner
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -191,7 +238,7 @@ class PcoGivingBatch extends PcoResource {
       _firstOrNull<PcoGivingBatchGroup>(relationships['batch_group']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedOwner<T extends PcoResource>() =>
       (relationships['owner'] as List?)?.cast<T>() ?? [];
 
@@ -244,16 +291,19 @@ class PcoGivingBatch extends PcoResource {
     if (totalCurrency != null)
       obj._attributes['total_currency'] = totalCurrency;
     if (status != null) obj._attributes['status'] = status;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -270,12 +320,12 @@ class PcoGivingBatch extends PcoResource {
   /// - `in_progress`
   static Future<PcoCollection<PcoGivingBatch>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingBatchQuery? query,
     bool includeAll = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingBatchQuery();
     if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
@@ -294,12 +344,12 @@ class PcoGivingBatch extends PcoResource {
   static Future<PcoCollection<PcoGivingBatch>> getFromBatchGroup(
     String batchGroupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingBatchQuery? query,
     bool includeAll = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingBatchQuery();
     if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
@@ -318,12 +368,12 @@ class PcoGivingBatch extends PcoResource {
   static Future<PcoCollection<PcoGivingBatch>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingBatchQuery? query,
     bool includeAll = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingBatchQuery();
     if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
@@ -340,13 +390,9 @@ class PcoGivingBatch extends PcoResource {
 
   /// Will get a collection of [PcoGivingBatchGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batches/1/batch_group`
-  Future<PcoCollection<PcoGivingBatchGroup>> getBatchGroup({
-    PlanningCenterApiQuery? query,
-    bool includeOwner = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeOwner) query.include.add('owner');
+  Future<PcoCollection<PcoGivingBatchGroup>> getBatchGroup(
+      {PcoGivingBatchGroupQuery? query}) async {
+    query ??= PcoGivingBatchGroupQuery();
     var url = '$apiEndpoint/batch_group';
     return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -354,18 +400,9 @@ class PcoGivingBatch extends PcoResource {
 
   /// Will get a collection of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batches/1/donations`
-  Future<PcoCollection<PcoGivingDonation>> getDonations({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeDesignations = false,
-    bool includeLabels = false,
-    bool includeRefund = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
-    if (includeDesignations) query.include.add('designations');
-    if (includeLabels) query.include.add('labels');
-    if (includeRefund) query.include.add('refund');
+  Future<PcoCollection<PcoGivingDonation>> getDonations(
+      {PcoGivingDonationQuery? query}) async {
+    query ??= PcoGivingDonationQuery();
     var url = '$apiEndpoint/donations';
     return PcoCollection.fromApiCall<PcoGivingDonation>(url,
         query: query, apiVersion: apiVersion);
@@ -373,11 +410,9 @@ class PcoGivingBatch extends PcoResource {
 
   /// Will get a collection of [PcoGivingPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/batches/1/owner`
-  Future<PcoCollection<PcoGivingPerson>> getOwner({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingPerson>> getOwner(
+      {PcoGivingPersonQuery? query}) async {
+    query ??= PcoGivingPersonQuery();
     var url = '$apiEndpoint/owner';
     return PcoCollection.fromApiCall<PcoGivingPerson>(url,
         query: query, apiVersion: apiVersion);

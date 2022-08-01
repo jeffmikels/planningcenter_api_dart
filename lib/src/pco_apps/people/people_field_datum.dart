@@ -1,9 +1,164 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.711517
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.575884
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `file` -> `?order=file`
+/// - `fileContentType` -> `?order=file_content_type`
+/// - `fileName` -> `?order=file_name`
+/// - `fileSize` -> `?order=file_size`
+/// - `value` -> `?order=value`
+enum PcoPeopleFieldDatumOrder {
+  file,
+  fileContentType,
+  fileName,
+  fileSize,
+  value
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleFieldDatumFilter { none }
+
+/// Creates a [PcoPeopleFieldDatumQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeFieldDefinition`: include associated field_definition
+/// - `includeFieldOption`: include associated field_option
+/// - `includeTab`: include associated tab
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleFieldDatumQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleFieldDatum] objects can be requested with one or more of the following criteria:
+/// - `whereFile`: query on a specific file, example: ?where[file]=string
+/// - `whereFileContentType`: query on a specific file_content_type, example: ?where[file_content_type]=string
+/// - `whereFileName`: query on a specific file_name, example: ?where[file_name]=string
+/// - `whereFileSize`: query on a specific file_size, example: ?where[file_size]=1
+/// - `whereValue`: query on a specific value, example: ?where[value]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleFieldDatumOrder.file` : will order by `file`
+/// - `PcoPeopleFieldDatumOrder.fileContentType` : will order by `file_content_type`
+/// - `PcoPeopleFieldDatumOrder.fileName` : will order by `file_name`
+/// - `PcoPeopleFieldDatumOrder.fileSize` : will order by `file_size`
+/// - `PcoPeopleFieldDatumOrder.value` : will order by `value`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleFieldDatumOrder, String> _orderMap = {
+    PcoPeopleFieldDatumOrder.file: 'file',
+    PcoPeopleFieldDatumOrder.fileContentType: 'file_content_type',
+    PcoPeopleFieldDatumOrder.fileName: 'file_name',
+    PcoPeopleFieldDatumOrder.fileSize: 'file_size',
+    PcoPeopleFieldDatumOrder.value: 'value',
+  };
+  static String orderString(PcoPeopleFieldDatumOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleFieldDatumFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleFieldDatumFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleFieldDatumQuery({
+    /// include associated field_definition
+    /// when true, adds `?include=field_definition` to url
+    bool includeFieldDefinition = false,
+
+    /// include associated field_option
+    /// when true, adds `?include=field_option` to url
+    bool includeFieldOption = false,
+
+    /// include associated tab
+    /// when true, adds `?include=tab` to url
+    bool includeTab = false,
+
+    /// when true, adds `?include=field_definition,field_option,tab` to url parameters
+    bool includeAll = false,
+
+    /// Query by `file`
+    /// query on a specific file, url example: ?where[file]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFile,
+
+    /// Query by `file_content_type`
+    /// query on a specific file_content_type, url example: ?where[file_content_type]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFileContentType,
+
+    /// Query by `file_name`
+    /// query on a specific file_name, url example: ?where[file_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFileName,
+
+    /// Query by `file_size`
+    /// query on a specific file_size, url example: ?where[file_size]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFileSize,
+
+    /// Query by `value`
+    /// query on a specific value, url example: ?where[value]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereValue,
+    PcoPeopleFieldDatumOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeFieldDefinition) include.add('field_definition');
+    if (includeAll || includeFieldOption) include.add('field_option');
+    if (includeAll || includeTab) include.add('tab');
+
+    if (whereFile != null)
+      where.add(PlanningCenterApiWhere.parse('file', whereFile));
+    if (whereFileContentType != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'file_content_type', whereFileContentType));
+    if (whereFileName != null)
+      where.add(PlanningCenterApiWhere.parse('file_name', whereFileName));
+    if (whereFileSize != null)
+      where.add(PlanningCenterApiWhere.parse('file_size', whereFileSize));
+    if (whereValue != null)
+      where.add(PlanningCenterApiWhere.parse('value', whereValue));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People FieldDatum Object
 ///
@@ -19,7 +174,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleFieldDatum()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleFieldDatum.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleFieldDatum.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,35 +195,6 @@ part of pco;
 /// - `fileContentType` (ro) -> PCO: `file_content_type`
 /// - `fileName` (ro) -> PCO: `file_name`
 /// - `fieldDefinitionId` (wo) -> PCO: `field_definition_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `field_definition`: include associated field_definition
-/// - `field_option`: include associated field_option
-/// - `tab`: include associated tab
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `file`: (URLParameter), query on a specific file, example: ?where[file]=string
-/// - `file_content_type`: (URLParameter), query on a specific file_content_type, example: ?where[file_content_type]=string
-/// - `file_name`: (URLParameter), query on a specific file_name, example: ?where[file_name]=string
-/// - `file_size`: (URLParameter), query on a specific file_size, example: ?where[file_size]=1
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `file`: (URLParameter), prefix with a hyphen (-file) to reverse the order
-/// - `file_content_type`: (URLParameter), prefix with a hyphen (-file_content_type) to reverse the order
-/// - `file_name`: (URLParameter), prefix with a hyphen (-file_name) to reverse the order
-/// - `file_size`: (URLParameter), prefix with a hyphen (-file_size) to reverse the order
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -264,16 +389,19 @@ class PcoPeopleFieldDatum extends PcoResource {
     if (fileName != null) obj._attributes['file_name'] = fileName;
     if (fieldDefinitionId != null)
       obj._attributes['field_definition_id'] = fieldDefinitionId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -286,13 +414,13 @@ class PcoPeopleFieldDatum extends PcoResource {
   /// using a path like this: `/people/v2/field_data`
   static Future<PcoCollection<PcoPeopleFieldDatum>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFieldDatumQuery? query,
     bool includeAll = false,
     bool includeFieldDefinition = false,
     bool includeFieldOption = false,
     bool includeTab = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFieldDatumQuery();
     if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
     if (includeFieldDefinition) query.include.add('field_definition');
     if (includeFieldOption) query.include.add('field_option');
@@ -308,13 +436,13 @@ class PcoPeopleFieldDatum extends PcoResource {
   static Future<PcoCollection<PcoPeopleFieldDatum>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFieldDatumQuery? query,
     bool includeAll = false,
     bool includeFieldDefinition = false,
     bool includeFieldOption = false,
     bool includeTab = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFieldDatumQuery();
     if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
     if (includeFieldDefinition) query.include.add('field_definition');
     if (includeFieldOption) query.include.add('field_option');
@@ -332,16 +460,9 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldDefinition] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/field_definition`
-  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinition({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldOptions = false,
-    bool includeTab = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
-    if (includeFieldOptions) query.include.add('field_options');
-    if (includeTab) query.include.add('tab');
+  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinition(
+      {PcoPeopleFieldDefinitionQuery? query}) async {
+    query ??= PcoPeopleFieldDefinitionQuery();
     var url = '$apiEndpoint/field_definition';
     return PcoCollection.fromApiCall<PcoPeopleFieldDefinition>(url,
         query: query, apiVersion: apiVersion);
@@ -349,11 +470,9 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/field_option`
-  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOption({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOption(
+      {PcoPeopleFieldOptionQuery? query}) async {
+    query ??= PcoPeopleFieldOptionQuery();
     var url = '$apiEndpoint/field_option';
     return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
         query: query, apiVersion: apiVersion);
@@ -361,43 +480,9 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -405,16 +490,8 @@ class PcoPeopleFieldDatum extends PcoResource {
 
   /// Will get a collection of [PcoPeopleTab] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/field_data/1/tab`
-  Future<PcoCollection<PcoPeopleTab>> getTab({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldDefinitions = false,
-    bool includeFieldOptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
-    if (includeFieldDefinitions) query.include.add('field_definitions');
-    if (includeFieldOptions) query.include.add('field_options');
+  Future<PcoCollection<PcoPeopleTab>> getTab({PcoPeopleTabQuery? query}) async {
+    query ??= PcoPeopleTabQuery();
     var url = '$apiEndpoint/tab';
     return PcoCollection.fromApiCall<PcoPeopleTab>(url,
         query: query, apiVersion: apiVersion);

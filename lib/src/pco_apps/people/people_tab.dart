@@ -1,9 +1,132 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.757482
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.605842
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+/// - `sequence` -> `?order=sequence`
+/// - `slug` -> `?order=slug`
+enum PcoPeopleTabOrder { name, sequence, slug }
+
+/// Possible Inbound Filters:
+/// - `withFieldDefinitions` -> `?filter=with_field_definitions` : -- no description
+enum PcoPeopleTabFilter { withFieldDefinitions }
+
+/// Creates a [PcoPeopleTabQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeFieldDefinitions`: include associated field_definitions
+/// - `includeFieldOptions`: include associated field_options
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleTabQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleTab] objects can be requested with one or more of the following criteria:
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `whereSequence`: query on a specific sequence, example: ?where[sequence]=1
+/// - `whereSlug`: query on a specific slug, example: ?where[slug]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleTabOrder.name` : will order by `name`
+/// - `PcoPeopleTabOrder.sequence` : will order by `sequence`
+/// - `PcoPeopleTabOrder.slug` : will order by `slug`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleTabQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleTabOrder, String> _orderMap = {
+    PcoPeopleTabOrder.name: 'name',
+    PcoPeopleTabOrder.sequence: 'sequence',
+    PcoPeopleTabOrder.slug: 'slug',
+  };
+  static String orderString(PcoPeopleTabOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleTabFilter, String> _filterMap = {
+    PcoPeopleTabFilter.withFieldDefinitions: 'with_field_definitions',
+  };
+  static String filterString(PcoPeopleTabFilter filter) => _filterMap[filter]!;
+
+  PcoPeopleTabQuery({
+    /// include associated field_definitions
+    /// when true, adds `?include=field_definitions` to url
+    bool includeFieldDefinitions = false,
+
+    /// include associated field_options
+    /// when true, adds `?include=field_options` to url
+    bool includeFieldOptions = false,
+
+    /// when true, adds `?include=field_definitions,field_options` to url parameters
+    bool includeAll = false,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `sequence`
+    /// query on a specific sequence, url example: ?where[sequence]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSequence,
+
+    /// Query by `slug`
+    /// query on a specific slug, url example: ?where[slug]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSlug,
+    PcoPeopleTabFilter? filterBy,
+    PcoPeopleTabOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeFieldDefinitions) include.add('field_definitions');
+    if (includeAll || includeFieldOptions) include.add('field_options');
+
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereSequence != null)
+      where.add(PlanningCenterApiWhere.parse('sequence', whereSequence));
+    if (whereSlug != null)
+      where.add(PlanningCenterApiWhere.parse('slug', whereSlug));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Tab Object
 ///
@@ -19,7 +142,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleTab()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleTab.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleTab.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,30 +160,6 @@ part of pco;
 /// - `name` (rw) -> PCO: `name`
 /// - `sequence` (rw) -> PCO: `sequence`
 /// - `slug` (rw) -> PCO: `slug`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `field_definitions`: include associated field_definitions
-/// - `field_options`: include associated field_options
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `slug`: (URLParameter), prefix with a hyphen (-slug) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -219,16 +317,19 @@ class PcoPeopleTab extends PcoResource {
     if (name != null) obj._attributes['name'] = name;
     if (sequence != null) obj._attributes['sequence'] = sequence;
     if (slug != null) obj._attributes['slug'] = slug;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -244,12 +345,12 @@ class PcoPeopleTab extends PcoResource {
   /// - `with_field_definitions`
   static Future<PcoCollection<PcoPeopleTab>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleTabQuery? query,
     bool includeAll = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleTabQuery();
     if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
@@ -264,12 +365,12 @@ class PcoPeopleTab extends PcoResource {
   static Future<PcoCollection<PcoPeopleTab>> getFromFieldData(
     String fieldDataId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleTabQuery? query,
     bool includeAll = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleTabQuery();
     if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
@@ -284,12 +385,12 @@ class PcoPeopleTab extends PcoResource {
   static Future<PcoCollection<PcoPeopleTab>> getFromFieldDefinition(
     String fieldDefinitionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleTabQuery? query,
     bool includeAll = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleTabQuery();
     if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
@@ -309,16 +410,9 @@ class PcoPeopleTab extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `with_deleted`
-  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinitions({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeFieldOptions = false,
-    bool includeTab = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
-    if (includeFieldOptions) query.include.add('field_options');
-    if (includeTab) query.include.add('tab');
+  Future<PcoCollection<PcoPeopleFieldDefinition>> getFieldDefinitions(
+      {PcoPeopleFieldDefinitionQuery? query}) async {
+    query ??= PcoPeopleFieldDefinitionQuery();
     var url = '$apiEndpoint/field_definitions';
     return PcoCollection.fromApiCall<PcoPeopleFieldDefinition>(url,
         query: query, apiVersion: apiVersion);
@@ -326,11 +420,9 @@ class PcoPeopleTab extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/tabs/1/field_options`
-  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOptions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleFieldOption>> getFieldOptions(
+      {PcoPeopleFieldOptionQuery? query}) async {
+    query ??= PcoPeopleFieldOptionQuery();
     var url = '$apiEndpoint/field_options';
     return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
         query: query, apiVersion: apiVersion);

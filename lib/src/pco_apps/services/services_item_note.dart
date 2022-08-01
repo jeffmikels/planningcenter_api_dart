@@ -1,9 +1,61 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.568474
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.417677
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesItemNoteOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesItemNoteFilter { none }
+
+/// Creates a [PcoServicesItemNoteQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeItemNoteCategory`: include associated item_note_category
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesItemNoteQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesItemNoteQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesItemNoteOrder, String> _orderMap = {};
+  static String orderString(PcoServicesItemNoteOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesItemNoteFilter, String> _filterMap = {};
+  static String filterString(PcoServicesItemNoteFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesItemNoteQuery({
+    /// include associated item_note_category
+    /// when true, adds `?include=item_note_category` to url
+    bool includeItemNoteCategory = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeItemNoteCategory) include.add('item_note_category');
+  }
+}
 
 /// This class represents a PCO Services ItemNote Object
 ///
@@ -19,7 +71,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesItemNote()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesItemNote.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesItemNote.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +92,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `content` (rw) -> PCO: `content`
 /// - `categoryName` (ro) -> PCO: `category_name`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `item_note_category`: include associated item_note_category
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -218,16 +250,19 @@ class PcoServicesItemNote extends PcoResource {
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (content != null) obj._attributes['content'] = content;
     if (categoryName != null) obj._attributes['category_name'] = categoryName;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -244,10 +279,10 @@ class PcoServicesItemNote extends PcoResource {
     String planId,
     String itemId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesItemNoteQuery? query,
     bool includeItemNoteCategory = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesItemNoteQuery();
 
     if (includeItemNoteCategory) query.include.add('item_note_category');
     var url =
@@ -264,11 +299,9 @@ class PcoServicesItemNote extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category`
-  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory(
+      {PcoServicesItemNoteCategoryQuery? query}) async {
+    query ??= PcoServicesItemNoteCategoryQuery();
     var url = '$apiEndpoint/item_note_category';
     return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
         query: query, apiVersion: apiVersion);

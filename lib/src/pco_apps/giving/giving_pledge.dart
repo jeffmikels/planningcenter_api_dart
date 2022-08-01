@@ -1,9 +1,118 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.817878
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.652221
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoGivingPledgeOrder { createdAt, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGivingPledgeFilter { none }
+
+/// Creates a [PcoGivingPledgeQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeJointGiver`: include associated joint_giver
+/// - `includePledgeCampaign`: include associated pledge_campaign
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGivingPledgeQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGivingPledge] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGivingPledgeOrder.createdAt` : will order by `created_at`
+/// - `PcoGivingPledgeOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingPledgeQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingPledgeOrder, String> _orderMap = {
+    PcoGivingPledgeOrder.createdAt: 'created_at',
+    PcoGivingPledgeOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoGivingPledgeOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingPledgeFilter, String> _filterMap = {};
+  static String filterString(PcoGivingPledgeFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGivingPledgeQuery({
+    /// include associated joint_giver
+    /// when true, adds `?include=joint_giver` to url
+    bool includeJointGiver = false,
+
+    /// include associated pledge_campaign
+    /// when true, adds `?include=pledge_campaign` to url
+    bool includePledgeCampaign = false,
+
+    /// when true, adds `?include=joint_giver,pledge_campaign` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoGivingPledgeOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeJointGiver) include.add('joint_giver');
+    if (includeAll || includePledgeCampaign) include.add('pledge_campaign');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Giving Pledge Object
 ///
@@ -19,7 +128,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoGivingPledge()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGivingPledge.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingPledge.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -44,28 +152,6 @@ part of pco;
 /// - `jointGiverDonatedTotalCents` (ro) -> PCO: `joint_giver_donated_total_cents`
 /// - `personId` (wo) -> PCO: `person_id`
 /// - `pledgeCampaignId` (wo) -> PCO: `pledge_campaign_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `joint_giver`: include associated joint_giver
-/// - `pledge_campaign`: include associated pledge_campaign
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -213,9 +299,10 @@ class PcoGivingPledge extends PcoResource {
   // typed getters for each relationship
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedJointGiver<T extends PcoResource>() =>
       (relationships['joint_giver'] as List?)?.cast<T>() ?? [];
+
   PcoGivingPledgeCampaign? get includedPledgeCampaign =>
       _firstOrNull<PcoGivingPledgeCampaign>(relationships['pledge_campaign']);
 
@@ -271,16 +358,19 @@ class PcoGivingPledge extends PcoResource {
     if (personId != null) obj._attributes['person_id'] = personId;
     if (pledgeCampaignId != null)
       obj._attributes['pledge_campaign_id'] = pledgeCampaignId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -294,12 +384,12 @@ class PcoGivingPledge extends PcoResource {
   static Future<PcoCollection<PcoGivingPledge>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingPledgeQuery? query,
     bool includeAll = false,
     bool includeJointGiver = false,
     bool includePledgeCampaign = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingPledgeQuery();
     if (includeAll) query.include.addAll(PcoGivingPledge.canInclude);
     if (includeJointGiver) query.include.add('joint_giver');
     if (includePledgeCampaign) query.include.add('pledge_campaign');
@@ -314,12 +404,12 @@ class PcoGivingPledge extends PcoResource {
   static Future<PcoCollection<PcoGivingPledge>> getFromPledgeCampaign(
     String pledgeCampaignId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingPledgeQuery? query,
     bool includeAll = false,
     bool includeJointGiver = false,
     bool includePledgeCampaign = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingPledgeQuery();
     if (includeAll) query.include.addAll(PcoGivingPledge.canInclude);
     if (includeJointGiver) query.include.add('joint_giver');
     if (includePledgeCampaign) query.include.add('pledge_campaign');
@@ -336,11 +426,9 @@ class PcoGivingPledge extends PcoResource {
 
   /// Will get a collection of [PcoGivingPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/pledges/1/joint_giver`
-  Future<PcoCollection<PcoGivingPerson>> getJointGiver({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingPerson>> getJointGiver(
+      {PcoGivingPersonQuery? query}) async {
+    query ??= PcoGivingPersonQuery();
     var url = '$apiEndpoint/joint_giver';
     return PcoCollection.fromApiCall<PcoGivingPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -348,13 +436,9 @@ class PcoGivingPledge extends PcoResource {
 
   /// Will get a collection of [PcoGivingPledgeCampaign] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/pledges/1/pledge_campaign`
-  Future<PcoCollection<PcoGivingPledgeCampaign>> getPledgeCampaign({
-    PlanningCenterApiQuery? query,
-    bool includeFund = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeFund) query.include.add('fund');
+  Future<PcoCollection<PcoGivingPledgeCampaign>> getPledgeCampaign(
+      {PcoGivingPledgeCampaignQuery? query}) async {
+    query ??= PcoGivingPledgeCampaignQuery();
     var url = '$apiEndpoint/pledge_campaign';
     return PcoCollection.fromApiCall<PcoGivingPledgeCampaign>(url,
         query: query, apiVersion: apiVersion);

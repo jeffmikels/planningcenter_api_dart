@@ -1,9 +1,151 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.701943
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.567194
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `city` -> `?order=city`
+/// - `createdAt` -> `?order=created_at`
+/// - `location` -> `?order=location`
+/// - `primary` -> `?order=primary`
+/// - `state` -> `?order=state`
+/// - `street` -> `?order=street`
+/// - `updatedAt` -> `?order=updated_at`
+/// - `zip` -> `?order=zip`
+enum PcoPeopleAddressOrder {
+  city,
+  createdAt,
+  location,
+  primary,
+  state,
+  street,
+  updatedAt,
+  zip
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleAddressFilter { none }
+
+/// Creates a [PcoPeopleAddressQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleAddress] objects can be requested with one or more of the following criteria:
+/// - `whereCity`: query on a specific city, example: ?where[city]=string
+/// - `whereLocation`: query on a specific location, example: ?where[location]=string
+/// - `wherePrimary`: query on a specific primary, example: ?where[primary]=true
+/// - `whereState`: query on a specific state, example: ?where[state]=string
+/// - `whereStreet`: query on a specific street, example: ?where[street]=string
+/// - `whereZip`: query on a specific zip, example: ?where[zip]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleAddressOrder.city` : will order by `city`
+/// - `PcoPeopleAddressOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleAddressOrder.location` : will order by `location`
+/// - `PcoPeopleAddressOrder.primary` : will order by `primary`
+/// - `PcoPeopleAddressOrder.state` : will order by `state`
+/// - `PcoPeopleAddressOrder.street` : will order by `street`
+/// - `PcoPeopleAddressOrder.updatedAt` : will order by `updated_at`
+/// - `PcoPeopleAddressOrder.zip` : will order by `zip`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleAddressQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleAddressOrder, String> _orderMap = {
+    PcoPeopleAddressOrder.city: 'city',
+    PcoPeopleAddressOrder.createdAt: 'created_at',
+    PcoPeopleAddressOrder.location: 'location',
+    PcoPeopleAddressOrder.primary: 'primary',
+    PcoPeopleAddressOrder.state: 'state',
+    PcoPeopleAddressOrder.street: 'street',
+    PcoPeopleAddressOrder.updatedAt: 'updated_at',
+    PcoPeopleAddressOrder.zip: 'zip',
+  };
+  static String orderString(PcoPeopleAddressOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleAddressFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleAddressFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleAddressQuery({
+    /// Query by `city`
+    /// query on a specific city, url example: ?where[city]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCity,
+
+    /// Query by `location`
+    /// query on a specific location, url example: ?where[location]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLocation,
+
+    /// Query by `primary`
+    /// query on a specific primary, url example: ?where[primary]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePrimary,
+
+    /// Query by `state`
+    /// query on a specific state, url example: ?where[state]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereState,
+
+    /// Query by `street`
+    /// query on a specific street, url example: ?where[street]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStreet,
+
+    /// Query by `zip`
+    /// query on a specific zip, url example: ?where[zip]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereZip,
+    PcoPeopleAddressOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereCity != null)
+      where.add(PlanningCenterApiWhere.parse('city', whereCity));
+    if (whereLocation != null)
+      where.add(PlanningCenterApiWhere.parse('location', whereLocation));
+    if (wherePrimary != null)
+      where.add(PlanningCenterApiWhere.parse('primary', wherePrimary));
+    if (whereState != null)
+      where.add(PlanningCenterApiWhere.parse('state', whereState));
+    if (whereStreet != null)
+      where.add(PlanningCenterApiWhere.parse('street', whereStreet));
+    if (whereZip != null)
+      where.add(PlanningCenterApiWhere.parse('zip', whereZip));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Address Object
 ///
@@ -19,7 +161,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleAddress()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleAddress.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleAddress.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,37 +184,6 @@ part of pco;
 /// - `isPrimary` (rw) -> PCO: `primary`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `city`: (URLParameter), query on a specific city, example: ?where[city]=string
-/// - `location`: (URLParameter), query on a specific location, example: ?where[location]=string
-/// - `primary`: (URLParameter), query on a specific primary, example: ?where[primary]=true
-/// - `state`: (URLParameter), query on a specific state, example: ?where[state]=string
-/// - `street`: (URLParameter), query on a specific street, example: ?where[street]=string
-/// - `zip`: (URLParameter), query on a specific zip, example: ?where[zip]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `city`: (URLParameter), prefix with a hyphen (-city) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `location`: (URLParameter), prefix with a hyphen (-location) to reverse the order
-/// - `primary`: (URLParameter), prefix with a hyphen (-primary) to reverse the order
-/// - `state`: (URLParameter), prefix with a hyphen (-state) to reverse the order
-/// - `street`: (URLParameter), prefix with a hyphen (-street) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-/// - `zip`: (URLParameter), prefix with a hyphen (-zip) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -283,16 +393,19 @@ class PcoPeopleAddress extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -305,9 +418,9 @@ class PcoPeopleAddress extends PcoResource {
   /// using a path like this: `/people/v2/addresses`
   static Future<PcoCollection<PcoPeopleAddress>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleAddressQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleAddressQuery();
 
     var url = '/people/v2/addresses';
     if (id != null) url += '/$id';
@@ -320,9 +433,9 @@ class PcoPeopleAddress extends PcoResource {
   static Future<PcoCollection<PcoPeopleAddress>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleAddressQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleAddressQuery();
 
     var url = '/people/v2/people/$personId/addresses';
     if (id != null) url += '/$id';

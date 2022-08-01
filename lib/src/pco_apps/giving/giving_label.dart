@@ -1,9 +1,64 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.815479
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.649913
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoGivingLabelOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGivingLabelFilter { none }
+
+/// Creates a [PcoGivingLabelQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGivingLabel] objects can be requested with one or more of the following criteria:
+/// - `whereSlug`: query on a specific slug, example: ?where[slug]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingLabelQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingLabelOrder, String> _orderMap = {};
+  static String orderString(PcoGivingLabelOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingLabelFilter, String> _filterMap = {};
+  static String filterString(PcoGivingLabelFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGivingLabelQuery({
+    /// Query by `slug`
+    /// query on a specific slug, url example: ?where[slug]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSlug,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereSlug != null)
+      where.add(PlanningCenterApiWhere.parse('slug', whereSlug));
+  }
+}
 
 /// This class represents a PCO Giving Label Object
 ///
@@ -19,7 +74,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGivingLabel.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingLabel.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -36,25 +90,6 @@ part of pco;
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `slug` (ro) -> PCO: `slug`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `slug`: (URLParameter), query on a specific slug, example: ?where[slug]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -169,16 +204,19 @@ class PcoGivingLabel extends PcoResource {
     var obj = PcoGivingLabel.empty();
     obj._id = id;
     if (slug != null) obj._attributes['slug'] = slug;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -191,9 +229,9 @@ class PcoGivingLabel extends PcoResource {
   /// using a path like this: `/giving/v2/labels`
   static Future<PcoCollection<PcoGivingLabel>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingLabelQuery();
 
     var url = '/giving/v2/labels';
     if (id != null) url += '/$id';
@@ -206,9 +244,9 @@ class PcoGivingLabel extends PcoResource {
   static Future<PcoCollection<PcoGivingLabel>> getFromDonation(
     String donationId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingLabelQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingLabelQuery();
 
     var url = '/giving/v2/donations/$donationId/labels';
     if (id != null) url += '/$id';

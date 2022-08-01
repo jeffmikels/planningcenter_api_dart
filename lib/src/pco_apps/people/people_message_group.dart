@@ -1,9 +1,189 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.726162
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.587663
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `fromAddress` -> `?order=from_address`
+/// - `messageCount` -> `?order=message_count`
+/// - `messageType` -> `?order=message_type`
+/// - `subject` -> `?order=subject`
+/// - `systemMessage` -> `?order=system_message`
+/// - `uuid` -> `?order=uuid`
+enum PcoPeopleMessageGroupOrder {
+  createdAt,
+  fromAddress,
+  messageCount,
+  messageType,
+  subject,
+  systemMessage,
+  uuid
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleMessageGroupFilter { none }
+
+/// Creates a [PcoPeopleMessageGroupQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeApp`: include associated app
+/// - `includeFrom`: include associated from
+/// - `includeMessages`: include associated messages
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleMessageGroupQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleMessageGroup] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereFromAddress`: query on a specific from_address, example: ?where[from_address]=string
+/// - `whereMessageCount`: query on a specific message_count, example: ?where[message_count]=1
+/// - `whereMessageType`: query on a specific message_type, example: ?where[message_type]=string
+/// - `whereSubject`: query on a specific subject, example: ?where[subject]=string
+/// - `whereSystemMessage`: query on a specific system_message, example: ?where[system_message]=true
+/// - `whereUuid`: query on a specific uuid, example: ?where[uuid]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleMessageGroupOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleMessageGroupOrder.fromAddress` : will order by `from_address`
+/// - `PcoPeopleMessageGroupOrder.messageCount` : will order by `message_count`
+/// - `PcoPeopleMessageGroupOrder.messageType` : will order by `message_type`
+/// - `PcoPeopleMessageGroupOrder.subject` : will order by `subject`
+/// - `PcoPeopleMessageGroupOrder.systemMessage` : will order by `system_message`
+/// - `PcoPeopleMessageGroupOrder.uuid` : will order by `uuid`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleMessageGroupQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleMessageGroupOrder, String> _orderMap = {
+    PcoPeopleMessageGroupOrder.createdAt: 'created_at',
+    PcoPeopleMessageGroupOrder.fromAddress: 'from_address',
+    PcoPeopleMessageGroupOrder.messageCount: 'message_count',
+    PcoPeopleMessageGroupOrder.messageType: 'message_type',
+    PcoPeopleMessageGroupOrder.subject: 'subject',
+    PcoPeopleMessageGroupOrder.systemMessage: 'system_message',
+    PcoPeopleMessageGroupOrder.uuid: 'uuid',
+  };
+  static String orderString(PcoPeopleMessageGroupOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleMessageGroupFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleMessageGroupFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleMessageGroupQuery({
+    /// include associated app
+    /// when true, adds `?include=app` to url
+    bool includeApp = false,
+
+    /// include associated from
+    /// when true, adds `?include=from` to url
+    bool includeFrom = false,
+
+    /// include associated messages
+    /// when true, adds `?include=messages` to url
+    bool includeMessages = false,
+
+    /// when true, adds `?include=app,from,messages` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `from_address`
+    /// query on a specific from_address, url example: ?where[from_address]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFromAddress,
+
+    /// Query by `message_count`
+    /// query on a specific message_count, url example: ?where[message_count]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMessageCount,
+
+    /// Query by `message_type`
+    /// query on a specific message_type, url example: ?where[message_type]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMessageType,
+
+    /// Query by `subject`
+    /// query on a specific subject, url example: ?where[subject]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSubject,
+
+    /// Query by `system_message`
+    /// query on a specific system_message, url example: ?where[system_message]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSystemMessage,
+
+    /// Query by `uuid`
+    /// query on a specific uuid, url example: ?where[uuid]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUuid,
+    PcoPeopleMessageGroupOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeApp) include.add('app');
+    if (includeAll || includeFrom) include.add('from');
+    if (includeAll || includeMessages) include.add('messages');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereFromAddress != null)
+      where.add(PlanningCenterApiWhere.parse('from_address', whereFromAddress));
+    if (whereMessageCount != null)
+      where.add(
+          PlanningCenterApiWhere.parse('message_count', whereMessageCount));
+    if (whereMessageType != null)
+      where.add(PlanningCenterApiWhere.parse('message_type', whereMessageType));
+    if (whereSubject != null)
+      where.add(PlanningCenterApiWhere.parse('subject', whereSubject));
+    if (whereSystemMessage != null)
+      where.add(
+          PlanningCenterApiWhere.parse('system_message', whereSystemMessage));
+    if (whereUuid != null)
+      where.add(PlanningCenterApiWhere.parse('uuid', whereUuid));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People MessageGroup Object
 ///
@@ -19,7 +199,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleMessageGroup.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleMessageGroup.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,39 +221,6 @@ part of pco;
 /// - `messageCount` (ro) -> PCO: `message_count`
 /// - `isSystemMessage` (ro) -> PCO: `system_message`
 /// - `createdAt` (ro) -> PCO: `created_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `app`: include associated app
-/// - `from`: include associated from
-/// - `messages`: include associated messages
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `from_address`: (URLParameter), query on a specific from_address, example: ?where[from_address]=string
-/// - `message_count`: (URLParameter), query on a specific message_count, example: ?where[message_count]=1
-/// - `message_type`: (URLParameter), query on a specific message_type, example: ?where[message_type]=string
-/// - `subject`: (URLParameter), query on a specific subject, example: ?where[subject]=string
-/// - `system_message`: (URLParameter), query on a specific system_message, example: ?where[system_message]=true
-/// - `uuid`: (URLParameter), query on a specific uuid, example: ?where[uuid]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `from_address`: (URLParameter), prefix with a hyphen (-from_address) to reverse the order
-/// - `message_count`: (URLParameter), prefix with a hyphen (-message_count) to reverse the order
-/// - `message_type`: (URLParameter), prefix with a hyphen (-message_type) to reverse the order
-/// - `subject`: (URLParameter), prefix with a hyphen (-subject) to reverse the order
-/// - `system_message`: (URLParameter), prefix with a hyphen (-system_message) to reverse the order
-/// - `uuid`: (URLParameter), prefix with a hyphen (-uuid) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -216,9 +362,10 @@ class PcoPeopleMessageGroup extends PcoResource {
       _firstOrNull<PcoPeopleApp>(relationships['app']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedFrom<T extends PcoResource>() =>
       (relationships['from'] as List?)?.cast<T>() ?? [];
+
   List<PcoPeopleMessage> get includedMessages =>
       (relationships['messages'] as List?)?.cast<PcoPeopleMessage>() ?? [];
 
@@ -265,16 +412,19 @@ class PcoPeopleMessageGroup extends PcoResource {
       obj._attributes['system_message'] = isSystemMessage;
     if (createdAt != null)
       obj._attributes['created_at'] = createdAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -287,13 +437,13 @@ class PcoPeopleMessageGroup extends PcoResource {
   /// using a path like this: `/people/v2/message_groups`
   static Future<PcoCollection<PcoPeopleMessageGroup>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleMessageGroupQuery? query,
     bool includeAll = false,
     bool includeApp = false,
     bool includeFrom = false,
     bool includeMessages = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleMessageGroupQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessageGroup.canInclude);
     if (includeApp) query.include.add('app');
     if (includeFrom) query.include.add('from');
@@ -309,13 +459,13 @@ class PcoPeopleMessageGroup extends PcoResource {
   static Future<PcoCollection<PcoPeopleMessageGroup>> getFromMessage(
     String messageId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleMessageGroupQuery? query,
     bool includeAll = false,
     bool includeApp = false,
     bool includeFrom = false,
     bool includeMessages = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleMessageGroupQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessageGroup.canInclude);
     if (includeApp) query.include.add('app');
     if (includeFrom) query.include.add('from');
@@ -331,13 +481,13 @@ class PcoPeopleMessageGroup extends PcoResource {
   static Future<PcoCollection<PcoPeopleMessageGroup>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleMessageGroupQuery? query,
     bool includeAll = false,
     bool includeApp = false,
     bool includeFrom = false,
     bool includeMessages = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleMessageGroupQuery();
     if (includeAll) query.include.addAll(PcoPeopleMessageGroup.canInclude);
     if (includeApp) query.include.add('app');
     if (includeFrom) query.include.add('from');
@@ -355,11 +505,8 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/message_groups/1/app`
-  Future<PcoCollection<PcoPeopleApp>> getApp({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleApp>> getApp({PcoPeopleAppQuery? query}) async {
+    query ??= PcoPeopleAppQuery();
     var url = '$apiEndpoint/app';
     return PcoCollection.fromApiCall<PcoPeopleApp>(url,
         query: query, apiVersion: apiVersion);
@@ -367,43 +514,9 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/message_groups/1/from`
-  Future<PcoCollection<PcoPeoplePerson>> getFrom({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleMessageGroup.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getFrom(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/from';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -411,16 +524,9 @@ class PcoPeopleMessageGroup extends PcoResource {
 
   /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/message_groups/1/messages`
-  Future<PcoCollection<PcoPeopleMessage>> getMessages({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeMessageGroup = false,
-    bool includeTo = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleMessageGroup.canInclude);
-    if (includeMessageGroup) query.include.add('message_group');
-    if (includeTo) query.include.add('to');
+  Future<PcoCollection<PcoPeopleMessage>> getMessages(
+      {PcoPeopleMessageQuery? query}) async {
+    query ??= PcoPeopleMessageQuery();
     var url = '$apiEndpoint/messages';
     return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
         query: query, apiVersion: apiVersion);

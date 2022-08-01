@@ -1,9 +1,90 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.616032
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.453989
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `firstName` -> `?order=first_name`
+/// - `lastName` -> `?order=last_name`
+enum PcoServicesTeamLeaderOrder { firstName, lastName }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesTeamLeaderFilter { none }
+
+/// Creates a [PcoServicesTeamLeaderQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePeople`: include associated people
+/// - `includeTeam`: include associated team
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesTeamLeaderQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesTeamLeaderOrder.firstName` : will order by `first_name`
+/// - `PcoServicesTeamLeaderOrder.lastName` : will order by `last_name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesTeamLeaderOrder, String> _orderMap = {
+    PcoServicesTeamLeaderOrder.firstName: 'first_name',
+    PcoServicesTeamLeaderOrder.lastName: 'last_name',
+  };
+  static String orderString(PcoServicesTeamLeaderOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesTeamLeaderFilter, String> _filterMap = {};
+  static String filterString(PcoServicesTeamLeaderFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesTeamLeaderQuery({
+    /// include associated people
+    /// when true, adds `?include=people` to url
+    bool includePeople = false,
+
+    /// include associated team
+    /// when true, adds `?include=team` to url
+    bool includeTeam = false,
+
+    /// when true, adds `?include=people,team` to url parameters
+    bool includeAll = false,
+    PcoServicesTeamLeaderOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includePeople) include.add('people');
+    if (includeAll || includeTeam) include.add('team');
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services TeamLeader Object
 ///
@@ -19,7 +100,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTeamLeader.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesTeamLeader.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,27 +118,6 @@ part of pco;
 /// - `isSendResponsesForAccepts` (ro) -> PCO: `send_responses_for_accepts`
 /// - `isSendResponsesForDeclines` (ro) -> PCO: `send_responses_for_declines`
 /// - `isSendResponsesForBlockouts` (ro) -> PCO: `send_responses_for_blockouts`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `people`: include associated people
-/// - `team`: include associated team
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -214,16 +273,19 @@ class PcoServicesTeamLeader extends PcoResource {
     if (isSendResponsesForBlockouts != null)
       obj._attributes['send_responses_for_blockouts'] =
           isSendResponsesForBlockouts;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -241,12 +303,12 @@ class PcoServicesTeamLeader extends PcoResource {
   static Future<PcoCollection<PcoServicesTeamLeader>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesTeamLeaderQuery? query,
     bool includeAll = false,
     bool includePeople = false,
     bool includeTeam = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesTeamLeaderQuery();
     if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
     if (includePeople) query.include.add('people');
     if (includeTeam) query.include.add('team');
@@ -261,12 +323,12 @@ class PcoServicesTeamLeader extends PcoResource {
   static Future<PcoCollection<PcoServicesTeamLeader>> getFromTeam(
     String teamId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesTeamLeaderQuery? query,
     bool includeAll = false,
     bool includePeople = false,
     bool includeTeam = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesTeamLeaderQuery();
     if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
     if (includePeople) query.include.add('people');
     if (includeTeam) query.include.add('team');
@@ -283,11 +345,9 @@ class PcoServicesTeamLeader extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people`
-  Future<PcoCollection<PcoServicesPerson>> getPeople({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesPerson>> getPeople(
+      {PcoServicesPersonQuery? query}) async {
+    query ??= PcoServicesPersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -295,23 +355,9 @@ class PcoServicesTeamLeader extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includePeople = false,
-    bool includePersonTeamPositionAssignments = false,
-    bool includeServiceType = false,
-    bool includeTeamLeaders = false,
-    bool includeTeamPositions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
-    if (includePeople) query.include.add('people');
-    if (includePersonTeamPositionAssignments)
-      query.include.add('person_team_position_assignments');
-    if (includeServiceType) query.include.add('service_type');
-    if (includeTeamLeaders) query.include.add('team_leaders');
-    if (includeTeamPositions) query.include.add('team_positions');
+  Future<PcoCollection<PcoServicesTeam>> getTeam(
+      {PcoServicesTeamQuery? query}) async {
+    query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';
     return PcoCollection.fromApiCall<PcoServicesTeam>(url,
         query: query, apiVersion: apiVersion);

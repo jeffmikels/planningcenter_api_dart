@@ -1,9 +1,160 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.814531
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.648873
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `completedAt` -> `?order=completed_at`
+/// - `createdAt` -> `?order=created_at`
+/// - `receivedAt` -> `?order=received_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoGivingDonationOrder { completedAt, createdAt, receivedAt, updatedAt }
+
+/// Possible Inbound Filters:
+/// - `succeeded` -> `?filter=succeeded` : -- no description
+enum PcoGivingDonationFilter { succeeded }
+
+/// Creates a [PcoGivingDonationQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeDesignations`: include associated designations
+/// - `includeLabels`: include associated labels
+/// - `includeRefund`: include associated refund
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGivingDonationQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGivingDonation] objects can be requested with one or more of the following criteria:
+/// - `whereCompletedAt`: query on a specific completed_at, example: ?where[completed_at]=2000-01-01T12:00:00Z
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `wherePaymentMethod`: query on a specific payment_method, example: ?where[payment_method]=value
+/// - `whereReceivedAt`: query on a specific received_at, example: ?where[received_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGivingDonationOrder.completedAt` : will order by `completed_at`
+/// - `PcoGivingDonationOrder.createdAt` : will order by `created_at`
+/// - `PcoGivingDonationOrder.receivedAt` : will order by `received_at`
+/// - `PcoGivingDonationOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGivingDonationQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGivingDonationOrder, String> _orderMap = {
+    PcoGivingDonationOrder.completedAt: 'completed_at',
+    PcoGivingDonationOrder.createdAt: 'created_at',
+    PcoGivingDonationOrder.receivedAt: 'received_at',
+    PcoGivingDonationOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoGivingDonationOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGivingDonationFilter, String> _filterMap = {
+    PcoGivingDonationFilter.succeeded: 'succeeded',
+  };
+  static String filterString(PcoGivingDonationFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGivingDonationQuery({
+    /// include associated designations
+    /// when true, adds `?include=designations` to url
+    bool includeDesignations = false,
+
+    /// include associated labels
+    /// when true, adds `?include=labels` to url
+    bool includeLabels = false,
+
+    /// include associated refund
+    /// when true, adds `?include=refund` to url
+    bool includeRefund = false,
+
+    /// when true, adds `?include=designations,labels,refund` to url parameters
+    bool includeAll = false,
+
+    /// Query by `completed_at`
+    /// query on a specific completed_at, url example: ?where[completed_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCompletedAt,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `payment_method`
+    /// query on a specific payment_method, url example: ?where[payment_method]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePaymentMethod,
+
+    /// Query by `received_at`
+    /// query on a specific received_at, url example: ?where[received_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereReceivedAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoGivingDonationFilter? filterBy,
+    PcoGivingDonationOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeDesignations) include.add('designations');
+    if (includeAll || includeLabels) include.add('labels');
+    if (includeAll || includeRefund) include.add('refund');
+
+    if (whereCompletedAt != null)
+      where.add(PlanningCenterApiWhere.parse('completed_at', whereCompletedAt));
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (wherePaymentMethod != null)
+      where.add(
+          PlanningCenterApiWhere.parse('payment_method', wherePaymentMethod));
+    if (whereReceivedAt != null)
+      where.add(PlanningCenterApiWhere.parse('received_at', whereReceivedAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Giving Donation Object
 ///
@@ -19,7 +170,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoGivingDonation()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGivingDonation.fromJson()` constructor.
-/// - Manually create an object using the `PcoGivingDonation.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -115,34 +265,6 @@ part of pco;
 /// - `personId` (wo) -> PCO: `person_id`
 /// - `paymentSourceId` (wo) -> PCO: `payment_source_id`
 /// - `campusId` (wo) -> PCO: `campus_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `designations`: include associated designations
-/// - `labels`: include associated labels
-/// - `refund`: include associated refund
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `completed_at`: (URLParameter), query on a specific completed_at, example: ?where[completed_at]=2000-01-01T12:00:00Z
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `payment_method`: (URLParameter), query on a specific payment_method, example: ?where[payment_method]=value
-/// - `received_at`: (URLParameter), query on a specific received_at, example: ?where[received_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `completed_at`: (URLParameter), prefix with a hyphen (-completed_at) to reverse the order
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `received_at`: (URLParameter), prefix with a hyphen (-received_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -520,16 +642,19 @@ class PcoGivingDonation extends PcoResource {
     if (paymentSourceId != null)
       obj._attributes['payment_source_id'] = paymentSourceId;
     if (campusId != null) obj._attributes['campus_id'] = campusId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -545,13 +670,13 @@ class PcoGivingDonation extends PcoResource {
   /// - `succeeded`
   static Future<PcoCollection<PcoGivingDonation>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDonationQuery? query,
     bool includeAll = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeRefund = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
@@ -567,13 +692,13 @@ class PcoGivingDonation extends PcoResource {
   static Future<PcoCollection<PcoGivingDonation>> getFromBatch(
     String batchId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDonationQuery? query,
     bool includeAll = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeRefund = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
@@ -589,13 +714,13 @@ class PcoGivingDonation extends PcoResource {
   static Future<PcoCollection<PcoGivingDonation>> getFromCampus(
     String campusId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDonationQuery? query,
     bool includeAll = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeRefund = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
@@ -611,13 +736,13 @@ class PcoGivingDonation extends PcoResource {
   static Future<PcoCollection<PcoGivingDonation>> getFromPaymentSource(
     String paymentSourceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDonationQuery? query,
     bool includeAll = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeRefund = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
@@ -633,13 +758,13 @@ class PcoGivingDonation extends PcoResource {
   static Future<PcoCollection<PcoGivingDonation>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGivingDonationQuery? query,
     bool includeAll = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeRefund = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
@@ -657,11 +782,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingCampus] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/campus`
-  Future<PcoCollection<PcoGivingCampus>> getCampus({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingCampus>> getCampus(
+      {PcoGivingCampusQuery? query}) async {
+    query ??= PcoGivingCampusQuery();
     var url = '$apiEndpoint/campus';
     return PcoCollection.fromApiCall<PcoGivingCampus>(url,
         query: query, apiVersion: apiVersion);
@@ -669,11 +792,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingDesignation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/designations`
-  Future<PcoCollection<PcoGivingDesignation>> getDesignations({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingDesignation>> getDesignations(
+      {PcoGivingDesignationQuery? query}) async {
+    query ??= PcoGivingDesignationQuery();
     var url = '$apiEndpoint/designations';
     return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
         query: query, apiVersion: apiVersion);
@@ -681,11 +802,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/labels`
-  Future<PcoCollection<PcoGivingLabel>> getLabels({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGivingLabel>> getLabels(
+      {PcoGivingLabelQuery? query}) async {
+    query ??= PcoGivingLabelQuery();
     var url = '$apiEndpoint/labels';
     return PcoCollection.fromApiCall<PcoGivingLabel>(url,
         query: query, apiVersion: apiVersion);
@@ -693,13 +812,9 @@ class PcoGivingDonation extends PcoResource {
 
   /// Will get a collection of [PcoGivingRefund] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/refund`
-  Future<PcoCollection<PcoGivingRefund>> getRefund({
-    PlanningCenterApiQuery? query,
-    bool includeDesignationRefunds = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeDesignationRefunds) query.include.add('designation_refunds');
+  Future<PcoCollection<PcoGivingRefund>> getRefund(
+      {PcoGivingRefundQuery? query}) async {
+    query ??= PcoGivingRefundQuery();
     var url = '$apiEndpoint/refund';
     return PcoCollection.fromApiCall<PcoGivingRefund>(url,
         query: query, apiVersion: apiVersion);

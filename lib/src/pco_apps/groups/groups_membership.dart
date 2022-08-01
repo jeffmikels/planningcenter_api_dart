@@ -1,9 +1,90 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.839041
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.671155
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `firstName` -> `?order=first_name`
+/// - `joinedAt` -> `?order=joined_at`
+/// - `lastName` -> `?order=last_name`
+/// - `role` -> `?order=role`
+enum PcoGroupsMembershipOrder { firstName, joinedAt, lastName, role }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsMembershipFilter { none }
+
+/// Creates a [PcoGroupsMembershipQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGroupsMembership] objects can be requested with one or more of the following criteria:
+/// - `whereRole`: query on a specific role, example: ?where[role]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsMembershipOrder.firstName` : will order by `first_name`
+/// - `PcoGroupsMembershipOrder.joinedAt` : will order by `joined_at`
+/// - `PcoGroupsMembershipOrder.lastName` : will order by `last_name`
+/// - `PcoGroupsMembershipOrder.role` : will order by `role`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsMembershipQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsMembershipOrder, String> _orderMap = {
+    PcoGroupsMembershipOrder.firstName: 'first_name',
+    PcoGroupsMembershipOrder.joinedAt: 'joined_at',
+    PcoGroupsMembershipOrder.lastName: 'last_name',
+    PcoGroupsMembershipOrder.role: 'role',
+  };
+  static String orderString(PcoGroupsMembershipOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsMembershipFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsMembershipFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsMembershipQuery({
+    /// Query by `role`
+    /// query on a specific role, url example: ?where[role]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereRole,
+    PcoGroupsMembershipOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereRole != null)
+      where.add(PlanningCenterApiWhere.parse('role', whereRole));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Membership Object
 ///
@@ -19,7 +100,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoGroupsMembership()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoGroupsMembership.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsMembership.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -45,28 +125,6 @@ part of pco;
 /// - `phoneNumber` (ro) -> PCO: `phone_number`
 /// - `role` (rw) -> PCO: `role`
 /// - `personId` (wo) -> PCO: `person_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `role`: (URLParameter), query on a specific role, example: ?where[role]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `joined_at`: (URLParameter), prefix with a hyphen (-joined_at) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `role`: (URLParameter), prefix with a hyphen (-role) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -268,16 +326,19 @@ class PcoGroupsMembership extends PcoResource {
     if (phoneNumber != null) obj._attributes['phone_number'] = phoneNumber;
     if (role != null) obj._attributes['role'] = role;
     if (personId != null) obj._attributes['person_id'] = personId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -291,9 +352,9 @@ class PcoGroupsMembership extends PcoResource {
   static Future<PcoCollection<PcoGroupsMembership>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsMembershipQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsMembershipQuery();
 
     var url = '/groups/v2/groups/$groupId/memberships';
     if (id != null) url += '/$id';
@@ -306,9 +367,9 @@ class PcoGroupsMembership extends PcoResource {
   static Future<PcoCollection<PcoGroupsMembership>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsMembershipQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsMembershipQuery();
 
     var url = '/groups/v2/people/$personId/memberships';
     if (id != null) url += '/$id';
@@ -323,16 +384,9 @@ class PcoGroupsMembership extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups/1/memberships/1/group`
-  Future<PcoCollection<PcoGroupsGroup>> getGroup({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroupType = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsMembership.canInclude);
-    if (includeGroupType) query.include.add('group_type');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsGroup>> getGroup(
+      {PcoGroupsGroupQuery? query}) async {
+    query ??= PcoGroupsGroupQuery();
     var url = '$apiEndpoint/group';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: apiVersion);

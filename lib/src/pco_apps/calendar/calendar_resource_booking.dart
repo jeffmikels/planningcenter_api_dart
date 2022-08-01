@@ -1,9 +1,182 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.795126
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.633297
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `endsAt` -> `?order=ends_at`
+/// - `startsAt` -> `?order=starts_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoCalendarResourceBookingOrder { createdAt, endsAt, startsAt, updatedAt }
+
+/// Possible Inbound Filters:
+/// - `approved` -> `?filter=approved` : -- no description
+/// - `approvedPending` -> `?filter=approved_pending` : -- no description
+/// - `approvedPendingRejected` -> `?filter=approved_pending_rejected` : -- no description
+/// - `approvedRejected` -> `?filter=approved_rejected` : -- no description
+/// - `future` -> `?filter=future` : -- no description
+/// - `pending` -> `?filter=pending` : -- no description
+/// - `pendingRejected` -> `?filter=pending_rejected` : -- no description
+/// - `rejected` -> `?filter=rejected` : -- no description
+/// - `resources` -> `?filter=resources` : -- no description
+/// - `rooms` -> `?filter=rooms` : -- no description
+enum PcoCalendarResourceBookingFilter {
+  approved,
+  approvedPending,
+  approvedPendingRejected,
+  approvedRejected,
+  future,
+  pending,
+  pendingRejected,
+  rejected,
+  resources,
+  rooms
+}
+
+/// Creates a [PcoCalendarResourceBookingQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeEventInstance`: include associated event_instance
+/// - `includeEventResourceRequest`: include associated event_resource_request
+/// - `includeResource`: include associated resource
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCalendarResourceBookingQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCalendarResourceBooking] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereEndsAt`: query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
+/// - `whereStartsAt`: query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarResourceBookingOrder.createdAt` : will order by `created_at`
+/// - `PcoCalendarResourceBookingOrder.endsAt` : will order by `ends_at`
+/// - `PcoCalendarResourceBookingOrder.startsAt` : will order by `starts_at`
+/// - `PcoCalendarResourceBookingOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarResourceBookingQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarResourceBookingOrder, String> _orderMap = {
+    PcoCalendarResourceBookingOrder.createdAt: 'created_at',
+    PcoCalendarResourceBookingOrder.endsAt: 'ends_at',
+    PcoCalendarResourceBookingOrder.startsAt: 'starts_at',
+    PcoCalendarResourceBookingOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoCalendarResourceBookingOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarResourceBookingFilter, String> _filterMap = {
+    PcoCalendarResourceBookingFilter.approved: 'approved',
+    PcoCalendarResourceBookingFilter.approvedPending: 'approved_pending',
+    PcoCalendarResourceBookingFilter.approvedPendingRejected:
+        'approved_pending_rejected',
+    PcoCalendarResourceBookingFilter.approvedRejected: 'approved_rejected',
+    PcoCalendarResourceBookingFilter.future: 'future',
+    PcoCalendarResourceBookingFilter.pending: 'pending',
+    PcoCalendarResourceBookingFilter.pendingRejected: 'pending_rejected',
+    PcoCalendarResourceBookingFilter.rejected: 'rejected',
+    PcoCalendarResourceBookingFilter.resources: 'resources',
+    PcoCalendarResourceBookingFilter.rooms: 'rooms',
+  };
+  static String filterString(PcoCalendarResourceBookingFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarResourceBookingQuery({
+    /// include associated event_instance
+    /// when true, adds `?include=event_instance` to url
+    bool includeEventInstance = false,
+
+    /// include associated event_resource_request
+    /// when true, adds `?include=event_resource_request` to url
+    bool includeEventResourceRequest = false,
+
+    /// include associated resource
+    /// when true, adds `?include=resource` to url
+    bool includeResource = false,
+
+    /// when true, adds `?include=event_instance,event_resource_request,resource` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `ends_at`
+    /// query on a specific ends_at, url example: ?where[ends_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereEndsAt,
+
+    /// Query by `starts_at`
+    /// query on a specific starts_at, url example: ?where[starts_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStartsAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoCalendarResourceBookingFilter? filterBy,
+    PcoCalendarResourceBookingOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeEventInstance) include.add('event_instance');
+    if (includeAll || includeEventResourceRequest)
+      include.add('event_resource_request');
+    if (includeAll || includeResource) include.add('resource');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereEndsAt != null)
+      where.add(PlanningCenterApiWhere.parse('ends_at', whereEndsAt));
+    if (whereStartsAt != null)
+      where.add(PlanningCenterApiWhere.parse('starts_at', whereStartsAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Calendar ResourceBooking Object
 ///
@@ -19,7 +192,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarResourceBooking.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarResourceBooking.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,33 +212,6 @@ part of pco;
 /// - `startsAt` (ro) -> PCO: `starts_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `quantity` (ro) -> PCO: `quantity`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `event_instance`: include associated event_instance
-/// - `event_resource_request`: include associated event_resource_request
-/// - `resource`: include associated resource
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
-/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -247,16 +392,19 @@ class PcoCalendarResourceBooking extends PcoResource {
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (quantity != null) obj._attributes['quantity'] = quantity;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -281,13 +429,13 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `rooms`
   static Future<PcoCollection<PcoCalendarResourceBooking>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceBookingQuery? query,
     bool includeAll = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceBookingQuery();
     if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
@@ -309,13 +457,13 @@ class PcoCalendarResourceBooking extends PcoResource {
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromEventInstance(
     String eventInstanceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceBookingQuery? query,
     bool includeAll = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceBookingQuery();
     if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
@@ -335,13 +483,13 @@ class PcoCalendarResourceBooking extends PcoResource {
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceBookingQuery? query,
     bool includeAll = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceBookingQuery();
     if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
@@ -369,13 +517,13 @@ class PcoCalendarResourceBooking extends PcoResource {
       getFromEventResourceRequest(
     String eventResourceRequestId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceBookingQuery? query,
     bool includeAll = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceBookingQuery();
     if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
@@ -403,13 +551,13 @@ class PcoCalendarResourceBooking extends PcoResource {
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromResource(
     String resourceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarResourceBookingQuery? query,
     bool includeAll = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarResourceBookingQuery();
     if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
@@ -428,20 +576,9 @@ class PcoCalendarResourceBooking extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventInstance] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/event_instance`
-  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstance({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventTimes = false,
-    bool includeResourceBookings = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeResourceBookings) query.include.add('resource_bookings');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstance(
+      {PcoCalendarEventInstanceQuery? query}) async {
+    query ??= PcoCalendarEventInstanceQuery();
     var url = '$apiEndpoint/event_instance';
     return PcoCollection.fromApiCall<PcoCalendarEventInstance>(url,
         query: query, apiVersion: apiVersion);
@@ -450,22 +587,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/event_resource_request`
   Future<PcoCollection<PcoCalendarEventResourceRequest>>
-      getEventResourceRequest({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCreatedBy = false,
-    bool includeEvent = false,
-    bool includeResource = false,
-    bool includeRoomSetup = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeEvent) query.include.add('event');
-    if (includeResource) query.include.add('resource');
-    if (includeRoomSetup) query.include.add('room_setup');
-    if (includeUpdatedBy) query.include.add('updated_by');
+      getEventResourceRequest(
+          {PcoCalendarEventResourceRequestQuery? query}) async {
+    query ??= PcoCalendarEventResourceRequestQuery();
     var url = '$apiEndpoint/event_resource_request';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url,
         query: query, apiVersion: apiVersion);
@@ -473,21 +597,9 @@ class PcoCalendarResourceBooking extends PcoResource {
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/resource`
-  Future<PcoCollection<PcoCalendarResource>> getResource({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeResourceApprovalGroups = false,
-    bool includeResourceFolder = false,
-    bool includeResourceQuestions = false,
-    bool includeRoomSetups = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
-    if (includeResourceApprovalGroups)
-      query.include.add('resource_approval_groups');
-    if (includeResourceFolder) query.include.add('resource_folder');
-    if (includeResourceQuestions) query.include.add('resource_questions');
-    if (includeRoomSetups) query.include.add('room_setups');
+  Future<PcoCollection<PcoCalendarResource>> getResource(
+      {PcoCalendarResourceQuery? query}) async {
+    query ??= PcoCalendarResourceQuery();
     var url = '$apiEndpoint/resource';
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);

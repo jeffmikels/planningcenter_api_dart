@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.724827
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.586143
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleMailchimpSyncStatusOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleMailchimpSyncStatusFilter { none }
+
+/// Creates a [PcoPeopleMailchimpSyncStatusQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleMailchimpSyncStatusOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleMailchimpSyncStatusOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleMailchimpSyncStatusFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleMailchimpSyncStatusFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleMailchimpSyncStatusQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People MailchimpSyncStatus Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleMailchimpSyncStatus.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleMailchimpSyncStatus.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,25 +74,6 @@ part of pco;
 /// - `progress` (ro) -> PCO: `progress`
 /// - `completedAt` (ro) -> PCO: `completed_at`
 /// - `segmentId` (ro) -> PCO: `segment_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +208,19 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
     if (completedAt != null)
       obj._attributes['completed_at'] = completedAt.toIso8601String();
     if (segmentId != null) obj._attributes['segment_id'] = segmentId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -216,9 +234,9 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   static Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getFromList(
     String listId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleMailchimpSyncStatusQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleMailchimpSyncStatusQuery();
 
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';

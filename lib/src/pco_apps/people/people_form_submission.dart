@@ -1,9 +1,100 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.715663
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.580617
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `personFirstName` -> `?order=person.first_name`
+/// - `personLastName` -> `?order=person.last_name`
+enum PcoPeopleFormSubmissionOrder { createdAt, personFirstName, personLastName }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleFormSubmissionFilter { none }
+
+/// Creates a [PcoPeopleFormSubmissionQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeFormFields`: include associated form_fields
+/// - `includeFormSubmissionValues`: include associated form_submission_values
+/// - `includePerson`: include associated person
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleFormSubmissionQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleFormSubmissionOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleFormSubmissionOrder.personFirstName` : will order by `person.first_name`
+/// - `PcoPeopleFormSubmissionOrder.personLastName` : will order by `person.last_name`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleFormSubmissionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleFormSubmissionOrder, String> _orderMap = {
+    PcoPeopleFormSubmissionOrder.createdAt: 'created_at',
+    PcoPeopleFormSubmissionOrder.personFirstName: 'person.first_name',
+    PcoPeopleFormSubmissionOrder.personLastName: 'person.last_name',
+  };
+  static String orderString(PcoPeopleFormSubmissionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleFormSubmissionFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleFormSubmissionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleFormSubmissionQuery({
+    /// include associated form_fields
+    /// when true, adds `?include=form_fields` to url
+    bool includeFormFields = false,
+
+    /// include associated form_submission_values
+    /// when true, adds `?include=form_submission_values` to url
+    bool includeFormSubmissionValues = false,
+
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// when true, adds `?include=form_fields,form_submission_values,person` to url parameters
+    bool includeAll = false,
+    PcoPeopleFormSubmissionOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeFormFields) include.add('form_fields');
+    if (includeAll || includeFormSubmissionValues)
+      include.add('form_submission_values');
+    if (includeAll || includePerson) include.add('person');
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People FormSubmission Object
 ///
@@ -19,7 +110,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleFormSubmission.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleFormSubmission.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,29 +128,6 @@ part of pco;
 /// - `isVerified` (ro) -> PCO: `verified`
 /// - `isRequiresVerification` (ro) -> PCO: `requires_verification`
 /// - `createdAt` (ro) -> PCO: `created_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `form_fields`: include associated form_fields
-/// - `form_submission_values`: include associated form_submission_values
-/// - `person`: include associated person
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `person.first_name`: (URLParameter), prefix with a hyphen (-person.first_name) to reverse the order
-/// - `person.last_name`: (URLParameter), prefix with a hyphen (-person.last_name) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -217,16 +284,19 @@ class PcoPeopleFormSubmission extends PcoResource {
       obj._attributes['requires_verification'] = isRequiresVerification;
     if (createdAt != null)
       obj._attributes['created_at'] = createdAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -240,13 +310,13 @@ class PcoPeopleFormSubmission extends PcoResource {
   static Future<PcoCollection<PcoPeopleFormSubmission>> getFromForm(
     String formId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleFormSubmissionQuery? query,
     bool includeAll = false,
     bool includeFormFields = false,
     bool includeFormSubmissionValues = false,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleFormSubmissionQuery();
     if (includeAll) query.include.addAll(PcoPeopleFormSubmission.canInclude);
     if (includeFormFields) query.include.add('form_fields');
     if (includeFormSubmissionValues)
@@ -265,13 +335,9 @@ class PcoPeopleFormSubmission extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_fields`
-  Future<PcoCollection<PcoPeopleFormField>> getFormFields({
-    PlanningCenterApiQuery? query,
-    bool includeOptions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeOptions) query.include.add('options');
+  Future<PcoCollection<PcoPeopleFormField>> getFormFields(
+      {PcoPeopleFormFieldQuery? query}) async {
+    query ??= PcoPeopleFormFieldQuery();
     var url = '$apiEndpoint/form_fields';
     return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
         query: query, apiVersion: apiVersion);
@@ -279,11 +345,9 @@ class PcoPeopleFormSubmission extends PcoResource {
 
   /// Will get a collection of [PcoPeopleFormSubmissionValue] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values`
-  Future<PcoCollection<PcoPeopleFormSubmissionValue>> getFormSubmissionValues({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleFormSubmissionValue>> getFormSubmissionValues(
+      {PcoPeopleFormSubmissionValueQuery? query}) async {
+    query ??= PcoPeopleFormSubmissionValueQuery();
     var url = '$apiEndpoint/form_submission_values';
     return PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(url,
         query: query, apiVersion: apiVersion);
@@ -291,43 +355,9 @@ class PcoPeopleFormSubmission extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFormSubmission.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

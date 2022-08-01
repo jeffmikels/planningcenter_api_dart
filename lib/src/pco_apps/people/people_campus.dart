@@ -1,9 +1,121 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.704299
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.569654
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `name` -> `?order=name`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleCampusOrder { createdAt, name, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleCampusFilter { none }
+
+/// Creates a [PcoPeopleCampusQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeLists`: include associated lists
+/// - `includeServiceTimes`: include associated service_times
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleCampusQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleCampus] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleCampusOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleCampusOrder.name` : will order by `name`
+/// - `PcoPeopleCampusOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleCampusQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleCampusOrder, String> _orderMap = {
+    PcoPeopleCampusOrder.createdAt: 'created_at',
+    PcoPeopleCampusOrder.name: 'name',
+    PcoPeopleCampusOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleCampusOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleCampusFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleCampusFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleCampusQuery({
+    /// include associated lists
+    /// when true, adds `?include=lists` to url
+    bool includeLists = false,
+
+    /// include associated service_times
+    /// when true, adds `?include=service_times` to url
+    bool includeServiceTimes = false,
+
+    /// when true, adds `?include=lists,service_times` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeopleCampusOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeLists) include.add('lists');
+    if (includeAll || includeServiceTimes) include.add('service_times');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Campus Object
 ///
@@ -19,7 +131,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleCampus()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleCampus.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleCampus.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -66,29 +177,6 @@ part of pco;
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `lists`: include associated lists
-/// - `service_times`: include associated service_times
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -441,16 +529,19 @@ class PcoPeopleCampus extends PcoResource {
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (avatarUrl != null) obj._attributes['avatar_url'] = avatarUrl;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -463,12 +554,12 @@ class PcoPeopleCampus extends PcoResource {
   /// using a path like this: `/people/v2/campuses`
   static Future<PcoCollection<PcoPeopleCampus>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleCampusQuery? query,
     bool includeAll = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleCampusQuery();
     if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
@@ -482,12 +573,12 @@ class PcoPeopleCampus extends PcoResource {
   /// using a path like this: `/people/v2/forms/$formId/campus`
   static Future<PcoCollection<PcoPeopleCampus>> getFromForm(
     String formId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleCampusQuery? query,
     bool includeAll = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleCampusQuery();
     if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
@@ -501,12 +592,12 @@ class PcoPeopleCampus extends PcoResource {
   /// using a path like this: `/people/v2/lists/$listId/campus`
   static Future<PcoCollection<PcoPeopleCampus>> getFromList(
     String listId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleCampusQuery? query,
     bool includeAll = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleCampusQuery();
     if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
@@ -520,12 +611,12 @@ class PcoPeopleCampus extends PcoResource {
   /// using a path like this: `/people/v2/people/$personId/primary_campus`
   static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPerson(
     String personId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleCampusQuery? query,
     bool includeAll = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleCampusQuery();
     if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
@@ -542,28 +633,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/campuses/1/lists`
-  Future<PcoCollection<PcoPeopleList>> getLists({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCampus = false,
-    bool includeCategory = false,
-    bool includeCreatedBy = false,
-    bool includeMailchimpSyncStatus = false,
-    bool includePeople = false,
-    bool includeRules = false,
-    bool includeShares = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
-    if (includeCampus) query.include.add('campus');
-    if (includeCategory) query.include.add('category');
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
-    if (includePeople) query.include.add('people');
-    if (includeRules) query.include.add('rules');
-    if (includeShares) query.include.add('shares');
-    if (includeUpdatedBy) query.include.add('updated_by');
+  Future<PcoCollection<PcoPeopleList>> getLists(
+      {PcoPeopleListQuery? query}) async {
+    query ??= PcoPeopleListQuery();
     var url = '$apiEndpoint/lists';
     return PcoCollection.fromApiCall<PcoPeopleList>(url,
         query: query, apiVersion: apiVersion);
@@ -571,11 +643,9 @@ class PcoPeopleCampus extends PcoResource {
 
   /// Will get a collection of [PcoPeopleServiceTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/campuses/1/service_times`
-  Future<PcoCollection<PcoPeopleServiceTime>> getServiceTimes({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleServiceTime>> getServiceTimes(
+      {PcoPeopleServiceTimeQuery? query}) async {
+    query ??= PcoPeopleServiceTimeQuery();
     var url = '$apiEndpoint/service_times';
     return PcoCollection.fromApiCall<PcoPeopleServiceTime>(url,
         query: query, apiVersion: apiVersion);

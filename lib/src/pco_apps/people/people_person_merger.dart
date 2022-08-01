@@ -1,9 +1,99 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.753076
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.601454
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+enum PcoPeoplePersonMergerOrder { createdAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeoplePersonMergerFilter { none }
+
+/// Creates a [PcoPeoplePersonMergerQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeoplePersonMerger] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `wherePersonToKeepId`: query on a specific person_to_keep_id, example: ?where[person_to_keep_id]=primary_key
+/// - `wherePersonToRemoveId`: query on a specific person_to_remove_id, example: ?where[person_to_remove_id]=primary_key
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeoplePersonMergerOrder.createdAt` : will order by `created_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeoplePersonMergerQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeoplePersonMergerOrder, String> _orderMap = {
+    PcoPeoplePersonMergerOrder.createdAt: 'created_at',
+  };
+  static String orderString(PcoPeoplePersonMergerOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeoplePersonMergerFilter, String> _filterMap = {};
+  static String filterString(PcoPeoplePersonMergerFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeoplePersonMergerQuery({
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `person_to_keep_id`
+    /// query on a specific person_to_keep_id, url example: ?where[person_to_keep_id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePersonToKeepId,
+
+    /// Query by `person_to_remove_id`
+    /// query on a specific person_to_remove_id, url example: ?where[person_to_remove_id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePersonToRemoveId,
+    PcoPeoplePersonMergerOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (wherePersonToKeepId != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'person_to_keep_id', wherePersonToKeepId));
+    if (wherePersonToRemoveId != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'person_to_remove_id', wherePersonToRemoveId));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People PersonMerger Object
 ///
@@ -19,7 +109,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePersonMerger.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeoplePersonMerger.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,27 +127,6 @@ part of pco;
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `personToKeepId` (ro) -> PCO: `person_to_keep_id`
 /// - `personToRemoveId` (ro) -> PCO: `person_to_remove_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `person_to_keep_id`: (URLParameter), query on a specific person_to_keep_id, example: ?where[person_to_keep_id]=primary_key
-/// - `person_to_remove_id`: (URLParameter), query on a specific person_to_remove_id, example: ?where[person_to_remove_id]=primary_key
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -200,16 +268,19 @@ class PcoPeoplePersonMerger extends PcoResource {
       obj._attributes['person_to_keep_id'] = personToKeepId;
     if (personToRemoveId != null)
       obj._attributes['person_to_remove_id'] = personToRemoveId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -222,9 +293,9 @@ class PcoPeoplePersonMerger extends PcoResource {
   /// using a path like this: `/people/v2/person_mergers`
   static Future<PcoCollection<PcoPeoplePersonMerger>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePersonMergerQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePersonMergerQuery();
 
     var url = '/people/v2/person_mergers';
     if (id != null) url += '/$id';

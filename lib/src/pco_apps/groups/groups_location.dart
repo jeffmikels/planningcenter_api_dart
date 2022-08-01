@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.838149
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.670504
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoGroupsLocationOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoGroupsLocationFilter { none }
+
+/// Creates a [PcoGroupsLocationQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsLocationOrder, String> _orderMap = {};
+  static String orderString(PcoGroupsLocationOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsLocationFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsLocationFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsLocationQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Groups Location Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsLocation.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsLocation.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,25 +76,6 @@ part of pco;
 /// - `name` (ro) -> PCO: `name`
 /// - `radius` (ro) -> PCO: `radius`
 /// - `strategy` (ro) -> PCO: `strategy`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -207,16 +222,19 @@ class PcoGroupsLocation extends PcoResource {
     if (name != null) obj._attributes['name'] = name;
     if (radius != null) obj._attributes['radius'] = radius;
     if (strategy != null) obj._attributes['strategy'] = strategy;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -230,9 +248,9 @@ class PcoGroupsLocation extends PcoResource {
   static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsLocationQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsLocationQuery();
 
     var url = '/groups/v2/events/$eventId/location';
     if (id != null) url += '/$id';
@@ -245,9 +263,9 @@ class PcoGroupsLocation extends PcoResource {
   static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsLocationQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsLocationQuery();
 
     var url = '/groups/v2/groups/$groupId/location';
     if (id != null) url += '/$id';

@@ -1,9 +1,73 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.557391
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.408783
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesBlockoutOrder { none }
+
+/// Possible Inbound Filters:
+/// - `future` -> `?filter=future` : -- no description
+/// - `past` -> `?filter=past` : -- no description
+enum PcoServicesBlockoutFilter { future, past }
+
+/// Creates a [PcoServicesBlockoutQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesBlockout] objects can be requested with one or more of the following criteria:
+/// - `whereGroupIdentifier`: query on a specific group_identifier, example: ?where[group_identifier]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesBlockoutQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesBlockoutOrder, String> _orderMap = {};
+  static String orderString(PcoServicesBlockoutOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesBlockoutFilter, String> _filterMap = {
+    PcoServicesBlockoutFilter.future: 'future',
+    PcoServicesBlockoutFilter.past: 'past',
+  };
+  static String filterString(PcoServicesBlockoutFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesBlockoutQuery({
+    /// Query by `group_identifier`
+    /// query on a specific group_identifier, url example: ?where[group_identifier]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereGroupIdentifier,
+    PcoServicesBlockoutFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+
+    if (whereGroupIdentifier != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'group_identifier', whereGroupIdentifier));
+  }
+}
 
 /// This class represents a PCO Services Blockout Object
 ///
@@ -19,7 +83,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesBlockout()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesBlockout.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesBlockout.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -50,25 +113,6 @@ part of pco;
 /// - `startsAt` (rw) -> PCO: `starts_at`
 /// - `endsAt` (rw) -> PCO: `ends_at`
 /// - `isShare` (rw) -> PCO: `share`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `group_identifier`: (URLParameter), query on a specific group_identifier, example: ?where[group_identifier]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -376,16 +420,19 @@ class PcoServicesBlockout extends PcoResource {
       obj._attributes['starts_at'] = startsAt.toIso8601String();
     if (endsAt != null) obj._attributes['ends_at'] = endsAt.toIso8601String();
     if (isShare != null) obj._attributes['share'] = isShare;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -403,9 +450,9 @@ class PcoServicesBlockout extends PcoResource {
   static Future<PcoCollection<PcoServicesBlockout>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesBlockoutQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesBlockoutQuery();
 
     var url = '/services/v2/people/$personId/blockouts';
     if (id != null) url += '/$id';
@@ -420,11 +467,9 @@ class PcoServicesBlockout extends PcoResource {
 
   /// Will get a collection of [PcoServicesBlockoutDate] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates`
-  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesBlockoutDate>> getBlockoutDates(
+      {PcoServicesBlockoutDateQuery? query}) async {
+    query ??= PcoServicesBlockoutDateQuery();
     var url = '$apiEndpoint/blockout_dates';
     return PcoCollection.fromApiCall<PcoServicesBlockoutDate>(url,
         query: query, apiVersion: apiVersion);
@@ -432,11 +477,9 @@ class PcoServicesBlockout extends PcoResource {
 
   /// Will get a collection of [PcoServicesBlockoutException] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_exceptions`
-  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesBlockoutException>> getBlockoutExceptions(
+      {PcoServicesBlockoutExceptionQuery? query}) async {
+    query ??= PcoServicesBlockoutExceptionQuery();
     var url = '$apiEndpoint/blockout_exceptions';
     return PcoCollection.fromApiCall<PcoServicesBlockoutException>(url,
         query: query, apiVersion: apiVersion);

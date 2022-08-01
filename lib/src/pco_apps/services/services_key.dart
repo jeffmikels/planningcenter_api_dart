@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.570508
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.419672
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesKeyOrder { createdAt, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesKeyFilter { none }
+
+/// Creates a [PcoServicesKeyQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesKeyOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesKeyOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesKeyQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesKeyOrder, String> _orderMap = {
+    PcoServicesKeyOrder.createdAt: 'created_at',
+    PcoServicesKeyOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesKeyOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesKeyFilter, String> _filterMap = {};
+  static String filterString(PcoServicesKeyFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesKeyQuery({
+    PcoServicesKeyOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Key Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesKey()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesKey.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesKey.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,26 +98,6 @@ part of pco;
 /// - `startingKey` (rw) -> PCO: `starting_key`
 /// - `isStartingMinor` (ro) -> PCO: `starting_minor`
 /// - `isEndingMinor` (ro) -> PCO: `ending_minor`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -270,16 +305,19 @@ class PcoServicesKey extends PcoResource {
     if (isStartingMinor != null)
       obj._attributes['starting_minor'] = isStartingMinor;
     if (isEndingMinor != null) obj._attributes['ending_minor'] = isEndingMinor;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -293,9 +331,9 @@ class PcoServicesKey extends PcoResource {
   static Future<PcoCollection<PcoServicesKey>> getKeysFromSongAndArrangement(
     String songId,
     String arrangementId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesKeyQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesKeyQuery();
 
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/keys';
 
@@ -309,9 +347,9 @@ class PcoServicesKey extends PcoResource {
     String serviceTypeId,
     String planId,
     String itemId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesKeyQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesKeyQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/key';
@@ -327,13 +365,9 @@ class PcoServicesKey extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
-    PlanningCenterApiQuery? query,
-    bool includeZooms = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeZooms) query.include.add('zooms');
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
+      {PcoServicesAttachmentQuery? query}) async {
+    query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);

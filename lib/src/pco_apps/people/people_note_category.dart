@@ -1,9 +1,164 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.730634
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.592005
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `locked` -> `?order=locked`
+/// - `name` -> `?order=name`
+/// - `organizationId` -> `?order=organization_id`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleNoteCategoryOrder {
+  createdAt,
+  locked,
+  name,
+  organizationId,
+  updatedAt
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleNoteCategoryFilter { none }
+
+/// Creates a [PcoPeopleNoteCategoryQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeShares`: include associated shares
+/// - `includeSubscribers`: include associated subscribers
+/// - `includeSubscriptions`: include associated subscriptions
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleNoteCategoryQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleNoteCategory] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereLocked`: query on a specific locked, example: ?where[locked]=true
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `whereOrganizationId`: query on a specific organization_id, example: ?where[organization_id]=primary_key
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleNoteCategoryOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleNoteCategoryOrder.locked` : will order by `locked`
+/// - `PcoPeopleNoteCategoryOrder.name` : will order by `name`
+/// - `PcoPeopleNoteCategoryOrder.organizationId` : will order by `organization_id`
+/// - `PcoPeopleNoteCategoryOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleNoteCategoryOrder, String> _orderMap = {
+    PcoPeopleNoteCategoryOrder.createdAt: 'created_at',
+    PcoPeopleNoteCategoryOrder.locked: 'locked',
+    PcoPeopleNoteCategoryOrder.name: 'name',
+    PcoPeopleNoteCategoryOrder.organizationId: 'organization_id',
+    PcoPeopleNoteCategoryOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleNoteCategoryOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleNoteCategoryFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleNoteCategoryFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleNoteCategoryQuery({
+    /// include associated shares
+    /// when true, adds `?include=shares` to url
+    bool includeShares = false,
+
+    /// include associated subscribers
+    /// when true, adds `?include=subscribers` to url
+    bool includeSubscribers = false,
+
+    /// include associated subscriptions
+    /// when true, adds `?include=subscriptions` to url
+    bool includeSubscriptions = false,
+
+    /// when true, adds `?include=shares,subscribers,subscriptions` to url parameters
+    bool includeAll = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `locked`
+    /// query on a specific locked, url example: ?where[locked]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLocked,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `organization_id`
+    /// query on a specific organization_id, url example: ?where[organization_id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereOrganizationId,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeopleNoteCategoryOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeShares) include.add('shares');
+    if (includeAll || includeSubscribers) include.add('subscribers');
+    if (includeAll || includeSubscriptions) include.add('subscriptions');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereLocked != null)
+      where.add(PlanningCenterApiWhere.parse('locked', whereLocked));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereOrganizationId != null)
+      where.add(
+          PlanningCenterApiWhere.parse('organization_id', whereOrganizationId));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People NoteCategory Object
 ///
@@ -19,7 +174,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNoteCategory()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNoteCategory.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleNoteCategory.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,35 +194,6 @@ part of pco;
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `organizationId` (ro) -> PCO: `organization_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `shares`: include associated shares
-/// - `subscribers`: include associated subscribers
-/// - `subscriptions`: include associated subscriptions
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `locked`: (URLParameter), query on a specific locked, example: ?where[locked]=true
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `organization_id`: (URLParameter), query on a specific organization_id, example: ?where[organization_id]=primary_key
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `locked`: (URLParameter), prefix with a hyphen (-locked) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `organization_id`: (URLParameter), prefix with a hyphen (-organization_id) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -196,17 +321,17 @@ class PcoPeopleNoteCategory extends PcoResource {
   // typed getters for each relationship
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedShares<T extends PcoResource>() =>
       (relationships['shares'] as List?)?.cast<T>() ?? [];
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedSubscribers<T extends PcoResource>() =>
       (relationships['subscribers'] as List?)?.cast<T>() ?? [];
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedSubscriptions<T extends PcoResource>() =>
       (relationships['subscriptions'] as List?)?.cast<T>() ?? [];
 
@@ -251,16 +376,19 @@ class PcoPeopleNoteCategory extends PcoResource {
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (organizationId != null)
       obj._attributes['organization_id'] = organizationId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -273,13 +401,13 @@ class PcoPeopleNoteCategory extends PcoResource {
   /// using a path like this: `/people/v2/note_categories`
   static Future<PcoCollection<PcoPeopleNoteCategory>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleNoteCategoryQuery? query,
     bool includeAll = false,
     bool includeShares = false,
     bool includeSubscribers = false,
     bool includeSubscriptions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleNoteCategoryQuery();
     if (includeAll) query.include.addAll(PcoPeopleNoteCategory.canInclude);
     if (includeShares) query.include.add('shares');
     if (includeSubscribers) query.include.add('subscribers');
@@ -294,13 +422,13 @@ class PcoPeopleNoteCategory extends PcoResource {
   /// using a path like this: `/people/v2/notes/$noteId/category`
   static Future<PcoCollection<PcoPeopleNoteCategory>> getCategoryFromNote(
     String noteId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleNoteCategoryQuery? query,
     bool includeAll = false,
     bool includeShares = false,
     bool includeSubscribers = false,
     bool includeSubscriptions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleNoteCategoryQuery();
     if (includeAll) query.include.addAll(PcoPeopleNoteCategory.canInclude);
     if (includeShares) query.include.add('shares');
     if (includeSubscribers) query.include.add('subscribers');
@@ -318,11 +446,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategoryShare] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_categories/1/shares`
-  Future<PcoCollection<PcoPeopleNoteCategoryShare>> getShares({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNoteCategoryShare>> getShares(
+      {PcoPeopleNoteCategoryShareQuery? query}) async {
+    query ??= PcoPeopleNoteCategoryShareQuery();
     var url = '$apiEndpoint/shares';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url,
         query: query, apiVersion: apiVersion);
@@ -330,43 +456,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_categories/1/subscribers`
-  Future<PcoCollection<PcoPeoplePerson>> getSubscribers({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNoteCategory.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getSubscribers(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/subscribers';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);
@@ -374,11 +466,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_categories/1/subscriptions`
-  Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getSubscriptions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getSubscriptions(
+      {PcoPeopleNoteCategorySubscriptionQuery? query}) async {
+    query ??= PcoPeopleNoteCategorySubscriptionQuery();
     var url = '$apiEndpoint/subscriptions';
     return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,123 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.755466
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.604154
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `beginningGrade` -> `?order=beginning_grade`
+/// - `endingGrade` -> `?order=ending_grade`
+/// - `sequence` -> `?order=sequence`
+/// - `value` -> `?order=value`
+enum PcoPeopleSchoolOptionOrder { beginningGrade, endingGrade, sequence, value }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleSchoolOptionFilter { none }
+
+/// Creates a [PcoPeopleSchoolOptionQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleSchoolOption] objects can be requested with one or more of the following criteria:
+/// - `whereBeginningGrade`: query on a specific beginning_grade, example: ?where[beginning_grade]=string
+/// - `whereEndingGrade`: query on a specific ending_grade, example: ?where[ending_grade]=string
+/// - `whereSchoolTypes`: query on a specific school_types, example: ?where[school_types]=[]
+/// - `whereSequence`: query on a specific sequence, example: ?where[sequence]=1
+/// - `whereValue`: query on a specific value, example: ?where[value]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleSchoolOptionOrder.beginningGrade` : will order by `beginning_grade`
+/// - `PcoPeopleSchoolOptionOrder.endingGrade` : will order by `ending_grade`
+/// - `PcoPeopleSchoolOptionOrder.sequence` : will order by `sequence`
+/// - `PcoPeopleSchoolOptionOrder.value` : will order by `value`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleSchoolOptionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleSchoolOptionOrder, String> _orderMap = {
+    PcoPeopleSchoolOptionOrder.beginningGrade: 'beginning_grade',
+    PcoPeopleSchoolOptionOrder.endingGrade: 'ending_grade',
+    PcoPeopleSchoolOptionOrder.sequence: 'sequence',
+    PcoPeopleSchoolOptionOrder.value: 'value',
+  };
+  static String orderString(PcoPeopleSchoolOptionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleSchoolOptionFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleSchoolOptionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleSchoolOptionQuery({
+    /// Query by `beginning_grade`
+    /// query on a specific beginning_grade, url example: ?where[beginning_grade]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereBeginningGrade,
+
+    /// Query by `ending_grade`
+    /// query on a specific ending_grade, url example: ?where[ending_grade]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereEndingGrade,
+
+    /// Query by `school_types`
+    /// query on a specific school_types, url example: ?where[school_types]=[]
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSchoolTypes,
+
+    /// Query by `sequence`
+    /// query on a specific sequence, url example: ?where[sequence]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSequence,
+
+    /// Query by `value`
+    /// query on a specific value, url example: ?where[value]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereValue,
+    PcoPeopleSchoolOptionOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereBeginningGrade != null)
+      where.add(
+          PlanningCenterApiWhere.parse('beginning_grade', whereBeginningGrade));
+    if (whereEndingGrade != null)
+      where.add(PlanningCenterApiWhere.parse('ending_grade', whereEndingGrade));
+    if (whereSchoolTypes != null)
+      where.add(PlanningCenterApiWhere.parse('school_types', whereSchoolTypes));
+    if (whereSequence != null)
+      where.add(PlanningCenterApiWhere.parse('sequence', whereSequence));
+    if (whereValue != null)
+      where.add(PlanningCenterApiWhere.parse('value', whereValue));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People SchoolOption Object
 ///
@@ -19,7 +133,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleSchoolOption()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleSchoolOption.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleSchoolOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,32 +153,6 @@ part of pco;
 /// - `beginningGrade` (rw) -> PCO: `beginning_grade`
 /// - `endingGrade` (rw) -> PCO: `ending_grade`
 /// - `schoolTypes` (rw) -> PCO: `school_types`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `beginning_grade`: (URLParameter), query on a specific beginning_grade, example: ?where[beginning_grade]=string
-/// - `ending_grade`: (URLParameter), query on a specific ending_grade, example: ?where[ending_grade]=string
-/// - `school_types`: (URLParameter), query on a specific school_types, example: ?where[school_types]=[]
-/// - `sequence`: (URLParameter), query on a specific sequence, example: ?where[sequence]=1
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `beginning_grade`: (URLParameter), prefix with a hyphen (-beginning_grade) to reverse the order
-/// - `ending_grade`: (URLParameter), prefix with a hyphen (-ending_grade) to reverse the order
-/// - `sequence`: (URLParameter), prefix with a hyphen (-sequence) to reverse the order
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -240,16 +327,19 @@ class PcoPeopleSchoolOption extends PcoResource {
       obj._attributes['beginning_grade'] = beginningGrade;
     if (endingGrade != null) obj._attributes['ending_grade'] = endingGrade;
     if (schoolTypes != null) obj._attributes['school_types'] = schoolTypes;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -262,9 +352,9 @@ class PcoPeopleSchoolOption extends PcoResource {
   /// using a path like this: `/people/v2/school_options`
   static Future<PcoCollection<PcoPeopleSchoolOption>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleSchoolOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleSchoolOptionQuery();
 
     var url = '/people/v2/school_options';
     if (id != null) url += '/$id';
@@ -277,9 +367,9 @@ class PcoPeopleSchoolOption extends PcoResource {
   static Future<PcoCollection<PcoPeopleSchoolOption>> getSchoolFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleSchoolOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleSchoolOptionQuery();
 
     var url = '/people/v2/people/$personId/school';
     if (id != null) url += '/$id';
@@ -293,9 +383,9 @@ class PcoPeopleSchoolOption extends PcoResource {
       getPromotesToSchoolFromSchoolOption(
     String schoolOptionId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleSchoolOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleSchoolOptionQuery();
 
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
     if (id != null) url += '/$id';
@@ -310,11 +400,9 @@ class PcoPeopleSchoolOption extends PcoResource {
 
   /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/school_options/1/promotes_to_school`
-  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeopleSchoolOption>> getPromotesToSchool(
+      {PcoPeopleSchoolOptionQuery? query}) async {
+    query ??= PcoPeopleSchoolOptionQuery();
     var url = '$apiEndpoint/promotes_to_school';
     return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,146 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.835166
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.668356
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `endsAt` -> `?order=ends_at`
+/// - `name` -> `?order=name`
+/// - `startsAt` -> `?order=starts_at`
+enum PcoGroupsEventOrder { endsAt, name, startsAt }
+
+/// Possible Inbound Filters:
+/// - `canceled` -> `?filter=canceled` : -- no description
+/// - `group` -> `?filter=group` : filter events from specific groups; provide an additional `group_id` param
+/// as a comma-separated list of IDs, ex: `?filter=group&group_id=1,2,3`
+///
+/// - `groupType` -> `?filter=group_type` : filter events from specific group types; provide an additional `group_type_id` param
+/// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
+///
+/// - `notCanceled` -> `?filter=not_canceled` : -- no description
+/// - `upcoming` -> `?filter=upcoming` : -- no description
+enum PcoGroupsEventFilter { canceled, group, groupType, notCanceled, upcoming }
+
+/// Creates a [PcoGroupsEventQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeGroup`: include associated group
+/// - `includeLocation`: include associated location
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoGroupsEventQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoGroupsEvent] objects can be requested with one or more of the following criteria:
+/// - `whereEndsAt`: query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `whereStartsAt`: query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoGroupsEventOrder.endsAt` : will order by `ends_at`
+/// - `PcoGroupsEventOrder.name` : will order by `name`
+/// - `PcoGroupsEventOrder.startsAt` : will order by `starts_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoGroupsEventQuery extends PlanningCenterApiQuery {
+  static final Map<PcoGroupsEventOrder, String> _orderMap = {
+    PcoGroupsEventOrder.endsAt: 'ends_at',
+    PcoGroupsEventOrder.name: 'name',
+    PcoGroupsEventOrder.startsAt: 'starts_at',
+  };
+  static String orderString(PcoGroupsEventOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoGroupsEventFilter, String> _filterMap = {
+    PcoGroupsEventFilter.canceled: 'canceled',
+    PcoGroupsEventFilter.group: 'group',
+    PcoGroupsEventFilter.groupType: 'group_type',
+    PcoGroupsEventFilter.notCanceled: 'not_canceled',
+    PcoGroupsEventFilter.upcoming: 'upcoming',
+  };
+  static String filterString(PcoGroupsEventFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoGroupsEventQuery({
+    /// include associated group
+    /// when true, adds `?include=group` to url
+    bool includeGroup = false,
+
+    /// include associated location
+    /// when true, adds `?include=location` to url
+    bool includeLocation = false,
+
+    /// when true, adds `?include=group,location` to url parameters
+    bool includeAll = false,
+
+    /// Query by `ends_at`
+    /// query on a specific ends_at, url example: ?where[ends_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereEndsAt,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `starts_at`
+    /// query on a specific starts_at, url example: ?where[starts_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStartsAt,
+    PcoGroupsEventFilter? filterBy,
+    PcoGroupsEventOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeAll || includeGroup) include.add('group');
+    if (includeAll || includeLocation) include.add('location');
+
+    if (whereEndsAt != null)
+      where.add(PlanningCenterApiWhere.parse('ends_at', whereEndsAt));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereStartsAt != null)
+      where.add(PlanningCenterApiWhere.parse('starts_at', whereStartsAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Groups Event Object
 ///
@@ -19,7 +156,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsEvent.fromJson()` constructor.
-/// - Manually create an object using the `PcoGroupsEvent.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -49,30 +185,6 @@ part of pco;
 /// - `isRepeating` (ro) -> PCO: `repeating`
 /// - `startsAt` (ro) -> PCO: `starts_at`
 /// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `group`: include associated group
-/// - `location`: include associated location
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `ends_at`: (URLParameter), query on a specific ends_at, example: ?where[ends_at]=2000-01-01T12:00:00Z
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `starts_at`: (URLParameter), query on a specific starts_at, example: ?where[starts_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `ends_at`: (URLParameter), prefix with a hyphen (-ends_at) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -307,16 +419,19 @@ class PcoGroupsEvent extends PcoResource {
       obj._attributes['starts_at'] = startsAt.toIso8601String();
     if (virtualLocationUrl != null)
       obj._attributes['virtual_location_url'] = virtualLocationUrl;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -342,12 +457,12 @@ class PcoGroupsEvent extends PcoResource {
   /// - `upcoming`
   static Future<PcoCollection<PcoGroupsEvent>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsEventQuery? query,
     bool includeAll = false,
     bool includeGroup = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsEventQuery();
     if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
@@ -366,12 +481,12 @@ class PcoGroupsEvent extends PcoResource {
   static Future<PcoCollection<PcoGroupsEvent>> getFromGroup(
     String groupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsEventQuery? query,
     bool includeAll = false,
     bool includeGroup = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsEventQuery();
     if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
@@ -391,12 +506,12 @@ class PcoGroupsEvent extends PcoResource {
   static Future<PcoCollection<PcoGroupsEvent>> getFromGroupType(
     String groupTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsEventQuery? query,
     bool includeAll = false,
     bool includeGroup = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsEventQuery();
     if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
@@ -415,12 +530,12 @@ class PcoGroupsEvent extends PcoResource {
   static Future<PcoCollection<PcoGroupsEvent>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoGroupsEventQuery? query,
     bool includeAll = false,
     bool includeGroup = false,
     bool includeLocation = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoGroupsEventQuery();
     if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
     if (includeGroup) query.include.add('group');
     if (includeLocation) query.include.add('location');
@@ -440,13 +555,9 @@ class PcoGroupsEvent extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `attended`
-  Future<PcoCollection<PcoGroupsAttendance>> getAttendances({
-    PlanningCenterApiQuery? query,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoGroupsAttendance>> getAttendances(
+      {PcoGroupsAttendanceQuery? query}) async {
+    query ??= PcoGroupsAttendanceQuery();
     var url = '$apiEndpoint/attendances';
     return PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
         query: query, apiVersion: apiVersion);
@@ -454,16 +565,9 @@ class PcoGroupsEvent extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/group`
-  Future<PcoCollection<PcoGroupsGroup>> getGroup({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeGroupType = false,
-    bool includeLocation = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoGroupsEvent.canInclude);
-    if (includeGroupType) query.include.add('group_type');
-    if (includeLocation) query.include.add('location');
+  Future<PcoCollection<PcoGroupsGroup>> getGroup(
+      {PcoGroupsGroupQuery? query}) async {
+    query ??= PcoGroupsGroupQuery();
     var url = '$apiEndpoint/group';
     return PcoCollection.fromApiCall<PcoGroupsGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -471,11 +575,9 @@ class PcoGroupsEvent extends PcoResource {
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/location`
-  Future<PcoCollection<PcoGroupsLocation>> getLocation({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoGroupsLocation>> getLocation(
+      {PcoGroupsLocationQuery? query}) async {
+    query ??= PcoGroupsLocationQuery();
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
         query: query, apiVersion: apiVersion);

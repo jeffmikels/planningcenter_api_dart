@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.731923
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.593357
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleNoteCategoryShareOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleNoteCategoryShareFilter { none }
+
+/// Creates a [PcoPeopleNoteCategoryShareQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleNoteCategoryShareQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleNoteCategoryShareOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleNoteCategoryShareOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleNoteCategoryShareFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleNoteCategoryShareFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleNoteCategoryShareQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO People NoteCategoryShare Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNoteCategoryShare()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNoteCategoryShare.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleNoteCategoryShare.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -37,25 +71,6 @@ part of pco;
 /// - `id` (ro) -> PCO: `id`
 /// - `group` (rw) -> PCO: `group`
 /// - `personId` (rw) -> PCO: `person_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -202,16 +217,19 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
         'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
     if (group != null) obj._attributes['group'] = group;
     if (personId != null) obj._attributes['person_id'] = personId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -225,9 +243,9 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   static Future<PcoCollection<PcoPeopleNoteCategoryShare>>
       getSharesFromNoteCategory(
     String noteCategoryId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleNoteCategoryShareQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleNoteCategoryShareQuery();
 
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
 

@@ -72,7 +72,9 @@ void main() async {
     /// most class instances have methods allowing you to fetch related items
     /// this time, we also are using a query object to request plans in descending order
     /// of their sort date
-    var plans = await service.getPlans(query: PlanningCenterApiQuery(order: '-sort_date'));
+    var plans = await service.getPlans(
+      query: PcoServicesPlanQuery(orderBy: PcoServicesPlanOrder.sortDate, reverse: true),
+    );
     if (!plans.isError) {
       var plan = plans.items.first;
       print('Found Plan: ${plan.seriesTitle} - ${plan.title} - ${plan.lastTimeAt}');

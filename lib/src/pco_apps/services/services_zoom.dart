@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.617741
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.456203
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesZoomOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesZoomFilter { none }
+
+/// Creates a [PcoServicesZoomQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesZoomQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesZoomOrder, String> _orderMap = {};
+  static String orderString(PcoServicesZoomOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesZoomFilter, String> _filterMap = {};
+  static String filterString(PcoServicesZoomFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesZoomQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Services Zoom Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesZoom()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesZoom.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesZoom.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,25 +73,6 @@ part of pco;
 /// - `zoomLevel` (rw) -> PCO: `zoom_level`
 /// - `xOffset` (rw) -> PCO: `x_offset`
 /// - `yOffset` (rw) -> PCO: `y_offset`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -237,16 +252,19 @@ class PcoServicesZoom extends PcoResource {
     if (zoomLevel != null) obj._attributes['zoom_level'] = zoomLevel;
     if (xOffset != null) obj._attributes['x_offset'] = xOffset;
     if (yOffset != null) obj._attributes['y_offset'] = yOffset;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -260,9 +278,9 @@ class PcoServicesZoom extends PcoResource {
   static Future<PcoCollection<PcoServicesZoom>> getFromAttachment(
     String attachmentId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesZoomQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesZoomQuery();
 
     var url = '/services/v2/attachments/$attachmentId/zooms';
     if (id != null) url += '/$id';

@@ -1,9 +1,66 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.617326
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.455529
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `dayOfWeek` -> `?order=day_of_week`
+/// - `hourOfDay` -> `?order=hour_of_day`
+enum PcoServicesTimePreferenceOptionOrder { dayOfWeek, hourOfDay }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesTimePreferenceOptionFilter { none }
+
+/// Creates a [PcoServicesTimePreferenceOptionQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesTimePreferenceOptionOrder.dayOfWeek` : will order by `day_of_week`
+/// - `PcoServicesTimePreferenceOptionOrder.hourOfDay` : will order by `hour_of_day`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesTimePreferenceOptionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesTimePreferenceOptionOrder, String> _orderMap = {
+    PcoServicesTimePreferenceOptionOrder.dayOfWeek: 'day_of_week',
+    PcoServicesTimePreferenceOptionOrder.hourOfDay: 'hour_of_day',
+  };
+  static String orderString(PcoServicesTimePreferenceOptionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesTimePreferenceOptionFilter, String> _filterMap =
+      {};
+  static String filterString(PcoServicesTimePreferenceOptionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesTimePreferenceOptionQuery({
+    PcoServicesTimePreferenceOptionOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services TimePreferenceOption Object
 ///
@@ -19,7 +76,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTimePreferenceOption.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesTimePreferenceOption.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,26 +99,6 @@ part of pco;
 /// - `timeType` (ro) -> PCO: `time_type`
 /// - `minuteOfDay` (ro) -> PCO: `minute_of_day`
 /// - `startsAt` (ro) -> PCO: `starts_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `day_of_week`: (URLParameter), prefix with a hyphen (-day_of_week) to reverse the order
-/// - `hour_of_day`: (URLParameter), prefix with a hyphen (-hour_of_day) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -213,16 +249,19 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     if (minuteOfDay != null) obj._attributes['minute_of_day'] = minuteOfDay;
     if (startsAt != null)
       obj._attributes['starts_at'] = startsAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -237,9 +276,9 @@ class PcoServicesTimePreferenceOption extends PcoResource {
       getFromServiceType(
     String serviceTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesTimePreferenceOptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesTimePreferenceOptionQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/time_preference_options';

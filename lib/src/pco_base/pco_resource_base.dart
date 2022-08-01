@@ -407,7 +407,7 @@ abstract class PcoResource {
 }
 
 /// [PcoCollection] represents any response that has one or more
-/// items of data from the server. Most requests will return a PcoCollection.
+/// items of data from the server. Most requests will return a [PcoCollection].
 ///
 /// Information like [endpoint] and [apiVersion] will be preserved so future
 /// queries can be generated from existing collections.
@@ -415,6 +415,10 @@ abstract class PcoResource {
 /// [query] preserves the original `query` for the collection, and
 /// [response] preserves the full response from the API Request.
 /// Finally [items] is a typed list of the response data encapsulated by the appropriate class.
+///
+/// Once you have a [PcoCollection], you can load more items (if there are more) by calling
+/// `nextPage` to get a new collection with the next page of data or by calling `getMore` to
+/// extend the current collection with the next page of data.
 class PcoCollection<T extends PcoResource> {
   final String endpoint;
   final String apiVersion;
@@ -423,10 +427,13 @@ class PcoCollection<T extends PcoResource> {
   PlanningCenterApiQuery query;
   PlanningCenterApiMeta meta;
 
-  List<T> items = [];
-
   /// @Deprecated: use `items` instead
   List<T> get data => items; // backwards compatibility
+
+  List<T> items = [];
+  T? get firstOrNull => items.isEmpty ? null : items.first;
+
+  bool get isSingle => items.length == 1 && !hasMore;
 
   bool get hasMore => meta.nextOffset != null;
 
@@ -434,8 +441,14 @@ class PcoCollection<T extends PcoResource> {
   PlanningCenterApiError? get error => response.error;
   String get errorMessage => error?.message ?? '';
 
-  PcoCollection(this.items, this.meta, this.response, this.query, this.endpoint,
-      this.apiVersion);
+  PcoCollection(
+    this.items,
+    this.meta,
+    this.response,
+    this.query,
+    this.endpoint,
+    this.apiVersion,
+  );
 
   /// url, query: query, apiVersion:kApiVersion
   static Future<PcoCollection<T>> fromApiCall<T extends PcoResource>(
@@ -472,9 +485,11 @@ class PcoCollection<T extends PcoResource> {
   /// You should not call this function unless you first check [hasMore] or you expect
   /// new resources have been added on the server. Otherwise it might be a wasted request.
   Future<PcoCollection<T>> nextPage() {
-    return PcoCollection.fromApiCall<T>(endpoint,
-        query: query.withOffset(meta.nextOffset ?? meta.totalCount),
-        apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<T>(
+      endpoint,
+      query: query.withOffset(meta.nextOffset ?? meta.totalCount),
+      apiVersion: apiVersion,
+    );
   }
 
   /// If a collection has more items available on the server

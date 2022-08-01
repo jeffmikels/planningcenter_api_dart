@@ -1,9 +1,128 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.792271
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.630744
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `firstName` -> `?order=first_name`
+/// - `lastName` -> `?order=last_name`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoCalendarPersonOrder { createdAt, firstName, lastName, updatedAt }
+
+/// Possible Inbound Filters:
+/// - `eventOwners` -> `?filter=event_owners` : -- no description
+enum PcoCalendarPersonFilter { eventOwners }
+
+/// Creates a [PcoCalendarPersonQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCalendarPerson] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereFirstName`: query on a specific first_name, example: ?where[first_name]=string
+/// - `whereLastName`: query on a specific last_name, example: ?where[last_name]=string
+/// - `whereMiddleName`: query on a specific middle_name, example: ?where[middle_name]=string
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarPersonOrder.createdAt` : will order by `created_at`
+/// - `PcoCalendarPersonOrder.firstName` : will order by `first_name`
+/// - `PcoCalendarPersonOrder.lastName` : will order by `last_name`
+/// - `PcoCalendarPersonOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarPersonOrder, String> _orderMap = {
+    PcoCalendarPersonOrder.createdAt: 'created_at',
+    PcoCalendarPersonOrder.firstName: 'first_name',
+    PcoCalendarPersonOrder.lastName: 'last_name',
+    PcoCalendarPersonOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoCalendarPersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarPersonFilter, String> _filterMap = {
+    PcoCalendarPersonFilter.eventOwners: 'event_owners',
+  };
+  static String filterString(PcoCalendarPersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarPersonQuery({
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `first_name`
+    /// query on a specific first_name, url example: ?where[first_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFirstName,
+
+    /// Query by `last_name`
+    /// query on a specific last_name, url example: ?where[last_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLastName,
+
+    /// Query by `middle_name`
+    /// query on a specific middle_name, url example: ?where[middle_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMiddleName,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoCalendarPersonFilter? filterBy,
+    PcoCalendarPersonOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereFirstName != null)
+      where.add(PlanningCenterApiWhere.parse('first_name', whereFirstName));
+    if (whereLastName != null)
+      where.add(PlanningCenterApiWhere.parse('last_name', whereLastName));
+    if (whereMiddleName != null)
+      where.add(PlanningCenterApiWhere.parse('middle_name', whereMiddleName));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Calendar Person Object
 ///
@@ -19,7 +138,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarPerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -56,32 +174,6 @@ part of pco;
 /// - `peoplePermissionsType` (ro) -> PCO: `people_permissions_type`
 /// - `roomPermissionsType` (ro) -> PCO: `room_permissions_type`
 /// - `resourcesPermissionsType` (ro) -> PCO: `resources_permissions_type`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `first_name`: (URLParameter), query on a specific first_name, example: ?where[first_name]=string
-/// - `last_name`: (URLParameter), query on a specific last_name, example: ?where[last_name]=string
-/// - `middle_name`: (URLParameter), query on a specific middle_name, example: ?where[middle_name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -317,16 +409,19 @@ class PcoCalendarPerson extends PcoResource {
       obj._attributes['room_permissions_type'] = roomPermissionsType;
     if (resourcesPermissionsType != null)
       obj._attributes['resources_permissions_type'] = resourcesPermissionsType;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -342,9 +437,9 @@ class PcoCalendarPerson extends PcoResource {
   /// - `event_owners`
   static Future<PcoCollection<PcoCalendarPerson>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url = '/calendar/v2/people';
     if (id != null) url += '/$id';
@@ -357,9 +452,9 @@ class PcoCalendarPerson extends PcoResource {
   static Future<PcoCollection<PcoCalendarPerson>> getResolvedByFromConflict(
     String conflictId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
     if (id != null) url += '/$id';
@@ -372,9 +467,9 @@ class PcoCalendarPerson extends PcoResource {
   static Future<PcoCollection<PcoCalendarPerson>> getOwnerFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url = '/calendar/v2/events/$eventId/owner';
     if (id != null) url += '/$id';
@@ -388,9 +483,9 @@ class PcoCalendarPerson extends PcoResource {
       getCreatedByFromEventResourceRequest(
     String eventResourceRequestId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url =
         '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by';
@@ -405,9 +500,9 @@ class PcoCalendarPerson extends PcoResource {
       getUpdatedByFromEventResourceRequest(
     String eventResourceRequestId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url =
         '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by';
@@ -421,9 +516,9 @@ class PcoCalendarPerson extends PcoResource {
   static Future<PcoCollection<PcoCalendarPerson>> getFromResourceApprovalGroup(
     String resourceApprovalGroupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarPersonQuery();
 
     var url =
         '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people';
@@ -446,22 +541,9 @@ class PcoCalendarPerson extends PcoResource {
   /// - `not_overbooked`
   /// - `overbooked`
   Future<PcoCollection<PcoCalendarEventResourceRequest>>
-      getEventResourceRequests({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCreatedBy = false,
-    bool includeEvent = false,
-    bool includeResource = false,
-    bool includeRoomSetup = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarPerson.canInclude);
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeEvent) query.include.add('event');
-    if (includeResource) query.include.add('resource');
-    if (includeRoomSetup) query.include.add('room_setup');
-    if (includeUpdatedBy) query.include.add('updated_by');
+      getEventResourceRequests(
+          {PcoCalendarEventResourceRequestQuery? query}) async {
+    query ??= PcoCalendarEventResourceRequestQuery();
     var url = '$apiEndpoint/event_resource_requests';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url,
         query: query, apiVersion: apiVersion);

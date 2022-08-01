@@ -1,9 +1,65 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.864712
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.680687
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoWebhooksSubscriptionOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoWebhooksSubscriptionFilter { none }
+
+/// Creates a [PcoWebhooksSubscriptionQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoWebhooksSubscription] objects can be requested with one or more of the following criteria:
+/// - `whereApplicationId`: query on a specific application_id, example: ?where[application_id]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoWebhooksSubscriptionQuery extends PlanningCenterApiQuery {
+  static final Map<PcoWebhooksSubscriptionOrder, String> _orderMap = {};
+  static String orderString(PcoWebhooksSubscriptionOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoWebhooksSubscriptionFilter, String> _filterMap = {};
+  static String filterString(PcoWebhooksSubscriptionFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoWebhooksSubscriptionQuery({
+    /// Query by `application_id`
+    /// query on a specific application_id, url example: ?where[application_id]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereApplicationId,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereApplicationId != null)
+      where.add(
+          PlanningCenterApiWhere.parse('application_id', whereApplicationId));
+  }
+}
 
 /// This class represents a PCO Webhooks Subscription Object
 ///
@@ -19,7 +75,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoWebhooksSubscription()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksSubscription.fromJson()` constructor.
-/// - Manually create an object using the `PcoWebhooksSubscription.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,25 +97,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `authenticitySecret` (ro) -> PCO: `authenticity_secret`
 /// - `applicationId` (ro) -> PCO: `application_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `application_id`: (URLParameter), query on a specific application_id, example: ?where[application_id]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -222,16 +258,19 @@ class PcoWebhooksSubscription extends PcoResource {
       obj._attributes['authenticity_secret'] = authenticitySecret;
     if (applicationId != null)
       obj._attributes['application_id'] = applicationId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -244,9 +283,9 @@ class PcoWebhooksSubscription extends PcoResource {
   /// using a path like this: `/webhooks/v2/subscriptions`
   static Future<PcoCollection<PcoWebhooksSubscription>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoWebhooksSubscriptionQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoWebhooksSubscriptionQuery();
 
     var url = '/webhooks/v2/subscriptions';
     if (id != null) url += '/$id';
@@ -261,11 +300,9 @@ class PcoWebhooksSubscription extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions/1/events`
-  Future<PcoCollection<PcoWebhooksEvent>> getEvents({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoWebhooksEvent>> getEvents(
+      {PcoWebhooksEventQuery? query}) async {
+    query ??= PcoWebhooksEventQuery();
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoWebhooksEvent>(url,
         query: query, apiVersion: apiVersion);

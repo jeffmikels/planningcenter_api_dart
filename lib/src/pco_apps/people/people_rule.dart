@@ -1,9 +1,118 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.754967
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.603497
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `subset` -> `?order=subset`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleRuleOrder { createdAt, subset, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleRuleFilter { none }
+
+/// Creates a [PcoPeopleRuleQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeConditions`: include associated conditions
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleRuleQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleRule] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereSubset`: query on a specific subset, example: ?where[subset]=string
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleRuleOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleRuleOrder.subset` : will order by `subset`
+/// - `PcoPeopleRuleOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleRuleQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleRuleOrder, String> _orderMap = {
+    PcoPeopleRuleOrder.createdAt: 'created_at',
+    PcoPeopleRuleOrder.subset: 'subset',
+    PcoPeopleRuleOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleRuleOrder order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleRuleFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleRuleFilter filter) => _filterMap[filter]!;
+
+  PcoPeopleRuleQuery({
+    /// include associated conditions
+    /// when true, adds `?include=conditions` to url
+    bool includeConditions = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `subset`
+    /// query on a specific subset, url example: ?where[subset]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereSubset,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeopleRuleOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeConditions) include.add('conditions');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereSubset != null)
+      where.add(PlanningCenterApiWhere.parse('subset', whereSubset));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Rule Object
 ///
@@ -19,7 +128,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleRule.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleRule.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,29 +146,6 @@ part of pco;
 /// - `subset` (ro) -> PCO: `subset`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `conditions`: include associated conditions
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `subset`: (URLParameter), query on a specific subset, example: ?where[subset]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `subset`: (URLParameter), prefix with a hyphen (-subset) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -193,16 +278,19 @@ class PcoPeopleRule extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -216,10 +304,10 @@ class PcoPeopleRule extends PcoResource {
   static Future<PcoCollection<PcoPeopleRule>> getFromList(
     String listId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleRuleQuery? query,
     bool includeConditions = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleRuleQuery();
 
     if (includeConditions) query.include.add('conditions');
     var url = '/people/v2/lists/$listId/rules';
@@ -235,13 +323,9 @@ class PcoPeopleRule extends PcoResource {
 
   /// Will get a collection of [PcoPeopleCondition] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions`
-  Future<PcoCollection<PcoPeopleCondition>> getConditions({
-    PlanningCenterApiQuery? query,
-    bool includeCreatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeCreatedBy) query.include.add('created_by');
+  Future<PcoCollection<PcoPeopleCondition>> getConditions(
+      {PcoPeopleConditionQuery? query}) async {
+    query ??= PcoPeopleConditionQuery();
     var url = '$apiEndpoint/conditions';
     return PcoCollection.fromApiCall<PcoPeopleCondition>(url,
         query: query, apiVersion: apiVersion);

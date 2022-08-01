@@ -1,9 +1,57 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.590320
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.436648
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesReportTemplateOrder { none }
+
+/// Possible Inbound Filters:
+/// - `matrix` -> `?filter=matrix` : -- no description
+/// - `people` -> `?filter=people` : -- no description
+/// - `plans` -> `?filter=plans` : -- no description
+/// - `withoutDefaults` -> `?filter=without_defaults` : -- no description
+enum PcoServicesReportTemplateFilter { matrix, people, plans, withoutDefaults }
+
+/// Creates a [PcoServicesReportTemplateQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesReportTemplateOrder, String> _orderMap = {};
+  static String orderString(PcoServicesReportTemplateOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesReportTemplateFilter, String> _filterMap = {
+    PcoServicesReportTemplateFilter.matrix: 'matrix',
+    PcoServicesReportTemplateFilter.people: 'people',
+    PcoServicesReportTemplateFilter.plans: 'plans',
+    PcoServicesReportTemplateFilter.withoutDefaults: 'without_defaults',
+  };
+  static String filterString(PcoServicesReportTemplateFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesReportTemplateQuery({
+    PcoServicesReportTemplateFilter? filterBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+  }
+}
 
 /// This class represents a PCO Services ReportTemplate Object
 ///
@@ -19,7 +67,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesReportTemplate.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesReportTemplate.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -39,25 +86,6 @@ part of pco;
 /// - `title` (ro) -> PCO: `title`
 /// - `type` (ro) -> PCO: `type`
 /// - `isDefault` (ro) -> PCO: `default`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -184,16 +212,19 @@ class PcoServicesReportTemplate extends PcoResource {
     if (body != null) obj._attributes['body'] = body;
     if (title != null) obj._attributes['title'] = title;
     if (isDefault != null) obj._attributes['default'] = isDefault;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -212,9 +243,9 @@ class PcoServicesReportTemplate extends PcoResource {
   /// - `without_defaults`
   static Future<PcoCollection<PcoServicesReportTemplate>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesReportTemplateQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesReportTemplateQuery();
 
     var url = '/services/v2/report_templates';
     if (id != null) url += '/$id';

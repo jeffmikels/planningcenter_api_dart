@@ -1,9 +1,81 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.718075
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.583146
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `value` -> `?order=value`
+enum PcoPeopleInactiveReasonOrder { value }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleInactiveReasonFilter { none }
+
+/// Creates a [PcoPeopleInactiveReasonQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleInactiveReason] objects can be requested with one or more of the following criteria:
+/// - `whereValue`: query on a specific value, example: ?where[value]=string
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleInactiveReasonOrder.value` : will order by `value`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleInactiveReasonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleInactiveReasonOrder, String> _orderMap = {
+    PcoPeopleInactiveReasonOrder.value: 'value',
+  };
+  static String orderString(PcoPeopleInactiveReasonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleInactiveReasonFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleInactiveReasonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleInactiveReasonQuery({
+    /// Query by `value`
+    /// query on a specific value, url example: ?where[value]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereValue,
+    PcoPeopleInactiveReasonOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereValue != null)
+      where.add(PlanningCenterApiWhere.parse('value', whereValue));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People InactiveReason Object
 ///
@@ -19,7 +91,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleInactiveReason()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleInactiveReason.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleInactiveReason.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -36,25 +107,6 @@ part of pco;
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (rw) -> PCO: `value`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `value`: (URLParameter), prefix with a hyphen (-value) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -177,16 +229,19 @@ class PcoPeopleInactiveReason extends PcoResource {
     obj._apiPathOverride =
         'https://api.planningcenteronline.com/people/v2/inactive_reasons';
     if (value != null) obj._attributes['value'] = value;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -199,9 +254,9 @@ class PcoPeopleInactiveReason extends PcoResource {
   /// using a path like this: `/people/v2/inactive_reasons`
   static Future<PcoCollection<PcoPeopleInactiveReason>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleInactiveReasonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleInactiveReasonQuery();
 
     var url = '/people/v2/inactive_reasons';
     if (id != null) url += '/$id';
@@ -214,9 +269,9 @@ class PcoPeopleInactiveReason extends PcoResource {
   static Future<PcoCollection<PcoPeopleInactiveReason>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleInactiveReasonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleInactiveReasonQuery();
 
     var url = '/people/v2/people/$personId/inactive_reason';
     if (id != null) url += '/$id';

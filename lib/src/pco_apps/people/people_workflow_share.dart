@@ -1,9 +1,81 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.761423
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.610636
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeopleWorkflowShareOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleWorkflowShareFilter { none }
+
+/// Creates a [PcoPeopleWorkflowShareQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePerson`: include associated person
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleWorkflowShareQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleWorkflowShare] objects can be requested with one or more of the following criteria:
+/// - `wherePermission`: query on a specific permission, example: ?where[permission]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleWorkflowShareQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleWorkflowShareOrder, String> _orderMap = {};
+  static String orderString(PcoPeopleWorkflowShareOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleWorkflowShareFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleWorkflowShareFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleWorkflowShareQuery({
+    /// include associated person
+    /// when true, adds `?include=person` to url
+    bool includePerson = false,
+
+    /// Query by `permission`
+    /// query on a specific permission, url example: ?where[permission]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePermission,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includePerson) include.add('person');
+
+    if (wherePermission != null)
+      where.add(PlanningCenterApiWhere.parse('permission', wherePermission));
+  }
+}
 
 /// This class represents a PCO People WorkflowShare Object
 ///
@@ -19,7 +91,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleWorkflowShare()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowShare.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleWorkflowShare.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -38,25 +109,6 @@ part of pco;
 /// - `group` (rw) -> PCO: `group`
 /// - `permission` (rw) -> PCO: `permission`
 /// - `personId` (rw) -> PCO: `person_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `person`: include associated person
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `permission`: (URLParameter), query on a specific permission, example: ?where[permission]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -221,16 +273,19 @@ class PcoPeopleWorkflowShare extends PcoResource {
     if (group != null) obj._attributes['group'] = group;
     if (permission != null) obj._attributes['permission'] = permission;
     if (personId != null) obj._attributes['person_id'] = personId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -244,10 +299,10 @@ class PcoPeopleWorkflowShare extends PcoResource {
   static Future<PcoCollection<PcoPeopleWorkflowShare>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowShareQuery? query,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowShareQuery();
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/people/$personId/workflow_shares';
@@ -260,10 +315,10 @@ class PcoPeopleWorkflowShare extends PcoResource {
   /// using a path like this: `/people/v2/workflows/$workflowId/shares`
   static Future<PcoCollection<PcoPeopleWorkflowShare>> getSharesFromWorkflow(
     String workflowId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleWorkflowShareQuery? query,
     bool includePerson = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleWorkflowShareQuery();
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/workflows/$workflowId/shares';
@@ -279,43 +334,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_shares/1/person`
-  Future<PcoCollection<PcoPeoplePerson>> getPerson({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowShare.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPerson(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

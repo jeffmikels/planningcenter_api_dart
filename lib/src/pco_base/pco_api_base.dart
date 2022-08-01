@@ -485,6 +485,36 @@ class PlanningCenterCredentials {
       };
 }
 
+class PlanningCenterApiWhere {
+  String attribute;
+  String value;
+
+  /// operator should be left `null`, or one of the following: `gt`, `lt`, `gte`, `lte`,
+  /// for `>`, `<`, `>=`, `<=` respectively
+  String? operator;
+  PlanningCenterApiWhere(this.attribute, this.value, [this.operator]);
+  PlanningCenterApiWhere.gt(this.attribute, this.value) : operator = 'gt';
+  PlanningCenterApiWhere.gte(this.attribute, this.value) : operator = 'gte';
+  PlanningCenterApiWhere.lt(this.attribute, this.value) : operator = 'lt';
+  PlanningCenterApiWhere.lte(this.attribute, this.value) : operator = 'lte';
+  factory PlanningCenterApiWhere.parse(String attribute, String value) {
+    String? operator;
+    var match = RegExp(r'([<>]?)(=?)(.*)').matchAsPrefix(value);
+    if (match != null) {
+      value = match.group(3)!;
+      switch (match.group(1)) {
+        case '<':
+          operator = 'lt';
+          break;
+        case '>':
+          operator = 'gt';
+      }
+      if (match.group(2) == '=' && operator != null) operator += 'e';
+    }
+    return PlanningCenterApiWhere(attribute, value, operator);
+  }
+}
+
 /// [PlanningCenterApiQuery] objects handle all the additional API parameters
 /// accepted by the Planning Center API.
 class PlanningCenterApiQuery {
@@ -510,11 +540,11 @@ class PlanningCenterApiQuery {
   ///
   /// The [where] map will be converted to url parameters like the following:
   ///
-  /// - `{ 'created_at<': '2022-01-01' }`  -> `?where[created_at][lt]=2022-01-01`   (finds items before that date)
-  /// - `{ 'created_at>=': '2022-01-01' }` -> `?where[created_at][gte]=2022-01-01`  (finds items on or after that date)
-  /// - `{ 'created_at=': '2022-01-01' }`  -> `?where[created_at]=2022-01-01`       (finds items on that date)
+  /// - `{ 'created_at': '<2022-01-01' }`  -> `?where[created_at][lt]=2022-01-01`   (finds items before that date)
+  /// - `{ 'created_at': '>=2022-01-01' }` -> `?where[created_at][gte]=2022-01-01`  (finds items on or after that date)
+  /// - `{ 'created_at': '=2022-01-01' }`  -> `?where[created_at]=2022-01-01`       (finds items on that date)
   /// - `{ 'created_at':  '2022-01-01' }`  -> same as using `=`
-  Map<String, String> where;
+  List<PlanningCenterApiWhere> where = [];
 
   /// [filter] should be something like `future`, `past`, `after`, `before`, `no_dates`
   ///
@@ -545,12 +575,12 @@ class PlanningCenterApiQuery {
   int pageOffset;
 
   PlanningCenterApiQuery({
-    Iterable<String> filter = const <String>[],
-    Iterable<String> include = const <String>[],
     this.perPage = 25,
     this.pageOffset = 0,
     this.order,
-    this.where = const {},
+    this.where = const [],
+    Iterable<String> filter = const <String>[],
+    Iterable<String> include = const <String>[],
     this.extraParams = const {},
   }) {
     this.filter.addAll(filter);
@@ -569,35 +599,12 @@ class PlanningCenterApiQuery {
     if (include.isNotEmpty) retval['include'] = include.join(',');
     if (filter.isNotEmpty) retval['filter'] = filter.join(',');
 
-    // unlike the API, we handle where keys using a comparison suffix
-    // the comparison suffix can be `>`, `<`, `=`, `<=`, `>=`
-    final regex = RegExp(r'([^=<>]+)(.*)$');
-    where.forEach((key, value) {
-      // sanity check
-      if (key.isEmpty) return;
-      var suffix = '';
-      var m = regex.matchAsPrefix(key);
-      if (m != null) {
-        key = m.group(1)!;
-        switch (m.group(2)!) {
-          case '<':
-            suffix = '[lt]';
-            break;
-          case '>':
-            suffix = '[gt]';
-            break;
-          case '<=':
-            suffix = '[lte]';
-            break;
-          case '>=':
-            suffix = '[gte]';
-            break;
-          case '=':
-          default:
-        }
-      }
-      retval['where[$key]$suffix'] = value;
-    });
+    for (var w in where) {
+      var key = w.attribute;
+      var value = w.value;
+      var op = w.operator == null ? '' : '[${w.operator}]';
+      retval['where[$key]$op'] = value;
+    }
 
     // if the user specified extra params, we add them now
     if (extraParams.isNotEmpty) {
@@ -619,7 +626,7 @@ class PlanningCenterApiQuery {
       perPage: perPage,
       pageOffset: pageOffset,
       order: order,
-      where: {...where},
+      where: where.toList(),
       extraParams: {...extraParams},
     );
   }

@@ -1,9 +1,149 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.716834
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.582095
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `memberCount` -> `?order=member_count`
+/// - `name` -> `?order=name`
+/// - `primaryContactName` -> `?order=primary_contact_name`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoPeopleHouseholdOrder {
+  createdAt,
+  memberCount,
+  name,
+  primaryContactName,
+  updatedAt
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeopleHouseholdFilter { none }
+
+/// Creates a [PcoPeopleHouseholdQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePeople`: include associated people
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoPeopleHouseholdQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeopleHousehold] objects can be requested with one or more of the following criteria:
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereMemberCount`: query on a specific member_count, example: ?where[member_count]=1
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `wherePrimaryContactName`: query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoPeopleHouseholdOrder.createdAt` : will order by `created_at`
+/// - `PcoPeopleHouseholdOrder.memberCount` : will order by `member_count`
+/// - `PcoPeopleHouseholdOrder.name` : will order by `name`
+/// - `PcoPeopleHouseholdOrder.primaryContactName` : will order by `primary_contact_name`
+/// - `PcoPeopleHouseholdOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeopleHouseholdQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeopleHouseholdOrder, String> _orderMap = {
+    PcoPeopleHouseholdOrder.createdAt: 'created_at',
+    PcoPeopleHouseholdOrder.memberCount: 'member_count',
+    PcoPeopleHouseholdOrder.name: 'name',
+    PcoPeopleHouseholdOrder.primaryContactName: 'primary_contact_name',
+    PcoPeopleHouseholdOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoPeopleHouseholdOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeopleHouseholdFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleHouseholdFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeopleHouseholdQuery({
+    /// include associated people
+    /// when true, adds `?include=people` to url
+    bool includePeople = false,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `member_count`
+    /// query on a specific member_count, url example: ?where[member_count]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereMemberCount,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `primary_contact_name`
+    /// query on a specific primary_contact_name, url example: ?where[primary_contact_name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePrimaryContactName,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoPeopleHouseholdOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includePeople) include.add('people');
+
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereMemberCount != null)
+      where.add(PlanningCenterApiWhere.parse('member_count', whereMemberCount));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (wherePrimaryContactName != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'primary_contact_name', wherePrimaryContactName));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO People Household Object
 ///
@@ -19,7 +159,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleHousehold()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleHousehold.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeopleHousehold.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -46,33 +185,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `avatar` (rw) -> PCO: `avatar`
 /// - `primaryContactId` (rw) -> PCO: `primary_contact_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `people`: include associated people
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `member_count`: (URLParameter), query on a specific member_count, example: ?where[member_count]=1
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `primary_contact_name`: (URLParameter), query on a specific primary_contact_name, example: ?where[primary_contact_name]=string
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `member_count`: (URLParameter), prefix with a hyphen (-member_count) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `primary_contact_name`: (URLParameter), prefix with a hyphen (-primary_contact_name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -286,16 +398,19 @@ class PcoPeopleHousehold extends PcoResource {
     if (avatar != null) obj._attributes['avatar'] = avatar;
     if (primaryContactId != null)
       obj._attributes['primary_contact_id'] = primaryContactId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -308,10 +423,10 @@ class PcoPeopleHousehold extends PcoResource {
   /// using a path like this: `/people/v2/households`
   static Future<PcoCollection<PcoPeopleHousehold>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleHouseholdQuery? query,
     bool includePeople = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleHouseholdQuery();
 
     if (includePeople) query.include.add('people');
     var url = '/people/v2/households';
@@ -326,10 +441,10 @@ class PcoPeopleHousehold extends PcoResource {
       getFromHouseholdAndHouseholdMembership(
     String householdId,
     String householdMembershipId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleHouseholdQuery? query,
     bool includePeople = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleHouseholdQuery();
 
     if (includePeople) query.include.add('people');
     var url =
@@ -345,10 +460,10 @@ class PcoPeopleHousehold extends PcoResource {
       getFromPeopleImportAndHistory(
     String peopleImportId,
     String historyId, {
-    PlanningCenterApiQuery? query,
+    PcoPeopleHouseholdQuery? query,
     bool includePeople = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleHouseholdQuery();
 
     if (includePeople) query.include.add('people');
     var url =
@@ -363,10 +478,10 @@ class PcoPeopleHousehold extends PcoResource {
   static Future<PcoCollection<PcoPeopleHousehold>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeopleHouseholdQuery? query,
     bool includePeople = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeopleHouseholdQuery();
 
     if (includePeople) query.include.add('people');
     var url = '/people/v2/people/$personId/households';
@@ -382,16 +497,9 @@ class PcoPeopleHousehold extends PcoResource {
 
   /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/households/1/household_memberships`
-  Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeHousehold = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleHousehold.canInclude);
-    if (includeHousehold) query.include.add('household');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeopleHouseholdMembership>> getHouseholdMemberships(
+      {PcoPeopleHouseholdMembershipQuery? query}) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
     var url = '$apiEndpoint/household_memberships';
     return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url,
         query: query, apiVersion: apiVersion);
@@ -403,43 +511,9 @@ class PcoPeopleHousehold extends PcoResource {
   /// Available Query Filters:
   /// - `non_pending`
   /// - `without_deceased`
-  Future<PcoCollection<PcoPeoplePerson>> getPeople({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAddresses = false,
-    bool includeEmails = false,
-    bool includeFieldData = false,
-    bool includeHouseholds = false,
-    bool includeInactiveReason = false,
-    bool includeMaritalStatus = false,
-    bool includeNamePrefix = false,
-    bool includeNameSuffix = false,
-    bool includeOrganization = false,
-    bool includePersonApps = false,
-    bool includePhoneNumbers = false,
-    bool includePlatformNotifications = false,
-    bool includePrimaryCampus = false,
-    bool includeSchool = false,
-    bool includeSocialProfiles = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeopleHousehold.canInclude);
-    if (includeAddresses) query.include.add('addresses');
-    if (includeEmails) query.include.add('emails');
-    if (includeFieldData) query.include.add('field_data');
-    if (includeHouseholds) query.include.add('households');
-    if (includeInactiveReason) query.include.add('inactive_reason');
-    if (includeMaritalStatus) query.include.add('marital_status');
-    if (includeNamePrefix) query.include.add('name_prefix');
-    if (includeNameSuffix) query.include.add('name_suffix');
-    if (includeOrganization) query.include.add('organization');
-    if (includePersonApps) query.include.add('person_apps');
-    if (includePhoneNumbers) query.include.add('phone_numbers');
-    if (includePlatformNotifications)
-      query.include.add('platform_notifications');
-    if (includePrimaryCampus) query.include.add('primary_campus');
-    if (includeSchool) query.include.add('school');
-    if (includeSocialProfiles) query.include.add('social_profiles');
+  Future<PcoCollection<PcoPeoplePerson>> getPeople(
+      {PcoPeoplePersonQuery? query}) async {
+    query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
         query: query, apiVersion: apiVersion);

@@ -1,9 +1,84 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.587043
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.434874
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `itemCount` -> `?order=item_count`
+/// - `name` -> `?order=name`
+/// - `noteCount` -> `?order=note_count`
+/// - `teamCount` -> `?order=team_count`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesPlanTemplateOrder {
+  createdAt,
+  itemCount,
+  name,
+  noteCount,
+  teamCount,
+  updatedAt
+}
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesPlanTemplateFilter { none }
+
+/// Creates a [PcoServicesPlanTemplateQuery] object
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesPlanTemplateOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesPlanTemplateOrder.itemCount` : will order by `item_count`
+/// - `PcoServicesPlanTemplateOrder.name` : will order by `name`
+/// - `PcoServicesPlanTemplateOrder.noteCount` : will order by `note_count`
+/// - `PcoServicesPlanTemplateOrder.teamCount` : will order by `team_count`
+/// - `PcoServicesPlanTemplateOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesPlanTemplateQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesPlanTemplateOrder, String> _orderMap = {
+    PcoServicesPlanTemplateOrder.createdAt: 'created_at',
+    PcoServicesPlanTemplateOrder.itemCount: 'item_count',
+    PcoServicesPlanTemplateOrder.name: 'name',
+    PcoServicesPlanTemplateOrder.noteCount: 'note_count',
+    PcoServicesPlanTemplateOrder.teamCount: 'team_count',
+    PcoServicesPlanTemplateOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesPlanTemplateOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesPlanTemplateFilter, String> _filterMap = {};
+  static String filterString(PcoServicesPlanTemplateFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesPlanTemplateQuery({
+    PcoServicesPlanTemplateOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services PlanTemplate Object
 ///
@@ -19,7 +94,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesPlanTemplate.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesPlanTemplate.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -45,30 +119,6 @@ part of pco;
 /// - `isMultiDay` (ro) -> PCO: `multi_day`
 /// - `isPrefersOrderView` (ro) -> PCO: `prefers_order_view`
 /// - `isRehearsable` (ro) -> PCO: `rehearsable`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `item_count`: (URLParameter), prefix with a hyphen (-item_count) to reverse the order
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `note_count`: (URLParameter), prefix with a hyphen (-note_count) to reverse the order
-/// - `team_count`: (URLParameter), prefix with a hyphen (-team_count) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -261,16 +311,19 @@ class PcoServicesPlanTemplate extends PcoResource {
     if (isPrefersOrderView != null)
       obj._attributes['prefers_order_view'] = isPrefersOrderView;
     if (isRehearsable != null) obj._attributes['rehearsable'] = isRehearsable;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -284,9 +337,9 @@ class PcoServicesPlanTemplate extends PcoResource {
   static Future<PcoCollection<PcoServicesPlanTemplate>> getFromServiceType(
     String serviceTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTemplateQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTemplateQuery();
 
     var url = '/services/v2/service_types/$serviceTypeId/plan_templates';
     if (id != null) url += '/$id';
@@ -301,26 +354,9 @@ class PcoServicesPlanTemplate extends PcoResource {
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items`
-  Future<PcoCollection<PcoServicesItem>> getItems({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeArrangement = false,
-    bool includeItemNotes = false,
-    bool includeItemTimes = false,
-    bool includeKey = false,
-    bool includeMedia = false,
-    bool includeSelectedAttachment = false,
-    bool includeSong = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlanTemplate.canInclude);
-    if (includeArrangement) query.include.add('arrangement');
-    if (includeItemNotes) query.include.add('item_notes');
-    if (includeItemTimes) query.include.add('item_times');
-    if (includeKey) query.include.add('key');
-    if (includeMedia) query.include.add('media');
-    if (includeSelectedAttachment) query.include.add('selected_attachment');
-    if (includeSong) query.include.add('song');
+  Future<PcoCollection<PcoServicesItem>> getItems(
+      {PcoServicesItemQuery? query}) async {
+    query ??= PcoServicesItemQuery();
     var url = '$apiEndpoint/items';
     return PcoCollection.fromApiCall<PcoServicesItem>(url,
         query: query, apiVersion: apiVersion);
@@ -328,13 +364,9 @@ class PcoServicesPlanTemplate extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanNote] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/notes`
-  Future<PcoCollection<PcoServicesPlanNote>> getNotes({
-    PlanningCenterApiQuery? query,
-    bool includePlanNoteCategory = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePlanNoteCategory) query.include.add('plan_note_category');
+  Future<PcoCollection<PcoServicesPlanNote>> getNotes(
+      {PcoServicesPlanNoteQuery? query}) async {
+    query ??= PcoServicesPlanNoteQuery();
     var url = '$apiEndpoint/notes';
     return PcoCollection.fromApiCall<PcoServicesPlanNote>(url,
         query: query, apiVersion: apiVersion);

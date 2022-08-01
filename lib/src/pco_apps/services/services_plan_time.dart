@@ -1,9 +1,99 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.589281
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.435623
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `startsAt` -> `?order=starts_at`
+enum PcoServicesPlanTimeOrder { startsAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesPlanTimeFilter { none }
+
+/// Creates a [PcoServicesPlanTimeQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeSplitTeamRehearsalAssignments`: include associated split_team_rehearsal_assignments
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesPlanTimeQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesPlanTime] objects can be requested with one or more of the following criteria:
+/// - `whereTimeType`: query on a specific time_type, example: ?where[time_type]=1
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesPlanTimeOrder.startsAt` : will order by `starts_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesPlanTimeOrder, String> _orderMap = {
+    PcoServicesPlanTimeOrder.startsAt: 'starts_at',
+  };
+  static String orderString(PcoServicesPlanTimeOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesPlanTimeFilter, String> _filterMap = {};
+  static String filterString(PcoServicesPlanTimeFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesPlanTimeQuery({
+    /// include associated split_team_rehearsal_assignments
+    /// when true, adds `?include=split_team_rehearsal_assignments` to url
+    bool includeSplitTeamRehearsalAssignments = false,
+
+    /// Query by `time_type`
+    /// query on a specific time_type, url example: ?where[time_type]=1
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereTimeType,
+    PcoServicesPlanTimeOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeSplitTeamRehearsalAssignments)
+      include.add('split_team_rehearsal_assignments');
+
+    if (whereTimeType != null)
+      where.add(PlanningCenterApiWhere.parse('time_type', whereTimeType));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services PlanTime Object
 ///
@@ -19,7 +109,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesPlanTime()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesPlanTime.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesPlanTime.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -45,25 +134,6 @@ part of pco;
 /// - `endsAt` (rw) -> PCO: `ends_at`
 /// - `liveStartsAt` (ro) -> PCO: `live_starts_at`
 /// - `liveEndsAt` (ro) -> PCO: `live_ends_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `split_team_rehearsal_assignments`: include associated split_team_rehearsal_assignments
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `time_type`: (URLParameter), query on a specific time_type, example: ?where[time_type]=1
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -294,16 +364,19 @@ class PcoServicesPlanTime extends PcoResource {
       obj._attributes['live_starts_at'] = liveStartsAt.toIso8601String();
     if (liveEndsAt != null)
       obj._attributes['live_ends_at'] = liveEndsAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -319,10 +392,10 @@ class PcoServicesPlanTime extends PcoResource {
     String personId,
     String upPlanId,
     String neededPositionId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -339,10 +412,10 @@ class PcoServicesPlanTime extends PcoResource {
       getDeclinedPlanTimesFromPersonAndPlanPerson(
     String personId,
     String planPersonId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -359,10 +432,10 @@ class PcoServicesPlanTime extends PcoResource {
     String personId,
     String planPersonId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -379,10 +452,10 @@ class PcoServicesPlanTime extends PcoResource {
     String serviceTypeId,
     String planId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -399,10 +472,10 @@ class PcoServicesPlanTime extends PcoResource {
       getDeclinedPlanTimesFromPersonAndSchedule(
     String personId,
     String scheduleId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -419,10 +492,10 @@ class PcoServicesPlanTime extends PcoResource {
     String personId,
     String scheduleId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -442,10 +515,10 @@ class PcoServicesPlanTime extends PcoResource {
   static Future<PcoCollection<PcoServicesPlanTime>> getFromServiceType(
     String serviceTypeId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPlanTimeQuery? query,
     bool includeSplitTeamRehearsalAssignments = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPlanTimeQuery();
 
     if (includeSplitTeamRehearsalAssignments)
       query.include.add('split_team_rehearsal_assignments');
@@ -463,11 +536,9 @@ class PcoServicesPlanTime extends PcoResource {
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments`
   Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>>
-      getSplitTeamRehearsalAssignments({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+      getSplitTeamRehearsalAssignments(
+          {PcoServicesSplitTeamRehearsalAssignmentQuery? query}) async {
+    query ??= PcoServicesSplitTeamRehearsalAssignmentQuery();
     var url = '$apiEndpoint/split_team_rehearsal_assignments';
     return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(
         url,

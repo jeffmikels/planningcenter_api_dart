@@ -1,9 +1,101 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.591435
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.437347
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `startsAt` -> `?order=starts_at`
+enum PcoServicesScheduleOrder { startsAt }
+
+/// Possible Inbound Filters:
+/// - `after` -> `?filter=after` : Fetch schedules after the included `after` iso8601 date param. e.g. `?filter=after&after=2020-01-01T00:00:00Z`
+/// - `all` -> `?filter=all` : -- no description
+/// - `before` -> `?filter=before` : Fetch schedules before the included `before` iso8601 date param. e.g. `?filter=before&before=2020-01-01T00:00:00Z`
+/// - `future` -> `?filter=future` : -- no description
+/// - `notAcrossOrganizations` -> `?filter=not_across_organizations` : -- no description
+/// - `past` -> `?filter=past` : -- no description
+enum PcoServicesScheduleFilter {
+  after,
+  all,
+  before,
+  future,
+  notAcrossOrganizations,
+  past
+}
+
+/// Creates a [PcoServicesScheduleQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includePlanTimes`: include associated plan_times
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesScheduleQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesScheduleOrder.startsAt` : will order by `starts_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesScheduleQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesScheduleOrder, String> _orderMap = {
+    PcoServicesScheduleOrder.startsAt: 'starts_at',
+  };
+  static String orderString(PcoServicesScheduleOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesScheduleFilter, String> _filterMap = {
+    PcoServicesScheduleFilter.after: 'after',
+    PcoServicesScheduleFilter.all: 'all',
+    PcoServicesScheduleFilter.before: 'before',
+    PcoServicesScheduleFilter.future: 'future',
+    PcoServicesScheduleFilter.notAcrossOrganizations:
+        'not_across_organizations',
+    PcoServicesScheduleFilter.past: 'past',
+  };
+  static String filterString(PcoServicesScheduleFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesScheduleQuery({
+    /// include associated plan_times
+    /// when true, adds `?include=plan_times` to url
+    bool includePlanTimes = false,
+    PcoServicesScheduleFilter? filterBy,
+    PcoServicesScheduleOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includePlanTimes) include.add('plan_times');
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Schedule Object
 ///
@@ -19,7 +111,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesSchedule.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesSchedule.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -53,25 +144,6 @@ part of pco;
 /// - `isCanAcceptPartialOneTime` (ro) -> PCO: `can_accept_partial_one_time`
 /// - `isPlanVisible` (ro) -> PCO: `plan_visible`
 /// - `isPlanVisibleToMe` (ro) -> PCO: `plan_visible_to_me`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `plan_times`: include associated plan_times
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `starts_at`: (URLParameter), prefix with a hyphen (-starts_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -348,16 +420,19 @@ class PcoServicesSchedule extends PcoResource {
     if (isPlanVisible != null) obj._attributes['plan_visible'] = isPlanVisible;
     if (isPlanVisibleToMe != null)
       obj._attributes['plan_visible_to_me'] = isPlanVisibleToMe;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -383,10 +458,10 @@ class PcoServicesSchedule extends PcoResource {
   static Future<PcoCollection<PcoServicesSchedule>> getFromPerson(
     String personId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesScheduleQuery? query,
     bool includePlanTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesScheduleQuery();
 
     if (includePlanTimes) query.include.add('plan_times');
     var url = '/services/v2/people/$personId/schedules';
@@ -401,10 +476,10 @@ class PcoServicesSchedule extends PcoResource {
       getMySchedulesFromServiceTypeAndPlan(
     String serviceTypeId,
     String planId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesScheduleQuery? query,
     bool includePlanTimes = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesScheduleQuery();
 
     if (includePlanTimes) query.include.add('plan_times');
     var url =
@@ -421,14 +496,9 @@ class PcoServicesSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/declined_plan_times`
-  Future<PcoCollection<PcoServicesPlanTime>> getDeclinedPlanTimes({
-    PlanningCenterApiQuery? query,
-    bool includeSplitTeamRehearsalAssignments = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeSplitTeamRehearsalAssignments)
-      query.include.add('split_team_rehearsal_assignments');
+  Future<PcoCollection<PcoServicesPlanTime>> getDeclinedPlanTimes(
+      {PcoServicesPlanTimeQuery? query}) async {
+    query ??= PcoServicesPlanTimeQuery();
     var url = '$apiEndpoint/declined_plan_times';
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
         query: query, apiVersion: apiVersion);
@@ -436,14 +506,9 @@ class PcoServicesSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/plan_times`
-  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes({
-    PlanningCenterApiQuery? query,
-    bool includeSplitTeamRehearsalAssignments = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeSplitTeamRehearsalAssignments)
-      query.include.add('split_team_rehearsal_assignments');
+  Future<PcoCollection<PcoServicesPlanTime>> getPlanTimes(
+      {PcoServicesPlanTimeQuery? query}) async {
+    query ??= PcoServicesPlanTimeQuery();
     var url = '$apiEndpoint/plan_times';
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url,
         query: query, apiVersion: apiVersion);
@@ -451,11 +516,9 @@ class PcoServicesSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to`
-  Future<PcoCollection<PcoServicesPerson>> getRespondTo({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesPerson>> getRespondTo(
+      {PcoServicesPersonQuery? query}) async {
+    query ??= PcoServicesPersonQuery();
     var url = '$apiEndpoint/respond_to';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -463,23 +526,9 @@ class PcoServicesSchedule extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/schedules/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includePeople = false,
-    bool includePersonTeamPositionAssignments = false,
-    bool includeServiceType = false,
-    bool includeTeamLeaders = false,
-    bool includeTeamPositions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesSchedule.canInclude);
-    if (includePeople) query.include.add('people');
-    if (includePersonTeamPositionAssignments)
-      query.include.add('person_team_position_assignments');
-    if (includeServiceType) query.include.add('service_type');
-    if (includeTeamLeaders) query.include.add('team_leaders');
-    if (includeTeamPositions) query.include.add('team_positions');
+  Future<PcoCollection<PcoServicesTeam>> getTeam(
+      {PcoServicesTeamQuery? query}) async {
+    query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';
     return PcoCollection.fromApiCall<PcoServicesTeam>(url,
         query: query, apiVersion: apiVersion);

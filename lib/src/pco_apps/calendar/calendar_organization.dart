@@ -1,9 +1,44 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.791481
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.630099
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCalendarOrganizationOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCalendarOrganizationFilter { none }
+
+/// Creates a [PcoCalendarOrganizationQuery] object
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarOrganizationQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarOrganizationOrder, String> _orderMap = {};
+  static String orderString(PcoCalendarOrganizationOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarOrganizationFilter, String> _filterMap = {};
+  static String filterString(PcoCalendarOrganizationFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarOrganizationQuery({
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super();
+}
 
 /// This class represents a PCO Calendar Organization Object
 ///
@@ -19,7 +54,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarOrganization.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarOrganization.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -40,25 +74,6 @@ part of pco;
 /// - `timeZone` (ro) -> PCO: `time_zone`
 /// - `isTwentyFourHourTime` (ro) -> PCO: `twenty_four_hour_time`
 /// - `dateFormat` (ro) -> PCO: `date_format`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -203,16 +218,19 @@ class PcoCalendarOrganization extends PcoResource {
     if (isTwentyFourHourTime != null)
       obj._attributes['twenty_four_hour_time'] = isTwentyFourHourTime;
     if (dateFormat != null) obj._attributes['date_format'] = dateFormat;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -223,13 +241,9 @@ class PcoCalendarOrganization extends PcoResource {
 
   /// Will get a collection of [PcoCalendarAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/attachments`
-  Future<PcoCollection<PcoCalendarAttachment>> getAttachments({
-    PlanningCenterApiQuery? query,
-    bool includeEvent = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeEvent) query.include.add('event');
+  Future<PcoCollection<PcoCalendarAttachment>> getAttachments(
+      {PcoCalendarAttachmentQuery? query}) async {
+    query ??= PcoCalendarAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoCalendarAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -242,18 +256,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// - `future`
   /// - `resolved`
   /// - `unresolved`
-  Future<PcoCollection<PcoCalendarConflict>> getConflicts({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeResolvedBy = false,
-    bool includeResource = false,
-    bool includeWinner = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeResolvedBy) query.include.add('resolved_by');
-    if (includeResource) query.include.add('resource');
-    if (includeWinner) query.include.add('winner');
+  Future<PcoCollection<PcoCalendarConflict>> getConflicts(
+      {PcoCalendarConflictQuery? query}) async {
+    query ??= PcoCalendarConflictQuery();
     var url = '$apiEndpoint/conflicts';
     return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
         query: query, apiVersion: apiVersion);
@@ -282,20 +287,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// - `shared`
   /// - `subscriber`
   /// - `unresolved`
-  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstances({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventTimes = false,
-    bool includeResourceBookings = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeResourceBookings) query.include.add('resource_bookings');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstances(
+      {PcoCalendarEventInstanceQuery? query}) async {
+    query ??= PcoCalendarEventInstanceQuery();
     var url = '$apiEndpoint/event_instances';
     return PcoCollection.fromApiCall<PcoCalendarEventInstance>(url,
         query: query, apiVersion: apiVersion);
@@ -304,22 +298,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// Will get a collection of [PcoCalendarEventResourceRequest] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/event_resource_requests`
   Future<PcoCollection<PcoCalendarEventResourceRequest>>
-      getEventResourceRequests({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeCreatedBy = false,
-    bool includeEvent = false,
-    bool includeResource = false,
-    bool includeRoomSetup = false,
-    bool includeUpdatedBy = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeCreatedBy) query.include.add('created_by');
-    if (includeEvent) query.include.add('event');
-    if (includeResource) query.include.add('resource');
-    if (includeRoomSetup) query.include.add('room_setup');
-    if (includeUpdatedBy) query.include.add('updated_by');
+      getEventResourceRequests(
+          {PcoCalendarEventResourceRequestQuery? query}) async {
+    query ??= PcoCalendarEventResourceRequestQuery();
     var url = '$apiEndpoint/event_resource_requests';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url,
         query: query, apiVersion: apiVersion);
@@ -330,18 +311,9 @@ class PcoCalendarOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `future`
-  Future<PcoCollection<PcoCalendarEvent>> getEvents({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAttachments = false,
-    bool includeOwner = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeAttachments) query.include.add('attachments');
-    if (includeOwner) query.include.add('owner');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEvent>> getEvents(
+      {PcoCalendarEventQuery? query}) async {
+    query ??= PcoCalendarEventQuery();
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -349,11 +321,9 @@ class PcoCalendarOrganization extends PcoResource {
 
   /// Will get a collection of [PcoCalendarFeed] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/feeds`
-  Future<PcoCollection<PcoCalendarFeed>> getFeeds({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCalendarFeed>> getFeeds(
+      {PcoCalendarFeedQuery? query}) async {
+    query ??= PcoCalendarFeedQuery();
     var url = '$apiEndpoint/feeds';
     return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
         query: query, apiVersion: apiVersion);
@@ -364,11 +334,9 @@ class PcoCalendarOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `event_owners`
-  Future<PcoCollection<PcoCalendarPerson>> getPeople({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCalendarPerson>> getPeople(
+      {PcoCalendarPersonQuery? query}) async {
+    query ??= PcoCalendarPersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -376,11 +344,9 @@ class PcoCalendarOrganization extends PcoResource {
 
   /// Will get a collection of [PcoCalendarReportTemplate] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/report_templates`
-  Future<PcoCollection<PcoCalendarReportTemplate>> getReportTemplates({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCalendarReportTemplate>> getReportTemplates(
+      {PcoCalendarReportTemplateQuery? query}) async {
+    query ??= PcoCalendarReportTemplateQuery();
     var url = '$apiEndpoint/report_templates';
     return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url,
         query: query, apiVersion: apiVersion);
@@ -389,16 +355,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// Will get a collection of [PcoCalendarResourceApprovalGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_approval_groups`
   Future<PcoCollection<PcoCalendarResourceApprovalGroup>>
-      getResourceApprovalGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includePeople = false,
-    bool includeResources = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includePeople) query.include.add('people');
-    if (includeResources) query.include.add('resources');
+      getResourceApprovalGroups(
+          {PcoCalendarResourceApprovalGroupQuery? query}) async {
+    query ??= PcoCalendarResourceApprovalGroupQuery();
     var url = '$apiEndpoint/resource_approval_groups';
     return PcoCollection.fromApiCall<PcoCalendarResourceApprovalGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -418,19 +377,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// - `rejected`
   /// - `resources`
   /// - `rooms`
-  Future<PcoCollection<PcoCalendarResourceBooking>> getResourceBookings({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEventInstance = false,
-    bool includeEventResourceRequest = false,
-    bool includeResource = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeEventInstance) query.include.add('event_instance');
-    if (includeEventResourceRequest)
-      query.include.add('event_resource_request');
-    if (includeResource) query.include.add('resource');
+  Future<PcoCollection<PcoCalendarResourceBooking>> getResourceBookings(
+      {PcoCalendarResourceBookingQuery? query}) async {
+    query ??= PcoCalendarResourceBookingQuery();
     var url = '$apiEndpoint/resource_bookings';
     return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
         query: query, apiVersion: apiVersion);
@@ -442,13 +391,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// Available Query Filters:
   /// - `resources`
   /// - `rooms`
-  Future<PcoCollection<PcoCalendarResourceFolder>> getResourceFolders({
-    PlanningCenterApiQuery? query,
-    bool includeResources = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeResources) query.include.add('resources');
+  Future<PcoCollection<PcoCalendarResourceFolder>> getResourceFolders(
+      {PcoCalendarResourceFolderQuery? query}) async {
+    query ??= PcoCalendarResourceFolderQuery();
     var url = '$apiEndpoint/resource_folders';
     return PcoCollection.fromApiCall<PcoCalendarResourceFolder>(url,
         query: query, apiVersion: apiVersion);
@@ -456,11 +401,9 @@ class PcoCalendarOrganization extends PcoResource {
 
   /// Will get a collection of [PcoCalendarResourceQuestion] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_questions`
-  Future<PcoCollection<PcoCalendarResourceQuestion>> getResourceQuestions({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCalendarResourceQuestion>> getResourceQuestions(
+      {PcoCalendarResourceQuestionQuery? query}) async {
+    query ??= PcoCalendarResourceQuestionQuery();
     var url = '$apiEndpoint/resource_questions';
     return PcoCollection.fromApiCall<PcoCalendarResourceQuestion>(url,
         query: query, apiVersion: apiVersion);
@@ -472,21 +415,9 @@ class PcoCalendarOrganization extends PcoResource {
   /// Available Query Filters:
   /// - `resources`
   /// - `rooms`
-  Future<PcoCollection<PcoCalendarResource>> getResources({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeResourceApprovalGroups = false,
-    bool includeResourceFolder = false,
-    bool includeResourceQuestions = false,
-    bool includeRoomSetups = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeResourceApprovalGroups)
-      query.include.add('resource_approval_groups');
-    if (includeResourceFolder) query.include.add('resource_folder');
-    if (includeResourceQuestions) query.include.add('resource_questions');
-    if (includeRoomSetups) query.include.add('room_setups');
+  Future<PcoCollection<PcoCalendarResource>> getResources(
+      {PcoCalendarResourceQuery? query}) async {
+    query ??= PcoCalendarResourceQuery();
     var url = '$apiEndpoint/resources';
     return PcoCollection.fromApiCall<PcoCalendarResource>(url,
         query: query, apiVersion: apiVersion);
@@ -497,16 +428,9 @@ class PcoCalendarOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `shared_room_setups`
-  Future<PcoCollection<PcoCalendarRoomSetup>> getRoomSetups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeContainingResource = false,
-    bool includeResourceSuggestions = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeContainingResource) query.include.add('containing_resource');
-    if (includeResourceSuggestions) query.include.add('resource_suggestions');
+  Future<PcoCollection<PcoCalendarRoomSetup>> getRoomSetups(
+      {PcoCalendarRoomSetupQuery? query}) async {
+    query ??= PcoCalendarRoomSetupQuery();
     var url = '$apiEndpoint/room_setups';
     return PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
         query: query, apiVersion: apiVersion);
@@ -517,16 +441,9 @@ class PcoCalendarOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `required`
-  Future<PcoCollection<PcoCalendarTagGroup>> getTagGroups({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvents = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarOrganization.canInclude);
-    if (includeEvents) query.include.add('events');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarTagGroup>> getTagGroups(
+      {PcoCalendarTagGroupQuery? query}) async {
+    query ??= PcoCalendarTagGroupQuery();
     var url = '$apiEndpoint/tag_groups';
     return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url,
         query: query, apiVersion: apiVersion);
@@ -537,13 +454,9 @@ class PcoCalendarOrganization extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `individual`
-  Future<PcoCollection<PcoCalendarTag>> getTags({
-    PlanningCenterApiQuery? query,
-    bool includeTagGroup = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeTagGroup) query.include.add('tag_group');
+  Future<PcoCollection<PcoCalendarTag>> getTags(
+      {PcoCalendarTagQuery? query}) async {
+    query ??= PcoCalendarTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoCalendarTag>(url,
         query: query, apiVersion: apiVersion);

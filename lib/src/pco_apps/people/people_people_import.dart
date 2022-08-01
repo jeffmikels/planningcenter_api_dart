@@ -1,9 +1,64 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.734216
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.596389
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoPeoplePeopleImportOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoPeoplePeopleImportFilter { none }
+
+/// Creates a [PcoPeoplePeopleImportQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoPeoplePeopleImport] objects can be requested with one or more of the following criteria:
+/// - `whereStatus`: query on a specific status, example: ?where[status]=value
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoPeoplePeopleImportQuery extends PlanningCenterApiQuery {
+  static final Map<PcoPeoplePeopleImportOrder, String> _orderMap = {};
+  static String orderString(PcoPeoplePeopleImportOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoPeoplePeopleImportFilter, String> _filterMap = {};
+  static String filterString(PcoPeoplePeopleImportFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoPeoplePeopleImportQuery({
+    /// Query by `status`
+    /// query on a specific status, url example: ?where[status]=value
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereStatus,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereStatus != null)
+      where.add(PlanningCenterApiWhere.parse('status', whereStatus));
+  }
+}
 
 /// This class represents a PCO People PeopleImport Object
 ///
@@ -19,7 +74,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePeopleImport.fromJson()` constructor.
-/// - Manually create an object using the `PcoPeoplePeopleImport.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -41,25 +95,6 @@ part of pco;
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `processedAt` (ro) -> PCO: `processed_at`
 /// - `undoneAt` (ro) -> PCO: `undone_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `status`: (URLParameter), query on a specific status, example: ?where[status]=value
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -201,16 +236,19 @@ class PcoPeoplePeopleImport extends PcoResource {
       obj._attributes['processed_at'] = processedAt.toIso8601String();
     if (undoneAt != null)
       obj._attributes['undone_at'] = undoneAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -223,9 +261,9 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// using a path like this: `/people/v2/people_imports`
   static Future<PcoCollection<PcoPeoplePeopleImport>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoPeoplePeopleImportQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoPeoplePeopleImportQuery();
 
     var url = '/people/v2/people_imports';
     if (id != null) url += '/$id';
@@ -251,11 +289,9 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// - `ignored`
   /// - `not_ignored`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoPeoplePeopleImportConflict>> getConflicts(
+      {PcoPeoplePeopleImportConflictQuery? query}) async {
+    query ??= PcoPeoplePeopleImportConflictQuery();
     var url = '$apiEndpoint/conflicts';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
         query: query, apiVersion: apiVersion);
@@ -270,16 +306,9 @@ class PcoPeoplePeopleImport extends PcoResource {
   /// - `household_updates`
   /// - `identical`
   /// - `updates`
-  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeHousehold = false,
-    bool includePerson = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePeopleImport.canInclude);
-    if (includeHousehold) query.include.add('household');
-    if (includePerson) query.include.add('person');
+  Future<PcoCollection<PcoPeoplePeopleImportHistory>> getHistories(
+      {PcoPeoplePeopleImportHistoryQuery? query}) async {
+    query ??= PcoPeoplePeopleImportHistoryQuery();
     var url = '$apiEndpoint/histories';
     return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url,
         query: query, apiVersion: apiVersion);

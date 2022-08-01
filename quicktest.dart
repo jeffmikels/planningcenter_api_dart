@@ -41,7 +41,12 @@ void main() async {
 
   // PlanningCenter.init(appid, secret);
   var personId = '59717092';
-  var collection = await PcoPeoplePerson.get(id: personId, includeEmails: true, includeMaritalStatus: true);
+  var collection = await PcoPeoplePerson.get(
+      id: personId,
+      query: PcoPeoplePersonQuery(
+        includeEmails: true,
+        includeMaritalStatus: true,
+      ));
   if (collection.isError) {
     debug(collection.query.asMap);
     debug(collection.response.responseBody);
@@ -68,35 +73,36 @@ void main() async {
   // });
 
   var batches = await PcoGivingBatch.get(
-      query: PlanningCenterApiQuery(
-    filter: ['in_progress'],
-  ));
+    query: PcoGivingBatchQuery(filterBy: PcoGivingBatchFilter.inProgress),
+  );
   for (var batch in batches.items) {
+    print('removing in progress batch');
+    print(batch);
     if (batch.donationsCount == 0) await batch.delete();
   }
 
-  var batch = PcoGivingBatch();
-  await batch.save();
+  // var batch = PcoGivingBatch();
+  // await batch.save();
 
-  print('Testing donations');
-  var don = PcoGivingDonation(
-    batchId: batch.id!,
-    personId: personId,
-    paymentMethod: 'cash',
-    paymentCheckNumber: 1234,
-    paymentSourceId: '289',
-    receivedAt: DateTime.now(),
-  );
-  var des = PcoGivingDesignation(
-    amountCents: 12345,
-    withRelationships: {
-      'fund': [PcoGivingFund(id: '40585')]
-    },
-  );
-  var test = don.toDataMap(withIncluded: [des]);
-  debug(test);
-  var res = await don.saveWithDesignations([des]);
-  debug(res);
+  // print('Testing donations');
+  // var don = PcoGivingDonation(
+  //   batchId: batch.id!,
+  //   personId: personId,
+  //   paymentMethod: 'cash',
+  //   paymentCheckNumber: 1234,
+  //   paymentSourceId: '289',
+  //   receivedAt: DateTime.now(),
+  // );
+  // var des = PcoGivingDesignation(
+  //   amountCents: 12345,
+  //   withRelationships: {
+  //     'fund': [PcoGivingFund(id: '40585')]
+  //   },
+  // );
+  // var test = don.toDataMap(withIncluded: [des]);
+  // debug(test);
+  // var res = await don.saveWithDesignations([des]);
+  // debug(res);
 
   // Once we're done with the client, save the credentials file. This ensures
   // that if the credentials were automatically refreshed while using the

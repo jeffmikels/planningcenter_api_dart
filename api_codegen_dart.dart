@@ -52,7 +52,6 @@ extension MyStringExtensions on String {
   }
 
   // String get singularWithPeople => singular.replaceAll('people', 'person').replaceAll('People', 'Person');
-
   String snakeToPascal() => replaceAll('-', '_').split('_').map((s) => s.capitalized).join();
   String snakeToCamel() {
     var s = snakeToPascal();
@@ -74,6 +73,11 @@ extension MyStringExtensions on String {
     }
   }
 }
+
+String dartVar(String s, [bool pascal = false]) =>
+    pascal ? s.replaceAll('.', '_').snakeToPascal() : s.replaceAll('.', '_').snakeToCamel();
+String dartPascal(String s) => dartVar(s, true);
+String dartCamel(String s) => dartVar(s, false);
 
 /// CLASSES REPRESENTING JSON-API DOCUMENTATION OBJECTS
 ///
@@ -209,6 +213,12 @@ class Vertex extends JsonApiDoc {
     var seenAttributes = <String>{};
     vertexAttributes = vertexAttributes.where((element) {
       return seenAttributes.add(element.name);
+    }).toList();
+
+    // Fix vertex orderby duplicates
+    var seenOrderBys = <String>{};
+    canOrderBy = canOrderBy.where((element) {
+      return seenOrderBys.add(element.name);
     }).toList();
   }
 }
@@ -426,11 +436,13 @@ String fieldVarName(Attribute attribute) {
   return camelName;
 }
 
+String staticConstantVarName(Attribute attribute) => 'k${attribute.name.snakeToPascal()}';
+
 /// this function helps to generate the getters for a specific [Vertex] - [Attribute]
 /// [realMode] can be 'get' 'set' or 'both'
 /// if 'both' it will do a get first and then call itself again with 'set'
 String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttributeNameAsKey = false}) {
-  var keyName = useAttributeNameAsKey ? "'${attribute.name}'" : 'k${attribute.name.snakeToPascal()}';
+  var keyName = useAttributeNameAsKey ? "'${attribute.name}'" : staticConstantVarName(attribute);
   var targetName = '_attributes[$keyName]';
   var varName = fieldVarName(attribute);
   var setterDoc = '\n/// pass `null` to remove key from attributes';
@@ -502,6 +514,10 @@ ${edge.availableFilters.map(queryFilterFormatter).join('\n')}''';
 String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
   var className = classNameFromVertex(vertex.application, vertex.name);
 
+  Set<EdgeFilter> inboundFilters = {};
+  for (var edge in vertex.inboundEdges) {
+    if (edge.path == vertex.inboundPath) inboundFilters.addAll(edge.availableFilters);
+  }
   Set<String> setterNeeded = {
     ...vertex.vertexPermissions.createAssignable,
     ...vertex.vertexPermissions.updateAssignable
@@ -589,8 +605,8 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
       print('--- COULD NOT DETERMINE VERTEX FROM INCLUDE: ${inc.name}');
       relationshipGetterLines.add(
         '/// The code generator could not automatically determine the resource type of this relationship.\n'
-        '/// For type safe code, you should specify it here.\n'
-        'List<T> $functionName<T extends PcoResource>() => (relationships[\'${inc.name}\'] as List?)?.cast<T>() ?? [];',
+        '/// For type safe code, you should specify it in the type argument when calling.\n'
+        'List<T> $functionName<T extends PcoResource>() => (relationships[\'${inc.name}\'] as List?)?.cast<T>() ?? [];\n',
       );
     }
   }
@@ -645,10 +661,8 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
     outboundGetters.add('''
   /// Will get a collection of [$targetClass] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `${edge.path}`${makeMetaDoc(edge, '  /// ')}
-  Future<PcoCollection<$targetClass>> $functionName({PlanningCenterApiQuery? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${outboundIncludeArgs.join(' ')}}) async {
-    query ??= PlanningCenterApiQuery();
-    ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}
-${outboundIncludeChecks.join('\n').prefixLines('    ')}
+  Future<PcoCollection<$targetClass>> $functionName({${targetClass}Query? query}) async {
+    query ??= ${targetClass}Query();
     var url = '\$apiEndpoint/$pathSuffix';
     return PcoCollection.fromApiCall<$targetClass>(url, query: query, apiVersion: apiVersion);
   }
@@ -775,13 +789,11 @@ ${outboundIncludeChecks.join('\n').prefixLines('    ')}
       idArgs = [];
     }
 
-    // if (functionName == 'getMany' || functionName == 'getSingle') functionName = 'get';
-
     var toAdd = '''\n
   /// Will get a collection of [$className] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
-  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}PlanningCenterApiQuery? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
-    query ??= PlanningCenterApiQuery();
+  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}${className}Query? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
+    query ??= ${className}Query();
     ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}
 ${inboundIncludeChecks.join('\n').prefixLines('    ')}
     var url = '$edgePathTemplate';
@@ -794,6 +806,8 @@ ${inboundIncludeChecks.join('\n').prefixLines('    ')}
     } else {
       staticInboundFunctions.add(toAdd);
     }
+
+    // also add a getSingle option
   }
 
   /// PROCESS VERTEX ACTIONS:
@@ -852,11 +866,8 @@ $details
   var idArgs = <String>[];
   var pathNames = [];
   var idVarNames = <String>{};
-  var defaultAssignLines = <String>[];
-  var defaultNamedParams = <String>[];
   var constructorAssignLines = <String>[];
   var constructorNamedParams = <String>[];
-  var allAttributes = <Attribute>[];
   var createAttributes = <Attribute>[];
   var updateAttributes = <Attribute>[];
   var constructorParamsNeeded = <String>{};
@@ -914,6 +925,7 @@ $details
     // put it in the function args a second time.
     var target = varName;
     if (typeString == 'DateTime') target = '$target.toIso8601String()';
+    var constantName = staticConstantVarName(fa);
     if (!idVarNames.contains(varName)) {
       constructorNamedParams.add('$typeString? $varName');
       constructorAssignLines.add('if ($varName != null) obj._attributes[\'${fa.name}\'] = $target;');
@@ -964,16 +976,19 @@ $details
     var obj = $className.empty();
     obj._id = id;
 ${constructorAssignLines.join('\n').prefixLines('    ')}
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 ''');
@@ -1097,9 +1112,153 @@ ${actionsLines.join('\n')}
   var additionalInstructions = additionalInstructionLines.join('\n').trim();
   if (additionalInstructions.isNotEmpty) additionalInstructions += '\n';
 
+  // -- for the query class
+  String queryIncludes = vertex.canInclude.isEmpty
+      ? ''
+      : '''
+${vertex.canInclude.map((e) => '/// ${e.description}\n/// when true, adds `?include=${e.name}` to url\nbool include${dartVar(e.name, true)} = false,\n').join('\n').prefixLines('    ')}
+''';
+  if (useIncludeAll) {
+    queryIncludes += '''
+    /// when true, adds `?include=${vertex.canInclude.map((e) => e.name).join(',')}` to url parameters
+    bool includeAll = false,\n
+''';
+  }
+  String queryIncludesChecks = vertex.canInclude.isEmpty
+      ? ''
+      : '''
+${vertex.canInclude.map((e) => 'if (${useIncludeAll ? 'includeAll || ' : ''}include${dartVar(e.name, true)}) include.add(\'${e.name}\');').join('\n')}
+''';
+
+  String queryWhere = vertex.canQuery.isEmpty
+      ? ''
+      : '''
+${vertex.canQuery.map((e) => '/// Query by `${e.name}`\n/// ${e.description}, url example: ${e.example}\n/// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons\nString? where${dartVar(e.name, true)},\n').join('\n').prefixLines('    ')}
+''';
+
+  String queryWhereChecks = vertex.canQuery.isEmpty
+      ? ''
+      : '''
+${vertex.canQuery.map((e) => 'if (where${dartVar(e.name, true)} != null) where.add(PlanningCenterApiWhere.parse(\'${e.name}\', where${dartVar(e.name, true)}));').join('\n')}
+    
+''';
+
+  String queryOrderHelp = vertex.canOrderBy.isEmpty
+      ? '/// Ordering is not allowed on this object.\n'
+      : '''/// Possible Ordering:
+${vertex.canOrderBy.map((e) => '- `${dartCamel(e.name)}` -> `?order=${e.name}`').join('\n').prefixLines('/// ')}
+''';
+  String queryOrderEnums =
+      vertex.canOrderBy.isEmpty ? 'none' : vertex.canOrderBy.map((e) => dartCamel(e.name)).join(', ');
+
+  String queryFilterHelp = inboundFilters.isEmpty
+      ? '\n/// Filtering is not allowed when requesting this object.\n'
+      : '''\n/// Possible Inbound Filters:
+${inboundFilters.map((e) => '- `${dartCamel(e.name)}` -> `?filter=${e.name}` : ${e.help ?? '-- no description'}').join('\n').prefixLines('/// ')}
+''';
+
+  String queryFilterEnum = inboundFilters.isEmpty ? 'none' : inboundFilters.map((e) => dartCamel(e.name)).join(', ');
+
+  String includesDoc = vertex.canInclude.isEmpty
+      ? ''
+      : '''
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+/// 
+/// Related data may be included by marking desired `includeSomething` variables as true:
+${vertex.canInclude.map((e) => '- `include${dartPascal(e.name)}`: ${e.description} ').join('\n').prefixLines('/// ')}
+/// - `includeAll`: include all related objects
+/// 
+/// Alternatively, you may pass a list of strings to the `include` argument.
+/// 
+/// e.g. `${className}Query(includes: ['a', 'b'])`
+/// 
+''';
+  String queryDoc = vertex.canQuery.isEmpty
+      ? ''
+      : '''
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+/// 
+/// [$className] objects can be requested with one or more of the following criteria:
+${vertex.canQuery.map((e) => '- `where${dartPascal(e.name)}`: ${e.description}, example: ${e.example}').join('\n').prefixLines('/// ')}
+/// 
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+/// 
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+''';
+  String orderDoc = vertex.canOrderBy.isEmpty
+      ? ''
+      : '''
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+/// 
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+${vertex.canOrderBy.map((e) => '- `${className}Order.${dartVar(e.name)}` : will order by `${e.name}`').join('\n').prefixLines('/// ')}
+/// 
+/// To reverse the order, set `reverse` to true.
+/// 
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+/// 
+''';
+
+  String queryConstructorBody = '''
+${inboundFilters.isNotEmpty ? 'if (filterBy != null) filter.add(filterString(filterBy));' : ''}
+$queryIncludesChecks
+$queryWhereChecks
+${vertex.canOrderBy.isEmpty ? '' : 'if (orderBy != null) order = orderString(orderBy, reverse: reverse);'}
+'''
+      .trim();
+  if (queryConstructorBody.isEmpty) {
+    queryConstructorBody = ';';
+  } else {
+    queryConstructorBody = '{\n${queryConstructorBody.prefixLines('    ')}}';
+  }
+
   /// HERE'S THE ACTUAL CLASS TEMPLATE ========================
   return '''${autoGeneratedHeader()}
 part of pco;
+
+${queryOrderHelp}enum ${className}Order { $queryOrderEnums }
+${queryFilterHelp}enum ${className}Filter { $queryFilterEnum }
+
+/// Creates a [${className}Query] object
+$includesDoc$queryDoc$orderDoc///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class ${className}Query extends PlanningCenterApiQuery {
+  static final Map<${className}Order, String> _orderMap = {
+${vertex.canOrderBy.map((e) => '${className}Order.${dartVar(e.name, false)}: \'${e.name}\',').join('\n').prefixLines('    ')}
+  };
+  static String orderString(${className}Order order, {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<${className}Filter, String> _filterMap = {
+${inboundFilters.map((e) => '${className}Filter.${dartVar(e.name, false)}: \'${e.name}\',').join('\n').prefixLines('    ')}
+  };
+  static String filterString(${className}Filter filter) => _filterMap[filter]!;
+
+  ${className}Query({
+$queryIncludes$queryWhere
+${inboundFilters.isNotEmpty ? '    ${className}Filter? filterBy,\n' : ''}${vertex.canOrderBy.isNotEmpty ? '    ${className}Order? orderBy,\n' : ''}
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() $queryConstructorBody
+}
 
 /// This class represents a PCO ${vertex.application.snakeToPascal()} ${vertex.name} Object
 /// 
@@ -1115,7 +1274,6 @@ part of pco;
 /// ## Instantiation
 /// ${vertex.vertexPermissions.canCreate ? '- Create a new instance using the `$className()` constructor' : '- This object cannot be created through the API.'}
 /// - Instantiate from existing `JSON` data using the `$className.fromJson()` constructor.
-/// - Manually create an object using the `$className.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 /// 
 /// ## Usage
@@ -1132,25 +1290,6 @@ ${vertex.description.cleanLines().trim().prefixLines('/// ')}
 /// ## Attributes (and permissions)
 ${attributeDocLines.join('\n').prefixLines('/// ')}
 /// 
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-/// 
-/// ${vertex.canInclude.isEmpty ? 'NONE' : vertex.canInclude.map((e) => '- `${e.value}`: ${e.description} ').join('\n/// ')}
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-/// 
-/// ${vertex.canQuery.isEmpty ? 'NONE' : vertex.canQuery.map((e) => '- `${e.name}`: (${e.type}), ${e.description}, example: ${e.example}').join('\n/// ')}
-/// 
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-/// 
-/// ${vertex.canOrderBy.isEmpty ? 'NONE' : vertex.canOrderBy.map((e) => '- `${e.value}`: (${e.type}), ${e.description}').join('\n/// ')}
-///
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:

@@ -1,9 +1,99 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.579822
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.427852
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `createdAt` -> `?order=created_at`
+/// - `firstName` -> `?order=first_name`
+/// - `lastName` -> `?order=last_name`
+/// - `updatedAt` -> `?order=updated_at`
+enum PcoServicesPersonOrder { createdAt, firstName, lastName, updatedAt }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesPersonFilter { none }
+
+/// Creates a [PcoServicesPersonQuery] object
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoServicesPerson] objects can be requested with one or more of the following criteria:
+/// - `whereAssignedToRehearsalTeam`: query on a specific assigned_to_rehearsal_team, example: ?where[assigned_to_rehearsal_team]=true
+/// - `whereLegacyId`: query on a specific legacy_id, example: ?where[legacy_id]=primary_key
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoServicesPersonOrder.createdAt` : will order by `created_at`
+/// - `PcoServicesPersonOrder.firstName` : will order by `first_name`
+/// - `PcoServicesPersonOrder.lastName` : will order by `last_name`
+/// - `PcoServicesPersonOrder.updatedAt` : will order by `updated_at`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesPersonQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesPersonOrder, String> _orderMap = {
+    PcoServicesPersonOrder.createdAt: 'created_at',
+    PcoServicesPersonOrder.firstName: 'first_name',
+    PcoServicesPersonOrder.lastName: 'last_name',
+    PcoServicesPersonOrder.updatedAt: 'updated_at',
+  };
+  static String orderString(PcoServicesPersonOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesPersonFilter, String> _filterMap = {};
+  static String filterString(PcoServicesPersonFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesPersonQuery({
+    /// Query by `assigned_to_rehearsal_team`
+    /// query on a specific assigned_to_rehearsal_team, url example: ?where[assigned_to_rehearsal_team]=true
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAssignedToRehearsalTeam,
+
+    /// Query by `legacy_id`
+    /// query on a specific legacy_id, url example: ?where[legacy_id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereLegacyId,
+    PcoServicesPersonOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (whereAssignedToRehearsalTeam != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'assigned_to_rehearsal_team', whereAssignedToRehearsalTeam));
+    if (whereLegacyId != null)
+      where.add(PlanningCenterApiWhere.parse('legacy_id', whereLegacyId));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Services Person Object
 ///
@@ -19,7 +109,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesPerson.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesPerson.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -76,29 +165,6 @@ part of pco;
 /// - `isCanViewAllPeople` (ro) -> PCO: `can_view_all_people`
 /// - `onboardings` (rw) -> PCO: `onboardings`
 /// - `currentFolderId` (wo) -> PCO: `current_folder_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// NONE
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `assigned_to_rehearsal_team`: (URLParameter), query on a specific assigned_to_rehearsal_team, example: ?where[assigned_to_rehearsal_team]=true
-/// - `legacy_id`: (URLParameter), query on a specific legacy_id, example: ?where[legacy_id]=primary_key
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
-/// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
-/// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
-/// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -519,16 +585,19 @@ class PcoServicesPerson extends PcoResource {
     if (onboardings != null) obj._attributes['onboardings'] = onboardings;
     if (currentFolderId != null)
       obj._attributes['current_folder_id'] = currentFolderId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -541,9 +610,9 @@ class PcoServicesPerson extends PcoResource {
   /// using a path like this: `/services/v2/people`
   static Future<PcoCollection<PcoServicesPerson>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url = '/services/v2/people';
     if (id != null) url += '/$id';
@@ -558,9 +627,9 @@ class PcoServicesPerson extends PcoResource {
     String personId,
     String recentPlanId,
     String liveId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url =
         '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller';
@@ -576,9 +645,9 @@ class PcoServicesPerson extends PcoResource {
     String serviceTypeId,
     String teamPositionId,
     String personTeamPositionAssignmentId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url =
         '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments/$personTeamPositionAssignmentId/person';
@@ -592,9 +661,9 @@ class PcoServicesPerson extends PcoResource {
   static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndPlanPerson(
     String personId,
     String planPersonId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url = '/services/v2/people/$personId/plan_people/$planPersonId/person';
 
@@ -608,9 +677,9 @@ class PcoServicesPerson extends PcoResource {
       getRespondToFromPersonAndSchedule(
     String personId,
     String scheduleId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url = '/services/v2/people/$personId/schedules/$scheduleId/respond_to';
 
@@ -625,9 +694,9 @@ class PcoServicesPerson extends PcoResource {
     String personId,
     String assignedTeamLeaderId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url =
         '/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people';
@@ -641,9 +710,9 @@ class PcoServicesPerson extends PcoResource {
   static Future<PcoCollection<PcoServicesPerson>> getFromTeam(
     String teamId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesPersonQuery? query,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesPersonQuery();
 
     var url = '/services/v2/teams/$teamId/people';
     if (id != null) url += '/$id';
@@ -661,13 +730,9 @@ class PcoServicesPerson extends PcoResource {
   ///
   /// Available Query Filters:
   /// - `current_organization`
-  Future<PcoCollection<PcoServicesAvailableSignup>> getAvailableSignups({
-    PlanningCenterApiQuery? query,
-    bool includeSignupSheets = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeSignupSheets) query.include.add('signup_sheets');
+  Future<PcoCollection<PcoServicesAvailableSignup>> getAvailableSignups(
+      {PcoServicesAvailableSignupQuery? query}) async {
+    query ??= PcoServicesAvailableSignupQuery();
     var url = '$apiEndpoint/available_signups';
     return PcoCollection.fromApiCall<PcoServicesAvailableSignup>(url,
         query: query, apiVersion: apiVersion);
@@ -679,11 +744,9 @@ class PcoServicesPerson extends PcoResource {
   /// Available Query Filters:
   /// - `future`
   /// - `past`
-  Future<PcoCollection<PcoServicesBlockout>> getBlockouts({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesBlockout>> getBlockouts(
+      {PcoServicesBlockoutQuery? query}) async {
+    query ??= PcoServicesBlockoutQuery();
     var url = '$apiEndpoint/blockouts';
     return PcoCollection.fromApiCall<PcoServicesBlockout>(url,
         query: query, apiVersion: apiVersion);
@@ -696,16 +759,9 @@ class PcoServicesPerson extends PcoResource {
   /// - `not_archived`
   /// - `not_deleted`
   Future<PcoCollection<PcoServicesPersonTeamPositionAssignment>>
-      getPersonTeamPositionAssignments({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includePerson = false,
-    bool includeTeamPosition = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesPerson.canInclude);
-    if (includePerson) query.include.add('person');
-    if (includeTeamPosition) query.include.add('team_position');
+      getPersonTeamPositionAssignments(
+          {PcoServicesPersonTeamPositionAssignmentQuery? query}) async {
+    query ??= PcoServicesPersonTeamPositionAssignmentQuery();
     var url = '$apiEndpoint/person_team_position_assignments';
     return PcoCollection.fromApiCall<PcoServicesPersonTeamPositionAssignment>(
         url,
@@ -715,20 +771,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlanPerson] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/plan_people`
-  Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeople({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeDeclinedPlanTimes = false,
-    bool includePerson = false,
-    bool includePlan = false,
-    bool includeTeam = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesPerson.canInclude);
-    if (includeDeclinedPlanTimes) query.include.add('declined_plan_times');
-    if (includePerson) query.include.add('person');
-    if (includePlan) query.include.add('plan');
-    if (includeTeam) query.include.add('team');
+  Future<PcoCollection<PcoServicesPlanPerson>> getPlanPeople(
+      {PcoServicesPlanPersonQuery? query}) async {
+    query ??= PcoServicesPlanPersonQuery();
     var url = '$apiEndpoint/plan_people';
     return PcoCollection.fromApiCall<PcoServicesPlanPerson>(url,
         query: query, apiVersion: apiVersion);
@@ -748,13 +793,9 @@ class PcoServicesPerson extends PcoResource {
   /// - `future`
   /// - `not_across_organizations`
   /// - `past`
-  Future<PcoCollection<PcoServicesSchedule>> getSchedules({
-    PlanningCenterApiQuery? query,
-    bool includePlanTimes = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includePlanTimes) query.include.add('plan_times');
+  Future<PcoCollection<PcoServicesSchedule>> getSchedules(
+      {PcoServicesScheduleQuery? query}) async {
+    query ??= PcoServicesScheduleQuery();
     var url = '$apiEndpoint/schedules';
     return PcoCollection.fromApiCall<PcoServicesSchedule>(url,
         query: query, apiVersion: apiVersion);
@@ -762,11 +803,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTag>> getTags(
+      {PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);
@@ -778,16 +817,9 @@ class PcoServicesPerson extends PcoResource {
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
-  Future<PcoCollection<PcoServicesTeamLeader>> getTeamLeaders({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includePeople = false,
-    bool includeTeam = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoServicesPerson.canInclude);
-    if (includePeople) query.include.add('people');
-    if (includeTeam) query.include.add('team');
+  Future<PcoCollection<PcoServicesTeamLeader>> getTeamLeaders(
+      {PcoServicesTeamLeaderQuery? query}) async {
+    query ??= PcoServicesTeamLeaderQuery();
     var url = '$apiEndpoint/team_leaders';
     return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
         query: query, apiVersion: apiVersion);
@@ -795,11 +827,9 @@ class PcoServicesPerson extends PcoResource {
 
   /// Will get a collection of [PcoServicesTextSetting] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/text_settings`
-  Future<PcoCollection<PcoServicesTextSetting>> getTextSettings({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTextSetting>> getTextSettings(
+      {PcoServicesTextSettingQuery? query}) async {
+    query ??= PcoServicesTextSettingQuery();
     var url = '$apiEndpoint/text_settings';
     return PcoCollection.fromApiCall<PcoServicesTextSetting>(url,
         query: query, apiVersion: apiVersion);

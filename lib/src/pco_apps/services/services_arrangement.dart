@@ -1,9 +1,70 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.536063
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.389838
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoServicesArrangementOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoServicesArrangementFilter { none }
+
+/// Creates a [PcoServicesArrangementQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeKeys`: include associated keys
+/// - `includeSections`: include associated sections
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoServicesArrangementQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesArrangementOrder, String> _orderMap = {};
+  static String orderString(PcoServicesArrangementOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoServicesArrangementFilter, String> _filterMap = {};
+  static String filterString(PcoServicesArrangementFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoServicesArrangementQuery({
+    /// include associated keys
+    /// when true, adds `?include=keys` to url
+    bool includeKeys = false,
+
+    /// include associated sections
+    /// when true, adds `?include=sections` to url
+    bool includeSections = false,
+
+    /// when true, adds `?include=keys,sections` to url parameters
+    bool includeAll = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeKeys) include.add('keys');
+    if (includeAll || includeSections) include.add('sections');
+  }
+}
 
 /// This class represents a PCO Services Arrangement Object
 ///
@@ -19,7 +80,6 @@ part of pco;
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesArrangement()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesArrangement.fromJson()` constructor.
-/// - Manually create an object using the `PcoServicesArrangement.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -64,26 +124,6 @@ part of pco;
 /// - `lyrics` (ro) -> PCO: `lyrics`
 /// - `mtid` (rw) -> PCO: `mtid`
 /// - `rehearsalMixId` (rw) -> PCO: `rehearsal_mix_id`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `keys`: include associated keys
-/// - `sections`: include associated sections
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -492,7 +532,7 @@ class PcoServicesArrangement extends PcoResource {
       _firstOrNull<PcoServicesKey>(relationships['keys']);
 
   /// The code generator could not automatically determine the resource type of this relationship.
-  /// For type safe code, you should specify it here.
+  /// For type safe code, you should specify it in the type argument when calling.
   List<T> includedSections<T extends PcoResource>() =>
       (relationships['sections'] as List?)?.cast<T>() ?? [];
 
@@ -599,16 +639,19 @@ class PcoServicesArrangement extends PcoResource {
     if (mtid != null) obj._attributes['mtid'] = mtid;
     if (rehearsalMixId != null)
       obj._attributes['rehearsal_mix_id'] = rehearsalMixId;
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -624,12 +667,12 @@ class PcoServicesArrangement extends PcoResource {
     String serviceTypeId,
     String planId,
     String itemId, {
-    PlanningCenterApiQuery? query,
+    PcoServicesArrangementQuery? query,
     bool includeAll = false,
     bool includeKeys = false,
     bool includeSections = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesArrangementQuery();
     if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
@@ -645,12 +688,12 @@ class PcoServicesArrangement extends PcoResource {
   static Future<PcoCollection<PcoServicesArrangement>> getFromSong(
     String songId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoServicesArrangementQuery? query,
     bool includeAll = false,
     bool includeKeys = false,
     bool includeSections = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoServicesArrangementQuery();
     if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
@@ -667,13 +710,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments({
-    PlanningCenterApiQuery? query,
-    bool includeZooms = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
-    if (includeZooms) query.include.add('zooms');
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
+      {PcoServicesAttachmentQuery? query}) async {
+    query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
         query: query, apiVersion: apiVersion);
@@ -681,11 +720,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesKey] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys`
-  Future<PcoCollection<PcoServicesKey>> getKeys({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesKey>> getKeys(
+      {PcoServicesKeyQuery? query}) async {
+    query ??= PcoServicesKeyQuery();
     var url = '$apiEndpoint/keys';
     return PcoCollection.fromApiCall<PcoServicesKey>(url,
         query: query, apiVersion: apiVersion);
@@ -693,11 +730,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesArrangementSection] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/sections`
-  Future<PcoCollection<PcoServicesArrangementSection>> getSections({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesArrangementSection>> getSections(
+      {PcoServicesArrangementSectionQuery? query}) async {
+    query ??= PcoServicesArrangementSectionQuery();
     var url = '$apiEndpoint/sections';
     return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url,
         query: query, apiVersion: apiVersion);
@@ -705,11 +740,9 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoServicesTag>> getTags(
+      {PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
     return PcoCollection.fromApiCall<PcoServicesTag>(url,
         query: query, apiVersion: apiVersion);

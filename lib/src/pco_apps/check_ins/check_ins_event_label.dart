@@ -1,9 +1,70 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.634995
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.512529
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Ordering is not allowed on this object.
+enum PcoCheckInsEventLabelOrder { none }
+
+/// Filtering is not allowed when requesting this object.
+enum PcoCheckInsEventLabelFilter { none }
+
+/// Creates a [PcoCheckInsEventLabelQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeEvent`: include associated event
+/// - `includeLabel`: include associated label
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCheckInsEventLabelQuery(includes: ['a', 'b'])`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCheckInsEventLabelQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCheckInsEventLabelOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsEventLabelOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCheckInsEventLabelFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsEventLabelFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCheckInsEventLabelQuery({
+    /// include associated event
+    /// when true, adds `?include=event` to url
+    bool includeEvent = false,
+
+    /// include associated label
+    /// when true, adds `?include=label` to url
+    bool includeLabel = false,
+
+    /// when true, adds `?include=event,label` to url parameters
+    bool includeAll = false,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (includeAll || includeEvent) include.add('event');
+    if (includeAll || includeLabel) include.add('label');
+  }
+}
 
 /// This class represents a PCO CheckIns EventLabel Object
 ///
@@ -19,7 +80,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsEventLabel.fromJson()` constructor.
-/// - Manually create an object using the `PcoCheckInsEventLabel.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -42,26 +102,6 @@ part of pco;
 /// - `isForVolunteer` (ro) -> PCO: `for_volunteer`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `event`: include associated event
-/// - `label`: include associated label
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// NONE
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// NONE
 ///
 /// ## Edges and Actions
 ///
@@ -211,16 +251,19 @@ class PcoCheckInsEventLabel extends PcoResource {
       obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -234,12 +277,12 @@ class PcoCheckInsEventLabel extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventLabelQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLabel = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventLabelQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLabel) query.include.add('label');
@@ -254,12 +297,12 @@ class PcoCheckInsEventLabel extends PcoResource {
   static Future<PcoCollection<PcoCheckInsEventLabel>> getFromLabel(
     String labelId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCheckInsEventLabelQuery? query,
     bool includeAll = false,
     bool includeEvent = false,
     bool includeLabel = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCheckInsEventLabelQuery();
     if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLabel) query.include.add('label');
@@ -276,16 +319,9 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/event`
-  Future<PcoCollection<PcoCheckInsEvent>> getEvent({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAttendanceTypes = false,
-    bool includeEventPeriods = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
-    if (includeAttendanceTypes) query.include.add('attendance_types');
-    if (includeEventPeriods) query.include.add('event_periods');
+  Future<PcoCollection<PcoCheckInsEvent>> getEvent(
+      {PcoCheckInsEventQuery? query}) async {
+    query ??= PcoCheckInsEventQuery();
     var url = '$apiEndpoint/event';
     return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -293,11 +329,9 @@ class PcoCheckInsEventLabel extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/events/1/event_labels/1/label`
-  Future<PcoCollection<PcoCheckInsLabel>> getLabel({
-    PlanningCenterApiQuery? query,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-
+  Future<PcoCollection<PcoCheckInsLabel>> getLabel(
+      {PcoCheckInsLabelQuery? query}) async {
+    query ??= PcoCheckInsLabelQuery();
     var url = '$apiEndpoint/label';
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
         query: query, apiVersion: apiVersion);

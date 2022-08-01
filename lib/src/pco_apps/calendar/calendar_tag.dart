@@ -1,9 +1,145 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-07-28T11:29:17.797304
+/// AUTO-GENERATED FILE CREATED ON 2022-08-01T14:42:03.635745
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
 part of pco;
+
+/// Possible Ordering:
+/// - `name` -> `?order=name`
+/// - `position` -> `?order=position`
+enum PcoCalendarTagOrder { name, position }
+
+/// Possible Inbound Filters:
+/// - `individual` -> `?filter=individual` : -- no description
+enum PcoCalendarTagFilter { individual }
+
+/// Creates a [PcoCalendarTagQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+///
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeTagGroup`: include associated tag_group
+/// - `includeAll`: include all related objects
+///
+/// Alternatively, you may pass a list of strings to the `include` argument.
+///
+/// e.g. `PcoCalendarTagQuery(includes: ['a', 'b'])`
+///
+/// ## Possible Query Fields
+/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
+///
+/// [PcoCalendarTag] objects can be requested with one or more of the following criteria:
+/// - `whereColor`: query on a specific color, example: ?where[color]=string
+/// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
+/// - `whereId`: query on a specific id, example: ?where[id]=primary_key
+/// - `whereName`: query on a specific name, example: ?where[name]=string
+/// - `wherePosition`: query on a specific position, example: ?where[position]=1.42
+/// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
+///
+/// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+///
+/// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
+/// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
+/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
+///
+/// ## Possible Ordering
+/// (translates to url parameter: `?order=-updated_at`)
+///
+/// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarTagOrder.name` : will order by `name`
+/// - `PcoCalendarTagOrder.position` : will order by `position`
+///
+/// To reverse the order, set `reverse` to true.
+///
+/// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
+/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
+///
+///
+/// ## Extra Params
+/// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
+class PcoCalendarTagQuery extends PlanningCenterApiQuery {
+  static final Map<PcoCalendarTagOrder, String> _orderMap = {
+    PcoCalendarTagOrder.name: 'name',
+    PcoCalendarTagOrder.position: 'position',
+  };
+  static String orderString(PcoCalendarTagOrder order,
+          {bool reverse = false}) =>
+      (reverse ? '-' : '') + _orderMap[order]!;
+
+  static final Map<PcoCalendarTagFilter, String> _filterMap = {
+    PcoCalendarTagFilter.individual: 'individual',
+  };
+  static String filterString(PcoCalendarTagFilter filter) =>
+      _filterMap[filter]!;
+
+  PcoCalendarTagQuery({
+    /// include associated tag_group
+    /// when true, adds `?include=tag_group` to url
+    bool includeTagGroup = false,
+
+    /// Query by `color`
+    /// query on a specific color, url example: ?where[color]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereColor,
+
+    /// Query by `created_at`
+    /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereCreatedAt,
+
+    /// Query by `id`
+    /// query on a specific id, url example: ?where[id]=primary_key
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereId,
+
+    /// Query by `name`
+    /// query on a specific name, url example: ?where[name]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereName,
+
+    /// Query by `position`
+    /// query on a specific position, url example: ?where[position]=1.42
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? wherePosition,
+
+    /// Query by `updated_at`
+    /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereUpdatedAt,
+    PcoCalendarTagFilter? filterBy,
+    PcoCalendarTagOrder? orderBy,
+
+    /// reverse the ordering
+    bool reverse = false,
+
+    // direct access to super class params
+    super.perPage,
+    super.pageOffset,
+    super.extraParams,
+    super.where,
+    super.filter,
+    super.order,
+    super.include,
+  }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeTagGroup) include.add('tag_group');
+
+    if (whereColor != null)
+      where.add(PlanningCenterApiWhere.parse('color', whereColor));
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (wherePosition != null)
+      where.add(PlanningCenterApiWhere.parse('position', wherePosition));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
+}
 
 /// This class represents a PCO Calendar Tag Object
 ///
@@ -19,7 +155,6 @@ part of pco;
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarTag.fromJson()` constructor.
-/// - Manually create an object using the `PcoCalendarTag.manual()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 ///
 /// ## Usage
@@ -43,31 +178,6 @@ part of pco;
 /// - `name` (ro) -> PCO: `name`
 /// - `position` (ro) -> PCO: `position`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
-/// ## Possible Includes
-/// e.g. `PlanningCenterApiQuery(includes: ['a', 'b'])`
-/// (translates to url parameter: `?include=a,b` )
-///
-/// - `tag_group`: include associated tag_group
-///
-/// ## Possible Query Fields
-/// e.g. `PlanningCenterApiQuery(where: {'field_name>' : 'value'})`
-/// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
-///
-/// - `color`: (URLParameter), query on a specific color, example: ?where[color]=string
-/// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `id`: (URLParameter), query on a specific id, example: ?where[id]=primary_key
-/// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
-/// - `position`: (URLParameter), query on a specific position, example: ?where[position]=1.42
-/// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-///
-/// ## Possible Ordering
-/// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// (translates to url parameter: `?order=-updated_at`)
-///
-/// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-/// - `position`: (URLParameter), prefix with a hyphen (-position) to reverse the order
 ///
 /// ## Edges and Actions
 ///
@@ -218,16 +328,19 @@ class PcoCalendarTag extends PcoResource {
     if (position != null) obj._attributes['position'] = position;
     if (updatedAt != null)
       obj._attributes['updated_at'] = updatedAt.toIso8601String();
+
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
         obj._relationships[r.key] = r.value;
       }
       obj._hasManualRelationships = true;
     }
+
     if (withIncluded != null) {
       obj._included.addAll(withIncluded);
       obj._hasManualIncluded = true;
     }
+
     return obj;
   }
 
@@ -243,10 +356,10 @@ class PcoCalendarTag extends PcoResource {
   /// - `individual`
   static Future<PcoCollection<PcoCalendarTag>> get({
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarTagQuery? query,
     bool includeTagGroup = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarTagQuery();
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/tags';
@@ -260,10 +373,10 @@ class PcoCalendarTag extends PcoResource {
   static Future<PcoCollection<PcoCalendarTag>> getFromEventInstance(
     String eventInstanceId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarTagQuery? query,
     bool includeTagGroup = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarTagQuery();
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/event_instances/$eventInstanceId/tags';
@@ -277,10 +390,10 @@ class PcoCalendarTag extends PcoResource {
   static Future<PcoCollection<PcoCalendarTag>> getFromEvent(
     String eventId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarTagQuery? query,
     bool includeTagGroup = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarTagQuery();
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/events/$eventId/tags';
@@ -294,10 +407,10 @@ class PcoCalendarTag extends PcoResource {
   static Future<PcoCollection<PcoCalendarTag>> getFromTagGroup(
     String tagGroupId, {
     String? id,
-    PlanningCenterApiQuery? query,
+    PcoCalendarTagQuery? query,
     bool includeTagGroup = false,
   }) async {
-    query ??= PlanningCenterApiQuery();
+    query ??= PcoCalendarTagQuery();
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/tag_groups/$tagGroupId/tags';
@@ -313,20 +426,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEventInstance] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/tags/1/event_instances`
-  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstances({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeEventTimes = false,
-    bool includeResourceBookings = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarTag.canInclude);
-    if (includeEvent) query.include.add('event');
-    if (includeEventTimes) query.include.add('event_times');
-    if (includeResourceBookings) query.include.add('resource_bookings');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEventInstance>> getEventInstances(
+      {PcoCalendarEventInstanceQuery? query}) async {
+    query ??= PcoCalendarEventInstanceQuery();
     var url = '$apiEndpoint/event_instances';
     return PcoCollection.fromApiCall<PcoCalendarEventInstance>(url,
         query: query, apiVersion: apiVersion);
@@ -334,18 +436,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/tags/1/events`
-  Future<PcoCollection<PcoCalendarEvent>> getEvents({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeAttachments = false,
-    bool includeOwner = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarTag.canInclude);
-    if (includeAttachments) query.include.add('attachments');
-    if (includeOwner) query.include.add('owner');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarEvent>> getEvents(
+      {PcoCalendarEventQuery? query}) async {
+    query ??= PcoCalendarEventQuery();
     var url = '$apiEndpoint/events';
     return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
         query: query, apiVersion: apiVersion);
@@ -353,16 +446,9 @@ class PcoCalendarTag extends PcoResource {
 
   /// Will get a collection of [PcoCalendarTagGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/tags/1/tag_group`
-  Future<PcoCollection<PcoCalendarTagGroup>> getTagGroup({
-    PlanningCenterApiQuery? query,
-    bool includeAll = false,
-    bool includeEvents = false,
-    bool includeTags = false,
-  }) async {
-    query ??= PlanningCenterApiQuery();
-    if (includeAll) query.include.addAll(PcoCalendarTag.canInclude);
-    if (includeEvents) query.include.add('events');
-    if (includeTags) query.include.add('tags');
+  Future<PcoCollection<PcoCalendarTagGroup>> getTagGroup(
+      {PcoCalendarTagGroupQuery? query}) async {
+    query ??= PcoCalendarTagGroupQuery();
     var url = '$apiEndpoint/tag_group';
     return PcoCollection.fromApiCall<PcoCalendarTagGroup>(url,
         query: query, apiVersion: apiVersion);

@@ -578,11 +578,11 @@ class PlanningCenterApiQuery {
     this.perPage = 25,
     this.pageOffset = 0,
     this.order,
-    this.where = const [],
+    List<PlanningCenterApiWhere>? where,
     Iterable<String> filter = const <String>[],
     Iterable<String> include = const <String>[],
     this.extraParams = const {},
-  }) {
+  }) : where = where ?? [] {
     this.filter.addAll(filter);
     this.include.addAll(include);
   }

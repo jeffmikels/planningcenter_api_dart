@@ -331,7 +331,7 @@ class PcoServicesArrangement extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get bpm => _attributes[kBpm] ?? 0;
+  double get bpm => _attributes[kBpm]?.toDouble() ?? 0;
   String get isrc => _attributes[kIsrc] ?? '';
   bool get isHasChords => _attributes[kHasChords] == true;
   int get length => _attributes[kLength] ?? 0;

@@ -53,6 +53,8 @@ abstract class PcoResource {
   late final String resourceType;
   late final String pcoApplication;
 
+  String get slug => '$resourceType-${id ?? 'new'}';
+
   /// will be null if resource is new and not yet created
   String? _id;
   String? get id => _id;
@@ -111,6 +113,10 @@ abstract class PcoResource {
   // all planning center resources implement at least these fields
   DateTime get createdAt => DateTime.parse(_attributes[kCreatedAt]!);
   DateTime get updatedAt => DateTime.parse(_attributes[kUpdatedAt]!);
+
+  @override
+  toString() =>
+      toJson(includeAttributes: true, includeRelationships: true).toString();
 
   PcoResource(this.pcoApplication, this.resourceType);
   PcoResource.fromJson(
@@ -220,13 +226,14 @@ abstract class PcoResource {
     if (data.containsKey('relationships')) {
       _relationships.clear();
       // parse each relationship into its relevant object
-      _relationships.addAll(handleItems(data['relationships']));
+      _relationships.addAll(
+          handleRelationships(data['relationships'], withIncluded ?? []));
     }
 
-    // and process additional included items
-    if (withIncluded != null) {
-      handleIncludes(withIncluded);
-    }
+    // // and process additional included items
+    // if (withIncluded != null) {
+    //   handleIncludes(withIncluded);
+    // }
   }
 
   /// This function populates the relationships with typed resource objects
@@ -259,8 +266,23 @@ abstract class PcoResource {
     }
   }
 
-  Map<String, List<PcoResource>> handleItems(Map<String, dynamic> items) {
+  Map<String, List<PcoResource>> handleRelationships(
+    Map<String, dynamic> items, [
+    List<Map<String, dynamic>> included = const [],
+  ]) {
+    _included.clear();
+
+    // parse the included objects into resources
+    var parsedIncludes = <String, PcoResource>{};
+    for (var data in included) {
+      var res = handleItem(data);
+      if (res != null) parsedIncludes[res.slug] = res;
+    }
+
+    // prepare the object we will return
     var retval = <String, List<PcoResource>>{};
+
+    // parse the relationships
     for (var key in items.keys) {
       retval[key] = <PcoResource>[];
       var value = items[key];
@@ -270,9 +292,17 @@ abstract class PcoResource {
       if (wrapped.isEmpty) continue;
       for (var data in wrapped) {
         var res = handleItem(data);
-        if (res != null) retval[key]?.add(res);
+        if (res == null) continue;
+        if (parsedIncludes.containsKey(res.slug)) {
+          res = parsedIncludes[res.slug]!;
+
+          // this resource matched a relationship, add it to the includes
+          _included.add(res);
+        }
+        retval[key]?.add(res);
       }
     }
+
     return retval;
   }
 

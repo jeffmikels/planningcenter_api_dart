@@ -432,7 +432,7 @@ String fieldVarName(Attribute attribute) {
   if (camelName == 'default') {
     camelName = attribute.typeString == 'boolean' ? 'default' : 'defaultValue';
   }
-  if (attribute.typeString == 'boolean') return 'is$pascalName';
+  if (attribute.typeString == 'boolean' && !pascalName.startsWith('has')) return 'is$pascalName';
   return camelName;
 }
 
@@ -460,7 +460,7 @@ String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttrib
     case 'float':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(double? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'double get $varName => $targetName ?? 0;';
+          : 'double get $varName => $targetName?.toDouble() ?? 0.0;';
       break;
     case 'integer':
       output += realMode == 'set'

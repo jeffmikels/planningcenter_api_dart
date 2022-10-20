@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.472187
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.398743
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -68,7 +68,7 @@ class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 carrier
 /// - Type:               Carrier
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/carriers
@@ -124,7 +124,7 @@ class PcoPeopleCarrier extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Carrier';
   static const String kTypeId = 'carrier';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
   static const String kCreatePathTemplate = 'null';
 

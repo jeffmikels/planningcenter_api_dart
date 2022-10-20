@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.506743
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.424683
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -135,10 +135,10 @@ class PcoPeoplePhoneNumberQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 phone_number
 /// - Type:               PhoneNumber
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
+/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/phone_numbers
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// 
 /// ## Instantiation
@@ -169,6 +169,7 @@ class PcoPeoplePhoneNumberQuery extends PlanningCenterApiQuery {
 /// - `international` (ro) -> PCO: `international`
 /// - `national` (ro) -> PCO: `national`
 /// - `countryCode` (ro) -> PCO: `country_code`
+/// - `formattedNumber` (ro) -> PCO: `formatted_number`
 /// 
 /// ## Edges and Actions
 /// 
@@ -176,6 +177,7 @@ class PcoPeoplePhoneNumberQuery extends PlanningCenterApiQuery {
 /// NONE
 /// 
 /// Inbound Edges:
+/// - `phonenumber-organization-phone_numbers`: https://api.planningcenteronline.com/people/v2/phone_numbers
 /// - `phonenumber-person-phone_numbers`: https://api.planningcenteronline.com/people/v2/people/1/phone_numbers
 /// 
 /// Actions:
@@ -212,8 +214,8 @@ class PcoPeoplePhoneNumber extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PhoneNumber';
   static const String kTypeId = 'phone_number';
-  static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
+  static const String kApiVersion = '2022-07-14';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/phone_numbers';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/phone_numbers';
 
   /// possible includes with parameter ?include=a,b
@@ -267,6 +269,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
   static const kInternational = 'international';
   static const kNational = 'national';
   static const kCountryCode = 'country_code';
+  static const kFormattedNumber = 'formatted_number';
 
 
   // getters and setters
@@ -294,6 +297,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
   String get international => _attributes[kInternational] ?? '';
   String get national => _attributes[kNational] ?? '';
   String get countryCode => _attributes[kCountryCode] ?? '';
+  String get formattedNumber => _attributes[kFormattedNumber] ?? '';
   
   // setters for object attributes
   ///
@@ -327,7 +331,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `number`, `carrier`, `location`, `isPrimary`
   /// - FIELDS USED WHEN UPDATING: `number`, `carrier`, `location`, `isPrimary`
-  factory PcoPeoplePhoneNumber({required String personId, String? id, String? number, String? carrier, String? location, bool? isPrimary, DateTime? createdAt, DateTime? updatedAt, String? e164, String? international, String? national, String? countryCode, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeoplePhoneNumber({required String personId, String? id, String? number, String? carrier, String? location, bool? isPrimary, DateTime? createdAt, DateTime? updatedAt, String? e164, String? international, String? national, String? countryCode, String? formattedNumber, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeoplePhoneNumber.empty();
     obj._id = id;
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/phone_numbers';
@@ -341,6 +345,7 @@ class PcoPeoplePhoneNumber extends PcoResource {
     if (international != null) obj._attributes['international'] = international;
     if (national != null) obj._attributes['national'] = national;
     if (countryCode != null) obj._attributes['country_code'] = countryCode;
+    if (formattedNumber != null) obj._attributes['formatted_number'] = formattedNumber;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -363,6 +368,21 @@ class PcoPeoplePhoneNumber extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
+  /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
+  /// using a path like this: `/people/v2/phone_numbers`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePhoneNumber>> get( {String? id, PcoPeoplePhoneNumberQuery? query, }) async {
+    query ??= PcoPeoplePhoneNumberQuery();
+    
+    
+    var url = '/people/v2/phone_numbers';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url, query: query, apiVersion:kApiVersion);
+  }
 
 
   /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)

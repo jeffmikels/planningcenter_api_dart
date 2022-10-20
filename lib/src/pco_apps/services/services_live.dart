@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.311231
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.948997
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -97,7 +97,7 @@ class PcoServicesLiveQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series/1/plans/1/live
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -131,20 +131,20 @@ class PcoServicesLiveQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/controller
-/// - `itemtime-live-current_item_time`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/current_item_time
-/// - `item-live-items`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/items
-/// - `itemtime-live-next_item_time`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/next_item_time
-/// - `servicetype-live-service_type`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/service_type
-/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/watchable_plans
+/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/controller
+/// - `itemtime-live-current_item_time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/current_item_time
+/// - `item-live-items`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/items
+/// - `itemtime-live-next_item_time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/next_item_time
+/// - `servicetype-live-service_type`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/service_type
+/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/watchable_plans
 /// 
 /// Inbound Edges:
 /// - `live-plan-live`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/live
 /// 
 /// Actions:
-/// - `go_to_next_item`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_next_item
-/// - `go_to_previous_item`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_previous_item
-/// - `toggle_control`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/toggle_control
+/// - `go_to_next_item`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/go_to_next_item
+/// - `go_to_previous_item`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/go_to_previous_item
+/// - `toggle_control`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/toggle_control
 ///
 /// ## Raw Data Object Example
 /// ```json
@@ -170,7 +170,7 @@ class PcoServicesLive extends PcoResource {
   static const String kTypeString = 'Live';
   static const String kTypeId = 'live';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series/1/plans/1/live';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
@@ -342,7 +342,7 @@ class PcoServicesLive extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/controller`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/controller`
   Future<PcoCollection<PcoServicesPerson>> getController({PcoServicesPersonQuery? query}) async {
     query ??= PcoServicesPersonQuery();
     var url = '$apiEndpoint/controller';
@@ -350,7 +350,7 @@ class PcoServicesLive extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/current_item_time`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/current_item_time`
   Future<PcoCollection<PcoServicesItemTime>> getCurrentItemTime({PcoServicesItemTimeQuery? query}) async {
     query ??= PcoServicesItemTimeQuery();
     var url = '$apiEndpoint/current_item_time';
@@ -358,7 +358,7 @@ class PcoServicesLive extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/items`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/items`
   Future<PcoCollection<PcoServicesItem>> getItems({PcoServicesItemQuery? query}) async {
     query ??= PcoServicesItemQuery();
     var url = '$apiEndpoint/items';
@@ -366,7 +366,7 @@ class PcoServicesLive extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/next_item_time`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/next_item_time`
   Future<PcoCollection<PcoServicesItemTime>> getNextItemTime({PcoServicesItemTimeQuery? query}) async {
     query ??= PcoServicesItemTimeQuery();
     var url = '$apiEndpoint/next_item_time';
@@ -374,7 +374,7 @@ class PcoServicesLive extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/service_type`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/service_type`
   Future<PcoCollection<PcoServicesServiceType>> getServiceType({PcoServicesServiceTypeQuery? query}) async {
     query ??= PcoServicesServiceTypeQuery();
     var url = '$apiEndpoint/service_type';
@@ -382,7 +382,7 @@ class PcoServicesLive extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/watchable_plans`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/watchable_plans`
   Future<PcoCollection<PcoServicesPlan>> getWatchablePlans({PcoServicesPlanQuery? query}) async {
     query ??= PcoServicesPlanQuery();
     var url = '$apiEndpoint/watchable_plans';
@@ -398,7 +398,7 @@ class PcoServicesLive extends PcoResource {
   /// ACTION: `go_to_next_item`
   /// 
   /// 
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_next_item`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/go_to_next_item`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -419,7 +419,7 @@ class PcoServicesLive extends PcoResource {
   /// ACTION: `go_to_previous_item`
   /// 
   /// 
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/go_to_previous_item`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/go_to_previous_item`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -440,7 +440,7 @@ class PcoServicesLive extends PcoResource {
   /// ACTION: `toggle_control`
   /// 
   /// 
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/toggle_control`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/toggle_control`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been

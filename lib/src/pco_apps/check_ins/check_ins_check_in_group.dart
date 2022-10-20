@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.407444
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.773219
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -103,15 +103,7 @@ class PcoCheckInsCheckInGroupQuery extends PlanningCenterApiQuery {
 ///   
 /// ## Description
 /// When one or more people check in, they're grouped in a `CheckInGroup`.
-/// These check-ins all have the same "checked-in by" person. `CheckInGroup` is also
-/// the basis for label printing.
-/// 
-/// `print_status` may be:
-/// 
-/// - `ready`: This group isn't printed or canceled yet
-/// - `printed`: This group was successfully printed at a station
-/// - `canceled`: This group was canceled at a station
-/// - `skipped`: This group had no labels to print, so it was never printed.
+/// These check-ins all have the same "checked-in by" person.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.510667
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.428702
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -134,7 +134,7 @@ class PcoPeopleTabQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 tab
 /// - Type:               Tab
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/tabs
@@ -160,7 +160,7 @@ class PcoPeopleTabQuery extends PlanningCenterApiQuery {
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (rw) -> PCO: `name`
 /// - `sequence` (rw) -> PCO: `sequence`
-/// - `slug` (rw) -> PCO: `slug`
+/// - `slug` (ro) -> PCO: `slug`
 /// 
 /// ## Edges and Actions
 /// 
@@ -193,7 +193,7 @@ class PcoPeopleTab extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Tab';
   static const String kTypeId = 'tab';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/tabs';
 
@@ -240,10 +240,10 @@ class PcoPeopleTab extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name', 'sequence', 'slug'];
+  List<String> get createAllowed => ['name', 'sequence'];
 
   @override
-  List<String> get updateAllowed => ['name', 'sequence', 'slug'];
+  List<String> get updateAllowed => ['name', 'sequence'];
 
   @override
   bool get canCreate => true;
@@ -266,9 +266,6 @@ class PcoPeopleTab extends PcoResource {
   ///
   /// pass `null` to remove key from attributes
   set sequence(int? x) => (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
-  ///
-  /// pass `null` to remove key from attributes
-  set slug(String? x) => (x == null) ? _attributes.remove(kSlug) : _attributes[kSlug] = x;
   
   // typed getters for each relationship
   
@@ -291,8 +288,8 @@ class PcoPeopleTab extends PcoResource {
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  /// - FIELDS USED WHEN CREATING: `name`, `sequence`, `slug`
-  /// - FIELDS USED WHEN UPDATING: `name`, `sequence`, `slug`
+  /// - FIELDS USED WHEN CREATING: `name`, `sequence`
+  /// - FIELDS USED WHEN UPDATING: `name`, `sequence`
   factory PcoPeopleTab({String? id, String? name, int? sequence, String? slug, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleTab.empty();
     obj._id = id;

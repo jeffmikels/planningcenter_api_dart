@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.513987
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.434553
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -65,11 +65,11 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_card_note
 /// - Type:               WorkflowCardNote
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
-/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
+/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes
 /// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleWorkflowCardNote()` constructor
@@ -99,7 +99,7 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
 /// NONE
 /// 
 /// Inbound Edges:
-/// - `workflowcardnote-workflowcard-notes`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
+/// - `workflowcardnote-workflowcard-notes`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes
 /// 
 /// Actions:
 /// NONE
@@ -127,9 +127,9 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowCardNote';
   static const String kTypeId = 'workflow_card_note';
-  static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
+  static const String kApiVersion = '2022-07-14';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -206,7 +206,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   /// 
   PcoPeopleWorkflowCardNote.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleWorkflowCardNote] object using this endpoint: `https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
+  /// Create a new [PcoPeopleWorkflowCardNote] object using this endpoint: `https://api.planningcenteronline.com/people/v2/people/$personId/workflow_cards/$workflowCardId/notes`
   /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
@@ -218,7 +218,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   factory PcoPeopleWorkflowCardNote({required String personId, required String workflowCardId, String? id, String? note, DateTime? createdAt, String? noteCategoryId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleWorkflowCardNote.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/workflow_cards/$workflowCardId/notes';
     if (note != null) obj._attributes['note'] = note;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (noteCategoryId != null) obj._attributes['note_category_id'] = noteCategoryId;
@@ -247,7 +247,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
 
 
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/notes`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -255,7 +255,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
     query ??= PcoPeopleWorkflowCardNoteQuery();
     
     
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/notes';
     
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url, query: query, apiVersion:kApiVersion);
   }

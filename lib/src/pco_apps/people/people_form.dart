@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.480747
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.404650
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -133,7 +133,7 @@ class PcoPeopleFormQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 form
 /// - Type:               Form
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms
@@ -177,6 +177,7 @@ class PcoPeopleFormQuery extends PlanningCenterApiQuery {
 /// - `formsubmission-form-form_submissions`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions
 /// 
 /// Inbound Edges:
+/// - `form-formsubmission-form`: https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form
 /// - `form-organization-forms`: https://api.planningcenteronline.com/people/v2/forms
 /// 
 /// Actions:
@@ -220,7 +221,7 @@ class PcoPeopleForm extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Form';
   static const String kTypeId = 'form';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms';
   static const String kCreatePathTemplate = 'null';
 
@@ -381,6 +382,21 @@ class PcoPeopleForm extends PcoResource {
     if (includeCampus) query.include.add('campus');
     var url = '/people/v2/forms';
     if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleForm>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoPeopleForm] objects (expecting one)
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleForm>> getFromFormAndFormSubmission(String formId,String formSubmissionId, {PcoPeopleFormQuery? query, bool includeCampus = false,}) async {
+    query ??= PcoPeopleFormQuery();
+    
+    if (includeCampus) query.include.add('campus');
+    var url = '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form';
+    
     return PcoCollection.fromApiCall<PcoPeopleForm>(url, query: query, apiVersion:kApiVersion);
   }
 

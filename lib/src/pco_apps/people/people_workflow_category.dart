@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.514398
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.434939
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -105,7 +105,7 @@ class PcoPeopleWorkflowCategoryQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_category
 /// - Type:               WorkflowCategory
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflow_categories
@@ -161,7 +161,7 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowCategory';
   static const String kTypeId = 'workflow_category';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflow_categories';
   static const String kCreatePathTemplate = 'null';
 

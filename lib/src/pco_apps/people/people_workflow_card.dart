@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.512581
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.432565
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,8 +16,9 @@ part of pco;
 /// - `updatedAt` -> `?order=updated_at`
 enum PcoPeopleWorkflowCardOrder { completedAt, createdAt, flaggedForNotificationAt, movedToStepAt, removedAt, stage, updatedAt }
 
-/// Filtering is not allowed when requesting this object.
-enum PcoPeopleWorkflowCardFilter { none }
+/// Possible Inbound Filters:
+/// - `assigned` -> `?filter=assigned` : -- no description
+enum PcoPeopleWorkflowCardFilter { assigned }
 
 /// Creates a [PcoPeopleWorkflowCardQuery] object
 /// ## Possible Includes
@@ -80,7 +81,7 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoPeopleWorkflowCardFilter, String> _filterMap = {
-    
+    PcoPeopleWorkflowCardFilter.assigned: 'assigned',
   };
   static String filterString(PcoPeopleWorkflowCardFilter filter) => _filterMap[filter]!;
 
@@ -110,6 +111,7 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
     String? whereStage,
     
 
+    PcoPeopleWorkflowCardFilter? filterBy,
     PcoPeopleWorkflowCardOrder? orderBy,
 
 
@@ -125,6 +127,7 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
     if (includeAll || includeAssignee) include.add('assignee');
     if (includeAll || includeCurrentStep) include.add('current_step');
     if (includeAll || includePerson) include.add('person');
@@ -141,10 +144,10 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_card
 /// - Type:               WorkflowCard
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards
+/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/workflow_cards
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/workflows/1/cards
 /// 
 /// ## Instantiation
@@ -182,26 +185,26 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `workflowcardactivity-workflowcard-activities`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
-/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee
-/// - `workflowstep-workflowcard-current_step`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step
-/// - `workflowcardnote-workflowcard-notes`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
-/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person
-/// - `workflow-workflowcard-workflow`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/workflow
+/// - `workflowcardactivity-workflowcard-activities`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/activities
+/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/assignee
+/// - `workflowstep-workflowcard-current_step`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/current_step
+/// - `workflowcardnote-workflowcard-notes`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes
+/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/person
+/// - `workflow-workflowcard-workflow`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/workflow
 /// 
 /// Inbound Edges:
 /// - `workflowcard-person-workflow_cards`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards
 /// - `workflowcard-workflow-cards`: https://api.planningcenteronline.com/people/v2/workflows/1/cards
 /// 
 /// Actions:
-/// - `go_back`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/go_back
-/// - `promote`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/promote
-/// - `remove`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/remove
-/// - `restore`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/restore
-/// - `send_email`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/send_email
-/// - `skip_step`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/skip_step
-/// - `snooze`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/snooze
-/// - `unsnooze`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/unsnooze
+/// - `go_back`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/go_back
+/// - `promote`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/promote
+/// - `remove`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/remove
+/// - `restore`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/restore
+/// - `send_email`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/send_email
+/// - `skip_step`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/skip_step
+/// - `snooze`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/snooze
+/// - `unsnooze`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/unsnooze
 ///
 /// ## Raw Data Object Example
 /// ```json
@@ -253,8 +256,8 @@ class PcoPeopleWorkflowCard extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowCard';
   static const String kTypeId = 'workflow_card';
-  static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards';
+  static const String kApiVersion = '2022-07-14';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_cards';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/cards';
 
   /// possible includes with parameter ?include=a,b
@@ -471,7 +474,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/activities`
   Future<PcoCollection<PcoPeopleWorkflowCardActivity>> getActivities({PcoPeopleWorkflowCardActivityQuery? query}) async {
     query ??= PcoPeopleWorkflowCardActivityQuery();
     var url = '$apiEndpoint/activities';
@@ -479,7 +482,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/assignee`
   Future<PcoCollection<PcoPeoplePerson>> getAssignee({PcoPeoplePersonQuery? query}) async {
     query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/assignee';
@@ -487,7 +490,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/current_step`
   Future<PcoCollection<PcoPeopleWorkflowStep>> getCurrentStep({PcoPeopleWorkflowStepQuery? query}) async {
     query ??= PcoPeopleWorkflowStepQuery();
     var url = '$apiEndpoint/current_step';
@@ -495,7 +498,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/notes`
   Future<PcoCollection<PcoPeopleWorkflowCardNote>> getNotes({PcoPeopleWorkflowCardNoteQuery? query}) async {
     query ??= PcoPeopleWorkflowCardNoteQuery();
     var url = '$apiEndpoint/notes';
@@ -503,7 +506,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/person`
   Future<PcoCollection<PcoPeoplePerson>> getPerson({PcoPeoplePersonQuery? query}) async {
     query ??= PcoPeoplePersonQuery();
     var url = '$apiEndpoint/person';
@@ -511,7 +514,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   }
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/workflow`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/workflow`
   Future<PcoCollection<PcoPeopleWorkflow>> getWorkflow({PcoPeopleWorkflowQuery? query}) async {
     query ??= PcoPeopleWorkflowQuery();
     var url = '$apiEndpoint/workflow';
@@ -527,7 +530,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `go_back`
   /// 
   /// Move a Workflow Card back to the previous step.
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/go_back`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/go_back`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -548,7 +551,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `promote`
   /// 
   /// Move a Workflow Card to the next step.
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/promote`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/promote`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -569,7 +572,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `remove`
   /// 
   /// Removes a card
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/remove`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/remove`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -590,7 +593,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `restore`
   /// 
   /// Restore a card
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/restore`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/restore`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -611,7 +614,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `send_email`
   /// 
   /// Sends an email to the subject of the card
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/send_email`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/send_email`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -632,7 +635,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `skip_step`
   /// 
   /// Move a Workflow Card to the next step without completing the current step.
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/skip_step`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/skip_step`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -653,7 +656,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `snooze`
   /// 
   /// Snoozes a card for a specific duration
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/snooze`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/snooze`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
@@ -674,7 +677,7 @@ class PcoPeopleWorkflowCard extends PcoResource {
   /// ACTION: `unsnooze`
   /// 
   /// Unsnoozes a card
-  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/unsnooze`
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/unsnooze`
   /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been

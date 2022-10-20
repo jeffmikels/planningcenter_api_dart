@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.417432
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.788944
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -93,6 +93,7 @@ class PcoCheckInsOrganizationQuery extends PlanningCenterApiQuery {
 /// - `event-organization-events`: https://api.planningcenteronline.com/check-ins/v2/events
 /// - `headcount-organization-headcounts`: https://api.planningcenteronline.com/check-ins/v2/headcounts
 /// - `label-organization-labels`: https://api.planningcenteronline.com/check-ins/v2/labels
+/// - `option-organization-options`: https://api.planningcenteronline.com/check-ins/v2/options
 /// - `pass-organization-passes`: https://api.planningcenteronline.com/check-ins/v2/passes
 /// - `person-organization-people`: https://api.planningcenteronline.com/check-ins/v2/people
 /// - `station-organization-stations`: https://api.planningcenteronline.com/check-ins/v2/stations
@@ -102,6 +103,7 @@ class PcoCheckInsOrganizationQuery extends PlanningCenterApiQuery {
 /// - `organization-person-organization`: https://api.planningcenteronline.com/check-ins/v2/people/1/organization
 /// 
 /// Actions:
+/// - `build_attendance_chart`: https://api.planningcenteronline.com/check-ins/v2
 /// - `build_check_in_times_for_prepared_check_in`: https://api.planningcenteronline.com/check-ins/v2
 /// - `build_recommended_check_in_times`: https://api.planningcenteronline.com/check-ins/v2
 /// - `bulk_check_in`: https://api.planningcenteronline.com/check-ins/v2
@@ -279,6 +281,7 @@ class PcoCheckInsOrganization extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -326,6 +329,14 @@ class PcoCheckInsOrganization extends PcoResource {
     return PcoCollection.fromApiCall<PcoCheckInsLabel>(url, query: query, apiVersion: apiVersion);
   }
 
+  /// Will get a collection of [PcoCheckInsOption] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/options`
+  Future<PcoCollection<PcoCheckInsOption>> getOptions({PcoCheckInsOptionQuery? query}) async {
+    query ??= PcoCheckInsOptionQuery();
+    var url = '$apiEndpoint/options';
+    return PcoCollection.fromApiCall<PcoCheckInsOption>(url, query: query, apiVersion: apiVersion);
+  }
+
   /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/passes`
   Future<PcoCollection<PcoCheckInsPass>> getPasses({PcoCheckInsPassQuery? query}) async {
@@ -363,6 +374,27 @@ class PcoCheckInsOrganization extends PcoResource {
   // Actions
   // --------------------------------
   // Instance functions to run actions from this item
+
+  /// ACTION: `build_attendance_chart`
+  /// 
+  /// 
+  /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2`
+  /// 
+  /// [data] can be a JSON String, or JSON serializable Object that follows
+  /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
+  /// provided for just such a purpose.
+  /// 
+  /// Details:
+  /// *PlanningCenter API docs do not have a description for this action.*
+  Future<PlanningCenterApiResponse> buildAttendanceChart(Object data) async {
+    if (id == null) {
+      return PlanningCenterApiError.messageOnly(
+        'Actions must be called on items that already exist on the remote server',
+      );
+    }
+    var url = '$apiEndpoint/v2';
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
+  }
 
   /// ACTION: `build_check_in_times_for_prepared_check_in`
   /// 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.513494
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.434105
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -65,10 +65,10 @@ class PcoPeopleWorkflowCardActivityQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_card_activity
 /// - Type:               WorkflowCardActivity
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
+/// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/activities
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -107,7 +107,7 @@ class PcoPeopleWorkflowCardActivityQuery extends PlanningCenterApiQuery {
 /// NONE
 /// 
 /// Inbound Edges:
-/// - `workflowcardactivity-workflowcard-activities`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities
+/// - `workflowcardactivity-workflowcard-activities`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/activities
 /// 
 /// Actions:
 /// NONE
@@ -144,8 +144,8 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowCardActivity';
   static const String kTypeId = 'workflow_card_activity';
-  static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/activities';
+  static const String kApiVersion = '2022-07-14';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/activities';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
@@ -277,7 +277,7 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
 
 
   /// Will get a collection of [PcoPeopleWorkflowCardActivity] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/activities`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -285,7 +285,7 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
     query ??= PcoPeopleWorkflowCardActivityQuery();
     
     
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/activities';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/activities';
     
     return PcoCollection.fromApiCall<PcoPeopleWorkflowCardActivity>(url, query: query, apiVersion:kApiVersion);
   }

@@ -1527,6 +1527,9 @@ void main(List<String> arguments) async {
 
     var appExports = [];
     var uri = docUri(app);
+    print('Preparing to grab Planning Center Documentation.');
+    print(uri);
+    if (reload) print('using cached data');
     var body = await get(uri, recache: reload);
     var data = json.decode(body)['data'];
     var version = JsonApiDoc.fromJson(data['relationships']['versions']['data'].first);
@@ -1548,7 +1551,7 @@ void main(List<String> arguments) async {
       uri = docUri(app, version.id, vertex.id!);
       print('From: $uri');
 
-      body = await get(uri);
+      body = await get(uri, recache: reload);
       data = json.decode(body)['data'];
       vertex = Vertex.fromJson(app, version.id!, data); // load again with more data
       vertices[vertex.id!] = vertex;
@@ -1557,6 +1560,7 @@ void main(List<String> arguments) async {
         edges[e.id!] = e; // might overwrite, but that's okay
       }
     }
+
     // link vertex edges to the real vertex objects
     for (var vertex in vertices.values) {
       for (var edge in [...vertex.inboundEdges, ...vertex.outboundEdges]) {

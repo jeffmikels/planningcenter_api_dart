@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.564275
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.690454
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,9 @@ class PcoGivingCampusQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `Campus` that has been added to your `Organization`.
 /// 
+/// `Campus`es can be especially useful in filtering `Donation`s across the various locations of your `Organization`.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

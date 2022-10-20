@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.574083
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.700222
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -87,7 +87,9 @@ class PcoGivingRecurringDonationQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `RecurringDonation` is represents a `Donation` that repeats on a set schedule (weekly, monthly, etc.)
 /// 
+/// Data for `RecurringDonation`s is read-only; they can not be created or edited through the API.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

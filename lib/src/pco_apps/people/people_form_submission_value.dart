@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.484528
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.406219
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoPeopleFormSubmissionValueQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 form_submission_value
 /// - Type:               FormSubmissionValue
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values
@@ -76,6 +76,7 @@ class PcoPeopleFormSubmissionValueQuery extends PlanningCenterApiQuery {
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayValue` (ro) -> PCO: `display_value`
+/// - `attachments` (ro) -> PCO: `attachments`
 /// 
 /// ## Edges and Actions
 /// 
@@ -94,7 +95,8 @@ class PcoPeopleFormSubmissionValueQuery extends PlanningCenterApiQuery {
 ///   "type": "FormSubmissionValue",
 ///   "id": "1",
 ///   "attributes": {
-///     "display_value": "string"
+///     "display_value": "string",
+///     "attachments": []
 ///   },
 ///   "relationships": {
 ///     "form_field": {
@@ -122,7 +124,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'FormSubmissionValue';
   static const String kTypeId = 'form_submission_value';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/forms/1/form_submissions/1/form_submission_values';
   static const String kCreatePathTemplate = 'null';
 
@@ -158,6 +160,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   // field mapping constants
   static const kId = 'id';
   static const kDisplayValue = 'display_value';
+  static const kAttachments = 'attachments';
 
 
   // getters and setters
@@ -178,6 +181,7 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
 
   // getters for object attributes
   String get displayValue => _attributes[kDisplayValue] ?? '';
+  List get attachments => _attributes[kAttachments] ?? [];
 
   // Class Constructors
   PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
@@ -198,10 +202,11 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoPeopleFormSubmissionValue({String? id, String? displayValue, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleFormSubmissionValue({String? id, String? displayValue, List? attachments, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleFormSubmissionValue.empty();
     obj._id = id;
     if (displayValue != null) obj._attributes['display_value'] = displayValue;
+    if (attachments != null) obj._attributes['attachments'] = attachments;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {

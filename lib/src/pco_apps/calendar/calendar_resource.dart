@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.549265
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.501824
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,7 +172,7 @@ class PcoCalendarResourceQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 resource
 /// - Type:               Resource
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resources
@@ -214,6 +214,7 @@ class PcoCalendarResourceQuery extends PlanningCenterApiQuery {
 /// Outbound Edges:
 /// - `conflict-resource-conflicts`: https://api.planningcenteronline.com/calendar/v2/resources/1/conflicts
 /// - `eventresourcerequest-resource-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/resources/1/event_resource_requests
+/// - `requiredapproval-resource-required_approvals`: https://api.planningcenteronline.com/calendar/v2/resources/1/required_approvals
 /// - `resourceapprovalgroup-resource-resource_approval_groups`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_approval_groups
 /// - `resourcebooking-resource-resource_bookings`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_bookings
 /// - `resourcefolder-resource-resource_folder`: https://api.planningcenteronline.com/calendar/v2/resources/1/resource_folder
@@ -224,6 +225,7 @@ class PcoCalendarResourceQuery extends PlanningCenterApiQuery {
 /// - `resource-conflict-resource`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resource
 /// - `resource-eventresourcerequest-resource`: https://api.planningcenteronline.com/calendar/v2/event_resource_requests/1/resource
 /// - `resource-organization-resources`: https://api.planningcenteronline.com/calendar/v2/resources
+/// - `resource-requiredapproval-resource`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/required_approvals/1/resource
 /// - `resource-resourceapprovalgroup-resources`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/resources
 /// - `resource-resourcebooking-resource`: https://api.planningcenteronline.com/calendar/v2/resource_bookings/1/resource
 /// - `resource-resourcefolder-resources`: https://api.planningcenteronline.com/calendar/v2/resource_folders/1/resources
@@ -258,7 +260,7 @@ class PcoCalendarResource extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Resource';
   static const String kTypeId = 'resource';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resources';
   static const String kCreatePathTemplate = 'null';
 
@@ -483,6 +485,24 @@ class PcoCalendarResource extends PcoResource {
 
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/required_approvals/$requiredApprovalId/resource`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCalendarResource>> getFromResourceApprovalGroupAndRequiredApproval(String resourceApprovalGroupId,String requiredApprovalId, {String? id, PcoCalendarResourceQuery? query, bool includeAll = false, bool includeResourceApprovalGroups = false, bool includeResourceFolder = false, bool includeResourceQuestions = false, bool includeRoomSetups = false,}) async {
+    query ??= PcoCalendarResourceQuery();
+    if (includeAll) query.include.addAll(PcoCalendarResource.canInclude);
+    if (includeResourceApprovalGroups) query.include.add('resource_approval_groups');
+    if (includeResourceFolder) query.include.add('resource_folder');
+    if (includeResourceQuestions) query.include.add('resource_questions');
+    if (includeRoomSetups) query.include.add('room_setups');
+    var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/required_approvals/$requiredApprovalId/resource';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResource>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoCalendarResource] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/resources`
   /// 
   /// Available Query Filters:
@@ -595,6 +615,14 @@ class PcoCalendarResource extends PcoResource {
     query ??= PcoCalendarEventResourceRequestQuery();
     var url = '$apiEndpoint/event_resource_requests';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoCalendarRequiredApproval] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resources/1/required_approvals`
+  Future<PcoCollection<PcoCalendarRequiredApproval>> getRequiredApprovals({PcoCalendarRequiredApprovalQuery? query}) async {
+    query ??= PcoCalendarRequiredApprovalQuery();
+    var url = '$apiEndpoint/required_approvals';
+    return PcoCollection.fromApiCall<PcoCalendarRequiredApproval>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCalendarResourceApprovalGroup] objects (expecting many)

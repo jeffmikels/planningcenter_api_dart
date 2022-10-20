@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.406019
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.772389
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,11 +20,12 @@ enum PcoCheckInsCheckInOrder { checkedOutAt, createdAt, firstName, lastName, num
 /// - `checkedOut` -> `?filter=checked_out` : -- no description
 /// - `firstTime` -> `?filter=first_time` : -- no description
 /// - `guest` -> `?filter=guest` : -- no description
+/// - `notCheckedOut` -> `?filter=not_checked_out` : -- no description
 /// - `notOneTimeGuest` -> `?filter=not_one_time_guest` : -- no description
 /// - `oneTimeGuest` -> `?filter=one_time_guest` : -- no description
 /// - `regular` -> `?filter=regular` : -- no description
 /// - `volunteer` -> `?filter=volunteer` : -- no description
-enum PcoCheckInsCheckInFilter { attendee, checkedOut, firstTime, guest, notOneTimeGuest, oneTimeGuest, regular, volunteer }
+enum PcoCheckInsCheckInFilter { attendee, checkedOut, firstTime, guest, notCheckedOut, notOneTimeGuest, oneTimeGuest, regular, volunteer }
 
 /// Creates a [PcoCheckInsCheckInQuery] object
 /// ## Possible Includes
@@ -97,6 +98,7 @@ class PcoCheckInsCheckInQuery extends PlanningCenterApiQuery {
     PcoCheckInsCheckInFilter.checkedOut: 'checked_out',
     PcoCheckInsCheckInFilter.firstTime: 'first_time',
     PcoCheckInsCheckInFilter.guest: 'guest',
+    PcoCheckInsCheckInFilter.notCheckedOut: 'not_checked_out',
     PcoCheckInsCheckInFilter.notOneTimeGuest: 'not_one_time_guest',
     PcoCheckInsCheckInFilter.oneTimeGuest: 'one_time_guest',
     PcoCheckInsCheckInFilter.regular: 'regular',
@@ -243,14 +245,16 @@ class PcoCheckInsCheckInQuery extends PlanningCenterApiQuery {
 /// - `firstName` (ro) -> PCO: `first_name`
 /// - `lastName` (ro) -> PCO: `last_name`
 /// - `medicalNotes` (ro) -> PCO: `medical_notes`
-/// - `kind` (ro) -> PCO: `kind`
 /// - `number` (ro) -> PCO: `number`
 /// - `securityCode` (ro) -> PCO: `security_code`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `checkedOutAt` (ro) -> PCO: `checked_out_at`
+/// - `confirmedAt` (ro) -> PCO: `confirmed_at`
 /// - `emergencyContactName` (ro) -> PCO: `emergency_contact_name`
 /// - `emergencyContactPhoneNumber` (ro) -> PCO: `emergency_contact_phone_number`
+/// - `kind` (ro) -> PCO: `kind`
+/// - `isConfirmed` (ro) -> PCO: `confirmed`
 /// 
 /// ## Edges and Actions
 /// 
@@ -275,6 +279,7 @@ class PcoCheckInsCheckInQuery extends PlanningCenterApiQuery {
 /// - `checkin-location-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/check_ins
 /// - `checkin-locationeventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/check_ins
 /// - `checkin-locationeventtime-check_ins`: https://api.planningcenteronline.com/check-ins/v2/event_times/1/location_event_times/1/check_ins
+/// - `checkin-option-check_ins`: https://api.planningcenteronline.com/check-ins/v2/options/1/check_ins
 /// - `checkin-organization-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins
 /// - `checkin-person-check_ins`: https://api.planningcenteronline.com/check-ins/v2/people/1/check_ins
 /// - `checkin-personevent-first_check_in`: https://api.planningcenteronline.com/check-ins/v2/events/1/person_events/1/first_check_in
@@ -293,14 +298,15 @@ class PcoCheckInsCheckInQuery extends PlanningCenterApiQuery {
 ///     "first_name": "string",
 ///     "last_name": "string",
 ///     "medical_notes": "string",
-///     "kind": "string",
 ///     "number": 1,
 ///     "security_code": "string",
 ///     "created_at": "2000-01-01T12:00:00Z",
 ///     "updated_at": "2000-01-01T12:00:00Z",
 ///     "checked_out_at": "2000-01-01T12:00:00Z",
+///     "confirmed_at": "2000-01-01T12:00:00Z",
 ///     "emergency_contact_name": "string",
-///     "emergency_contact_phone_number": "string"
+///     "emergency_contact_phone_number": "string",
+///     "kind": "string"
 ///   },
 ///   "relationships": {
 ///     "event_period": {
@@ -376,14 +382,16 @@ class PcoCheckInsCheckIn extends PcoResource {
   static const kFirstName = 'first_name';
   static const kLastName = 'last_name';
   static const kMedicalNotes = 'medical_notes';
-  static const kKind = 'kind';
   static const kNumber = 'number';
   static const kSecurityCode = 'security_code';
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
   static const kCheckedOutAt = 'checked_out_at';
+  static const kConfirmedAt = 'confirmed_at';
   static const kEmergencyContactName = 'emergency_contact_name';
   static const kEmergencyContactPhoneNumber = 'emergency_contact_phone_number';
+  static const kKind = 'kind';
+  static const kConfirmed = 'confirmed';
 
 
   // getters and setters
@@ -406,12 +414,14 @@ class PcoCheckInsCheckIn extends PcoResource {
   String get firstName => _attributes[kFirstName] ?? '';
   String get lastName => _attributes[kLastName] ?? '';
   String get medicalNotes => _attributes[kMedicalNotes] ?? '';
-  String get kind => _attributes[kKind] ?? '';
   int get number => _attributes[kNumber] ?? 0;
   String get securityCode => _attributes[kSecurityCode] ?? '';
   DateTime get checkedOutAt => DateTime.parse(_attributes[kCheckedOutAt] ?? '');
+  DateTime get confirmedAt => DateTime.parse(_attributes[kConfirmedAt] ?? '');
   String get emergencyContactName => _attributes[kEmergencyContactName] ?? '';
   String get emergencyContactPhoneNumber => _attributes[kEmergencyContactPhoneNumber] ?? '';
+  String get kind => _attributes[kKind] ?? '';
+  bool get isConfirmed => _attributes[kConfirmed] == true;
   
   // typed getters for each relationship
   
@@ -454,20 +464,22 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCheckInsCheckIn({String? id, String? firstName, String? lastName, String? medicalNotes, String? kind, int? number, String? securityCode, DateTime? createdAt, DateTime? updatedAt, DateTime? checkedOutAt, String? emergencyContactName, String? emergencyContactPhoneNumber, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCheckInsCheckIn({String? id, String? firstName, String? lastName, String? medicalNotes, int? number, String? securityCode, DateTime? createdAt, DateTime? updatedAt, DateTime? checkedOutAt, DateTime? confirmedAt, String? emergencyContactName, String? emergencyContactPhoneNumber, String? kind, bool? isConfirmed, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsCheckIn.empty();
     obj._id = id;
     if (firstName != null) obj._attributes['first_name'] = firstName;
     if (lastName != null) obj._attributes['last_name'] = lastName;
     if (medicalNotes != null) obj._attributes['medical_notes'] = medicalNotes;
-    if (kind != null) obj._attributes['kind'] = kind;
     if (number != null) obj._attributes['number'] = number;
     if (securityCode != null) obj._attributes['security_code'] = securityCode;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (checkedOutAt != null) obj._attributes['checked_out_at'] = checkedOutAt.toIso8601String();
+    if (confirmedAt != null) obj._attributes['confirmed_at'] = confirmedAt.toIso8601String();
     if (emergencyContactName != null) obj._attributes['emergency_contact_name'] = emergencyContactName;
     if (emergencyContactPhoneNumber != null) obj._attributes['emergency_contact_phone_number'] = emergencyContactPhoneNumber;
+    if (kind != null) obj._attributes['kind'] = kind;
+    if (isConfirmed != null) obj._attributes['confirmed'] = isConfirmed;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -500,6 +512,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -558,6 +571,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -627,6 +641,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -661,6 +676,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -695,6 +711,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -729,6 +746,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -756,6 +774,30 @@ class PcoCheckInsCheckIn extends PcoResource {
 
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/options/$optionId/check_ins`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCheckInsCheckIn>> getFromOption(String optionId, {String? id, PcoCheckInsCheckInQuery? query, bool includeAll = false, bool includeCheckInTimes = false, bool includeCheckedInAt = false, bool includeCheckedInBy = false, bool includeCheckedOutBy = false, bool includeEvent = false, bool includeEventPeriod = false, bool includeEventTimes = false, bool includeLocations = false, bool includeOptions = false, bool includePerson = false,}) async {
+    query ??= PcoCheckInsCheckInQuery();
+    if (includeAll) query.include.addAll(PcoCheckInsCheckIn.canInclude);
+    if (includeCheckInTimes) query.include.add('check_in_times');
+    if (includeCheckedInAt) query.include.add('checked_in_at');
+    if (includeCheckedInBy) query.include.add('checked_in_by');
+    if (includeCheckedOutBy) query.include.add('checked_out_by');
+    if (includeEvent) query.include.add('event');
+    if (includeEventPeriod) query.include.add('event_period');
+    if (includeEventTimes) query.include.add('event_times');
+    if (includeLocations) query.include.add('locations');
+    if (includeOptions) query.include.add('options');
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/options/$optionId/check_ins';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$personId/check_ins`
   /// 
   /// Available Query Filters:
@@ -763,6 +805,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`
@@ -845,6 +888,7 @@ class PcoCheckInsCheckIn extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`

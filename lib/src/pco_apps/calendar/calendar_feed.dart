@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.546709
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.497960
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -85,7 +85,7 @@ class PcoCalendarFeedQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 feed
 /// - Type:               Feed
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/feeds
@@ -154,7 +154,7 @@ class PcoCalendarFeed extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Feed';
   static const String kTypeId = 'feed';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/feeds';
   static const String kCreatePathTemplate = 'null';
 
@@ -227,7 +227,7 @@ class PcoCalendarFeed extends PcoResource {
   /// pass `null` to remove key from attributes
   set defaultChurchCenterVisibility(String? x) => (x == null) ? _attributes.remove(kDefaultChurchCenterVisibility) : _attributes[kDefaultChurchCenterVisibility] = x;
   
-  /// Possible values: `registrations`, `groups`, or `ical`
+  /// Possible values: `registrations`, `groups`, `ical`, or `form`
   ///
   /// pass `null` to remove key from attributes
   set feedType(String? x) => (x == null) ? _attributes.remove(kFeedType) : _attributes[kFeedType] = x;

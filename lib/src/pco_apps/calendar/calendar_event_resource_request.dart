@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.545535
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.496331
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -35,7 +35,6 @@ enum PcoCalendarEventResourceRequestFilter { none }
 /// - `whereApprovalSent`: query on a specific approval_sent, example: ?where[approval_sent]=true
 /// - `whereApprovalStatus`: query on a specific approval_status, example: ?where[approval_status]=string
 /// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-/// - `wherePercentApproved`: query on a specific percent_approved, example: ?where[percent_approved]=1
 /// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
 /// 
 /// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
@@ -98,11 +97,6 @@ class PcoCalendarEventResourceRequestQuery extends PlanningCenterApiQuery {
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereCreatedAt,
     
-    /// Query by `percent_approved`
-    /// query on a specific percent_approved, url example: ?where[percent_approved]=1
-    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
-    String? wherePercentApproved,
-    
     /// Query by `updated_at`
     /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
@@ -132,7 +126,6 @@ class PcoCalendarEventResourceRequestQuery extends PlanningCenterApiQuery {
     if (whereApprovalSent != null) where.add(PlanningCenterApiWhere.parse('approval_sent', whereApprovalSent));
     if (whereApprovalStatus != null) where.add(PlanningCenterApiWhere.parse('approval_status', whereApprovalStatus));
     if (whereCreatedAt != null) where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
-    if (wherePercentApproved != null) where.add(PlanningCenterApiWhere.parse('percent_approved', wherePercentApproved));
     if (whereUpdatedAt != null) where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));}
 }
 
@@ -141,7 +134,7 @@ class PcoCalendarEventResourceRequestQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 event_resource_request
 /// - Type:               EventResourceRequest
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/event_resource_requests
@@ -168,10 +161,9 @@ class PcoCalendarEventResourceRequestQuery extends PlanningCenterApiQuery {
 /// - `isApprovalSent` (ro) -> PCO: `approval_sent`
 /// - `approvalStatus` (ro) -> PCO: `approval_status`
 /// - `createdAt` (ro) -> PCO: `created_at`
-/// - `percentApproved` (ro) -> PCO: `percent_approved`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `notes` (ro) -> PCO: `notes`
 /// - `quantity` (ro) -> PCO: `quantity`
-/// - `roomSetupInfo` (ro) -> PCO: `room_setup_info`
 /// 
 /// ## Edges and Actions
 /// 
@@ -203,10 +195,9 @@ class PcoCalendarEventResourceRequestQuery extends PlanningCenterApiQuery {
 ///     "approval_sent": true,
 ///     "approval_status": "string",
 ///     "created_at": "2000-01-01T12:00:00Z",
-///     "percent_approved": 1,
 ///     "updated_at": "2000-01-01T12:00:00Z",
-///     "quantity": 1,
-///     "room_setup_info": "string"
+///     "notes": "string",
+///     "quantity": 1
 ///   },
 ///   "relationships": {
 ///     "event": {
@@ -252,7 +243,7 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'EventResourceRequest';
   static const String kTypeId = 'event_resource_request';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_resource_requests';
   static const String kCreatePathTemplate = 'null';
 
@@ -268,9 +259,8 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   /// - `approval_sent`: (URLParameter), query on a specific approval_sent, example: ?where[approval_sent]=true
   /// - `approval_status`: (URLParameter), query on a specific approval_status, example: ?where[approval_status]=string
   /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
-  /// - `percent_approved`: (URLParameter), query on a specific percent_approved, example: ?where[percent_approved]=1
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['approval_sent','approval_status','created_at','percent_approved','updated_at'];
+  static List<String> get canQuery => ['approval_sent','approval_status','created_at','updated_at'];
 
   /// possible orderings with parameter ?order=
   /// 
@@ -298,10 +288,9 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   static const kApprovalSent = 'approval_sent';
   static const kApprovalStatus = 'approval_status';
   static const kCreatedAt = 'created_at';
-  static const kPercentApproved = 'percent_approved';
   static const kUpdatedAt = 'updated_at';
+  static const kNotes = 'notes';
   static const kQuantity = 'quantity';
-  static const kRoomSetupInfo = 'room_setup_info';
 
 
   // getters and setters
@@ -323,9 +312,8 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   // getters for object attributes
   bool get isApprovalSent => _attributes[kApprovalSent] == true;
   String get approvalStatus => _attributes[kApprovalStatus] ?? '';
-  int get percentApproved => _attributes[kPercentApproved] ?? 0;
+  String get notes => _attributes[kNotes] ?? '';
   int get quantity => _attributes[kQuantity] ?? 0;
-  String get roomSetupInfo => _attributes[kRoomSetupInfo] ?? '';
   
   // typed getters for each relationship
   
@@ -360,16 +348,15 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCalendarEventResourceRequest({String? id, bool? isApprovalSent, String? approvalStatus, DateTime? createdAt, int? percentApproved, DateTime? updatedAt, int? quantity, String? roomSetupInfo, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarEventResourceRequest({String? id, bool? isApprovalSent, String? approvalStatus, DateTime? createdAt, DateTime? updatedAt, String? notes, int? quantity, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCalendarEventResourceRequest.empty();
     obj._id = id;
     if (isApprovalSent != null) obj._attributes['approval_sent'] = isApprovalSent;
     if (approvalStatus != null) obj._attributes['approval_status'] = approvalStatus;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (percentApproved != null) obj._attributes['percent_approved'] = percentApproved;
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (notes != null) obj._attributes['notes'] = notes;
     if (quantity != null) obj._attributes['quantity'] = quantity;
-    if (roomSetupInfo != null) obj._attributes['room_setup_info'] = roomSetupInfo;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {

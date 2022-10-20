@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.500705
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.417527
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoPeopleOrganizationStatisticQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 organization_statistics
 /// - Type:               OrganizationStatistics
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/organization_statistics
@@ -100,7 +100,7 @@ class PcoPeopleOrganizationStatistic extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'OrganizationStatistics';
   static const String kTypeId = 'organization_statistics';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/organization_statistics';
   static const String kCreatePathTemplate = 'null';
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.597459
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:20.228571
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -30,7 +30,6 @@ part 'pco_apps/services/services_blockout.dart';
 part 'pco_apps/services/services_blockout_date.dart';
 part 'pco_apps/services/services_blockout_exception.dart';
 part 'pco_apps/services/services_blockout_schedule_conflict.dart';
-part 'pco_apps/services/services_ccli_reporting.dart';
 part 'pco_apps/services/services_contributor.dart';
 part 'pco_apps/services/services_custom_slide.dart';
 part 'pco_apps/services/services_email_template.dart';
@@ -62,6 +61,7 @@ part 'pco_apps/services/services_public_view.dart';
 part 'pco_apps/services/services_report_template.dart';
 part 'pco_apps/services/services_schedule.dart';
 part 'pco_apps/services/services_scheduled_person.dart';
+part 'pco_apps/services/services_scheduling_preference.dart';
 part 'pco_apps/services/services_series.dart';
 part 'pco_apps/services/services_service_type.dart';
 part 'pco_apps/services/services_service_type_path.dart';
@@ -179,6 +179,7 @@ part 'pco_apps/calendar/calendar_feed.dart';
 part 'pco_apps/calendar/calendar_organization.dart';
 part 'pco_apps/calendar/calendar_person.dart';
 part 'pco_apps/calendar/calendar_report_template.dart';
+part 'pco_apps/calendar/calendar_required_approval.dart';
 part 'pco_apps/calendar/calendar_resource.dart';
 part 'pco_apps/calendar/calendar_resource_approval_group.dart';
 part 'pco_apps/calendar/calendar_resource_booking.dart';
@@ -199,6 +200,7 @@ part 'pco_apps/giving/giving_designation_refund.dart';
 part 'pco_apps/giving/giving_donation.dart';
 part 'pco_apps/giving/giving_fund.dart';
 part 'pco_apps/giving/giving_label.dart';
+part 'pco_apps/giving/giving_note.dart';
 part 'pco_apps/giving/giving_organization.dart';
 part 'pco_apps/giving/giving_payment_method.dart';
 part 'pco_apps/giving/giving_payment_source.dart';
@@ -213,11 +215,13 @@ part 'pco_apps/giving/giving_refund.dart';
 // parts for groups
 part 'pco_apps/groups/groups_attendance.dart';
 part 'pco_apps/groups/groups_event.dart';
+part 'pco_apps/groups/groups_event_note.dart';
 part 'pco_apps/groups/groups_group.dart';
 part 'pco_apps/groups/groups_group_type.dart';
 part 'pco_apps/groups/groups_location.dart';
 part 'pco_apps/groups/groups_membership.dart';
 part 'pco_apps/groups/groups_organization.dart';
+part 'pco_apps/groups/groups_owner.dart';
 part 'pco_apps/groups/groups_person.dart';
 part 'pco_apps/groups/groups_resource.dart';
 part 'pco_apps/groups/groups_tag.dart';

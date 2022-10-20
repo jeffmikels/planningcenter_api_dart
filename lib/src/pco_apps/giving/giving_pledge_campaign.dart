@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.571525
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.699485
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -132,7 +132,7 @@ class PcoGivingPledgeCampaignQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// 
+/// A `PledgeCampaign` is a way to request and track long-terms commitments to a particular goal or project.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

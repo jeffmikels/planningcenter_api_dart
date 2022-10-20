@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.575158
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.701233
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -87,7 +87,7 @@ class PcoGivingRefundQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// 
+/// A `Refund` record holds information pertaining to a refunded `Donation`.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

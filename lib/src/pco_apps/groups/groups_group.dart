@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.584141
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:17.388526
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -10,8 +10,15 @@ part of pco;
 /// - `name` -> `?order=name`
 enum PcoGroupsGroupOrder { name }
 
-/// Filtering is not allowed when requesting this object.
-enum PcoGroupsGroupFilter { none }
+/// Possible Inbound Filters:
+/// - `group` -> `?filter=group` : filter events from specific groups; provide an additional `group_id` param
+/// as a comma-separated list of IDs, ex: `?filter=group&group_id=1,2,3`
+/// 
+/// - `groupType` -> `?filter=group_type` : filter events from specific group types; provide an additional `group_type_id` param
+/// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
+/// 
+/// - `myGroups` -> `?filter=my_groups` : -- no description
+enum PcoGroupsGroupFilter { group, groupType, myGroups }
 
 /// Creates a [PcoGroupsGroupQuery] object
 /// ## Possible Includes
@@ -60,7 +67,9 @@ class PcoGroupsGroupQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoGroupsGroupFilter, String> _filterMap = {
-    
+    PcoGroupsGroupFilter.group: 'group',
+    PcoGroupsGroupFilter.groupType: 'group_type',
+    PcoGroupsGroupFilter.myGroups: 'my_groups',
   };
   static String filterString(PcoGroupsGroupFilter filter) => _filterMap[filter]!;
 
@@ -82,6 +91,7 @@ class PcoGroupsGroupQuery extends PlanningCenterApiQuery {
     String? whereArchiveStatus,
     
 
+    PcoGroupsGroupFilter? filterBy,
     PcoGroupsGroupOrder? orderBy,
 
 
@@ -97,6 +107,7 @@ class PcoGroupsGroupQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
     if (includeAll || includeGroupType) include.add('group_type');
     if (includeAll || includeLocation) include.add('location');
     
@@ -371,6 +382,17 @@ class PcoGroupsGroup extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `/groups/v2/groups`
+  /// 
+  /// Available Query Filters:
+  /// - `group`
+  /// filter events from specific groups; provide an additional `group_id` param
+  /// as a comma-separated list of IDs, ex: `?filter=group&group_id=1,2,3`
+  /// 
+  /// - `group_type`
+  /// filter events from specific group types; provide an additional `group_type_id` param
+  /// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
+  /// 
+  /// - `my_groups`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.

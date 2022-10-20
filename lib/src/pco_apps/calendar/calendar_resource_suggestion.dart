@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.551995
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.504237
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -67,7 +67,7 @@ class PcoCalendarResourceSuggestionQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 resource_suggestion
 /// - Type:               ResourceSuggestion
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions
@@ -136,7 +136,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ResourceSuggestion';
   static const String kTypeId = 'resource_suggestion';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups/1/resource_suggestions';
   static const String kCreatePathTemplate = 'null';
 

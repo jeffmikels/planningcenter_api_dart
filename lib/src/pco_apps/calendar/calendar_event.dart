@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.543297
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.492753
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -146,7 +146,7 @@ class PcoCalendarEventQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 event
 /// - Type:               Event
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/events
@@ -174,14 +174,14 @@ class PcoCalendarEventQuery extends PlanningCenterApiQuery {
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `approvalStatus` (ro) -> PCO: `approval_status`
-/// - `archivedAt` (ro) -> PCO: `archived_at`
 /// - `createdAt` (ro) -> PCO: `created_at`
-/// - `details` (ro) -> PCO: `details`
+/// - `description` (ro) -> PCO: `description`
 /// - `imageUrl` (ro) -> PCO: `image_url`
 /// - `name` (ro) -> PCO: `name`
 /// - `percentApproved` (ro) -> PCO: `percent_approved`
 /// - `percentRejected` (ro) -> PCO: `percent_rejected`
 /// - `registrationUrl` (ro) -> PCO: `registration_url`
+/// - `summary` (ro) -> PCO: `summary`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `isVisibleInChurchCenter` (ro) -> PCO: `visible_in_church_center`
 /// 
@@ -217,14 +217,14 @@ class PcoCalendarEventQuery extends PlanningCenterApiQuery {
 ///   "id": "1",
 ///   "attributes": {
 ///     "approval_status": "string",
-///     "archived_at": "2000-01-01T12:00:00Z",
 ///     "created_at": "2000-01-01T12:00:00Z",
-///     "details": "string",
+///     "description": "string",
 ///     "image_url": "string",
 ///     "name": "string",
 ///     "percent_approved": 1,
 ///     "percent_rejected": 1,
 ///     "registration_url": "string",
+///     "summary": "string",
 ///     "updated_at": "2000-01-01T12:00:00Z",
 ///     "visible_in_church_center": true
 ///   },
@@ -242,7 +242,7 @@ class PcoCalendarEvent extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Event';
   static const String kTypeId = 'event';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/events';
   static const String kCreatePathTemplate = 'null';
 
@@ -286,14 +286,14 @@ class PcoCalendarEvent extends PcoResource {
   // field mapping constants
   static const kId = 'id';
   static const kApprovalStatus = 'approval_status';
-  static const kArchivedAt = 'archived_at';
   static const kCreatedAt = 'created_at';
-  static const kDetails = 'details';
+  static const kDescription = 'description';
   static const kImageUrl = 'image_url';
   static const kName = 'name';
   static const kPercentApproved = 'percent_approved';
   static const kPercentRejected = 'percent_rejected';
   static const kRegistrationUrl = 'registration_url';
+  static const kSummary = 'summary';
   static const kUpdatedAt = 'updated_at';
   static const kVisibleInChurchCenter = 'visible_in_church_center';
 
@@ -316,13 +316,13 @@ class PcoCalendarEvent extends PcoResource {
 
   // getters for object attributes
   String get approvalStatus => _attributes[kApprovalStatus] ?? '';
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  String get details => _attributes[kDetails] ?? '';
+  String get description => _attributes[kDescription] ?? '';
   String get imageUrl => _attributes[kImageUrl] ?? '';
   String get name => _attributes[kName] ?? '';
   int get percentApproved => _attributes[kPercentApproved] ?? 0;
   int get percentRejected => _attributes[kPercentRejected] ?? 0;
   String get registrationUrl => _attributes[kRegistrationUrl] ?? '';
+  String get summary => _attributes[kSummary] ?? '';
   bool get isVisibleInChurchCenter => _attributes[kVisibleInChurchCenter] == true;
   
   // typed getters for each relationship
@@ -353,18 +353,18 @@ class PcoCalendarEvent extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCalendarEvent({String? id, String? approvalStatus, DateTime? archivedAt, DateTime? createdAt, String? details, String? imageUrl, String? name, int? percentApproved, int? percentRejected, String? registrationUrl, DateTime? updatedAt, bool? isVisibleInChurchCenter, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarEvent({String? id, String? approvalStatus, DateTime? createdAt, String? description, String? imageUrl, String? name, int? percentApproved, int? percentRejected, String? registrationUrl, String? summary, DateTime? updatedAt, bool? isVisibleInChurchCenter, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCalendarEvent.empty();
     obj._id = id;
     if (approvalStatus != null) obj._attributes['approval_status'] = approvalStatus;
-    if (archivedAt != null) obj._attributes['archived_at'] = archivedAt.toIso8601String();
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (details != null) obj._attributes['details'] = details;
+    if (description != null) obj._attributes['description'] = description;
     if (imageUrl != null) obj._attributes['image_url'] = imageUrl;
     if (name != null) obj._attributes['name'] = name;
     if (percentApproved != null) obj._attributes['percent_approved'] = percentApproved;
     if (percentRejected != null) obj._attributes['percent_rejected'] = percentRejected;
     if (registrationUrl != null) obj._attributes['registration_url'] = registrationUrl;
+    if (summary != null) obj._attributes['summary'] = summary;
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (isVisibleInChurchCenter != null) obj._attributes['visible_in_church_center'] = isVisibleInChurchCenter;
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.574633
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.700752
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -87,7 +87,7 @@ class PcoGivingRecurringDonationDesignationQuery extends PlanningCenterApiQuery 
 ///
 ///   
 /// ## Description
-/// 
+/// Much like a `Designation`, A `RecurringDonationDesignation` conveys how much of a `RecurringDonation` goes to a particular `Fund`.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

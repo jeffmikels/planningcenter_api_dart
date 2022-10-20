@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.309688
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.947615
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -190,10 +190,10 @@ class PcoServicesKey extends PcoResource {
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['name', 'starting_key', 'ending_key', 'alternate_keys'];
+  List<String> get createAllowed => ['alternate_keys', 'ending_key', 'name', 'starting_key'];
 
   @override
-  List<String> get updateAllowed => ['name', 'starting_key', 'ending_key', 'alternate_keys'];
+  List<String> get updateAllowed => ['alternate_keys', 'ending_key', 'name', 'starting_key'];
 
   @override
   bool get canCreate => true;
@@ -263,8 +263,8 @@ class PcoServicesKey extends PcoResource {
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  /// - FIELDS USED WHEN CREATING: `name`, `startingKey`, `endingKey`, `alternateKeys`
-  /// - FIELDS USED WHEN UPDATING: `name`, `startingKey`, `endingKey`, `alternateKeys`
+  /// - FIELDS USED WHEN CREATING: `alternateKeys`, `endingKey`, `name`, `startingKey`
+  /// - FIELDS USED WHEN UPDATING: `alternateKeys`, `endingKey`, `name`, `startingKey`
   factory PcoServicesKey({required String songId, required String arrangementId, String? id, DateTime? createdAt, DateTime? updatedAt, String? name, String? alternateKeys, String? endingKey, String? startingKey, bool? isStartingMinor, bool? isEndingMinor, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesKey.empty();
     obj._id = id;

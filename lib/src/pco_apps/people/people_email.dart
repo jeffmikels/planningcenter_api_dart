@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.473958
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.399981
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -132,7 +132,7 @@ class PcoPeopleEmailQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 email
 /// - Type:               Email
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/emails
@@ -202,7 +202,7 @@ class PcoPeopleEmail extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Email';
   static const String kTypeId = 'email';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/emails';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/emails';
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.492212
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.411170
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -227,7 +227,7 @@ class PcoPeopleMessageQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 message
 /// - Type:               Message
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/messages
@@ -265,6 +265,7 @@ class PcoPeopleMessageQuery extends PlanningCenterApiQuery {
 /// - `fromAddress` (ro) -> PCO: `from_address`
 /// - `readAt` (ro) -> PCO: `read_at`
 /// - `appName` (ro) -> PCO: `app_name`
+/// - `messageType` (ro) -> PCO: `message_type`
 /// 
 /// ## Edges and Actions
 /// 
@@ -299,16 +300,36 @@ class PcoPeopleMessageQuery extends PlanningCenterApiQuery {
 ///     "from_name": "string",
 ///     "from_address": "string",
 ///     "read_at": "2000-01-01T12:00:00Z",
-///     "app_name": "string"
+///     "app_name": "string",
+///     "message_type": "string"
 ///   },
-///   "relationships": {}
+///   "relationships": {
+///     "from": {
+///       "data": {
+///         "type": "Person",
+///         "id": "1"
+///       }
+///     },
+///     "to": {
+///       "data": {
+///         "type": "Person",
+///         "id": "1"
+///       }
+///     },
+///     "message_group": {
+///       "data": {
+///         "type": "MessageGroup",
+///         "id": "1"
+///       }
+///     }
+///   }
 /// }
 /// ```
 class PcoPeopleMessage extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Message';
   static const String kTypeId = 'message';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/messages';
   static const String kCreatePathTemplate = 'null';
 
@@ -381,6 +402,7 @@ class PcoPeopleMessage extends PcoResource {
   static const kFromAddress = 'from_address';
   static const kReadAt = 'read_at';
   static const kAppName = 'app_name';
+  static const kMessageType = 'message_type';
 
 
   // getters and setters
@@ -413,6 +435,7 @@ class PcoPeopleMessage extends PcoResource {
   String get fromAddress => _attributes[kFromAddress] ?? '';
   DateTime get readAt => DateTime.parse(_attributes[kReadAt] ?? '');
   String get appName => _attributes[kAppName] ?? '';
+  String get messageType => _attributes[kMessageType] ?? '';
   
   // typed getters for each relationship
   
@@ -441,7 +464,7 @@ class PcoPeopleMessage extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoPeopleMessage({String? id, String? kind, String? toAddresses, String? subject, String? file, String? deliveryStatus, String? rejectReason, DateTime? createdAt, DateTime? sentAt, DateTime? bouncedAt, DateTime? rejectionNotificationSentAt, String? fromName, String? fromAddress, DateTime? readAt, String? appName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleMessage({String? id, String? kind, String? toAddresses, String? subject, String? file, String? deliveryStatus, String? rejectReason, DateTime? createdAt, DateTime? sentAt, DateTime? bouncedAt, DateTime? rejectionNotificationSentAt, String? fromName, String? fromAddress, DateTime? readAt, String? appName, String? messageType, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleMessage.empty();
     obj._id = id;
     if (kind != null) obj._attributes['kind'] = kind;
@@ -458,6 +481,7 @@ class PcoPeopleMessage extends PcoResource {
     if (fromAddress != null) obj._attributes['from_address'] = fromAddress;
     if (readAt != null) obj._attributes['read_at'] = readAt.toIso8601String();
     if (appName != null) obj._attributes['app_name'] = appName;
+    if (messageType != null) obj._attributes['message_type'] = messageType;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -544,7 +568,7 @@ class PcoPeopleMessage extends PcoResource {
   // ---------------------------------
   // Instance functions to traverse outbound edges
 
-  /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting many)
+  /// Will get a collection of [PcoPeopleMessageGroup] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/message_group`
   Future<PcoCollection<PcoPeopleMessageGroup>> getMessageGroup({PcoPeopleMessageGroupQuery? query}) async {
     query ??= PcoPeopleMessageGroupQuery();
@@ -552,7 +576,7 @@ class PcoPeopleMessage extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeopleMessageGroup>(url, query: query, apiVersion: apiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
+  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/messages/1/to`
   Future<PcoCollection<PcoPeoplePerson>> getTo({PcoPeoplePersonQuery? query}) async {
     query ??= PcoPeoplePersonQuery();

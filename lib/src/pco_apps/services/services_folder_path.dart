@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.303217
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.942960
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -54,7 +54,7 @@ class PcoServicesFolderPathQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/folders/1/path
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -104,7 +104,7 @@ class PcoServicesFolderPath extends PcoResource {
   static const String kTypeString = 'FolderPath';
   static const String kTypeId = 'folder_path';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/folders/1/path';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b

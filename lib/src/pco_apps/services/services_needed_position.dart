@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.317025
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.952936
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -79,7 +79,7 @@ class PcoServicesNeededPositionQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
 /// 
 /// ## Instantiation
@@ -109,8 +109,8 @@ class PcoServicesNeededPositionQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `team-neededposition-team`: https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/team
-/// - `plantime-neededposition-time`: https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/time
+/// - `team-neededposition-team`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/team
+/// - `plantime-neededposition-time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/time
 /// 
 /// Inbound Edges:
 /// - `neededposition-plan-needed_positions`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions
@@ -161,7 +161,7 @@ class PcoServicesNeededPosition extends PcoResource {
   static const String kTypeString = 'NeededPosition';
   static const String kTypeId = 'needed_position';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/needed_positions';
 
   /// possible includes with parameter ?include=a,b
@@ -320,7 +320,7 @@ class PcoServicesNeededPosition extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/team`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/team`
   Future<PcoCollection<PcoServicesTeam>> getTeam({PcoServicesTeamQuery? query}) async {
     query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';
@@ -328,7 +328,7 @@ class PcoServicesNeededPosition extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/time`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/time`
   Future<PcoCollection<PcoServicesPlanTime>> getTime({PcoServicesPlanTimeQuery? query}) async {
     query ??= PcoServicesPlanTimeQuery();
     var url = '$apiEndpoint/time';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.516954
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.435380
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -86,7 +86,7 @@ class PcoPeopleWorkflowShareQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_share
 /// - Type:               WorkflowShare
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/workflow_shares
@@ -156,7 +156,7 @@ class PcoPeopleWorkflowShare extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowShare';
   static const String kTypeId = 'workflow_share';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/workflow_shares';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/shares';
 

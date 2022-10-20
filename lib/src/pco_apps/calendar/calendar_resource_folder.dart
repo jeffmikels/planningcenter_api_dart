@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.551073
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.503473
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -7,10 +7,11 @@
 part of pco;
 
 /// Possible Ordering:
+/// - `ancestry` -> `?order=ancestry`
 /// - `createdAt` -> `?order=created_at`
 /// - `name` -> `?order=name`
 /// - `updatedAt` -> `?order=updated_at`
-enum PcoCalendarResourceFolderOrder { createdAt, name, updatedAt }
+enum PcoCalendarResourceFolderOrder { ancestry, createdAt, name, updatedAt }
 
 /// Possible Inbound Filters:
 /// - `resources` -> `?filter=resources` : -- no description
@@ -33,6 +34,7 @@ enum PcoCalendarResourceFolderFilter { resources, rooms }
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// 
 /// [PcoCalendarResourceFolder] objects can be requested with one or more of the following criteria:
+/// - `whereAncestry`: query on a specific ancestry, example: ?where[ancestry]=string
 /// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
 /// - `whereName`: query on a specific name, example: ?where[name]=string
 /// - `wherePathName`: query on a specific path_name, example: ?where[path_name]=string
@@ -48,6 +50,7 @@ enum PcoCalendarResourceFolderFilter { resources, rooms }
 /// (translates to url parameter: `?order=-updated_at`)
 /// 
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
+/// - `PcoCalendarResourceFolderOrder.ancestry` : will order by `ancestry`
 /// - `PcoCalendarResourceFolderOrder.createdAt` : will order by `created_at`
 /// - `PcoCalendarResourceFolderOrder.name` : will order by `name`
 /// - `PcoCalendarResourceFolderOrder.updatedAt` : will order by `updated_at`
@@ -62,6 +65,7 @@ enum PcoCalendarResourceFolderFilter { resources, rooms }
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
   static final Map<PcoCalendarResourceFolderOrder, String> _orderMap = {
+    PcoCalendarResourceFolderOrder.ancestry: 'ancestry',
     PcoCalendarResourceFolderOrder.createdAt: 'created_at',
     PcoCalendarResourceFolderOrder.name: 'name',
     PcoCalendarResourceFolderOrder.updatedAt: 'updated_at',
@@ -79,6 +83,11 @@ class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
     /// include associated resources
     /// when true, adds `?include=resources` to url
     bool includeResources = false,
+    
+    /// Query by `ancestry`
+    /// query on a specific ancestry, url example: ?where[ancestry]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereAncestry,
     
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -120,6 +129,7 @@ class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
     if (filterBy != null) filter.add(filterString(filterBy));
     if (includeResources) include.add('resources');
     
+    if (whereAncestry != null) where.add(PlanningCenterApiWhere.parse('ancestry', whereAncestry));
     if (whereCreatedAt != null) where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
     if (whereName != null) where.add(PlanningCenterApiWhere.parse('name', whereName));
     if (wherePathName != null) where.add(PlanningCenterApiWhere.parse('path_name', wherePathName));
@@ -134,7 +144,7 @@ class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 resource_folder
 /// - Type:               ResourceFolder
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_folders
@@ -161,6 +171,7 @@ class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (rw) -> PCO: `name`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `ancestry` (ro) -> PCO: `ancestry`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `pathName` (ro) -> PCO: `path_name`
 /// 
@@ -185,6 +196,7 @@ class PcoCalendarResourceFolderQuery extends PlanningCenterApiQuery {
 ///     "created_at": "2000-01-01T12:00:00Z",
 ///     "name": "string",
 ///     "updated_at": "2000-01-01T12:00:00Z",
+///     "ancestry": "string",
 ///     "kind": "string",
 ///     "path_name": "string"
 ///   },
@@ -195,7 +207,7 @@ class PcoCalendarResourceFolder extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ResourceFolder';
   static const String kTypeId = 'resource_folder';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_folders';
   static const String kCreatePathTemplate = 'null';
 
@@ -204,17 +216,19 @@ class PcoCalendarResourceFolder extends PcoResource {
   static List<String> get canInclude => ['resources'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
+  /// - `ancestry`: (URLParameter), query on a specific ancestry, example: ?where[ancestry]=string
   /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   /// - `path_name`: (URLParameter), query on a specific path_name, example: ?where[path_name]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['created_at','name','path_name','updated_at'];
+  static List<String> get canQuery => ['ancestry','created_at','name','path_name','updated_at'];
 
   /// possible orderings with parameter ?order=
+  /// - `ancestry`: (URLParameter), prefix with a hyphen (-ancestry) to reverse the order
   /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['created_at','name','updated_at'];
+  static List<String> get canOrderBy => ['ancestry','created_at','name','updated_at'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -238,6 +252,7 @@ class PcoCalendarResourceFolder extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kName = 'name';
   static const kUpdatedAt = 'updated_at';
+  static const kAncestry = 'ancestry';
   static const kKind = 'kind';
   static const kPathName = 'path_name';
 
@@ -260,6 +275,7 @@ class PcoCalendarResourceFolder extends PcoResource {
 
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
+  String get ancestry => _attributes[kAncestry] ?? '';
   String get kind => _attributes[kKind] ?? '';
   String get pathName => _attributes[kPathName] ?? '';
   
@@ -292,12 +308,13 @@ class PcoCalendarResourceFolder extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `name`
   /// - FIELDS USED WHEN UPDATING: `name`
-  factory PcoCalendarResourceFolder({String? id, DateTime? createdAt, String? name, DateTime? updatedAt, String? kind, String? pathName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarResourceFolder({String? id, DateTime? createdAt, String? name, DateTime? updatedAt, String? ancestry, String? kind, String? pathName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCalendarResourceFolder.empty();
     obj._id = id;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (ancestry != null) obj._attributes['ancestry'] = ancestry;
     if (kind != null) obj._attributes['kind'] = kind;
     if (pathName != null) obj._attributes['path_name'] = pathName;
 

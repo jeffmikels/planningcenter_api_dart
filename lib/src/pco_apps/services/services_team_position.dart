@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.354989
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.982278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,6 +18,7 @@ enum PcoServicesTeamPositionFilter { none }
 /// (translates to url parameter: `?include=a,b`)
 /// 
 /// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeTags`: include associated tags 
 /// - `includeTeam`: include associated team 
 /// - `includeAll`: include all related objects
 /// 
@@ -52,10 +53,17 @@ class PcoServicesTeamPositionQuery extends PlanningCenterApiQuery {
   static String filterString(PcoServicesTeamPositionFilter filter) => _filterMap[filter]!;
 
   PcoServicesTeamPositionQuery({
+    /// include associated tags
+    /// when true, adds `?include=tags` to url
+    bool includeTags = false,
+    
     /// include associated team
     /// when true, adds `?include=team` to url
     bool includeTeam = false,
     
+    /// when true, adds `?include=tags,team` to url parameters
+    bool includeAll = false,
+
 
     PcoServicesTeamPositionOrder? orderBy,
 
@@ -72,7 +80,8 @@ class PcoServicesTeamPositionQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeTeam) include.add('team');
+    if (includeAll || includeTags) include.add('tags');
+    if (includeAll || includeTeam) include.add('team');
     
     
     if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
@@ -116,6 +125,7 @@ class PcoServicesTeamPositionQuery extends PlanningCenterApiQuery {
 /// 
 /// Outbound Edges:
 /// - `personteampositionassignment-teamposition-person_team_position_assignments`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments
+/// - `tag-teamposition-tags`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/tags
 /// - `team-teamposition-team`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/team
 /// 
 /// Inbound Edges:
@@ -151,6 +161,14 @@ class PcoServicesTeamPositionQuery extends PlanningCenterApiQuery {
 ///           "id": "1"
 ///         }
 ///       ]
+///     },
+///     "tags": {
+///       "data": [
+///         {
+///           "type": "Tag",
+///           "id": "1"
+///         }
+///       ]
 ///     }
 ///   }
 /// }
@@ -164,8 +182,9 @@ class PcoServicesTeamPosition extends PcoResource {
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
+  /// - `tags`: include associated tags 
   /// - `team`: include associated team 
-  static List<String> get canInclude => ['team'];
+  static List<String> get canInclude => ['tags','team'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// 
@@ -224,6 +243,7 @@ class PcoServicesTeamPosition extends PcoResource {
   
   // typed getters for each relationship
   
+  List<PcoServicesTag> get includedTags => (relationships['tags'] as List?)?.cast<PcoServicesTag>() ?? [];
   PcoServicesTeam? get includedTeam => _firstOrNull<PcoServicesTeam>(relationships['team']);
 
   // Class Constructors
@@ -281,9 +301,10 @@ class PcoServicesTeamPosition extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeamPosition>> getFromServiceTypeAndTeamPositionAndPersonTeamPositionAssignment(String serviceTypeId,String teamPositionId,String personTeamPositionAssignmentId, {PcoServicesTeamPositionQuery? query, bool includeTeam = false,}) async {
+  static Future<PcoCollection<PcoServicesTeamPosition>> getFromServiceTypeAndTeamPositionAndPersonTeamPositionAssignment(String serviceTypeId,String teamPositionId,String personTeamPositionAssignmentId, {PcoServicesTeamPositionQuery? query, bool includeAll = false, bool includeTags = false, bool includeTeam = false,}) async {
     query ??= PcoServicesTeamPositionQuery();
-    
+    if (includeAll) query.include.addAll(PcoServicesTeamPosition.canInclude);
+    if (includeTags) query.include.add('tags');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments/$personTeamPositionAssignmentId/team_position';
     
@@ -296,9 +317,10 @@ class PcoServicesTeamPosition extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeamPosition>> getFromServiceType(String serviceTypeId, {String? id, PcoServicesTeamPositionQuery? query, bool includeTeam = false,}) async {
+  static Future<PcoCollection<PcoServicesTeamPosition>> getFromServiceType(String serviceTypeId, {String? id, PcoServicesTeamPositionQuery? query, bool includeAll = false, bool includeTags = false, bool includeTeam = false,}) async {
     query ??= PcoServicesTeamPositionQuery();
-    
+    if (includeAll) query.include.addAll(PcoServicesTeamPosition.canInclude);
+    if (includeTags) query.include.add('tags');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/service_types/$serviceTypeId/team_positions';
     if (id != null) url += '/$id';
@@ -311,9 +333,10 @@ class PcoServicesTeamPosition extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeamPosition>> getFromTeam(String teamId, {String? id, PcoServicesTeamPositionQuery? query, bool includeTeam = false,}) async {
+  static Future<PcoCollection<PcoServicesTeamPosition>> getFromTeam(String teamId, {String? id, PcoServicesTeamPositionQuery? query, bool includeAll = false, bool includeTags = false, bool includeTeam = false,}) async {
     query ??= PcoServicesTeamPositionQuery();
-    
+    if (includeAll) query.include.addAll(PcoServicesTeamPosition.canInclude);
+    if (includeTags) query.include.add('tags');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/teams/$teamId/team_positions';
     if (id != null) url += '/$id';
@@ -337,6 +360,14 @@ class PcoServicesTeamPosition extends PcoResource {
     query ??= PcoServicesPersonTeamPositionAssignmentQuery();
     var url = '$apiEndpoint/person_team_position_assignments';
     return PcoCollection.fromApiCall<PcoServicesPersonTeamPositionAssignment>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoServicesTag] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/tags`
+  Future<PcoCollection<PcoServicesTag>> getTags({PcoServicesTagQuery? query}) async {
+    query ??= PcoServicesTagQuery();
+    var url = '$apiEndpoint/tags';
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)

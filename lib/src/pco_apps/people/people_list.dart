@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.487654
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.408455
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -200,7 +200,7 @@ class PcoPeopleListQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 list
 /// - Type:               List
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists
@@ -302,7 +302,7 @@ class PcoPeopleList extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'List';
   static const String kTypeId = 'list';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists';
   static const String kCreatePathTemplate = 'null';
 

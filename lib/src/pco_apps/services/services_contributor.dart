@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.300032
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.940723
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,7 @@ class PcoServicesContributorQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series/1/plans/1/contributors
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -146,7 +146,7 @@ class PcoServicesContributor extends PcoResource {
   static const String kTypeString = 'Contributor';
   static const String kTypeId = 'contributor';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/contributors';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series/1/plans/1/contributors';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b

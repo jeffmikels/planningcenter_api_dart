@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.565059
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.691240
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -87,7 +87,7 @@ class PcoGivingDesignationRefundQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// 
+/// A record that links a `Refund` with a `Designation`
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

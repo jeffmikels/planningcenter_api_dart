@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.585632
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:17.389498
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -54,7 +54,7 @@ class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-08-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
-/// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/location
+/// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/locations
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -117,7 +117,7 @@ class PcoGroupsLocation extends PcoResource {
   static const String kTypeString = 'Location';
   static const String kTypeId = 'location';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/location';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/locations';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b

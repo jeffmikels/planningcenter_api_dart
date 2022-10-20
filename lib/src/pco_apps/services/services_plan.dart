@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.329078
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.960102
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -241,7 +241,7 @@ class PcoServicesPlanQuery extends PlanningCenterApiQuery {
 /// - `planperson-plan-team_members`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/team_members
 /// 
 /// Inbound Edges:
-/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/watchable_plans
+/// - `plan-live-watchable_plans`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/watchable_plans
 /// - `plan-plan-next_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/next_plan
 /// - `plan-planperson-plan`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan
 /// - `plan-plan-previous_plan`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/previous_plan
@@ -562,18 +562,18 @@ class PcoServicesPlan extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/watchable_plans`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/watchable_plans`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPlan>> getWatchablePlansFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {PcoServicesPlanQuery? query, bool includeAll = false, bool includeContributors = false, bool includeMySchedules = false, bool includePlanTimes = false, bool includeSeries = false,}) async {
+  static Future<PcoCollection<PcoServicesPlan>> getWatchablePlansFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {PcoServicesPlanQuery? query, bool includeAll = false, bool includeContributors = false, bool includeMySchedules = false, bool includePlanTimes = false, bool includeSeries = false,}) async {
     query ??= PcoServicesPlanQuery();
     if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
     if (includeSeries) query.include.add('series');
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/watchable_plans';
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/watchable_plans';
     
     return PcoCollection.fromApiCall<PcoServicesPlan>(url, query: query, apiVersion:kApiVersion);
   }

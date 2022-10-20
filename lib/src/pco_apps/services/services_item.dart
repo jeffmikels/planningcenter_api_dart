@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.305923
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.944531
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -153,7 +153,6 @@ class PcoServicesItemQuery extends PlanningCenterApiQuery {
 /// Outbound Edges:
 /// - `arrangement-item-arrangement`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/arrangement
 /// - `attachment-item-attachments`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/attachments
-/// - `cclireporting-item-ccli_reporting`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/ccli_reporting
 /// - `customslide-item-custom_slides`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/custom_slides
 /// - `itemnote-item-item_notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes
 /// - `itemtime-item-item_times`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_times
@@ -164,7 +163,7 @@ class PcoServicesItemQuery extends PlanningCenterApiQuery {
 /// - `song-item-song`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/song
 /// 
 /// Inbound Edges:
-/// - `item-live-items`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/items
+/// - `item-live-items`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/items
 /// - `item-plan-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items
 /// - `item-plantemplate-items`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_templates/1/items
 /// - `item-song-last_scheduled_item`: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item
@@ -470,11 +469,11 @@ class PcoServicesItem extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesItem] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/items`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/items`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItem>> getFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {String? id, PcoServicesItemQuery? query, bool includeAll = false, bool includeArrangement = false, bool includeItemNotes = false, bool includeItemTimes = false, bool includeKey = false, bool includeMedia = false, bool includeSelectedAttachment = false, bool includeSong = false,}) async {
+  static Future<PcoCollection<PcoServicesItem>> getFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {String? id, PcoServicesItemQuery? query, bool includeAll = false, bool includeArrangement = false, bool includeItemNotes = false, bool includeItemTimes = false, bool includeKey = false, bool includeMedia = false, bool includeSelectedAttachment = false, bool includeSong = false,}) async {
     query ??= PcoServicesItemQuery();
     if (includeAll) query.include.addAll(PcoServicesItem.canInclude);
     if (includeArrangement) query.include.add('arrangement');
@@ -484,7 +483,7 @@ class PcoServicesItem extends PcoResource {
     if (includeMedia) query.include.add('media');
     if (includeSelectedAttachment) query.include.add('selected_attachment');
     if (includeSong) query.include.add('song');
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/items';
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/items';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesItem>(url, query: query, apiVersion:kApiVersion);
   }
@@ -572,14 +571,6 @@ class PcoServicesItem extends PcoResource {
     query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
     return PcoCollection.fromApiCall<PcoServicesAttachment>(url, query: query, apiVersion: apiVersion);
-  }
-
-  /// Will get a collection of [PcoServicesCcliReporting] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/ccli_reporting`
-  Future<PcoCollection<PcoServicesCcliReporting>> getCcliReporting({PcoServicesCcliReportingQuery? query}) async {
-    query ??= PcoServicesCcliReportingQuery();
-    var url = '$apiEndpoint/ccli_reporting';
-    return PcoCollection.fromApiCall<PcoServicesCcliReporting>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesCustomSlide] objects (expecting many)

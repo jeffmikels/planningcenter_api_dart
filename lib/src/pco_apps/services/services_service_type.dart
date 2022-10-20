@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.339944
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.970322
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,7 +174,7 @@ class PcoServicesServiceTypeQuery extends PlanningCenterApiQuery {
 /// 
 /// Inbound Edges:
 /// - `servicetype-folder-service_types`: https://api.planningcenteronline.com/services/v2/folders/1/service_types
-/// - `servicetype-live-service_type`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/service_type
+/// - `servicetype-live-service_type`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/service_type
 /// - `servicetype-organization-service_types`: https://api.planningcenteronline.com/services/v2/service_types
 /// - `servicetype-team-service_type`: https://api.planningcenteronline.com/services/v2/teams/1/service_type
 /// 
@@ -452,15 +452,15 @@ class PcoServicesServiceType extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/service_type`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/service_type`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesServiceType>> getFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {PcoServicesServiceTypeQuery? query, bool includeTimePreferenceOptions = false,}) async {
+  static Future<PcoCollection<PcoServicesServiceType>> getFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {PcoServicesServiceTypeQuery? query, bool includeTimePreferenceOptions = false,}) async {
     query ??= PcoServicesServiceTypeQuery();
     
     if (includeTimePreferenceOptions) query.include.add('time_preference_options');
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/service_type';
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/service_type';
     
     return PcoCollection.fromApiCall<PcoServicesServiceType>(url, query: query, apiVersion:kApiVersion);
   }

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.353909
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.977227
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,14 +185,14 @@ class PcoServicesTeamQuery extends PlanningCenterApiQuery {
 /// - `teamposition-team-team_positions`: https://api.planningcenteronline.com/services/v2/teams/1/team_positions
 /// 
 /// Inbound Edges:
-/// - `team-neededposition-team`: https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/team
+/// - `team-neededposition-team`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/team
 /// - `team-organization-teams`: https://api.planningcenteronline.com/services/v2/teams
 /// - `team-planperson-team`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/team
 /// - `team-plan-signup_teams`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/signup_teams
 /// - `team-schedule-team`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/team
 /// - `team-servicetype-teams`: https://api.planningcenteronline.com/services/v2/service_types/1/teams
-/// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team
-/// - `team-teamleader-team`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team
+/// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments/1/team
+/// - `team-teamleader-team`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/team
 /// - `team-teamposition-team`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/team
 /// 
 /// Actions:
@@ -439,11 +439,11 @@ class PcoServicesTeam extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/next_up_plans/$upPlanId/needed_positions/$neededPositionId/team`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/needed_positions/$neededPositionId/team`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeam>> getFromPersonAndUpPlanAndNeededPosition(String personId,String upPlanId,String neededPositionId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
+  static Future<PcoCollection<PcoServicesTeam>> getFromSeriesAndPlanAndNeededPosition(String seriesId,String planId,String neededPositionId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
     query ??= PcoServicesTeamQuery();
     if (includeAll) query.include.addAll(PcoServicesTeam.canInclude);
     if (includePeople) query.include.add('people');
@@ -451,7 +451,7 @@ class PcoServicesTeam extends PcoResource {
     if (includeServiceType) query.include.add('service_type');
     if (includeTeamLeaders) query.include.add('team_leaders');
     if (includeTeamPositions) query.include.add('team_positions');
-    var url = '/services/v2/people/$personId/next_up_plans/$upPlanId/needed_positions/$neededPositionId/team';
+    var url = '/services/v2/series/$seriesId/plans/$planId/needed_positions/$neededPositionId/team';
     
     return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion:kApiVersion);
   }
@@ -534,11 +534,11 @@ class PcoServicesTeam extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments/$splitTeamRehearsalAssignmentId/team`
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments/$splitTeamRehearsalAssignmentId/team`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeam>> getFromPersonAndPlanTimeAndSplitTeamRehearsalAssignment(String personId,String planTimeId,String splitTeamRehearsalAssignmentId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
+  static Future<PcoCollection<PcoServicesTeam>> getFromServiceTypeAndPlanTimeAndSplitTeamRehearsalAssignment(String serviceTypeId,String planTimeId,String splitTeamRehearsalAssignmentId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
     query ??= PcoServicesTeamQuery();
     if (includeAll) query.include.addAll(PcoServicesTeam.canInclude);
     if (includePeople) query.include.add('people');
@@ -546,18 +546,18 @@ class PcoServicesTeam extends PcoResource {
     if (includeServiceType) query.include.add('service_type');
     if (includeTeamLeaders) query.include.add('team_leaders');
     if (includeTeamPositions) query.include.add('team_positions');
-    var url = '/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments/$splitTeamRehearsalAssignmentId/team';
+    var url = '/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments/$splitTeamRehearsalAssignmentId/team';
     
     return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/team`
+  /// using a path like this: `/services/v2/people/$personId/team_leaders/$teamLeaderId/team`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTeam>> getFromPersonAndAssignedTeamLeader(String personId,String assignedTeamLeaderId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
+  static Future<PcoCollection<PcoServicesTeam>> getFromPersonAndTeamLeader(String personId,String teamLeaderId, {PcoServicesTeamQuery? query, bool includeAll = false, bool includePeople = false, bool includePersonTeamPositionAssignments = false, bool includeServiceType = false, bool includeTeamLeaders = false, bool includeTeamPositions = false,}) async {
     query ??= PcoServicesTeamQuery();
     if (includeAll) query.include.addAll(PcoServicesTeam.canInclude);
     if (includePeople) query.include.add('people');
@@ -565,7 +565,7 @@ class PcoServicesTeam extends PcoResource {
     if (includeServiceType) query.include.add('service_type');
     if (includeTeamLeaders) query.include.add('team_leaders');
     if (includeTeamPositions) query.include.add('team_positions');
-    var url = '/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/team';
+    var url = '/services/v2/people/$personId/team_leaders/$teamLeaderId/team';
     
     return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion:kApiVersion);
   }

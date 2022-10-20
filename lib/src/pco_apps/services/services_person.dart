@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.325727
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.956491
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,6 +17,17 @@ enum PcoServicesPersonOrder { createdAt, firstName, lastName, updatedAt }
 enum PcoServicesPersonFilter { none }
 
 /// Creates a [PcoServicesPersonQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+/// 
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeTeamLeaders`: include associated team_leaders 
+/// - `includeAll`: include all related objects
+/// 
+/// Alternatively, you may pass a list of strings to the `include` argument.
+/// 
+/// e.g. `PcoServicesPersonQuery(includes: ['a', 'b'])`
+/// 
 /// ## Possible Query Fields
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// 
@@ -63,6 +74,10 @@ class PcoServicesPersonQuery extends PlanningCenterApiQuery {
   static String filterString(PcoServicesPersonFilter filter) => _filterMap[filter]!;
 
   PcoServicesPersonQuery({
+    /// include associated team_leaders
+    /// when true, adds `?include=team_leaders` to url
+    bool includeTeamLeaders = false,
+    
     /// Query by `assigned_to_rehearsal_team`
     /// query on a specific assigned_to_rehearsal_team, url example: ?where[assigned_to_rehearsal_team]=true
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
@@ -89,6 +104,8 @@ class PcoServicesPersonQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (includeTeamLeaders) include.add('team_leaders');
+    
     if (whereAssignedToRehearsalTeam != null) where.add(PlanningCenterApiWhere.parse('assigned_to_rehearsal_team', whereAssignedToRehearsalTeam));
     if (whereLegacyId != null) where.add(PlanningCenterApiWhere.parse('legacy_id', whereLegacyId));
         
@@ -156,6 +173,8 @@ class PcoServicesPersonQuery extends PlanningCenterApiQuery {
 /// - `notes` (ro) -> PCO: `notes`
 /// - `isPassedBackgroundCheck` (ro) -> PCO: `passed_background_check`
 /// - `icalCode` (ro) -> PCO: `ical_code`
+/// - `preferredMaxPlansPerDay` (ro) -> PCO: `preferred_max_plans_per_day`
+/// - `preferredMaxPlansPerMonth` (ro) -> PCO: `preferred_max_plans_per_month`
 /// - `isPraiseChartsEnabled` (ro) -> PCO: `praise_charts_enabled`
 /// - `meTab` (ro) -> PCO: `me_tab`
 /// - `plansTab` (ro) -> PCO: `plans_tab`
@@ -175,17 +194,18 @@ class PcoServicesPersonQuery extends PlanningCenterApiQuery {
 /// - `personteampositionassignment-person-person_team_position_assignments`: https://api.planningcenteronline.com/services/v2/people/1/person_team_position_assignments
 /// - `planperson-person-plan_people`: https://api.planningcenteronline.com/services/v2/people/1/plan_people
 /// - `schedule-person-schedules`: https://api.planningcenteronline.com/services/v2/people/1/schedules
+/// - `schedulingpreference-person-scheduling_preferences`: https://api.planningcenteronline.com/services/v2/people/1/scheduling_preferences
 /// - `tag-person-tags`: https://api.planningcenteronline.com/services/v2/people/1/tags
 /// - `teamleader-person-team_leaders`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders
 /// - `textsetting-person-text_settings`: https://api.planningcenteronline.com/services/v2/people/1/text_settings
 /// 
 /// Inbound Edges:
-/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/controller
+/// - `person-live-controller`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/controller
 /// - `person-organization-people`: https://api.planningcenteronline.com/services/v2/people
 /// - `person-personteampositionassignment-person`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/person_team_position_assignments/1/person
 /// - `person-planperson-person`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/person
 /// - `person-schedule-respond_to`: https://api.planningcenteronline.com/services/v2/people/1/schedules/1/respond_to
-/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people
+/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/people
 /// - `person-team-people`: https://api.planningcenteronline.com/services/v2/teams/1/people
 /// 
 /// Actions:
@@ -230,6 +250,8 @@ class PcoServicesPersonQuery extends PlanningCenterApiQuery {
 ///     "notes": "string",
 ///     "passed_background_check": true,
 ///     "ical_code": "string",
+///     "preferred_max_plans_per_day": 1,
+///     "preferred_max_plans_per_month": 1,
 ///     "praise_charts_enabled": true,
 ///     "me_tab": "string",
 ///     "plans_tab": "string",
@@ -271,8 +293,8 @@ class PcoServicesPerson extends PcoResource {
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
-  static List<String> get canInclude => [];
+  /// - `team_leaders`: include associated team_leaders 
+  static List<String> get canInclude => ['team_leaders'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `assigned_to_rehearsal_team`: (URLParameter), query on a specific assigned_to_rehearsal_team, example: ?where[assigned_to_rehearsal_team]=true
@@ -336,6 +358,8 @@ class PcoServicesPerson extends PcoResource {
   static const kNotes = 'notes';
   static const kPassedBackgroundCheck = 'passed_background_check';
   static const kIcalCode = 'ical_code';
+  static const kPreferredMaxPlansPerDay = 'preferred_max_plans_per_day';
+  static const kPreferredMaxPlansPerMonth = 'preferred_max_plans_per_month';
   static const kPraiseChartsEnabled = 'praise_charts_enabled';
   static const kMeTab = 'me_tab';
   static const kPlansTab = 'plans_tab';
@@ -394,6 +418,8 @@ class PcoServicesPerson extends PcoResource {
   String get notes => _attributes[kNotes] ?? '';
   bool get isPassedBackgroundCheck => _attributes[kPassedBackgroundCheck] == true;
   String get icalCode => _attributes[kIcalCode] ?? '';
+  int get preferredMaxPlansPerDay => _attributes[kPreferredMaxPlansPerDay] ?? 0;
+  int get preferredMaxPlansPerMonth => _attributes[kPreferredMaxPlansPerMonth] ?? 0;
   bool get isPraiseChartsEnabled => _attributes[kPraiseChartsEnabled] == true;
   String get meTab => _attributes[kMeTab] ?? '';
   String get plansTab => _attributes[kPlansTab] ?? '';
@@ -429,6 +455,10 @@ class PcoServicesPerson extends PcoResource {
   /// pass `null` to remove key from attributes
   set currentFolderId(String? x) => (x == null) ? _attributes.remove(kCurrentFolderId) : _attributes[kCurrentFolderId] = x;
   String get currentFolderId => _attributes[kCurrentFolderId] ?? '';
+  
+  // typed getters for each relationship
+  
+  List<PcoServicesTeamLeader> get includedTeamLeaders => (relationships['team_leaders'] as List?)?.cast<PcoServicesTeamLeader>() ?? [];
 
   // Class Constructors
   PcoServicesPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
@@ -449,7 +479,7 @@ class PcoServicesPerson extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: `preferredApp`, `onboardings`, `isAccessMediaAttachments`, `isAccessPlanAttachments`, `isAccessSongAttachments`, `currentFolderId`, `permissions`
-  factory PcoServicesPerson({String? id, String? photoUrl, String? photoThumbnailUrl, String? preferredApp, bool? isAssignedToRehearsalTeam, DateTime? archivedAt, DateTime? createdAt, String? firstName, String? lastName, String? namePrefix, String? nameSuffix, DateTime? updatedAt, String? facebookId, String? legacyId, String? fullName, String? maxPermissions, String? permissions, String? status, DateTime? anniversary, DateTime? birthdate, String? givenName, String? middleName, String? nickname, bool? isAccessMediaAttachments, bool? isAccessPlanAttachments, bool? isAccessSongAttachments, bool? isArchived, bool? isSiteAdministrator, DateTime? loggedInAt, String? notes, bool? isPassedBackgroundCheck, String? icalCode, bool? isPraiseChartsEnabled, String? meTab, String? plansTab, String? songsTab, String? mediaTab, String? peopleTab, bool? isCanEditAllPeople, bool? isCanViewAllPeople, List? onboardings, String? currentFolderId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesPerson({String? id, String? photoUrl, String? photoThumbnailUrl, String? preferredApp, bool? isAssignedToRehearsalTeam, DateTime? archivedAt, DateTime? createdAt, String? firstName, String? lastName, String? namePrefix, String? nameSuffix, DateTime? updatedAt, String? facebookId, String? legacyId, String? fullName, String? maxPermissions, String? permissions, String? status, DateTime? anniversary, DateTime? birthdate, String? givenName, String? middleName, String? nickname, bool? isAccessMediaAttachments, bool? isAccessPlanAttachments, bool? isAccessSongAttachments, bool? isArchived, bool? isSiteAdministrator, DateTime? loggedInAt, String? notes, bool? isPassedBackgroundCheck, String? icalCode, int? preferredMaxPlansPerDay, int? preferredMaxPlansPerMonth, bool? isPraiseChartsEnabled, String? meTab, String? plansTab, String? songsTab, String? mediaTab, String? peopleTab, bool? isCanEditAllPeople, bool? isCanViewAllPeople, List? onboardings, String? currentFolderId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesPerson.empty();
     obj._id = id;
     if (photoUrl != null) obj._attributes['photo_url'] = photoUrl;
@@ -483,6 +513,8 @@ class PcoServicesPerson extends PcoResource {
     if (notes != null) obj._attributes['notes'] = notes;
     if (isPassedBackgroundCheck != null) obj._attributes['passed_background_check'] = isPassedBackgroundCheck;
     if (icalCode != null) obj._attributes['ical_code'] = icalCode;
+    if (preferredMaxPlansPerDay != null) obj._attributes['preferred_max_plans_per_day'] = preferredMaxPlansPerDay;
+    if (preferredMaxPlansPerMonth != null) obj._attributes['preferred_max_plans_per_month'] = preferredMaxPlansPerMonth;
     if (isPraiseChartsEnabled != null) obj._attributes['praise_charts_enabled'] = isPraiseChartsEnabled;
     if (meTab != null) obj._attributes['me_tab'] = meTab;
     if (plansTab != null) obj._attributes['plans_tab'] = plansTab;
@@ -522,10 +554,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> get( {String? id, PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> get( {String? id, PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
+    if (includeTeamLeaders) query.include.add('team_leaders');
     var url = '/services/v2/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
@@ -533,15 +565,15 @@ class PcoServicesPerson extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/controller`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getControllerFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getControllerFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/controller';
+    if (includeTeamLeaders) query.include.add('team_leaders');
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/controller';
     
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
   }
@@ -552,10 +584,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getFromServiceTypeAndTeamPositionAndPersonTeamPositionAssignment(String serviceTypeId,String teamPositionId,String personTeamPositionAssignmentId, {PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getFromServiceTypeAndTeamPositionAndPersonTeamPositionAssignment(String serviceTypeId,String teamPositionId,String personTeamPositionAssignmentId, {PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
+    if (includeTeamLeaders) query.include.add('team_leaders');
     var url = '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/person_team_position_assignments/$personTeamPositionAssignmentId/person';
     
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
@@ -567,10 +599,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndPlanPerson(String personId,String planPersonId, {PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndPlanPerson(String personId,String planPersonId, {PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
+    if (includeTeamLeaders) query.include.add('team_leaders');
     var url = '/services/v2/people/$personId/plan_people/$planPersonId/person';
     
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
@@ -582,10 +614,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getRespondToFromPersonAndSchedule(String personId,String scheduleId, {PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getRespondToFromPersonAndSchedule(String personId,String scheduleId, {PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
+    if (includeTeamLeaders) query.include.add('team_leaders');
     var url = '/services/v2/people/$personId/schedules/$scheduleId/respond_to';
     
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
@@ -593,15 +625,15 @@ class PcoServicesPerson extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people`
+  /// using a path like this: `/services/v2/people/$personId/team_leaders/$teamLeaderId/people`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndAssignedTeamLeader(String personId,String assignedTeamLeaderId, {String? id, PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getFromPersonAndTeamLeader(String personId,String teamLeaderId, {String? id, PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
-    var url = '/services/v2/people/$personId/assigned_team_leaders/$assignedTeamLeaderId/people';
+    if (includeTeamLeaders) query.include.add('team_leaders');
+    var url = '/services/v2/people/$personId/team_leaders/$teamLeaderId/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
   }
@@ -612,10 +644,10 @@ class PcoServicesPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPerson>> getFromTeam(String teamId, {String? id, PcoServicesPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesPerson>> getFromTeam(String teamId, {String? id, PcoServicesPersonQuery? query, bool includeTeamLeaders = false,}) async {
     query ??= PcoServicesPersonQuery();
     
-    
+    if (includeTeamLeaders) query.include.add('team_leaders');
     var url = '/services/v2/teams/$teamId/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesPerson>(url, query: query, apiVersion:kApiVersion);
@@ -688,6 +720,14 @@ class PcoServicesPerson extends PcoResource {
     query ??= PcoServicesScheduleQuery();
     var url = '$apiEndpoint/schedules';
     return PcoCollection.fromApiCall<PcoServicesSchedule>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoServicesSchedulingPreference] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/scheduling_preferences`
+  Future<PcoCollection<PcoServicesSchedulingPreference>> getSchedulingPreferences({PcoServicesSchedulingPreferenceQuery? query}) async {
+    query ??= PcoServicesSchedulingPreferenceQuery();
+    var url = '$apiEndpoint/scheduling_preferences';
+    return PcoCollection.fromApiCall<PcoServicesSchedulingPreference>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)

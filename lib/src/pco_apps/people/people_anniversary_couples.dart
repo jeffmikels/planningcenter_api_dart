@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.469904
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.395994
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoPeopleAnniversaryCoupleQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 anniversary_couples
 /// - Type:               AnniversaryCouples
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/anniversary_couples
@@ -100,7 +100,7 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'AnniversaryCouples';
   static const String kTypeId = 'anniversary_couples';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/anniversary_couples';
   static const String kCreatePathTemplate = 'null';
 

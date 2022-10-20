@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.490641
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.410292
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 mailchimp_sync_status
 /// - Type:               MailchimpSyncStatus
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
@@ -111,7 +111,7 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'MailchimpSyncStatus';
   static const String kTypeId = 'mailchimp_sync_status';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
   static const String kCreatePathTemplate = 'null';
 

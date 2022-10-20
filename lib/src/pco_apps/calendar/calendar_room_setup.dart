@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.552486
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.504683
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -134,7 +134,7 @@ class PcoCalendarRoomSetupQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 room_setup
 /// - Type:               RoomSetup
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/room_setups
@@ -222,7 +222,7 @@ class PcoCalendarRoomSetup extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'RoomSetup';
   static const String kTypeId = 'room_setup';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/room_setups';
   static const String kCreatePathTemplate = 'null';
 

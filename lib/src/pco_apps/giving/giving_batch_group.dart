@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.563760
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.689956
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -87,7 +87,11 @@ class PcoGivingBatchGroupQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `BatchGroup` is a collection of `Batch`es.
 /// 
+/// `BatchGroup`s are an optional way of organizing your `Batch`es into groups that share common characteristics. These are completely customizable and can be used in whatever way makes sense to your organization's workflow.
+/// 
+/// Similarly to `Batch`es, you can `commit` (see more in the Actions section) a `BatchGroup`, and by doing so, all `Batches` and `Donations` contained in the `BatchGroup` will also be committed.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -202,6 +206,8 @@ class PcoGivingBatchGroup extends PcoResource {
   String get status => _attributes[kStatus] ?? '';
   
   // setters for object attributes
+  
+  /// A brief description of what a batch group is for. This is displayed in Giving to help differentiate different batch groups from one another. If no description is provided for a batch group, it will be referred to as `Untitled group` within Giving.
   ///
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null) ? _attributes.remove(kDescription) : _attributes[kDescription] = x;

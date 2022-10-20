@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.549853
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.502412
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -131,7 +131,7 @@ class PcoCalendarResourceApprovalGroupQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 resource_approval_group
 /// - Type:               ResourceApprovalGroup
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_approval_groups
@@ -159,6 +159,7 @@ class PcoCalendarResourceApprovalGroupQuery extends PlanningCenterApiQuery {
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (rw) -> PCO: `name`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `formCount` (ro) -> PCO: `form_count`
 /// - `resourceCount` (ro) -> PCO: `resource_count`
 /// - `roomCount` (ro) -> PCO: `room_count`
 /// 
@@ -167,6 +168,7 @@ class PcoCalendarResourceApprovalGroupQuery extends PlanningCenterApiQuery {
 /// Outbound Edges:
 /// - `eventresourcerequest-resourceapprovalgroup-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/event_resource_requests
 /// - `person-resourceapprovalgroup-people`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/people
+/// - `requiredapproval-resourceapprovalgroup-required_approvals`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/required_approvals
 /// - `resource-resourceapprovalgroup-resources`: https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/resources
 /// 
 /// Inbound Edges:
@@ -193,7 +195,7 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ResourceApprovalGroup';
   static const String kTypeId = 'resource_approval_group';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_approval_groups';
   static const String kCreatePathTemplate = 'null';
 
@@ -236,6 +238,7 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kName = 'name';
   static const kUpdatedAt = 'updated_at';
+  static const kFormCount = 'form_count';
   static const kResourceCount = 'resource_count';
   static const kRoomCount = 'room_count';
 
@@ -258,6 +261,7 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
 
   // getters for object attributes
   String get name => _attributes[kName] ?? '';
+  int get formCount => _attributes[kFormCount] ?? 0;
   int get resourceCount => _attributes[kResourceCount] ?? 0;
   int get roomCount => _attributes[kRoomCount] ?? 0;
   
@@ -291,12 +295,13 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `name`
   /// - FIELDS USED WHEN UPDATING: `name`
-  factory PcoCalendarResourceApprovalGroup({String? id, DateTime? createdAt, String? name, DateTime? updatedAt, int? resourceCount, int? roomCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarResourceApprovalGroup({String? id, DateTime? createdAt, String? name, DateTime? updatedAt, int? formCount, int? resourceCount, int? roomCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCalendarResourceApprovalGroup.empty();
     obj._id = id;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (formCount != null) obj._attributes['form_count'] = formCount;
     if (resourceCount != null) obj._attributes['resource_count'] = resourceCount;
     if (roomCount != null) obj._attributes['room_count'] = roomCount;
 
@@ -374,6 +379,18 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
     query ??= PcoCalendarPersonQuery();
     var url = '$apiEndpoint/people';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoCalendarRequiredApproval] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/resource_approval_groups/1/required_approvals`
+  /// 
+  /// Available Query Filters:
+  /// - `resources`
+  /// - `rooms`
+  Future<PcoCollection<PcoCalendarRequiredApproval>> getRequiredApprovals({PcoCalendarRequiredApprovalQuery? query}) async {
+    query ??= PcoCalendarRequiredApprovalQuery();
+    var url = '$apiEndpoint/required_approvals';
+    return PcoCollection.fromApiCall<PcoCalendarRequiredApproval>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCalendarResource] objects (expecting many)

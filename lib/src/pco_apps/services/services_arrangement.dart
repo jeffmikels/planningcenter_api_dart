@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.702933
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.279290
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -14,40 +15,45 @@ enum PcoServicesArrangementFilter { none }
 /// Creates a [PcoServicesArrangementQuery] object
 /// ## Possible Includes
 /// (translates to url parameter: `?include=a,b`)
-///
+/// 
 /// Related data may be included by marking desired `includeSomething` variables as true:
-/// - `includeKeys`: include associated keys
-/// - `includeSections`: include associated sections
+/// - `includeKeys`: include associated keys 
+/// - `includeSections`: include associated sections 
 /// - `includeAll`: include all related objects
-///
+/// 
 /// Alternatively, you may pass a list of strings to the `include` argument.
-///
+/// 
 /// e.g. `PcoServicesArrangementQuery(includes: ['a', 'b'])`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesArrangementOrder, String> _orderMap = {};
-  static String orderString(PcoServicesArrangementOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoServicesArrangementOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoServicesArrangementOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesArrangementFilter, String> _filterMap = {};
-  static String filterString(PcoServicesArrangementFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoServicesArrangementFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoServicesArrangementFilter filter) => _filterMap[filter]!;
 
   PcoServicesArrangementQuery({
     /// include associated keys
     /// when true, adds `?include=keys` to url
     bool includeKeys = false,
-
+    
     /// include associated sections
     /// when true, adds `?include=sections` to url
     bool includeSections = false,
-
+    
     /// when true, adds `?include=keys,sections` to url parameters
     bool includeAll = false,
+
+
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -62,12 +68,11 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (includeAll || includeKeys) include.add('keys');
-    if (includeAll || includeSections) include.add('sections');
-  }
+    if (includeAll || includeSections) include.add('sections');}
 }
 
 /// This class represents a PCO Services Arrangement Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 arrangement
 /// - Type:               Arrangement
@@ -76,12 +81,12 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/arrangements
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/songs/1/arrangements
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesArrangement()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesArrangement.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -89,10 +94,10 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// Each arrangement belongs to a song and is a different version of that song.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `bpm` (rw) -> PCO: `bpm`
@@ -124,19 +129,19 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 /// - `lyrics` (ro) -> PCO: `lyrics`
 /// - `mtid` (rw) -> PCO: `mtid`
 /// - `rehearsalMixId` (rw) -> PCO: `rehearsal_mix_id`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `attachment-arrangement-attachments`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments
 /// - `key-arrangement-keys`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys
 /// - `arrangementsections-arrangement-sections`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/sections
 /// - `tag-arrangement-tags`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags
-///
+/// 
 /// Inbound Edges:
 /// - `arrangement-item-arrangement`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/arrangement
 /// - `arrangement-song-arrangements`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements
-///
+/// 
 /// Actions:
 /// - `assign_tags`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/assign_tags
 ///
@@ -203,22 +208,20 @@ class PcoServicesArrangement extends PcoResource {
   static const String kTypeString = 'Arrangement';
   static const String kTypeId = 'arrangement';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/arrangements';
 
   /// possible includes with parameter ?include=a,b
-  /// - `keys`: include associated keys
-  /// - `sections`: include associated sections
-  static List<String> get canInclude => ['keys', 'sections'];
+  /// - `keys`: include associated keys 
+  /// - `sections`: include associated sections 
+  static List<String> get canInclude => ['keys','sections'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -270,56 +273,13 @@ class PcoServicesArrangement extends PcoResource {
   static const kMtid = 'mtid';
   static const kRehearsalMixId = 'rehearsal_mix_id';
 
+
   // getters and setters
   @override
-  List<String> get createAllowed => [
-        'bpm',
-        'chord_chart',
-        'chord_chart_chord_color',
-        'chord_chart_columns',
-        'chord_chart_font',
-        'chord_chart_font_size',
-        'chord_chart_key',
-        'isrc',
-        'length',
-        'lyrics_enabled',
-        'meter',
-        'mtid',
-        'name',
-        'notes',
-        'number_chart_enabled',
-        'numeral_chart_enabled',
-        'print_margin',
-        'print_orientation',
-        'print_page_size',
-        'rehearsal_mix_id',
-        'sequence'
-      ];
+  List<String> get createAllowed => ['bpm', 'chord_chart', 'chord_chart_chord_color', 'chord_chart_columns', 'chord_chart_font', 'chord_chart_font_size', 'chord_chart_key', 'isrc', 'length', 'lyrics_enabled', 'meter', 'mtid', 'name', 'notes', 'number_chart_enabled', 'numeral_chart_enabled', 'print_margin', 'print_orientation', 'print_page_size', 'rehearsal_mix_id', 'sequence'];
 
   @override
-  List<String> get updateAllowed => [
-        'bpm',
-        'chord_chart',
-        'chord_chart_chord_color',
-        'chord_chart_columns',
-        'chord_chart_font',
-        'chord_chart_font_size',
-        'chord_chart_key',
-        'isrc',
-        'length',
-        'lyrics_enabled',
-        'meter',
-        'mtid',
-        'name',
-        'notes',
-        'number_chart_enabled',
-        'numeral_chart_enabled',
-        'print_margin',
-        'print_orientation',
-        'print_page_size',
-        'rehearsal_mix_id',
-        'sequence'
-      ];
+  List<String> get updateAllowed => ['bpm', 'chord_chart', 'chord_chart_chord_color', 'chord_chart_columns', 'chord_chart_font', 'chord_chart_font_size', 'chord_chart_key', 'isrc', 'length', 'lyrics_enabled', 'meter', 'mtid', 'name', 'notes', 'number_chart_enabled', 'numeral_chart_enabled', 'print_margin', 'print_orientation', 'print_page_size', 'rehearsal_mix_id', 'sequence'];
 
   @override
   bool get canCreate => true;
@@ -331,7 +291,7 @@ class PcoServicesArrangement extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get bpm => _attributes[kBpm]?.toDouble() ?? 0;
+  double get bpm => _attributes[kBpm]?.toDouble() ?? 0.0;
   String get isrc => _attributes[kIsrc] ?? '';
   bool get isHasChords => _attributes[kHasChords] == true;
   int get length => _attributes[kLength] ?? 0;
@@ -358,245 +318,172 @@ class PcoServicesArrangement extends PcoResource {
   String get lyrics => _attributes[kLyrics] ?? '';
   String get mtid => _attributes[kMtid] ?? '';
   String get rehearsalMixId => _attributes[kRehearsalMixId] ?? '';
-
+  
   // setters for object attributes
-
-  /// pass `null` to remove key from attributes
-  set bpm(double? x) =>
-      (x == null) ? _attributes.remove(kBpm) : _attributes[kBpm] = x;
-
-  /// pass `null` to remove key from attributes
-  set isrc(String? x) =>
-      (x == null) ? _attributes.remove(kIsrc) : _attributes[kIsrc] = x;
-
-  /// pass `null` to remove key from attributes
-  set length(int? x) =>
-      (x == null) ? _attributes.remove(kLength) : _attributes[kLength] = x;
-
-  /// Possible Values:
   ///
+  /// pass `null` to remove key from attributes
+  set bpm(double? x) => (x == null) ? _attributes.remove(kBpm) : _attributes[kBpm] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set isrc(String? x) => (x == null) ? _attributes.remove(kIsrc) : _attributes[kIsrc] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set length(int? x) => (x == null) ? _attributes.remove(kLength) : _attributes[kLength] = x;
+  
+  /// Possible Values:
+  /// 
   /// - `2/2`
-  ///
+  /// 
   /// - `2/4`
-  ///
+  /// 
   /// - `3/4`
-  ///
+  /// 
   /// - `4/4`
-  ///
+  /// 
   /// - `5/4`
-  ///
+  /// 
   /// - `6/4`
-  ///
+  /// 
   /// - `3/8`
-  ///
+  /// 
   /// - `6/8`
-  ///
+  /// 
   /// - `7/8`
-  ///
+  /// 
   /// - `9/8`
-  ///
+  /// 
   /// - `12/8`
-
-  /// pass `null` to remove key from attributes
-  set meter(String? x) =>
-      (x == null) ? _attributes.remove(kMeter) : _attributes[kMeter] = x;
-
-  /// pass `null` to remove key from attributes
-  set name(String? x) =>
-      (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
-
-  /// pass `null` to remove key from attributes
-  set notes(String? x) =>
-      (x == null) ? _attributes.remove(kNotes) : _attributes[kNotes] = x;
-
-  /// Possible Values:
   ///
+  /// pass `null` to remove key from attributes
+  set meter(String? x) => (x == null) ? _attributes.remove(kMeter) : _attributes[kMeter] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set name(String? x) => (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set notes(String? x) => (x == null) ? _attributes.remove(kNotes) : _attributes[kNotes] = x;
+  
+  /// Possible Values:
+  /// 
   /// - `0.0in`
-  ///
+  /// 
   /// - `0.25in`
-  ///
+  /// 
   /// - `0.5in`
-  ///
+  /// 
   /// - `0.75in`
-  ///
+  /// 
   /// - `1.0in`
-
-  /// pass `null` to remove key from attributes
-  set printMargin(String? x) => (x == null)
-      ? _attributes.remove(kPrintMargin)
-      : _attributes[kPrintMargin] = x;
-
-  /// Possible Values:
   ///
+  /// pass `null` to remove key from attributes
+  set printMargin(String? x) => (x == null) ? _attributes.remove(kPrintMargin) : _attributes[kPrintMargin] = x;
+  
+  /// Possible Values:
+  /// 
   /// - `Portrait`
-  ///
+  /// 
   /// - `Landscape`
-
-  /// pass `null` to remove key from attributes
-  set printOrientation(String? x) => (x == null)
-      ? _attributes.remove(kPrintOrientation)
-      : _attributes[kPrintOrientation] = x;
-
-  /// Possible Values:
   ///
+  /// pass `null` to remove key from attributes
+  set printOrientation(String? x) => (x == null) ? _attributes.remove(kPrintOrientation) : _attributes[kPrintOrientation] = x;
+  
+  /// Possible Values:
+  /// 
   /// - `Widescreen (16x9)`
-  ///
+  /// 
   /// - `Fullscreen (4x3)`
-  ///
+  /// 
   /// - `A4`
-  ///
+  /// 
   /// - `Letter`
-  ///
+  /// 
   /// - `Legal`
-  ///
+  /// 
   /// - `11x17`
-
+  ///
   /// pass `null` to remove key from attributes
-  set printPageSize(String? x) => (x == null)
-      ? _attributes.remove(kPrintPageSize)
-      : _attributes[kPrintPageSize] = x;
-
+  set printPageSize(String? x) => (x == null) ? _attributes.remove(kPrintPageSize) : _attributes[kPrintPageSize] = x;
+  
   /// A string of lyrics and chords. Supports standard and ChordPro formats.
-
+  ///
   /// pass `null` to remove key from attributes
-  set chordChart(String? x) => (x == null)
-      ? _attributes.remove(kChordChart)
-      : _attributes[kChordChart] = x;
-
+  set chordChart(String? x) => (x == null) ? _attributes.remove(kChordChart) : _attributes[kChordChart] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set chordChartFont(String? x) => (x == null)
-      ? _attributes.remove(kChordChartFont)
-      : _attributes[kChordChartFont] = x;
-
+  set chordChartFont(String? x) => (x == null) ? _attributes.remove(kChordChartFont) : _attributes[kChordChartFont] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set chordChartKey(String? x) => (x == null)
-      ? _attributes.remove(kChordChartKey)
-      : _attributes[kChordChartKey] = x;
-
+  set chordChartKey(String? x) => (x == null) ? _attributes.remove(kChordChartKey) : _attributes[kChordChartKey] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set chordChartColumns(int? x) => (x == null)
-      ? _attributes.remove(kChordChartColumns)
-      : _attributes[kChordChartColumns] = x;
-
+  set chordChartColumns(int? x) => (x == null) ? _attributes.remove(kChordChartColumns) : _attributes[kChordChartColumns] = x;
+  
   /// Possible Values:
-  ///
+  /// 
   /// `10`, `11`, `12`, `13`, `14`, `15`, `16`, `18`, `20`, `22`, `24`, `26`, `28`, `32`, `36`, `42`, `48`
-
-  /// pass `null` to remove key from attributes
-  set chordChartFontSize(int? x) => (x == null)
-      ? _attributes.remove(kChordChartFontSize)
-      : _attributes[kChordChartFontSize] = x;
-
-  /// pass `null` to remove key from attributes
-  set isLyricsEnabled(bool? x) => (x == null)
-      ? _attributes.remove(kLyricsEnabled)
-      : _attributes[kLyricsEnabled] = x;
-
-  /// pass `null` to remove key from attributes
-  set isNumberChartEnabled(bool? x) => (x == null)
-      ? _attributes.remove(kNumberChartEnabled)
-      : _attributes[kNumberChartEnabled] = x;
-
-  /// pass `null` to remove key from attributes
-  set isNumeralChartEnabled(bool? x) => (x == null)
-      ? _attributes.remove(kNumeralChartEnabled)
-      : _attributes[kNumeralChartEnabled] = x;
-
-  /// An array of strings containing a label and a number describing the section:
   ///
+  /// pass `null` to remove key from attributes
+  set chordChartFontSize(int? x) => (x == null) ? _attributes.remove(kChordChartFontSize) : _attributes[kChordChartFontSize] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set isLyricsEnabled(bool? x) => (x == null) ? _attributes.remove(kLyricsEnabled) : _attributes[kLyricsEnabled] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set isNumberChartEnabled(bool? x) => (x == null) ? _attributes.remove(kNumberChartEnabled) : _attributes[kNumberChartEnabled] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set isNumeralChartEnabled(bool? x) => (x == null) ? _attributes.remove(kNumeralChartEnabled) : _attributes[kNumeralChartEnabled] = x;
+  
+  /// An array of strings containing a label and a number describing the section:
+  /// 
   /// ['Verse 1', 'Chorus 1', 'Verse 2']
-
+  ///
   /// pass `null` to remove key from attributes
-  set sequence(List? x) =>
-      (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
-
+  set sequence(List? x) => (x == null) ? _attributes.remove(kSequence) : _attributes[kSequence] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set chordChartChordColor(int? x) => (x == null)
-      ? _attributes.remove(kChordChartChordColor)
-      : _attributes[kChordChartChordColor] = x;
-
+  set chordChartChordColor(int? x) => (x == null) ? _attributes.remove(kChordChartChordColor) : _attributes[kChordChartChordColor] = x;
+  
   /// An alias for rehearsal_mix_id
-
+  ///
   /// pass `null` to remove key from attributes
-  set mtid(String? x) =>
-      (x == null) ? _attributes.remove(kMtid) : _attributes[kMtid] = x;
-
+  set mtid(String? x) => (x == null) ? _attributes.remove(kMtid) : _attributes[kMtid] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set rehearsalMixId(String? x) => (x == null)
-      ? _attributes.remove(kRehearsalMixId)
-      : _attributes[kRehearsalMixId] = x;
-
+  set rehearsalMixId(String? x) => (x == null) ? _attributes.remove(kRehearsalMixId) : _attributes[kRehearsalMixId] = x;
+  
   // typed getters for each relationship
-
-  PcoServicesKey? get includedKeys =>
-      _firstOrNull<PcoServicesKey>(relationships['keys']);
-
+  
+  PcoServicesKey? get includedKeys => _firstOrNull<PcoServicesKey>(relationships['keys']);
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it in the type argument when calling.
-  List<T> includedSections<T extends PcoResource>() =>
-      (relationships['sections'] as List?)?.cast<T>() ?? [];
+  List<T> includedSections<T extends PcoResource>() => (relationships['sections'] as List?)?.cast<T>() ?? [];
+  
 
   // Class Constructors
-  PcoServicesArrangement.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesArrangement.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   PcoServicesArrangement.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesArrangement] object using this endpoint: `https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements`
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `bpm`, `chordChart`, `chordChartChordColor`, `chordChartColumns`, `chordChartFont`, `chordChartFontSize`, `chordChartKey`, `isrc`, `length`, `isLyricsEnabled`, `meter`, `mtid`, `name`, `notes`, `isNumberChartEnabled`, `isNumeralChartEnabled`, `printMargin`, `printOrientation`, `printPageSize`, `rehearsalMixId`, `sequence`
   /// - FIELDS USED WHEN UPDATING: `bpm`, `chordChart`, `chordChartChordColor`, `chordChartColumns`, `chordChartFont`, `chordChartFontSize`, `chordChartKey`, `isrc`, `length`, `isLyricsEnabled`, `meter`, `mtid`, `name`, `notes`, `isNumberChartEnabled`, `isNumeralChartEnabled`, `printMargin`, `printOrientation`, `printPageSize`, `rehearsalMixId`, `sequence`
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesArrangement(
-      {required String songId,
-      String? id,
-      double? bpm,
-      DateTime? createdAt,
-      String? isrc,
-      bool? isHasChords,
-      int? length,
-      String? meter,
-      String? name,
-      String? notes,
-      String? printMargin,
-      String? printOrientation,
-      String? printPageSize,
-      DateTime? updatedAt,
-      String? chordChart,
-      String? chordChartFont,
-      String? chordChartKey,
-      int? chordChartColumns,
-      int? chordChartFontSize,
-      bool? isHasChordChart,
-      bool? isLyricsEnabled,
-      bool? isNumberChartEnabled,
-      bool? isNumeralChartEnabled,
-      List? sequence,
-      List? sequenceShort,
-      List? sequenceFull,
-      int? chordChartChordColor,
-      DateTime? archivedAt,
-      String? lyrics,
-      String? mtid,
-      String? rehearsalMixId,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesArrangement({required String songId, String? id, double? bpm, DateTime? createdAt, String? isrc, bool? isHasChords, int? length, String? meter, String? name, String? notes, String? printMargin, String? printOrientation, String? printPageSize, DateTime? updatedAt, String? chordChart, String? chordChartFont, String? chordChartKey, int? chordChartColumns, int? chordChartFontSize, bool? isHasChordChart, bool? isLyricsEnabled, bool? isNumberChartEnabled, bool? isNumeralChartEnabled, List? sequence, List? sequenceShort, List? sequenceFull, int? chordChartChordColor, DateTime? archivedAt, String? lyrics, String? mtid, String? rehearsalMixId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesArrangement.empty();
     obj._id = id;
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements';
     if (bpm != null) obj._attributes['bpm'] = bpm;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (isrc != null) obj._attributes['isrc'] = isrc;
     if (isHasChords != null) obj._attributes['has_chords'] = isHasChords;
     if (length != null) obj._attributes['length'] = length;
@@ -604,41 +491,26 @@ class PcoServicesArrangement extends PcoResource {
     if (name != null) obj._attributes['name'] = name;
     if (notes != null) obj._attributes['notes'] = notes;
     if (printMargin != null) obj._attributes['print_margin'] = printMargin;
-    if (printOrientation != null)
-      obj._attributes['print_orientation'] = printOrientation;
-    if (printPageSize != null)
-      obj._attributes['print_page_size'] = printPageSize;
-    if (updatedAt != null)
-      obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (printOrientation != null) obj._attributes['print_orientation'] = printOrientation;
+    if (printPageSize != null) obj._attributes['print_page_size'] = printPageSize;
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (chordChart != null) obj._attributes['chord_chart'] = chordChart;
-    if (chordChartFont != null)
-      obj._attributes['chord_chart_font'] = chordChartFont;
-    if (chordChartKey != null)
-      obj._attributes['chord_chart_key'] = chordChartKey;
-    if (chordChartColumns != null)
-      obj._attributes['chord_chart_columns'] = chordChartColumns;
-    if (chordChartFontSize != null)
-      obj._attributes['chord_chart_font_size'] = chordChartFontSize;
-    if (isHasChordChart != null)
-      obj._attributes['has_chord_chart'] = isHasChordChart;
-    if (isLyricsEnabled != null)
-      obj._attributes['lyrics_enabled'] = isLyricsEnabled;
-    if (isNumberChartEnabled != null)
-      obj._attributes['number_chart_enabled'] = isNumberChartEnabled;
-    if (isNumeralChartEnabled != null)
-      obj._attributes['numeral_chart_enabled'] = isNumeralChartEnabled;
+    if (chordChartFont != null) obj._attributes['chord_chart_font'] = chordChartFont;
+    if (chordChartKey != null) obj._attributes['chord_chart_key'] = chordChartKey;
+    if (chordChartColumns != null) obj._attributes['chord_chart_columns'] = chordChartColumns;
+    if (chordChartFontSize != null) obj._attributes['chord_chart_font_size'] = chordChartFontSize;
+    if (isHasChordChart != null) obj._attributes['has_chord_chart'] = isHasChordChart;
+    if (isLyricsEnabled != null) obj._attributes['lyrics_enabled'] = isLyricsEnabled;
+    if (isNumberChartEnabled != null) obj._attributes['number_chart_enabled'] = isNumberChartEnabled;
+    if (isNumeralChartEnabled != null) obj._attributes['numeral_chart_enabled'] = isNumeralChartEnabled;
     if (sequence != null) obj._attributes['sequence'] = sequence;
-    if (sequenceShort != null)
-      obj._attributes['sequence_short'] = sequenceShort;
+    if (sequenceShort != null) obj._attributes['sequence_short'] = sequenceShort;
     if (sequenceFull != null) obj._attributes['sequence_full'] = sequenceFull;
-    if (chordChartChordColor != null)
-      obj._attributes['chord_chart_chord_color'] = chordChartChordColor;
-    if (archivedAt != null)
-      obj._attributes['archived_at'] = archivedAt.toIso8601String();
+    if (chordChartChordColor != null) obj._attributes['chord_chart_chord_color'] = chordChartChordColor;
+    if (archivedAt != null) obj._attributes['archived_at'] = archivedAt.toIso8601String();
     if (lyrics != null) obj._attributes['lyrics'] = lyrics;
     if (mtid != null) obj._attributes['mtid'] = mtid;
-    if (rehearsalMixId != null)
-      obj._attributes['rehearsal_mix_id'] = rehearsalMixId;
+    if (rehearsalMixId != null) obj._attributes['rehearsal_mix_id'] = rehearsalMixId;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -655,59 +527,45 @@ class PcoServicesArrangement extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoServicesArrangement] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesArrangement>>
-      getFromServiceTypeAndPlanAndItem(
-    String serviceTypeId,
-    String planId,
-    String itemId, {
-    PcoServicesArrangementQuery? query,
-    bool includeAll = false,
-    bool includeKeys = false,
-    bool includeSections = false,
-  }) async {
+  static Future<PcoCollection<PcoServicesArrangement>> getFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, {PcoServicesArrangementQuery? query, bool includeAll = false, bool includeKeys = false, bool includeSections = false,}) async {
     query ??= PcoServicesArrangementQuery();
     if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
-    var url =
-        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement';
-
-    return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
-        query: query, apiVersion: kApiVersion);
+    var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement';
+    
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesArrangement>> getFromSong(
-    String songId, {
-    String? id,
-    PcoServicesArrangementQuery? query,
-    bool includeAll = false,
-    bool includeKeys = false,
-    bool includeSections = false,
-  }) async {
+  static Future<PcoCollection<PcoServicesArrangement>> getFromSong(String songId, {String? id, PcoServicesArrangementQuery? query, bool includeAll = false, bool includeKeys = false, bool includeSections = false,}) async {
     query ??= PcoServicesArrangementQuery();
     if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
     var url = '/services/v2/songs/$songId/arrangements';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -716,43 +574,36 @@ class PcoServicesArrangement extends PcoResource {
 
   /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/attachments`
-  Future<PcoCollection<PcoServicesAttachment>> getAttachments(
-      {PcoServicesAttachmentQuery? query}) async {
+  Future<PcoCollection<PcoServicesAttachment>> getAttachments({PcoServicesAttachmentQuery? query}) async {
     query ??= PcoServicesAttachmentQuery();
     var url = '$apiEndpoint/attachments';
-    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesKey] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/keys`
-  Future<PcoCollection<PcoServicesKey>> getKeys(
-      {PcoServicesKeyQuery? query}) async {
+  Future<PcoCollection<PcoServicesKey>> getKeys({PcoServicesKeyQuery? query}) async {
     query ??= PcoServicesKeyQuery();
     var url = '$apiEndpoint/keys';
-    return PcoCollection.fromApiCall<PcoServicesKey>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesKey>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesArrangementSection] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/sections`
-  Future<PcoCollection<PcoServicesArrangementSection>> getSections(
-      {PcoServicesArrangementSectionQuery? query}) async {
+  Future<PcoCollection<PcoServicesArrangementSection>> getSections({PcoServicesArrangementSectionQuery? query}) async {
     query ??= PcoServicesArrangementSectionQuery();
     var url = '$apiEndpoint/sections';
-    return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags`
-  Future<PcoCollection<PcoServicesTag>> getTags(
-      {PcoServicesTagQuery? query}) async {
+  Future<PcoCollection<PcoServicesTag>> getTags({PcoServicesTagQuery? query}) async {
     query ??= PcoServicesTagQuery();
     var url = '$apiEndpoint/tags';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion: apiVersion);
   }
+
 
   // --------------------------------
   // Actions
@@ -760,19 +611,19 @@ class PcoServicesArrangement extends PcoResource {
   // Instance functions to run actions from this item
 
   /// ACTION: `assign_tags`
-  ///
+  /// 
   /// Used to assign tags to an arrangement.
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/assign_tags`
-  ///
+  /// 
   /// [data] can be a JSON String, or JSON serializable Object that follows
   /// the JSON:API specifications. The [PlanningCenterApiData] helper class has been
   /// provided for just such a purpose.
-  ///
+  /// 
   /// Details:
   /// All tags will be replaced so the full data set must be sent.
-  ///
+  /// 
   /// It expects a body that looks like:
-  ///
+  /// 
   /// ```json
   /// {
   /// 	"data": {
@@ -791,7 +642,7 @@ class PcoServicesArrangement extends PcoResource {
   /// 	}
   /// }
   /// ```
-  ///
+  /// 
   /// On success you will get back a `204 No Content`.
   Future<PlanningCenterApiResponse> assignTags(Object data) async {
     if (id == null) {
@@ -800,13 +651,12 @@ class PcoServicesArrangement extends PcoResource {
       );
     }
     var url = '$apiEndpoint/assign_tags';
-    return api.call(url, verb: 'post', data: data, apiVersion: apiVersion);
+    return api.call(url, verb:'post', data: data, apiVersion:apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

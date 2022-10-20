@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.748501
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.336113
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -20,9 +21,10 @@ enum PcoServicesReportTemplateFilter { matrix, people, plans, withoutDefaults }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesReportTemplateOrder, String> _orderMap = {};
-  static String orderString(PcoServicesReportTemplateOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoServicesReportTemplateOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoServicesReportTemplateOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoServicesReportTemplateFilter, String> _filterMap = {
@@ -31,11 +33,12 @@ class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
     PcoServicesReportTemplateFilter.plans: 'plans',
     PcoServicesReportTemplateFilter.withoutDefaults: 'without_defaults',
   };
-  static String filterString(PcoServicesReportTemplateFilter filter) =>
-      _filterMap[filter]!;
+  static String filterString(PcoServicesReportTemplateFilter filter) => _filterMap[filter]!;
 
   PcoServicesReportTemplateQuery({
+
     PcoServicesReportTemplateFilter? filterBy,
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -49,12 +52,11 @@ class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (filterBy != null) filter.add(filterString(filterBy));
-  }
+    if (filterBy != null) filter.add(filterString(filterBy));}
 }
 
 /// This class represents a PCO Services ReportTemplate Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 report_template
 /// - Type:               ReportTemplate
@@ -63,12 +65,12 @@ class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/report_templates
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesReportTemplate.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -76,25 +78,25 @@ class PcoServicesReportTemplateQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A template for generating reports
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
 /// - `title` (ro) -> PCO: `title`
 /// - `type` (ro) -> PCO: `type`
 /// - `isDefault` (ro) -> PCO: `default`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `reporttemplate-organization-report_templates`: https://api.planningcenteronline.com/services/v2/report_templates
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -117,20 +119,19 @@ class PcoServicesReportTemplate extends PcoResource {
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/report_templates';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/report_templates';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -157,6 +158,7 @@ class PcoServicesReportTemplate extends PcoResource {
   static const kType = 'type';
   static const kDefault = 'default';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -180,33 +182,25 @@ class PcoServicesReportTemplate extends PcoResource {
   bool get isDefault => _attributes[kDefault] == true;
 
   // Class Constructors
-  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesReportTemplate.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesReportTemplate] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesReportTemplate(
-      {String? id,
-      String? body,
-      String? title,
-      bool? isDefault,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesReportTemplate({String? id, String? body, String? title, bool? isDefault, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesReportTemplate.empty();
     obj._id = id;
     if (body != null) obj._attributes['body'] = body;
@@ -228,38 +222,37 @@ class PcoServicesReportTemplate extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoServicesReportTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/report_templates`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `matrix`
   /// - `people`
   /// - `plans`
   /// - `without_defaults`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesReportTemplate>> get({
-    String? id,
-    PcoServicesReportTemplateQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesReportTemplate>> get( {String? id, PcoServicesReportTemplateQuery? query, }) async {
     query ??= PcoServicesReportTemplateQuery();
-
+    
+    
     var url = '/services/v2/report_templates';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

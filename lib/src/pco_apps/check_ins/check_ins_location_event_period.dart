@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.821949
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.414078
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -14,41 +15,45 @@ enum PcoCheckInsLocationEventPeriodFilter { none }
 /// Creates a [PcoCheckInsLocationEventPeriodQuery] object
 /// ## Possible Includes
 /// (translates to url parameter: `?include=a,b`)
-///
+/// 
 /// Related data may be included by marking desired `includeSomething` variables as true:
-/// - `includeEventPeriod`: include associated event_period
-/// - `includeLocation`: include associated location
+/// - `includeEventPeriod`: include associated event_period 
+/// - `includeLocation`: include associated location 
 /// - `includeAll`: include all related objects
-///
+/// 
 /// Alternatively, you may pass a list of strings to the `include` argument.
-///
+/// 
 /// e.g. `PcoCheckInsLocationEventPeriodQuery(includes: ['a', 'b'])`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoCheckInsLocationEventPeriodQuery extends PlanningCenterApiQuery {
-  static final Map<PcoCheckInsLocationEventPeriodOrder, String> _orderMap = {};
-  static String orderString(PcoCheckInsLocationEventPeriodOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoCheckInsLocationEventPeriodOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoCheckInsLocationEventPeriodOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoCheckInsLocationEventPeriodFilter, String> _filterMap =
-      {};
-  static String filterString(PcoCheckInsLocationEventPeriodFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoCheckInsLocationEventPeriodFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoCheckInsLocationEventPeriodFilter filter) => _filterMap[filter]!;
 
   PcoCheckInsLocationEventPeriodQuery({
     /// include associated event_period
     /// when true, adds `?include=event_period` to url
     bool includeEventPeriod = false,
-
+    
     /// include associated location
     /// when true, adds `?include=location` to url
     bool includeLocation = false,
-
+    
     /// when true, adds `?include=event_period,location` to url parameters
     bool includeAll = false,
+
+
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -63,12 +68,11 @@ class PcoCheckInsLocationEventPeriodQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (includeAll || includeEventPeriod) include.add('event_period');
-    if (includeAll || includeLocation) include.add('location');
-  }
+    if (includeAll || includeLocation) include.add('location');}
 }
 
 /// This class represents a PCO CheckIns LocationEventPeriod Object
-///
+/// 
 /// - Application:        check-ins
 /// - Id:                 location_event_period
 /// - Type:               LocationEventPeriod
@@ -77,12 +81,12 @@ class PcoCheckInsLocationEventPeriodQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsLocationEventPeriod.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -90,10 +94,10 @@ class PcoCheckInsLocationEventPeriodQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// Counts check-ins for a location during a certain event period.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `regularCount` (ro) -> PCO: `regular_count`
@@ -101,18 +105,18 @@ class PcoCheckInsLocationEventPeriodQuery extends PlanningCenterApiQuery {
 /// - `volunteerCount` (ro) -> PCO: `volunteer_count`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `checkin-locationeventperiod-check_ins`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/check_ins
 /// - `eventperiod-locationeventperiod-event_period`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/event_period
 /// - `location-locationeventperiod-location`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/location
-///
+/// 
 /// Inbound Edges:
 /// - `locationeventperiod-eventperiod-location_event_periods`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods
 /// - `locationeventperiod-location-location_event_periods`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/location_event_periods
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -136,21 +140,20 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   static const String kTypeString = 'LocationEventPeriod';
   static const String kTypeId = 'location_event_period';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `event_period`: include associated event_period
-  /// - `location`: include associated location
-  static List<String> get canInclude => ['event_period', 'location'];
+  /// - `event_period`: include associated event_period 
+  /// - `location`: include associated location 
+  static List<String> get canInclude => ['event_period','location'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -178,6 +181,7 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -198,54 +202,39 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   int get regularCount => _attributes[kRegularCount] ?? 0;
   int get guestCount => _attributes[kGuestCount] ?? 0;
   int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
-
+  
   // typed getters for each relationship
-
-  PcoCheckInsEventPeriod? get includedEventPeriod =>
-      _firstOrNull<PcoCheckInsEventPeriod>(relationships['event_period']);
-  PcoCheckInsLocation? get includedLocation =>
-      _firstOrNull<PcoCheckInsLocation>(relationships['location']);
+  
+  PcoCheckInsEventPeriod? get includedEventPeriod => _firstOrNull<PcoCheckInsEventPeriod>(relationships['event_period']);
+  PcoCheckInsLocation? get includedLocation => _firstOrNull<PcoCheckInsLocation>(relationships['location']);
 
   // Class Constructors
-  PcoCheckInsLocationEventPeriod.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoCheckInsLocationEventPeriod.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCheckInsLocationEventPeriod.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCheckInsLocationEventPeriod] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoCheckInsLocationEventPeriod(
-      {String? id,
-      int? regularCount,
-      int? guestCount,
-      int? volunteerCount,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoCheckInsLocationEventPeriod({String? id, int? regularCount, int? guestCount, int? volunteerCount, DateTime? createdAt, DateTime? updatedAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsLocationEventPeriod.empty();
     obj._id = id;
     if (regularCount != null) obj._attributes['regular_count'] = regularCount;
     if (guestCount != null) obj._attributes['guest_count'] = guestCount;
-    if (volunteerCount != null)
-      obj._attributes['volunteer_count'] = volunteerCount;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null)
-      obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (volunteerCount != null) obj._attributes['volunteer_count'] = volunteerCount;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -262,64 +251,45 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoCheckInsLocationEventPeriod] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsLocationEventPeriod>>
-      getFromCheckInAndEventPeriod(
-    String checkInId,
-    String eventPeriodId, {
-    String? id,
-    PcoCheckInsLocationEventPeriodQuery? query,
-    bool includeAll = false,
-    bool includeEventPeriod = false,
-    bool includeLocation = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsLocationEventPeriod>> getFromCheckInAndEventPeriod(String checkInId,String eventPeriodId, {String? id, PcoCheckInsLocationEventPeriodQuery? query, bool includeAll = false, bool includeEventPeriod = false, bool includeLocation = false,}) async {
     query ??= PcoCheckInsLocationEventPeriodQuery();
-    if (includeAll)
-      query.include.addAll(PcoCheckInsLocationEventPeriod.canInclude);
+    if (includeAll) query.include.addAll(PcoCheckInsLocationEventPeriod.canInclude);
     if (includeEventPeriod) query.include.add('event_period');
     if (includeLocation) query.include.add('location');
-    var url =
-        '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods';
+    var url = '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/location_event_periods';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsLocationEventPeriod>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventPeriod>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoCheckInsLocationEventPeriod] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_periods`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsLocationEventPeriod>>
-      getFromCheckInAndLocation(
-    String checkInId,
-    String locationId, {
-    String? id,
-    PcoCheckInsLocationEventPeriodQuery? query,
-    bool includeAll = false,
-    bool includeEventPeriod = false,
-    bool includeLocation = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsLocationEventPeriod>> getFromCheckInAndLocation(String checkInId,String locationId, {String? id, PcoCheckInsLocationEventPeriodQuery? query, bool includeAll = false, bool includeEventPeriod = false, bool includeLocation = false,}) async {
     query ??= PcoCheckInsLocationEventPeriodQuery();
-    if (includeAll)
-      query.include.addAll(PcoCheckInsLocationEventPeriod.canInclude);
+    if (includeAll) query.include.addAll(PcoCheckInsLocationEventPeriod.canInclude);
     if (includeEventPeriod) query.include.add('event_period');
     if (includeLocation) query.include.add('location');
-    var url =
-        '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_periods';
+    var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/location_event_periods';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsLocationEventPeriod>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocationEventPeriod>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -328,7 +298,7 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/check_ins`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `attendee`
   /// - `checked_out`
@@ -338,38 +308,31 @@ class PcoCheckInsLocationEventPeriod extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns(
-      {PcoCheckInsCheckInQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns({PcoCheckInsCheckInQuery? query}) async {
     query ??= PcoCheckInsCheckInQuery();
     var url = '$apiEndpoint/check_ins';
-    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsEventPeriod] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/event_period`
-  Future<PcoCollection<PcoCheckInsEventPeriod>> getEventPeriod(
-      {PcoCheckInsEventPeriodQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsEventPeriod>> getEventPeriod({PcoCheckInsEventPeriodQuery? query}) async {
     query ??= PcoCheckInsEventPeriodQuery();
     var url = '$apiEndpoint/event_period';
-    return PcoCollection.fromApiCall<PcoCheckInsEventPeriod>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsEventPeriod>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsLocation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/check_ins/1/event_period/1/location_event_periods/1/location`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocation(
-      {PcoCheckInsLocationQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsLocation>> getLocation({PcoCheckInsLocationQuery? query}) async {
     query ??= PcoCheckInsLocationQuery();
     var url = '$apiEndpoint/location';
-    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

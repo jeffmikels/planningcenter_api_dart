@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.726835
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.301459
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -15,21 +16,22 @@ enum PcoServicesEmailTemplateRenderedResponseFilter { none }
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
-class PcoServicesEmailTemplateRenderedResponseQuery
-    extends PlanningCenterApiQuery {
-  static final Map<PcoServicesEmailTemplateRenderedResponseOrder, String>
-      _orderMap = {};
-  static String orderString(PcoServicesEmailTemplateRenderedResponseOrder order,
-          {bool reverse = false}) =>
+class PcoServicesEmailTemplateRenderedResponseQuery extends PlanningCenterApiQuery {
+  static final Map<PcoServicesEmailTemplateRenderedResponseOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoServicesEmailTemplateRenderedResponseOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesEmailTemplateRenderedResponseFilter, String>
-      _filterMap = {};
-  static String filterString(
-          PcoServicesEmailTemplateRenderedResponseFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoServicesEmailTemplateRenderedResponseFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoServicesEmailTemplateRenderedResponseFilter filter) => _filterMap[filter]!;
 
   PcoServicesEmailTemplateRenderedResponseQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -41,11 +43,11 @@ class PcoServicesEmailTemplateRenderedResponseQuery
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO Services EmailTemplateRenderedResponse Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 email_template_rendered_response
 /// - Type:               EmailTemplateRenderedResponse
@@ -54,12 +56,12 @@ class PcoServicesEmailTemplateRenderedResponseQuery
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesEmailTemplateRenderedResponse.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -67,23 +69,23 @@ class PcoServicesEmailTemplateRenderedResponseQuery
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A EmailTemplateRenderedResponse Resource
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
 /// - `subject` (ro) -> PCO: `subject`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// NONE
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -117,20 +119,19 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   static const String kTypeString = 'EmailTemplateRenderedResponse';
   static const String kTypeId = 'email_template_rendered_response';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -155,6 +156,7 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   static const kBody = 'body';
   static const kSubject = 'subject';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -176,33 +178,25 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   String get subject => _attributes[kSubject] ?? '';
 
   // Class Constructors
-  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
-  PcoServicesEmailTemplateRenderedResponse.empty()
-      : super(kPcoApplication, kTypeString);
+  PcoServicesEmailTemplateRenderedResponse.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesEmailTemplateRenderedResponse] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesEmailTemplateRenderedResponse(
-      {String? id,
-      String? body,
-      String? subject,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesEmailTemplateRenderedResponse({String? id, String? body, String? subject, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesEmailTemplateRenderedResponse.empty();
     obj._id = id;
     if (body != null) obj._attributes['body'] = body;
@@ -223,10 +217,9 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
     return obj;
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

@@ -287,6 +287,9 @@ class Attribute extends JsonApiDoc {
   String get typeExample => attributes['type_annotation']?['example'] ?? typeString;
 
   String get dartTypeString {
+    // documentation overrides
+    if (name == 'time_type') return 'String';
+
     switch (typeString) {
       case 'boolean':
         return 'bool';
@@ -445,34 +448,34 @@ String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttrib
   var keyName = useAttributeNameAsKey ? "'${attribute.name}'" : staticConstantVarName(attribute);
   var targetName = '_attributes[$keyName]';
   var varName = fieldVarName(attribute);
-  var setterDoc = '\n/// pass `null` to remove key from attributes';
+  var setterDoc = '///\n/// pass `null` to remove key from attributes';
   var output = '';
   var realMode = mode == 'get' ? 'get' : 'set';
   if (realMode == 'set' && attribute.description.isNotEmpty) {
     output += '\n' + attribute.description.cleanLines().trim().prefixLines('/// ') + '\n';
   }
-  switch (attribute.typeString) {
-    case 'boolean':
+  switch (attribute.dartTypeString) {
+    case 'bool':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(bool? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'bool get $varName => $targetName == true;';
       break;
-    case 'float':
+    case 'double':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(double? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'double get $varName => $targetName?.toDouble() ?? 0.0;';
       break;
-    case 'integer':
+    case 'int':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(int? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'int get $varName => $targetName ?? 0;';
       break;
-    case 'date_time':
+    case 'DateTime':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(DateTime? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x.toIso8601String();'
           : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');';
       break;
-    case 'array':
+    case 'List':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(List? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
           : 'List get $varName => $targetName ?? [];';
@@ -972,9 +975,9 @@ $details
   /// - Creating an instance of a class this way does not save it on the server.
   /// - ${createPath.isNotEmpty ? 'Call `save()` on the object to save it to the server.' : 'This object cannot be saved directly to the server.'}
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: ${createAttributes.isEmpty ? 'none' : createAttributes.map((e) => '`${fieldVarName(e)}`').join(', ')}
   /// - FIELDS USED WHEN UPDATING: ${updateAttributes.isEmpty ? 'none' : updateAttributes.map((e) => '`${fieldVarName(e)}`').join(', ')}
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   factory $className({$constructorArgs, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = $className.empty();
     obj._id = id;

@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.920114
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.507198
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoPeoplePlatformNotificationFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoPeoplePlatformNotificationQuery extends PlanningCenterApiQuery {
-  static final Map<PcoPeoplePlatformNotificationOrder, String> _orderMap = {};
-  static String orderString(PcoPeoplePlatformNotificationOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoPeoplePlatformNotificationOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoPeoplePlatformNotificationOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeoplePlatformNotificationFilter, String> _filterMap = {};
-  static String filterString(PcoPeoplePlatformNotificationFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoPeoplePlatformNotificationFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoPeoplePlatformNotificationFilter filter) => _filterMap[filter]!;
 
   PcoPeoplePlatformNotificationQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoPeoplePlatformNotificationQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO People PlatformNotification Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 platform_notification
 /// - Type:               PlatformNotification
@@ -50,12 +56,12 @@ class PcoPeoplePlatformNotificationQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeoplePlatformNotification.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,22 +69,22 @@ class PcoPeoplePlatformNotificationQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A Platform Notification is a suite-wide notification that shows at the top of each application's screen until dismissed by the user.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `html` (ro) -> PCO: `html`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `platformnotification-person-platform_notifications`: https://api.planningcenteronline.com/people/v2/people/1/platform_notifications
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -98,20 +104,19 @@ class PcoPeoplePlatformNotification extends PcoResource {
   static const String kTypeString = 'PlatformNotification';
   static const String kTypeId = 'platform_notification';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/platform_notifications';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -135,6 +140,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
   static const kId = 'id';
   static const kHtml = 'html';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -155,31 +161,25 @@ class PcoPeoplePlatformNotification extends PcoResource {
   String get html => _attributes[kHtml] ?? '';
 
   // Class Constructors
-  PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeoplePlatformNotification.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeoplePlatformNotification] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeoplePlatformNotification(
-      {String? id,
-      String? html,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoPeoplePlatformNotification({String? id, String? html, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeoplePlatformNotification.empty();
     obj._id = id;
     if (html != null) obj._attributes['html'] = html;
@@ -199,33 +199,31 @@ class PcoPeoplePlatformNotification extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeoplePlatformNotification] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/platform_notifications`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeoplePlatformNotification>> getFromPerson(
-    String personId, {
-    String? id,
-    PcoPeoplePlatformNotificationQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeoplePlatformNotification>> getFromPerson(String personId, {String? id, PcoPeoplePlatformNotificationQuery? query, }) async {
     query ??= PcoPeoplePlatformNotificationQuery();
-
+    
+    
     var url = '/people/v2/people/$personId/platform_notifications';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeoplePlatformNotification>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

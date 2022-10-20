@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.750234
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.338531
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -15,27 +16,27 @@ enum PcoServicesSeriesFilter { none }
 /// Creates a [PcoServicesSeriesQuery] object
 /// ## Possible Query Fields
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-///
+/// 
 /// [PcoServicesSeries] objects can be requested with one or more of the following criteria:
 /// - `whereTitle`: query on a specific title, example: ?where[title]=string
-///
+/// 
 /// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
-///
+/// 
 /// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
 /// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
 ///
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoServicesSeriesOrder.createdAt` : will order by `created_at`
-///
+/// 
 /// To reverse the order, set `reverse` to true.
-///
+/// 
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -43,20 +44,23 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
   static final Map<PcoServicesSeriesOrder, String> _orderMap = {
     PcoServicesSeriesOrder.createdAt: 'created_at',
   };
-  static String orderString(PcoServicesSeriesOrder order,
-          {bool reverse = false}) =>
+  static String orderString(PcoServicesSeriesOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesSeriesFilter, String> _filterMap = {};
-  static String filterString(PcoServicesSeriesFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoServicesSeriesFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoServicesSeriesFilter filter) => _filterMap[filter]!;
 
   PcoServicesSeriesQuery({
     /// Query by `title`
     /// query on a specific title, url example: ?where[title]=string
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereTitle,
+    
+
     PcoServicesSeriesOrder? orderBy,
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -70,15 +74,14 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (whereTitle != null)
-      where.add(PlanningCenterApiWhere.parse('title', whereTitle));
-
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
-  }
+    if (whereTitle != null) where.add(PlanningCenterApiWhere.parse('title', whereTitle));
+        
+    
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
 }
 
 /// This class represents a PCO Services Series Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 series
 /// - Type:               Series
@@ -87,12 +90,12 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/series
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesSeries.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -100,12 +103,12 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A Series can be specified for each plan to tie plans with similar messages together, even across Service Types.
-///
+/// 
 /// *Note*: A series is not created until artwork is added from the plan.  You can use `series_title` included in `Plan` attributes to get titles for series without artwork.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
@@ -118,16 +121,16 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
 /// - `artworkForMobile` (ro) -> PCO: `artwork_for_mobile`
 /// - `artworkForPlan` (ro) -> PCO: `artwork_for_plan`
 /// - `artworkOriginal` (ro) -> PCO: `artwork_original`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `plan-series-plans`: https://api.planningcenteronline.com/services/v2/series/1/plans
-///
+/// 
 /// Inbound Edges:
 /// - `series-organization-series`: https://api.planningcenteronline.com/services/v2/series
 /// - `series-plan-series`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/series
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -156,12 +159,11 @@ class PcoServicesSeries extends PcoResource {
   static const String kTypeString = 'Series';
   static const String kTypeId = 'series';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/series';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/series';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -202,6 +204,7 @@ class PcoServicesSeries extends PcoResource {
   static const kArtworkForPlan = 'artwork_for_plan';
   static const kArtworkOriginal = 'artwork_original';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -229,61 +232,37 @@ class PcoServicesSeries extends PcoResource {
   String get artworkOriginal => _attributes[kArtworkOriginal] ?? '';
 
   // Class Constructors
-  PcoServicesSeries.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesSeries.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesSeries.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSeries] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesSeries(
-      {String? id,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      String? artworkFileName,
-      String? artworkContentType,
-      int? artworkFileSize,
-      String? title,
-      String? artworkForDashboard,
-      String? artworkForMobile,
-      String? artworkForPlan,
-      String? artworkOriginal,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesSeries({String? id, DateTime? createdAt, DateTime? updatedAt, String? artworkFileName, String? artworkContentType, int? artworkFileSize, String? title, String? artworkForDashboard, String? artworkForMobile, String? artworkForPlan, String? artworkOriginal, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesSeries.empty();
     obj._id = id;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null)
-      obj._attributes['updated_at'] = updatedAt.toIso8601String();
-    if (artworkFileName != null)
-      obj._attributes['artwork_file_name'] = artworkFileName;
-    if (artworkContentType != null)
-      obj._attributes['artwork_content_type'] = artworkContentType;
-    if (artworkFileSize != null)
-      obj._attributes['artwork_file_size'] = artworkFileSize;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (artworkFileName != null) obj._attributes['artwork_file_name'] = artworkFileName;
+    if (artworkContentType != null) obj._attributes['artwork_content_type'] = artworkContentType;
+    if (artworkFileSize != null) obj._attributes['artwork_file_size'] = artworkFileSize;
     if (title != null) obj._attributes['title'] = title;
-    if (artworkForDashboard != null)
-      obj._attributes['artwork_for_dashboard'] = artworkForDashboard;
-    if (artworkForMobile != null)
-      obj._attributes['artwork_for_mobile'] = artworkForMobile;
-    if (artworkForPlan != null)
-      obj._attributes['artwork_for_plan'] = artworkForPlan;
-    if (artworkOriginal != null)
-      obj._attributes['artwork_original'] = artworkOriginal;
+    if (artworkForDashboard != null) obj._attributes['artwork_for_dashboard'] = artworkForDashboard;
+    if (artworkForMobile != null) obj._attributes['artwork_for_mobile'] = artworkForMobile;
+    if (artworkForPlan != null) obj._attributes['artwork_for_plan'] = artworkForPlan;
+    if (artworkOriginal != null) obj._attributes['artwork_original'] = artworkOriginal;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -300,46 +279,43 @@ class PcoServicesSeries extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoServicesSeries] objects (expecting many)
   /// using a path like this: `/services/v2/series`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesSeries>> get({
-    String? id,
-    PcoServicesSeriesQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesSeries>> get( {String? id, PcoServicesSeriesQuery? query, }) async {
     query ??= PcoServicesSeriesQuery();
-
+    
+    
     var url = '/services/v2/series';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSeries>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSeries>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesSeries] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/series`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesSeries>> getFromServiceTypeAndPlan(
-    String serviceTypeId,
-    String planId, {
-    String? id,
-    PcoServicesSeriesQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesSeries>> getFromServiceTypeAndPlan(String serviceTypeId,String planId, {String? id, PcoServicesSeriesQuery? query, }) async {
     query ??= PcoServicesSeriesQuery();
-
+    
+    
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/series';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSeries>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesSeries>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -348,18 +324,15 @@ class PcoServicesSeries extends PcoResource {
 
   /// Will get a collection of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/series/1/plans`
-  Future<PcoCollection<PcoServicesPlan>> getPlans(
-      {PcoServicesPlanQuery? query}) async {
+  Future<PcoCollection<PcoServicesPlan>> getPlans({PcoServicesPlanQuery? query}) async {
     query ??= PcoServicesPlanQuery();
     var url = '$apiEndpoint/plans';
-    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

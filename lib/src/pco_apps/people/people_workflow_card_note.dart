@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.927368
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.513987
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -15,15 +16,15 @@ enum PcoPeopleWorkflowCardNoteFilter { none }
 /// Creates a [PcoPeopleWorkflowCardNoteQuery] object
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoPeopleWorkflowCardNoteOrder.createdAt` : will order by `created_at`
-///
+/// 
 /// To reverse the order, set `reverse` to true.
-///
+/// 
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -31,16 +32,18 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
   static final Map<PcoPeopleWorkflowCardNoteOrder, String> _orderMap = {
     PcoPeopleWorkflowCardNoteOrder.createdAt: 'created_at',
   };
-  static String orderString(PcoPeopleWorkflowCardNoteOrder order,
-          {bool reverse = false}) =>
+  static String orderString(PcoPeopleWorkflowCardNoteOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeopleWorkflowCardNoteFilter, String> _filterMap = {};
-  static String filterString(PcoPeopleWorkflowCardNoteFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoPeopleWorkflowCardNoteFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoPeopleWorkflowCardNoteFilter filter) => _filterMap[filter]!;
 
   PcoPeopleWorkflowCardNoteQuery({
+
     PcoPeopleWorkflowCardNoteOrder? orderBy,
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -54,12 +57,11 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
-  }
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
 }
 
 /// This class represents a PCO People WorkflowCardNote Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 workflow_card_note
 /// - Type:               WorkflowCardNote
@@ -68,12 +70,12 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleWorkflowCardNote()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleWorkflowCardNote.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -81,24 +83,24 @@ class PcoPeopleWorkflowCardNoteQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// Workflow Note is a note that has been made on a Workflow Card
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `note` (rw) -> PCO: `note`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `noteCategoryId` (wo) -> PCO: `note_category_id`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `workflowcardnote-workflowcard-notes`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -126,17 +128,15 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   static const String kTypeString = 'WorkflowCardNote';
   static const String kTypeId = 'workflow_card_note';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/notes';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -166,6 +166,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kNoteCategoryId = 'note_category_id';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['note', 'note_category_id'];
@@ -184,59 +185,43 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
 
   // getters for object attributes
   String get note => _attributes[kNote] ?? '';
-
+  
   // setters for object attributes
-
+  ///
   /// pass `null` to remove key from attributes
-  set note(String? x) =>
-      (x == null) ? _attributes.remove(kNote) : _attributes[kNote] = x;
-
+  set note(String? x) => (x == null) ? _attributes.remove(kNote) : _attributes[kNote] = x;
+  
   // additional setters / getters for create/update attributes
-
+  ///
   /// pass `null` to remove key from attributes
-  set noteCategoryId(String? x) => (x == null)
-      ? _attributes.remove(kNoteCategoryId)
-      : _attributes[kNoteCategoryId] = x;
+  set noteCategoryId(String? x) => (x == null) ? _attributes.remove(kNoteCategoryId) : _attributes[kNoteCategoryId] = x;
   String get noteCategoryId => _attributes[kNoteCategoryId] ?? '';
 
   // Class Constructors
-  PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   PcoPeopleWorkflowCardNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleWorkflowCardNote] object using this endpoint: `https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `note`, `noteCategoryId`
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleWorkflowCardNote(
-      {required String personId,
-      required String workflowCardId,
-      String? id,
-      String? note,
-      DateTime? createdAt,
-      String? noteCategoryId,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoPeopleWorkflowCardNote({required String personId, required String workflowCardId, String? id, String? note, DateTime? createdAt, String? noteCategoryId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleWorkflowCardNote.empty();
     obj._id = id;
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
     if (note != null) obj._attributes['note'] = note;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (noteCategoryId != null)
-      obj._attributes['note_category_id'] = noteCategoryId;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (noteCategoryId != null) obj._attributes['note_category_id'] = noteCategoryId;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -253,35 +238,31 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleWorkflowCardNote>>
-      getNotesFromPersonAndWorkflowCard(
-    String personId,
-    String workflowCardId, {
-    PcoPeopleWorkflowCardNoteQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleWorkflowCardNote>> getNotesFromPersonAndWorkflowCard(String personId,String workflowCardId, {PcoPeopleWorkflowCardNoteQuery? query, }) async {
     query ??= PcoPeopleWorkflowCardNoteQuery();
-
-    var url =
-        '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
-
-    return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url,
-        query: query, apiVersion: kApiVersion);
+    
+    
+    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/notes';
+    
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCardNote>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.718491
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.293803
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoServicesAttachmentActivityFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesAttachmentActivityQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesAttachmentActivityOrder, String> _orderMap = {};
-  static String orderString(PcoServicesAttachmentActivityOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoServicesAttachmentActivityOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoServicesAttachmentActivityOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesAttachmentActivityFilter, String> _filterMap = {};
-  static String filterString(PcoServicesAttachmentActivityFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoServicesAttachmentActivityFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoServicesAttachmentActivityFilter filter) => _filterMap[filter]!;
 
   PcoServicesAttachmentActivityQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoServicesAttachmentActivityQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO Services AttachmentActivity Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 attachment_activity
 /// - Type:               AttachmentActivity
@@ -50,12 +56,12 @@ class PcoServicesAttachmentActivityQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesAttachmentActivity.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,24 +69,24 @@ class PcoServicesAttachmentActivityQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// Returned from the `open` attachment action.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `date` (ro) -> PCO: `date`
 /// - `attachmentUrl` (ro) -> PCO: `attachment_url`
 /// - `activityType` (ro) -> PCO: `activity_type`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// NONE
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -109,20 +115,19 @@ class PcoServicesAttachmentActivity extends PcoResource {
   static const String kTypeString = 'AttachmentActivity';
   static const String kTypeId = 'attachment_activity';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -148,6 +153,7 @@ class PcoServicesAttachmentActivity extends PcoResource {
   static const kAttachmentUrl = 'attachment_url';
   static const kActivityType = 'activity_type';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -170,38 +176,29 @@ class PcoServicesAttachmentActivity extends PcoResource {
   String get activityType => _attributes[kActivityType] ?? '';
 
   // Class Constructors
-  PcoServicesAttachmentActivity.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesAttachmentActivity.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesAttachmentActivity.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesAttachmentActivity] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesAttachmentActivity(
-      {String? id,
-      String? date,
-      String? attachmentUrl,
-      String? activityType,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesAttachmentActivity({String? id, String? date, String? attachmentUrl, String? activityType, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesAttachmentActivity.empty();
     obj._id = id;
     if (date != null) obj._attributes['date'] = date;
-    if (attachmentUrl != null)
-      obj._attributes['attachment_url'] = attachmentUrl;
+    if (attachmentUrl != null) obj._attributes['attachment_url'] = attachmentUrl;
     if (activityType != null) obj._attributes['activity_type'] = activityType;
 
     if (withRelationships != null) {
@@ -219,10 +216,9 @@ class PcoServicesAttachmentActivity extends PcoResource {
     return obj;
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

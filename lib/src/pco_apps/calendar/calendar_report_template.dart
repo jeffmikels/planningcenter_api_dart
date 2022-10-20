@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoCalendarReportTemplateFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
-  static final Map<PcoCalendarReportTemplateOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoCalendarReportTemplateOrder order, {bool reverse = false}) =>
+  static final Map<PcoCalendarReportTemplateOrder, String> _orderMap = {};
+  static String orderString(PcoCalendarReportTemplateOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoCalendarReportTemplateFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoCalendarReportTemplateFilter filter) => _filterMap[filter]!;
+  static final Map<PcoCalendarReportTemplateFilter, String> _filterMap = {};
+  static String filterString(PcoCalendarReportTemplateFilter filter) =>
+      _filterMap[filter]!;
 
   PcoCalendarReportTemplateQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Calendar ReportTemplate Object
-/// 
+///
 /// - Application:        calendar
 /// - Id:                 report_template
 /// - Type:               ReportTemplate
@@ -56,12 +50,12 @@ class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/report_templates
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoCalendarReportTemplate()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoCalendarReportTemplate.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,10 +63,10 @@ class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A template for generating a report.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (rw) -> PCO: `body`
@@ -80,15 +74,15 @@ class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
 /// - `description` (rw) -> PCO: `description`
 /// - `title` (rw) -> PCO: `title`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `reporttemplate-organization-report_templates`: https://api.planningcenteronline.com/calendar/v2/report_templates
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -112,19 +106,20 @@ class PcoCalendarReportTemplate extends PcoResource {
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
   static const String kApiVersion = '2021-07-20';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/calendar/v2/report_templates';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -152,7 +147,6 @@ class PcoCalendarReportTemplate extends PcoResource {
   static const kTitle = 'title';
   static const kUpdatedAt = 'updated_at';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['body', 'description', 'title'];
@@ -173,35 +167,41 @@ class PcoCalendarReportTemplate extends PcoResource {
   String get body => _attributes[kBody] ?? '';
   String get description => _attributes[kDescription] ?? '';
   String get title => _attributes[kTitle] ?? '';
-  
+
   // setters for object attributes
-  
+
   /// The contents of the report template
   ///
   /// pass `null` to remove key from attributes
-  set body(String? x) => (x == null) ? _attributes.remove(kBody) : _attributes[kBody] = x;
-  
+  set body(String? x) =>
+      (x == null) ? _attributes.remove(kBody) : _attributes[kBody] = x;
+
   /// A summarization of the report
   ///
   /// pass `null` to remove key from attributes
-  set description(String? x) => (x == null) ? _attributes.remove(kDescription) : _attributes[kDescription] = x;
-  
+  set description(String? x) => (x == null)
+      ? _attributes.remove(kDescription)
+      : _attributes[kDescription] = x;
+
   /// The title of the report
   ///
   /// pass `null` to remove key from attributes
-  set title(String? x) => (x == null) ? _attributes.remove(kTitle) : _attributes[kTitle] = x;
+  set title(String? x) =>
+      (x == null) ? _attributes.remove(kTitle) : _attributes[kTitle] = x;
 
   // Class Constructors
-  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoCalendarReportTemplate.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   PcoCalendarReportTemplate.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCalendarReportTemplate] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -209,7 +209,15 @@ class PcoCalendarReportTemplate extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `body`, `description`, `title`
   /// - FIELDS USED WHEN UPDATING: `body`, `description`, `title`
-  factory PcoCalendarReportTemplate({String? id, String? body, String? createdAt, String? description, String? title, String? updatedAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarReportTemplate(
+      {String? id,
+      String? body,
+      String? createdAt,
+      String? description,
+      String? title,
+      String? updatedAt,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoCalendarReportTemplate.empty();
     obj._id = id;
     if (body != null) obj._attributes['body'] = body;
@@ -233,31 +241,32 @@ class PcoCalendarReportTemplate extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoCalendarReportTemplate] objects (expecting many)
   /// using a path like this: `/calendar/v2/report_templates`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarReportTemplate>> get( {String? id, PcoCalendarReportTemplateQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarReportTemplate>> get({
+    String? id,
+    PcoCalendarReportTemplateQuery? query,
+  }) async {
     query ??= PcoCalendarReportTemplateQuery();
-    
-    
+
     var url = '/calendar/v2/report_templates';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

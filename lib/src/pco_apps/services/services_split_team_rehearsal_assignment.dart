@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -16,22 +15,21 @@ enum PcoServicesSplitTeamRehearsalAssignmentFilter { none }
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
-class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesSplitTeamRehearsalAssignmentOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoServicesSplitTeamRehearsalAssignmentOrder order, {bool reverse = false}) =>
+class PcoServicesSplitTeamRehearsalAssignmentQuery
+    extends PlanningCenterApiQuery {
+  static final Map<PcoServicesSplitTeamRehearsalAssignmentOrder, String>
+      _orderMap = {};
+  static String orderString(PcoServicesSplitTeamRehearsalAssignmentOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesSplitTeamRehearsalAssignmentFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoServicesSplitTeamRehearsalAssignmentFilter filter) => _filterMap[filter]!;
+  static final Map<PcoServicesSplitTeamRehearsalAssignmentFilter, String>
+      _filterMap = {};
+  static String filterString(
+          PcoServicesSplitTeamRehearsalAssignmentFilter filter) =>
+      _filterMap[filter]!;
 
   PcoServicesSplitTeamRehearsalAssignmentQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +41,11 @@ class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuer
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Services SplitTeamRehearsalAssignment Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 split_team_rehearsal_assignment
 /// - Type:               SplitTeamRehearsalAssignment
@@ -56,12 +54,12 @@ class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuer
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesSplitTeamRehearsalAssignment()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesSplitTeamRehearsalAssignment.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,22 +67,22 @@ class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuer
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// For Rehearsal/Other Times, maps a Split Team to selected Time Preference Options. For example, used to assign 8am Ushers to 7:30am call time, and 11am Ushers to 10:30am call time.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isScheduleSpecialServiceTimes` (rw) -> PCO: `schedule_special_service_times`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments/1/team
-/// 
+///
 /// Inbound Edges:
 /// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -119,19 +117,21 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const String kTypeString = 'SplitTeamRehearsalAssignment';
   static const String kTypeId = 'split_team_rehearsal_assignment';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -155,7 +155,6 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const kId = 'id';
   static const kScheduleSpecialServiceTimes = 'schedule_special_service_times';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['schedule_special_service_times'];
@@ -173,26 +172,32 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  bool get isScheduleSpecialServiceTimes => _attributes[kScheduleSpecialServiceTimes] == true;
-  
+  bool get isScheduleSpecialServiceTimes =>
+      _attributes[kScheduleSpecialServiceTimes] == true;
+
   // setters for object attributes
-  
+
   /// Controls if the related rehearsal/other time is assigned when a person is scheduled to a split team service time that does not match a Time Preference Option
   ///
   /// pass `null` to remove key from attributes
-  set isScheduleSpecialServiceTimes(bool? x) => (x == null) ? _attributes.remove(kScheduleSpecialServiceTimes) : _attributes[kScheduleSpecialServiceTimes] = x;
+  set isScheduleSpecialServiceTimes(bool? x) => (x == null)
+      ? _attributes.remove(kScheduleSpecialServiceTimes)
+      : _attributes[kScheduleSpecialServiceTimes] = x;
 
   // Class Constructors
-  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesSplitTeamRehearsalAssignment.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
-  PcoServicesSplitTeamRehearsalAssignment.empty() : super(kPcoApplication, kTypeString);
+  ///
+  PcoServicesSplitTeamRehearsalAssignment.empty()
+      : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object using this endpoint: `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments`
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
@@ -200,11 +205,20 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `isScheduleSpecialServiceTimes`
   /// - FIELDS USED WHEN UPDATING: `isScheduleSpecialServiceTimes`
-  factory PcoServicesSplitTeamRehearsalAssignment({required String serviceTypeId, required String planTimeId, String? id, bool? isScheduleSpecialServiceTimes, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesSplitTeamRehearsalAssignment(
+      {required String serviceTypeId,
+      required String planTimeId,
+      String? id,
+      bool? isScheduleSpecialServiceTimes,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesSplitTeamRehearsalAssignment.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
-    if (isScheduleSpecialServiceTimes != null) obj._attributes['schedule_special_service_times'] = isScheduleSpecialServiceTimes;
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
+    if (isScheduleSpecialServiceTimes != null)
+      obj._attributes['schedule_special_service_times'] =
+          isScheduleSpecialServiceTimes;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -221,28 +235,33 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getFromServiceTypeAndPlanTime(String serviceTypeId,String planTimeId, {String? id, PcoServicesSplitTeamRehearsalAssignmentQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>>
+      getFromServiceTypeAndPlanTime(
+    String serviceTypeId,
+    String planTimeId, {
+    String? id,
+    PcoServicesSplitTeamRehearsalAssignmentQuery? query,
+  }) async {
     query ??= PcoServicesSplitTeamRehearsalAssignmentQuery();
-    
-    
-    var url = '/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
-    if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(url, query: query, apiVersion:kApiVersion);
-  }
 
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+  }
 
   // ---------------------------------
   // Outbound Edges
@@ -251,15 +270,18 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments/1/team`
-  Future<PcoCollection<PcoServicesTeam>> getTeam({PcoServicesTeamQuery? query}) async {
+  Future<PcoCollection<PcoServicesTeam>> getTeam(
+      {PcoServicesTeamQuery? query}) async {
     query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';
-    return PcoCollection.fromApiCall<PcoServicesTeam>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTeam>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoWebhooksOrganizationFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoWebhooksOrganizationQuery extends PlanningCenterApiQuery {
-  static final Map<PcoWebhooksOrganizationOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoWebhooksOrganizationOrder order, {bool reverse = false}) =>
+  static final Map<PcoWebhooksOrganizationOrder, String> _orderMap = {};
+  static String orderString(PcoWebhooksOrganizationOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoWebhooksOrganizationFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoWebhooksOrganizationFilter filter) => _filterMap[filter]!;
+  static final Map<PcoWebhooksOrganizationFilter, String> _filterMap = {};
+  static String filterString(PcoWebhooksOrganizationFilter filter) =>
+      _filterMap[filter]!;
 
   PcoWebhooksOrganizationQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoWebhooksOrganizationQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Webhooks Organization Object
-/// 
+///
 /// - Application:        webhooks
 /// - Id:                 organization
 /// - Type:               Organization
@@ -56,12 +50,12 @@ class PcoWebhooksOrganizationQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksOrganization.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,22 +63,22 @@ class PcoWebhooksOrganizationQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `availableevent-organization-available_events`: https://api.planningcenteronline.com/webhooks/v2/available_events
 /// - `subscription-organization-subscriptions`: https://api.planningcenteronline.com/webhooks/v2/subscriptions
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -102,19 +96,20 @@ class PcoWebhooksOrganization extends PcoResource {
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/webhooks/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -137,7 +132,6 @@ class PcoWebhooksOrganization extends PcoResource {
   // field mapping constants
   static const kId = 'id';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -154,19 +148,20 @@ class PcoWebhooksOrganization extends PcoResource {
   @override
   bool get canDestroy => false;
 
-
   // Class Constructors
-  PcoWebhooksOrganization.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoWebhooksOrganization.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoWebhooksOrganization.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoWebhooksOrganization] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -174,10 +169,12 @@ class PcoWebhooksOrganization extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoWebhooksOrganization({String? id, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoWebhooksOrganization(
+      {String? id,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoWebhooksOrganization.empty();
     obj._id = id;
-    
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -194,7 +191,6 @@ class PcoWebhooksOrganization extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Outbound Edges
   // ---------------------------------
@@ -202,23 +198,28 @@ class PcoWebhooksOrganization extends PcoResource {
 
   /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/available_events`
-  Future<PcoCollection<PcoWebhooksAvailableEvent>> getAvailableEvents({PcoWebhooksAvailableEventQuery? query}) async {
+  Future<PcoCollection<PcoWebhooksAvailableEvent>> getAvailableEvents(
+      {PcoWebhooksAvailableEventQuery? query}) async {
     query ??= PcoWebhooksAvailableEventQuery();
     var url = '$apiEndpoint/available_events';
-    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoWebhooksSubscription] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/webhooks/v2/subscriptions`
-  Future<PcoCollection<PcoWebhooksSubscription>> getSubscriptions({PcoWebhooksSubscriptionQuery? query}) async {
+  Future<PcoCollection<PcoWebhooksSubscription>> getSubscriptions(
+      {PcoWebhooksSubscriptionQuery? query}) async {
     query ??= PcoWebhooksSubscriptionQuery();
     var url = '$apiEndpoint/subscriptions';
-    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

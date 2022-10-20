@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoGroupsOwnerFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoGroupsOwnerQuery extends PlanningCenterApiQuery {
-  static final Map<PcoGroupsOwnerOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoGroupsOwnerOrder order, {bool reverse = false}) =>
+  static final Map<PcoGroupsOwnerOrder, String> _orderMap = {};
+  static String orderString(PcoGroupsOwnerOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoGroupsOwnerFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoGroupsOwnerFilter filter) => _filterMap[filter]!;
+  static final Map<PcoGroupsOwnerFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsOwnerFilter filter) =>
+      _filterMap[filter]!;
 
   PcoGroupsOwnerQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoGroupsOwnerQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Groups Owner Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 owner
 /// - Type:               Owner
@@ -56,12 +50,12 @@ class PcoGroupsOwnerQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/events/1/notes/1/owner
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsOwner.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,24 +63,24 @@ class PcoGroupsOwnerQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
 /// - `firstName` (ro) -> PCO: `first_name`
 /// - `lastName` (ro) -> PCO: `last_name`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `owner-eventnote-owner`: https://api.planningcenteronline.com/groups/v2/events/1/notes/1/owner
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -108,19 +102,20 @@ class PcoGroupsOwner extends PcoResource {
   static const String kTypeString = 'Owner';
   static const String kTypeId = 'owner';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/events/1/notes/1/owner';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/events/1/notes/1/owner';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -146,7 +141,6 @@ class PcoGroupsOwner extends PcoResource {
   static const kFirstName = 'first_name';
   static const kLastName = 'last_name';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -169,17 +163,19 @@ class PcoGroupsOwner extends PcoResource {
   String get lastName => _attributes[kLastName] ?? '';
 
   // Class Constructors
-  PcoGroupsOwner.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoGroupsOwner.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoGroupsOwner.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGroupsOwner] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -187,7 +183,13 @@ class PcoGroupsOwner extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoGroupsOwner({String? id, String? avatarUrl, String? firstName, String? lastName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGroupsOwner(
+      {String? id,
+      String? avatarUrl,
+      String? firstName,
+      String? lastName,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoGroupsOwner.empty();
     obj._id = id;
     if (avatarUrl != null) obj._attributes['avatar_url'] = avatarUrl;
@@ -209,31 +211,34 @@ class PcoGroupsOwner extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoGroupsOwner] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/notes/$noteId/owner`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsOwner>> getFromEventAndNote(String eventId,String noteId, {String? id, PcoGroupsOwnerQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsOwner>> getFromEventAndNote(
+    String eventId,
+    String noteId, {
+    String? id,
+    PcoGroupsOwnerQuery? query,
+  }) async {
     query ??= PcoGroupsOwnerQuery();
-    
-    
+
     var url = '/groups/v2/events/$eventId/notes/$noteId/owner';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsOwner>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsOwner>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoGroupsLocationFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
-  static final Map<PcoGroupsLocationOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoGroupsLocationOrder order, {bool reverse = false}) =>
+  static final Map<PcoGroupsLocationOrder, String> _orderMap = {};
+  static String orderString(PcoGroupsLocationOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoGroupsLocationFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoGroupsLocationFilter filter) => _filterMap[filter]!;
+  static final Map<PcoGroupsLocationFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsLocationFilter filter) =>
+      _filterMap[filter]!;
 
   PcoGroupsLocationQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Groups Location Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 location
 /// - Type:               Location
@@ -56,12 +50,12 @@ class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/locations
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsLocation.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,10 +63,10 @@ class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `displayPreference` (ro) -> PCO: `display_preference`
@@ -82,16 +76,16 @@ class PcoGroupsLocationQuery extends PlanningCenterApiQuery {
 /// - `name` (ro) -> PCO: `name`
 /// - `radius` (ro) -> PCO: `radius`
 /// - `strategy` (ro) -> PCO: `strategy`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
 /// - `location-group-location`: https://api.planningcenteronline.com/groups/v2/groups/1/location
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -117,19 +111,20 @@ class PcoGroupsLocation extends PcoResource {
   static const String kTypeString = 'Location';
   static const String kTypeId = 'location';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/locations';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/locations';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -159,7 +154,6 @@ class PcoGroupsLocation extends PcoResource {
   static const kRadius = 'radius';
   static const kStrategy = 'strategy';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -186,17 +180,19 @@ class PcoGroupsLocation extends PcoResource {
   String get strategy => _attributes[kStrategy] ?? '';
 
   // Class Constructors
-  PcoGroupsLocation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoGroupsLocation.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoGroupsLocation.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGroupsLocation] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -204,11 +200,23 @@ class PcoGroupsLocation extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoGroupsLocation({String? id, String? displayPreference, String? fullFormattedAddress, double? latitude, double? longitude, String? name, String? radius, String? strategy, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGroupsLocation(
+      {String? id,
+      String? displayPreference,
+      String? fullFormattedAddress,
+      double? latitude,
+      double? longitude,
+      String? name,
+      String? radius,
+      String? strategy,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoGroupsLocation.empty();
     obj._id = id;
-    if (displayPreference != null) obj._attributes['display_preference'] = displayPreference;
-    if (fullFormattedAddress != null) obj._attributes['full_formatted_address'] = fullFormattedAddress;
+    if (displayPreference != null)
+      obj._attributes['display_preference'] = displayPreference;
+    if (fullFormattedAddress != null)
+      obj._attributes['full_formatted_address'] = fullFormattedAddress;
     if (latitude != null) obj._attributes['latitude'] = latitude;
     if (longitude != null) obj._attributes['longitude'] = longitude;
     if (name != null) obj._attributes['name'] = name;
@@ -230,46 +238,51 @@ class PcoGroupsLocation extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/location`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(String eventId, {String? id, PcoGroupsLocationQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsLocation>> getFromEvent(
+    String eventId, {
+    String? id,
+    PcoGroupsLocationQuery? query,
+  }) async {
     query ??= PcoGroupsLocationQuery();
-    
-    
+
     var url = '/groups/v2/events/$eventId/location';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsLocation>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/location`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(String groupId, {String? id, PcoGroupsLocationQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsLocation>> getFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsLocationQuery? query,
+  }) async {
     query ??= PcoGroupsLocationQuery();
-    
-    
+
     var url = '/groups/v2/groups/$groupId/location';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsLocation>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

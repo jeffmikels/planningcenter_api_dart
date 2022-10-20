@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoCheckInsCheckInTimeFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoCheckInsCheckInTimeQuery extends PlanningCenterApiQuery {
-  static final Map<PcoCheckInsCheckInTimeOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoCheckInsCheckInTimeOrder order, {bool reverse = false}) =>
+  static final Map<PcoCheckInsCheckInTimeOrder, String> _orderMap = {};
+  static String orderString(PcoCheckInsCheckInTimeOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoCheckInsCheckInTimeFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoCheckInsCheckInTimeFilter filter) => _filterMap[filter]!;
+  static final Map<PcoCheckInsCheckInTimeFilter, String> _filterMap = {};
+  static String filterString(PcoCheckInsCheckInTimeFilter filter) =>
+      _filterMap[filter]!;
 
   PcoCheckInsCheckInTimeQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoCheckInsCheckInTimeQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO CheckIns CheckInTime Object
-/// 
+///
 /// - Application:        check-ins
 /// - Id:                 check_in_time
 /// - Type:               CheckInTime
@@ -56,12 +50,12 @@ class PcoCheckInsCheckInTimeQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsCheckInTime.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,26 +63,26 @@ class PcoCheckInsCheckInTimeQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A CheckInTime combines an EventTime and a Location, and associates it with
 /// the parent CheckIn.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `kind` (ro) -> PCO: `kind`
 /// - `isHasValidated` (ro) -> PCO: `has_validated`
 /// - `errors` (ro) -> PCO: `errors`
 /// - `isServicesIntegrated` (ro) -> PCO: `services_integrated`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `checkintime-checkin-check_in_times`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -130,19 +124,20 @@ class PcoCheckInsCheckInTime extends PcoResource {
   static const String kTypeString = 'CheckInTime';
   static const String kTypeId = 'check_in_time';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_times';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -169,7 +164,6 @@ class PcoCheckInsCheckInTime extends PcoResource {
   static const kErrors = 'errors';
   static const kServicesIntegrated = 'services_integrated';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -193,17 +187,19 @@ class PcoCheckInsCheckInTime extends PcoResource {
   bool get isServicesIntegrated => _attributes[kServicesIntegrated] == true;
 
   // Class Constructors
-  PcoCheckInsCheckInTime.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoCheckInsCheckInTime.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCheckInsCheckInTime.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCheckInsCheckInTime] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -211,13 +207,22 @@ class PcoCheckInsCheckInTime extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCheckInsCheckInTime({String? id, String? kind, bool? isHasValidated, List? errors, bool? isServicesIntegrated, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCheckInsCheckInTime(
+      {String? id,
+      String? kind,
+      bool? isHasValidated,
+      List? errors,
+      bool? isServicesIntegrated,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoCheckInsCheckInTime.empty();
     obj._id = id;
     if (kind != null) obj._attributes['kind'] = kind;
-    if (isHasValidated != null) obj._attributes['has_validated'] = isHasValidated;
+    if (isHasValidated != null)
+      obj._attributes['has_validated'] = isHasValidated;
     if (errors != null) obj._attributes['errors'] = errors;
-    if (isServicesIntegrated != null) obj._attributes['services_integrated'] = isServicesIntegrated;
+    if (isServicesIntegrated != null)
+      obj._attributes['services_integrated'] = isServicesIntegrated;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -234,31 +239,33 @@ class PcoCheckInsCheckInTime extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoCheckInsCheckInTime] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_times`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsCheckInTime>> getFromCheckIn(String checkInId, {String? id, PcoCheckInsCheckInTimeQuery? query, }) async {
+  static Future<PcoCollection<PcoCheckInsCheckInTime>> getFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsCheckInTimeQuery? query,
+  }) async {
     query ??= PcoCheckInsCheckInTimeQuery();
-    
-    
+
     var url = '/check-ins/v2/check_ins/$checkInId/check_in_times';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInTime>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

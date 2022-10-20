@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,16 @@ enum PcoServicesSkippedAttachmentFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesSkippedAttachmentQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesSkippedAttachmentOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoServicesSkippedAttachmentOrder order, {bool reverse = false}) =>
+  static final Map<PcoServicesSkippedAttachmentOrder, String> _orderMap = {};
+  static String orderString(PcoServicesSkippedAttachmentOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesSkippedAttachmentFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoServicesSkippedAttachmentFilter filter) => _filterMap[filter]!;
+  static final Map<PcoServicesSkippedAttachmentFilter, String> _filterMap = {};
+  static String filterString(PcoServicesSkippedAttachmentFilter filter) =>
+      _filterMap[filter]!;
 
   PcoServicesSkippedAttachmentQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +37,11 @@ class PcoServicesSkippedAttachmentQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Services SkippedAttachment Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 skipped_attachment
 /// - Type:               SkippedAttachment
@@ -56,12 +50,12 @@ class PcoServicesSkippedAttachmentQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesSkippedAttachment.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,22 +63,22 @@ class PcoServicesSkippedAttachmentQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// a skipped attachment
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isSkipped` (ro) -> PCO: `skipped`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// NONE
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -117,19 +111,20 @@ class PcoServicesSkippedAttachment extends PcoResource {
   static const String kTypeString = 'SkippedAttachment';
   static const String kTypeId = 'skipped_attachment';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -153,7 +148,6 @@ class PcoServicesSkippedAttachment extends PcoResource {
   static const kId = 'id';
   static const kSkipped = 'skipped';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -174,17 +168,19 @@ class PcoServicesSkippedAttachment extends PcoResource {
   bool get isSkipped => _attributes[kSkipped] == true;
 
   // Class Constructors
-  PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesSkippedAttachment.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesSkippedAttachment] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -192,7 +188,11 @@ class PcoServicesSkippedAttachment extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoServicesSkippedAttachment({String? id, bool? isSkipped, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesSkippedAttachment(
+      {String? id,
+      bool? isSkipped,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesSkippedAttachment.empty();
     obj._id = id;
     if (isSkipped != null) obj._attributes['skipped'] = isSkipped;
@@ -212,9 +212,10 @@ class PcoServicesSkippedAttachment extends PcoResource {
     return obj;
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

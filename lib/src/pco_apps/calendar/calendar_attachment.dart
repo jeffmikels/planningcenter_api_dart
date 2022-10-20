@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Possible Ordering:
@@ -13,7 +12,14 @@ part of pco;
 /// - `fileSize` -> `?order=file_size`
 /// - `name` -> `?order=name`
 /// - `updatedAt` -> `?order=updated_at`
-enum PcoCalendarAttachmentOrder { contentType, createdAt, description, fileSize, name, updatedAt }
+enum PcoCalendarAttachmentOrder {
+  contentType,
+  createdAt,
+  description,
+  fileSize,
+  name,
+  updatedAt
+}
 
 /// Filtering is not allowed when requesting this object.
 enum PcoCalendarAttachmentFilter { none }
@@ -21,18 +27,18 @@ enum PcoCalendarAttachmentFilter { none }
 /// Creates a [PcoCalendarAttachmentQuery] object
 /// ## Possible Includes
 /// (translates to url parameter: `?include=a,b`)
-/// 
+///
 /// Related data may be included by marking desired `includeSomething` variables as true:
-/// - `includeEvent`: include associated event 
+/// - `includeEvent`: include associated event
 /// - `includeAll`: include all related objects
-/// 
+///
 /// Alternatively, you may pass a list of strings to the `include` argument.
-/// 
+///
 /// e.g. `PcoCalendarAttachmentQuery(includes: ['a', 'b'])`
-/// 
+///
 /// ## Possible Query Fields
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
-/// 
+///
 /// [PcoCalendarAttachment] objects can be requested with one or more of the following criteria:
 /// - `whereContentType`: query on a specific content_type, example: ?where[content_type]=string
 /// - `whereCreatedAt`: query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -40,16 +46,16 @@ enum PcoCalendarAttachmentFilter { none }
 /// - `whereFileSize`: query on a specific file_size, example: ?where[file_size]=1
 /// - `whereName`: query on a specific name, example: ?where[name]=string
 /// - `whereUpdatedAt`: query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-/// 
+///
 /// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
-/// 
+///
 /// Alternatively, you may pass a [List] of [PlanningCenterApiWhere] objects to the `where` field
 /// e.g. `PlanningCenterApiQuery(where: [PlanningCenterApiWhere('created_at', '2021-01-01', 'gte')])`
 /// See documentation for [PlanningCenterApiQuery] for more details about the `where` field.
 ///
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoCalendarAttachmentOrder.contentType` : will order by `content_type`
 /// - `PcoCalendarAttachmentOrder.createdAt` : will order by `created_at`
@@ -57,12 +63,12 @@ enum PcoCalendarAttachmentFilter { none }
 /// - `PcoCalendarAttachmentOrder.fileSize` : will order by `file_size`
 /// - `PcoCalendarAttachmentOrder.name` : will order by `name`
 /// - `PcoCalendarAttachmentOrder.updatedAt` : will order by `updated_at`
-/// 
+///
 /// To reverse the order, set `reverse` to true.
-/// 
+///
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// 
+///
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -75,52 +81,49 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
     PcoCalendarAttachmentOrder.name: 'name',
     PcoCalendarAttachmentOrder.updatedAt: 'updated_at',
   };
-  static String orderString(PcoCalendarAttachmentOrder order, {bool reverse = false}) =>
+  static String orderString(PcoCalendarAttachmentOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoCalendarAttachmentFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoCalendarAttachmentFilter filter) => _filterMap[filter]!;
+  static final Map<PcoCalendarAttachmentFilter, String> _filterMap = {};
+  static String filterString(PcoCalendarAttachmentFilter filter) =>
+      _filterMap[filter]!;
 
   PcoCalendarAttachmentQuery({
     /// include associated event
     /// when true, adds `?include=event` to url
     bool includeEvent = false,
-    
+
     /// Query by `content_type`
     /// query on a specific content_type, url example: ?where[content_type]=string
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereContentType,
-    
+
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereCreatedAt,
-    
+
     /// Query by `description`
     /// query on a specific description, url example: ?where[description]=string
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereDescription,
-    
+
     /// Query by `file_size`
     /// query on a specific file_size, url example: ?where[file_size]=1
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereFileSize,
-    
+
     /// Query by `name`
     /// query on a specific name, url example: ?where[name]=string
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereName,
-    
+
     /// Query by `updated_at`
     /// query on a specific updated_at, url example: ?where[updated_at]=2000-01-01T12:00:00Z
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereUpdatedAt,
-    
-
     PcoCalendarAttachmentOrder? orderBy,
-
 
     /// reverse the ordering
     bool reverse = false,
@@ -135,20 +138,26 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (includeEvent) include.add('event');
-    
-    if (whereContentType != null) where.add(PlanningCenterApiWhere.parse('content_type', whereContentType));
-    if (whereCreatedAt != null) where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
-    if (whereDescription != null) where.add(PlanningCenterApiWhere.parse('description', whereDescription));
-    if (whereFileSize != null) where.add(PlanningCenterApiWhere.parse('file_size', whereFileSize));
-    if (whereName != null) where.add(PlanningCenterApiWhere.parse('name', whereName));
-    if (whereUpdatedAt != null) where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
-        
-    
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
+
+    if (whereContentType != null)
+      where.add(PlanningCenterApiWhere.parse('content_type', whereContentType));
+    if (whereCreatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
+    if (whereDescription != null)
+      where.add(PlanningCenterApiWhere.parse('description', whereDescription));
+    if (whereFileSize != null)
+      where.add(PlanningCenterApiWhere.parse('file_size', whereFileSize));
+    if (whereName != null)
+      where.add(PlanningCenterApiWhere.parse('name', whereName));
+    if (whereUpdatedAt != null)
+      where.add(PlanningCenterApiWhere.parse('updated_at', whereUpdatedAt));
+
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
 }
 
 /// This class represents a PCO Calendar Attachment Object
-/// 
+///
 /// - Application:        calendar
 /// - Id:                 attachment
 /// - Type:               Attachment
@@ -157,12 +166,12 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/attachments
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCalendarAttachment.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -170,10 +179,10 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// An uploaded file attached to an event.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `contentType` (ro) -> PCO: `content_type`
@@ -183,16 +192,16 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
 /// - `name` (ro) -> PCO: `name`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `url` (ro) -> PCO: `url`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `event-attachment-event`: https://api.planningcenteronline.com/calendar/v2/attachments/1/event
-/// 
+///
 /// Inbound Edges:
 /// - `attachment-event-attachments`: https://api.planningcenteronline.com/calendar/v2/events/1/attachments
 /// - `attachment-organization-attachments`: https://api.planningcenteronline.com/calendar/v2/attachments
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -225,11 +234,12 @@ class PcoCalendarAttachment extends PcoResource {
   static const String kTypeString = 'Attachment';
   static const String kTypeId = 'attachment';
   static const String kApiVersion = '2021-07-20';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/attachments';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/calendar/v2/attachments';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `event`: include associated event 
+  /// - `event`: include associated event
   static List<String> get canInclude => ['event'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
@@ -239,7 +249,14 @@ class PcoCalendarAttachment extends PcoResource {
   /// - `file_size`: (URLParameter), query on a specific file_size, example: ?where[file_size]=1
   /// - `name`: (URLParameter), query on a specific name, example: ?where[name]=string
   /// - `updated_at`: (URLParameter), query on a specific updated_at, example: ?where[updated_at]=2000-01-01T12:00:00Z
-  static List<String> get canQuery => ['content_type','created_at','description','file_size','name','updated_at'];
+  static List<String> get canQuery => [
+        'content_type',
+        'created_at',
+        'description',
+        'file_size',
+        'name',
+        'updated_at'
+      ];
 
   /// possible orderings with parameter ?order=
   /// - `content_type`: (URLParameter), prefix with a hyphen (-content_type) to reverse the order
@@ -248,7 +265,14 @@ class PcoCalendarAttachment extends PcoResource {
   /// - `file_size`: (URLParameter), prefix with a hyphen (-file_size) to reverse the order
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['content_type','created_at','description','file_size','name','updated_at'];
+  static List<String> get canOrderBy => [
+        'content_type',
+        'created_at',
+        'description',
+        'file_size',
+        'name',
+        'updated_at'
+      ];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -277,7 +301,6 @@ class PcoCalendarAttachment extends PcoResource {
   static const kUpdatedAt = 'updated_at';
   static const kUrl = 'url';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -300,23 +323,26 @@ class PcoCalendarAttachment extends PcoResource {
   int get fileSize => _attributes[kFileSize] ?? 0;
   String get name => _attributes[kName] ?? '';
   String get url => _attributes[kUrl] ?? '';
-  
+
   // typed getters for each relationship
-  
-  PcoCalendarEvent? get includedEvent => _firstOrNull<PcoCalendarEvent>(relationships['event']);
+
+  PcoCalendarEvent? get includedEvent =>
+      _firstOrNull<PcoCalendarEvent>(relationships['event']);
 
   // Class Constructors
-  PcoCalendarAttachment.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoCalendarAttachment.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCalendarAttachment.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCalendarAttachment] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -324,15 +350,27 @@ class PcoCalendarAttachment extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCalendarAttachment({String? id, String? contentType, DateTime? createdAt, String? description, int? fileSize, String? name, DateTime? updatedAt, String? url, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarAttachment(
+      {String? id,
+      String? contentType,
+      DateTime? createdAt,
+      String? description,
+      int? fileSize,
+      String? name,
+      DateTime? updatedAt,
+      String? url,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoCalendarAttachment.empty();
     obj._id = id;
     if (contentType != null) obj._attributes['content_type'] = contentType;
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
     if (description != null) obj._attributes['description'] = description;
     if (fileSize != null) obj._attributes['file_size'] = fileSize;
     if (name != null) obj._attributes['name'] = name;
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (url != null) obj._attributes['url'] = url;
 
     if (withRelationships != null) {
@@ -350,43 +388,49 @@ class PcoCalendarAttachment extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoCalendarAttachment] objects (expecting many)
   /// using a path like this: `/calendar/v2/attachments`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarAttachment>> get( {String? id, PcoCalendarAttachmentQuery? query, bool includeEvent = false,}) async {
+  static Future<PcoCollection<PcoCalendarAttachment>> get({
+    String? id,
+    PcoCalendarAttachmentQuery? query,
+    bool includeEvent = false,
+  }) async {
     query ??= PcoCalendarAttachmentQuery();
-    
+
     if (includeEvent) query.include.add('event');
     var url = '/calendar/v2/attachments';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarAttachment>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarAttachment>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoCalendarAttachment] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/attachments`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarAttachment>> getFromEvent(String eventId, {String? id, PcoCalendarAttachmentQuery? query, bool includeEvent = false,}) async {
+  static Future<PcoCollection<PcoCalendarAttachment>> getFromEvent(
+    String eventId, {
+    String? id,
+    PcoCalendarAttachmentQuery? query,
+    bool includeEvent = false,
+  }) async {
     query ??= PcoCalendarAttachmentQuery();
-    
+
     if (includeEvent) query.include.add('event');
     var url = '/calendar/v2/events/$eventId/attachments';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCalendarAttachment>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarAttachment>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   // ---------------------------------
   // Outbound Edges
@@ -395,15 +439,18 @@ class PcoCalendarAttachment extends PcoResource {
 
   /// Will get a collection of [PcoCalendarEvent] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/attachments/1/event`
-  Future<PcoCollection<PcoCalendarEvent>> getEvent({PcoCalendarEventQuery? query}) async {
+  Future<PcoCollection<PcoCalendarEvent>> getEvent(
+      {PcoCalendarEventQuery? query}) async {
     query ??= PcoCalendarEventQuery();
     var url = '$apiEndpoint/event';
-    return PcoCollection.fromApiCall<PcoCalendarEvent>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCalendarEvent>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Possible Ordering:
@@ -17,16 +16,16 @@ enum PcoPeopleCarrierFilter { none }
 /// Creates a [PcoPeopleCarrierQuery] object
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoPeopleCarrierOrder.international` : will order by `international`
 /// - `PcoPeopleCarrierOrder.name` : will order by `name`
-/// 
+///
 /// To reverse the order, set `reverse` to true.
-/// 
+///
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// 
+///
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -35,18 +34,16 @@ class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
     PcoPeopleCarrierOrder.international: 'international',
     PcoPeopleCarrierOrder.name: 'name',
   };
-  static String orderString(PcoPeopleCarrierOrder order, {bool reverse = false}) =>
+  static String orderString(PcoPeopleCarrierOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeopleCarrierFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoPeopleCarrierFilter filter) => _filterMap[filter]!;
+  static final Map<PcoPeopleCarrierFilter, String> _filterMap = {};
+  static String filterString(PcoPeopleCarrierFilter filter) =>
+      _filterMap[filter]!;
 
   PcoPeopleCarrierQuery({
-
     PcoPeopleCarrierOrder? orderBy,
-
 
     /// reverse the ordering
     bool reverse = false,
@@ -60,11 +57,12 @@ class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
 }
 
 /// This class represents a PCO People Carrier Object
-/// 
+///
 /// - Application:        people
 /// - Id:                 carrier
 /// - Type:               Carrier
@@ -73,12 +71,12 @@ class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/carriers
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleCarrier.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -86,24 +84,24 @@ class PcoPeopleCarrierQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `value` (ro) -> PCO: `value`
 /// - `name` (ro) -> PCO: `name`
 /// - `isInternational` (ro) -> PCO: `international`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `carrier-organization-carriers`: https://api.planningcenteronline.com/people/v2/carriers
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -125,21 +123,22 @@ class PcoPeopleCarrier extends PcoResource {
   static const String kTypeString = 'Carrier';
   static const String kTypeId = 'carrier';
   static const String kApiVersion = '2022-07-14';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/carriers';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/people/v2/carriers';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `international`: (URLParameter), prefix with a hyphen (-international) to reverse the order
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-  static List<String> get canOrderBy => ['international','name'];
+  static List<String> get canOrderBy => ['international', 'name'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -164,7 +163,6 @@ class PcoPeopleCarrier extends PcoResource {
   static const kName = 'name';
   static const kInternational = 'international';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -187,17 +185,19 @@ class PcoPeopleCarrier extends PcoResource {
   bool get isInternational => _attributes[kInternational] == true;
 
   // Class Constructors
-  PcoPeopleCarrier.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoPeopleCarrier.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleCarrier.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleCarrier] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -205,12 +205,19 @@ class PcoPeopleCarrier extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoPeopleCarrier({String? id, String? value, String? name, bool? isInternational, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleCarrier(
+      {String? id,
+      String? value,
+      String? name,
+      bool? isInternational,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoPeopleCarrier.empty();
     obj._id = id;
     if (value != null) obj._attributes['value'] = value;
     if (name != null) obj._attributes['name'] = name;
-    if (isInternational != null) obj._attributes['international'] = isInternational;
+    if (isInternational != null)
+      obj._attributes['international'] = isInternational;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -227,31 +234,32 @@ class PcoPeopleCarrier extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoPeopleCarrier] objects (expecting many)
   /// using a path like this: `/people/v2/carriers`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleCarrier>> get( {String? id, PcoPeopleCarrierQuery? query, }) async {
+  static Future<PcoCollection<PcoPeopleCarrier>> get({
+    String? id,
+    PcoPeopleCarrierQuery? query,
+  }) async {
     query ??= PcoPeopleCarrierQuery();
-    
-    
+
     var url = '/people/v2/carriers';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleCarrier>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleCarrier>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -17,21 +16,14 @@ enum PcoGivingNoteFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoGivingNoteQuery extends PlanningCenterApiQuery {
-  static final Map<PcoGivingNoteOrder, String> _orderMap = {
-    
-  };
+  static final Map<PcoGivingNoteOrder, String> _orderMap = {};
   static String orderString(PcoGivingNoteOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoGivingNoteFilter, String> _filterMap = {
-    
-  };
+  static final Map<PcoGivingNoteFilter, String> _filterMap = {};
   static String filterString(PcoGivingNoteFilter filter) => _filterMap[filter]!;
 
   PcoGivingNoteQuery({
-
-
-
     /// reverse the ordering
     bool reverse = false,
 
@@ -43,11 +35,11 @@ class PcoGivingNoteQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super() ;
+  }) : super();
 }
 
 /// This class represents a PCO Giving Note Object
-/// 
+///
 /// - Application:        giving
 /// - Id:                 note
 /// - Type:               Note
@@ -56,12 +48,12 @@ class PcoGivingNoteQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/giving/v2/donations/1/note
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGivingNote.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -69,22 +61,22 @@ class PcoGivingNoteQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `body` (ro) -> PCO: `body`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `note-donation-note`: https://api.planningcenteronline.com/giving/v2/donations/1/note
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -104,19 +96,20 @@ class PcoGivingNote extends PcoResource {
   static const String kTypeString = 'Note';
   static const String kTypeId = 'note';
   static const String kApiVersion = '2019-10-18';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/giving/v2/donations/1/note';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/giving/v2/donations/1/note';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -140,7 +133,6 @@ class PcoGivingNote extends PcoResource {
   static const kId = 'id';
   static const kBody = 'body';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -161,17 +153,19 @@ class PcoGivingNote extends PcoResource {
   String get body => _attributes[kBody] ?? '';
 
   // Class Constructors
-  PcoGivingNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoGivingNote.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoGivingNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGivingNote] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -179,7 +173,11 @@ class PcoGivingNote extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoGivingNote({String? id, String? body, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGivingNote(
+      {String? id,
+      String? body,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoGivingNote.empty();
     obj._id = id;
     if (body != null) obj._attributes['body'] = body;
@@ -199,31 +197,33 @@ class PcoGivingNote extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoGivingNote] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/note`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingNote>> getFromDonation(String donationId, {String? id, PcoGivingNoteQuery? query, }) async {
+  static Future<PcoCollection<PcoGivingNote>> getFromDonation(
+    String donationId, {
+    String? id,
+    PcoGivingNoteQuery? query,
+  }) async {
     query ??= PcoGivingNoteQuery();
-    
-    
+
     var url = '/giving/v2/donations/$donationId/note';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGivingNote>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGivingNote>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Ordering is not allowed on this object.
@@ -15,37 +14,32 @@ enum PcoServicesItemNoteFilter { none }
 /// Creates a [PcoServicesItemNoteQuery] object
 /// ## Possible Includes
 /// (translates to url parameter: `?include=a,b`)
-/// 
+///
 /// Related data may be included by marking desired `includeSomething` variables as true:
-/// - `includeItemNoteCategory`: include associated item_note_category 
+/// - `includeItemNoteCategory`: include associated item_note_category
 /// - `includeAll`: include all related objects
-/// 
+///
 /// Alternatively, you may pass a list of strings to the `include` argument.
-/// 
+///
 /// e.g. `PcoServicesItemNoteQuery(includes: ['a', 'b'])`
-/// 
+///
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesItemNoteQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesItemNoteOrder, String> _orderMap = {
-    
-  };
-  static String orderString(PcoServicesItemNoteOrder order, {bool reverse = false}) =>
+  static final Map<PcoServicesItemNoteOrder, String> _orderMap = {};
+  static String orderString(PcoServicesItemNoteOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesItemNoteFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoServicesItemNoteFilter filter) => _filterMap[filter]!;
+  static final Map<PcoServicesItemNoteFilter, String> _filterMap = {};
+  static String filterString(PcoServicesItemNoteFilter filter) =>
+      _filterMap[filter]!;
 
   PcoServicesItemNoteQuery({
     /// include associated item_note_category
     /// when true, adds `?include=item_note_category` to url
     bool includeItemNoteCategory = false,
-    
-
-
 
     /// reverse the ordering
     bool reverse = false,
@@ -59,11 +53,12 @@ class PcoServicesItemNoteQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeItemNoteCategory) include.add('item_note_category');}
+    if (includeItemNoteCategory) include.add('item_note_category');
+  }
 }
 
 /// This class represents a PCO Services ItemNote Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 item_note
 /// - Type:               ItemNote
@@ -72,12 +67,12 @@ class PcoServicesItemNoteQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes
-/// 
+///
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesItemNote()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoServicesItemNote.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -85,27 +80,27 @@ class PcoServicesItemNoteQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// A plan item note that belongs to a category.
-/// 
+///
 /// Note: You can only assign the category on create. If you want to change category; delete the current note, and create a new one passing in the `item_note_category_id` then.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `content` (rw) -> PCO: `content`
 /// - `categoryName` (ro) -> PCO: `category_name`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `itemnotecategory-itemnote-item_note_category`: https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category
-/// 
+///
 /// Inbound Edges:
 /// - `itemnote-item-item_notes`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -141,19 +136,21 @@ class PcoServicesItemNote extends PcoResource {
   static const String kTypeString = 'ItemNote';
   static const String kTypeId = 'item_note';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes';
+  static const String kCreatePathTemplate =
+      'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_notes';
 
   /// possible includes with parameter ?include=a,b
-  /// - `item_note_category`: include associated item_note_category 
+  /// - `item_note_category`: include associated item_note_category
   static List<String> get canInclude => ['item_note_category'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  /// 
+  ///
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -180,7 +177,6 @@ class PcoServicesItemNote extends PcoResource {
   static const kContent = 'content';
   static const kCategoryName = 'category_name';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => ['content'];
@@ -200,27 +196,32 @@ class PcoServicesItemNote extends PcoResource {
   // getters for object attributes
   String get content => _attributes[kContent] ?? '';
   String get categoryName => _attributes[kCategoryName] ?? '';
-  
+
   // setters for object attributes
   ///
   /// pass `null` to remove key from attributes
-  set content(String? x) => (x == null) ? _attributes.remove(kContent) : _attributes[kContent] = x;
-  
+  set content(String? x) =>
+      (x == null) ? _attributes.remove(kContent) : _attributes[kContent] = x;
+
   // typed getters for each relationship
-  
-  PcoServicesItemNoteCategory? get includedItemNoteCategory => _firstOrNull<PcoServicesItemNoteCategory>(relationships['item_note_category']);
+
+  PcoServicesItemNoteCategory? get includedItemNoteCategory =>
+      _firstOrNull<PcoServicesItemNoteCategory>(
+          relationships['item_note_category']);
 
   // Class Constructors
-  PcoServicesItemNote.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesItemNote.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   PcoServicesItemNote.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesItemNote] object using this endpoint: `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes`
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
@@ -228,12 +229,25 @@ class PcoServicesItemNote extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `content`
   /// - FIELDS USED WHEN UPDATING: `content`
-  factory PcoServicesItemNote({required String serviceTypeId, required String planId, required String itemId, String? id, DateTime? createdAt, DateTime? updatedAt, String? content, String? categoryName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesItemNote(
+      {required String serviceTypeId,
+      required String planId,
+      required String itemId,
+      String? id,
+      DateTime? createdAt,
+      DateTime? updatedAt,
+      String? content,
+      String? categoryName,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesItemNote.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
-    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    obj._apiPathOverride =
+        'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
+    if (createdAt != null)
+      obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null)
+      obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (content != null) obj._attributes['content'] = content;
     if (categoryName != null) obj._attributes['category_name'] = categoryName;
 
@@ -252,28 +266,34 @@ class PcoServicesItemNote extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesItemNote] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItemNote>> getFromServiceTypeAndPlanAndItem(String serviceTypeId,String planId,String itemId, {String? id, PcoServicesItemNoteQuery? query, bool includeItemNoteCategory = false,}) async {
+  static Future<PcoCollection<PcoServicesItemNote>>
+      getFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PcoServicesItemNoteQuery? query,
+    bool includeItemNoteCategory = false,
+  }) async {
     query ??= PcoServicesItemNoteQuery();
-    
-    if (includeItemNoteCategory) query.include.add('item_note_category');
-    var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
-    if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesItemNote>(url, query: query, apiVersion:kApiVersion);
-  }
 
+    if (includeItemNoteCategory) query.include.add('item_note_category');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/item_notes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesItemNote>(url,
+        query: query, apiVersion: kApiVersion);
+  }
 
   // ---------------------------------
   // Outbound Edges
@@ -282,15 +302,18 @@ class PcoServicesItemNote extends PcoResource {
 
   /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `https://api.planningcenteronline.com/services/v2/songs/1/last_scheduled_item/1/item_notes/1/item_note_category`
-  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory({PcoServicesItemNoteCategoryQuery? query}) async {
+  Future<PcoCollection<PcoServicesItemNoteCategory>> getItemNoteCategory(
+      {PcoServicesItemNoteCategoryQuery? query}) async {
     query ??= PcoServicesItemNoteCategoryQuery();
     var url = '$apiEndpoint/item_note_category';
-    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

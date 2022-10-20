@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Possible Ordering:
@@ -17,16 +16,16 @@ enum PcoGroupsResourceFilter { none }
 /// Creates a [PcoGroupsResourceQuery] object
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoGroupsResourceOrder.lastUpdated` : will order by `last_updated`
 /// - `PcoGroupsResourceOrder.name` : will order by `name`
-/// 
+///
 /// To reverse the order, set `reverse` to true.
-/// 
+///
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// 
+///
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -35,18 +34,16 @@ class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
     PcoGroupsResourceOrder.lastUpdated: 'last_updated',
     PcoGroupsResourceOrder.name: 'name',
   };
-  static String orderString(PcoGroupsResourceOrder order, {bool reverse = false}) =>
+  static String orderString(PcoGroupsResourceOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoGroupsResourceFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoGroupsResourceFilter filter) => _filterMap[filter]!;
+  static final Map<PcoGroupsResourceFilter, String> _filterMap = {};
+  static String filterString(PcoGroupsResourceFilter filter) =>
+      _filterMap[filter]!;
 
   PcoGroupsResourceQuery({
-
     PcoGroupsResourceOrder? orderBy,
-
 
     /// reverse the ordering
     bool reverse = false,
@@ -60,11 +57,12 @@ class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
 }
 
 /// This class represents a PCO Groups Resource Object
-/// 
+///
 /// - Application:        groups
 /// - Id:                 resource
 /// - Type:               Resource
@@ -73,12 +71,12 @@ class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/groups/v2/group_types/1/resources
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoGroupsResource.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -86,10 +84,10 @@ class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
-/// 
-/// 
+///
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `description` (ro) -> PCO: `description`
@@ -97,19 +95,19 @@ class PcoGroupsResourceQuery extends PlanningCenterApiQuery {
 /// - `name` (ro) -> PCO: `name`
 /// - `type` (ro) -> PCO: `type`
 /// - `visibility` (ro) -> PCO: `visibility`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// - `resource-resource-download`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/download
 /// - `resource-resource-visit`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/visit
-/// 
+///
 /// Inbound Edges:
 /// - `resource-group-resources`: https://api.planningcenteronline.com/groups/v2/groups/1/resources
 /// - `resource-grouptype-resources`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources
 /// - `resource-resource-download`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/download
 /// - `resource-resource-visit`: https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/visit
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -140,21 +138,22 @@ class PcoGroupsResource extends PcoResource {
   static const String kTypeString = 'Resource';
   static const String kTypeId = 'resource';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/groups/v2/group_types/1/resources';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/groups/v2/group_types/1/resources';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `last_updated`: (URLParameter), prefix with a hyphen (-last_updated) to reverse the order
   /// - `name`: (URLParameter), prefix with a hyphen (-name) to reverse the order
-  static List<String> get canOrderBy => ['last_updated','name'];
+  static List<String> get canOrderBy => ['last_updated', 'name'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -181,7 +180,6 @@ class PcoGroupsResource extends PcoResource {
   static const kType = 'type';
   static const kVisibility = 'visibility';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -206,17 +204,19 @@ class PcoGroupsResource extends PcoResource {
   String get visibility => _attributes[kVisibility] ?? '';
 
   // Class Constructors
-  PcoGroupsResource.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoGroupsResource.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoGroupsResource.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoGroupsResource] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -224,11 +224,19 @@ class PcoGroupsResource extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoGroupsResource({String? id, String? description, DateTime? lastUpdated, String? name, String? visibility, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGroupsResource(
+      {String? id,
+      String? description,
+      DateTime? lastUpdated,
+      String? name,
+      String? visibility,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoGroupsResource.empty();
     obj._id = id;
     if (description != null) obj._attributes['description'] = description;
-    if (lastUpdated != null) obj._attributes['last_updated'] = lastUpdated.toIso8601String();
+    if (lastUpdated != null)
+      obj._attributes['last_updated'] = lastUpdated.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
     if (visibility != null) obj._attributes['visibility'] = visibility;
 
@@ -247,78 +255,90 @@ class PcoGroupsResource extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/resources`
-  /// 
+  ///
   /// Available Query Filters:
   /// - `leaders`
   /// filter resources only visible to group leaders
-  /// 
-  /// 
+  ///
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(String groupId, {String? id, PcoGroupsResourceQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsResourceQuery? query,
+  }) async {
     query ??= PcoGroupsResourceQuery();
-    
-    
+
     var url = '/groups/v2/groups/$groupId/resources';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsResource>> getFromGroupType(String groupTypeId, {String? id, PcoGroupsResourceQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsResource>> getFromGroupType(
+    String groupTypeId, {
+    String? id,
+    PcoGroupsResourceQuery? query,
+  }) async {
     query ??= PcoGroupsResourceQuery();
-    
-    
+
     var url = '/groups/v2/group_types/$groupTypeId/resources';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
   }
-
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/download`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsResource>> getDownloadFromGroupTypeAndResource(String groupTypeId,String resourceId, {PcoGroupsResourceQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsResource>>
+      getDownloadFromGroupTypeAndResource(
+    String groupTypeId,
+    String resourceId, {
+    PcoGroupsResourceQuery? query,
+  }) async {
     query ??= PcoGroupsResourceQuery();
-    
-    
-    var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/download';
-    
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion:kApiVersion);
-  }
 
+    var url =
+        '/groups/v2/group_types/$groupTypeId/resources/$resourceId/download';
+
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+  }
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsResource>> getVisitFromGroupTypeAndResource(String groupTypeId,String resourceId, {PcoGroupsResourceQuery? query, }) async {
+  static Future<PcoCollection<PcoGroupsResource>>
+      getVisitFromGroupTypeAndResource(
+    String groupTypeId,
+    String resourceId, {
+    PcoGroupsResourceQuery? query,
+  }) async {
     query ??= PcoGroupsResourceQuery();
-    
-    
-    var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit';
-    
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion:kApiVersion);
-  }
 
+    var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit';
+
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+  }
 
   // ---------------------------------
   // Outbound Edges
@@ -327,23 +347,28 @@ class PcoGroupsResource extends PcoResource {
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/download`
-  Future<PcoCollection<PcoGroupsResource>> getDownload({PcoGroupsResourceQuery? query}) async {
+  Future<PcoCollection<PcoGroupsResource>> getDownload(
+      {PcoGroupsResourceQuery? query}) async {
     query ??= PcoGroupsResourceQuery();
     var url = '$apiEndpoint/download';
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/group_types/1/resources/1/visit`
-  Future<PcoCollection<PcoGroupsResource>> getVisit({PcoGroupsResourceQuery? query}) async {
+  Future<PcoCollection<PcoGroupsResource>> getVisit(
+      {PcoGroupsResourceQuery? query}) async {
     query ??= PcoGroupsResourceQuery();
     var url = '$apiEndpoint/visit';
-    return PcoCollection.fromApiCall<PcoGroupsResource>(url, query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: apiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

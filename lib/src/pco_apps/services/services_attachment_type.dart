@@ -3,7 +3,6 @@
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
-
 part of pco;
 
 /// Possible Ordering:
@@ -16,15 +15,15 @@ enum PcoServicesAttachmentTypeFilter { none }
 /// Creates a [PcoServicesAttachmentTypeQuery] object
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-/// 
+///
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoServicesAttachmentTypeOrder.name` : will order by `name`
-/// 
+///
 /// To reverse the order, set `reverse` to true.
-/// 
+///
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-/// 
+///
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -32,18 +31,16 @@ class PcoServicesAttachmentTypeQuery extends PlanningCenterApiQuery {
   static final Map<PcoServicesAttachmentTypeOrder, String> _orderMap = {
     PcoServicesAttachmentTypeOrder.name: 'name',
   };
-  static String orderString(PcoServicesAttachmentTypeOrder order, {bool reverse = false}) =>
+  static String orderString(PcoServicesAttachmentTypeOrder order,
+          {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesAttachmentTypeFilter, String> _filterMap = {
-    
-  };
-  static String filterString(PcoServicesAttachmentTypeFilter filter) => _filterMap[filter]!;
+  static final Map<PcoServicesAttachmentTypeFilter, String> _filterMap = {};
+  static String filterString(PcoServicesAttachmentTypeFilter filter) =>
+      _filterMap[filter]!;
 
   PcoServicesAttachmentTypeQuery({
-
     PcoServicesAttachmentTypeOrder? orderBy,
-
 
     /// reverse the ordering
     bool reverse = false,
@@ -57,11 +54,12 @@ class PcoServicesAttachmentTypeQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
+  }
 }
 
 /// This class represents a PCO Services AttachmentType Object
-/// 
+///
 /// - Application:        services
 /// - Id:                 attachment_type
 /// - Type:               AttachmentType
@@ -70,12 +68,12 @@ class PcoServicesAttachmentTypeQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachment_types
 /// - Create Endpoint:    NONE
-/// 
+///
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesAttachmentType.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-/// 
+///
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -83,10 +81,10 @@ class PcoServicesAttachmentTypeQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///   
+///
 /// ## Description
 /// Create an Attachment Type for each type of file you might want only specific people to see. When you attach a file, you can specify an attachment type to then be able to link the file to a position.
-/// 
+///
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -98,15 +96,15 @@ class PcoServicesAttachmentTypeQuery extends PlanningCenterApiQuery {
 /// - `isNumberCharts` (ro) -> PCO: `number_charts`
 /// - `isNumeralCharts` (ro) -> PCO: `numeral_charts`
 /// - `isBuiltIn` (ro) -> PCO: `built_in`
-/// 
+///
 /// ## Edges and Actions
-/// 
+///
 /// Outbound Edges:
 /// NONE
-/// 
+///
 /// Inbound Edges:
 /// - `attachmenttype-organization-attachment_types`: https://api.planningcenteronline.com/services/v2/attachment_types
-/// 
+///
 /// Actions:
 /// NONE
 ///
@@ -141,15 +139,16 @@ class PcoServicesAttachmentType extends PcoResource {
   static const String kTypeString = 'AttachmentType';
   static const String kTypeId = 'attachment_type';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachment_types';
+  static const String kDefaultPathTemplate =
+      'https://api.planningcenteronline.com/services/v2/attachment_types';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
+  ///
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  /// 
+  ///
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
@@ -185,7 +184,6 @@ class PcoServicesAttachmentType extends PcoResource {
   static const kNumeralCharts = 'numeral_charts';
   static const kBuiltIn = 'built_in';
 
-
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -214,17 +212,19 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get isBuiltIn => _attributes[kBuiltIn] == true;
 
   // Class Constructors
-  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
-
+  PcoServicesAttachmentType.fromJson(Map<String, dynamic> data,
+      {List<Map<String, dynamic>>? withIncluded})
+      : super.fromJson(kPcoApplication, kTypeString, data,
+            withIncluded: withIncluded);
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  /// 
+  ///
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesAttachmentType.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesAttachmentType] object. This object cannot be created with the API
-  /// 
+  ///
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
@@ -232,17 +232,32 @@ class PcoServicesAttachmentType extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoServicesAttachmentType({String? id, String? name, String? aliases, bool? isCapoedChordCharts, bool? isChordCharts, String? exclusions, bool? isLyrics, bool? isNumberCharts, bool? isNumeralCharts, bool? isBuiltIn, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesAttachmentType(
+      {String? id,
+      String? name,
+      String? aliases,
+      bool? isCapoedChordCharts,
+      bool? isChordCharts,
+      String? exclusions,
+      bool? isLyrics,
+      bool? isNumberCharts,
+      bool? isNumeralCharts,
+      bool? isBuiltIn,
+      Map<String, List<PcoResource>>? withRelationships,
+      List<PcoResource>? withIncluded}) {
     var obj = PcoServicesAttachmentType.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
     if (aliases != null) obj._attributes['aliases'] = aliases;
-    if (isCapoedChordCharts != null) obj._attributes['capoed_chord_charts'] = isCapoedChordCharts;
+    if (isCapoedChordCharts != null)
+      obj._attributes['capoed_chord_charts'] = isCapoedChordCharts;
     if (isChordCharts != null) obj._attributes['chord_charts'] = isChordCharts;
     if (exclusions != null) obj._attributes['exclusions'] = exclusions;
     if (isLyrics != null) obj._attributes['lyrics'] = isLyrics;
-    if (isNumberCharts != null) obj._attributes['number_charts'] = isNumberCharts;
-    if (isNumeralCharts != null) obj._attributes['numeral_charts'] = isNumeralCharts;
+    if (isNumberCharts != null)
+      obj._attributes['number_charts'] = isNumberCharts;
+    if (isNumeralCharts != null)
+      obj._attributes['numeral_charts'] = isNumeralCharts;
     if (isBuiltIn != null) obj._attributes['built_in'] = isBuiltIn;
 
     if (withRelationships != null) {
@@ -260,31 +275,32 @@ class PcoServicesAttachmentType extends PcoResource {
     return obj;
   }
 
-
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-
-
   /// Will get a collection of [PcoServicesAttachmentType] objects (expecting many)
   /// using a path like this: `/services/v2/attachment_types`
-  /// 
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesAttachmentType>> get( {String? id, PcoServicesAttachmentTypeQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesAttachmentType>> get({
+    String? id,
+    PcoServicesAttachmentTypeQuery? query,
+  }) async {
     query ??= PcoServicesAttachmentTypeQuery();
-    
-    
+
     var url = '/services/v2/attachment_types';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url, query: query, apiVersion:kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url,
+        query: query, apiVersion: kApiVersion);
   }
 
-
-
-
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null
+      ? null
+      : l.isEmpty
+          ? null
+          : l.cast<T>().first;
 }

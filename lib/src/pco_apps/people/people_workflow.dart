@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.511406
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.430535
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,11 +16,13 @@ part of pco;
 enum PcoPeopleWorkflowOrder { campusId, createdAt, deletedAt, name, updatedAt, workflowCategoryId }
 
 /// Possible Inbound Filters:
+/// - `hasMyCards` -> `?filter=has_my_cards` : -- no description
 /// - `onlyDeleted` -> `?filter=only_deleted` : -- no description
+/// - `recentlyViewed` -> `?filter=recently_viewed` : -- no description
 /// - `withDeleted` -> `?filter=with_deleted` : -- no description
 /// - `withRecoverable` -> `?filter=with_recoverable` : -- no description
 /// - `withSteps` -> `?filter=with_steps` : -- no description
-enum PcoPeopleWorkflowFilter { onlyDeleted, withDeleted, withRecoverable, withSteps }
+enum PcoPeopleWorkflowFilter { hasMyCards, onlyDeleted, recentlyViewed, withDeleted, withRecoverable, withSteps }
 
 /// Creates a [PcoPeopleWorkflowQuery] object
 /// ## Possible Includes
@@ -86,7 +88,9 @@ class PcoPeopleWorkflowQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoPeopleWorkflowFilter, String> _filterMap = {
+    PcoPeopleWorkflowFilter.hasMyCards: 'has_my_cards',
     PcoPeopleWorkflowFilter.onlyDeleted: 'only_deleted',
+    PcoPeopleWorkflowFilter.recentlyViewed: 'recently_viewed',
     PcoPeopleWorkflowFilter.withDeleted: 'with_deleted',
     PcoPeopleWorkflowFilter.withRecoverable: 'with_recoverable',
     PcoPeopleWorkflowFilter.withSteps: 'with_steps',
@@ -183,7 +187,7 @@ class PcoPeopleWorkflowQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow
 /// - Type:               Workflow
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows
@@ -220,6 +224,7 @@ class PcoPeopleWorkflowQuery extends PlanningCenterApiQuery {
 /// - `workflowCategoryId` (rw) -> PCO: `workflow_category_id`
 /// - `myOverdueCardCount` (ro) -> PCO: `my_overdue_card_count`
 /// - `myDueSoonCardCount` (ro) -> PCO: `my_due_soon_card_count`
+/// - `isRecentlyViewed` (ro) -> PCO: `recently_viewed`
 /// 
 /// ## Edges and Actions
 /// 
@@ -232,7 +237,7 @@ class PcoPeopleWorkflowQuery extends PlanningCenterApiQuery {
 /// 
 /// Inbound Edges:
 /// - `workflow-organization-workflows`: https://api.planningcenteronline.com/people/v2/workflows
-/// - `workflow-workflowcard-workflow`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/workflow
+/// - `workflow-workflowcard-workflow`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/workflow
 /// 
 /// Actions:
 /// NONE
@@ -253,7 +258,8 @@ class PcoPeopleWorkflowQuery extends PlanningCenterApiQuery {
 ///     "updated_at": "2000-01-01T12:00:00Z",
 ///     "deleted_at": "2000-01-01T12:00:00Z",
 ///     "campus_id": "primary_key",
-///     "workflow_category_id": "primary_key"
+///     "workflow_category_id": "primary_key",
+///     "recently_viewed": true
 ///   },
 ///   "relationships": {
 ///     "workflow_category": {
@@ -275,7 +281,7 @@ class PcoPeopleWorkflow extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Workflow';
   static const String kTypeId = 'workflow';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows';
 
@@ -336,6 +342,7 @@ class PcoPeopleWorkflow extends PcoResource {
   static const kWorkflowCategoryId = 'workflow_category_id';
   static const kMyOverdueCardCount = 'my_overdue_card_count';
   static const kMyDueSoonCardCount = 'my_due_soon_card_count';
+  static const kRecentlyViewed = 'recently_viewed';
 
 
   // getters and setters
@@ -366,6 +373,7 @@ class PcoPeopleWorkflow extends PcoResource {
   String get workflowCategoryId => _attributes[kWorkflowCategoryId] ?? '';
   int get myOverdueCardCount => _attributes[kMyOverdueCardCount] ?? 0;
   int get myDueSoonCardCount => _attributes[kMyDueSoonCardCount] ?? 0;
+  bool get isRecentlyViewed => _attributes[kRecentlyViewed] == true;
   
   // setters for object attributes
   ///
@@ -411,7 +419,7 @@ class PcoPeopleWorkflow extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `name`, `campusId`, `workflowCategoryId`
   /// - FIELDS USED WHEN UPDATING: `name`, `campusId`, `workflowCategoryId`
-  factory PcoPeopleWorkflow({String? id, String? name, int? myReadyCardCount, int? totalReadyCardCount, int? completedCardCount, int? totalCardsCount, int? totalReadyAndSnoozedCardCount, DateTime? createdAt, DateTime? updatedAt, DateTime? deletedAt, String? campusId, String? workflowCategoryId, int? myOverdueCardCount, int? myDueSoonCardCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleWorkflow({String? id, String? name, int? myReadyCardCount, int? totalReadyCardCount, int? completedCardCount, int? totalCardsCount, int? totalReadyAndSnoozedCardCount, DateTime? createdAt, DateTime? updatedAt, DateTime? deletedAt, String? campusId, String? workflowCategoryId, int? myOverdueCardCount, int? myDueSoonCardCount, bool? isRecentlyViewed, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleWorkflow.empty();
     obj._id = id;
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/workflows';
@@ -428,6 +436,7 @@ class PcoPeopleWorkflow extends PcoResource {
     if (workflowCategoryId != null) obj._attributes['workflow_category_id'] = workflowCategoryId;
     if (myOverdueCardCount != null) obj._attributes['my_overdue_card_count'] = myOverdueCardCount;
     if (myDueSoonCardCount != null) obj._attributes['my_due_soon_card_count'] = myDueSoonCardCount;
+    if (isRecentlyViewed != null) obj._attributes['recently_viewed'] = isRecentlyViewed;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -456,7 +465,9 @@ class PcoPeopleWorkflow extends PcoResource {
   /// using a path like this: `/people/v2/workflows`
   /// 
   /// Available Query Filters:
+  /// - `has_my_cards`
   /// - `only_deleted`
+  /// - `recently_viewed`
   /// - `with_deleted`
   /// - `with_recoverable`
   /// - `with_steps`
@@ -476,7 +487,7 @@ class PcoPeopleWorkflow extends PcoResource {
 
 
   /// Will get a collection of [PcoPeopleWorkflow] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/workflow`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/workflow`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -486,7 +497,7 @@ class PcoPeopleWorkflow extends PcoResource {
     if (includeCategory) query.include.add('category');
     if (includeShares) query.include.add('shares');
     if (includeSteps) query.include.add('steps');
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/workflow';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/workflow';
     
     return PcoCollection.fromApiCall<PcoPeopleWorkflow>(url, query: query, apiVersion:kApiVersion);
   }

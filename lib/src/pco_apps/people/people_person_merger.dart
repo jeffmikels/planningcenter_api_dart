@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.506015
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.424129
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -99,7 +99,7 @@ class PcoPeoplePersonMergerQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 person_merger
 /// - Type:               PersonMerger
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/person_mergers
@@ -168,7 +168,7 @@ class PcoPeoplePersonMerger extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'PersonMerger';
   static const String kTypeId = 'person_merger';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/person_mergers';
   static const String kCreatePathTemplate = 'null';
 

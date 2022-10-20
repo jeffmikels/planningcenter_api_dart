@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.352234
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.975070
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -54,8 +54,8 @@ class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuer
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
-/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
+/// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
 /// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoServicesSplitTeamRehearsalAssignment()` constructor
@@ -80,10 +80,10 @@ class PcoServicesSplitTeamRehearsalAssignmentQuery extends PlanningCenterApiQuer
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team
+/// - `team-splitteamrehearsalassignment-team`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments/1/team
 /// 
 /// Inbound Edges:
-/// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
+/// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
 /// 
 /// Actions:
 /// NONE
@@ -119,8 +119,8 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   static const String kTypeString = 'SplitTeamRehearsalAssignment';
   static const String kTypeId = 'split_team_rehearsal_assignment';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
-  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments';
 
   /// possible includes with parameter ?include=a,b
   /// 
@@ -191,7 +191,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   /// 
   PcoServicesSplitTeamRehearsalAssignment.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object using this endpoint: `https://api.planningcenteronline.com/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
+  /// Create a new [PcoServicesSplitTeamRehearsalAssignment] object using this endpoint: `https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments`
   /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
@@ -200,10 +200,10 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `isScheduleSpecialServiceTimes`
   /// - FIELDS USED WHEN UPDATING: `isScheduleSpecialServiceTimes`
-  factory PcoServicesSplitTeamRehearsalAssignment({required String personId, required String planTimeId, String? id, bool? isScheduleSpecialServiceTimes, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesSplitTeamRehearsalAssignment({required String serviceTypeId, required String planTimeId, String? id, bool? isScheduleSpecialServiceTimes, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesSplitTeamRehearsalAssignment.empty();
     obj._id = id;
-    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
     if (isScheduleSpecialServiceTimes != null) obj._attributes['schedule_special_service_times'] = isScheduleSpecialServiceTimes;
 
     if (withRelationships != null) {
@@ -230,15 +230,15 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
-  /// using a path like this: `/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments`
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getFromPersonAndPlanTime(String personId,String planTimeId, {String? id, PcoServicesSplitTeamRehearsalAssignmentQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getFromServiceTypeAndPlanTime(String serviceTypeId,String planTimeId, {String? id, PcoServicesSplitTeamRehearsalAssignmentQuery? query, }) async {
     query ??= PcoServicesSplitTeamRehearsalAssignmentQuery();
     
     
-    var url = '/services/v2/people/$personId/next_plan_time/$planTimeId/split_team_rehearsal_assignments';
+    var url = '/services/v2/service_types/$serviceTypeId/plan_times/$planTimeId/split_team_rehearsal_assignments';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesSplitTeamRehearsalAssignment>(url, query: query, apiVersion:kApiVersion);
   }
@@ -250,7 +250,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments/1/team`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments/1/team`
   Future<PcoCollection<PcoServicesTeam>> getTeam({PcoServicesTeamQuery? query}) async {
     query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';

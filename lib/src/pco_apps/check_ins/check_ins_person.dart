@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.418800
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.790760
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -173,6 +173,7 @@ class PcoCheckInsPersonQuery extends PlanningCenterApiQuery {
 /// - `checkInCount` (ro) -> PCO: `check_in_count`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `isPassedBackgroundCheck` (ro) -> PCO: `passed_background_check`
 /// - `demographicAvatarUrl` (ro) -> PCO: `demographic_avatar_url`
 /// - `name` (ro) -> PCO: `name`
 /// - `topPermission` (ro) -> PCO: `top_permission`
@@ -223,6 +224,7 @@ class PcoCheckInsPersonQuery extends PlanningCenterApiQuery {
 ///     "check_in_count": 1,
 ///     "created_at": "2000-01-01T12:00:00Z",
 ///     "updated_at": "2000-01-01T12:00:00Z",
+///     "passed_background_check": true,
 ///     "demographic_avatar_url": "string",
 ///     "name": "string",
 ///     "top_permission": "string"
@@ -294,6 +296,7 @@ class PcoCheckInsPerson extends PcoResource {
   static const kCheckInCount = 'check_in_count';
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
+  static const kPassedBackgroundCheck = 'passed_background_check';
   static const kDemographicAvatarUrl = 'demographic_avatar_url';
   static const kName = 'name';
   static const kTopPermission = 'top_permission';
@@ -335,6 +338,7 @@ class PcoCheckInsPerson extends PcoResource {
   bool get isHeadcounter => _attributes[kHeadcounter] == true;
   DateTime get lastCheckedInAt => DateTime.parse(_attributes[kLastCheckedInAt] ?? '');
   int get checkInCount => _attributes[kCheckInCount] ?? 0;
+  bool get isPassedBackgroundCheck => _attributes[kPassedBackgroundCheck] == true;
   String get demographicAvatarUrl => _attributes[kDemographicAvatarUrl] ?? '';
   String get name => _attributes[kName] ?? '';
   String get topPermission => _attributes[kTopPermission] ?? '';
@@ -363,7 +367,7 @@ class PcoCheckInsPerson extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCheckInsPerson({String? id, List? addresses, List? emailAddresses, List? phoneNumbers, String? avatarUrl, String? namePrefix, String? firstName, String? middleName, String? lastName, String? nameSuffix, String? birthdate, int? grade, String? gender, String? medicalNotes, bool? isChild, String? permission, bool? isHeadcounter, DateTime? lastCheckedInAt, int? checkInCount, DateTime? createdAt, DateTime? updatedAt, String? demographicAvatarUrl, String? name, String? topPermission, String? searchName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCheckInsPerson({String? id, List? addresses, List? emailAddresses, List? phoneNumbers, String? avatarUrl, String? namePrefix, String? firstName, String? middleName, String? lastName, String? nameSuffix, String? birthdate, int? grade, String? gender, String? medicalNotes, bool? isChild, String? permission, bool? isHeadcounter, DateTime? lastCheckedInAt, int? checkInCount, DateTime? createdAt, DateTime? updatedAt, bool? isPassedBackgroundCheck, String? demographicAvatarUrl, String? name, String? topPermission, String? searchName, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsPerson.empty();
     obj._id = id;
     if (addresses != null) obj._attributes['addresses'] = addresses;
@@ -386,6 +390,7 @@ class PcoCheckInsPerson extends PcoResource {
     if (checkInCount != null) obj._attributes['check_in_count'] = checkInCount;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (isPassedBackgroundCheck != null) obj._attributes['passed_background_check'] = isPassedBackgroundCheck;
     if (demographicAvatarUrl != null) obj._attributes['demographic_avatar_url'] = demographicAvatarUrl;
     if (name != null) obj._attributes['name'] = name;
     if (topPermission != null) obj._attributes['top_permission'] = topPermission;
@@ -517,6 +522,7 @@ class PcoCheckInsPerson extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`

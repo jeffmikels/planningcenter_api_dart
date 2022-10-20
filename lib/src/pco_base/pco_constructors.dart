@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.613169
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:20.229382
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,6 @@ Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dy
     'services-BlockoutDate': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesBlockoutDate.fromJson(data, withIncluded: withIncluded),
     'services-BlockoutException': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesBlockoutException.fromJson(data, withIncluded: withIncluded),
     'services-BlockoutScheduleConflict': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesBlockoutScheduleConflict.fromJson(data, withIncluded: withIncluded),
-    'services-CcliReporting': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesCcliReporting.fromJson(data, withIncluded: withIncluded),
     'services-Contributor': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesContributor.fromJson(data, withIncluded: withIncluded),
     'services-CustomSlide': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesCustomSlide.fromJson(data, withIncluded: withIncluded),
     'services-EmailTemplate': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesEmailTemplate.fromJson(data, withIncluded: withIncluded),
@@ -49,6 +48,7 @@ Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dy
     'services-ReportTemplate': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesReportTemplate.fromJson(data, withIncluded: withIncluded),
     'services-Schedule': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesSchedule.fromJson(data, withIncluded: withIncluded),
     'services-ScheduledPerson': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesScheduledPerson.fromJson(data, withIncluded: withIncluded),
+    'services-SchedulingPreference': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesSchedulingPreference.fromJson(data, withIncluded: withIncluded),
     'services-Series': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesSeries.fromJson(data, withIncluded: withIncluded),
     'services-ServiceType': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesServiceType.fromJson(data, withIncluded: withIncluded),
     'services-ServiceTypePath': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoServicesServiceTypePath.fromJson(data, withIncluded: withIncluded),
@@ -157,6 +157,7 @@ Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dy
     'calendar-Organization': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarOrganization.fromJson(data, withIncluded: withIncluded),
     'calendar-Person': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarPerson.fromJson(data, withIncluded: withIncluded),
     'calendar-ReportTemplate': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarReportTemplate.fromJson(data, withIncluded: withIncluded),
+    'calendar-RequiredApproval': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarRequiredApproval.fromJson(data, withIncluded: withIncluded),
     'calendar-Resource': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarResource.fromJson(data, withIncluded: withIncluded),
     'calendar-ResourceApprovalGroup': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarResourceApprovalGroup.fromJson(data, withIncluded: withIncluded),
     'calendar-ResourceBooking': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoCalendarResourceBooking.fromJson(data, withIncluded: withIncluded),
@@ -174,6 +175,7 @@ Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dy
     'giving-Donation': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingDonation.fromJson(data, withIncluded: withIncluded),
     'giving-Fund': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingFund.fromJson(data, withIncluded: withIncluded),
     'giving-Label': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingLabel.fromJson(data, withIncluded: withIncluded),
+    'giving-Note': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingNote.fromJson(data, withIncluded: withIncluded),
     'giving-Organization': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingOrganization.fromJson(data, withIncluded: withIncluded),
     'giving-PaymentMethod': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingPaymentMethod.fromJson(data, withIncluded: withIncluded),
     'giving-PaymentSource': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingPaymentSource.fromJson(data, withIncluded: withIncluded),
@@ -185,11 +187,13 @@ Map<String, PcoResource Function(Map<String, dynamic> data, {List<Map<String, dy
     'giving-Refund': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGivingRefund.fromJson(data, withIncluded: withIncluded),
     'groups-Attendance': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsAttendance.fromJson(data, withIncluded: withIncluded),
     'groups-Event': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsEvent.fromJson(data, withIncluded: withIncluded),
+    'groups-EventNote': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsEventNote.fromJson(data, withIncluded: withIncluded),
     'groups-Group': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsGroup.fromJson(data, withIncluded: withIncluded),
     'groups-GroupType': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsGroupType.fromJson(data, withIncluded: withIncluded),
     'groups-Location': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsLocation.fromJson(data, withIncluded: withIncluded),
     'groups-Membership': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsMembership.fromJson(data, withIncluded: withIncluded),
     'groups-Organization': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsOrganization.fromJson(data, withIncluded: withIncluded),
+    'groups-Owner': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsOwner.fromJson(data, withIncluded: withIncluded),
     'groups-Person': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsPerson.fromJson(data, withIncluded: withIncluded),
     'groups-Resource': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsResource.fromJson(data, withIncluded: withIncluded),
     'groups-Tag': (Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}) => PcoGroupsTag.fromJson(data, withIncluded: withIncluded),

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.547998
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.499816
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -10,14 +10,26 @@ part of pco;
 /// - `createdAt` -> `?order=created_at`
 /// - `firstName` -> `?order=first_name`
 /// - `lastName` -> `?order=last_name`
+/// - `resolvesConflicts` -> `?order=resolves_conflicts`
 /// - `updatedAt` -> `?order=updated_at`
-enum PcoCalendarPersonOrder { createdAt, firstName, lastName, updatedAt }
+enum PcoCalendarPersonOrder { createdAt, firstName, lastName, resolvesConflicts, updatedAt }
 
 /// Possible Inbound Filters:
 /// - `eventOwners` -> `?filter=event_owners` : -- no description
 enum PcoCalendarPersonFilter { eventOwners }
 
 /// Creates a [PcoCalendarPersonQuery] object
+/// ## Possible Includes
+/// (translates to url parameter: `?include=a,b`)
+/// 
+/// Related data may be included by marking desired `includeSomething` variables as true:
+/// - `includeOrganization`: include associated organization 
+/// - `includeAll`: include all related objects
+/// 
+/// Alternatively, you may pass a list of strings to the `include` argument.
+/// 
+/// e.g. `PcoCalendarPersonQuery(includes: ['a', 'b'])`
+/// 
 /// ## Possible Query Fields
 /// (translates to url parameters like `?where[field_name]=value` or `?where[field_name][gt|lt]=value`)
 /// 
@@ -41,6 +53,7 @@ enum PcoCalendarPersonFilter { eventOwners }
 /// - `PcoCalendarPersonOrder.createdAt` : will order by `created_at`
 /// - `PcoCalendarPersonOrder.firstName` : will order by `first_name`
 /// - `PcoCalendarPersonOrder.lastName` : will order by `last_name`
+/// - `PcoCalendarPersonOrder.resolvesConflicts` : will order by `resolves_conflicts`
 /// - `PcoCalendarPersonOrder.updatedAt` : will order by `updated_at`
 /// 
 /// To reverse the order, set `reverse` to true.
@@ -56,6 +69,7 @@ class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
     PcoCalendarPersonOrder.createdAt: 'created_at',
     PcoCalendarPersonOrder.firstName: 'first_name',
     PcoCalendarPersonOrder.lastName: 'last_name',
+    PcoCalendarPersonOrder.resolvesConflicts: 'resolves_conflicts',
     PcoCalendarPersonOrder.updatedAt: 'updated_at',
   };
   static String orderString(PcoCalendarPersonOrder order, {bool reverse = false}) =>
@@ -67,6 +81,10 @@ class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
   static String filterString(PcoCalendarPersonFilter filter) => _filterMap[filter]!;
 
   PcoCalendarPersonQuery({
+    /// include associated organization
+    /// when true, adds `?include=organization` to url
+    bool includeOrganization = false,
+    
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
@@ -110,6 +128,7 @@ class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
+    if (includeOrganization) include.add('organization');
     
     if (whereCreatedAt != null) where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
     if (whereFirstName != null) where.add(PlanningCenterApiWhere.parse('first_name', whereFirstName));
@@ -126,7 +145,7 @@ class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 person
 /// - Type:               Person
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/people
@@ -176,6 +195,7 @@ class PcoCalendarPersonQuery extends PlanningCenterApiQuery {
 /// 
 /// Outbound Edges:
 /// - `eventresourcerequest-person-event_resource_requests`: https://api.planningcenteronline.com/calendar/v2/people/1/event_resource_requests
+/// - `organization-person-organization`: https://api.planningcenteronline.com/calendar/v2/people/1/organization
 /// 
 /// Inbound Edges:
 /// - `person-conflict-resolved_by`: https://api.planningcenteronline.com/calendar/v2/conflicts/1/resolved_by
@@ -223,13 +243,13 @@ class PcoCalendarPerson extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/people';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// 
-  static List<String> get canInclude => [];
+  /// - `organization`: include associated organization 
+  static List<String> get canInclude => ['organization'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `created_at`: (URLParameter), query on a specific created_at, example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -243,8 +263,9 @@ class PcoCalendarPerson extends PcoResource {
   /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
   /// - `first_name`: (URLParameter), prefix with a hyphen (-first_name) to reverse the order
   /// - `last_name`: (URLParameter), prefix with a hyphen (-last_name) to reverse the order
+  /// - `resolves_conflicts`: (URLParameter), prefix with a hyphen (-resolves_conflicts) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['created_at','first_name','last_name','updated_at'];
+  static List<String> get canOrderBy => ['created_at','first_name','last_name','resolves_conflicts','updated_at'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -324,6 +345,10 @@ class PcoCalendarPerson extends PcoResource {
   String get peoplePermissionsType => _attributes[kPeoplePermissionsType] ?? '';
   String get roomPermissionsType => _attributes[kRoomPermissionsType] ?? '';
   String get resourcesPermissionsType => _attributes[kResourcesPermissionsType] ?? '';
+  
+  // typed getters for each relationship
+  
+  PcoCalendarOrganization? get includedOrganization => _firstOrNull<PcoCalendarOrganization>(relationships['organization']);
 
   // Class Constructors
   PcoCalendarPerson.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
@@ -400,10 +425,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> get( {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> get( {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -415,10 +440,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> getResolvedByFromConflict(String conflictId, {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> getResolvedByFromConflict(String conflictId, {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -430,10 +455,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> getOwnerFromEvent(String eventId, {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> getOwnerFromEvent(String eventId, {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/events/$eventId/owner';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -445,10 +470,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> getCreatedByFromEventResourceRequest(String eventResourceRequestId, {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> getCreatedByFromEventResourceRequest(String eventResourceRequestId, {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -460,10 +485,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> getUpdatedByFromEventResourceRequest(String eventResourceRequestId, {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> getUpdatedByFromEventResourceRequest(String eventResourceRequestId, {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -475,10 +500,10 @@ class PcoCalendarPerson extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarPerson>> getFromResourceApprovalGroup(String resourceApprovalGroupId, {String? id, PcoCalendarPersonQuery? query, }) async {
+  static Future<PcoCollection<PcoCalendarPerson>> getFromResourceApprovalGroup(String resourceApprovalGroupId, {String? id, PcoCalendarPersonQuery? query, bool includeOrganization = false,}) async {
     query ??= PcoCalendarPersonQuery();
     
-    
+    if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoCalendarPerson>(url, query: query, apiVersion:kApiVersion);
@@ -502,6 +527,14 @@ class PcoCalendarPerson extends PcoResource {
     query ??= PcoCalendarEventResourceRequestQuery();
     var url = '$apiEndpoint/event_resource_requests';
     return PcoCollection.fromApiCall<PcoCalendarEventResourceRequest>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoCalendarOrganization] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/calendar/v2/people/1/organization`
+  Future<PcoCollection<PcoCalendarOrganization>> getOrganization({PcoCalendarOrganizationQuery? query}) async {
+    query ??= PcoCalendarOrganizationQuery();
+    var url = '$apiEndpoint/organization';
+    return PcoCollection.fromApiCall<PcoCalendarOrganization>(url, query: query, apiVersion: apiVersion);
   }
 
 

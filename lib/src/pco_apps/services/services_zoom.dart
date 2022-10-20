@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.356934
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.985820
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -54,7 +54,7 @@ class PcoServicesZoomQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/attachments/1/zooms
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media/1/attachments/1/zooms
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/attachments/1/zooms
 /// 
 /// ## Instantiation
@@ -129,7 +129,7 @@ class PcoServicesZoom extends PcoResource {
   static const String kTypeString = 'Zoom';
   static const String kTypeId = 'zoom';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/attachments/1/zooms';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/attachments/1/zooms';
 
   /// possible includes with parameter ?include=a,b

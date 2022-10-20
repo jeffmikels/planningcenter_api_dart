@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.518738
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.437566
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -67,7 +67,7 @@ class PcoPeopleWorkflowStepAssigneeSummaryQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_step_assignee_summary
 /// - Type:               WorkflowStepAssigneeSummary
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries
@@ -134,7 +134,7 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowStepAssigneeSummary';
   static const String kTypeId = 'workflow_step_assignee_summary';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries';
   static const String kCreatePathTemplate = 'null';
 

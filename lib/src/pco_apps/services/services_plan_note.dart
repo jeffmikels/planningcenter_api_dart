@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.329786
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.960945
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,15 +165,15 @@ class PcoServicesPlanNoteQuery extends PlanningCenterApiQuery {
 ///     "content": "string"
 ///   },
 ///   "relationships": {
-///     "plan_note_category": {
-///       "data": {
-///         "type": "PlanNoteCategory",
-///         "id": "1"
-///       }
-///     },
 ///     "created_by": {
 ///       "data": {
 ///         "type": "Person",
+///         "id": "1"
+///       }
+///     },
+///     "plan_note_category": {
+///       "data": {
+///         "type": "PlanNoteCategory",
 ///         "id": "1"
 ///       }
 ///     }

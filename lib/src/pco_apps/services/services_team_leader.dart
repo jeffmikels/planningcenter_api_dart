@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.354496
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.978053
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -11,8 +11,10 @@ part of pco;
 /// - `lastName` -> `?order=last_name`
 enum PcoServicesTeamLeaderOrder { firstName, lastName }
 
-/// Filtering is not allowed when requesting this object.
-enum PcoServicesTeamLeaderFilter { none }
+/// Possible Inbound Filters:
+/// - `notArchived` -> `?filter=not_archived` : -- no description
+/// - `notDeleted` -> `?filter=not_deleted` : -- no description
+enum PcoServicesTeamLeaderFilter { notArchived, notDeleted }
 
 /// Creates a [PcoServicesTeamLeaderQuery] object
 /// ## Possible Includes
@@ -51,7 +53,8 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoServicesTeamLeaderFilter, String> _filterMap = {
-    
+    PcoServicesTeamLeaderFilter.notArchived: 'not_archived',
+    PcoServicesTeamLeaderFilter.notDeleted: 'not_deleted',
   };
   static String filterString(PcoServicesTeamLeaderFilter filter) => _filterMap[filter]!;
 
@@ -68,6 +71,7 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
     bool includeAll = false,
 
 
+    PcoServicesTeamLeaderFilter? filterBy,
     PcoServicesTeamLeaderOrder? orderBy,
 
 
@@ -83,6 +87,7 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
     if (includeAll || includePeople) include.add('people');
     if (includeAll || includeTeam) include.add('team');
     
@@ -98,7 +103,7 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/team_leaders
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -126,8 +131,8 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people
-/// - `team-teamleader-team`: https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team
+/// - `person-teamleader-people`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/people
+/// - `team-teamleader-team`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/team
 /// 
 /// Inbound Edges:
 /// - `teamleader-person-team_leaders`: https://api.planningcenteronline.com/services/v2/people/1/team_leaders
@@ -167,7 +172,7 @@ class PcoServicesTeamLeader extends PcoResource {
   static const String kTypeString = 'TeamLeader';
   static const String kTypeId = 'team_leader';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/team_leaders';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
@@ -325,7 +330,7 @@ class PcoServicesTeamLeader extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesPerson] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/people`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/people`
   Future<PcoCollection<PcoServicesPerson>> getPeople({PcoServicesPersonQuery? query}) async {
     query ??= PcoServicesPersonQuery();
     var url = '$apiEndpoint/people';
@@ -333,7 +338,7 @@ class PcoServicesTeamLeader extends PcoResource {
   }
 
   /// Will get a collection of [PcoServicesTeam] objects (expecting one)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/assigned_team_leaders/1/team`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/team_leaders/1/team`
   Future<PcoCollection<PcoServicesTeam>> getTeam({PcoServicesTeamQuery? query}) async {
     query ??= PcoServicesTeamQuery();
     var url = '$apiEndpoint/team';

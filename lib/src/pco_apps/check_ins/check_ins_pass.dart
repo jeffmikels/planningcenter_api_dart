@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.417991
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.789405
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -114,6 +114,7 @@ class PcoCheckInsPassQuery extends PlanningCenterApiQuery {
 /// - `kind` (ro) -> PCO: `kind`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `sendTo` (ro) -> PCO: `send_to`
 /// 
 /// ## Edges and Actions
 /// 
@@ -184,6 +185,7 @@ class PcoCheckInsPass extends PcoResource {
   static const kKind = 'kind';
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
+  static const kSendTo = 'send_to';
 
 
   // getters and setters
@@ -205,6 +207,7 @@ class PcoCheckInsPass extends PcoResource {
   // getters for object attributes
   String get code => _attributes[kCode] ?? '';
   String get kind => _attributes[kKind] ?? '';
+  String get sendTo => _attributes[kSendTo] ?? '';
   
   // typed getters for each relationship
   
@@ -229,13 +232,14 @@ class PcoCheckInsPass extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCheckInsPass({String? id, String? code, String? kind, DateTime? createdAt, DateTime? updatedAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCheckInsPass({String? id, String? code, String? kind, DateTime? createdAt, DateTime? updatedAt, String? sendTo, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsPass.empty();
     obj._id = id;
     if (code != null) obj._attributes['code'] = code;
     if (kind != null) obj._attributes['kind'] = kind;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (sendTo != null) obj._attributes['send_to'] = sendTo;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {

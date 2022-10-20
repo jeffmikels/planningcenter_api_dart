@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.541923
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.489642
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,7 +152,7 @@ class PcoCalendarAttachmentQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 attachment
 /// - Type:               Attachment
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/attachments
@@ -224,7 +224,7 @@ class PcoCalendarAttachment extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Attachment';
   static const String kTypeId = 'attachment';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/attachments';
   static const String kCreatePathTemplate = 'null';
 

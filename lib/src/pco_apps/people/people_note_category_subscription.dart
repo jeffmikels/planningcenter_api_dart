@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.499363
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.415415
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -95,7 +95,7 @@ class PcoPeopleNoteCategorySubscriptionQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 note_category_subscription
 /// - Type:               NoteCategorySubscription
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_category_subscriptions
@@ -164,7 +164,7 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'NoteCategorySubscription';
   static const String kTypeId = 'note_category_subscription';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_category_subscriptions';
   static const String kCreatePathTemplate = 'null';
 

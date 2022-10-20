@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.352661
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.975614
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -88,6 +88,7 @@ class PcoServicesTagQuery extends PlanningCenterApiQuery {
 /// - `tag-person-tags`: https://api.planningcenteronline.com/services/v2/people/1/tags
 /// - `tag-song-tags`: https://api.planningcenteronline.com/services/v2/songs/1/tags
 /// - `tag-taggroup-tags`: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
+/// - `tag-teamposition-tags`: https://api.planningcenteronline.com/services/v2/service_types/1/team_positions/1/tags
 /// 
 /// Actions:
 /// NONE
@@ -288,6 +289,21 @@ class PcoServicesTag extends PcoResource {
     
     
     var url = '/services/v2/tag_groups/$tagGroupId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoServicesTag] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/tags`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesTag>> getFromServiceTypeAndTeamPosition(String serviceTypeId,String teamPositionId, {String? id, PcoServicesTagQuery? query, }) async {
+    query ??= PcoServicesTagQuery();
+    
+    
+    var url = '/services/v2/service_types/$serviceTypeId/team_positions/$teamPositionId/tags';
     if (id != null) url += '/$id';
     return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }

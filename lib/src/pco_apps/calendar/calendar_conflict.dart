@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.542566
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.491063
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -105,7 +105,7 @@ class PcoCalendarConflictQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 conflict
 /// - Type:               Conflict
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/conflicts
@@ -189,7 +189,7 @@ class PcoCalendarConflict extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Conflict';
   static const String kTypeId = 'conflict';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/conflicts';
   static const String kCreatePathTemplate = 'null';
 

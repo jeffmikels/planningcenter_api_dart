@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.297661
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.939072
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -54,7 +54,7 @@ class PcoServicesBlockoutDateQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockout_dates
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates
 /// - Create Endpoint:    NONE
 /// 
 /// ## Instantiation
@@ -131,7 +131,7 @@ class PcoServicesBlockoutDate extends PcoResource {
   static const String kTypeString = 'BlockoutDate';
   static const String kTypeId = 'blockout_date';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockout_dates';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/blockouts/1/blockout_dates';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b

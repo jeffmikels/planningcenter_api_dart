@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.494306
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.412914
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -139,7 +139,7 @@ class PcoPeopleNoteQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 note
 /// - Type:               Note
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/notes
@@ -233,7 +233,7 @@ class PcoPeopleNote extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Note';
   static const String kTypeId = 'note';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/notes';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/notes';
 
@@ -291,13 +291,13 @@ class PcoPeopleNote extends PcoResource {
   List<String> get createAllowed => ['note', 'created_at', 'updated_at', 'display_date', 'note_category_id'];
 
   @override
-  List<String> get updateAllowed => [];
+  List<String> get updateAllowed => ['note', 'created_at', 'updated_at', 'display_date', 'note_category_id'];
 
   @override
   bool get canCreate => true;
 
   @override
-  bool get canUpdate => false;
+  bool get canUpdate => true;
 
   @override
   bool get canDestroy => true;
@@ -356,7 +356,7 @@ class PcoPeopleNote extends PcoResource {
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `note`, `createdAt`, `updatedAt`, `displayDate`, `noteCategoryId`
-  /// - FIELDS USED WHEN UPDATING: none
+  /// - FIELDS USED WHEN UPDATING: `note`, `createdAt`, `updatedAt`, `displayDate`, `noteCategoryId`
   factory PcoPeopleNote({required String personId, String? id, String? note, DateTime? createdAt, DateTime? updatedAt, DateTime? displayDate, String? noteCategoryId, String? organizationId, String? createdById, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleNote.empty();
     obj._id = id;

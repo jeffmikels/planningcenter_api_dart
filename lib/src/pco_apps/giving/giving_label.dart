@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.566969
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.693567
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -89,7 +89,9 @@ class PcoGivingLabelQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `Label` is a way for Admins to manage and categorize `Donation`s.
 /// 
+/// Multiple `Label`s can be added for each `Donation`, and these will only be displayed in the Giving admin interface, so donors never see them.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

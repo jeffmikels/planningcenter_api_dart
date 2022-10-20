@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.546152
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.496926
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -133,7 +133,7 @@ class PcoCalendarEventTimeQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 event_time
 /// - Type:               EventTime
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times
@@ -203,7 +203,7 @@ class PcoCalendarEventTime extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'EventTime';
   static const String kTypeId = 'event_time';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/event_instances/1/event_times';
   static const String kCreatePathTemplate = 'null';
 

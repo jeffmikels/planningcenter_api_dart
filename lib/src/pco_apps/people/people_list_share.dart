@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.489817
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.409684
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -126,14 +126,14 @@ class PcoPeopleListShareQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 list_share
 /// - Type:               ListShare
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/shares
-/// - Create Endpoint:    NONE
+/// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/lists/1/shares
 /// 
 /// ## Instantiation
-/// - This object cannot be created through the API.
+/// - Create a new instance using the `PcoPeopleListShare()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleListShare.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
 /// 
@@ -150,10 +150,11 @@ class PcoPeopleListShareQuery extends PlanningCenterApiQuery {
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
-/// - `permission` (ro) -> PCO: `permission`
-/// - `group` (ro) -> PCO: `group`
+/// - `permission` (rw) -> PCO: `permission`
+/// - `group` (rw) -> PCO: `group`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `name` (ro) -> PCO: `name`
+/// - `personId` (wo) -> PCO: `person_id`
 /// 
 /// ## Edges and Actions
 /// 
@@ -191,9 +192,9 @@ class PcoPeopleListShare extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'ListShare';
   static const String kTypeId = 'list_share';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/shares';
-  static const String kCreatePathTemplate = 'null';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/shares';
 
   /// possible includes with parameter ?include=a,b
   /// - `person`: include associated person 
@@ -234,28 +235,47 @@ class PcoPeopleListShare extends PcoResource {
   static const kGroup = 'group';
   static const kCreatedAt = 'created_at';
   static const kName = 'name';
+  static const kPersonId = 'person_id';
 
 
   // getters and setters
   @override
-  List<String> get createAllowed => [];
+  List<String> get createAllowed => ['permission', 'group', 'person_id'];
 
   @override
-  List<String> get updateAllowed => [];
+  List<String> get updateAllowed => ['permission', 'group'];
 
   @override
-  bool get canCreate => false;
+  bool get canCreate => true;
 
   @override
-  bool get canUpdate => false;
+  bool get canUpdate => true;
 
   @override
-  bool get canDestroy => false;
+  bool get canDestroy => true;
 
   // getters for object attributes
   String get permission => _attributes[kPermission] ?? '';
   String get group => _attributes[kGroup] ?? '';
   String get name => _attributes[kName] ?? '';
+  
+  // setters for object attributes
+  
+  /// Possible values: `view` or `manage`
+  ///
+  /// pass `null` to remove key from attributes
+  set permission(String? x) => (x == null) ? _attributes.remove(kPermission) : _attributes[kPermission] = x;
+  
+  /// Possible values: `No Access`, `Viewer`, `Editor`, or `Manager`
+  ///
+  /// pass `null` to remove key from attributes
+  set group(String? x) => (x == null) ? _attributes.remove(kGroup) : _attributes[kGroup] = x;
+  
+  // additional setters / getters for create/update attributes
+  ///
+  /// pass `null` to remove key from attributes
+  set personId(String? x) => (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  String get personId => _attributes[kPersonId] ?? '';
   
   // typed getters for each relationship
   
@@ -268,25 +288,26 @@ class PcoPeopleListShare extends PcoResource {
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
   /// 
-  /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleListShare.empty() : super(kPcoApplication, kTypeString);
 
-  /// Create a new [PcoPeopleListShare] object. This object cannot be created with the API
+  /// Create a new [PcoPeopleListShare] object using this endpoint: `https://api.planningcenteronline.com/people/v2/lists/$listId/shares`
   /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
-  /// - This object cannot be saved directly to the server.
+  /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  /// - FIELDS USED WHEN CREATING: none
-  /// - FIELDS USED WHEN UPDATING: none
-  factory PcoPeopleListShare({String? id, String? permission, String? group, DateTime? createdAt, String? name, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  /// - FIELDS USED WHEN CREATING: `permission`, `group`, `personId`
+  /// - FIELDS USED WHEN UPDATING: `permission`, `group`
+  factory PcoPeopleListShare({required String listId, String? id, String? permission, String? group, DateTime? createdAt, String? name, String? personId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleListShare.empty();
     obj._id = id;
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/lists/$listId/shares';
     if (permission != null) obj._attributes['permission'] = permission;
     if (group != null) obj._attributes['group'] = group;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (name != null) obj._attributes['name'] = name;
+    if (personId != null) obj._attributes['person_id'] = personId;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {

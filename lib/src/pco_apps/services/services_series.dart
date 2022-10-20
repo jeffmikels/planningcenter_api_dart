@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.338531
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.969109
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -121,6 +121,7 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
 /// - `artworkForMobile` (ro) -> PCO: `artwork_for_mobile`
 /// - `artworkForPlan` (ro) -> PCO: `artwork_for_plan`
 /// - `artworkOriginal` (ro) -> PCO: `artwork_original`
+/// - `isHasArtwork` (ro) -> PCO: `has_artwork`
 /// 
 /// ## Edges and Actions
 /// 
@@ -149,7 +150,8 @@ class PcoServicesSeriesQuery extends PlanningCenterApiQuery {
 ///     "artwork_for_dashboard": "string",
 ///     "artwork_for_mobile": "string",
 ///     "artwork_for_plan": "string",
-///     "artwork_original": "string"
+///     "artwork_original": "string",
+///     "has_artwork": true
 ///   },
 ///   "relationships": {}
 /// }
@@ -203,6 +205,7 @@ class PcoServicesSeries extends PcoResource {
   static const kArtworkForMobile = 'artwork_for_mobile';
   static const kArtworkForPlan = 'artwork_for_plan';
   static const kArtworkOriginal = 'artwork_original';
+  static const kHasArtwork = 'has_artwork';
 
 
   // getters and setters
@@ -230,6 +233,7 @@ class PcoServicesSeries extends PcoResource {
   String get artworkForMobile => _attributes[kArtworkForMobile] ?? '';
   String get artworkForPlan => _attributes[kArtworkForPlan] ?? '';
   String get artworkOriginal => _attributes[kArtworkOriginal] ?? '';
+  bool get isHasArtwork => _attributes[kHasArtwork] == true;
 
   // Class Constructors
   PcoServicesSeries.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
@@ -250,7 +254,7 @@ class PcoServicesSeries extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoServicesSeries({String? id, DateTime? createdAt, DateTime? updatedAt, String? artworkFileName, String? artworkContentType, int? artworkFileSize, String? title, String? artworkForDashboard, String? artworkForMobile, String? artworkForPlan, String? artworkOriginal, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesSeries({String? id, DateTime? createdAt, DateTime? updatedAt, String? artworkFileName, String? artworkContentType, int? artworkFileSize, String? title, String? artworkForDashboard, String? artworkForMobile, String? artworkForPlan, String? artworkOriginal, bool? isHasArtwork, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesSeries.empty();
     obj._id = id;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
@@ -263,6 +267,7 @@ class PcoServicesSeries extends PcoResource {
     if (artworkForMobile != null) obj._attributes['artwork_for_mobile'] = artworkForMobile;
     if (artworkForPlan != null) obj._attributes['artwork_for_plan'] = artworkForPlan;
     if (artworkOriginal != null) obj._attributes['artwork_original'] = artworkOriginal;
+    if (isHasArtwork != null) obj._attributes['has_artwork'] = isHasArtwork;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {

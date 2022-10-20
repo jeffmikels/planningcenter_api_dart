@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.279290
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.923894
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -102,7 +102,6 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 /// - `id` (ro) -> PCO: `id`
 /// - `bpm` (rw) -> PCO: `bpm`
 /// - `createdAt` (ro) -> PCO: `created_at`
-/// - `isrc` (rw) -> PCO: `isrc`
 /// - `isHasChords` (ro) -> PCO: `has_chords`
 /// - `length` (rw) -> PCO: `length`
 /// - `meter` (rw) -> PCO: `meter`
@@ -127,6 +126,7 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 /// - `chordChartChordColor` (rw) -> PCO: `chord_chart_chord_color`
 /// - `archivedAt` (ro) -> PCO: `archived_at`
 /// - `lyrics` (ro) -> PCO: `lyrics`
+/// - `isrc` (rw) -> PCO: `isrc`
 /// - `mtid` (rw) -> PCO: `mtid`
 /// - `rehearsalMixId` (rw) -> PCO: `rehearsal_mix_id`
 /// 
@@ -153,7 +153,6 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 ///   "attributes": {
 ///     "bpm": 1.42,
 ///     "created_at": "2000-01-01T12:00:00Z",
-///     "isrc": "string",
 ///     "has_chords": true,
 ///     "length": 1,
 ///     "meter": "string",
@@ -177,9 +176,7 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
 ///     "sequence_full": [],
 ///     "chord_chart_chord_color": 1,
 ///     "archived_at": "2000-01-01T12:00:00Z",
-///     "lyrics": "string",
-///     "mtid": "primary_key",
-///     "rehearsal_mix_id": "primary_key"
+///     "lyrics": "string"
 ///   },
 ///   "relationships": {
 ///     "updated_by": {
@@ -245,7 +242,6 @@ class PcoServicesArrangement extends PcoResource {
   static const kId = 'id';
   static const kBpm = 'bpm';
   static const kCreatedAt = 'created_at';
-  static const kIsrc = 'isrc';
   static const kHasChords = 'has_chords';
   static const kLength = 'length';
   static const kMeter = 'meter';
@@ -270,6 +266,7 @@ class PcoServicesArrangement extends PcoResource {
   static const kChordChartChordColor = 'chord_chart_chord_color';
   static const kArchivedAt = 'archived_at';
   static const kLyrics = 'lyrics';
+  static const kIsrc = 'isrc';
   static const kMtid = 'mtid';
   static const kRehearsalMixId = 'rehearsal_mix_id';
 
@@ -292,7 +289,6 @@ class PcoServicesArrangement extends PcoResource {
 
   // getters for object attributes
   double get bpm => _attributes[kBpm]?.toDouble() ?? 0.0;
-  String get isrc => _attributes[kIsrc] ?? '';
   bool get isHasChords => _attributes[kHasChords] == true;
   int get length => _attributes[kLength] ?? 0;
   String get meter => _attributes[kMeter] ?? '';
@@ -316,6 +312,7 @@ class PcoServicesArrangement extends PcoResource {
   int get chordChartChordColor => _attributes[kChordChartChordColor] ?? 0;
   DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
   String get lyrics => _attributes[kLyrics] ?? '';
+  int get isrc => _attributes[kIsrc] ?? 0;
   String get mtid => _attributes[kMtid] ?? '';
   String get rehearsalMixId => _attributes[kRehearsalMixId] ?? '';
   
@@ -323,9 +320,6 @@ class PcoServicesArrangement extends PcoResource {
   ///
   /// pass `null` to remove key from attributes
   set bpm(double? x) => (x == null) ? _attributes.remove(kBpm) : _attributes[kBpm] = x;
-  ///
-  /// pass `null` to remove key from attributes
-  set isrc(String? x) => (x == null) ? _attributes.remove(kIsrc) : _attributes[kIsrc] = x;
   ///
   /// pass `null` to remove key from attributes
   set length(int? x) => (x == null) ? _attributes.remove(kLength) : _attributes[kLength] = x;
@@ -443,6 +437,9 @@ class PcoServicesArrangement extends PcoResource {
   ///
   /// pass `null` to remove key from attributes
   set chordChartChordColor(int? x) => (x == null) ? _attributes.remove(kChordChartChordColor) : _attributes[kChordChartChordColor] = x;
+  ///
+  /// pass `null` to remove key from attributes
+  set isrc(int? x) => (x == null) ? _attributes.remove(kIsrc) : _attributes[kIsrc] = x;
   
   /// An alias for rehearsal_mix_id
   ///
@@ -478,13 +475,12 @@ class PcoServicesArrangement extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `bpm`, `chordChart`, `chordChartChordColor`, `chordChartColumns`, `chordChartFont`, `chordChartFontSize`, `chordChartKey`, `isrc`, `length`, `isLyricsEnabled`, `meter`, `mtid`, `name`, `notes`, `isNumberChartEnabled`, `isNumeralChartEnabled`, `printMargin`, `printOrientation`, `printPageSize`, `rehearsalMixId`, `sequence`
   /// - FIELDS USED WHEN UPDATING: `bpm`, `chordChart`, `chordChartChordColor`, `chordChartColumns`, `chordChartFont`, `chordChartFontSize`, `chordChartKey`, `isrc`, `length`, `isLyricsEnabled`, `meter`, `mtid`, `name`, `notes`, `isNumberChartEnabled`, `isNumeralChartEnabled`, `printMargin`, `printOrientation`, `printPageSize`, `rehearsalMixId`, `sequence`
-  factory PcoServicesArrangement({required String songId, String? id, double? bpm, DateTime? createdAt, String? isrc, bool? isHasChords, int? length, String? meter, String? name, String? notes, String? printMargin, String? printOrientation, String? printPageSize, DateTime? updatedAt, String? chordChart, String? chordChartFont, String? chordChartKey, int? chordChartColumns, int? chordChartFontSize, bool? isHasChordChart, bool? isLyricsEnabled, bool? isNumberChartEnabled, bool? isNumeralChartEnabled, List? sequence, List? sequenceShort, List? sequenceFull, int? chordChartChordColor, DateTime? archivedAt, String? lyrics, String? mtid, String? rehearsalMixId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesArrangement({required String songId, String? id, double? bpm, DateTime? createdAt, bool? isHasChords, int? length, String? meter, String? name, String? notes, String? printMargin, String? printOrientation, String? printPageSize, DateTime? updatedAt, String? chordChart, String? chordChartFont, String? chordChartKey, int? chordChartColumns, int? chordChartFontSize, bool? isHasChordChart, bool? isLyricsEnabled, bool? isNumberChartEnabled, bool? isNumeralChartEnabled, List? sequence, List? sequenceShort, List? sequenceFull, int? chordChartChordColor, DateTime? archivedAt, String? lyrics, int? isrc, String? mtid, String? rehearsalMixId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesArrangement.empty();
     obj._id = id;
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/songs/$songId/arrangements';
     if (bpm != null) obj._attributes['bpm'] = bpm;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (isrc != null) obj._attributes['isrc'] = isrc;
     if (isHasChords != null) obj._attributes['has_chords'] = isHasChords;
     if (length != null) obj._attributes['length'] = length;
     if (meter != null) obj._attributes['meter'] = meter;
@@ -509,6 +505,7 @@ class PcoServicesArrangement extends PcoResource {
     if (chordChartChordColor != null) obj._attributes['chord_chart_chord_color'] = chordChartChordColor;
     if (archivedAt != null) obj._attributes['archived_at'] = archivedAt.toIso8601String();
     if (lyrics != null) obj._attributes['lyrics'] = lyrics;
+    if (isrc != null) obj._attributes['isrc'] = isrc;
     if (mtid != null) obj._attributes['mtid'] = mtid;
     if (rehearsalMixId != null) obj._attributes['rehearsal_mix_id'] = rehearsalMixId;
 

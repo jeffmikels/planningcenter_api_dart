@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.507767
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.425575
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -141,7 +141,7 @@ class PcoPeopleReportQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 report
 /// - Type:               Report
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/reports
@@ -161,7 +161,7 @@ class PcoPeopleReportQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// A report is editable liquid syntax that provides  a powerful tool for presenting your Lists however you want.
+/// A report is editable liquid syntax that provides a powerful tool for presenting your Lists however you want.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -200,7 +200,7 @@ class PcoPeopleReport extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Report';
   static const String kTypeId = 'report';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/reports';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/reports';
 

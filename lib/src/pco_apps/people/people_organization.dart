@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.500195
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.417035
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoPeopleOrganizationQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 organization
 /// - Type:               Organization
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2
@@ -80,6 +80,7 @@ class PcoPeopleOrganizationQuery extends PlanningCenterApiQuery {
 /// - `dateFormat` (ro) -> PCO: `date_format`
 /// - `timeZone` (ro) -> PCO: `time_zone`
 /// - `contactWebsite` (ro) -> PCO: `contact_website`
+/// - `createdAt` (ro) -> PCO: `created_at`
 /// - `avatarUrl` (ro) -> PCO: `avatar_url`
 /// 
 /// ## Edges and Actions
@@ -110,6 +111,7 @@ class PcoPeopleOrganizationQuery extends PlanningCenterApiQuery {
 /// - `person-organization-people`: https://api.planningcenteronline.com/people/v2/people
 /// - `peopleimport-organization-people_imports`: https://api.planningcenteronline.com/people/v2/people_imports
 /// - `personmerger-organization-person_mergers`: https://api.planningcenteronline.com/people/v2/person_mergers
+/// - `phonenumber-organization-phone_numbers`: https://api.planningcenteronline.com/people/v2/phone_numbers
 /// - `report-organization-reports`: https://api.planningcenteronline.com/people/v2/reports
 /// - `schooloption-organization-school_options`: https://api.planningcenteronline.com/people/v2/school_options
 /// - `socialprofile-organization-social_profiles`: https://api.planningcenteronline.com/people/v2/social_profiles
@@ -134,6 +136,7 @@ class PcoPeopleOrganizationQuery extends PlanningCenterApiQuery {
 ///     "date_format": 1,
 ///     "time_zone": "string",
 ///     "contact_website": "string",
+///     "created_at": "2000-01-01T12:00:00Z",
 ///     "avatar_url": "string"
 ///   },
 ///   "relationships": {}
@@ -143,7 +146,7 @@ class PcoPeopleOrganization extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2';
   static const String kCreatePathTemplate = 'null';
 
@@ -183,6 +186,7 @@ class PcoPeopleOrganization extends PcoResource {
   static const kDateFormat = 'date_format';
   static const kTimeZone = 'time_zone';
   static const kContactWebsite = 'contact_website';
+  static const kCreatedAt = 'created_at';
   static const kAvatarUrl = 'avatar_url';
 
 
@@ -229,7 +233,7 @@ class PcoPeopleOrganization extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoPeopleOrganization({String? id, String? name, String? countryCode, int? dateFormat, String? timeZone, String? contactWebsite, String? avatarUrl, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoPeopleOrganization({String? id, String? name, String? countryCode, int? dateFormat, String? timeZone, String? contactWebsite, DateTime? createdAt, String? avatarUrl, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleOrganization.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
@@ -237,6 +241,7 @@ class PcoPeopleOrganization extends PcoResource {
     if (dateFormat != null) obj._attributes['date_format'] = dateFormat;
     if (timeZone != null) obj._attributes['time_zone'] = timeZone;
     if (contactWebsite != null) obj._attributes['contact_website'] = contactWebsite;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (avatarUrl != null) obj._attributes['avatar_url'] = avatarUrl;
 
     if (withRelationships != null) {
@@ -457,6 +462,9 @@ class PcoPeopleOrganization extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/note_categories`
+  /// 
+  /// Available Query Filters:
+  /// - `view_creatable`
   Future<PcoCollection<PcoPeopleNoteCategory>> getNoteCategories({PcoPeopleNoteCategoryQuery? query}) async {
     query ??= PcoPeopleNoteCategoryQuery();
     var url = '$apiEndpoint/note_categories';
@@ -510,6 +518,14 @@ class PcoPeopleOrganization extends PcoResource {
     return PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url, query: query, apiVersion: apiVersion);
   }
 
+  /// Will get a collection of [PcoPeoplePhoneNumber] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/people/v2/phone_numbers`
+  Future<PcoCollection<PcoPeoplePhoneNumber>> getPhoneNumbers({PcoPeoplePhoneNumberQuery? query}) async {
+    query ??= PcoPeoplePhoneNumberQuery();
+    var url = '$apiEndpoint/phone_numbers';
+    return PcoCollection.fromApiCall<PcoPeoplePhoneNumber>(url, query: query, apiVersion: apiVersion);
+  }
+
   /// Will get a collection of [PcoPeopleReport] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/reports`
   Future<PcoCollection<PcoPeopleReport>> getReports({PcoPeopleReportQuery? query}) async {
@@ -557,7 +573,9 @@ class PcoPeopleOrganization extends PcoResource {
   /// using a path like this: `https://api.planningcenteronline.com/people/v2/workflows`
   /// 
   /// Available Query Filters:
+  /// - `has_my_cards`
   /// - `only_deleted`
+  /// - `recently_viewed`
   /// - `with_deleted`
   /// - `with_recoverable`
   /// - `with_steps`

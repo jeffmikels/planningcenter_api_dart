@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.408803
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.779364
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -522,6 +522,7 @@ class PcoCheckInsEvent extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`

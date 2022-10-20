@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.568646
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.695930
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -100,7 +100,9 @@ class PcoGivingPersonQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A Planning Center `Person` record that has been added to Giving.
 /// 
+/// The `Person` object in Planning Center is so crucial that we have an entire product dedicated to managing, keeping track of, editing, and creating these records and metadata around them. For additional info, take a look at the [Planning Center People API Docs](https://developer.planning.center/docs/#/apps/people).
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.491036
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.410617
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -85,7 +85,7 @@ class PcoPeopleMaritalStatusQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 marital_status
 /// - Type:               MaritalStatus
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/marital_statuses
@@ -138,7 +138,7 @@ class PcoPeopleMaritalStatus extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'MaritalStatus';
   static const String kTypeId = 'marital_status';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/marital_statuses';
 

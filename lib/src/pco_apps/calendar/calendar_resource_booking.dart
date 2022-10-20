@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.550435
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.502973
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -168,7 +168,7 @@ class PcoCalendarResourceBookingQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 resource_booking
 /// - Type:               ResourceBooking
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/resource_bookings
@@ -253,7 +253,7 @@ class PcoCalendarResourceBooking extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ResourceBooking';
   static const String kTypeId = 'resource_booking';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/resource_bookings';
   static const String kCreatePathTemplate = 'null';
 

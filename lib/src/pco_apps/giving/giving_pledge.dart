@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.569237
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.696566
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -141,7 +141,7 @@ class PcoGivingPledgeQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// 
+/// A `Pledge` made by a `Person` toward a particular `PledgeCampaign`.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

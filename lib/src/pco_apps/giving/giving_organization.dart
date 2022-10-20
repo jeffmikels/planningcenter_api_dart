@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.567372
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.694331
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,7 @@ class PcoGivingOrganizationQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
-/// 
+/// The root level `Organization` record which serves as a link to `Donation`s, `People`, `Fund`s, etc.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

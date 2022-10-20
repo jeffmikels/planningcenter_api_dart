@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.563189
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.689043
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -101,7 +101,20 @@ class PcoGivingBatchQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `Batch` is a collection of `Donation`s. When creating `Donation`'s via the API, you're required to put them in a `Batch`.
 /// 
+/// When a `Batch` is first created, it's in the `in_progress` or "uncommitted" state. You can freely add/remove/modify `Donation`s in this `Batch` and they won't show up in a donor's donation history online, they won't appear in any donor statements issued by the Giving admin, and changes to these donations are not flagged in the system log. Think of it as a staging area for donations.
+/// 
+/// When a `Batch` is committed (see more in the Actions section), all of the `Donation`s within it are also marked as "committed". At that point, they're visible to donors in their online history, and any further edits made to those `Donation`s are logged and visible to Giving admins.
+/// 
+/// With all of that in mind, you can use `Batch`es in one of two ways:
+/// 
+///   1.  Create an uncommitted `Batch`, add `Donation`s to it, then commit the `Batch`.
+///   2.  Create a `Batch`, commit it, then add `Donation`s to it.
+/// 
+/// In both cases, the end result is the same. The main difference is that option #2 does not provide you/other admins the opportunity to fix any mistakes before changes are logged and `Donation`s are made visible to donors. Any `Donation`s added to a committed `Batch` will automatically be committed as well.
+/// 
+/// Whichever route you decide to take, it's helpful to make use of the `Batch`'s description to help differentiate these groupings from each other and from other `Batch`es that the Giving admins might be creating on their own.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -228,6 +241,8 @@ class PcoGivingBatch extends PcoResource {
   String get status => _attributes[kStatus] ?? '';
   
   // setters for object attributes
+  
+  /// A brief description of what a batch is for. This is displayed in Giving to help differentiate different batches from one another. If no description is provided for a batch, it will be referred to as `Untitled batch` within Giving.
   ///
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null) ? _attributes.remove(kDescription) : _attributes[kDescription] = x;

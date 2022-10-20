@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.582807
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:17.387281
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,9 +20,10 @@ enum PcoGroupsEventOrder { endsAt, name, startsAt }
 /// - `groupType` -> `?filter=group_type` : filter events from specific group types; provide an additional `group_type_id` param
 /// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
 /// 
+/// - `myGroups` -> `?filter=my_groups` : -- no description
 /// - `notCanceled` -> `?filter=not_canceled` : -- no description
 /// - `upcoming` -> `?filter=upcoming` : -- no description
-enum PcoGroupsEventFilter { canceled, group, groupType, notCanceled, upcoming }
+enum PcoGroupsEventFilter { canceled, group, groupType, myGroups, notCanceled, upcoming }
 
 /// Creates a [PcoGroupsEventQuery] object
 /// ## Possible Includes
@@ -80,6 +81,7 @@ class PcoGroupsEventQuery extends PlanningCenterApiQuery {
     PcoGroupsEventFilter.canceled: 'canceled',
     PcoGroupsEventFilter.group: 'group',
     PcoGroupsEventFilter.groupType: 'group_type',
+    PcoGroupsEventFilter.myGroups: 'my_groups',
     PcoGroupsEventFilter.notCanceled: 'not_canceled',
     PcoGroupsEventFilter.upcoming: 'upcoming',
   };
@@ -184,6 +186,7 @@ class PcoGroupsEventQuery extends PlanningCenterApiQuery {
 /// - `isRepeating` (ro) -> PCO: `repeating`
 /// - `startsAt` (ro) -> PCO: `starts_at`
 /// - `virtualLocationUrl` (ro) -> PCO: `virtual_location_url`
+/// - `visitorsCount` (ro) -> PCO: `visitors_count`
 /// 
 /// ## Edges and Actions
 /// 
@@ -191,6 +194,7 @@ class PcoGroupsEventQuery extends PlanningCenterApiQuery {
 /// - `attendance-event-attendances`: https://api.planningcenteronline.com/groups/v2/events/1/attendances
 /// - `group-event-group`: https://api.planningcenteronline.com/groups/v2/events/1/group
 /// - `location-event-location`: https://api.planningcenteronline.com/groups/v2/events/1/location
+/// - `eventnote-event-notes`: https://api.planningcenteronline.com/groups/v2/events/1/notes
 /// 
 /// Inbound Edges:
 /// - `event-group-events`: https://api.planningcenteronline.com/groups/v2/groups/1/events
@@ -220,7 +224,8 @@ class PcoGroupsEventQuery extends PlanningCenterApiQuery {
 ///     "reminders_sent_at": "2000-01-01T12:00:00Z",
 ///     "repeating": true,
 ///     "starts_at": "2000-01-01T12:00:00Z",
-///     "virtual_location_url": "string"
+///     "virtual_location_url": "string",
+///     "visitors_count": 1
 ///   },
 ///   "relationships": {
 ///     "attendance_submitter": {
@@ -308,6 +313,7 @@ class PcoGroupsEvent extends PcoResource {
   static const kRepeating = 'repeating';
   static const kStartsAt = 'starts_at';
   static const kVirtualLocationUrl = 'virtual_location_url';
+  static const kVisitorsCount = 'visitors_count';
 
 
   // getters and setters
@@ -341,6 +347,7 @@ class PcoGroupsEvent extends PcoResource {
   bool get isRepeating => _attributes[kRepeating] == true;
   DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
   String get virtualLocationUrl => _attributes[kVirtualLocationUrl] ?? '';
+  int get visitorsCount => _attributes[kVisitorsCount] ?? 0;
   
   // typed getters for each relationship
   
@@ -366,7 +373,7 @@ class PcoGroupsEvent extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoGroupsEvent({String? id, bool? isAttendanceRequestsEnabled, bool? isAutomatedReminderEnabled, bool? isCanceled, DateTime? canceledAt, String? description, DateTime? endsAt, String? locationTypePreference, bool? isMultiDay, String? name, bool? isRemindersSent, DateTime? remindersSentAt, bool? isRepeating, DateTime? startsAt, String? virtualLocationUrl, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoGroupsEvent({String? id, bool? isAttendanceRequestsEnabled, bool? isAutomatedReminderEnabled, bool? isCanceled, DateTime? canceledAt, String? description, DateTime? endsAt, String? locationTypePreference, bool? isMultiDay, String? name, bool? isRemindersSent, DateTime? remindersSentAt, bool? isRepeating, DateTime? startsAt, String? virtualLocationUrl, int? visitorsCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoGroupsEvent.empty();
     obj._id = id;
     if (isAttendanceRequestsEnabled != null) obj._attributes['attendance_requests_enabled'] = isAttendanceRequestsEnabled;
@@ -383,6 +390,7 @@ class PcoGroupsEvent extends PcoResource {
     if (isRepeating != null) obj._attributes['repeating'] = isRepeating;
     if (startsAt != null) obj._attributes['starts_at'] = startsAt.toIso8601String();
     if (virtualLocationUrl != null) obj._attributes['virtual_location_url'] = virtualLocationUrl;
+    if (visitorsCount != null) obj._attributes['visitors_count'] = visitorsCount;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -420,6 +428,7 @@ class PcoGroupsEvent extends PcoResource {
   /// filter events from specific group types; provide an additional `group_type_id` param
   /// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
   /// 
+  /// - `my_groups`
   /// - `not_canceled`
   /// - `upcoming`
   /// 
@@ -527,6 +536,14 @@ class PcoGroupsEvent extends PcoResource {
     query ??= PcoGroupsLocationQuery();
     var url = '$apiEndpoint/location';
     return PcoCollection.fromApiCall<PcoGroupsLocation>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoGroupsEventNote] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/groups/v2/events/1/notes`
+  Future<PcoCollection<PcoGroupsEventNote>> getNotes({PcoGroupsEventNoteQuery? query}) async {
+    query ??= PcoGroupsEventNoteQuery();
+    var url = '$apiEndpoint/notes';
+    return PcoCollection.fromApiCall<PcoGroupsEventNote>(url, query: query, apiVersion: apiVersion);
   }
 
 

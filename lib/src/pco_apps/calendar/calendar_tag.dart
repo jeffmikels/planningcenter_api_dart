@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.552978
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.505149
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -143,7 +143,7 @@ class PcoCalendarTagQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 tag
 /// - Type:               Tag
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/tags
@@ -211,7 +211,7 @@ class PcoCalendarTag extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Tag';
   static const String kTypeId = 'tag';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/tags';
   static const String kCreatePathTemplate = 'null';
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.586710
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:17.390508
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -222,6 +222,7 @@ class PcoGroupsOrganization extends PcoResource {
   /// filter events from specific group types; provide an additional `group_type_id` param
   /// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
   /// 
+  /// - `my_groups`
   /// - `not_canceled`
   /// - `upcoming`
   Future<PcoCollection<PcoGroupsEvent>> getEvents({PcoGroupsEventQuery? query}) async {
@@ -244,6 +245,17 @@ class PcoGroupsOrganization extends PcoResource {
 
   /// Will get a collection of [PcoGroupsGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/groups/v2/groups`
+  /// 
+  /// Available Query Filters:
+  /// - `group`
+  /// filter events from specific groups; provide an additional `group_id` param
+  /// as a comma-separated list of IDs, ex: `?filter=group&group_id=1,2,3`
+  /// 
+  /// - `group_type`
+  /// filter events from specific group types; provide an additional `group_type_id` param
+  /// as a comma-separated list of IDs, ex: `?filter=group_type&group_type_id=1,2,3`
+  /// 
+  /// - `my_groups`
   Future<PcoCollection<PcoGroupsGroup>> getGroups({PcoGroupsGroupQuery? query}) async {
     query ??= PcoGroupsGroupQuery();
     var url = '$apiEndpoint/groups';

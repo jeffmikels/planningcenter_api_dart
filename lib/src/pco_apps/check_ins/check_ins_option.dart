@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.416185
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.788103
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -101,11 +101,13 @@ class PcoCheckInsOptionQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
+/// - `checkin-option-check_ins`: https://api.planningcenteronline.com/check-ins/v2/options/1/check_ins
 /// - `label-option-label`: https://api.planningcenteronline.com/check-ins/v2/options/1/label
 /// 
 /// Inbound Edges:
 /// - `option-checkin-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/options
 /// - `option-location-options`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/locations/1/options
+/// - `option-organization-options`: https://api.planningcenteronline.com/check-ins/v2/options
 /// 
 /// Actions:
 /// NONE
@@ -244,6 +246,21 @@ class PcoCheckInsOption extends PcoResource {
 
 
   /// Will get a collection of [PcoCheckInsOption] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/options`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCheckInsOption>> get( {String? id, PcoCheckInsOptionQuery? query, bool includeLabel = false,}) async {
+    query ??= PcoCheckInsOptionQuery();
+    
+    if (includeLabel) query.include.add('label');
+    var url = '/check-ins/v2/options';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsOption>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoCheckInsOption] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/options`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
@@ -277,6 +294,14 @@ class PcoCheckInsOption extends PcoResource {
   // Outbound Edges
   // ---------------------------------
   // Instance functions to traverse outbound edges
+
+  /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/options/1/check_ins`
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckIns({PcoCheckInsCheckInQuery? query}) async {
+    query ??= PcoCheckInsCheckInQuery();
+    var url = '$apiEndpoint/check_ins';
+    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url, query: query, apiVersion: apiVersion);
+  }
 
   /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/options/1/label`

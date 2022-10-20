@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.568151
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.695363
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,9 @@ class PcoGivingPaymentSourceQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A donation's `PaymentSource` refers to the platform it originated from.
 /// 
+/// `Donation`s made through Giving will be assigned the built-in `PaymentSource` "Planning Center". `Donation`s made through external platforms (Square, Pushpay, ect.) can be assigned a `PaymentSource` identifying them as such.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -167,6 +169,8 @@ class PcoGivingPaymentSource extends PcoResource {
   String get name => _attributes[kName] ?? '';
   
   // setters for object attributes
+  
+  /// Required. The name of a payment source. Must be unique within the associated organization.
   ///
   /// pass `null` to remove key from attributes
   set name(String? x) => (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.509584
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.427717
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -65,7 +65,7 @@ class PcoPeopleServiceTimeQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 service_time
 /// - Type:               ServiceTime
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/campuses/1/service_times
@@ -145,7 +145,7 @@ class PcoPeopleServiceTime extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'ServiceTime';
   static const String kTypeId = 'service_time';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/campuses/1/service_times';
 

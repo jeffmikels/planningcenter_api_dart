@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.472790
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.399198
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,7 +172,7 @@ class PcoPeopleConditionQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 condition
 /// - Type:               Condition
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions
@@ -245,7 +245,7 @@ class PcoPeopleCondition extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Condition';
   static const String kTypeId = 'condition';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/rules/1/conditions';
   static const String kCreatePathTemplate = 'null';
 

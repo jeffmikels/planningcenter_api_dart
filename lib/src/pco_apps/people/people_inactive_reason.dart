@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.486131
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.407738
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -85,7 +85,7 @@ class PcoPeopleInactiveReasonQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 inactive_reason
 /// - Type:               InactiveReason
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/inactive_reasons
@@ -138,7 +138,7 @@ class PcoPeopleInactiveReason extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'InactiveReason';
   static const String kTypeId = 'inactive_reason';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/inactive_reasons';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/inactive_reasons';
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.566564
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.693140
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -108,30 +108,16 @@ class PcoGivingFundQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-/// ### Extra Instructions
-/// #### CREATING
-/// When creating a Fund, a `color_identifier` must be assigned.
-/// A `color_identifier` is an integer that corresponds to an available fund color.
-/// These colors are predefined and not configurable.
-/// There are 12 colors available.
-/// 
-/// Identifier | Hex Code
-/// --- | ---
-/// 1 | #a1a1a1
-/// 2 | #b2cf74
-/// 3 | #9ccc79
-/// 4 | #9bd3b7
-/// 5 | #81bbbc
-/// 6 | #78afce
-/// 7 | #d99fca
-/// 8 | #c0a0d2
-/// 9 | #f19ca2
-/// 10 | #f59b79
-/// 11 | #fab676
-/// 12 | #cfab77
 ///   
 /// ## Description
+/// A `Fund` is a way of tracking the intent of `Donation`.
 /// 
+/// All `Organization`s have a default `Fund` (usually named "General"), and creating additional `Fund`s allows donors to allocate their gift to a particular cause/effort.
+/// 
+/// You can query for the default `Fund` using the `default` param:
+/// ```
+/// GET https://api.planningcenteronline.com/giving/v2/funds?where[default]=true
+/// ```
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -260,20 +246,35 @@ class PcoGivingFund extends PcoResource {
   bool get isDeletable => _attributes[kDeletable] == true;
   
   // setters for object attributes
+  
+  /// Required. The name for a fund. Must be unique within the associated organization.
   ///
   /// pass `null` to remove key from attributes
   set name(String? x) => (x == null) ? _attributes.remove(kName) : _attributes[kName] = x;
+  
+  /// If an organization's general ledger software tracks funds by code, this attribute can be used to store the fund's code for reference.
   ///
   /// pass `null` to remove key from attributes
   set ledgerCode(String? x) => (x == null) ? _attributes.remove(kLedgerCode) : _attributes[kLedgerCode] = x;
+  
+  /// A short description that describes how the money given to the fund will be used. 255 characters maximum.
   ///
   /// pass `null` to remove key from attributes
   set description(String? x) => (x == null) ? _attributes.remove(kDescription) : _attributes[kDescription] = x;
   
+  /// Required. Controls how a fund is visible on Church Center. `everywhere` will allow anyone to donate to the fund on Church Center. `admin_only` will hide the fund on Church Center, allowing only permitted Giving Users to designate donations to it. `nowhere` will prevent donations from being designated to the fund altogether, while still displaying fund data in historical reports. `hidden` will hide the fund from the list of funds in the default Church Center donation form, but allow donors to give to it via direct link, or through Text-to-Give.
+  /// 
   /// Possible values: `everywhere`, `admin_only`, `nowhere`, or `hidden`
   ///
   /// pass `null` to remove key from attributes
   set visibility(String? x) => (x == null) ? _attributes.remove(kVisibility) : _attributes[kVisibility] = x;
+  
+  /// Required. When creating a Fund, a `color_identifier` must be assigned.
+  /// A `color_identifier` is an integer that corresponds to an available fund color.
+  /// These colors are predefined and not configurable.
+  /// There are 12 colors available (colors listed with their
+  /// identifiers in parentheses):
+  /// #a1a1a1 (1), #b2cf74 (2), #9ccc79 (3), #9bd3b7 (4), #81bbbc (5), #78afce (6), #d99fca (7), #c0a0d2 (8), #f19ca2 (9), #f59b79 (10), #fab676 (11), and #cfab77 (12)
   ///
   /// pass `null` to remove key from attributes
   set colorIdentifier(int? x) => (x == null) ? _attributes.remove(kColorIdentifier) : _attributes[kColorIdentifier] = x;

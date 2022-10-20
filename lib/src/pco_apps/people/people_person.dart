@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.504568
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.422566
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -435,7 +435,7 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 person
 /// - Type:               Person
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/people
@@ -493,6 +493,7 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
 /// - `searchNameOrEmail` (ro) -> PCO: `search_name_or_email`
 /// - `searchNameOrEmailOrPhoneNumber` (ro) -> PCO: `search_name_or_email_or_phone_number`
 /// - `primaryCampusId` (wo) -> PCO: `primary_campus_id`
+/// - `genderId` (wo) -> PCO: `gender_id`
 /// 
 /// ## Edges and Actions
 /// 
@@ -535,6 +536,7 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
 /// - `person-list-updated_by`: https://api.planningcenteronline.com/people/v2/lists/1/updated_by
 /// - `person-messagegroup-from`: https://api.planningcenteronline.com/people/v2/message_groups/1/from
 /// - `person-message-to`: https://api.planningcenteronline.com/people/v2/messages/1/to
+/// - `person-notecategoryshare-person`: https://api.planningcenteronline.com/people/v2/note_categories/1/shares/1/person
 /// - `person-notecategory-subscribers`: https://api.planningcenteronline.com/people/v2/note_categories/1/subscribers
 /// - `person-note-created_by`: https://api.planningcenteronline.com/people/v2/notes/1/created_by
 /// - `person-note-person`: https://api.planningcenteronline.com/people/v2/notes/1/person
@@ -543,8 +545,8 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
 /// - `person-report-created_by`: https://api.planningcenteronline.com/people/v2/reports/1/created_by
 /// - `person-report-updated_by`: https://api.planningcenteronline.com/people/v2/reports/1/updated_by
 /// - `person-socialprofile-person`: https://api.planningcenteronline.com/people/v2/social_profiles/1/person
-/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/assignee
-/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/person
+/// - `person-workflowcard-assignee`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/assignee
+/// - `person-workflowcard-person`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/person
 /// - `person-workflowshare-person`: https://api.planningcenteronline.com/people/v2/people/1/workflow_shares/1/person
 /// - `person-workflow-shared_people`: https://api.planningcenteronline.com/people/v2/workflows/1/shared_people
 /// - `person-workflowstepassigneesummary-person`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/assignee_summaries/1/person
@@ -594,6 +596,12 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
 ///         "type": "PrimaryCampus",
 ///         "id": "1"
 ///       }
+///     },
+///     "gender": {
+///       "data": {
+///         "type": "Gender",
+///         "id": "1"
+///       }
 ///     }
 ///   }
 /// }
@@ -602,7 +610,7 @@ class PcoPeoplePerson extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'Person';
   static const String kTypeId = 'person';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people';
 
@@ -730,14 +738,15 @@ class PcoPeoplePerson extends PcoResource {
   static const kSearchNameOrEmail = 'search_name_or_email';
   static const kSearchNameOrEmailOrPhoneNumber = 'search_name_or_email_or_phone_number';
   static const kPrimaryCampusId = 'primary_campus_id';
+  static const kGenderId = 'gender_id';
 
 
   // getters and setters
   @override
-  List<String> get createAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'remote_id'];
+  List<String> get createAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'gender_id', 'remote_id'];
 
   @override
-  List<String> get updateAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'remote_id'];
+  List<String> get updateAllowed => ['given_name', 'first_name', 'nickname', 'middle_name', 'last_name', 'birthdate', 'anniversary', 'gender', 'grade', 'child', 'graduation_year', 'site_administrator', 'accounting_administrator', 'people_permissions', 'membership', 'inactivated_at', 'status', 'medical_notes', 'avatar', 'primary_campus_id', 'gender_id', 'remote_id'];
 
   @override
   bool get canCreate => true;
@@ -848,6 +857,10 @@ class PcoPeoplePerson extends PcoResource {
   /// pass `null` to remove key from attributes
   set primaryCampusId(String? x) => (x == null) ? _attributes.remove(kPrimaryCampusId) : _attributes[kPrimaryCampusId] = x;
   String get primaryCampusId => _attributes[kPrimaryCampusId] ?? '';
+  ///
+  /// pass `null` to remove key from attributes
+  set genderId(String? x) => (x == null) ? _attributes.remove(kGenderId) : _attributes[kGenderId] = x;
+  String get genderId => _attributes[kGenderId] ?? '';
   
   // typed getters for each relationship
   
@@ -883,9 +896,9 @@ class PcoPeoplePerson extends PcoResource {
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  /// - FIELDS USED WHEN CREATING: `givenName`, `firstName`, `nickname`, `middleName`, `lastName`, `birthdate`, `anniversary`, `gender`, `grade`, `isChild`, `graduationYear`, `isSiteAdministrator`, `isAccountingAdministrator`, `peoplePermissions`, `membership`, `inactivatedAt`, `status`, `medicalNotes`, `avatar`, `primaryCampusId`, `remoteId`
-  /// - FIELDS USED WHEN UPDATING: `givenName`, `firstName`, `nickname`, `middleName`, `lastName`, `birthdate`, `anniversary`, `gender`, `grade`, `isChild`, `graduationYear`, `isSiteAdministrator`, `isAccountingAdministrator`, `peoplePermissions`, `membership`, `inactivatedAt`, `status`, `medicalNotes`, `avatar`, `primaryCampusId`, `remoteId`
-  factory PcoPeoplePerson({String? id, String? givenName, String? firstName, String? nickname, String? middleName, String? lastName, String? birthdate, String? anniversary, String? gender, int? grade, bool? isChild, int? graduationYear, bool? isSiteAdministrator, bool? isAccountingAdministrator, String? peoplePermissions, String? membership, DateTime? inactivatedAt, String? status, String? medicalNotes, DateTime? createdAt, DateTime? updatedAt, String? avatar, String? name, String? demographicAvatarUrl, String? directoryStatus, bool? isPassedBackgroundCheck, bool? isCanCreateForms, String? schoolType, int? remoteId, String? searchName, String? searchPhoneNumber, String? searchPhoneNumberE164, String? searchNameOrEmail, String? searchNameOrEmailOrPhoneNumber, String? primaryCampusId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  /// - FIELDS USED WHEN CREATING: `givenName`, `firstName`, `nickname`, `middleName`, `lastName`, `birthdate`, `anniversary`, `gender`, `grade`, `isChild`, `graduationYear`, `isSiteAdministrator`, `isAccountingAdministrator`, `peoplePermissions`, `membership`, `inactivatedAt`, `status`, `medicalNotes`, `avatar`, `primaryCampusId`, `genderId`, `remoteId`
+  /// - FIELDS USED WHEN UPDATING: `givenName`, `firstName`, `nickname`, `middleName`, `lastName`, `birthdate`, `anniversary`, `gender`, `grade`, `isChild`, `graduationYear`, `isSiteAdministrator`, `isAccountingAdministrator`, `peoplePermissions`, `membership`, `inactivatedAt`, `status`, `medicalNotes`, `avatar`, `primaryCampusId`, `genderId`, `remoteId`
+  factory PcoPeoplePerson({String? id, String? givenName, String? firstName, String? nickname, String? middleName, String? lastName, String? birthdate, String? anniversary, String? gender, int? grade, bool? isChild, int? graduationYear, bool? isSiteAdministrator, bool? isAccountingAdministrator, String? peoplePermissions, String? membership, DateTime? inactivatedAt, String? status, String? medicalNotes, DateTime? createdAt, DateTime? updatedAt, String? avatar, String? name, String? demographicAvatarUrl, String? directoryStatus, bool? isPassedBackgroundCheck, bool? isCanCreateForms, String? schoolType, int? remoteId, String? searchName, String? searchPhoneNumber, String? searchPhoneNumberE164, String? searchNameOrEmail, String? searchNameOrEmailOrPhoneNumber, String? primaryCampusId, String? genderId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeoplePerson.empty();
     obj._id = id;
     obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/people';
@@ -923,6 +936,7 @@ class PcoPeoplePerson extends PcoResource {
     if (searchNameOrEmail != null) obj._attributes['search_name_or_email'] = searchNameOrEmail;
     if (searchNameOrEmailOrPhoneNumber != null) obj._attributes['search_name_or_email_or_phone_number'] = searchNameOrEmailOrPhoneNumber;
     if (primaryCampusId != null) obj._attributes['primary_campus_id'] = primaryCampusId;
+    if (genderId != null) obj._attributes['gender_id'] = genderId;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -1336,6 +1350,35 @@ class PcoPeoplePerson extends PcoResource {
 
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// using a path like this: `/people/v2/note_categories/$noteCategoryId/shares/$shareId/person`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePerson>> getFromNoteCategoryAndShare(String noteCategoryId,String shareId, {PcoPeoplePersonQuery? query, bool includeAll = false, bool includeAddresses = false, bool includeEmails = false, bool includeFieldData = false, bool includeHouseholds = false, bool includeInactiveReason = false, bool includeMaritalStatus = false, bool includeNamePrefix = false, bool includeNameSuffix = false, bool includeOrganization = false, bool includePersonApps = false, bool includePhoneNumbers = false, bool includePlatformNotifications = false, bool includePrimaryCampus = false, bool includeSchool = false, bool includeSocialProfiles = false,}) async {
+    query ??= PcoPeoplePersonQuery();
+    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications) query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/note_categories/$noteCategoryId/shares/$shareId/person';
+    
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:kApiVersion);
+  }
+
+
+  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscribers`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
@@ -1539,7 +1582,7 @@ class PcoPeoplePerson extends PcoResource {
 
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/assignee`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/assignee`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1561,14 +1604,14 @@ class PcoPeoplePerson extends PcoResource {
     if (includePrimaryCampus) query.include.add('primary_campus');
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/assignee';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/assignee';
     
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/person`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/person`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1590,7 +1633,7 @@ class PcoPeoplePerson extends PcoResource {
     if (includePrimaryCampus) query.include.add('primary_campus');
     if (includeSchool) query.include.add('school');
     if (includeSocialProfiles) query.include.add('social_profiles');
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/person';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/person';
     
     return PcoCollection.fromApiCall<PcoPeoplePerson>(url, query: query, apiVersion:kApiVersion);
   }

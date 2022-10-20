@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.518157
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.437090
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -125,7 +125,7 @@ class PcoPeopleWorkflowStepQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 workflow_step
 /// - Type:               WorkflowStep
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/workflows/1/steps
@@ -169,7 +169,7 @@ class PcoPeopleWorkflowStepQuery extends PlanningCenterApiQuery {
 /// - `person-workflowstep-default_assignee`: https://api.planningcenteronline.com/people/v2/workflows/1/steps/1/default_assignee
 /// 
 /// Inbound Edges:
-/// - `workflowstep-workflowcard-current_step`: https://api.planningcenteronline.com/people/v2/people/1/home_workflow_cards/1/current_step
+/// - `workflowstep-workflowcard-current_step`: https://api.planningcenteronline.com/people/v2/people/1/workflow_cards/1/current_step
 /// - `workflowstep-workflow-steps`: https://api.planningcenteronline.com/people/v2/workflows/1/steps
 /// 
 /// Actions:
@@ -214,7 +214,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'WorkflowStep';
   static const String kTypeId = 'workflow_step';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/workflows/1/steps';
 
@@ -370,7 +370,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
 
 
   /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
-  /// using a path like this: `/people/v2/people/$personId/home_workflow_cards/$workflowCardId/current_step`
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/current_step`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -378,7 +378,7 @@ class PcoPeopleWorkflowStep extends PcoResource {
     query ??= PcoPeopleWorkflowStepQuery();
     
     if (includeDefaultAssignee) query.include.add('default_assignee');
-    var url = '/people/v2/people/$personId/home_workflow_cards/$workflowCardId/current_step';
+    var url = '/people/v2/people/$personId/workflow_cards/$workflowCardId/current_step';
     
     return PcoCollection.fromApiCall<PcoPeopleWorkflowStep>(url, query: query, apiVersion:kApiVersion);
   }

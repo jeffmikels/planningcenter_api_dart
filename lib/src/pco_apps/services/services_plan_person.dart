@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.332188
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.962456
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -122,6 +122,7 @@ class PcoServicesPlanPersonQuery extends PlanningCenterApiQuery {
 /// - `notificationSenderName` (ro) -> PCO: `notification_sender_name`
 /// - `teamPositionName` (rw) -> PCO: `team_position_name`
 /// - `photoThumbnail` (ro) -> PCO: `photo_thumbnail`
+/// - `scheduledByName` (ro) -> PCO: `scheduled_by_name`
 /// - `statusUpdatedAt` (ro) -> PCO: `status_updated_at`
 /// - `notificationChangedAt` (ro) -> PCO: `notification_changed_at`
 /// - `notificationPreparedAt` (rw) -> PCO: `notification_prepared_at`
@@ -290,6 +291,7 @@ class PcoServicesPlanPerson extends PcoResource {
   static const kNotificationSenderName = 'notification_sender_name';
   static const kTeamPositionName = 'team_position_name';
   static const kPhotoThumbnail = 'photo_thumbnail';
+  static const kScheduledByName = 'scheduled_by_name';
   static const kStatusUpdatedAt = 'status_updated_at';
   static const kNotificationChangedAt = 'notification_changed_at';
   static const kNotificationPreparedAt = 'notification_prepared_at';
@@ -326,6 +328,7 @@ class PcoServicesPlanPerson extends PcoResource {
   String get notificationSenderName => _attributes[kNotificationSenderName] ?? '';
   String get teamPositionName => _attributes[kTeamPositionName] ?? '';
   String get photoThumbnail => _attributes[kPhotoThumbnail] ?? '';
+  String get scheduledByName => _attributes[kScheduledByName] ?? '';
   DateTime get statusUpdatedAt => DateTime.parse(_attributes[kStatusUpdatedAt] ?? '');
   DateTime get notificationChangedAt => DateTime.parse(_attributes[kNotificationChangedAt] ?? '');
   DateTime get notificationPreparedAt => DateTime.parse(_attributes[kNotificationPreparedAt] ?? '');
@@ -394,7 +397,7 @@ class PcoServicesPlanPerson extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `personId`, `status`, `declineReason`, `notes`, `teamPositionName`, `respondsToId`, `isPrepareNotification`, `notificationPreparedAt`
   /// - FIELDS USED WHEN UPDATING: `personId`, `status`, `declineReason`, `notes`, `teamPositionName`, `respondsToId`, `isPrepareNotification`, `notificationPreparedAt`
-  factory PcoServicesPlanPerson({required String serviceTypeId, required String planId, String? id, String? status, DateTime? createdAt, DateTime? updatedAt, String? notes, String? declineReason, String? name, String? notificationChangedByName, String? notificationSenderName, String? teamPositionName, String? photoThumbnail, DateTime? statusUpdatedAt, DateTime? notificationChangedAt, DateTime? notificationPreparedAt, DateTime? notificationReadAt, DateTime? notificationSentAt, bool? isPrepareNotification, bool? isCanAcceptPartial, String? personId, String? respondsToId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoServicesPlanPerson({required String serviceTypeId, required String planId, String? id, String? status, DateTime? createdAt, DateTime? updatedAt, String? notes, String? declineReason, String? name, String? notificationChangedByName, String? notificationSenderName, String? teamPositionName, String? photoThumbnail, String? scheduledByName, DateTime? statusUpdatedAt, DateTime? notificationChangedAt, DateTime? notificationPreparedAt, DateTime? notificationReadAt, DateTime? notificationSentAt, bool? isPrepareNotification, bool? isCanAcceptPartial, String? personId, String? respondsToId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesPlanPerson.empty();
     obj._id = id;
     obj._apiPathOverride = 'https://api.planningcenteronline.com/services/v2/service_types/$serviceTypeId/plans/$planId/team_members';
@@ -408,6 +411,7 @@ class PcoServicesPlanPerson extends PcoResource {
     if (notificationSenderName != null) obj._attributes['notification_sender_name'] = notificationSenderName;
     if (teamPositionName != null) obj._attributes['team_position_name'] = teamPositionName;
     if (photoThumbnail != null) obj._attributes['photo_thumbnail'] = photoThumbnail;
+    if (scheduledByName != null) obj._attributes['scheduled_by_name'] = scheduledByName;
     if (statusUpdatedAt != null) obj._attributes['status_updated_at'] = statusUpdatedAt.toIso8601String();
     if (notificationChangedAt != null) obj._attributes['notification_changed_at'] = notificationChangedAt.toIso8601String();
     if (notificationPreparedAt != null) obj._attributes['notification_prepared_at'] = notificationPreparedAt.toIso8601String();

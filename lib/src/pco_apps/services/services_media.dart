@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.313066
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.951327
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -549,7 +549,7 @@ class PcoServicesMedia extends PcoResource {
   ///   "data": {
   ///     "type": "MediaArchive",
   ///     "attributes": {
-  ///       "time": "2022-02-17T00:00:00Z"
+  ///       "time": "2023-01-20T00:00:00Z"
   ///     }
   ///   }
   /// }

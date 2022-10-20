@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.547334
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.499049
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoCalendarOrganizationQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 organization
 /// - Type:               Organization
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2
@@ -80,6 +80,7 @@ class PcoCalendarOrganizationQuery extends PlanningCenterApiQuery {
 /// - `timeZone` (ro) -> PCO: `time_zone`
 /// - `isTwentyFourHourTime` (ro) -> PCO: `twenty_four_hour_time`
 /// - `dateFormat` (ro) -> PCO: `date_format`
+/// - `isOnboarding` (ro) -> PCO: `onboarding`
 /// 
 /// ## Edges and Actions
 /// 
@@ -102,7 +103,7 @@ class PcoCalendarOrganizationQuery extends PlanningCenterApiQuery {
 /// - `tag-organization-tags`: https://api.planningcenteronline.com/calendar/v2/tags
 /// 
 /// Inbound Edges:
-/// NONE
+/// - `organization-person-organization`: https://api.planningcenteronline.com/calendar/v2/people/1/organization
 /// 
 /// Actions:
 /// NONE
@@ -125,7 +126,7 @@ class PcoCalendarOrganization extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'Organization';
   static const String kTypeId = 'organization';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2';
   static const String kCreatePathTemplate = 'null';
 
@@ -164,6 +165,7 @@ class PcoCalendarOrganization extends PcoResource {
   static const kTimeZone = 'time_zone';
   static const kTwentyFourHourTime = 'twenty_four_hour_time';
   static const kDateFormat = 'date_format';
+  static const kOnboarding = 'onboarding';
 
 
   // getters and setters
@@ -187,6 +189,7 @@ class PcoCalendarOrganization extends PcoResource {
   String get timeZone => _attributes[kTimeZone] ?? '';
   bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
   String get dateFormat => _attributes[kDateFormat] ?? '';
+  bool get isOnboarding => _attributes[kOnboarding] == true;
 
   // Class Constructors
   PcoCalendarOrganization.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
@@ -207,13 +210,14 @@ class PcoCalendarOrganization extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCalendarOrganization({String? id, String? name, String? timeZone, bool? isTwentyFourHourTime, String? dateFormat, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCalendarOrganization({String? id, String? name, String? timeZone, bool? isTwentyFourHourTime, String? dateFormat, bool? isOnboarding, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCalendarOrganization.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
     if (timeZone != null) obj._attributes['time_zone'] = timeZone;
     if (isTwentyFourHourTime != null) obj._attributes['twenty_four_hour_time'] = isTwentyFourHourTime;
     if (dateFormat != null) obj._attributes['date_format'] = dateFormat;
+    if (isOnboarding != null) obj._attributes['onboarding'] = isOnboarding;
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -228,6 +232,28 @@ class PcoCalendarOrganization extends PcoResource {
     }
 
     return obj;
+  }
+
+
+  // ---------------------------------
+  // Inbound Edges
+  // ---------------------------------
+  // Static functions to obtain instances of this class
+
+
+
+  /// Will get a collection of [PcoCalendarOrganization] objects (expecting many)
+  /// using a path like this: `/calendar/v2/people/$personId/organization`
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCalendarOrganization>> getFromPerson(String personId, {String? id, PcoCalendarOrganizationQuery? query, }) async {
+    query ??= PcoCalendarOrganizationQuery();
+    
+    
+    var url = '/calendar/v2/people/$personId/organization';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarOrganization>(url, query: query, apiVersion:kApiVersion);
   }
 
 

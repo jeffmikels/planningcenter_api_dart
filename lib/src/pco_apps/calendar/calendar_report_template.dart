@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.548490
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:01.500588
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -51,7 +51,7 @@ class PcoCalendarReportTemplateQuery extends PlanningCenterApiQuery {
 /// - Application:        calendar
 /// - Id:                 report_template
 /// - Type:               ReportTemplate
-/// - ApiVersion:         2020-04-08
+/// - ApiVersion:         2021-07-20
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/calendar/v2/report_templates
@@ -111,7 +111,7 @@ class PcoCalendarReportTemplate extends PcoResource {
   static const String kPcoApplication = 'calendar';
   static const String kTypeString = 'ReportTemplate';
   static const String kTypeId = 'report_template';
-  static const String kApiVersion = '2020-04-08';
+  static const String kApiVersion = '2021-07-20';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/calendar/v2/report_templates';
   static const String kCreatePathTemplate = 'null';
 

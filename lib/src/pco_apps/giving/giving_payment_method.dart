@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.567771
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.694774
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,9 @@ class PcoGivingPaymentMethodQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// Stored `PaymentMethod` information (`card` or `bank_account`) used by donors to make online `Donation`s.
 /// 
+/// `PaymentMethod` data is for informational purposes only and cannot be used to create charges through the API.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

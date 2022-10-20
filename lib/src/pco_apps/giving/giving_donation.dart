@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.565854
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.692306
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -24,6 +24,7 @@ enum PcoGivingDonationFilter { succeeded }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeDesignations`: include associated designations 
 /// - `includeLabels`: include associated labels 
+/// - `includeNote`: include associated note 
 /// - `includeRefund`: include associated refund 
 /// - `includeAll`: include all related objects
 /// 
@@ -88,11 +89,15 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
     /// when true, adds `?include=labels` to url
     bool includeLabels = false,
     
+    /// include associated note
+    /// when true, adds `?include=note` to url
+    bool includeNote = false,
+    
     /// include associated refund
     /// when true, adds `?include=refund` to url
     bool includeRefund = false,
     
-    /// when true, adds `?include=designations,labels,refund` to url parameters
+    /// when true, adds `?include=designations,labels,note,refund` to url parameters
     bool includeAll = false,
 
     /// Query by `completed_at`
@@ -140,6 +145,7 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
     if (filterBy != null) filter.add(filterString(filterBy));
     if (includeAll || includeDesignations) include.add('designations');
     if (includeAll || includeLabels) include.add('labels');
+    if (includeAll || includeNote) include.add('note');
     if (includeAll || includeRefund) include.add('refund');
     
     if (whereCompletedAt != null) where.add(PlanningCenterApiWhere.parse('completed_at', whereCompletedAt));
@@ -237,7 +243,9 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
 /// altogether will leave existing relationships in tact.
 ///   
 /// ## Description
+/// A `Donation` record corresponds to a gift given to an `Organization` at a particular point in time.
 /// 
+/// `Donation`s are added by first associating them to a `Batch` of donations, and then committing the `Batch`. When adding a `Donation` to an already-committed `Batch`, the `Donation` will automatically be committed as well, and immediately added to the donor's online history.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
@@ -268,6 +276,7 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
 /// - `campus-donation-campus`: https://api.planningcenteronline.com/giving/v2/donations/1/campus
 /// - `designation-donation-designations`: https://api.planningcenteronline.com/giving/v2/donations/1/designations
 /// - `label-donation-labels`: https://api.planningcenteronline.com/giving/v2/donations/1/labels
+/// - `note-donation-note`: https://api.planningcenteronline.com/giving/v2/donations/1/note
 /// - `refund-donation-refund`: https://api.planningcenteronline.com/giving/v2/donations/1/refund
 /// 
 /// Inbound Edges:
@@ -357,8 +366,9 @@ class PcoGivingDonation extends PcoResource {
   /// possible includes with parameter ?include=a,b
   /// - `designations`: include associated designations 
   /// - `labels`: include associated labels 
+  /// - `note`: include associated note 
   /// - `refund`: include associated refund 
-  static List<String> get canInclude => ['designations','labels','refund'];
+  static List<String> get canInclude => ['designations','labels','note','refund'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
   /// - `completed_at`: (URLParameter), query on a specific completed_at, example: ?where[completed_at]=2000-01-01T12:00:00Z
@@ -451,34 +461,46 @@ class PcoGivingDonation extends PcoResource {
   
   // setters for object attributes
   
-  /// For cards only. Will be `null` for other payment method types.
+  /// For cards, this will be the card subtype. Will be `null` for other payment method types.
   /// 
   /// Possible values: `credit`, `debit`, `prepaid`, or `unknown`
   ///
   /// pass `null` to remove key from attributes
   set paymentMethodSub(String? x) => (x == null) ? _attributes.remove(kPaymentMethodSub) : _attributes[kPaymentMethodSub] = x;
+  
+  /// The last 4 digits of a donation's payment method number. For cards, this is the last 4 digits of the card number. For bank accounts, this is the last 4 digits of the bank account number. For cash and check donations, this should be `null`. Note: In cases where we don't have all 4 digits on file, a `*` will be used to pad the number. For example: `*321`
   ///
   /// pass `null` to remove key from attributes
   set paymentLast4(String? x) => (x == null) ? _attributes.remove(kPaymentLast4) : _attributes[kPaymentLast4] = x;
   
-  /// For cards, this is the card brand (eg Visa, Mastercard, etc). For checks, this is the bank name
+  /// For cards, this is the card brand (eg Visa, Mastercard, etc). For checks and bank accounts, this is the bank name. For cash donations, this should be `null`.
   ///
   /// pass `null` to remove key from attributes
   set paymentBrand(String? x) => (x == null) ? _attributes.remove(kPaymentBrand) : _attributes[kPaymentBrand] = x;
+  
+  /// The check number for donations made by check.
   ///
   /// pass `null` to remove key from attributes
   set paymentCheckNumber(int? x) => (x == null) ? _attributes.remove(kPaymentCheckNumber) : _attributes[kPaymentCheckNumber] = x;
+  
+  /// The check date for donations made by check. Example: `2000-01-01`
   ///
   /// pass `null` to remove key from attributes
   set paymentCheckDatedAt(String? x) => (x == null) ? _attributes.remove(kPaymentCheckDatedAt) : _attributes[kPaymentCheckDatedAt] = x;
+  
+  /// The fee to process a donation. This should either be 0 or a negative integer. For a donation processed by Giving via Stripe, this is the amount the associated organization paid Stripe to process it. For donations not processed by Stripe, this can be used to record fees from other systems. Note: while `amount_cents` is assigned via a donation's designations, `fee_cents` is set here, and used by Giving to distribute fees across all designations in proportion to the amount of each designation.
   ///
   /// pass `null` to remove key from attributes
   set feeCents(int? x) => (x == null) ? _attributes.remove(kFeeCents) : _attributes[kFeeCents] = x;
   
+  /// Required. The payment method used to make a donation.
+  /// 
   /// Possible values: `ach`, `cash`, `check`, or `card`
   ///
   /// pass `null` to remove key from attributes
   set paymentMethod(String? x) => (x == null) ? _attributes.remove(kPaymentMethod) : _attributes[kPaymentMethod] = x;
+  
+  /// The date and time at which a donation was received. For card and ACH donations processed by Stripe, this is the moment when the donation was created in Giving. For batch donations, this is a customizable value that can be set via the Giving UI or API to any date. This allows for batch donations recieved on a previous day to be dated in the past, as well as for postdated checks to have a date in the future. It is important to ensure that this attribute is set accurately, as this is the date used to filter donations in the Giving admin UI. When creating new donations via the API, this attribute will default to the current date and time. Example: `2000-01-01T12:00:00Z`
   ///
   /// pass `null` to remove key from attributes
   set receivedAt(DateTime? x) => (x == null) ? _attributes.remove(kReceivedAt) : _attributes[kReceivedAt] = x.toIso8601String();
@@ -501,6 +523,7 @@ class PcoGivingDonation extends PcoResource {
   
   List<PcoGivingDesignation> get includedDesignations => (relationships['designations'] as List?)?.cast<PcoGivingDesignation>() ?? [];
   List<PcoGivingLabel> get includedLabels => (relationships['labels'] as List?)?.cast<PcoGivingLabel>() ?? [];
+  PcoGivingNote? get includedNote => _firstOrNull<PcoGivingNote>(relationships['note']);
   PcoGivingRefund? get includedRefund => _firstOrNull<PcoGivingRefund>(relationships['refund']);
 
   // Class Constructors
@@ -577,11 +600,12 @@ class PcoGivingDonation extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingDonation>> get( {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
+  static Future<PcoCollection<PcoGivingDonation>> get( {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeNote = false, bool includeRefund = false,}) async {
     query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
     if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/donations';
     if (id != null) url += '/$id';
@@ -594,11 +618,12 @@ class PcoGivingDonation extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingDonation>> getFromBatch(String batchId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromBatch(String batchId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeNote = false, bool includeRefund = false,}) async {
     query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
     if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/batches/$batchId/donations';
     if (id != null) url += '/$id';
@@ -611,11 +636,12 @@ class PcoGivingDonation extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingDonation>> getFromCampus(String campusId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromCampus(String campusId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeNote = false, bool includeRefund = false,}) async {
     query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
     if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/campuses/$campusId/donations';
     if (id != null) url += '/$id';
@@ -628,11 +654,12 @@ class PcoGivingDonation extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingDonation>> getFromPaymentSource(String paymentSourceId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromPaymentSource(String paymentSourceId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeNote = false, bool includeRefund = false,}) async {
     query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
     if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/payment_sources/$paymentSourceId/donations';
     if (id != null) url += '/$id';
@@ -645,11 +672,12 @@ class PcoGivingDonation extends PcoResource {
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingDonation>> getFromPerson(String personId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeRefund = false,}) async {
+  static Future<PcoCollection<PcoGivingDonation>> getFromPerson(String personId, {String? id, PcoGivingDonationQuery? query, bool includeAll = false, bool includeDesignations = false, bool includeLabels = false, bool includeNote = false, bool includeRefund = false,}) async {
     query ??= PcoGivingDonationQuery();
     if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
     if (includeRefund) query.include.add('refund');
     var url = '/giving/v2/people/$personId/donations';
     if (id != null) url += '/$id';
@@ -684,6 +712,14 @@ class PcoGivingDonation extends PcoResource {
     query ??= PcoGivingLabelQuery();
     var url = '$apiEndpoint/labels';
     return PcoCollection.fromApiCall<PcoGivingLabel>(url, query: query, apiVersion: apiVersion);
+  }
+
+  /// Will get a collection of [PcoGivingNote] objects (expecting many)
+  /// using a path like this: `https://api.planningcenteronline.com/giving/v2/donations/1/note`
+  Future<PcoCollection<PcoGivingNote>> getNote({PcoGivingNoteQuery? query}) async {
+    query ??= PcoGivingNoteQuery();
+    var url = '$apiEndpoint/note';
+    return PcoCollection.fromApiCall<PcoGivingNote>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoGivingRefund] objects (expecting many)

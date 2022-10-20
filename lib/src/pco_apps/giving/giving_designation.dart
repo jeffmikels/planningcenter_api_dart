@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.564678
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:43:10.690852
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -71,7 +71,9 @@ class PcoGivingDesignationQuery extends PlanningCenterApiQuery {
 ///
 ///   
 /// ## Description
+/// A `Designation` conveys how much of a `Donation` goes to a particular `Fund`.
 /// 
+/// `Designation` details are required when creating a `Donation`. If all of a `Donation` is going to a single `Fund`, it will only have one `Designation`. Similarly, to split a `Donation` between multiple `Fund`s, you can use multiple `Designation`s.
 /// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`

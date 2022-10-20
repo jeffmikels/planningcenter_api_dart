@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.308490
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.946731
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -88,8 +88,8 @@ class PcoServicesItemTimeQuery extends PlanningCenterApiQuery {
 /// 
 /// Inbound Edges:
 /// - `itemtime-item-item_times`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/items/1/item_times
-/// - `itemtime-live-current_item_time`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/current_item_time
-/// - `itemtime-live-next_item_time`: https://api.planningcenteronline.com/services/v2/people/1/recent_plans/1/live/1/next_item_time
+/// - `itemtime-live-current_item_time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/current_item_time
+/// - `itemtime-live-next_item_time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/live/1/next_item_time
 /// 
 /// Actions:
 /// NONE
@@ -264,30 +264,30 @@ class PcoServicesItemTime extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/current_item_time`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItemTime>> getCurrentItemTimeFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {PcoServicesItemTimeQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesItemTime>> getCurrentItemTimeFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {PcoServicesItemTimeQuery? query, }) async {
     query ??= PcoServicesItemTimeQuery();
     
     
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/current_item_time';
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/current_item_time';
     
     return PcoCollection.fromApiCall<PcoServicesItemTime>(url, query: query, apiVersion:kApiVersion);
   }
 
 
   /// Will get a collection of [PcoServicesItemTime] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/next_item_time`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItemTime>> getNextItemTimeFromPersonAndRecentPlanAndLive(String personId,String recentPlanId,String liveId, {PcoServicesItemTimeQuery? query, }) async {
+  static Future<PcoCollection<PcoServicesItemTime>> getNextItemTimeFromSeriesAndPlanAndLive(String seriesId,String planId,String liveId, {PcoServicesItemTimeQuery? query, }) async {
     query ??= PcoServicesItemTimeQuery();
     
     
-    var url = '/services/v2/people/$personId/recent_plans/$recentPlanId/live/$liveId/next_item_time';
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/next_item_time';
     
     return PcoCollection.fromApiCall<PcoServicesItemTime>(url, query: query, apiVersion:kApiVersion);
   }

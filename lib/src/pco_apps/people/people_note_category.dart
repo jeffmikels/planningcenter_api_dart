@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.497453
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.414325
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -14,8 +14,9 @@ part of pco;
 /// - `updatedAt` -> `?order=updated_at`
 enum PcoPeopleNoteCategoryOrder { createdAt, locked, name, organizationId, updatedAt }
 
-/// Filtering is not allowed when requesting this object.
-enum PcoPeopleNoteCategoryFilter { none }
+/// Possible Inbound Filters:
+/// - `viewCreatable` -> `?filter=view_creatable` : -- no description
+enum PcoPeopleNoteCategoryFilter { viewCreatable }
 
 /// Creates a [PcoPeopleNoteCategoryQuery] object
 /// ## Possible Includes
@@ -77,7 +78,7 @@ class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoPeopleNoteCategoryFilter, String> _filterMap = {
-    
+    PcoPeopleNoteCategoryFilter.viewCreatable: 'view_creatable',
   };
   static String filterString(PcoPeopleNoteCategoryFilter filter) => _filterMap[filter]!;
 
@@ -123,6 +124,7 @@ class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
     String? whereUpdatedAt,
     
 
+    PcoPeopleNoteCategoryFilter? filterBy,
     PcoPeopleNoteCategoryOrder? orderBy,
 
 
@@ -138,6 +140,7 @@ class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
     if (includeAll || includeShares) include.add('shares');
     if (includeAll || includeSubscribers) include.add('subscribers');
     if (includeAll || includeSubscriptions) include.add('subscriptions');
@@ -157,7 +160,7 @@ class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 note_category
 /// - Type:               NoteCategory
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_categories
@@ -175,6 +178,9 @@ class PcoPeopleNoteCategoryQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+/// ### Extra Instructions
+/// #### DELETING
+/// Deleting a note category will also delete all associated notes
 ///   
 /// ## Description
 /// A Note Category
@@ -227,7 +233,7 @@ class PcoPeopleNoteCategory extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'NoteCategory';
   static const String kTypeId = 'note_category';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories';
 
@@ -373,6 +379,9 @@ class PcoPeopleNoteCategory extends PcoResource {
 
   /// Will get a collection of [PcoPeopleNoteCategory] objects (expecting many)
   /// using a path like this: `/people/v2/note_categories`
+  /// 
+  /// Available Query Filters:
+  /// - `view_creatable`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.334764
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:11.964759
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -10,8 +10,11 @@ part of pco;
 /// - `startsAt` -> `?order=starts_at`
 enum PcoServicesPlanTimeOrder { startsAt }
 
-/// Filtering is not allowed when requesting this object.
-enum PcoServicesPlanTimeFilter { none }
+/// Possible Inbound Filters:
+/// - `future` -> `?filter=future` : -- no description
+/// - `named` -> `?filter=named` : -- no description
+/// - `past` -> `?filter=past` : -- no description
+enum PcoServicesPlanTimeFilter { future, named, past }
 
 /// Creates a [PcoServicesPlanTimeQuery] object
 /// ## Possible Includes
@@ -59,7 +62,9 @@ class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
       (reverse ? '-' : '') + _orderMap[order]!;
 
   static final Map<PcoServicesPlanTimeFilter, String> _filterMap = {
-    
+    PcoServicesPlanTimeFilter.future: 'future',
+    PcoServicesPlanTimeFilter.named: 'named',
+    PcoServicesPlanTimeFilter.past: 'past',
   };
   static String filterString(PcoServicesPlanTimeFilter filter) => _filterMap[filter]!;
 
@@ -74,6 +79,7 @@ class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
     String? whereTimeType,
     
 
+    PcoServicesPlanTimeFilter? filterBy,
     PcoServicesPlanTimeOrder? orderBy,
 
 
@@ -89,6 +95,7 @@ class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
+    if (filterBy != null) filter.add(filterString(filterBy));
     if (includeSplitTeamRehearsalAssignments) include.add('split_team_rehearsal_assignments');
     
     if (whereTimeType != null) where.add(PlanningCenterApiWhere.parse('time_type', whereTimeType));
@@ -105,7 +112,7 @@ class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
 /// - ApiVersion:         2018-11-01
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
-/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/people/1/next_plan_time
+/// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/service_types/1/plan_times
 /// - Create Endpoint:    https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times
 /// 
 /// ## Instantiation
@@ -140,10 +147,10 @@ class PcoServicesPlanTimeQuery extends PlanningCenterApiQuery {
 /// ## Edges and Actions
 /// 
 /// Outbound Edges:
-/// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments
+/// - `splitteamrehearsalassignment-plantime-split_team_rehearsal_assignments`: https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments
 /// 
 /// Inbound Edges:
-/// - `plantime-neededposition-time`: https://api.planningcenteronline.com/services/v2/people/1/next_up_plans/1/needed_positions/1/time
+/// - `plantime-neededposition-time`: https://api.planningcenteronline.com/services/v2/series/1/plans/1/needed_positions/1/time
 /// - `plantime-planperson-declined_plan_times`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/declined_plan_times
 /// - `plantime-planperson-plan_times`: https://api.planningcenteronline.com/services/v2/people/1/plan_people/1/plan_times
 /// - `plantime-plan-plan_times`: https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times
@@ -188,7 +195,7 @@ class PcoServicesPlanTime extends PcoResource {
   static const String kTypeString = 'PlanTime';
   static const String kTypeId = 'plan_time';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/people/1/next_plan_time';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plan_times';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/services/v2/service_types/1/plans/1/plan_times';
 
   /// possible includes with parameter ?include=a,b
@@ -352,15 +359,15 @@ class PcoServicesPlanTime extends PcoResource {
 
 
   /// Will get a collection of [PcoServicesPlanTime] objects (expecting one)
-  /// using a path like this: `/services/v2/people/$personId/next_up_plans/$upPlanId/needed_positions/$neededPositionId/time`
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/needed_positions/$neededPositionId/time`
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPlanTime>> getTimeFromPersonAndUpPlanAndNeededPosition(String personId,String upPlanId,String neededPositionId, {PcoServicesPlanTimeQuery? query, bool includeSplitTeamRehearsalAssignments = false,}) async {
+  static Future<PcoCollection<PcoServicesPlanTime>> getTimeFromSeriesAndPlanAndNeededPosition(String seriesId,String planId,String neededPositionId, {PcoServicesPlanTimeQuery? query, bool includeSplitTeamRehearsalAssignments = false,}) async {
     query ??= PcoServicesPlanTimeQuery();
     
     if (includeSplitTeamRehearsalAssignments) query.include.add('split_team_rehearsal_assignments');
-    var url = '/services/v2/people/$personId/next_up_plans/$upPlanId/needed_positions/$neededPositionId/time';
+    var url = '/services/v2/series/$seriesId/plans/$planId/needed_positions/$neededPositionId/time';
     
     return PcoCollection.fromApiCall<PcoServicesPlanTime>(url, query: query, apiVersion:kApiVersion);
   }
@@ -467,7 +474,7 @@ class PcoServicesPlanTime extends PcoResource {
   // Instance functions to traverse outbound edges
 
   /// Will get a collection of [PcoServicesSplitTeamRehearsalAssignment] objects (expecting many)
-  /// using a path like this: `https://api.planningcenteronline.com/services/v2/people/1/next_plan_time/1/split_team_rehearsal_assignments`
+  /// using a path like this: `https://api.planningcenteronline.com/services/v2/service_types/1/plan_times/1/split_team_rehearsal_assignments`
   Future<PcoCollection<PcoServicesSplitTeamRehearsalAssignment>> getSplitTeamRehearsalAssignments({PcoServicesSplitTeamRehearsalAssignmentQuery? query}) async {
     query ??= PcoServicesSplitTeamRehearsalAssignmentQuery();
     var url = '$apiEndpoint/split_team_rehearsal_assignments';

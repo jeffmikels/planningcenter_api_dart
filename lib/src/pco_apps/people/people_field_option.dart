@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.476465
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.404106
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -95,7 +95,7 @@ class PcoPeopleFieldOptionQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 field_option
 /// - Type:               FieldOption
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options
@@ -158,7 +158,7 @@ class PcoPeopleFieldOption extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'FieldOption';
   static const String kTypeId = 'field_option';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/field_definitions/1/field_options';
 

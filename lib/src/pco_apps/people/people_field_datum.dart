@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.474967
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:51.400781
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -157,7 +157,7 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
 /// - Application:        people
 /// - Id:                 field_datum
 /// - Type:               FieldDatum
-/// - ApiVersion:         2021-08-17
+/// - ApiVersion:         2022-07-14
 /// - Is Deprecated:      false
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/field_data
@@ -175,6 +175,25 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
+/// ### Extra Instructions
+/// #### UPDATING
+/// Given a person ID and a field definition ID with a data type of 'checkboxes', in order to 'check' the box for that profile, you want to do a POST request to `/people/v2/people/<person_id>/field_data`.
+/// The payload must contain the `field_definition_id` and the string `value`.
+///   ```
+///      {
+///        "data": {
+///           "attributes": {
+///             "field_definition_id": <field_definition_id>,
+///             "value": "Financial/Bills"
+///           }
+///        }
+///      }
+///   ```
+/// Note that if you POST with a value that does not already correspond to an existing field_option value for that field_definition, then the API will create a new one with that value.
+/// 
+/// You can GET all the existing checkbox values at `/people/v2/field_definitions/<field_definition_id>/field_options`.
+/// 
+/// To 'uncheck' the value of the checkbox, you can issue a DELETE to `/people/v2/people/<person_id>/field_data/<field_datum_id>`.
 ///   
 /// ## Description
 /// A field datum is an individual piece of data for a custom field.
@@ -235,7 +254,7 @@ class PcoPeopleFieldDatum extends PcoResource {
   static const String kPcoApplication = 'people';
   static const String kTypeString = 'FieldDatum';
   static const String kTypeId = 'field_datum';
-  static const String kApiVersion = '2021-08-17';
+  static const String kApiVersion = '2022-07-14';
   static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/field_data';
   static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/people/1/field_data';
 

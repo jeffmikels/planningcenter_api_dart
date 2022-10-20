@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.420848
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:42:22.793954
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -122,6 +122,7 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
 /// - `inputTypeOptions` (ro) -> PCO: `input_type_options`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
+/// - `nextShowsAt` (ro) -> PCO: `next_shows_at`
 /// - `checkInCount` (ro) -> PCO: `check_in_count`
 /// 
 /// ## Edges and Actions
@@ -211,6 +212,7 @@ class PcoCheckInsStation extends PcoResource {
   static const kInputTypeOptions = 'input_type_options';
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
+  static const kNextShowsAt = 'next_shows_at';
   static const kCheckInCount = 'check_in_count';
 
 
@@ -237,6 +239,7 @@ class PcoCheckInsStation extends PcoResource {
   int get timeoutSeconds => _attributes[kTimeoutSeconds] ?? 0;
   String get inputType => _attributes[kInputType] ?? '';
   String get inputTypeOptions => _attributes[kInputTypeOptions] ?? '';
+  DateTime get nextShowsAt => DateTime.parse(_attributes[kNextShowsAt] ?? '');
   int get checkInCount => _attributes[kCheckInCount] ?? 0;
   
   // typed getters for each relationship
@@ -268,7 +271,7 @@ class PcoCheckInsStation extends PcoResource {
   /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  factory PcoCheckInsStation({String? id, bool? isOnline, int? mode, String? name, int? timeoutSeconds, String? inputType, String? inputTypeOptions, DateTime? createdAt, DateTime? updatedAt, int? checkInCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
+  factory PcoCheckInsStation({String? id, bool? isOnline, int? mode, String? name, int? timeoutSeconds, String? inputType, String? inputTypeOptions, DateTime? createdAt, DateTime? updatedAt, DateTime? nextShowsAt, int? checkInCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsStation.empty();
     obj._id = id;
     if (isOnline != null) obj._attributes['online'] = isOnline;
@@ -279,6 +282,7 @@ class PcoCheckInsStation extends PcoResource {
     if (inputTypeOptions != null) obj._attributes['input_type_options'] = inputTypeOptions;
     if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
     if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (nextShowsAt != null) obj._attributes['next_shows_at'] = nextShowsAt.toIso8601String();
     if (checkInCount != null) obj._attributes['check_in_count'] = checkInCount;
 
     if (withRelationships != null) {
@@ -403,6 +407,7 @@ class PcoCheckInsStation extends PcoResource {
   /// - `checked_out`
   /// - `first_time`
   /// - `guest`
+  /// - `not_checked_out`
   /// - `not_one_time_guest`
   /// - `one_time_guest`
   /// - `regular`

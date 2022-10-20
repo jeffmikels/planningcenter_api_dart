@@ -1,3 +1,7 @@
+## 1.1.2
+
+-   The PCO JSON files mislabel the "time_type" attribute of the `PlanTime` object as `integer` when it really is a `string` and will be one of the following values 'rehearsal', 'service', 'other'
+
 ## 1.1.1
 
 -   Minor documentation update to the static `ClassName.get` functions.

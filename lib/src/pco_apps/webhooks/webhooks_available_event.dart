@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:04.003155
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.595534
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoWebhooksAvailableEventFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoWebhooksAvailableEventQuery extends PlanningCenterApiQuery {
-  static final Map<PcoWebhooksAvailableEventOrder, String> _orderMap = {};
-  static String orderString(PcoWebhooksAvailableEventOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoWebhooksAvailableEventOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoWebhooksAvailableEventOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoWebhooksAvailableEventFilter, String> _filterMap = {};
-  static String filterString(PcoWebhooksAvailableEventFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoWebhooksAvailableEventFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoWebhooksAvailableEventFilter filter) => _filterMap[filter]!;
 
   PcoWebhooksAvailableEventQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoWebhooksAvailableEventQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO Webhooks AvailableEvent Object
-///
+/// 
 /// - Application:        webhooks
 /// - Id:                 available_event
 /// - Type:               AvailableEvent
@@ -50,12 +56,12 @@ class PcoWebhooksAvailableEventQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: true
 /// - Default Endpoint:   https://api.planningcenteronline.com/webhooks/v2/available_events
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoWebhooksAvailableEvent.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,10 +69,10 @@ class PcoWebhooksAvailableEventQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// An event supported by webhooks
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
@@ -75,15 +81,15 @@ class PcoWebhooksAvailableEventQuery extends PlanningCenterApiQuery {
 /// - `type` (ro) -> PCO: `type`
 /// - `resource` (ro) -> PCO: `resource`
 /// - `action` (ro) -> PCO: `action`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `availableevent-organization-available_events`: https://api.planningcenteronline.com/webhooks/v2/available_events
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -108,20 +114,19 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   static const String kTypeString = 'AvailableEvent';
   static const String kTypeId = 'available_event';
   static const String kApiVersion = '2018-08-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/webhooks/v2/available_events';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/webhooks/v2/available_events';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -150,6 +155,7 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   static const kResource = 'resource';
   static const kAction = 'action';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -175,35 +181,25 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   String get action => _attributes[kAction] ?? '';
 
   // Class Constructors
-  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoWebhooksAvailableEvent.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoWebhooksAvailableEvent] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoWebhooksAvailableEvent(
-      {String? id,
-      String? name,
-      String? app,
-      String? version,
-      String? resource,
-      String? action,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoWebhooksAvailableEvent({String? id, String? name, String? app, String? version, String? resource, String? action, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoWebhooksAvailableEvent.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
@@ -227,32 +223,31 @@ class PcoWebhooksAvailableEvent extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/available_events`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoWebhooksAvailableEvent>> get({
-    String? id,
-    PcoWebhooksAvailableEventQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoWebhooksAvailableEvent>> get( {String? id, PcoWebhooksAvailableEventQuery? query, }) async {
     query ??= PcoWebhooksAvailableEventQuery();
-
+    
+    
     var url = '/webhooks/v2/available_events';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

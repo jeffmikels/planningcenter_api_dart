@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.911690
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.498895
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoPeopleNoteCategoryShareFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoPeopleNoteCategoryShareQuery extends PlanningCenterApiQuery {
-  static final Map<PcoPeopleNoteCategoryShareOrder, String> _orderMap = {};
-  static String orderString(PcoPeopleNoteCategoryShareOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoPeopleNoteCategoryShareOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoPeopleNoteCategoryShareOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeopleNoteCategoryShareFilter, String> _filterMap = {};
-  static String filterString(PcoPeopleNoteCategoryShareFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoPeopleNoteCategoryShareFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoPeopleNoteCategoryShareFilter filter) => _filterMap[filter]!;
 
   PcoPeopleNoteCategoryShareQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoPeopleNoteCategoryShareQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO People NoteCategoryShare Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 note_category_share
 /// - Type:               NoteCategoryShare
@@ -50,12 +56,12 @@ class PcoPeopleNoteCategoryShareQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/note_categories/1/shares
 /// - Create Endpoint:    https://api.planningcenteronline.com/people/v2/note_categories/1/shares
-///
+/// 
 /// ## Instantiation
 /// - Create a new instance using the `PcoPeopleNoteCategoryShare()` constructor
 /// - Instantiate from existing `JSON` data using the `PcoPeopleNoteCategoryShare.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,23 +69,23 @@ class PcoPeopleNoteCategoryShareQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A note category share defines who can view notes in a category.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `group` (rw) -> PCO: `group`
 /// - `personId` (rw) -> PCO: `person_id`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `notecategoryshare-notecategory-shares`: https://api.planningcenteronline.com/people/v2/note_categories/1/shares
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -113,21 +119,19 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   static const String kTypeString = 'NoteCategoryShare';
   static const String kTypeId = 'note_category_share';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
-  static const String kCreatePathTemplate =
-      'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
+  static const String kCreatePathTemplate = 'https://api.planningcenteronline.com/people/v2/note_categories/1/shares';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -152,6 +156,7 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   static const kGroup = 'group';
   static const kPersonId = 'person_id';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => ['group', 'person_id'];
@@ -171,50 +176,39 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
   // getters for object attributes
   String get group => _attributes[kGroup] ?? '';
   String get personId => _attributes[kPersonId] ?? '';
-
+  
   // setters for object attributes
-
+  
   /// Possible values: `No Access`, `Viewer`, `Editor`, or `Manager`
-
+  ///
   /// pass `null` to remove key from attributes
-  set group(String? x) =>
-      (x == null) ? _attributes.remove(kGroup) : _attributes[kGroup] = x;
-
+  set group(String? x) => (x == null) ? _attributes.remove(kGroup) : _attributes[kGroup] = x;
+  ///
   /// pass `null` to remove key from attributes
-  set personId(String? x) =>
-      (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
+  set personId(String? x) => (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
 
   // Class Constructors
-  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoPeopleNoteCategoryShare.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   PcoPeopleNoteCategoryShare.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleNoteCategoryShare] object using this endpoint: `https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares`
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - Call `save()` on the object to save it to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: `group`, `personId`
   /// - FIELDS USED WHEN UPDATING: `group`, `personId`
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleNoteCategoryShare(
-      {required String noteCategoryId,
-      String? id,
-      String? group,
-      String? personId,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoPeopleNoteCategoryShare({required String noteCategoryId, String? id, String? group, String? personId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleNoteCategoryShare.empty();
     obj._id = id;
-    obj._apiPathOverride =
-        'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
+    obj._apiPathOverride = 'https://api.planningcenteronline.com/people/v2/note_categories/$noteCategoryId/shares';
     if (group != null) obj._attributes['group'] = group;
     if (personId != null) obj._attributes['person_id'] = personId;
 
@@ -233,33 +227,31 @@ class PcoPeopleNoteCategoryShare extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleNoteCategoryShare] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/shares`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleNoteCategoryShare>>
-      getSharesFromNoteCategory(
-    String noteCategoryId, {
-    PcoPeopleNoteCategoryShareQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleNoteCategoryShare>> getSharesFromNoteCategory(String noteCategoryId, {PcoPeopleNoteCategoryShareQuery? query, }) async {
     query ??= PcoPeopleNoteCategoryShareQuery();
-
+    
+    
     var url = '/people/v2/note_categories/$noteCategoryId/shares';
-
-    return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url,
-        query: query, apiVersion: kApiVersion);
+    
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategoryShare>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.755358
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.352661
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoServicesTagFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoServicesTagQuery extends PlanningCenterApiQuery {
-  static final Map<PcoServicesTagOrder, String> _orderMap = {};
-  static String orderString(PcoServicesTagOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoServicesTagOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoServicesTagOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoServicesTagFilter, String> _filterMap = {};
-  static String filterString(PcoServicesTagFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoServicesTagFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoServicesTagFilter filter) => _filterMap[filter]!;
 
   PcoServicesTagQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoServicesTagQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO Services Tag Object
-///
+/// 
 /// - Application:        services
 /// - Id:                 tag
 /// - Type:               Tag
@@ -50,12 +56,12 @@ class PcoServicesTagQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/services/v2/media/1/tags
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoServicesTag.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,26 +69,26 @@ class PcoServicesTagQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A tag belonging to a tag group.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `name` (ro) -> PCO: `name`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `tag-arrangement-tags`: https://api.planningcenteronline.com/services/v2/songs/1/arrangements/1/tags
 /// - `tag-media-tags`: https://api.planningcenteronline.com/services/v2/media/1/tags
 /// - `tag-person-tags`: https://api.planningcenteronline.com/services/v2/people/1/tags
 /// - `tag-song-tags`: https://api.planningcenteronline.com/services/v2/songs/1/tags
 /// - `tag-taggroup-tags`: https://api.planningcenteronline.com/services/v2/tag_groups/1/tags
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -109,20 +115,19 @@ class PcoServicesTag extends PcoResource {
   static const String kTypeString = 'Tag';
   static const String kTypeId = 'tag';
   static const String kApiVersion = '2018-11-01';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/services/v2/media/1/tags';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/services/v2/media/1/tags';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -146,6 +151,7 @@ class PcoServicesTag extends PcoResource {
   static const kId = 'id';
   static const kName = 'name';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -166,31 +172,25 @@ class PcoServicesTag extends PcoResource {
   String get name => _attributes[kName] ?? '';
 
   // Class Constructors
-  PcoServicesTag.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoServicesTag.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoServicesTag.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoServicesTag] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoServicesTag(
-      {String? id,
-      String? name,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoServicesTag({String? id, String? name, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoServicesTag.empty();
     obj._id = id;
     if (name != null) obj._attributes['name'] = name;
@@ -210,106 +210,91 @@ class PcoServicesTag extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/tags`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTag>> getFromSongAndArrangement(
-    String songId,
-    String arrangementId, {
-    String? id,
-    PcoServicesTagQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromSongAndArrangement(String songId,String arrangementId, {String? id, PcoServicesTagQuery? query, }) async {
     query ??= PcoServicesTagQuery();
-
+    
+    
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/tags';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/tags`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTag>> getFromMedia(
-    String mediaId, {
-    String? id,
-    PcoServicesTagQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromMedia(String mediaId, {String? id, PcoServicesTagQuery? query, }) async {
     query ??= PcoServicesTagQuery();
-
+    
+    
     var url = '/services/v2/media/$mediaId/tags';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/tags`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTag>> getFromPerson(
-    String personId, {
-    String? id,
-    PcoServicesTagQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromPerson(String personId, {String? id, PcoServicesTagQuery? query, }) async {
     query ??= PcoServicesTagQuery();
-
+    
+    
     var url = '/services/v2/people/$personId/tags';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/tags`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTag>> getFromSong(
-    String songId, {
-    String? id,
-    PcoServicesTagQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromSong(String songId, {String? id, PcoServicesTagQuery? query, }) async {
     query ??= PcoServicesTagQuery();
-
+    
+    
     var url = '/services/v2/songs/$songId/tags';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoServicesTag] objects (expecting many)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/tags`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTag>> getFromTagGroup(
-    String tagGroupId, {
-    String? id,
-    PcoServicesTagQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoServicesTag>> getFromTagGroup(String tagGroupId, {String? id, PcoServicesTagQuery? query, }) async {
     query ??= PcoServicesTagQuery();
-
+    
+    
     var url = '/services/v2/tag_groups/$tagGroupId/tags';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoServicesTag>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoServicesTag>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

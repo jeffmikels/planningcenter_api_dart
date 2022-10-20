@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.902696
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.488630
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,16 @@ enum PcoPeopleListResultFilter { none }
 /// Creates a [PcoPeopleListResultQuery] object
 /// ## Possible Ordering
 /// (translates to url parameter: `?order=-updated_at`)
-///
+/// 
 /// Results can be ordered by setting `orderBy` to an appropriate enum value:
 /// - `PcoPeopleListResultOrder.createdAt` : will order by `created_at`
 /// - `PcoPeopleListResultOrder.updatedAt` : will order by `updated_at`
-///
+/// 
 /// To reverse the order, set `reverse` to true.
-///
+/// 
 /// Alternatively, you may pass a string to the `order` field directly (a prefix of `-` reverses the order).
 /// e.g. `PlanningCenterApiQuery(order: '-updated_at')`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
@@ -34,16 +35,18 @@ class PcoPeopleListResultQuery extends PlanningCenterApiQuery {
     PcoPeopleListResultOrder.createdAt: 'created_at',
     PcoPeopleListResultOrder.updatedAt: 'updated_at',
   };
-  static String orderString(PcoPeopleListResultOrder order,
-          {bool reverse = false}) =>
+  static String orderString(PcoPeopleListResultOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeopleListResultFilter, String> _filterMap = {};
-  static String filterString(PcoPeopleListResultFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoPeopleListResultFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoPeopleListResultFilter filter) => _filterMap[filter]!;
 
   PcoPeopleListResultQuery({
+
     PcoPeopleListResultOrder? orderBy,
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -57,12 +60,11 @@ class PcoPeopleListResultQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (orderBy != null) order = orderString(orderBy, reverse: reverse);
-  }
+    if (orderBy != null) order = orderString(orderBy, reverse: reverse);}
 }
 
 /// This class represents a PCO People ListResult Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 list_result
 /// - Type:               ListResult
@@ -71,12 +73,12 @@ class PcoPeopleListResultQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/list_results
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleListResult.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -84,23 +86,23 @@ class PcoPeopleListResultQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A list result
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `listresult-list-list_results`: https://api.planningcenteronline.com/people/v2/lists/1/list_results
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -134,22 +136,21 @@ class PcoPeopleListResult extends PcoResource {
   static const String kTypeString = 'ListResult';
   static const String kTypeId = 'list_result';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/lists/1/list_results';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/list_results';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
   /// - `created_at`: (URLParameter), prefix with a hyphen (-created_at) to reverse the order
   /// - `updated_at`: (URLParameter), prefix with a hyphen (-updated_at) to reverse the order
-  static List<String> get canOrderBy => ['created_at', 'updated_at'];
+  static List<String> get canOrderBy => ['created_at','updated_at'];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
   // child class. This lets the parent access the static variables of the child class.
@@ -173,6 +174,7 @@ class PcoPeopleListResult extends PcoResource {
   static const kCreatedAt = 'created_at';
   static const kUpdatedAt = 'updated_at';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -189,39 +191,31 @@ class PcoPeopleListResult extends PcoResource {
   @override
   bool get canDestroy => false;
 
+
   // Class Constructors
-  PcoPeopleListResult.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoPeopleListResult.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleListResult.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleListResult] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleListResult(
-      {String? id,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoPeopleListResult({String? id, DateTime? createdAt, DateTime? updatedAt, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleListResult.empty();
     obj._id = id;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null)
-      obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
 
     if (withRelationships != null) {
       for (var r in withRelationships.entries) {
@@ -238,33 +232,31 @@ class PcoPeopleListResult extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleListResult] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/list_results`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleListResult>> getFromList(
-    String listId, {
-    String? id,
-    PcoPeopleListResultQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleListResult>> getFromList(String listId, {String? id, PcoPeopleListResultQuery? query, }) async {
     query ??= PcoPeopleListResultQuery();
-
+    
+    
     var url = '/people/v2/lists/$listId/list_results';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleListResult>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleListResult>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

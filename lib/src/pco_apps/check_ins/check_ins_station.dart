@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.830623
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.420848
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -14,50 +15,55 @@ enum PcoCheckInsStationFilter { none }
 /// Creates a [PcoCheckInsStationQuery] object
 /// ## Possible Includes
 /// (translates to url parameter: `?include=a,b`)
-///
+/// 
 /// Related data may be included by marking desired `includeSomething` variables as true:
-/// - `includeEvent`: include associated event
-/// - `includeLocation`: include associated location
-/// - `includePrintStation`: include associated print_station
-/// - `includeTheme`: include associated theme
+/// - `includeEvent`: include associated event 
+/// - `includeLocation`: include associated location 
+/// - `includePrintStation`: include associated print_station 
+/// - `includeTheme`: include associated theme 
 /// - `includeAll`: include all related objects
-///
+/// 
 /// Alternatively, you may pass a list of strings to the `include` argument.
-///
+/// 
 /// e.g. `PcoCheckInsStationQuery(includes: ['a', 'b'])`
-///
+/// 
 ///
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
-  static final Map<PcoCheckInsStationOrder, String> _orderMap = {};
-  static String orderString(PcoCheckInsStationOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoCheckInsStationOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoCheckInsStationOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoCheckInsStationFilter, String> _filterMap = {};
-  static String filterString(PcoCheckInsStationFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoCheckInsStationFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoCheckInsStationFilter filter) => _filterMap[filter]!;
 
   PcoCheckInsStationQuery({
     /// include associated event
     /// when true, adds `?include=event` to url
     bool includeEvent = false,
-
+    
     /// include associated location
     /// when true, adds `?include=location` to url
     bool includeLocation = false,
-
+    
     /// include associated print_station
     /// when true, adds `?include=print_station` to url
     bool includePrintStation = false,
-
+    
     /// include associated theme
     /// when true, adds `?include=theme` to url
     bool includeTheme = false,
-
+    
     /// when true, adds `?include=event,location,print_station,theme` to url parameters
     bool includeAll = false,
+
+
+
 
     /// reverse the ordering
     bool reverse = false,
@@ -74,12 +80,11 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
     if (includeAll || includeEvent) include.add('event');
     if (includeAll || includeLocation) include.add('location');
     if (includeAll || includePrintStation) include.add('print_station');
-    if (includeAll || includeTheme) include.add('theme');
-  }
+    if (includeAll || includeTheme) include.add('theme');}
 }
 
 /// This class represents a PCO CheckIns Station Object
-///
+/// 
 /// - Application:        check-ins
 /// - Id:                 station
 /// - Type:               Station
@@ -88,12 +93,12 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/check-ins/v2/stations
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoCheckInsStation.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -101,12 +106,12 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// A device where people can be checked in.
 /// A device may also be connected to a printer
 /// and print labels for itself or other stations.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `isOnline` (ro) -> PCO: `online`
@@ -118,9 +123,9 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
 /// - `createdAt` (ro) -> PCO: `created_at`
 /// - `updatedAt` (ro) -> PCO: `updated_at`
 /// - `checkInCount` (ro) -> PCO: `check_in_count`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// - `checkingroup-station-check_in_groups`: https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups
 /// - `checkin-station-checked_in_at_check_ins`: https://api.planningcenteronline.com/check-ins/v2/stations/1/checked_in_at_check_ins
@@ -128,13 +133,13 @@ class PcoCheckInsStationQuery extends PlanningCenterApiQuery {
 /// - `location-station-location`: https://api.planningcenteronline.com/check-ins/v2/stations/1/location
 /// - `station-station-print_station`: https://api.planningcenteronline.com/check-ins/v2/stations/1/print_station
 /// - `theme-station-theme`: https://api.planningcenteronline.com/check-ins/v2/stations/1/theme
-///
+/// 
 /// Inbound Edges:
 /// - `station-checkin-checked_in_at`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/checked_in_at
 /// - `station-checkingroup-print_station`: https://api.planningcenteronline.com/check-ins/v2/check_ins/1/check_in_group/1/print_station
 /// - `station-organization-stations`: https://api.planningcenteronline.com/check-ins/v2/stations
 /// - `station-station-print_station`: https://api.planningcenteronline.com/check-ins/v2/stations/1/print_station
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -161,24 +166,22 @@ class PcoCheckInsStation extends PcoResource {
   static const String kTypeString = 'Station';
   static const String kTypeId = 'station';
   static const String kApiVersion = '2019-07-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/check-ins/v2/stations';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/check-ins/v2/stations';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  /// - `event`: include associated event
-  /// - `location`: include associated location
-  /// - `print_station`: include associated print_station
-  /// - `theme`: include associated theme
-  static List<String> get canInclude =>
-      ['event', 'location', 'print_station', 'theme'];
+  /// - `event`: include associated event 
+  /// - `location`: include associated location 
+  /// - `print_station`: include associated print_station 
+  /// - `theme`: include associated theme 
+  static List<String> get canInclude => ['event','location','print_station','theme'];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -210,6 +213,7 @@ class PcoCheckInsStation extends PcoResource {
   static const kUpdatedAt = 'updated_at';
   static const kCheckInCount = 'check_in_count';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -234,70 +238,47 @@ class PcoCheckInsStation extends PcoResource {
   String get inputType => _attributes[kInputType] ?? '';
   String get inputTypeOptions => _attributes[kInputTypeOptions] ?? '';
   int get checkInCount => _attributes[kCheckInCount] ?? 0;
-
+  
   // typed getters for each relationship
-
-  PcoCheckInsEvent? get includedEvent =>
-      _firstOrNull<PcoCheckInsEvent>(relationships['event']);
-  PcoCheckInsLocation? get includedLocation =>
-      _firstOrNull<PcoCheckInsLocation>(relationships['location']);
-
+  
+  PcoCheckInsEvent? get includedEvent => _firstOrNull<PcoCheckInsEvent>(relationships['event']);
+  PcoCheckInsLocation? get includedLocation => _firstOrNull<PcoCheckInsLocation>(relationships['location']);
   /// The code generator could not automatically determine the resource type of this relationship.
   /// For type safe code, you should specify it in the type argument when calling.
-  List<T> includedPrintStation<T extends PcoResource>() =>
-      (relationships['print_station'] as List?)?.cast<T>() ?? [];
-
-  PcoCheckInsTheme? get includedTheme =>
-      _firstOrNull<PcoCheckInsTheme>(relationships['theme']);
+  List<T> includedPrintStation<T extends PcoResource>() => (relationships['print_station'] as List?)?.cast<T>() ?? [];
+  
+  PcoCheckInsTheme? get includedTheme => _firstOrNull<PcoCheckInsTheme>(relationships['theme']);
 
   // Class Constructors
-  PcoCheckInsStation.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoCheckInsStation.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoCheckInsStation.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoCheckInsStation] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoCheckInsStation(
-      {String? id,
-      bool? isOnline,
-      int? mode,
-      String? name,
-      int? timeoutSeconds,
-      String? inputType,
-      String? inputTypeOptions,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      int? checkInCount,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoCheckInsStation({String? id, bool? isOnline, int? mode, String? name, int? timeoutSeconds, String? inputType, String? inputTypeOptions, DateTime? createdAt, DateTime? updatedAt, int? checkInCount, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoCheckInsStation.empty();
     obj._id = id;
     if (isOnline != null) obj._attributes['online'] = isOnline;
     if (mode != null) obj._attributes['mode'] = mode;
     if (name != null) obj._attributes['name'] = name;
-    if (timeoutSeconds != null)
-      obj._attributes['timeout_seconds'] = timeoutSeconds;
+    if (timeoutSeconds != null) obj._attributes['timeout_seconds'] = timeoutSeconds;
     if (inputType != null) obj._attributes['input_type'] = inputType;
-    if (inputTypeOptions != null)
-      obj._attributes['input_type_options'] = inputTypeOptions;
-    if (createdAt != null)
-      obj._attributes['created_at'] = createdAt.toIso8601String();
-    if (updatedAt != null)
-      obj._attributes['updated_at'] = updatedAt.toIso8601String();
+    if (inputTypeOptions != null) obj._attributes['input_type_options'] = inputTypeOptions;
+    if (createdAt != null) obj._attributes['created_at'] = createdAt.toIso8601String();
+    if (updatedAt != null) obj._attributes['updated_at'] = updatedAt.toIso8601String();
     if (checkInCount != null) obj._attributes['check_in_count'] = checkInCount;
 
     if (withRelationships != null) {
@@ -315,25 +296,20 @@ class PcoCheckInsStation extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsStation>> get({
-    String? id,
-    PcoCheckInsStationQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocation = false,
-    bool includePrintStation = false,
-    bool includeTheme = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsStation>> get( {String? id, PcoCheckInsStationQuery? query, bool includeAll = false, bool includeEvent = false, bool includeLocation = false, bool includePrintStation = false, bool includeTheme = false,}) async {
     query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
@@ -342,25 +318,16 @@ class PcoCheckInsStation extends PcoResource {
     if (includeTheme) query.include.add('theme');
     var url = '/check-ins/v2/stations';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsStation>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_at`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsStation>> getCheckedInAtFromCheckIn(
-    String checkInId, {
-    String? id,
-    PcoCheckInsStationQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocation = false,
-    bool includePrintStation = false,
-    bool includeTheme = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsStation>> getCheckedInAtFromCheckIn(String checkInId, {String? id, PcoCheckInsStationQuery? query, bool includeAll = false, bool includeEvent = false, bool includeLocation = false, bool includePrintStation = false, bool includeTheme = false,}) async {
     query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
@@ -369,55 +336,34 @@ class PcoCheckInsStation extends PcoResource {
     if (includeTheme) query.include.add('theme');
     var url = '/check-ins/v2/check_ins/$checkInId/checked_in_at';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsStation>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group/$checkInGroupId/print_station`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsStation>>
-      getPrintStationFromCheckInAndCheckInGroup(
-    String checkInId,
-    String checkInGroupId, {
-    String? id,
-    PcoCheckInsStationQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocation = false,
-    bool includePrintStation = false,
-    bool includeTheme = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsStation>> getPrintStationFromCheckInAndCheckInGroup(String checkInId,String checkInGroupId, {String? id, PcoCheckInsStationQuery? query, bool includeAll = false, bool includeEvent = false, bool includeLocation = false, bool includePrintStation = false, bool includeTheme = false,}) async {
     query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLocation) query.include.add('location');
     if (includePrintStation) query.include.add('print_station');
     if (includeTheme) query.include.add('theme');
-    var url =
-        '/check-ins/v2/check_ins/$checkInId/check_in_group/$checkInGroupId/print_station';
+    var url = '/check-ins/v2/check_ins/$checkInId/check_in_group/$checkInGroupId/print_station';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsStation>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/print_station`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsStation>> getPrintStationFromStation(
-    String stationId, {
-    String? id,
-    PcoCheckInsStationQuery? query,
-    bool includeAll = false,
-    bool includeEvent = false,
-    bool includeLocation = false,
-    bool includePrintStation = false,
-    bool includeTheme = false,
-  }) async {
+  static Future<PcoCollection<PcoCheckInsStation>> getPrintStationFromStation(String stationId, {String? id, PcoCheckInsStationQuery? query, bool includeAll = false, bool includeEvent = false, bool includeLocation = false, bool includePrintStation = false, bool includeTheme = false,}) async {
     query ??= PcoCheckInsStationQuery();
     if (includeAll) query.include.addAll(PcoCheckInsStation.canInclude);
     if (includeEvent) query.include.add('event');
@@ -426,9 +372,9 @@ class PcoCheckInsStation extends PcoResource {
     if (includeTheme) query.include.add('theme');
     var url = '/check-ins/v2/stations/$stationId/print_station';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsStation>(url, query: query, apiVersion:kApiVersion);
   }
+
 
   // ---------------------------------
   // Outbound Edges
@@ -437,23 +383,21 @@ class PcoCheckInsStation extends PcoResource {
 
   /// Will get a collection of [PcoCheckInsCheckInGroup] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/check_in_groups`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `canceled`
   /// - `printed`
   /// - `ready`
   /// - `skipped`
-  Future<PcoCollection<PcoCheckInsCheckInGroup>> getCheckInGroups(
-      {PcoCheckInsCheckInGroupQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsCheckInGroup>> getCheckInGroups({PcoCheckInsCheckInGroupQuery? query}) async {
     query ??= PcoCheckInsCheckInGroupQuery();
     var url = '$apiEndpoint/check_in_groups';
-    return PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsCheckIn] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/checked_in_at_check_ins`
-  ///
+  /// 
   /// Available Query Filters:
   /// - `attendee`
   /// - `checked_out`
@@ -463,58 +407,47 @@ class PcoCheckInsStation extends PcoResource {
   /// - `one_time_guest`
   /// - `regular`
   /// - `volunteer`
-  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckedInAtCheckIns(
-      {PcoCheckInsCheckInQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsCheckIn>> getCheckedInAtCheckIns({PcoCheckInsCheckInQuery? query}) async {
     query ??= PcoCheckInsCheckInQuery();
     var url = '$apiEndpoint/checked_in_at_check_ins';
-    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsCheckIn>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/event`
-  Future<PcoCollection<PcoCheckInsEvent>> getEvent(
-      {PcoCheckInsEventQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsEvent>> getEvent({PcoCheckInsEventQuery? query}) async {
     query ??= PcoCheckInsEventQuery();
     var url = '$apiEndpoint/event';
-    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsLocation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/location`
-  Future<PcoCollection<PcoCheckInsLocation>> getLocation(
-      {PcoCheckInsLocationQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsLocation>> getLocation({PcoCheckInsLocationQuery? query}) async {
     query ??= PcoCheckInsLocationQuery();
     var url = '$apiEndpoint/location';
-    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsLocation>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsStation] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/print_station`
-  Future<PcoCollection<PcoCheckInsStation>> getPrintStation(
-      {PcoCheckInsStationQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsStation>> getPrintStation({PcoCheckInsStationQuery? query}) async {
     query ??= PcoCheckInsStationQuery();
     var url = '$apiEndpoint/print_station';
-    return PcoCollection.fromApiCall<PcoCheckInsStation>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsStation>(url, query: query, apiVersion: apiVersion);
   }
 
   /// Will get a collection of [PcoCheckInsTheme] objects (expecting many)
   /// using a path like this: `https://api.planningcenteronline.com/check-ins/v2/stations/1/theme`
-  Future<PcoCollection<PcoCheckInsTheme>> getTheme(
-      {PcoCheckInsThemeQuery? query}) async {
+  Future<PcoCollection<PcoCheckInsTheme>> getTheme({PcoCheckInsThemeQuery? query}) async {
     query ??= PcoCheckInsThemeQuery();
     var url = '$apiEndpoint/theme';
-    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url,
-        query: query, apiVersion: apiVersion);
+    return PcoCollection.fromApiCall<PcoCheckInsTheme>(url, query: query, apiVersion: apiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

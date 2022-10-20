@@ -3,7 +3,7 @@ description: |
   This package gives you full coverage of the latest,
   non-beta version of the PlanningCenter API for each
   PlanningCenter application.
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/jeffmikels/planningcenter_api_dart
 # homepage: https://www.example.com
 

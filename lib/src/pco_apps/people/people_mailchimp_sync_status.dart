@@ -1,7 +1,8 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:03.903976
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.490641
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
+
 
 part of pco;
 
@@ -16,16 +17,21 @@ enum PcoPeopleMailchimpSyncStatusFilter { none }
 /// ## Extra Params
 /// Many API queries accept extra parameters too. The `extraParams` mapping will translate directly to url parameters.
 class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
-  static final Map<PcoPeopleMailchimpSyncStatusOrder, String> _orderMap = {};
-  static String orderString(PcoPeopleMailchimpSyncStatusOrder order,
-          {bool reverse = false}) =>
+  static final Map<PcoPeopleMailchimpSyncStatusOrder, String> _orderMap = {
+    
+  };
+  static String orderString(PcoPeopleMailchimpSyncStatusOrder order, {bool reverse = false}) =>
       (reverse ? '-' : '') + _orderMap[order]!;
 
-  static final Map<PcoPeopleMailchimpSyncStatusFilter, String> _filterMap = {};
-  static String filterString(PcoPeopleMailchimpSyncStatusFilter filter) =>
-      _filterMap[filter]!;
+  static final Map<PcoPeopleMailchimpSyncStatusFilter, String> _filterMap = {
+    
+  };
+  static String filterString(PcoPeopleMailchimpSyncStatusFilter filter) => _filterMap[filter]!;
 
   PcoPeopleMailchimpSyncStatusQuery({
+
+
+
     /// reverse the ordering
     bool reverse = false,
 
@@ -37,11 +43,11 @@ class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
     super.filter,
     super.order,
     super.include,
-  }) : super();
+  }) : super() ;
 }
 
 /// This class represents a PCO People MailchimpSyncStatus Object
-///
+/// 
 /// - Application:        people
 /// - Id:                 mailchimp_sync_status
 /// - Type:               MailchimpSyncStatus
@@ -50,12 +56,12 @@ class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
 /// - Is Collection Only: false
 /// - Default Endpoint:   https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
 /// - Create Endpoint:    NONE
-///
+/// 
 /// ## Instantiation
 /// - This object cannot be created through the API.
 /// - Instantiate from existing `JSON` data using the `PcoPeopleMailchimpSyncStatus.fromJson()` constructor.
 /// - Load an instance from the API using one of the static methods defined on this class.
-///
+/// 
 /// ## Usage
 /// - Fields exposed by the API are readable through getter methods.
 /// - Fields writable by the API are exposed through setter methods.
@@ -63,10 +69,10 @@ class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
 /// - Additional data is available through the read-only `links` and `relationships` maps.
 /// - Available relationships / includes are exposed through typed getters.
 ///
-///
+///   
 /// ## Description
 /// The status of syncing a List with Mailchimp.
-///
+/// 
 /// ## Attributes (and permissions)
 /// - `id` (ro) -> PCO: `id`
 /// - `status` (ro) -> PCO: `status`
@@ -74,15 +80,15 @@ class PcoPeopleMailchimpSyncStatusQuery extends PlanningCenterApiQuery {
 /// - `progress` (ro) -> PCO: `progress`
 /// - `completedAt` (ro) -> PCO: `completed_at`
 /// - `segmentId` (ro) -> PCO: `segment_id`
-///
+/// 
 /// ## Edges and Actions
-///
+/// 
 /// Outbound Edges:
 /// NONE
-///
+/// 
 /// Inbound Edges:
 /// - `mailchimpsyncstatus-list-mailchimp_sync_status`: https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status
-///
+/// 
 /// Actions:
 /// NONE
 ///
@@ -106,20 +112,19 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   static const String kTypeString = 'MailchimpSyncStatus';
   static const String kTypeId = 'mailchimp_sync_status';
   static const String kApiVersion = '2021-08-17';
-  static const String kDefaultPathTemplate =
-      'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
+  static const String kDefaultPathTemplate = 'https://api.planningcenteronline.com/people/v2/lists/1/mailchimp_sync_status';
   static const String kCreatePathTemplate = 'null';
 
   /// possible includes with parameter ?include=a,b
-  ///
+  /// 
   static List<String> get canInclude => [];
 
   /// possible queries using parameters like ?where[key]=value or ?where[key][gt|lt]=value
-  ///
+  /// 
   static List<String> get canQuery => [];
 
   /// possible orderings with parameter ?order=
-  ///
+  /// 
   static List<String> get canOrderBy => [];
 
   // By using overridden getters, the parent class can call the getter and will get the results from the
@@ -147,6 +152,7 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   static const kCompletedAt = 'completed_at';
   static const kSegmentId = 'segment_id';
 
+
   // getters and setters
   @override
   List<String> get createAllowed => [];
@@ -171,42 +177,31 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   int get segmentId => _attributes[kSegmentId] ?? 0;
 
   // Class Constructors
-  PcoPeopleMailchimpSyncStatus.fromJson(Map<String, dynamic> data,
-      {List<Map<String, dynamic>>? withIncluded})
-      : super.fromJson(kPcoApplication, kTypeString, data,
-            withIncluded: withIncluded);
+  PcoPeopleMailchimpSyncStatus.fromJson(Map<String, dynamic> data, {List<Map<String, dynamic>>? withIncluded}): super.fromJson(kPcoApplication, kTypeString, data, withIncluded: withIncluded);
+
 
   /// Create an empty instance of this class. This is only useful when an endpoint requires
   /// related or included data.
-  ///
+  /// 
   /// NOTE: This object cannot be saved directly to Planning Center
   PcoPeopleMailchimpSyncStatus.empty() : super(kPcoApplication, kTypeString);
 
   /// Create a new [PcoPeopleMailchimpSyncStatus] object. This object cannot be created with the API
-  ///
+  /// 
   /// ### NOTES:
   /// - Creating an instance of a class this way does not save it on the server.
   /// - This object cannot be saved directly to the server.
   /// - Only set the `id` field if you know what you are doing. Save operations will overwrite data when the `id` is set.
+  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
   /// - FIELDS USED WHEN CREATING: none
   /// - FIELDS USED WHEN UPDATING: none
-  /// - Dummy data can be supplied for a required parameter, but if so, `.save()` should not be called on the object
-  factory PcoPeopleMailchimpSyncStatus(
-      {String? id,
-      String? status,
-      String? error,
-      int? progress,
-      DateTime? completedAt,
-      int? segmentId,
-      Map<String, List<PcoResource>>? withRelationships,
-      List<PcoResource>? withIncluded}) {
+  factory PcoPeopleMailchimpSyncStatus({String? id, String? status, String? error, int? progress, DateTime? completedAt, int? segmentId, Map<String, List<PcoResource>>? withRelationships, List<PcoResource>? withIncluded }) {
     var obj = PcoPeopleMailchimpSyncStatus.empty();
     obj._id = id;
     if (status != null) obj._attributes['status'] = status;
     if (error != null) obj._attributes['error'] = error;
     if (progress != null) obj._attributes['progress'] = progress;
-    if (completedAt != null)
-      obj._attributes['completed_at'] = completedAt.toIso8601String();
+    if (completedAt != null) obj._attributes['completed_at'] = completedAt.toIso8601String();
     if (segmentId != null) obj._attributes['segment_id'] = segmentId;
 
     if (withRelationships != null) {
@@ -224,33 +219,31 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
     return obj;
   }
 
+
   // ---------------------------------
   // Inbound Edges
   // ---------------------------------
   // Static functions to obtain instances of this class
 
+
+
   /// Will get a collection of [PcoPeopleMailchimpSyncStatus] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
-  ///
+  /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getFromList(
-    String listId, {
-    String? id,
-    PcoPeopleMailchimpSyncStatusQuery? query,
-  }) async {
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getFromList(String listId, {String? id, PcoPeopleMailchimpSyncStatusQuery? query, }) async {
     query ??= PcoPeopleMailchimpSyncStatusQuery();
-
+    
+    
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';
-    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(url,
-        query: query, apiVersion: kApiVersion);
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(url, query: query, apiVersion:kApiVersion);
   }
 
+
+
+
   // little helper function
-  T? _firstOrNull<T>(List? l) => l == null
-      ? null
-      : l.isEmpty
-          ? null
-          : l.cast<T>().first;
+  T? _firstOrNull<T>(List? l) => l == null ? null : l.isEmpty ? null : l.cast<T>().first;
 }

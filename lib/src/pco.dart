@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-08-01T15:11:04.034209
+/// AUTO-GENERATED FILE CREATED ON 2022-10-20T17:29:04.597459
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -16,6 +16,8 @@ part 'pco_base/pco_constructors.dart';
 part 'pco_base/pco_file.dart';
 part 'pco_base/pco_resource_base.dart';
 part 'pco_base/pco_class_extensions.dart';
+
+
 
 // parts for services
 part 'pco_apps/services/services_arrangement.dart';
@@ -79,6 +81,7 @@ part 'pco_apps/services/services_text_setting.dart';
 part 'pco_apps/services/services_time_preference_option.dart';
 part 'pco_apps/services/services_zoom.dart';
 
+
 // parts for check-ins
 part 'pco_apps/check_ins/check_ins_attendance_type.dart';
 part 'pco_apps/check_ins/check_ins_check_in.dart';
@@ -101,6 +104,7 @@ part 'pco_apps/check_ins/check_ins_person.dart';
 part 'pco_apps/check_ins/check_ins_person_event.dart';
 part 'pco_apps/check_ins/check_ins_station.dart';
 part 'pco_apps/check_ins/check_ins_theme.dart';
+
 
 // parts for people
 part 'pco_apps/people/people_address.dart';
@@ -163,6 +167,7 @@ part 'pco_apps/people/people_workflow_share.dart';
 part 'pco_apps/people/people_workflow_step.dart';
 part 'pco_apps/people/people_workflow_step_assignee_summary.dart';
 
+
 // parts for calendar
 part 'pco_apps/calendar/calendar_attachment.dart';
 part 'pco_apps/calendar/calendar_conflict.dart';
@@ -184,6 +189,7 @@ part 'pco_apps/calendar/calendar_room_setup.dart';
 part 'pco_apps/calendar/calendar_tag.dart';
 part 'pco_apps/calendar/calendar_tag_group.dart';
 
+
 // parts for giving
 part 'pco_apps/giving/giving_batch.dart';
 part 'pco_apps/giving/giving_batch_group.dart';
@@ -203,6 +209,7 @@ part 'pco_apps/giving/giving_recurring_donation.dart';
 part 'pco_apps/giving/giving_recurring_donation_designation.dart';
 part 'pco_apps/giving/giving_refund.dart';
 
+
 // parts for groups
 part 'pco_apps/groups/groups_attendance.dart';
 part 'pco_apps/groups/groups_event.dart';
@@ -215,6 +222,7 @@ part 'pco_apps/groups/groups_person.dart';
 part 'pco_apps/groups/groups_resource.dart';
 part 'pco_apps/groups/groups_tag.dart';
 part 'pco_apps/groups/groups_tag_group.dart';
+
 
 // parts for webhooks
 part 'pco_apps/webhooks/webhooks_available_event.dart';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-10-20T18:03:47.654789
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.142146
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -45,6 +45,7 @@ enum PcoPeopleFieldDatumFilter { none }
 /// - `whereFileName`: query on a specific file_name, example: ?where[file_name]=string
 /// - `whereFileSize`: query on a specific file_size, example: ?where[file_size]=1
 /// - `whereValue`: query on a specific value, example: ?where[value]=string
+/// - `whereFieldDefinitionId`: query on a specific field definition, example: ?where[field_definition_id]=string
 ///
 /// For each, you may specify a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
 ///
@@ -126,6 +127,11 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
     /// query on a specific value, url example: ?where[value]=string
     /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
     String? whereValue,
+
+    /// Query by `field_definition_id`
+    /// query on a specific field definition, url example: ?where[field_definition_id]=string
+    /// include a prefix of `<`, `<=`, `>`, `>=` to query by comparisons
+    String? whereFieldDefinitionId,
     PcoPeopleFieldDatumOrder? orderBy,
 
     /// reverse the ordering
@@ -155,6 +161,9 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
       where.add(PlanningCenterApiWhere.parse('file_size', whereFileSize));
     if (whereValue != null)
       where.add(PlanningCenterApiWhere.parse('value', whereValue));
+    if (whereFieldDefinitionId != null)
+      where.add(PlanningCenterApiWhere.parse(
+          'field_definition_id', whereFieldDefinitionId));
 
     if (orderBy != null) order = orderString(orderBy, reverse: reverse);
   }
@@ -281,8 +290,15 @@ class PcoPeopleFieldDatum extends PcoResource {
   /// - `file_name`: (URLParameter), query on a specific file_name, example: ?where[file_name]=string
   /// - `file_size`: (URLParameter), query on a specific file_size, example: ?where[file_size]=1
   /// - `value`: (URLParameter), query on a specific value, example: ?where[value]=string
-  static List<String> get canQuery =>
-      ['file', 'file_content_type', 'file_name', 'file_size', 'value'];
+  /// - `field_definition_id`: (URLParameter), query on a specific field definition, example: ?where[field_definition_id]=string
+  static List<String> get canQuery => [
+        'file',
+        'file_content_type',
+        'file_name',
+        'file_size',
+        'value',
+        'field_definition_id'
+      ];
 
   /// possible orderings with parameter ?order=
   /// - `file`: (URLParameter), prefix with a hyphen (-file) to reverse the order

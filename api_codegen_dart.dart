@@ -1434,6 +1434,27 @@ ${filePaths.map((e) => 'part ')}
   ''';
 }
 
+// receives the decoded json
+handleSpecialCases(Map<String, dynamic> data) {
+  // the api documentation doesn't specify everything, so we inject it here.
+  if (data['data']?['id'] == 'field_datum') {
+    (data['data']['relationships']['can_query']['data'] as List).add(
+      {
+        "type": "URLParameter",
+        "attributes": {
+          "example": "?where[field_definition_id]=string",
+          "name": "field_definition_id",
+          "parameter": "where[field_definition_id]",
+          "type": "string",
+          "value": null,
+          "description": "query on a specific field definition"
+        }
+      },
+    );
+  }
+  return data;
+}
+
 // global values
 
 // // some vertices use a bothersome path in their attributes, so we override it here
@@ -1552,7 +1573,8 @@ void main(List<String> arguments) async {
       print('From: $uri');
 
       body = await get(uri, recache: reload);
-      data = json.decode(body)['data'];
+      data = handleSpecialCases(json.decode(body))['data'];
+
       vertex = Vertex.fromJson(app, version.id!, data); // load again with more data
       vertices[vertex.id!] = vertex;
 

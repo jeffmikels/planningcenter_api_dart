@@ -1,3 +1,7 @@
+## 1.1.4
+
+-   `PcoPeopleFieldDatum` can be queried according to `field_definition_id` (according to the API explorer) but it's not in the API Reference, so previous versions did not include this as a possible where query. This one does.
+
 ## 1.1.3
 
 -   removed the `PcoServicesCcliReporting` class since the Api has changed.

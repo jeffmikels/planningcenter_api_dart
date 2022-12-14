@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.987685
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.854647
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoServicesSignupSheetFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeScheduledPeople`: include associated scheduled_people
 /// - `includeSignupSheetMetadata`: include associated signup_sheet_metadata
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -47,7 +47,7 @@ class PcoServicesSignupSheetQuery extends PlanningCenterApiQuery {
     bool includeSignupSheetMetadata = false,
 
     /// when true, adds `?include=scheduled_people,signup_sheet_metadata` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -61,8 +61,9 @@ class PcoServicesSignupSheetQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeScheduledPeople) include.add('scheduled_people');
-    if (includeAll || includeSignupSheetMetadata)
+    if (includeAllRelated || includeScheduledPeople)
+      include.add('scheduled_people');
+    if (includeAllRelated || includeSignupSheetMetadata)
       include.add('signup_sheet_metadata');
   }
 }
@@ -301,8 +302,11 @@ class PcoServicesSignupSheet extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSignupSheet] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesSignupSheet] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -312,12 +316,71 @@ class PcoServicesSignupSheet extends PcoResource {
     String availableSignupId, {
     String? id,
     PcoServicesSignupSheetQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeScheduledPeople = false,
     bool includeSignupSheetMetadata = false,
   }) async {
     query ??= PcoServicesSignupSheetQuery();
-    if (includeAll) query.include.addAll(PcoServicesSignupSheet.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesSignupSheet.canInclude);
+    if (includeScheduledPeople) query.include.add('scheduled_people');
+    if (includeSignupSheetMetadata) query.include.add('signup_sheet_metadata');
+    var url =
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSignupSheet>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesSignupSheet] object
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSignupSheet?> getSingleFromPersonAndAvailableSignup(
+    String personId,
+    String availableSignupId,
+    String id, {
+    PcoServicesSignupSheetQuery? query,
+    bool includeAllRelated = false,
+    bool includeScheduledPeople = false,
+    bool includeSignupSheetMetadata = false,
+  }) async {
+    query ??= PcoServicesSignupSheetQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesSignupSheet.canInclude);
+    if (includeScheduledPeople) query.include.add('scheduled_people');
+    if (includeSignupSheetMetadata) query.include.add('signup_sheet_metadata');
+    var url =
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesSignupSheet>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSignupSheet] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSignupSheet>>
+      getAllFromPersonAndAvailableSignup(
+    String personId,
+    String availableSignupId, {
+    String? id,
+    PcoServicesSignupSheetQuery? query,
+    bool includeAllRelated = false,
+    bool includeScheduledPeople = false,
+    bool includeSignupSheetMetadata = false,
+  }) async {
+    query ??= PcoServicesSignupSheetQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesSignupSheet.canInclude);
     if (includeScheduledPeople) query.include.add('scheduled_people');
     if (includeSignupSheetMetadata) query.include.add('signup_sheet_metadata');
     var url =

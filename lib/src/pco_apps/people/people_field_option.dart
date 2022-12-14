@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.143702
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.995340
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -283,16 +283,21 @@ class PcoPeopleFieldOption extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleFieldOption] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleFieldOption] objects (expecting one)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/field_option`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldOption>> getFromFieldData(
     String fieldDataId, {
     PcoPeopleFieldOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleFieldOptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/field_data/$fieldDataId/field_option';
 
@@ -300,8 +305,11 @@ class PcoPeopleFieldOption extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/field_options`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -309,8 +317,10 @@ class PcoPeopleFieldOption extends PcoResource {
     String fieldDefinitionId, {
     String? id,
     PcoPeopleFieldOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleFieldOptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/field_definitions/$fieldDefinitionId/field_options';
     if (id != null) url += '/$id';
@@ -318,8 +328,51 @@ class PcoPeopleFieldOption extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleFieldOption] objects (expecting many)
+  /// Will get a single [PcoPeopleFieldOption] object
+  /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/field_options/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFieldOption?> getSingleFromFieldDefinition(
+    String fieldDefinitionId,
+    String id, {
+    PcoPeopleFieldOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleFieldOptionQuery();
+
+    var url =
+        '/people/v2/field_definitions/$fieldDefinitionId/field_options/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFieldOption] objects (expecting many)
+  /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/field_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFieldOption>> getAllFromFieldDefinition(
+    String fieldDefinitionId, {
+    String? id,
+    PcoPeopleFieldOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleFieldOptionQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/field_definitions/$fieldDefinitionId/field_options';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleFieldOption] objects (expecting many)
   /// using a path like this: `/people/v2/tabs/$tabId/field_options`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -327,8 +380,49 @@ class PcoPeopleFieldOption extends PcoResource {
     String tabId, {
     String? id,
     PcoPeopleFieldOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleFieldOptionQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/tabs/$tabId/field_options';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleFieldOption] object
+  /// using a path like this: `/people/v2/tabs/$tabId/field_options/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFieldOption?> getSingleFromTab(
+    String tabId,
+    String id, {
+    PcoPeopleFieldOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleFieldOptionQuery();
+
+    var url = '/people/v2/tabs/$tabId/field_options/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFieldOption>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFieldOption] objects (expecting many)
+  /// using a path like this: `/people/v2/tabs/$tabId/field_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFieldOption>> getAllFromTab(
+    String tabId, {
+    String? id,
+    PcoPeopleFieldOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleFieldOptionQuery();
+    query.getAll = true;
 
     var url = '/people/v2/tabs/$tabId/field_options';
     if (id != null) url += '/$id';

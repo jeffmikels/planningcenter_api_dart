@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.150552
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.002711
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,7 +19,7 @@ enum PcoPeopleListShareFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -349,17 +349,22 @@ class PcoPeopleListShare extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleListShare] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleListShare] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/shares`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListShare>> getSharesFromList(
     String listId, {
     PcoPeopleListShareQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleListShareQuery();
+    if (getAll) query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/lists/$listId/shares';

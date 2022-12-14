@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.208154
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.048490
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -306,16 +306,21 @@ class PcoCalendarFeed extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarFeed] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarFeed] objects (expecting many)
   /// using a path like this: `/calendar/v2/feeds`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarFeed>> get({
     String? id,
     PcoCalendarFeedQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCalendarFeedQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/calendar/v2/feeds';
     if (id != null) url += '/$id';
@@ -323,16 +328,58 @@ class PcoCalendarFeed extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarFeed] objects (expecting one)
+  /// Will get a single [PcoCalendarFeed] object
+  /// using a path like this: `/calendar/v2/feeds/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarFeed?> getSingle(
+    String id, {
+    PcoCalendarFeedQuery? query,
+  }) async {
+    query ??= PcoCalendarFeedQuery();
+
+    var url = '/calendar/v2/feeds/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarFeed>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarFeed] objects (expecting many)
+  /// using a path like this: `/calendar/v2/feeds`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarFeed>> getAll({
+    String? id,
+    PcoCalendarFeedQuery? query,
+  }) async {
+    query ??= PcoCalendarFeedQuery();
+    query.getAll = true;
+
+    var url = '/calendar/v2/feeds';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarFeed>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarFeed] objects (expecting one)
   /// using a path like this: `/calendar/v2/events/$eventId/feed`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarFeed>> getFromEvent(
     String eventId, {
     PcoCalendarFeedQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCalendarFeedQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/calendar/v2/events/$eventId/feed';
 

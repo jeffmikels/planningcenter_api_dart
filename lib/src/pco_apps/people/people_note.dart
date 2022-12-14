@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.154223
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.006055
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -32,7 +32,7 @@ enum PcoPeopleNoteFilter { none }
 /// - `includeCategory`: include associated category
 /// - `includeCreatedBy`: include associated created_by
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -99,7 +99,7 @@ class PcoPeopleNoteQuery extends PlanningCenterApiQuery {
     bool includePerson = false,
 
     /// when true, adds `?include=category,created_by,person` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `note`
     /// query on a specific note, url example: ?where[note]=string
@@ -124,9 +124,9 @@ class PcoPeopleNoteQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeCategory) include.add('category');
-    if (includeAll || includeCreatedBy) include.add('created_by');
-    if (includeAll || includePerson) include.add('person');
+    if (includeAllRelated || includeCategory) include.add('category');
+    if (includeAllRelated || includeCreatedBy) include.add('created_by');
+    if (includeAllRelated || includePerson) include.add('person');
 
     if (whereNote != null)
       where.add(PlanningCenterApiWhere.parse('note', whereNote));
@@ -439,21 +439,26 @@ class PcoPeopleNote extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleNote] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `/people/v2/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNote>> get({
     String? id,
     PcoPeopleNoteQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleNoteQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
     if (includePerson) query.include.add('person');
@@ -463,8 +468,62 @@ class PcoPeopleNote extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleNote] objects (expecting many)
+  /// Will get a single [PcoPeopleNote] object
+  /// using a path like this: `/people/v2/notes/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleNote?> getSingle(
+    String id, {
+    PcoPeopleNoteQuery? query,
+    bool includeAllRelated = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleNoteQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/notes/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleNote>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleNote] objects (expecting many)
+  /// using a path like this: `/people/v2/notes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleNote>> getAll({
+    String? id,
+    PcoPeopleNoteQuery? query,
+    bool includeAllRelated = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleNoteQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/notes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleNote>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleNote] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -472,13 +531,68 @@ class PcoPeopleNote extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleNoteQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleNoteQuery();
-    if (includeAll) query.include.addAll(PcoPeopleNote.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/notes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleNote>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleNote] object
+  /// using a path like this: `/people/v2/people/$personId/notes/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleNote?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleNoteQuery? query,
+    bool includeAllRelated = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleNoteQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/notes/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleNote>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleNote] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/notes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleNote>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleNoteQuery? query,
+    bool includeAllRelated = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleNoteQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleNote.canInclude);
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
     if (includePerson) query.include.add('person');

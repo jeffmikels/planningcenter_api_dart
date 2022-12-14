@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.000895
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.862111
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -280,8 +280,11 @@ class PcoServicesTextSetting extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesTextSetting] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesTextSetting] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/text_settings`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -289,8 +292,49 @@ class PcoServicesTextSetting extends PcoResource {
     String personId, {
     String? id,
     PcoServicesTextSettingQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesTextSettingQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/people/$personId/text_settings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTextSetting>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesTextSetting] object
+  /// using a path like this: `/services/v2/people/$personId/text_settings/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesTextSetting?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoServicesTextSettingQuery? query,
+  }) async {
+    query ??= PcoServicesTextSettingQuery();
+
+    var url = '/services/v2/people/$personId/text_settings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesTextSetting>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesTextSetting] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/text_settings`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesTextSetting>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoServicesTextSettingQuery? query,
+  }) async {
+    query ??= PcoServicesTextSettingQuery();
+    query.getAll = true;
 
     var url = '/services/v2/people/$personId/text_settings';
     if (id != null) url += '/$id';

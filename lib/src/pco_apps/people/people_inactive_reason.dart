@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.147731
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.999996
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -250,16 +250,21 @@ class PcoPeopleInactiveReason extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/inactive_reasons`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleInactiveReason>> get({
     String? id,
     PcoPeopleInactiveReasonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleInactiveReasonQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/inactive_reasons';
     if (id != null) url += '/$id';
@@ -267,8 +272,48 @@ class PcoPeopleInactiveReason extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleInactiveReason] objects (expecting many)
+  /// Will get a single [PcoPeopleInactiveReason] object
+  /// using a path like this: `/people/v2/inactive_reasons/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleInactiveReason?> getSingle(
+    String id, {
+    PcoPeopleInactiveReasonQuery? query,
+  }) async {
+    query ??= PcoPeopleInactiveReasonQuery();
+
+    var url = '/people/v2/inactive_reasons/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleInactiveReason] objects (expecting many)
+  /// using a path like this: `/people/v2/inactive_reasons`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleInactiveReason>> getAll({
+    String? id,
+    PcoPeopleInactiveReasonQuery? query,
+  }) async {
+    query ??= PcoPeopleInactiveReasonQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/inactive_reasons';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleInactiveReason] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/inactive_reason`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -276,8 +321,49 @@ class PcoPeopleInactiveReason extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleInactiveReasonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleInactiveReasonQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people/$personId/inactive_reason';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleInactiveReason] object
+  /// using a path like this: `/people/v2/people/$personId/inactive_reason/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleInactiveReason?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleInactiveReasonQuery? query,
+  }) async {
+    query ??= PcoPeopleInactiveReasonQuery();
+
+    var url = '/people/v2/people/$personId/inactive_reason/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleInactiveReason>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleInactiveReason] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/inactive_reason`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleInactiveReason>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleInactiveReasonQuery? query,
+  }) async {
+    query ??= PcoPeopleInactiveReasonQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people/$personId/inactive_reason';
     if (id != null) url += '/$id';

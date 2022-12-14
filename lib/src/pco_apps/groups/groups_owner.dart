@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.269663
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.140283
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -216,8 +216,11 @@ class PcoGroupsOwner extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsOwner] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsOwner] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/notes/$noteId/owner`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -226,8 +229,51 @@ class PcoGroupsOwner extends PcoResource {
     String noteId, {
     String? id,
     PcoGroupsOwnerQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsOwnerQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/groups/v2/events/$eventId/notes/$noteId/owner';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsOwner>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsOwner] object
+  /// using a path like this: `/groups/v2/events/$eventId/notes/$noteId/owner/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsOwner?> getSingleFromEventAndNote(
+    String eventId,
+    String noteId,
+    String id, {
+    PcoGroupsOwnerQuery? query,
+  }) async {
+    query ??= PcoGroupsOwnerQuery();
+
+    var url = '/groups/v2/events/$eventId/notes/$noteId/owner/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsOwner>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsOwner] objects (expecting many)
+  /// using a path like this: `/groups/v2/events/$eventId/notes/$noteId/owner`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsOwner>> getAllFromEventAndNote(
+    String eventId,
+    String noteId, {
+    String? id,
+    PcoGroupsOwnerQuery? query,
+  }) async {
+    query ??= PcoGroupsOwnerQuery();
+    query.getAll = true;
 
     var url = '/groups/v2/events/$eventId/notes/$noteId/owner';
     if (id != null) url += '/$id';

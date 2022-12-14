@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.173827
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.022144
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoPeopleSocialProfileFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -361,17 +361,22 @@ class PcoPeopleSocialProfile extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleSocialProfile] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleSocialProfile] objects (expecting many)
   /// using a path like this: `/people/v2/social_profiles`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleSocialProfile>> get({
     String? id,
     PcoPeopleSocialProfileQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleSocialProfileQuery();
+    if (getAll) query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/social_profiles';
@@ -380,8 +385,52 @@ class PcoPeopleSocialProfile extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleSocialProfile] objects (expecting many)
+  /// Will get a single [PcoPeopleSocialProfile] object
+  /// using a path like this: `/people/v2/social_profiles/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleSocialProfile?> getSingle(
+    String id, {
+    PcoPeopleSocialProfileQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleSocialProfileQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/social_profiles/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleSocialProfile] objects (expecting many)
+  /// using a path like this: `/people/v2/social_profiles`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleSocialProfile>> getAll({
+    String? id,
+    PcoPeopleSocialProfileQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleSocialProfileQuery();
+    query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/social_profiles';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleSocialProfile] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/social_profiles`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -389,9 +438,54 @@ class PcoPeopleSocialProfile extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleSocialProfileQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleSocialProfileQuery();
+    if (getAll) query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/social_profiles';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleSocialProfile] object
+  /// using a path like this: `/people/v2/people/$personId/social_profiles/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleSocialProfile?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleSocialProfileQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleSocialProfileQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/social_profiles/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleSocialProfile>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleSocialProfile] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/social_profiles`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleSocialProfile>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleSocialProfileQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleSocialProfileQuery();
+    query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/people/$personId/social_profiles';

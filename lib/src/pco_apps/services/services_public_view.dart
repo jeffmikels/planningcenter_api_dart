@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.981941
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.847734
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -273,8 +273,11 @@ class PcoServicesPublicView extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesPublicView] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesPublicView] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/public_view`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -282,8 +285,49 @@ class PcoServicesPublicView extends PcoResource {
     String serviceTypeId, {
     String? id,
     PcoServicesPublicViewQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesPublicViewQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/service_types/$serviceTypeId/public_view';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesPublicView>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesPublicView] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/public_view/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesPublicView?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesPublicViewQuery? query,
+  }) async {
+    query ??= PcoServicesPublicViewQuery();
+
+    var url = '/services/v2/service_types/$serviceTypeId/public_view/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesPublicView>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesPublicView] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/public_view`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesPublicView>> getAllFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesPublicViewQuery? query,
+  }) async {
+    query ??= PcoServicesPublicViewQuery();
+    query.getAll = true;
 
     var url = '/services/v2/service_types/$serviceTypeId/public_view';
     if (id != null) url += '/$id';

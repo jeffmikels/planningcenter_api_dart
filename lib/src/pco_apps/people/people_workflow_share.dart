@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.182716
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.028321
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoPeopleWorkflowShareFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -295,8 +295,11 @@ class PcoPeopleWorkflowShare extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowShare] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/workflow_shares`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -304,9 +307,11 @@ class PcoPeopleWorkflowShare extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleWorkflowShareQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleWorkflowShareQuery();
+    if (getAll) query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/people/$personId/workflow_shares';
@@ -315,17 +320,65 @@ class PcoPeopleWorkflowShare extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleWorkflowShare] objects (expecting one)
+  /// Will get a single [PcoPeopleWorkflowShare] object
+  /// using a path like this: `/people/v2/people/$personId/workflow_shares/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleWorkflowShare?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleWorkflowShareQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleWorkflowShareQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/workflow_shares/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleWorkflowShare] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/workflow_shares`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleWorkflowShare>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleWorkflowShareQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleWorkflowShareQuery();
+    query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/workflow_shares';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowShare>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowShare] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/shares`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowShare>> getSharesFromWorkflow(
     String workflowId, {
     PcoPeopleWorkflowShareQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleWorkflowShareQuery();
+    if (getAll) query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/people/v2/workflows/$workflowId/shares';

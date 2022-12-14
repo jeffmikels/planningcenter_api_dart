@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.209998
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.050350
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -246,16 +246,58 @@ class PcoCalendarReportTemplate extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarReportTemplate] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarReportTemplate] objects (expecting many)
   /// using a path like this: `/calendar/v2/report_templates`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarReportTemplate>> get({
     String? id,
     PcoCalendarReportTemplateQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCalendarReportTemplateQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/calendar/v2/report_templates';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarReportTemplate] object
+  /// using a path like this: `/calendar/v2/report_templates/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarReportTemplate?> getSingle(
+    String id, {
+    PcoCalendarReportTemplateQuery? query,
+  }) async {
+    query ??= PcoCalendarReportTemplateQuery();
+
+    var url = '/calendar/v2/report_templates/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarReportTemplate] objects (expecting many)
+  /// using a path like this: `/calendar/v2/report_templates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarReportTemplate>> getAll({
+    String? id,
+    PcoCalendarReportTemplateQuery? query,
+  }) async {
+    query ??= PcoCalendarReportTemplateQuery();
+    query.getAll = true;
 
     var url = '/calendar/v2/report_templates';
     if (id != null) url += '/$id';

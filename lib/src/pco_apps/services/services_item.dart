@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.957886
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.829136
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,7 +23,7 @@ enum PcoServicesItemFilter { none }
 /// - `includeMedia`: include associated media
 /// - `includeSelectedAttachment`: include associated selected_attachment
 /// - `includeSong`: include associated song
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -72,7 +72,7 @@ class PcoServicesItemQuery extends PlanningCenterApiQuery {
     bool includeSong = false,
 
     /// when true, adds `?include=arrangement,item_notes,item_times,key,media,selected_attachment,song` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -86,14 +86,14 @@ class PcoServicesItemQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeArrangement) include.add('arrangement');
-    if (includeAll || includeItemNotes) include.add('item_notes');
-    if (includeAll || includeItemTimes) include.add('item_times');
-    if (includeAll || includeKey) include.add('key');
-    if (includeAll || includeMedia) include.add('media');
-    if (includeAll || includeSelectedAttachment)
+    if (includeAllRelated || includeArrangement) include.add('arrangement');
+    if (includeAllRelated || includeItemNotes) include.add('item_notes');
+    if (includeAllRelated || includeItemTimes) include.add('item_times');
+    if (includeAllRelated || includeKey) include.add('key');
+    if (includeAllRelated || includeMedia) include.add('media');
+    if (includeAllRelated || includeSelectedAttachment)
       include.add('selected_attachment');
-    if (includeAll || includeSong) include.add('song');
+    if (includeAllRelated || includeSong) include.add('song');
   }
 }
 
@@ -568,8 +568,11 @@ class PcoServicesItem extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesItem] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesItem] objects (expecting many)
   /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/items`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -579,7 +582,8 @@ class PcoServicesItem extends PcoResource {
     String liveId, {
     String? id,
     PcoServicesItemQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeArrangement = false,
     bool includeItemNotes = false,
     bool includeItemTimes = false,
@@ -589,7 +593,8 @@ class PcoServicesItem extends PcoResource {
     bool includeSong = false,
   }) async {
     query ??= PcoServicesItemQuery();
-    if (includeAll) query.include.addAll(PcoServicesItem.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
     if (includeArrangement) query.include.add('arrangement');
     if (includeItemNotes) query.include.add('item_notes');
     if (includeItemTimes) query.include.add('item_times');
@@ -603,17 +608,18 @@ class PcoServicesItem extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesItem] objects (expecting many)
-  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items`
+  /// Will get a single [PcoServicesItem] object
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/items/[id]`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItem>> getFromServiceTypeAndPlan(
-    String serviceTypeId,
-    String planId, {
-    String? id,
+  static Future<PcoServicesItem?> getSingleFromSeriesAndPlanAndLive(
+    String seriesId,
+    String planId,
+    String liveId,
+    String id, {
     PcoServicesItemQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeArrangement = false,
     bool includeItemNotes = false,
     bool includeItemTimes = false,
@@ -623,7 +629,85 @@ class PcoServicesItem extends PcoResource {
     bool includeSong = false,
   }) async {
     query ??= PcoServicesItemQuery();
-    if (includeAll) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url =
+        '/services/v2/series/$seriesId/plans/$planId/live/$liveId/items/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesItem] objects (expecting many)
+  /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesItem>> getAllFromSeriesAndPlanAndLive(
+    String seriesId,
+    String planId,
+    String liveId, {
+    String? id,
+    PcoServicesItemQuery? query,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url = '/services/v2/series/$seriesId/plans/$planId/live/$liveId/items';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesItem] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesItem>> getFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesItemQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
     if (includeArrangement) query.include.add('arrangement');
     if (includeItemNotes) query.include.add('item_notes');
     if (includeItemTimes) query.include.add('item_times');
@@ -637,18 +721,17 @@ class PcoServicesItem extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesItem] objects (expecting many)
-  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items`
+  /// Will get a single [PcoServicesItem] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/[id]`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItem>>
-      getFromServiceTypeAndPlanTemplate(
+  static Future<PcoServicesItem?> getSingleFromServiceTypeAndPlan(
     String serviceTypeId,
-    String planTemplateId, {
-    String? id,
+    String planId,
+    String id, {
     PcoServicesItemQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeArrangement = false,
     bool includeItemNotes = false,
     bool includeItemTimes = false,
@@ -658,7 +741,85 @@ class PcoServicesItem extends PcoResource {
     bool includeSong = false,
   }) async {
     query ??= PcoServicesItemQuery();
-    if (includeAll) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesItem] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesItem>> getAllFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesItemQuery? query,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/items';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesItem] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesItem>>
+      getFromServiceTypeAndPlanTemplate(
+    String serviceTypeId,
+    String planTemplateId, {
+    String? id,
+    PcoServicesItemQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
     if (includeArrangement) query.include.add('arrangement');
     if (includeItemNotes) query.include.add('item_notes');
     if (includeItemTimes) query.include.add('item_times');
@@ -673,15 +834,17 @@ class PcoServicesItem extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesItem] objects (expecting one)
-  /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item`
+  /// Will get a single [PcoServicesItem] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items/[id]`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesItem>> getLastScheduledItemFromSong(
-    String songId, {
+  static Future<PcoServicesItem?> getSingleFromServiceTypeAndPlanTemplate(
+    String serviceTypeId,
+    String planTemplateId,
+    String id, {
     PcoServicesItemQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeArrangement = false,
     bool includeItemNotes = false,
     bool includeItemTimes = false,
@@ -691,7 +854,84 @@ class PcoServicesItem extends PcoResource {
     bool includeSong = false,
   }) async {
     query ??= PcoServicesItemQuery();
-    if (includeAll) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesItem] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesItem>>
+      getAllFromServiceTypeAndPlanTemplate(
+    String serviceTypeId,
+    String planTemplateId, {
+    String? id,
+    PcoServicesItemQuery? query,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
+    if (includeArrangement) query.include.add('arrangement');
+    if (includeItemNotes) query.include.add('item_notes');
+    if (includeItemTimes) query.include.add('item_times');
+    if (includeKey) query.include.add('key');
+    if (includeMedia) query.include.add('media');
+    if (includeSelectedAttachment) query.include.add('selected_attachment');
+    if (includeSong) query.include.add('song');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/items';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesItem>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesItem] objects (expecting one)
+  /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesItem>> getLastScheduledItemFromSong(
+    String songId, {
+    PcoServicesItemQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeArrangement = false,
+    bool includeItemNotes = false,
+    bool includeItemTimes = false,
+    bool includeKey = false,
+    bool includeMedia = false,
+    bool includeSelectedAttachment = false,
+    bool includeSong = false,
+  }) async {
+    query ??= PcoServicesItemQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesItem.canInclude);
     if (includeArrangement) query.include.add('arrangement');
     if (includeItemNotes) query.include.add('item_notes');
     if (includeItemTimes) query.include.add('item_times');

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.149312
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.001887
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,7 +21,7 @@ enum PcoPeopleListCategoryFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeLists`: include associated lists
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -340,17 +340,22 @@ class PcoPeopleListCategory extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleListCategory] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleListCategory] objects (expecting many)
   /// using a path like this: `/people/v2/list_categories`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListCategory>> get({
     String? id,
     PcoPeopleListCategoryQuery? query,
+    bool getAll = false,
     bool includeLists = false,
   }) async {
     query ??= PcoPeopleListCategoryQuery();
+    if (getAll) query.getAll = true;
 
     if (includeLists) query.include.add('lists');
     var url = '/people/v2/list_categories';
@@ -359,17 +364,63 @@ class PcoPeopleListCategory extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleListCategory] objects (expecting one)
+  /// Will get a single [PcoPeopleListCategory] object
+  /// using a path like this: `/people/v2/list_categories/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleListCategory?> getSingle(
+    String id, {
+    PcoPeopleListCategoryQuery? query,
+    bool includeLists = false,
+  }) async {
+    query ??= PcoPeopleListCategoryQuery();
+
+    if (includeLists) query.include.add('lists');
+    var url = '/people/v2/list_categories/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleListCategory>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleListCategory] objects (expecting many)
+  /// using a path like this: `/people/v2/list_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleListCategory>> getAll({
+    String? id,
+    PcoPeopleListCategoryQuery? query,
+    bool includeLists = false,
+  }) async {
+    query ??= PcoPeopleListCategoryQuery();
+    query.getAll = true;
+
+    if (includeLists) query.include.add('lists');
+    var url = '/people/v2/list_categories';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleListCategory>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleListCategory] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/category`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleListCategory>> getCategoryFromList(
     String listId, {
     PcoPeopleListCategoryQuery? query,
+    bool getAll = false,
     bool includeLists = false,
   }) async {
     query ??= PcoPeopleListCategoryQuery();
+    if (getAll) query.getAll = true;
 
     if (includeLists) query.include.add('lists');
     var url = '/people/v2/lists/$listId/category';

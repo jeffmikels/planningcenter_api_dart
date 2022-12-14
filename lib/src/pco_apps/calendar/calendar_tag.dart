@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.216022
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.056384
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoCalendarTagFilter { individual }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeTagGroup`: include associated tag_group
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -349,20 +349,25 @@ class PcoCalendarTag extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarTag] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/tags`
   ///
   /// Available Query Filters:
   /// - `individual`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarTag>> get({
     String? id,
     PcoCalendarTagQuery? query,
+    bool getAll = false,
     bool includeTagGroup = false,
   }) async {
     query ??= PcoCalendarTagQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/tags';
@@ -371,8 +376,58 @@ class PcoCalendarTag extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarTag] objects (expecting many)
+  /// Will get a single [PcoCalendarTag] object
+  /// using a path like this: `/calendar/v2/tags/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `individual`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarTag?> getSingle(
+    String id, {
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarTag] objects (expecting many)
+  /// using a path like this: `/calendar/v2/tags`
+  ///
+  /// Available Query Filters:
+  /// - `individual`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarTag>> getAll({
+    String? id,
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+    query.getAll = true;
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/tags`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -380,9 +435,11 @@ class PcoCalendarTag extends PcoResource {
     String eventInstanceId, {
     String? id,
     PcoCalendarTagQuery? query,
+    bool getAll = false,
     bool includeTagGroup = false,
   }) async {
     query ??= PcoCalendarTagQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/event_instances/$eventInstanceId/tags';
@@ -391,8 +448,54 @@ class PcoCalendarTag extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarTag] objects (expecting many)
+  /// Will get a single [PcoCalendarTag] object
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/tags/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarTag?> getSingleFromEventInstance(
+    String eventInstanceId,
+    String id, {
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/event_instances/$eventInstanceId/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarTag] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarTag>> getAllFromEventInstance(
+    String eventInstanceId, {
+    String? id,
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+    query.getAll = true;
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/event_instances/$eventInstanceId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/tags`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -400,9 +503,11 @@ class PcoCalendarTag extends PcoResource {
     String eventId, {
     String? id,
     PcoCalendarTagQuery? query,
+    bool getAll = false,
     bool includeTagGroup = false,
   }) async {
     query ??= PcoCalendarTagQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/events/$eventId/tags';
@@ -411,8 +516,54 @@ class PcoCalendarTag extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarTag] objects (expecting many)
+  /// Will get a single [PcoCalendarTag] object
+  /// using a path like this: `/calendar/v2/events/$eventId/tags/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarTag?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/events/$eventId/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarTag] objects (expecting many)
+  /// using a path like this: `/calendar/v2/events/$eventId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarTag>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+    query.getAll = true;
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/events/$eventId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarTag] objects (expecting many)
   /// using a path like this: `/calendar/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -420,9 +571,54 @@ class PcoCalendarTag extends PcoResource {
     String tagGroupId, {
     String? id,
     PcoCalendarTagQuery? query,
+    bool getAll = false,
     bool includeTagGroup = false,
   }) async {
     query ??= PcoCalendarTagQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/tag_groups/$tagGroupId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarTag] object
+  /// using a path like this: `/calendar/v2/tag_groups/$tagGroupId/tags/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarTag?> getSingleFromTagGroup(
+    String tagGroupId,
+    String id, {
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+
+    if (includeTagGroup) query.include.add('tag_group');
+    var url = '/calendar/v2/tag_groups/$tagGroupId/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarTag] objects (expecting many)
+  /// using a path like this: `/calendar/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarTag>> getAllFromTagGroup(
+    String tagGroupId, {
+    String? id,
+    PcoCalendarTagQuery? query,
+    bool includeTagGroup = false,
+  }) async {
+    query ??= PcoCalendarTagQuery();
+    query.getAll = true;
 
     if (includeTagGroup) query.include.add('tag_group');
     var url = '/calendar/v2/tag_groups/$tagGroupId/tags';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.001727
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.863171
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -273,8 +273,11 @@ class PcoServicesZoom extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesZoom] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesZoom] objects (expecting many)
   /// using a path like this: `/services/v2/attachments/$attachmentId/zooms`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -282,8 +285,49 @@ class PcoServicesZoom extends PcoResource {
     String attachmentId, {
     String? id,
     PcoServicesZoomQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesZoomQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/attachments/$attachmentId/zooms';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesZoom>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesZoom] object
+  /// using a path like this: `/services/v2/attachments/$attachmentId/zooms/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesZoom?> getSingleFromAttachment(
+    String attachmentId,
+    String id, {
+    PcoServicesZoomQuery? query,
+  }) async {
+    query ??= PcoServicesZoomQuery();
+
+    var url = '/services/v2/attachments/$attachmentId/zooms/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesZoom>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesZoom] objects (expecting many)
+  /// using a path like this: `/services/v2/attachments/$attachmentId/zooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesZoom>> getAllFromAttachment(
+    String attachmentId, {
+    String? id,
+    PcoServicesZoomQuery? query,
+  }) async {
+    query ??= PcoServicesZoomQuery();
+    query.getAll = true;
 
     var url = '/services/v2/attachments/$attachmentId/zooms';
     if (id != null) url += '/$id';

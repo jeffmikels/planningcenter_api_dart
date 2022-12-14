@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.180284
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.027148
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -284,8 +284,11 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleWorkflowCategory] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowCategory] objects (expecting many)
   /// using a path like this: `/people/v2/workflows/$workflowId/category`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -294,8 +297,50 @@ class PcoPeopleWorkflowCategory extends PcoResource {
     String workflowId, {
     String? id,
     PcoPeopleWorkflowCategoryQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleWorkflowCategoryQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/workflows/$workflowId/category';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCategory>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleWorkflowCategory] object
+  /// using a path like this: `/people/v2/workflows/$workflowId/category/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleWorkflowCategory?> getSingleCategoryFromWorkflow(
+    String workflowId,
+    String id, {
+    PcoPeopleWorkflowCategoryQuery? query,
+  }) async {
+    query ??= PcoPeopleWorkflowCategoryQuery();
+
+    var url = '/people/v2/workflows/$workflowId/category/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleWorkflowCategory>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleWorkflowCategory] objects (expecting many)
+  /// using a path like this: `/people/v2/workflows/$workflowId/category`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleWorkflowCategory>>
+      getAllCategoryFromWorkflow(
+    String workflowId, {
+    String? id,
+    PcoPeopleWorkflowCategoryQuery? query,
+  }) async {
+    query ??= PcoPeopleWorkflowCategoryQuery();
+    query.getAll = true;
 
     var url = '/people/v2/workflows/$workflowId/category';
     if (id != null) url += '/$id';

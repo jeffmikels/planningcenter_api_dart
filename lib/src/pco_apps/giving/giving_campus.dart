@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.241474
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.118987
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -214,16 +214,21 @@ class PcoGivingCampus extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingCampus] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingCampus>> get({
     String? id,
     PcoGivingCampusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingCampusQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/campuses';
     if (id != null) url += '/$id';
@@ -231,8 +236,48 @@ class PcoGivingCampus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingCampus] objects (expecting many)
+  /// Will get a single [PcoGivingCampus] object
+  /// using a path like this: `/giving/v2/campuses/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingCampus?> getSingle(
+    String id, {
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+
+    var url = '/giving/v2/campuses/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingCampus] objects (expecting many)
+  /// using a path like this: `/giving/v2/campuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingCampus>> getAll({
+    String? id,
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+    query.getAll = true;
+
+    var url = '/giving/v2/campuses';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/campus`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -240,8 +285,10 @@ class PcoGivingCampus extends PcoResource {
     String donationId, {
     String? id,
     PcoGivingCampusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingCampusQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/donations/$donationId/campus';
     if (id != null) url += '/$id';
@@ -249,8 +296,50 @@ class PcoGivingCampus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingCampus] objects (expecting many)
+  /// Will get a single [PcoGivingCampus] object
+  /// using a path like this: `/giving/v2/donations/$donationId/campus/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingCampus?> getSingleFromDonation(
+    String donationId,
+    String id, {
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+
+    var url = '/giving/v2/donations/$donationId/campus/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingCampus] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations/$donationId/campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingCampus>> getAllFromDonation(
+    String donationId, {
+    String? id,
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+    query.getAll = true;
+
+    var url = '/giving/v2/donations/$donationId/campus';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingCampus] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/primary_campus`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -258,8 +347,49 @@ class PcoGivingCampus extends PcoResource {
     String personId, {
     String? id,
     PcoGivingCampusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingCampusQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/giving/v2/people/$personId/primary_campus';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingCampus] object
+  /// using a path like this: `/giving/v2/people/$personId/primary_campus/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingCampus?> getSinglePrimaryCampusFromPerson(
+    String personId,
+    String id, {
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+
+    var url = '/giving/v2/people/$personId/primary_campus/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingCampus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingCampus] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/primary_campus`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingCampus>> getAllPrimaryCampusFromPerson(
+    String personId, {
+    String? id,
+    PcoGivingCampusQuery? query,
+  }) async {
+    query ??= PcoGivingCampusQuery();
+    query.getAll = true;
 
     var url = '/giving/v2/people/$personId/primary_campus';
     if (id != null) url += '/$id';

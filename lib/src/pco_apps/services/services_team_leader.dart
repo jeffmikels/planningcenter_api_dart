@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.999953
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.860867
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoServicesTeamLeaderFilter { notArchived, notDeleted }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePeople`: include associated people
 /// - `includeTeam`: include associated team
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -69,7 +69,7 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
     bool includeTeam = false,
 
     /// when true, adds `?include=people,team` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
     PcoServicesTeamLeaderFilter? filterBy,
     PcoServicesTeamLeaderOrder? orderBy,
 
@@ -86,8 +86,8 @@ class PcoServicesTeamLeaderQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includePeople) include.add('people');
-    if (includeAll || includeTeam) include.add('team');
+    if (includeAllRelated || includePeople) include.add('people');
+    if (includeAllRelated || includeTeam) include.add('team');
 
     if (orderBy != null) order = orderString(orderBy, reverse: reverse);
   }
@@ -301,12 +301,15 @@ class PcoServicesTeamLeader extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesTeamLeader] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/team_leaders`
   ///
   /// Available Query Filters:
   /// - `not_archived`
   /// - `not_deleted`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -314,12 +317,15 @@ class PcoServicesTeamLeader extends PcoResource {
     String personId, {
     String? id,
     PcoServicesTeamLeaderQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includePeople = false,
     bool includeTeam = false,
   }) async {
     query ??= PcoServicesTeamLeaderQuery();
-    if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
     if (includePeople) query.include.add('people');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/people/$personId/team_leaders';
@@ -328,8 +334,70 @@ class PcoServicesTeamLeader extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesTeamLeader] objects (expecting many)
+  /// Will get a single [PcoServicesTeamLeader] object
+  /// using a path like this: `/services/v2/people/$personId/team_leaders/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `not_archived`
+  /// - `not_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesTeamLeader?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoServicesTeamLeaderQuery? query,
+    bool includeAllRelated = false,
+    bool includePeople = false,
+    bool includeTeam = false,
+  }) async {
+    query ??= PcoServicesTeamLeaderQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includeTeam) query.include.add('team');
+    var url = '/services/v2/people/$personId/team_leaders/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesTeamLeader] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/team_leaders`
+  ///
+  /// Available Query Filters:
+  /// - `not_archived`
+  /// - `not_deleted`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesTeamLeader>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoServicesTeamLeaderQuery? query,
+    bool includeAllRelated = false,
+    bool includePeople = false,
+    bool includeTeam = false,
+  }) async {
+    query ??= PcoServicesTeamLeaderQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includeTeam) query.include.add('team');
+    var url = '/services/v2/people/$personId/team_leaders';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesTeamLeader] objects (expecting many)
   /// using a path like this: `/services/v2/teams/$teamId/team_leaders`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -337,12 +405,66 @@ class PcoServicesTeamLeader extends PcoResource {
     String teamId, {
     String? id,
     PcoServicesTeamLeaderQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includePeople = false,
     bool includeTeam = false,
   }) async {
     query ??= PcoServicesTeamLeaderQuery();
-    if (includeAll) query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includeTeam) query.include.add('team');
+    var url = '/services/v2/teams/$teamId/team_leaders';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesTeamLeader] object
+  /// using a path like this: `/services/v2/teams/$teamId/team_leaders/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesTeamLeader?> getSingleFromTeam(
+    String teamId,
+    String id, {
+    PcoServicesTeamLeaderQuery? query,
+    bool includeAllRelated = false,
+    bool includePeople = false,
+    bool includeTeam = false,
+  }) async {
+    query ??= PcoServicesTeamLeaderQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
+    if (includePeople) query.include.add('people');
+    if (includeTeam) query.include.add('team');
+    var url = '/services/v2/teams/$teamId/team_leaders/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesTeamLeader>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesTeamLeader] objects (expecting many)
+  /// using a path like this: `/services/v2/teams/$teamId/team_leaders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesTeamLeader>> getAllFromTeam(
+    String teamId, {
+    String? id,
+    PcoServicesTeamLeaderQuery? query,
+    bool includeAllRelated = false,
+    bool includePeople = false,
+    bool includeTeam = false,
+  }) async {
+    query ??= PcoServicesTeamLeaderQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesTeamLeader.canInclude);
     if (includePeople) query.include.add('people');
     if (includeTeam) query.include.add('team');
     var url = '/services/v2/teams/$teamId/team_leaders';

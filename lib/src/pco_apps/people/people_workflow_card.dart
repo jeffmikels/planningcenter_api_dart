@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.176661
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.025703
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -36,7 +36,7 @@ enum PcoPeopleWorkflowCardFilter { assigned }
 /// - `includeCurrentStep`: include associated current_step
 /// - `includePerson`: include associated person
 /// - `includeWorkflow`: include associated workflow
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -113,7 +113,7 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
     bool includeWorkflow = false,
 
     /// when true, adds `?include=assignee,current_step,person,workflow` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `stage`
     /// query on a specific stage, url example: ?where[stage]=string
@@ -135,10 +135,10 @@ class PcoPeopleWorkflowCardQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeAssignee) include.add('assignee');
-    if (includeAll || includeCurrentStep) include.add('current_step');
-    if (includeAll || includePerson) include.add('person');
-    if (includeAll || includeWorkflow) include.add('workflow');
+    if (includeAllRelated || includeAssignee) include.add('assignee');
+    if (includeAllRelated || includeCurrentStep) include.add('current_step');
+    if (includeAllRelated || includePerson) include.add('person');
+    if (includeAllRelated || includeWorkflow) include.add('workflow');
 
     if (whereStage != null)
       where.add(PlanningCenterApiWhere.parse('stage', whereStage));
@@ -490,11 +490,14 @@ class PcoPeopleWorkflowCard extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleWorkflowCard] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowCard] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/workflow_cards`
   ///
   /// Available Query Filters:
   /// - `assigned`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -502,14 +505,17 @@ class PcoPeopleWorkflowCard extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleWorkflowCardQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAssignee = false,
     bool includeCurrentStep = false,
     bool includePerson = false,
     bool includeWorkflow = false,
   }) async {
     query ??= PcoPeopleWorkflowCardQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleWorkflowCard.canInclude);
     if (includeAssignee) query.include.add('assignee');
     if (includeCurrentStep) query.include.add('current_step');
     if (includePerson) query.include.add('person');
@@ -520,22 +526,93 @@ class PcoPeopleWorkflowCard extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleWorkflowCard] objects (expecting one)
-  /// using a path like this: `/people/v2/workflows/$workflowId/cards`
+  /// Will get a single [PcoPeopleWorkflowCard] object
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `assigned`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleWorkflowCard>> getCardsFromWorkflow(
-    String workflowId, {
+  static Future<PcoPeopleWorkflowCard?> getSingleFromPerson(
+    String personId,
+    String id, {
     PcoPeopleWorkflowCardQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeAssignee = false,
     bool includeCurrentStep = false,
     bool includePerson = false,
     bool includeWorkflow = false,
   }) async {
     query ??= PcoPeopleWorkflowCardQuery();
-    if (includeAll) query.include.addAll(PcoPeopleWorkflowCard.canInclude);
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleWorkflowCard.canInclude);
+    if (includeAssignee) query.include.add('assignee');
+    if (includeCurrentStep) query.include.add('current_step');
+    if (includePerson) query.include.add('person');
+    if (includeWorkflow) query.include.add('workflow');
+    var url = '/people/v2/people/$personId/workflow_cards/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleWorkflowCard] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/workflow_cards`
+  ///
+  /// Available Query Filters:
+  /// - `assigned`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleWorkflowCardQuery? query,
+    bool includeAllRelated = false,
+    bool includeAssignee = false,
+    bool includeCurrentStep = false,
+    bool includePerson = false,
+    bool includeWorkflow = false,
+  }) async {
+    query ??= PcoPeopleWorkflowCardQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleWorkflowCard.canInclude);
+    if (includeAssignee) query.include.add('assignee');
+    if (includeCurrentStep) query.include.add('current_step');
+    if (includePerson) query.include.add('person');
+    if (includeWorkflow) query.include.add('workflow');
+    var url = '/people/v2/people/$personId/workflow_cards';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleWorkflowCard>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowCard] objects (expecting one)
+  /// using a path like this: `/people/v2/workflows/$workflowId/cards`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleWorkflowCard>> getCardsFromWorkflow(
+    String workflowId, {
+    PcoPeopleWorkflowCardQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeAssignee = false,
+    bool includeCurrentStep = false,
+    bool includePerson = false,
+    bool includeWorkflow = false,
+  }) async {
+    query ??= PcoPeopleWorkflowCardQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleWorkflowCard.canInclude);
     if (includeAssignee) query.include.add('assignee');
     if (includeCurrentStep) query.include.add('current_step');
     if (includePerson) query.include.add('person');

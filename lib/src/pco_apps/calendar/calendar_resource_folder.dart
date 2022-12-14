@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.214179
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.054367
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,7 +23,7 @@ enum PcoCalendarResourceFolderFilter { resources, rooms }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeResources`: include associated resources
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -358,21 +358,26 @@ class PcoCalendarResourceFolder extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarResourceFolder] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarResourceFolder] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_folders`
   ///
   /// Available Query Filters:
   /// - `resources`
   /// - `rooms`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceFolder>> get({
     String? id,
     PcoCalendarResourceFolderQuery? query,
+    bool getAll = false,
     bool includeResources = false,
   }) async {
     query ??= PcoCalendarResourceFolderQuery();
+    if (getAll) query.getAll = true;
 
     if (includeResources) query.include.add('resources');
     var url = '/calendar/v2/resource_folders';
@@ -381,8 +386,60 @@ class PcoCalendarResourceFolder extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarResourceFolder] objects (expecting many)
+  /// Will get a single [PcoCalendarResourceFolder] object
+  /// using a path like this: `/calendar/v2/resource_folders/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceFolder?> getSingle(
+    String id, {
+    PcoCalendarResourceFolderQuery? query,
+    bool includeResources = false,
+  }) async {
+    query ??= PcoCalendarResourceFolderQuery();
+
+    if (includeResources) query.include.add('resources');
+    var url = '/calendar/v2/resource_folders/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceFolder>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceFolder] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resource_folders`
+  ///
+  /// Available Query Filters:
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceFolder>> getAll({
+    String? id,
+    PcoCalendarResourceFolderQuery? query,
+    bool includeResources = false,
+  }) async {
+    query ??= PcoCalendarResourceFolderQuery();
+    query.getAll = true;
+
+    if (includeResources) query.include.add('resources');
+    var url = '/calendar/v2/resource_folders';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceFolder>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarResourceFolder] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/resource_folder`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -390,9 +447,54 @@ class PcoCalendarResourceFolder extends PcoResource {
     String resourceId, {
     String? id,
     PcoCalendarResourceFolderQuery? query,
+    bool getAll = false,
     bool includeResources = false,
   }) async {
     query ??= PcoCalendarResourceFolderQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeResources) query.include.add('resources');
+    var url = '/calendar/v2/resources/$resourceId/resource_folder';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceFolder>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarResourceFolder] object
+  /// using a path like this: `/calendar/v2/resources/$resourceId/resource_folder/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceFolder?> getSingleFromResource(
+    String resourceId,
+    String id, {
+    PcoCalendarResourceFolderQuery? query,
+    bool includeResources = false,
+  }) async {
+    query ??= PcoCalendarResourceFolderQuery();
+
+    if (includeResources) query.include.add('resources');
+    var url = '/calendar/v2/resources/$resourceId/resource_folder/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceFolder>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceFolder] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resources/$resourceId/resource_folder`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceFolder>> getAllFromResource(
+    String resourceId, {
+    String? id,
+    PcoCalendarResourceFolderQuery? query,
+    bool includeResources = false,
+  }) async {
+    query ??= PcoCalendarResourceFolderQuery();
+    query.getAll = true;
 
     if (includeResources) query.include.add('resources');
     var url = '/calendar/v2/resources/$resourceId/resource_folder';

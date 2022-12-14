@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.982394
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.848126
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -233,7 +233,58 @@ class PcoServicesReportTemplate extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesReportTemplate] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesReportTemplate] objects (expecting many)
+  /// using a path like this: `/services/v2/report_templates`
+  ///
+  /// Available Query Filters:
+  /// - `matrix`
+  /// - `people`
+  /// - `plans`
+  /// - `without_defaults`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesReportTemplate>> get({
+    String? id,
+    PcoServicesReportTemplateQuery? query,
+    bool getAll = false,
+  }) async {
+    query ??= PcoServicesReportTemplateQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/report_templates';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesReportTemplate] object
+  /// using a path like this: `/services/v2/report_templates/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `matrix`
+  /// - `people`
+  /// - `plans`
+  /// - `without_defaults`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesReportTemplate?> getSingle(
+    String id, {
+    PcoServicesReportTemplateQuery? query,
+  }) async {
+    query ??= PcoServicesReportTemplateQuery();
+
+    var url = '/services/v2/report_templates/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesReportTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesReportTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/report_templates`
   ///
   /// Available Query Filters:
@@ -244,11 +295,14 @@ class PcoServicesReportTemplate extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesReportTemplate>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesReportTemplate>> getAll({
     String? id,
     PcoServicesReportTemplateQuery? query,
   }) async {
     query ??= PcoServicesReportTemplateQuery();
+    query.getAll = true;
 
     var url = '/services/v2/report_templates';
     if (id != null) url += '/$id';

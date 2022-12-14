@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.933784
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.805443
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoServicesArrangementFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeKeys`: include associated keys
 /// - `includeSections`: include associated sections
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -47,7 +47,7 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
     bool includeSections = false,
 
     /// when true, adds `?include=keys,sections` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -61,8 +61,8 @@ class PcoServicesArrangementQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeKeys) include.add('keys');
-    if (includeAll || includeSections) include.add('sections');
+    if (includeAllRelated || includeKeys) include.add('keys');
+    if (includeAllRelated || includeSections) include.add('sections');
   }
 }
 
@@ -669,8 +669,11 @@ class PcoServicesArrangement extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesArrangement] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesArrangement] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/arrangement`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -680,12 +683,15 @@ class PcoServicesArrangement extends PcoResource {
     String planId,
     String itemId, {
     PcoServicesArrangementQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeKeys = false,
     bool includeSections = false,
   }) async {
     query ??= PcoServicesArrangementQuery();
-    if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
     var url =
@@ -695,8 +701,11 @@ class PcoServicesArrangement extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesArrangement] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesArrangement] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -704,12 +713,66 @@ class PcoServicesArrangement extends PcoResource {
     String songId, {
     String? id,
     PcoServicesArrangementQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeKeys = false,
     bool includeSections = false,
   }) async {
     query ??= PcoServicesArrangementQuery();
-    if (includeAll) query.include.addAll(PcoServicesArrangement.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesArrangement.canInclude);
+    if (includeKeys) query.include.add('keys');
+    if (includeSections) query.include.add('sections');
+    var url = '/services/v2/songs/$songId/arrangements';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesArrangement>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesArrangement] object
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesArrangement?> getSingleFromSong(
+    String songId,
+    String id, {
+    PcoServicesArrangementQuery? query,
+    bool includeAllRelated = false,
+    bool includeKeys = false,
+    bool includeSections = false,
+  }) async {
+    query ??= PcoServicesArrangementQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesArrangement.canInclude);
+    if (includeKeys) query.include.add('keys');
+    if (includeSections) query.include.add('sections');
+    var url = '/services/v2/songs/$songId/arrangements/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesArrangement>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesArrangement] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/arrangements`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesArrangement>> getAllFromSong(
+    String songId, {
+    String? id,
+    PcoServicesArrangementQuery? query,
+    bool includeAllRelated = false,
+    bool includeKeys = false,
+    bool includeSections = false,
+  }) async {
+    query ??= PcoServicesArrangementQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesArrangement.canInclude);
     if (includeKeys) query.include.add('keys');
     if (includeSections) query.include.add('sections');
     var url = '/services/v2/songs/$songId/arrangements';

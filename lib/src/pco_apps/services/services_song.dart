@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.989159
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.855865
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -426,16 +426,21 @@ class PcoServicesSong extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSong] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesSong] objects (expecting many)
   /// using a path like this: `/services/v2/songs`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesSong>> get({
     String? id,
     PcoServicesSongQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesSongQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/services/v2/songs';
     if (id != null) url += '/$id';
@@ -443,8 +448,48 @@ class PcoServicesSong extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesSong] objects (expecting many)
+  /// Will get a single [PcoServicesSong] object
+  /// using a path like this: `/services/v2/songs/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSong?> getSingle(
+    String id, {
+    PcoServicesSongQuery? query,
+  }) async {
+    query ??= PcoServicesSongQuery();
+
+    var url = '/services/v2/songs/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesSong>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSong] objects (expecting many)
+  /// using a path like this: `/services/v2/songs`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSong>> getAll({
+    String? id,
+    PcoServicesSongQuery? query,
+  }) async {
+    query ??= PcoServicesSongQuery();
+    query.getAll = true;
+
+    var url = '/services/v2/songs';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSong>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesSong] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -455,8 +500,56 @@ class PcoServicesSong extends PcoResource {
     String itemId, {
     String? id,
     PcoServicesSongQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesSongQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSong>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesSong] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSong?> getSingleFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId,
+    String id, {
+    PcoServicesSongQuery? query,
+  }) async {
+    query ??= PcoServicesSongQuery();
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesSong>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSong] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSong>>
+      getAllFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PcoServicesSongQuery? query,
+  }) async {
+    query ??= PcoServicesSongQuery();
+    query.getAll = true;
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/song';

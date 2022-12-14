@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.059329
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.924022
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,7 +23,7 @@ enum PcoCheckInsEventFilter { archived, forHeadcounts, notArchived }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeAttendanceTypes`: include associated attendance_types
 /// - `includeEventPeriods`: include associated event_periods
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -84,7 +84,7 @@ class PcoCheckInsEventQuery extends PlanningCenterApiQuery {
     bool includeEventPeriods = false,
 
     /// when true, adds `?include=attendance_types,event_periods` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `id`
     /// query on a specific id, url example: ?where[id]=primary_key
@@ -111,8 +111,9 @@ class PcoCheckInsEventQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeAttendanceTypes) include.add('attendance_types');
-    if (includeAll || includeEventPeriods) include.add('event_periods');
+    if (includeAllRelated || includeAttendanceTypes)
+      include.add('attendance_types');
+    if (includeAllRelated || includeEventPeriods) include.add('event_periods');
 
     if (whereId != null) where.add(PlanningCenterApiWhere.parse('id', whereId));
     if (whereName != null)
@@ -378,7 +379,66 @@ class PcoCheckInsEvent extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `for_headcounts`
+  /// - `not_archived`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCheckInsEvent>> get({
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/events';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/events/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `for_headcounts`
+  /// - `not_archived`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingle(
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/events/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events`
   ///
   /// Available Query Filters:
@@ -388,15 +448,18 @@ class PcoCheckInsEvent extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsEvent>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAll({
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/events';
@@ -405,8 +468,11 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/attendance_types/$attendanceTypeId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -414,12 +480,14 @@ class PcoCheckInsEvent extends PcoResource {
     String attendanceTypeId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/attendance_types/$attendanceTypeId/event';
@@ -428,8 +496,60 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/attendance_types/$attendanceTypeId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromAttendanceType(
+    String attendanceTypeId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/attendance_types/$attendanceTypeId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/attendance_types/$attendanceTypeId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromAttendanceType(
+    String attendanceTypeId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/attendance_types/$attendanceTypeId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -437,12 +557,14 @@ class PcoCheckInsEvent extends PcoResource {
     String checkInId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/check_ins/$checkInId/event';
@@ -451,8 +573,60 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromCheckIn(
+    String checkInId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/check_ins/$checkInId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/check_ins/$checkInId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -461,12 +635,14 @@ class PcoCheckInsEvent extends PcoResource {
     String eventLabelId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event';
@@ -475,8 +651,63 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromEventAndEventLabel(
+    String eventId,
+    String eventLabelId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromEventAndEventLabel(
+    String eventId,
+    String eventLabelId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -485,12 +716,14 @@ class PcoCheckInsEvent extends PcoResource {
     String eventPeriodId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url =
@@ -500,8 +733,65 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromCheckInAndEventPeriod(
+    String checkInId,
+    String eventPeriodId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>>
+      getAllFromCheckInAndEventPeriod(
+    String checkInId,
+    String eventPeriodId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/check_ins/$checkInId/event_period/$eventPeriodId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/event_times/$eventTimeId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -509,12 +799,14 @@ class PcoCheckInsEvent extends PcoResource {
     String eventTimeId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/event_times/$eventTimeId/event';
@@ -523,8 +815,60 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/event_times/$eventTimeId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromEventTime(
+    String eventTimeId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/event_times/$eventTimeId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/event_times/$eventTimeId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromEventTime(
+    String eventTimeId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/event_times/$eventTimeId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -533,12 +877,14 @@ class PcoCheckInsEvent extends PcoResource {
     String locationId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/event';
@@ -547,8 +893,63 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromCheckInAndLocation(
+    String checkInId,
+    String locationId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/check_ins/$checkInId/locations/$locationId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/locations/$locationId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromCheckInAndLocation(
+    String checkInId,
+    String locationId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/check_ins/$checkInId/locations/$locationId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -557,12 +958,14 @@ class PcoCheckInsEvent extends PcoResource {
     String personEventId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url =
@@ -572,8 +975,64 @@ class PcoCheckInsEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromEventAndPersonEvent(
+    String eventId,
+    String personEventId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/events/$eventId/person_events/$personEventId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromEventAndPersonEvent(
+    String eventId,
+    String personEventId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url =
+        '/check-ins/v2/events/$eventId/person_events/$personEventId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/event`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -581,12 +1040,63 @@ class PcoCheckInsEvent extends PcoResource {
     String stationId, {
     String? id,
     PcoCheckInsEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAttendanceTypes = false,
     bool includeEventPeriods = false,
   }) async {
     query ??= PcoCheckInsEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/stations/$stationId/event';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsEvent] object
+  /// using a path like this: `/check-ins/v2/stations/$stationId/event/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEvent?> getSingleFromStation(
+    String stationId,
+    String id, {
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
+    if (includeAttendanceTypes) query.include.add('attendance_types');
+    if (includeEventPeriods) query.include.add('event_periods');
+    var url = '/check-ins/v2/stations/$stationId/event/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/stations/$stationId/event`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEvent>> getAllFromStation(
+    String stationId, {
+    String? id,
+    PcoCheckInsEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeAttendanceTypes = false,
+    bool includeEventPeriods = false,
+  }) async {
+    query ??= PcoCheckInsEventQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCheckInsEvent.canInclude);
     if (includeAttendanceTypes) query.include.add('attendance_types');
     if (includeEventPeriods) query.include.add('event_periods');
     var url = '/check-ins/v2/stations/$stationId/event';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.959265
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.830556
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -244,8 +244,11 @@ class PcoServicesItemNoteCategory extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesItemNoteCategory] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -255,8 +258,10 @@ class PcoServicesItemNoteCategory extends PcoResource {
     String scheduledItemId,
     String itemNoteId, {
     PcoServicesItemNoteCategoryQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesItemNoteCategoryQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/services/v2/songs/$songId/last_scheduled_item/$scheduledItemId/item_notes/$itemNoteId/item_note_category';
@@ -265,8 +270,11 @@ class PcoServicesItemNoteCategory extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesItemNoteCategory] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesItemNoteCategory] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -274,8 +282,53 @@ class PcoServicesItemNoteCategory extends PcoResource {
     String serviceTypeId, {
     String? id,
     PcoServicesItemNoteCategoryQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesItemNoteCategoryQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/service_types/$serviceTypeId/item_note_categories';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesItemNoteCategory] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesItemNoteCategory?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesItemNoteCategoryQuery? query,
+  }) async {
+    query ??= PcoServicesItemNoteCategoryQuery();
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/item_note_categories/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesItemNoteCategory>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesItemNoteCategory] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/item_note_categories`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesItemNoteCategory>>
+      getAllFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesItemNoteCategoryQuery? query,
+  }) async {
+    query ??= PcoServicesItemNoteCategoryQuery();
+    query.getAll = true;
 
     var url = '/services/v2/service_types/$serviceTypeId/item_note_categories';
     if (id != null) url += '/$id';

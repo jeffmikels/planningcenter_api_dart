@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.948703
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.820529
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -280,16 +280,58 @@ class PcoServicesAttachmentType extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesAttachmentType] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesAttachmentType] objects (expecting many)
   /// using a path like this: `/services/v2/attachment_types`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachmentType>> get({
     String? id,
     PcoServicesAttachmentTypeQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesAttachmentTypeQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/attachment_types';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachmentType>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesAttachmentType] object
+  /// using a path like this: `/services/v2/attachment_types/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachmentType?> getSingle(
+    String id, {
+    PcoServicesAttachmentTypeQuery? query,
+  }) async {
+    query ??= PcoServicesAttachmentTypeQuery();
+
+    var url = '/services/v2/attachment_types/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachmentType>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachmentType] objects (expecting many)
+  /// using a path like this: `/services/v2/attachment_types`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachmentType>> getAll({
+    String? id,
+    PcoServicesAttachmentTypeQuery? query,
+  }) async {
+    query ??= PcoServicesAttachmentTypeQuery();
+    query.getAll = true;
 
     var url = '/services/v2/attachment_types';
     if (id != null) url += '/$id';

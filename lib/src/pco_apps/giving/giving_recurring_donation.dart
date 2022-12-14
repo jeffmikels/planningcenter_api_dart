@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.249927
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.126477
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoGivingRecurringDonationFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeDesignations`: include associated designations
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -299,17 +299,22 @@ class PcoGivingRecurringDonation extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/recurring_donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingRecurringDonation>> get({
     String? id,
     PcoGivingRecurringDonationQuery? query,
+    bool getAll = false,
     bool includeDesignations = false,
   }) async {
     query ??= PcoGivingRecurringDonationQuery();
+    if (getAll) query.getAll = true;
 
     if (includeDesignations) query.include.add('designations');
     var url = '/giving/v2/recurring_donations';
@@ -318,8 +323,54 @@ class PcoGivingRecurringDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
+  /// Will get a single [PcoGivingRecurringDonation] object
+  /// using a path like this: `/giving/v2/recurring_donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingRecurringDonation?> getSingle(
+    String id, {
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+
+    if (includeDesignations) query.include.add('designations');
+    var url = '/giving/v2/recurring_donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingRecurringDonation>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingRecurringDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingRecurringDonation>> getAll({
+    String? id,
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+    query.getAll = true;
+
+    if (includeDesignations) query.include.add('designations');
+    var url = '/giving/v2/recurring_donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -329,9 +380,11 @@ class PcoGivingRecurringDonation extends PcoResource {
     String paymentMethodId, {
     String? id,
     PcoGivingRecurringDonationQuery? query,
+    bool getAll = false,
     bool includeDesignations = false,
   }) async {
     query ??= PcoGivingRecurringDonationQuery();
+    if (getAll) query.getAll = true;
 
     if (includeDesignations) query.include.add('designations');
     var url =
@@ -341,8 +394,62 @@ class PcoGivingRecurringDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingRecurringDonation] objects (expecting many)
+  /// Will get a single [PcoGivingRecurringDonation] object
+  /// using a path like this: `/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingRecurringDonation?>
+      getSingleFromPersonAndPaymentMethod(
+    String personId,
+    String paymentMethodId,
+    String id, {
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+
+    if (includeDesignations) query.include.add('designations');
+    var url =
+        '/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingRecurringDonation>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingRecurringDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingRecurringDonation>>
+      getAllFromPersonAndPaymentMethod(
+    String personId,
+    String paymentMethodId, {
+    String? id,
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+    query.getAll = true;
+
+    if (includeDesignations) query.include.add('designations');
+    var url =
+        '/giving/v2/people/$personId/payment_methods/$paymentMethodId/recurring_donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingRecurringDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/recurring_donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -350,9 +457,56 @@ class PcoGivingRecurringDonation extends PcoResource {
     String personId, {
     String? id,
     PcoGivingRecurringDonationQuery? query,
+    bool getAll = false,
     bool includeDesignations = false,
   }) async {
     query ??= PcoGivingRecurringDonationQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeDesignations) query.include.add('designations');
+    var url = '/giving/v2/people/$personId/recurring_donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingRecurringDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingRecurringDonation] object
+  /// using a path like this: `/giving/v2/people/$personId/recurring_donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingRecurringDonation?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+
+    if (includeDesignations) query.include.add('designations');
+    var url = '/giving/v2/people/$personId/recurring_donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingRecurringDonation>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingRecurringDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/recurring_donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingRecurringDonation>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoGivingRecurringDonationQuery? query,
+    bool includeDesignations = false,
+  }) async {
+    query ??= PcoGivingRecurringDonationQuery();
+    query.getAll = true;
 
     if (includeDesignations) query.include.add('designations');
     var url = '/giving/v2/people/$personId/recurring_donations';

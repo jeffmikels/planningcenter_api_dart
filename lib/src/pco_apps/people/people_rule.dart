@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.169560
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.020032
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoPeopleRuleFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeConditions`: include associated conditions
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -299,8 +299,11 @@ class PcoPeopleRule extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleRule] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleRule] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/rules`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -308,9 +311,54 @@ class PcoPeopleRule extends PcoResource {
     String listId, {
     String? id,
     PcoPeopleRuleQuery? query,
+    bool getAll = false,
     bool includeConditions = false,
   }) async {
     query ??= PcoPeopleRuleQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeConditions) query.include.add('conditions');
+    var url = '/people/v2/lists/$listId/rules';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleRule>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleRule] object
+  /// using a path like this: `/people/v2/lists/$listId/rules/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleRule?> getSingleFromList(
+    String listId,
+    String id, {
+    PcoPeopleRuleQuery? query,
+    bool includeConditions = false,
+  }) async {
+    query ??= PcoPeopleRuleQuery();
+
+    if (includeConditions) query.include.add('conditions');
+    var url = '/people/v2/lists/$listId/rules/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleRule>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleRule] objects (expecting many)
+  /// using a path like this: `/people/v2/lists/$listId/rules`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleRule>> getAllFromList(
+    String listId, {
+    String? id,
+    PcoPeopleRuleQuery? query,
+    bool includeConditions = false,
+  }) async {
+    query ??= PcoPeopleRuleQuery();
+    query.getAll = true;
 
     if (includeConditions) query.include.add('conditions');
     var url = '/people/v2/lists/$listId/rules';

@@ -1,3 +1,9 @@
+## 1.2.0
+
+-   Ergonomic Change: Static get methods on classes and all `PlanningCenterApiQuery` objects now have a flag `getAll` which will automatically repeat API calls until all data has been retrieved.
+-   Ergonomic Change: Static get methods come in more flavors. `getAll...` will automatically set the `getAll` flag to true, and `getSingle...` where available, will return a single instance of a class or null.
+-   Breaking Change: Static methods previously used a variable `includeAll` that has been renamed to `includeAllRelated`
+
 ## 1.1.4
 
 -   `PcoPeopleFieldDatum` can be queried according to `field_definition_id` (according to the API explorer) but it's not in the API Reference, so previous versions did not include this as a possible where query. This one does.

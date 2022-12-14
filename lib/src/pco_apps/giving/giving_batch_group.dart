@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.240543
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.118426
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoGivingBatchGroupFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeOwner`: include associated owner
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -283,17 +283,22 @@ class PcoGivingBatchGroup extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/batch_groups`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingBatchGroup>> get({
     String? id,
     PcoGivingBatchGroupQuery? query,
+    bool getAll = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchGroupQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/batch_groups';
@@ -302,8 +307,52 @@ class PcoGivingBatchGroup extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// Will get a single [PcoGivingBatchGroup] object
+  /// using a path like this: `/giving/v2/batch_groups/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingBatchGroup?> getSingle(
+    String id, {
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batch_groups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/batch_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatchGroup>> getAll({
+    String? id,
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+    query.getAll = true;
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batch_groups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/batches/$batchId/batch_group`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -311,9 +360,11 @@ class PcoGivingBatchGroup extends PcoResource {
     String batchId, {
     String? id,
     PcoGivingBatchGroupQuery? query,
+    bool getAll = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchGroupQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/batches/$batchId/batch_group';
@@ -322,8 +373,54 @@ class PcoGivingBatchGroup extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingBatchGroup] objects (expecting many)
+  /// Will get a single [PcoGivingBatchGroup] object
+  /// using a path like this: `/giving/v2/batches/$batchId/batch_group/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingBatchGroup?> getSingleFromBatch(
+    String batchId,
+    String id, {
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batches/$batchId/batch_group/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/batches/$batchId/batch_group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatchGroup>> getAllFromBatch(
+    String batchId, {
+    String? id,
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+    query.getAll = true;
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batches/$batchId/batch_group';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingBatchGroup] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/batch_groups`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -331,9 +428,54 @@ class PcoGivingBatchGroup extends PcoResource {
     String personId, {
     String? id,
     PcoGivingBatchGroupQuery? query,
+    bool getAll = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchGroupQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/people/$personId/batch_groups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingBatchGroup] object
+  /// using a path like this: `/giving/v2/people/$personId/batch_groups/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingBatchGroup?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/people/$personId/batch_groups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatchGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatchGroup] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/batch_groups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatchGroup>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoGivingBatchGroupQuery? query,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchGroupQuery();
+    query.getAll = true;
 
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/people/$personId/batch_groups';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.241919
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.119352
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -221,8 +221,11 @@ class PcoGivingDesignation extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingDesignation] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGivingDesignation] objects (expecting one)
   /// using a path like this: `/giving/v2/donations/$donationId/refund/designation_refunds/$designationRefundId/designation`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -231,8 +234,10 @@ class PcoGivingDesignation extends PcoResource {
     String donationId,
     String designationRefundId, {
     PcoGivingDesignationQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingDesignationQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/giving/v2/donations/$donationId/refund/designation_refunds/$designationRefundId/designation';
@@ -241,8 +246,11 @@ class PcoGivingDesignation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingDesignation] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingDesignation] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/designations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -250,8 +258,49 @@ class PcoGivingDesignation extends PcoResource {
     String donationId, {
     String? id,
     PcoGivingDesignationQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingDesignationQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/giving/v2/donations/$donationId/designations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDesignation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingDesignation] object
+  /// using a path like this: `/giving/v2/donations/$donationId/designations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDesignation?> getSingleFromDonation(
+    String donationId,
+    String id, {
+    PcoGivingDesignationQuery? query,
+  }) async {
+    query ??= PcoGivingDesignationQuery();
+
+    var url = '/giving/v2/donations/$donationId/designations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDesignation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDesignation] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations/$donationId/designations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDesignation>> getAllFromDonation(
+    String donationId, {
+    String? id,
+    PcoGivingDesignationQuery? query,
+  }) async {
+    query ??= PcoGivingDesignationQuery();
+    query.getAll = true;
 
     var url = '/giving/v2/donations/$donationId/designations';
     if (id != null) url += '/$id';

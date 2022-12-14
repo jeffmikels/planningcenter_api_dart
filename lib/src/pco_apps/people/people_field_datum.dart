@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.142146
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.994258
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -30,7 +30,7 @@ enum PcoPeopleFieldDatumFilter { none }
 /// - `includeFieldDefinition`: include associated field_definition
 /// - `includeFieldOption`: include associated field_option
 /// - `includeTab`: include associated tab
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -101,7 +101,7 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
     bool includeTab = false,
 
     /// when true, adds `?include=field_definition,field_option,tab` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `file`
     /// query on a specific file, url example: ?where[file]=string
@@ -146,9 +146,10 @@ class PcoPeopleFieldDatumQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeFieldDefinition) include.add('field_definition');
-    if (includeAll || includeFieldOption) include.add('field_option');
-    if (includeAll || includeTab) include.add('tab');
+    if (includeAllRelated || includeFieldDefinition)
+      include.add('field_definition');
+    if (includeAllRelated || includeFieldOption) include.add('field_option');
+    if (includeAllRelated || includeTab) include.add('tab');
 
     if (whereFile != null)
       where.add(PlanningCenterApiWhere.parse('file', whereFile));
@@ -445,21 +446,26 @@ class PcoPeopleFieldDatum extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/field_data`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFieldDatum>> get({
     String? id,
     PcoPeopleFieldDatumQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeFieldDefinition = false,
     bool includeFieldOption = false,
     bool includeTab = false,
   }) async {
     query ??= PcoPeopleFieldDatumQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
     if (includeFieldDefinition) query.include.add('field_definition');
     if (includeFieldOption) query.include.add('field_option');
     if (includeTab) query.include.add('tab');
@@ -469,8 +475,62 @@ class PcoPeopleFieldDatum extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleFieldDatum] objects (expecting many)
+  /// Will get a single [PcoPeopleFieldDatum] object
+  /// using a path like this: `/people/v2/field_data/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFieldDatum?> getSingle(
+    String id, {
+    PcoPeopleFieldDatumQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
+    query ??= PcoPeopleFieldDatumQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
+    var url = '/people/v2/field_data/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFieldDatum] objects (expecting many)
+  /// using a path like this: `/people/v2/field_data`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFieldDatum>> getAll({
+    String? id,
+    PcoPeopleFieldDatumQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
+    query ??= PcoPeopleFieldDatumQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
+    var url = '/people/v2/field_data';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleFieldDatum] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/field_data`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -478,13 +538,68 @@ class PcoPeopleFieldDatum extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleFieldDatumQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeFieldDefinition = false,
     bool includeFieldOption = false,
     bool includeTab = false,
   }) async {
     query ??= PcoPeopleFieldDatumQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
+    var url = '/people/v2/people/$personId/field_data';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleFieldDatum] object
+  /// using a path like this: `/people/v2/people/$personId/field_data/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFieldDatum?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleFieldDatumQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
+    query ??= PcoPeopleFieldDatumQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
+    if (includeFieldDefinition) query.include.add('field_definition');
+    if (includeFieldOption) query.include.add('field_option');
+    if (includeTab) query.include.add('tab');
+    var url = '/people/v2/people/$personId/field_data/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFieldDatum>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFieldDatum] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/field_data`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFieldDatum>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleFieldDatumQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinition = false,
+    bool includeFieldOption = false,
+    bool includeTab = false,
+  }) async {
+    query ??= PcoPeopleFieldDatumQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleFieldDatum.canInclude);
     if (includeFieldDefinition) query.include.add('field_definition');
     if (includeFieldOption) query.include.add('field_option');
     if (includeTab) query.include.add('tab');

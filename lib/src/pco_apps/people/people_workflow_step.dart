@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.183346
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.028880
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,7 +21,7 @@ enum PcoPeopleWorkflowStepFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeDefaultAssignee`: include associated default_assignee
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -400,8 +400,11 @@ class PcoPeopleWorkflowStep extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowStep] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/current_step`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -410,9 +413,11 @@ class PcoPeopleWorkflowStep extends PcoResource {
     String personId,
     String workflowCardId, {
     PcoPeopleWorkflowStepQuery? query,
+    bool getAll = false,
     bool includeDefaultAssignee = false,
   }) async {
     query ??= PcoPeopleWorkflowStepQuery();
+    if (getAll) query.getAll = true;
 
     if (includeDefaultAssignee) query.include.add('default_assignee');
     var url =
@@ -422,17 +427,22 @@ class PcoPeopleWorkflowStep extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleWorkflowStep] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowStep] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleWorkflowStep>> getStepsFromWorkflow(
     String workflowId, {
     PcoPeopleWorkflowStepQuery? query,
+    bool getAll = false,
     bool includeDefaultAssignee = false,
   }) async {
     query ??= PcoPeopleWorkflowStepQuery();
+    if (getAll) query.getAll = true;
 
     if (includeDefaultAssignee) query.include.add('default_assignee');
     var url = '/people/v2/workflows/$workflowId/steps';

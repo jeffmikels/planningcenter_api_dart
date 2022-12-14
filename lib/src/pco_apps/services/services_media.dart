@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.963446
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.834695
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -47,7 +47,7 @@ enum PcoServicesMediaFilter {
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeAttachments`: include associated attachments
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -517,7 +517,80 @@ class PcoServicesMedia extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesMedia] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesMedia] objects (expecting many)
+  /// using a path like this: `/services/v2/media`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `audio`
+  /// - `background_audio`
+  /// - `background_image`
+  /// - `background_video`
+  /// - `countdown`
+  /// - `document`
+  /// - `drama`
+  /// - `image`
+  /// - `not_archived`
+  /// - `powerpoint`
+  /// - `song_video`
+  /// - `video`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesMedia>> get({
+    String? id,
+    PcoServicesMediaQuery? query,
+    bool getAll = false,
+    bool includeAttachments = false,
+  }) async {
+    query ??= PcoServicesMediaQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeAttachments) query.include.add('attachments');
+    var url = '/services/v2/media';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesMedia>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesMedia] object
+  /// using a path like this: `/services/v2/media/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `audio`
+  /// - `background_audio`
+  /// - `background_image`
+  /// - `background_video`
+  /// - `countdown`
+  /// - `document`
+  /// - `drama`
+  /// - `image`
+  /// - `not_archived`
+  /// - `powerpoint`
+  /// - `song_video`
+  /// - `video`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesMedia?> getSingle(
+    String id, {
+    PcoServicesMediaQuery? query,
+    bool includeAttachments = false,
+  }) async {
+    query ??= PcoServicesMediaQuery();
+
+    if (includeAttachments) query.include.add('attachments');
+    var url = '/services/v2/media/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesMedia>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesMedia] objects (expecting many)
   /// using a path like this: `/services/v2/media`
   ///
   /// Available Query Filters:
@@ -537,12 +610,15 @@ class PcoServicesMedia extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesMedia>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesMedia>> getAll({
     String? id,
     PcoServicesMediaQuery? query,
     bool includeAttachments = false,
   }) async {
     query ??= PcoServicesMediaQuery();
+    query.getAll = true;
 
     if (includeAttachments) query.include.add('attachments');
     var url = '/services/v2/media';
@@ -551,8 +627,11 @@ class PcoServicesMedia extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesMedia] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesMedia] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -563,9 +642,61 @@ class PcoServicesMedia extends PcoResource {
     String itemId, {
     String? id,
     PcoServicesMediaQuery? query,
+    bool getAll = false,
     bool includeAttachments = false,
   }) async {
     query ??= PcoServicesMediaQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeAttachments) query.include.add('attachments');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesMedia>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesMedia] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesMedia?> getSingleFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId,
+    String id, {
+    PcoServicesMediaQuery? query,
+    bool includeAttachments = false,
+  }) async {
+    query ??= PcoServicesMediaQuery();
+
+    if (includeAttachments) query.include.add('attachments');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesMedia>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesMedia] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/media`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesMedia>>
+      getAllFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PcoServicesMediaQuery? query,
+    bool includeAttachments = false,
+  }) async {
+    query ??= PcoServicesMediaQuery();
+    query.getAll = true;
 
     if (includeAttachments) query.include.add('attachments');
     var url =

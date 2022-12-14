@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.146289
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.997455
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,8 +229,11 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleFormSubmissionValue] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleFormSubmissionValue] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -240,8 +243,57 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
     String formSubmissionId, {
     String? id,
     PcoPeopleFormSubmissionValueQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleFormSubmissionValueQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleFormSubmissionValue] object
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFormSubmissionValue?>
+      getSingleFromFormAndFormSubmission(
+    String formId,
+    String formSubmissionId,
+    String id, {
+    PcoPeopleFormSubmissionValueQuery? query,
+  }) async {
+    query ??= PcoPeopleFormSubmissionValueQuery();
+
+    var url =
+        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFormSubmissionValue>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFormSubmissionValue] objects (expecting many)
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFormSubmissionValue>>
+      getAllFromFormAndFormSubmission(
+    String formId,
+    String formSubmissionId, {
+    String? id,
+    PcoPeopleFormSubmissionValueQuery? query,
+  }) async {
+    query ??= PcoPeopleFormSubmissionValueQuery();
+    query.getAll = true;
 
     var url =
         '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_submission_values';

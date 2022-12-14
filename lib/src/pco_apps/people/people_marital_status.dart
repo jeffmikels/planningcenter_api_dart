@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.151694
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.003644
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -250,16 +250,21 @@ class PcoPeopleMaritalStatus extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `/people/v2/marital_statuses`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMaritalStatus>> get({
     String? id,
     PcoPeopleMaritalStatusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleMaritalStatusQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/marital_statuses';
     if (id != null) url += '/$id';
@@ -267,8 +272,48 @@ class PcoPeopleMaritalStatus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMaritalStatus] objects (expecting many)
+  /// Will get a single [PcoPeopleMaritalStatus] object
+  /// using a path like this: `/people/v2/marital_statuses/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMaritalStatus?> getSingle(
+    String id, {
+    PcoPeopleMaritalStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMaritalStatusQuery();
+
+    var url = '/people/v2/marital_statuses/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMaritalStatus] objects (expecting many)
+  /// using a path like this: `/people/v2/marital_statuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMaritalStatus>> getAll({
+    String? id,
+    PcoPeopleMaritalStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMaritalStatusQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/marital_statuses';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleMaritalStatus] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/marital_status`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -276,8 +321,49 @@ class PcoPeopleMaritalStatus extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleMaritalStatusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleMaritalStatusQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people/$personId/marital_status';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleMaritalStatus] object
+  /// using a path like this: `/people/v2/people/$personId/marital_status/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMaritalStatus?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleMaritalStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMaritalStatusQuery();
+
+    var url = '/people/v2/people/$personId/marital_status/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMaritalStatus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMaritalStatus] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/marital_status`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMaritalStatus>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleMaritalStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMaritalStatusQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people/$personId/marital_status';
     if (id != null) url += '/$id';

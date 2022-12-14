@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.943255
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.815088
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -204,8 +204,11 @@ class PcoServicesArrangementSection extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesArrangementSection] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesArrangementSection] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/sections`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -215,8 +218,56 @@ class PcoServicesArrangementSection extends PcoResource {
     String arrangementId, {
     String? id,
     PcoServicesArrangementSectionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesArrangementSectionQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/songs/$songId/arrangements/$arrangementId/sections';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesArrangementSection>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesArrangementSection] object
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/sections/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesArrangementSection?>
+      getSingleSectionsFromSongAndArrangement(
+    String songId,
+    String arrangementId,
+    String id, {
+    PcoServicesArrangementSectionQuery? query,
+  }) async {
+    query ??= PcoServicesArrangementSectionQuery();
+
+    var url =
+        '/services/v2/songs/$songId/arrangements/$arrangementId/sections/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesArrangementSection>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesArrangementSection] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/sections`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesArrangementSection>>
+      getAllSectionsFromSongAndArrangement(
+    String songId,
+    String arrangementId, {
+    String? id,
+    PcoServicesArrangementSectionQuery? query,
+  }) async {
+    query ??= PcoServicesArrangementSectionQuery();
+    query.getAll = true;
 
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/sections';
     if (id != null) url += '/$id';

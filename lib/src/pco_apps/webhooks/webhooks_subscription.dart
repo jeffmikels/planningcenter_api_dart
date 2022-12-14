@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.308233
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.147628
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -281,16 +281,58 @@ class PcoWebhooksSubscription extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoWebhooksSubscription] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoWebhooksSubscription] objects (expecting many)
   /// using a path like this: `/webhooks/v2/subscriptions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoWebhooksSubscription>> get({
     String? id,
     PcoWebhooksSubscriptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoWebhooksSubscriptionQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/webhooks/v2/subscriptions';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoWebhooksSubscription>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoWebhooksSubscription] object
+  /// using a path like this: `/webhooks/v2/subscriptions/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoWebhooksSubscription?> getSingle(
+    String id, {
+    PcoWebhooksSubscriptionQuery? query,
+  }) async {
+    query ??= PcoWebhooksSubscriptionQuery();
+
+    var url = '/webhooks/v2/subscriptions/$id';
+    var retval = await PcoCollection.fromApiCall<PcoWebhooksSubscription>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoWebhooksSubscription] objects (expecting many)
+  /// using a path like this: `/webhooks/v2/subscriptions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoWebhooksSubscription>> getAll({
+    String? id,
+    PcoWebhooksSubscriptionQuery? query,
+  }) async {
+    query ??= PcoWebhooksSubscriptionQuery();
+    query.getAll = true;
 
     var url = '/webhooks/v2/subscriptions';
     if (id != null) url += '/$id';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.983122
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.850327
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -31,7 +31,7 @@ enum PcoServicesScheduleFilter {
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePlanTimes`: include associated plan_times
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -441,7 +441,76 @@ class PcoServicesSchedule extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSchedule] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesSchedule] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/schedules`
+  ///
+  /// Available Query Filters:
+  /// - `after`
+  /// Fetch schedules after the included `after` iso8601 date param. e.g. `?filter=after&after=2020-01-01T00:00:00Z`
+  ///
+  /// - `all`
+  /// - `before`
+  /// Fetch schedules before the included `before` iso8601 date param. e.g. `?filter=before&before=2020-01-01T00:00:00Z`
+  ///
+  /// - `future`
+  /// - `not_across_organizations`
+  /// - `past`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesSchedule>> getFromPerson(
+    String personId, {
+    String? id,
+    PcoServicesScheduleQuery? query,
+    bool getAll = false,
+    bool includePlanTimes = false,
+  }) async {
+    query ??= PcoServicesScheduleQuery();
+    if (getAll) query.getAll = true;
+
+    if (includePlanTimes) query.include.add('plan_times');
+    var url = '/services/v2/people/$personId/schedules';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSchedule>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesSchedule] object
+  /// using a path like this: `/services/v2/people/$personId/schedules/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `after`
+  /// Fetch schedules after the included `after` iso8601 date param. e.g. `?filter=after&after=2020-01-01T00:00:00Z`
+  ///
+  /// - `all`
+  /// - `before`
+  /// Fetch schedules before the included `before` iso8601 date param. e.g. `?filter=before&before=2020-01-01T00:00:00Z`
+  ///
+  /// - `future`
+  /// - `not_across_organizations`
+  /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSchedule?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoServicesScheduleQuery? query,
+    bool includePlanTimes = false,
+  }) async {
+    query ??= PcoServicesScheduleQuery();
+
+    if (includePlanTimes) query.include.add('plan_times');
+    var url = '/services/v2/people/$personId/schedules/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesSchedule>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSchedule] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/schedules`
   ///
   /// Available Query Filters:
@@ -458,13 +527,16 @@ class PcoServicesSchedule extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesSchedule>> getFromPerson(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSchedule>> getAllFromPerson(
     String personId, {
     String? id,
     PcoServicesScheduleQuery? query,
     bool includePlanTimes = false,
   }) async {
     query ??= PcoServicesScheduleQuery();
+    query.getAll = true;
 
     if (includePlanTimes) query.include.add('plan_times');
     var url = '/services/v2/people/$personId/schedules';
@@ -473,8 +545,11 @@ class PcoServicesSchedule extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesSchedule] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesSchedule] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/my_schedules`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -483,9 +558,11 @@ class PcoServicesSchedule extends PcoResource {
     String serviceTypeId,
     String planId, {
     PcoServicesScheduleQuery? query,
+    bool getAll = false,
     bool includePlanTimes = false,
   }) async {
     query ??= PcoServicesScheduleQuery();
+    if (getAll) query.getAll = true;
 
     if (includePlanTimes) query.include.add('plan_times');
     var url =

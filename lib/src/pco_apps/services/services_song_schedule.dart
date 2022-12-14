@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.989883
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.856301
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -285,11 +285,14 @@ class PcoServicesSongSchedule extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSongSchedule] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesSongSchedule] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/song_schedules`
   ///
   /// Available Query Filters:
   /// - `three_most_recent`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -297,8 +300,55 @@ class PcoServicesSongSchedule extends PcoResource {
     String songId, {
     String? id,
     PcoServicesSongScheduleQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesSongScheduleQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/songs/$songId/song_schedules';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSongSchedule>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesSongSchedule] object
+  /// using a path like this: `/services/v2/songs/$songId/song_schedules/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `three_most_recent`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSongSchedule?> getSingleFromSong(
+    String songId,
+    String id, {
+    PcoServicesSongScheduleQuery? query,
+  }) async {
+    query ??= PcoServicesSongScheduleQuery();
+
+    var url = '/services/v2/songs/$songId/song_schedules/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesSongSchedule>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSongSchedule] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/song_schedules`
+  ///
+  /// Available Query Filters:
+  /// - `three_most_recent`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSongSchedule>> getAllFromSong(
+    String songId, {
+    String? id,
+    PcoServicesSongScheduleQuery? query,
+  }) async {
+    query ??= PcoServicesSongScheduleQuery();
+    query.getAll = true;
 
     var url = '/services/v2/songs/$songId/song_schedules';
     if (id != null) url += '/$id';

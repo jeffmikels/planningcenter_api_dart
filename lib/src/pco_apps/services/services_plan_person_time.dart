@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.979792
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.844666
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,8 +235,11 @@ class PcoServicesPlanPersonTime extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesPlanPersonTime] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesPlanPersonTime] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -246,8 +249,54 @@ class PcoServicesPlanPersonTime extends PcoResource {
     String planPersonId, {
     String? id,
     PcoServicesPlanPersonTimeQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesPlanPersonTimeQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesPlanPersonTime] object
+  /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesPlanPersonTime?> getSingleFromPersonAndPlanPerson(
+    String personId,
+    String planPersonId,
+    String id, {
+    PcoServicesPlanPersonTimeQuery? query,
+  }) async {
+    query ??= PcoServicesPlanPersonTimeQuery();
+
+    var url =
+        '/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesPlanPersonTime>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesPlanPersonTime] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesPlanPersonTime>>
+      getAllFromPersonAndPlanPerson(
+    String personId,
+    String planPersonId, {
+    String? id,
+    PcoServicesPlanPersonTimeQuery? query,
+  }) async {
+    query ??= PcoServicesPlanPersonTimeQuery();
+    query.getAll = true;
 
     var url =
         '/services/v2/people/$personId/plan_people/$planPersonId/plan_person_times';

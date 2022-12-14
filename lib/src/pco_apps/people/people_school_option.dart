@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.171869
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.020556
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -352,16 +352,21 @@ class PcoPeopleSchoolOption extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleSchoolOption>> get({
     String? id,
     PcoPeopleSchoolOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleSchoolOptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/school_options';
     if (id != null) url += '/$id';
@@ -369,8 +374,48 @@ class PcoPeopleSchoolOption extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
+  /// Will get a single [PcoPeopleSchoolOption] object
+  /// using a path like this: `/people/v2/school_options/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleSchoolOption?> getSingle(
+    String id, {
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+
+    var url = '/people/v2/school_options/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleSchoolOption] objects (expecting many)
+  /// using a path like this: `/people/v2/school_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getAll({
+    String? id,
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/school_options';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/school`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -378,8 +423,10 @@ class PcoPeopleSchoolOption extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleSchoolOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleSchoolOptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/people/$personId/school';
     if (id != null) url += '/$id';
@@ -387,8 +434,50 @@ class PcoPeopleSchoolOption extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleSchoolOption] objects (expecting many)
+  /// Will get a single [PcoPeopleSchoolOption] object
+  /// using a path like this: `/people/v2/people/$personId/school/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleSchoolOption?> getSingleSchoolFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+
+    var url = '/people/v2/people/$personId/school/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleSchoolOption] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/school`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleSchoolOption>> getAllSchoolFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/people/$personId/school';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleSchoolOption] objects (expecting many)
   /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -397,8 +486,52 @@ class PcoPeopleSchoolOption extends PcoResource {
     String schoolOptionId, {
     String? id,
     PcoPeopleSchoolOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleSchoolOptionQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleSchoolOption] object
+  /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleSchoolOption?>
+      getSinglePromotesToSchoolFromSchoolOption(
+    String schoolOptionId,
+    String id, {
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+
+    var url =
+        '/people/v2/school_options/$schoolOptionId/promotes_to_school/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleSchoolOption>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleSchoolOption] objects (expecting many)
+  /// using a path like this: `/people/v2/school_options/$schoolOptionId/promotes_to_school`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleSchoolOption>>
+      getAllPromotesToSchoolFromSchoolOption(
+    String schoolOptionId, {
+    String? id,
+    PcoPeopleSchoolOptionQuery? query,
+  }) async {
+    query ??= PcoPeopleSchoolOptionQuery();
+    query.getAll = true;
 
     var url = '/people/v2/school_options/$schoolOptionId/promotes_to_school';
     if (id != null) url += '/$id';

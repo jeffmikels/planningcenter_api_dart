@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.266303
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.137224
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoGroupsEventNoteFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeOwner`: include associated owner
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -239,17 +239,22 @@ class PcoGroupsEventNote extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsEventNote] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGroupsEventNote] objects (expecting one)
   /// using a path like this: `/groups/v2/events/$eventId/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGroupsEventNote>> getNotesFromEvent(
     String eventId, {
     PcoGroupsEventNoteQuery? query,
+    bool getAll = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGroupsEventNoteQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOwner) query.include.add('owner');
     var url = '/groups/v2/events/$eventId/notes';

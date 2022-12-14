@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.152320
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.004240
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -46,7 +46,7 @@ enum PcoPeopleMessageFilter { createdAfter }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeMessageGroup`: include associated message_group
 /// - `includeTo`: include associated to
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -138,7 +138,7 @@ class PcoPeopleMessageQuery extends PlanningCenterApiQuery {
     bool includeTo = false,
 
     /// when true, adds `?include=message_group,to` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `app_name`
     /// query on a specific app_name, url example: ?where[app_name]=string
@@ -215,8 +215,8 @@ class PcoPeopleMessageQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeMessageGroup) include.add('message_group');
-    if (includeAll || includeTo) include.add('to');
+    if (includeAllRelated || includeMessageGroup) include.add('message_group');
+    if (includeAllRelated || includeTo) include.add('to');
 
     if (whereAppName != null)
       where.add(PlanningCenterApiWhere.parse('app_name', whereAppName));
@@ -586,23 +586,28 @@ class PcoPeopleMessage extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/messages`
   ///
   /// Available Query Filters:
   /// - `created_after`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleMessage>> get({
     String? id,
     PcoPeopleMessageQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeMessageGroup = false,
     bool includeTo = false,
   }) async {
     query ??= PcoPeopleMessageQuery();
-    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/messages';
@@ -611,8 +616,64 @@ class PcoPeopleMessage extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
+  /// Will get a single [PcoPeopleMessage] object
+  /// using a path like this: `/people/v2/messages/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `created_after`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMessage?> getSingle(
+    String id, {
+    PcoPeopleMessageQuery? query,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/messages/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMessage] objects (expecting many)
+  /// using a path like this: `/people/v2/messages`
+  ///
+  /// Available Query Filters:
+  /// - `created_after`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMessage>> getAll({
+    String? id,
+    PcoPeopleMessageQuery? query,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/messages';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/messages`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -620,12 +681,14 @@ class PcoPeopleMessage extends PcoResource {
     String messageGroupId, {
     String? id,
     PcoPeopleMessageQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeMessageGroup = false,
     bool includeTo = false,
   }) async {
     query ??= PcoPeopleMessageQuery();
-    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/message_groups/$messageGroupId/messages';
@@ -634,7 +697,119 @@ class PcoPeopleMessage extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleMessage] objects (expecting many)
+  /// Will get a single [PcoPeopleMessage] object
+  /// using a path like this: `/people/v2/message_groups/$messageGroupId/messages/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMessage?> getSingleFromMessageGroup(
+    String messageGroupId,
+    String id, {
+    PcoPeopleMessageQuery? query,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/message_groups/$messageGroupId/messages/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMessage] objects (expecting many)
+  /// using a path like this: `/people/v2/message_groups/$messageGroupId/messages`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMessage>> getAllFromMessageGroup(
+    String messageGroupId, {
+    String? id,
+    PcoPeopleMessageQuery? query,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/message_groups/$messageGroupId/messages';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleMessage] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/messages`
+  ///
+  /// Available Query Filters:
+  /// - `created_after`
+  /// - `received`
+  /// - `sent`
+  /// - `unread`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleMessage>> getFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleMessageQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/people/$personId/messages';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleMessage] object
+  /// using a path like this: `/people/v2/people/$personId/messages/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `created_after`
+  /// - `received`
+  /// - `sent`
+  /// - `unread`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMessage?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleMessageQuery? query,
+    bool includeAllRelated = false,
+    bool includeMessageGroup = false,
+    bool includeTo = false,
+  }) async {
+    query ??= PcoPeopleMessageQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
+    if (includeMessageGroup) query.include.add('message_group');
+    if (includeTo) query.include.add('to');
+    var url = '/people/v2/people/$personId/messages/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMessage>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMessage] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/messages`
   ///
   /// Available Query Filters:
@@ -645,16 +820,19 @@ class PcoPeopleMessage extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleMessage>> getFromPerson(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMessage>> getAllFromPerson(
     String personId, {
     String? id,
     PcoPeopleMessageQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeMessageGroup = false,
     bool includeTo = false,
   }) async {
     query ??= PcoPeopleMessageQuery();
-    if (includeAll) query.include.addAll(PcoPeopleMessage.canInclude);
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleMessage.canInclude);
     if (includeMessageGroup) query.include.add('message_group');
     if (includeTo) query.include.add('to');
     var url = '/people/v2/people/$personId/messages';

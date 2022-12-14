@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.272356
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.141470
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -260,7 +260,58 @@ class PcoGroupsResource extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsResource] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsResource] objects (expecting many)
+  /// using a path like this: `/groups/v2/groups/$groupId/resources`
+  ///
+  /// Available Query Filters:
+  /// - `leaders`
+  /// filter resources only visible to group leaders
+  ///
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsResourceQuery? query,
+    bool getAll = false,
+  }) async {
+    query ??= PcoGroupsResourceQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/groups/v2/groups/$groupId/resources';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsResource] object
+  /// using a path like this: `/groups/v2/groups/$groupId/resources/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `leaders`
+  /// filter resources only visible to group leaders
+  ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsResource?> getSingleFromGroup(
+    String groupId,
+    String id, {
+    PcoGroupsResourceQuery? query,
+  }) async {
+    query ??= PcoGroupsResourceQuery();
+
+    var url = '/groups/v2/groups/$groupId/resources/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/resources`
   ///
   /// Available Query Filters:
@@ -270,12 +321,15 @@ class PcoGroupsResource extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGroupsResource>> getFromGroup(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsResource>> getAllFromGroup(
     String groupId, {
     String? id,
     PcoGroupsResourceQuery? query,
   }) async {
     query ??= PcoGroupsResourceQuery();
+    query.getAll = true;
 
     var url = '/groups/v2/groups/$groupId/resources';
     if (id != null) url += '/$id';
@@ -283,8 +337,11 @@ class PcoGroupsResource extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsResource] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsResource] objects (expecting many)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -292,8 +349,10 @@ class PcoGroupsResource extends PcoResource {
     String groupTypeId, {
     String? id,
     PcoGroupsResourceQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsResourceQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/groups/v2/group_types/$groupTypeId/resources';
     if (id != null) url += '/$id';
@@ -301,8 +360,50 @@ class PcoGroupsResource extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsResource] objects (expecting one)
+  /// Will get a single [PcoGroupsResource] object
+  /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsResource?> getSingleFromGroupType(
+    String groupTypeId,
+    String id, {
+    PcoGroupsResourceQuery? query,
+  }) async {
+    query ??= PcoGroupsResourceQuery();
+
+    var url = '/groups/v2/group_types/$groupTypeId/resources/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsResource] objects (expecting many)
+  /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsResource>> getAllFromGroupType(
+    String groupTypeId, {
+    String? id,
+    PcoGroupsResourceQuery? query,
+  }) async {
+    query ??= PcoGroupsResourceQuery();
+    query.getAll = true;
+
+    var url = '/groups/v2/group_types/$groupTypeId/resources';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsResource>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/download`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -311,8 +412,10 @@ class PcoGroupsResource extends PcoResource {
     String groupTypeId,
     String resourceId, {
     PcoGroupsResourceQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsResourceQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/groups/v2/group_types/$groupTypeId/resources/$resourceId/download';
@@ -321,8 +424,11 @@ class PcoGroupsResource extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsResource] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGroupsResource] objects (expecting one)
   /// using a path like this: `/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -331,8 +437,10 @@ class PcoGroupsResource extends PcoResource {
     String groupTypeId,
     String resourceId, {
     PcoGroupsResourceQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsResourceQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/groups/v2/group_types/$groupTypeId/resources/$resourceId/visit';
 

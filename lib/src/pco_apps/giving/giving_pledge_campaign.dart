@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.249297
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.125740
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,7 +19,7 @@ enum PcoGivingPledgeCampaignFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeFund`: include associated fund
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -419,17 +419,22 @@ class PcoGivingPledgeCampaign extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingPledgeCampaign] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGivingPledgeCampaign] objects (expecting one)
   /// using a path like this: `/giving/v2/pledges/$pledgeId/pledge_campaign`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPledgeCampaign>> getFromPledge(
     String pledgeId, {
     PcoGivingPledgeCampaignQuery? query,
+    bool getAll = false,
     bool includeFund = false,
   }) async {
     query ??= PcoGivingPledgeCampaignQuery();
+    if (getAll) query.getAll = true;
 
     if (includeFund) query.include.add('fund');
     var url = '/giving/v2/pledges/$pledgeId/pledge_campaign';

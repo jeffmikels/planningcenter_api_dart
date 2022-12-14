@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.960402
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.831708
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -326,8 +326,11 @@ class PcoServicesKey extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesKey] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesKey] objects (expecting one)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -335,8 +338,10 @@ class PcoServicesKey extends PcoResource {
     String songId,
     String arrangementId, {
     PcoServicesKeyQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesKeyQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/services/v2/songs/$songId/arrangements/$arrangementId/keys';
 
@@ -344,8 +349,11 @@ class PcoServicesKey extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesKey] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesKey] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/key`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -354,8 +362,10 @@ class PcoServicesKey extends PcoResource {
     String planId,
     String itemId, {
     PcoServicesKeyQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesKeyQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/key';

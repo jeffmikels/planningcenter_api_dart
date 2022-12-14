@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.144974
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.996281
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoPeopleFormFieldFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeOptions`: include associated options
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -324,17 +324,22 @@ class PcoPeopleFormField extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleFormField] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleFormField] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/fields`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleFormField>> getFieldsFromForm(
     String formId, {
     PcoPeopleFormFieldQuery? query,
+    bool getAll = false,
     bool includeOptions = false,
   }) async {
     query ??= PcoPeopleFormFieldQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOptions) query.include.add('options');
     var url = '/people/v2/forms/$formId/fields';
@@ -343,8 +348,11 @@ class PcoPeopleFormField extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleFormField] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleFormField] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -353,9 +361,59 @@ class PcoPeopleFormField extends PcoResource {
     String formSubmissionId, {
     String? id,
     PcoPeopleFormFieldQuery? query,
+    bool getAll = false,
     bool includeOptions = false,
   }) async {
     query ??= PcoPeopleFormFieldQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeOptions) query.include.add('options');
+    var url =
+        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFormField>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleFormField] object
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFormField?> getSingleFromFormAndFormSubmission(
+    String formId,
+    String formSubmissionId,
+    String id, {
+    PcoPeopleFormFieldQuery? query,
+    bool includeOptions = false,
+  }) async {
+    query ??= PcoPeopleFormFieldQuery();
+
+    if (includeOptions) query.include.add('options');
+    var url =
+        '/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFormField>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFormField] objects (expecting many)
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form_fields`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFormField>>
+      getAllFromFormAndFormSubmission(
+    String formId,
+    String formSubmissionId, {
+    String? id,
+    PcoPeopleFormFieldQuery? query,
+    bool includeOptions = false,
+  }) async {
+    query ??= PcoPeopleFormFieldQuery();
+    query.getAll = true;
 
     if (includeOptions) query.include.add('options');
     var url =

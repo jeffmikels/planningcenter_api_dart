@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.960859
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.832087
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,8 +195,11 @@ class PcoServicesLayout extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesLayout] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesLayout] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/layouts`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -204,8 +207,49 @@ class PcoServicesLayout extends PcoResource {
     String serviceTypeId, {
     String? id,
     PcoServicesLayoutQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesLayoutQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/service_types/$serviceTypeId/layouts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesLayout>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesLayout] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/layouts/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesLayout?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesLayoutQuery? query,
+  }) async {
+    query ??= PcoServicesLayoutQuery();
+
+    var url = '/services/v2/service_types/$serviceTypeId/layouts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesLayout>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesLayout] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/layouts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesLayout>> getAllFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesLayoutQuery? query,
+  }) async {
+    query ??= PcoServicesLayoutQuery();
+    query.getAll = true;
 
     var url = '/services/v2/service_types/$serviceTypeId/layouts';
     if (id != null) url += '/$id';

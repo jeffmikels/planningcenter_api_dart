@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.272938
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.141935
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -265,8 +265,11 @@ class PcoGroupsTag extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsTag] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsTag] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/tags`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -274,8 +277,10 @@ class PcoGroupsTag extends PcoResource {
     String groupId, {
     String? id,
     PcoGroupsTagQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsTagQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/groups/v2/groups/$groupId/tags';
     if (id != null) url += '/$id';
@@ -283,8 +288,50 @@ class PcoGroupsTag extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsTag] objects (expecting many)
+  /// Will get a single [PcoGroupsTag] object
+  /// using a path like this: `/groups/v2/groups/$groupId/tags/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsTag?> getSingleFromGroup(
+    String groupId,
+    String id, {
+    PcoGroupsTagQuery? query,
+  }) async {
+    query ??= PcoGroupsTagQuery();
+
+    var url = '/groups/v2/groups/$groupId/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsTag] objects (expecting many)
+  /// using a path like this: `/groups/v2/groups/$groupId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsTag>> getAllFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsTagQuery? query,
+  }) async {
+    query ??= PcoGroupsTagQuery();
+    query.getAll = true;
+
+    var url = '/groups/v2/groups/$groupId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGroupsTag] objects (expecting many)
   /// using a path like this: `/groups/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -292,8 +339,49 @@ class PcoGroupsTag extends PcoResource {
     String tagGroupId, {
     String? id,
     PcoGroupsTagQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsTagQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/groups/v2/tag_groups/$tagGroupId/tags';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsTag>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsTag] object
+  /// using a path like this: `/groups/v2/tag_groups/$tagGroupId/tags/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsTag?> getSingleFromTagGroup(
+    String tagGroupId,
+    String id, {
+    PcoGroupsTagQuery? query,
+  }) async {
+    query ??= PcoGroupsTagQuery();
+
+    var url = '/groups/v2/tag_groups/$tagGroupId/tags/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsTag>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsTag] objects (expecting many)
+  /// using a path like this: `/groups/v2/tag_groups/$tagGroupId/tags`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsTag>> getAllFromTagGroup(
+    String tagGroupId, {
+    String? id,
+    PcoGroupsTagQuery? query,
+  }) async {
+    query ??= PcoGroupsTagQuery();
+    query.getAll = true;
 
     var url = '/groups/v2/tag_groups/$tagGroupId/tags';
     if (id != null) url += '/$id';

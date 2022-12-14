@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.268174
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.138999
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -243,8 +243,11 @@ class PcoGroupsLocation extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/location`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -252,8 +255,10 @@ class PcoGroupsLocation extends PcoResource {
     String eventId, {
     String? id,
     PcoGroupsLocationQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsLocationQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/groups/v2/events/$eventId/location';
     if (id != null) url += '/$id';
@@ -261,8 +266,50 @@ class PcoGroupsLocation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsLocation] objects (expecting many)
+  /// Will get a single [PcoGroupsLocation] object
+  /// using a path like this: `/groups/v2/events/$eventId/location/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsLocation?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoGroupsLocationQuery? query,
+  }) async {
+    query ??= PcoGroupsLocationQuery();
+
+    var url = '/groups/v2/events/$eventId/location/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsLocation] objects (expecting many)
+  /// using a path like this: `/groups/v2/events/$eventId/location`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsLocation>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoGroupsLocationQuery? query,
+  }) async {
+    query ??= PcoGroupsLocationQuery();
+    query.getAll = true;
+
+    var url = '/groups/v2/events/$eventId/location';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGroupsLocation] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/location`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -270,8 +317,49 @@ class PcoGroupsLocation extends PcoResource {
     String groupId, {
     String? id,
     PcoGroupsLocationQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsLocationQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/groups/v2/groups/$groupId/location';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsLocation] object
+  /// using a path like this: `/groups/v2/groups/$groupId/location/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsLocation?> getSingleFromGroup(
+    String groupId,
+    String id, {
+    PcoGroupsLocationQuery? query,
+  }) async {
+    query ??= PcoGroupsLocationQuery();
+
+    var url = '/groups/v2/groups/$groupId/location/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsLocation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsLocation] objects (expecting many)
+  /// using a path like this: `/groups/v2/groups/$groupId/location`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsLocation>> getAllFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsLocationQuery? query,
+  }) async {
+    query ??= PcoGroupsLocationQuery();
+    query.getAll = true;
 
     var url = '/groups/v2/groups/$groupId/location';
     if (id != null) url += '/$id';

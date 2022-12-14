@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.134576
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.991864
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,7 +21,7 @@ enum PcoPeopleCampusFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeLists`: include associated lists
 /// - `includeServiceTimes`: include associated service_times
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -80,7 +80,7 @@ class PcoPeopleCampusQuery extends PlanningCenterApiQuery {
     bool includeServiceTimes = false,
 
     /// when true, adds `?include=lists,service_times` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -105,8 +105,8 @@ class PcoPeopleCampusQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeLists) include.add('lists');
-    if (includeAll || includeServiceTimes) include.add('service_times');
+    if (includeAllRelated || includeLists) include.add('lists');
+    if (includeAllRelated || includeServiceTimes) include.add('service_times');
 
     if (whereCreatedAt != null)
       where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
@@ -566,20 +566,25 @@ class PcoPeopleCampus extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleCampus] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleCampus] objects (expecting many)
   /// using a path like this: `/people/v2/campuses`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> get({
     String? id,
     PcoPeopleCampusQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
     query ??= PcoPeopleCampusQuery();
-    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/campuses';
@@ -588,20 +593,72 @@ class PcoPeopleCampus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
+  /// Will get a single [PcoPeopleCampus] object
+  /// using a path like this: `/people/v2/campuses/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleCampus?> getSingle(
+    String id, {
+    PcoPeopleCampusQuery? query,
+    bool includeAllRelated = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
+    query ??= PcoPeopleCampusQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
+    var url = '/people/v2/campuses/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleCampus>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleCampus] objects (expecting many)
+  /// using a path like this: `/people/v2/campuses`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleCampus>> getAll({
+    String? id,
+    PcoPeopleCampusQuery? query,
+    bool includeAllRelated = false,
+    bool includeLists = false,
+    bool includeServiceTimes = false,
+  }) async {
+    query ??= PcoPeopleCampusQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (includeLists) query.include.add('lists');
+    if (includeServiceTimes) query.include.add('service_times');
+    var url = '/people/v2/campuses';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleCampus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/campus`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getFromForm(
     String formId, {
     PcoPeopleCampusQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
     query ??= PcoPeopleCampusQuery();
-    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/forms/$formId/campus';
@@ -610,20 +667,25 @@ class PcoPeopleCampus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/campus`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getFromList(
     String listId, {
     PcoPeopleCampusQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
     query ??= PcoPeopleCampusQuery();
-    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/lists/$listId/campus';
@@ -632,20 +694,25 @@ class PcoPeopleCampus extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleCampus] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleCampus] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/primary_campus`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCampus>> getPrimaryCampusFromPerson(
     String personId, {
     PcoPeopleCampusQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeLists = false,
     bool includeServiceTimes = false,
   }) async {
     query ??= PcoPeopleCampusQuery();
-    if (includeAll) query.include.addAll(PcoPeopleCampus.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleCampus.canInclude);
     if (includeLists) query.include.add('lists');
     if (includeServiceTimes) query.include.add('service_times');
     var url = '/people/v2/people/$personId/primary_campus';

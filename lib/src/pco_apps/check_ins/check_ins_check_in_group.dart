@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.057913
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.922585
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,7 +19,7 @@ enum PcoCheckInsCheckInGroupFilter { none }
 /// - `includeCheckIns`: include associated check_ins
 /// - `includeEventPeriod`: include associated event_period
 /// - `includePrintStation`: include associated print_station
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -52,7 +52,7 @@ class PcoCheckInsCheckInGroupQuery extends PlanningCenterApiQuery {
     bool includePrintStation = false,
 
     /// when true, adds `?include=check_ins,event_period,print_station` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -66,9 +66,9 @@ class PcoCheckInsCheckInGroupQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeCheckIns) include.add('check_ins');
-    if (includeAll || includeEventPeriod) include.add('event_period');
-    if (includeAll || includePrintStation) include.add('print_station');
+    if (includeAllRelated || includeCheckIns) include.add('check_ins');
+    if (includeAllRelated || includeEventPeriod) include.add('event_period');
+    if (includeAllRelated || includePrintStation) include.add('print_station');
   }
 }
 
@@ -288,8 +288,11 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsCheckInGroup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsCheckInGroup] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -297,13 +300,16 @@ class PcoCheckInsCheckInGroup extends PcoResource {
     String checkInId, {
     String? id,
     PcoCheckInsCheckInGroupQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeCheckIns = false,
     bool includeEventPeriod = false,
     bool includePrintStation = false,
   }) async {
     query ??= PcoCheckInsCheckInGroupQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
     if (includeCheckIns) query.include.add('check_ins');
     if (includeEventPeriod) query.include.add('event_period');
     if (includePrintStation) query.include.add('print_station');
@@ -313,7 +319,131 @@ class PcoCheckInsCheckInGroup extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsCheckInGroup] objects (expecting many)
+  /// Will get a single [PcoCheckInsCheckInGroup] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsCheckInGroup?> getSingleFromCheckIn(
+    String checkInId,
+    String id, {
+    PcoCheckInsCheckInGroupQuery? query,
+    bool includeAllRelated = false,
+    bool includeCheckIns = false,
+    bool includeEventPeriod = false,
+    bool includePrintStation = false,
+  }) async {
+    query ??= PcoCheckInsCheckInGroupQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    if (includeCheckIns) query.include.add('check_ins');
+    if (includeEventPeriod) query.include.add('event_period');
+    if (includePrintStation) query.include.add('print_station');
+    var url = '/check-ins/v2/check_ins/$checkInId/check_in_group/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsCheckInGroup] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/check_in_group`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsCheckInGroup>> getAllFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsCheckInGroupQuery? query,
+    bool includeAllRelated = false,
+    bool includeCheckIns = false,
+    bool includeEventPeriod = false,
+    bool includePrintStation = false,
+  }) async {
+    query ??= PcoCheckInsCheckInGroupQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    if (includeCheckIns) query.include.add('check_ins');
+    if (includeEventPeriod) query.include.add('event_period');
+    if (includePrintStation) query.include.add('print_station');
+    var url = '/check-ins/v2/check_ins/$checkInId/check_in_group';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsCheckInGroup] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/stations/$stationId/check_in_groups`
+  ///
+  /// Available Query Filters:
+  /// - `canceled`
+  /// - `printed`
+  /// - `ready`
+  /// - `skipped`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCheckInsCheckInGroup>> getFromStation(
+    String stationId, {
+    String? id,
+    PcoCheckInsCheckInGroupQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeCheckIns = false,
+    bool includeEventPeriod = false,
+    bool includePrintStation = false,
+  }) async {
+    query ??= PcoCheckInsCheckInGroupQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    if (includeCheckIns) query.include.add('check_ins');
+    if (includeEventPeriod) query.include.add('event_period');
+    if (includePrintStation) query.include.add('print_station');
+    var url = '/check-ins/v2/stations/$stationId/check_in_groups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsCheckInGroup] object
+  /// using a path like this: `/check-ins/v2/stations/$stationId/check_in_groups/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `canceled`
+  /// - `printed`
+  /// - `ready`
+  /// - `skipped`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsCheckInGroup?> getSingleFromStation(
+    String stationId,
+    String id, {
+    PcoCheckInsCheckInGroupQuery? query,
+    bool includeAllRelated = false,
+    bool includeCheckIns = false,
+    bool includeEventPeriod = false,
+    bool includePrintStation = false,
+  }) async {
+    query ??= PcoCheckInsCheckInGroupQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    if (includeCheckIns) query.include.add('check_ins');
+    if (includeEventPeriod) query.include.add('event_period');
+    if (includePrintStation) query.include.add('print_station');
+    var url = '/check-ins/v2/stations/$stationId/check_in_groups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsCheckInGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsCheckInGroup] objects (expecting many)
   /// using a path like this: `/check-ins/v2/stations/$stationId/check_in_groups`
   ///
   /// Available Query Filters:
@@ -324,17 +454,21 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCheckInsCheckInGroup>> getFromStation(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsCheckInGroup>> getAllFromStation(
     String stationId, {
     String? id,
     PcoCheckInsCheckInGroupQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeCheckIns = false,
     bool includeEventPeriod = false,
     bool includePrintStation = false,
   }) async {
     query ??= PcoCheckInsCheckInGroupQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsCheckInGroup.canInclude);
     if (includeCheckIns) query.include.add('check_ins');
     if (includeEventPeriod) query.include.add('event_period');
     if (includePrintStation) query.include.add('print_station');

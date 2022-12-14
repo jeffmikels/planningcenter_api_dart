@@ -489,7 +489,13 @@ class PcoCollection<T extends PcoResource> {
       required String apiVersion}) async {
     var res = await PlanningCenter.instance
         .call(endpoint, query: query, apiVersion: apiVersion);
-    return PcoCollection<T>.fromApiResponse(res, endpoint, apiVersion);
+    var retval = PcoCollection<T>.fromApiResponse(res, endpoint, apiVersion);
+    if (query?.getAll == true) {
+      while (query!.getAll && retval.hasMore) {
+        await retval.getMore();
+      }
+    }
+    return retval;
   }
 
   /// we also require the original endpoint and the apiversion so that subsequent

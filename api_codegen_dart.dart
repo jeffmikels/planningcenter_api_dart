@@ -744,7 +744,7 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
     bool allowIdQueries = foundRelationship ? toMany : true;
 
     // parse the remaining path parts for function argument variables
-    var idArgs = [];
+    var idArgs = <String>[];
     var inboundArgumentNames = <String>[];
     var inboundFunctionNames = <String>[];
 
@@ -774,9 +774,10 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
     functionParts.add(inboundFunctionNames.join('And'));
     var functionName = functionParts.join();
 
-    // special case of the organizational inbound edge that shows up
-    // for some reason as `/services/v2/plans` (with edge id: `organization-organization-plans`)
-    // and should be at `/services/v2`
+    // SPECIAL CASE:
+    // an organizational inbound edge that shows up as `/services/v2/plans`
+    // (with edge id: `organization-organization-plans`)
+    // should be at `/services/v2`
     if (edge.head.id == 'organization' && edge.tail.id == 'organization') {
       toMany = false;
       functionName = 'getSelf';
@@ -793,27 +794,72 @@ String classTemplate(Vertex vertex, Map<String, Vertex> appVertices) {
     }
 
     var toAdd = '''\n
-  /// Will get a collection of [$className] objects (expecting ${toMany ? 'many' : 'one'})
+  /// Will get a [PcoCollection] of [$className] objects (expecting ${toMany ? 'many' : 'one'})
   /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
+  /// 
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   /// 
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}${className}Query? query, ${useIncludeAll ? 'bool includeAll = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
+  static Future<PcoCollection<$className>> $functionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}${className}Query? query, bool getAll = false, ${useIncludeAll ? 'bool includeAllRelated = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
     query ??= ${className}Query();
-    ${useIncludeAll ? 'if (includeAll) query.include.addAll($className.canInclude);' : ''}
+    if (getAll) query.getAll = true;
+    ${useIncludeAll ? 'if (includeAllRelated) query.include.addAll($className.canInclude);' : ''}
 ${inboundIncludeChecks.join('\n').prefixLines('    ')}
     var url = '$edgePathTemplate';
     ${allowIdQueries ? 'if (id != null) url += \'/\$id\';' : ''}
     return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
   }
 ''';
+
+    if (allowIdQueries) {
+      var singleFunctionName = functionName.replaceFirst('get', 'getSingle');
+      toAdd += '''\n
+  /// Will get a single [$className] object
+  /// using a path like this: `$edgePathTemplate/[id]`${makeMetaDoc(edge, '  /// ')}
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<$className?> $singleFunctionName(${idArgs.map((e) => '$e,').join()} String id, {${className}Query? query, ${useIncludeAll ? 'bool includeAllRelated = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
+    query ??= ${className}Query();
+    ${useIncludeAll ? 'if (includeAllRelated) query.include.addAll($className.canInclude);' : ''}
+${inboundIncludeChecks.join('\n').prefixLines('    ')}
+    var url = '$edgePathTemplate/\$id';
+    var retval = await PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+''';
+    }
+
+    if (toMany) {
+      var allFunctionName = functionName.replaceFirst('get', 'getAll');
+      toAdd += '''\n
+  /// Will get a [PcoCollection] containing ALL [$className] objects (expecting ${toMany ? 'many' : 'one'})
+  /// using a path like this: `$edgePathTemplate`${makeMetaDoc(edge, '  /// ')}
+  /// 
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  /// 
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<$className>> $allFunctionName(${idArgs.map((e) => '$e,').join()} {${allowIdQueries ? 'String? id, ' : ''}${className}Query? query, ${useIncludeAll ? 'bool includeAllRelated = false, ' : ''}${inboundIncludeArgs.join(' ')}}) async {
+    query ??= ${className}Query();
+    query.getAll = true;
+    ${useIncludeAll ? 'if (includeAllRelated) query.include.addAll($className.canInclude);' : ''}
+${inboundIncludeChecks.join('\n').prefixLines('    ')}
+    var url = '$edgePathTemplate';
+    ${allowIdQueries ? 'if (id != null) url += \'/\$id\';' : ''}
+    return PcoCollection.fromApiCall<$className>(url, query: query, apiVersion:kApiVersion);
+  }
+''';
+    }
+
+    // if the functionName is just get, put it at the top
     if (functionName == 'get') {
       staticInboundFunctions.insert(0, toAdd);
     } else {
       staticInboundFunctions.add(toAdd);
     }
-
-    // also add a getSingle option
   }
 
   /// PROCESS VERTEX ACTIONS:
@@ -1127,13 +1173,13 @@ ${vertex.canInclude.map((e) => '/// ${e.description}\n/// when true, adds `?incl
   if (useIncludeAll) {
     queryIncludes += '''
     /// when true, adds `?include=${vertex.canInclude.map((e) => e.name).join(',')}` to url parameters
-    bool includeAll = false,\n
+    bool includeAllRelated = false,\n
 ''';
   }
   String queryIncludesChecks = vertex.canInclude.isEmpty
       ? ''
       : '''
-${vertex.canInclude.map((e) => 'if (${useIncludeAll ? 'includeAll || ' : ''}include${dartVar(e.name, true)}) include.add(\'${e.name}\');').join('\n')}
+${vertex.canInclude.map((e) => 'if (${useIncludeAll ? 'includeAllRelated || ' : ''}include${dartVar(e.name, true)}) include.add(\'${e.name}\');').join('\n')}
 ''';
 
   String queryWhere = vertex.canQuery.isEmpty
@@ -1173,7 +1219,7 @@ ${inboundFilters.map((e) => '- `${dartCamel(e.name)}` -> `?filter=${e.name}` : $
 /// 
 /// Related data may be included by marking desired `includeSomething` variables as true:
 ${vertex.canInclude.map((e) => '- `include${dartPascal(e.name)}`: ${e.description} ').join('\n').prefixLines('/// ')}
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 /// 
 /// Alternatively, you may pass a list of strings to the `include` argument.
 /// 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.961554
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.832780
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,7 +21,7 @@ enum PcoServicesLiveFilter { none }
 /// - `includeItems`: include associated items
 /// - `includeNextItemTime`: include associated next_item_time
 /// - `includeServiceType`: include associated service_type
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -62,7 +62,7 @@ class PcoServicesLiveQuery extends PlanningCenterApiQuery {
     bool includeServiceType = false,
 
     /// when true, adds `?include=controller,current_item_time,items,next_item_time,service_type` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -76,11 +76,12 @@ class PcoServicesLiveQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeController) include.add('controller');
-    if (includeAll || includeCurrentItemTime) include.add('current_item_time');
-    if (includeAll || includeItems) include.add('items');
-    if (includeAll || includeNextItemTime) include.add('next_item_time');
-    if (includeAll || includeServiceType) include.add('service_type');
+    if (includeAllRelated || includeController) include.add('controller');
+    if (includeAllRelated || includeCurrentItemTime)
+      include.add('current_item_time');
+    if (includeAllRelated || includeItems) include.add('items');
+    if (includeAllRelated || includeNextItemTime) include.add('next_item_time');
+    if (includeAllRelated || includeServiceType) include.add('service_type');
   }
 }
 
@@ -338,8 +339,11 @@ class PcoServicesLive extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesLive] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesLive] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/live`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -348,7 +352,8 @@ class PcoServicesLive extends PcoResource {
     String planId, {
     String? id,
     PcoServicesLiveQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeController = false,
     bool includeCurrentItemTime = false,
     bool includeItems = false,
@@ -356,7 +361,72 @@ class PcoServicesLive extends PcoResource {
     bool includeServiceType = false,
   }) async {
     query ??= PcoServicesLiveQuery();
-    if (includeAll) query.include.addAll(PcoServicesLive.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesLive.canInclude);
+    if (includeController) query.include.add('controller');
+    if (includeCurrentItemTime) query.include.add('current_item_time');
+    if (includeItems) query.include.add('items');
+    if (includeNextItemTime) query.include.add('next_item_time');
+    if (includeServiceType) query.include.add('service_type');
+    var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/live';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesLive>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesLive] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/live/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesLive?> getSingleFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId,
+    String id, {
+    PcoServicesLiveQuery? query,
+    bool includeAllRelated = false,
+    bool includeController = false,
+    bool includeCurrentItemTime = false,
+    bool includeItems = false,
+    bool includeNextItemTime = false,
+    bool includeServiceType = false,
+  }) async {
+    query ??= PcoServicesLiveQuery();
+    if (includeAllRelated) query.include.addAll(PcoServicesLive.canInclude);
+    if (includeController) query.include.add('controller');
+    if (includeCurrentItemTime) query.include.add('current_item_time');
+    if (includeItems) query.include.add('items');
+    if (includeNextItemTime) query.include.add('next_item_time');
+    if (includeServiceType) query.include.add('service_type');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/live/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesLive>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesLive] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/live`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesLive>> getAllFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesLiveQuery? query,
+    bool includeAllRelated = false,
+    bool includeController = false,
+    bool includeCurrentItemTime = false,
+    bool includeItems = false,
+    bool includeNextItemTime = false,
+    bool includeServiceType = false,
+  }) async {
+    query ??= PcoServicesLiveQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesLive.canInclude);
     if (includeController) query.include.add('controller');
     if (includeCurrentItemTime) query.include.add('current_item_time');
     if (includeItems) query.include.add('items');

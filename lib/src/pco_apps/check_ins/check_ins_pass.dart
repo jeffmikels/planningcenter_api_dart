@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.071199
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.932272
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoCheckInsPassFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -270,17 +270,22 @@ class PcoCheckInsPass extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPass>> get({
     String? id,
     PcoCheckInsPassQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoCheckInsPassQuery();
+    if (getAll) query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/check-ins/v2/passes';
@@ -289,8 +294,52 @@ class PcoCheckInsPass extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPass] objects (expecting many)
+  /// Will get a single [PcoCheckInsPass] object
+  /// using a path like this: `/check-ins/v2/passes/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPass?> getSingle(
+    String id, {
+    PcoCheckInsPassQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPassQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/passes/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPass>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPass] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/passes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPass>> getAll({
+    String? id,
+    PcoCheckInsPassQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPassQuery();
+    query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/passes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPass] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$personId/passes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -298,9 +347,54 @@ class PcoCheckInsPass extends PcoResource {
     String personId, {
     String? id,
     PcoCheckInsPassQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoCheckInsPassQuery();
+    if (getAll) query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/people/$personId/passes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPass>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsPass] object
+  /// using a path like this: `/check-ins/v2/people/$personId/passes/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPass?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoCheckInsPassQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPassQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/people/$personId/passes/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPass>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPass] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/people/$personId/passes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPass>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoCheckInsPassQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPassQuery();
+    query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/check-ins/v2/people/$personId/passes';

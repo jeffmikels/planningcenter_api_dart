@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.149822
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.002261
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -243,8 +243,11 @@ class PcoPeopleListResult extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleListResult] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleListResult] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/list_results`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -252,8 +255,49 @@ class PcoPeopleListResult extends PcoResource {
     String listId, {
     String? id,
     PcoPeopleListResultQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleListResultQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/lists/$listId/list_results';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleListResult>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleListResult] object
+  /// using a path like this: `/people/v2/lists/$listId/list_results/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleListResult?> getSingleFromList(
+    String listId,
+    String id, {
+    PcoPeopleListResultQuery? query,
+  }) async {
+    query ??= PcoPeopleListResultQuery();
+
+    var url = '/people/v2/lists/$listId/list_results/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleListResult>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleListResult] objects (expecting many)
+  /// using a path like this: `/people/v2/lists/$listId/list_results`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleListResult>> getAllFromList(
+    String listId, {
+    String? id,
+    PcoPeopleListResultQuery? query,
+  }) async {
+    query ??= PcoPeopleListResultQuery();
+    query.getAll = true;
 
     var url = '/people/v2/lists/$listId/list_results';
     if (id != null) url += '/$id';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.974494
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.840901
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -29,7 +29,7 @@ enum PcoServicesPlanFilter { after, before, future, noDates, past }
 /// - `includeMySchedules`: include associated my_schedules
 /// - `includePlanTimes`: include associated plan_times
 /// - `includeSeries`: include associated series
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -107,7 +107,7 @@ class PcoServicesPlanQuery extends PlanningCenterApiQuery {
     bool includeSeries = false,
 
     /// when true, adds `?include=contributors,my_schedules,plan_times,series` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -149,10 +149,10 @@ class PcoServicesPlanQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeContributors) include.add('contributors');
-    if (includeAll || includeMySchedules) include.add('my_schedules');
-    if (includeAll || includePlanTimes) include.add('plan_times');
-    if (includeAll || includeSeries) include.add('series');
+    if (includeAllRelated || includeContributors) include.add('contributors');
+    if (includeAllRelated || includeMySchedules) include.add('my_schedules');
+    if (includeAllRelated || includePlanTimes) include.add('plan_times');
+    if (includeAllRelated || includeSeries) include.add('series');
 
     if (whereCreatedAt != null)
       where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
@@ -631,8 +631,11 @@ class PcoServicesPlan extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/watchable_plans`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -642,14 +645,16 @@ class PcoServicesPlan extends PcoResource {
     String planId,
     String liveId, {
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -661,8 +666,11 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/next_plan`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -671,14 +679,16 @@ class PcoServicesPlan extends PcoResource {
     String serviceTypeId,
     String planId, {
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -690,8 +700,11 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/people/$personId/plan_people/$planPersonId/plan`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -699,14 +712,16 @@ class PcoServicesPlan extends PcoResource {
     String personId,
     String planPersonId, {
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -717,8 +732,11 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/previous_plan`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -727,14 +745,16 @@ class PcoServicesPlan extends PcoResource {
     String serviceTypeId,
     String planId, {
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -746,8 +766,11 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `/services/v2/series/$seriesId/plans`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -755,14 +778,16 @@ class PcoServicesPlan extends PcoResource {
     String seriesId, {
     String? id,
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -773,7 +798,145 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting many)
+  /// Will get a single [PcoServicesPlan] object
+  /// using a path like this: `/services/v2/series/$seriesId/plans/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesPlan?> getSingleFromSeries(
+    String seriesId,
+    String id, {
+    PcoServicesPlanQuery? query,
+    bool includeAllRelated = false,
+    bool includeContributors = false,
+    bool includeMySchedules = false,
+    bool includePlanTimes = false,
+    bool includeSeries = false,
+  }) async {
+    query ??= PcoServicesPlanQuery();
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
+    if (includeContributors) query.include.add('contributors');
+    if (includeMySchedules) query.include.add('my_schedules');
+    if (includePlanTimes) query.include.add('plan_times');
+    if (includeSeries) query.include.add('series');
+    var url = '/services/v2/series/$seriesId/plans/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesPlan>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesPlan] objects (expecting many)
+  /// using a path like this: `/services/v2/series/$seriesId/plans`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesPlan>> getAllFromSeries(
+    String seriesId, {
+    String? id,
+    PcoServicesPlanQuery? query,
+    bool includeAllRelated = false,
+    bool includeContributors = false,
+    bool includeMySchedules = false,
+    bool includePlanTimes = false,
+    bool includeSeries = false,
+  }) async {
+    query ??= PcoServicesPlanQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
+    if (includeContributors) query.include.add('contributors');
+    if (includeMySchedules) query.include.add('my_schedules');
+    if (includePlanTimes) query.include.add('plan_times');
+    if (includeSeries) query.include.add('series');
+    var url = '/services/v2/series/$seriesId/plans';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans`
+  ///
+  /// Available Query Filters:
+  /// - `after`
+  /// filter to plans with a time beginning after the `after` parameter
+  ///
+  /// - `before`
+  /// filter to plans with a time beginning before the `before` parameter
+  ///
+  /// - `future`
+  /// - `no_dates`
+  /// - `past`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesPlan>> getFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesPlanQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeContributors = false,
+    bool includeMySchedules = false,
+    bool includePlanTimes = false,
+    bool includeSeries = false,
+  }) async {
+    query ??= PcoServicesPlanQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
+    if (includeContributors) query.include.add('contributors');
+    if (includeMySchedules) query.include.add('my_schedules');
+    if (includePlanTimes) query.include.add('plan_times');
+    if (includeSeries) query.include.add('series');
+    var url = '/services/v2/service_types/$serviceTypeId/plans';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesPlan>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesPlan] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `after`
+  /// filter to plans with a time beginning after the `after` parameter
+  ///
+  /// - `before`
+  /// filter to plans with a time beginning before the `before` parameter
+  ///
+  /// - `future`
+  /// - `no_dates`
+  /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesPlan?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesPlanQuery? query,
+    bool includeAllRelated = false,
+    bool includeContributors = false,
+    bool includeMySchedules = false,
+    bool includePlanTimes = false,
+    bool includeSeries = false,
+  }) async {
+    query ??= PcoServicesPlanQuery();
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
+    if (includeContributors) query.include.add('contributors');
+    if (includeMySchedules) query.include.add('my_schedules');
+    if (includePlanTimes) query.include.add('plan_times');
+    if (includeSeries) query.include.add('series');
+    var url = '/services/v2/service_types/$serviceTypeId/plans/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesPlan>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesPlan] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans`
   ///
   /// Available Query Filters:
@@ -789,18 +952,21 @@ class PcoServicesPlan extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesPlan>> getFromServiceType(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesPlan>> getAllFromServiceType(
     String serviceTypeId, {
     String? id,
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');
@@ -811,25 +977,30 @@ class PcoServicesPlan extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlan] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlan] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/unscoped_plans`
   ///
   /// Available Query Filters:
   /// - `deleted`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesPlan>> getUnscopedPlansFromServiceType(
     String serviceTypeId, {
     PcoServicesPlanQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContributors = false,
     bool includeMySchedules = false,
     bool includePlanTimes = false,
     bool includeSeries = false,
   }) async {
     query ??= PcoServicesPlanQuery();
-    if (includeAll) query.include.addAll(PcoServicesPlan.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesPlan.canInclude);
     if (includeContributors) query.include.add('contributors');
     if (includeMySchedules) query.include.add('my_schedules');
     if (includePlanTimes) query.include.add('plan_times');

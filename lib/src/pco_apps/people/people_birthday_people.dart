@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.133623
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.991199
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,16 +195,58 @@ class PcoPeopleBirthdayPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleBirthdayPerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleBirthdayPerson] objects (expecting many)
   /// using a path like this: `/people/v2/birthday_people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleBirthdayPerson>> get({
     String? id,
     PcoPeopleBirthdayPersonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleBirthdayPersonQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/birthday_people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleBirthdayPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleBirthdayPerson] object
+  /// using a path like this: `/people/v2/birthday_people/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleBirthdayPerson?> getSingle(
+    String id, {
+    PcoPeopleBirthdayPersonQuery? query,
+  }) async {
+    query ??= PcoPeopleBirthdayPersonQuery();
+
+    var url = '/people/v2/birthday_people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleBirthdayPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleBirthdayPerson] objects (expecting many)
+  /// using a path like this: `/people/v2/birthday_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleBirthdayPerson>> getAll({
+    String? id,
+    PcoPeopleBirthdayPersonQuery? query,
+  }) async {
+    query ??= PcoPeopleBirthdayPersonQuery();
+    query.getAll = true;
 
     var url = '/people/v2/birthday_people';
     if (id != null) url += '/$id';

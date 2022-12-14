@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.988133
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.855018
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -231,8 +231,11 @@ class PcoServicesSignupSheetMetadatum extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesSignupSheetMetadatum] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesSignupSheetMetadatum] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -243,8 +246,58 @@ class PcoServicesSignupSheetMetadatum extends PcoResource {
     String signupSheetId, {
     String? id,
     PcoServicesSignupSheetMetadatumQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesSignupSheetMetadatumQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesSignupSheetMetadatum>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesSignupSheetMetadatum] object
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesSignupSheetMetadatum?>
+      getSingleFromPersonAndAvailableSignupAndSignupSheet(
+    String personId,
+    String availableSignupId,
+    String signupSheetId,
+    String id, {
+    PcoServicesSignupSheetMetadatumQuery? query,
+  }) async {
+    query ??= PcoServicesSignupSheetMetadatumQuery();
+
+    var url =
+        '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata/$id';
+    var retval =
+        await PcoCollection.fromApiCall<PcoServicesSignupSheetMetadatum>(url,
+            query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesSignupSheetMetadatum] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesSignupSheetMetadatum>>
+      getAllFromPersonAndAvailableSignupAndSignupSheet(
+    String personId,
+    String availableSignupId,
+    String signupSheetId, {
+    String? id,
+    PcoServicesSignupSheetMetadatumQuery? query,
+  }) async {
+    query ??= PcoServicesSignupSheetMetadatumQuery();
+    query.getAll = true;
 
     var url =
         '/services/v2/people/$personId/available_signups/$availableSignupId/signup_sheets/$signupSheetId/signup_sheet_metadata';

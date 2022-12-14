@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.951090
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.822455
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -445,7 +445,56 @@ class PcoServicesBlockout extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesBlockout] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesBlockout] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/blockouts`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `past`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesBlockout>> getFromPerson(
+    String personId, {
+    String? id,
+    PcoServicesBlockoutQuery? query,
+    bool getAll = false,
+  }) async {
+    query ??= PcoServicesBlockoutQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/people/$personId/blockouts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesBlockout>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesBlockout] object
+  /// using a path like this: `/services/v2/people/$personId/blockouts/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `past`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesBlockout?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoServicesBlockoutQuery? query,
+  }) async {
+    query ??= PcoServicesBlockoutQuery();
+
+    var url = '/services/v2/people/$personId/blockouts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesBlockout>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesBlockout] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/blockouts`
   ///
   /// Available Query Filters:
@@ -454,12 +503,15 @@ class PcoServicesBlockout extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesBlockout>> getFromPerson(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesBlockout>> getAllFromPerson(
     String personId, {
     String? id,
     PcoServicesBlockoutQuery? query,
   }) async {
     query ??= PcoServicesBlockoutQuery();
+    query.getAll = true;
 
     var url = '/services/v2/people/$personId/blockouts';
     if (id != null) url += '/$id';

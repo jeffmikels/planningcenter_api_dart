@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.165058
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.016302
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -75,7 +75,7 @@ enum PcoPeoplePersonFilter { admins, createdSince, organizationAdmins }
 /// - `includePrimaryCampus`: include associated primary_campus
 /// - `includeSchool`: include associated school
 /// - `includeSocialProfiles`: include associated social_profiles
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -249,7 +249,7 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
     bool includeSocialProfiles = false,
 
     /// when true, adds `?include=addresses,emails,field_data,households,inactive_reason,marital_status,name_prefix,name_suffix,organization,person_apps,phone_numbers,platform_notifications,primary_campus,school,social_profiles` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `accounting_administrator`
     /// query on a specific accounting_administrator, url example: ?where[accounting_administrator]=true
@@ -401,22 +401,26 @@ class PcoPeoplePersonQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeAddresses) include.add('addresses');
-    if (includeAll || includeEmails) include.add('emails');
-    if (includeAll || includeFieldData) include.add('field_data');
-    if (includeAll || includeHouseholds) include.add('households');
-    if (includeAll || includeInactiveReason) include.add('inactive_reason');
-    if (includeAll || includeMaritalStatus) include.add('marital_status');
-    if (includeAll || includeNamePrefix) include.add('name_prefix');
-    if (includeAll || includeNameSuffix) include.add('name_suffix');
-    if (includeAll || includeOrganization) include.add('organization');
-    if (includeAll || includePersonApps) include.add('person_apps');
-    if (includeAll || includePhoneNumbers) include.add('phone_numbers');
-    if (includeAll || includePlatformNotifications)
+    if (includeAllRelated || includeAddresses) include.add('addresses');
+    if (includeAllRelated || includeEmails) include.add('emails');
+    if (includeAllRelated || includeFieldData) include.add('field_data');
+    if (includeAllRelated || includeHouseholds) include.add('households');
+    if (includeAllRelated || includeInactiveReason)
+      include.add('inactive_reason');
+    if (includeAllRelated || includeMaritalStatus)
+      include.add('marital_status');
+    if (includeAllRelated || includeNamePrefix) include.add('name_prefix');
+    if (includeAllRelated || includeNameSuffix) include.add('name_suffix');
+    if (includeAllRelated || includeOrganization) include.add('organization');
+    if (includeAllRelated || includePersonApps) include.add('person_apps');
+    if (includeAllRelated || includePhoneNumbers) include.add('phone_numbers');
+    if (includeAllRelated || includePlatformNotifications)
       include.add('platform_notifications');
-    if (includeAll || includePrimaryCampus) include.add('primary_campus');
-    if (includeAll || includeSchool) include.add('school');
-    if (includeAll || includeSocialProfiles) include.add('social_profiles');
+    if (includeAllRelated || includePrimaryCampus)
+      include.add('primary_campus');
+    if (includeAllRelated || includeSchool) include.add('school');
+    if (includeAllRelated || includeSocialProfiles)
+      include.add('social_profiles');
 
     if (whereAccountingAdministrator != null)
       where.add(PlanningCenterApiWhere.parse(
@@ -1265,7 +1269,7 @@ class PcoPeoplePerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/people`
   ///
   /// Available Query Filters:
@@ -1275,12 +1279,16 @@ class PcoPeoplePerson extends PcoResource {
   ///
   /// - `organization_admins`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> get({
     String? id,
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1298,7 +1306,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1321,18 +1330,22 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/lists/$listId/rules/$ruleId/conditions/$conditionId/created_by`
+  /// Will get a single [PcoPeoplePerson] object
+  /// using a path like this: `/people/v2/people/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `admins`
+  /// - `created_since`
+  /// filter people created in the last 24 hours; pass an additional `time` parameter in ISO 8601 format to specify your own timeframe
+  ///
+  /// - `organization_admins`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeoplePerson>>
-      getCreatedByFromListAndRuleAndCondition(
-    String listId,
-    String ruleId,
-    String conditionId, {
+  static Future<PcoPeoplePerson?> getSingle(
+    String id, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1350,7 +1363,123 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePerson] objects (expecting many)
+  /// using a path like this: `/people/v2/people`
+  ///
+  /// Available Query Filters:
+  /// - `admins`
+  /// - `created_since`
+  /// filter people created in the last 24 hours; pass an additional `time` parameter in ISO 8601 format to specify your own timeframe
+  ///
+  /// - `organization_admins`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeoplePerson>> getAll({
+    String? id,
+    PcoPeoplePersonQuery? query,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
+  /// using a path like this: `/people/v2/lists/$listId/rules/$ruleId/conditions/$conditionId/created_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePerson>>
+      getCreatedByFromListAndRuleAndCondition(
+    String listId,
+    String ruleId,
+    String conditionId, {
+    PcoPeoplePersonQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1374,15 +1503,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/emails/$emailId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromEmail(
     String emailId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1400,7 +1533,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1423,15 +1557,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromFieldData(
     String fieldDataId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1449,7 +1587,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1472,8 +1611,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1481,7 +1623,8 @@ class PcoPeoplePerson extends PcoResource {
     String formId,
     String formSubmissionId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1499,7 +1642,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1523,8 +1667,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/households/$householdId/household_memberships/$householdMembershipId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1533,7 +1680,8 @@ class PcoPeoplePerson extends PcoResource {
     String householdId,
     String householdMembershipId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1551,7 +1699,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1575,12 +1724,15 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/households/$householdId/people`
   ///
   /// Available Query Filters:
   /// - `non_pending`
   /// - `without_deceased`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1588,7 +1740,8 @@ class PcoPeoplePerson extends PcoResource {
     String householdId, {
     String? id,
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1606,7 +1759,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1629,15 +1783,20 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/lists/$listId/created_by`
+  /// Will get a single [PcoPeoplePerson] object
+  /// using a path like this: `/people/v2/households/$householdId/people/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `non_pending`
+  /// - `without_deceased`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromList(
-    String listId, {
+  static Future<PcoPeoplePerson?> getSingleFromHousehold(
+    String householdId,
+    String id, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1655,7 +1814,118 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/households/$householdId/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePerson] objects (expecting many)
+  /// using a path like this: `/people/v2/households/$householdId/people`
+  ///
+  /// Available Query Filters:
+  /// - `non_pending`
+  /// - `without_deceased`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeoplePerson>> getAllFromHousehold(
+    String householdId, {
+    String? id,
+    PcoPeoplePersonQuery? query,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/households/$householdId/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
+  /// using a path like this: `/people/v2/lists/$listId/created_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromList(
+    String listId, {
+    PcoPeoplePersonQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1678,8 +1948,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1687,7 +1960,8 @@ class PcoPeoplePerson extends PcoResource {
     String listId, {
     String? id,
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1705,7 +1979,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1728,16 +2003,16 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
-  /// using a path like this: `/people/v2/lists/$listId/shares/$shareId/person`
+  /// Will get a single [PcoPeoplePerson] object
+  /// using a path like this: `/people/v2/lists/$listId/people/[id]`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeoplePerson>> getFromListAndShare(
+  static Future<PcoPeoplePerson?> getSingleFromList(
     String listId,
-    String shareId, {
+    String id, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1755,7 +2030,115 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/lists/$listId/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePerson] objects (expecting many)
+  /// using a path like this: `/people/v2/lists/$listId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeoplePerson>> getAllFromList(
+    String listId, {
+    String? id,
+    PcoPeoplePersonQuery? query,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (includeAddresses) query.include.add('addresses');
+    if (includeEmails) query.include.add('emails');
+    if (includeFieldData) query.include.add('field_data');
+    if (includeHouseholds) query.include.add('households');
+    if (includeInactiveReason) query.include.add('inactive_reason');
+    if (includeMaritalStatus) query.include.add('marital_status');
+    if (includeNamePrefix) query.include.add('name_prefix');
+    if (includeNameSuffix) query.include.add('name_suffix');
+    if (includeOrganization) query.include.add('organization');
+    if (includePersonApps) query.include.add('person_apps');
+    if (includePhoneNumbers) query.include.add('phone_numbers');
+    if (includePlatformNotifications)
+      query.include.add('platform_notifications');
+    if (includePrimaryCampus) query.include.add('primary_campus');
+    if (includeSchool) query.include.add('school');
+    if (includeSocialProfiles) query.include.add('social_profiles');
+    var url = '/people/v2/lists/$listId/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
+  /// using a path like this: `/people/v2/lists/$listId/shares/$shareId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePerson>> getFromListAndShare(
+    String listId,
+    String shareId, {
+    PcoPeoplePersonQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeAddresses = false,
+    bool includeEmails = false,
+    bool includeFieldData = false,
+    bool includeHouseholds = false,
+    bool includeInactiveReason = false,
+    bool includeMaritalStatus = false,
+    bool includeNamePrefix = false,
+    bool includeNameSuffix = false,
+    bool includeOrganization = false,
+    bool includePersonApps = false,
+    bool includePhoneNumbers = false,
+    bool includePlatformNotifications = false,
+    bool includePrimaryCampus = false,
+    bool includeSchool = false,
+    bool includeSocialProfiles = false,
+  }) async {
+    query ??= PcoPeoplePersonQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1778,15 +2161,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/lists/$listId/updated_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromList(
     String listId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1804,7 +2191,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1827,15 +2215,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/from`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromFromMessageGroup(
     String messageGroupId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1853,7 +2245,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1876,15 +2269,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/messages/$messageId/to`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getToFromMessage(
     String messageId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1902,7 +2299,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1925,8 +2323,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/shares/$shareId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -1934,7 +2335,8 @@ class PcoPeoplePerson extends PcoResource {
     String noteCategoryId,
     String shareId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -1952,7 +2354,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -1976,15 +2379,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscribers`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getSubscribersFromNoteCategory(
     String noteCategoryId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2002,7 +2409,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2025,15 +2433,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/notes/$noteId/created_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromNote(
     String noteId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2051,7 +2463,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2074,15 +2487,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/notes/$noteId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromNote(
     String noteId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2100,7 +2517,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2123,8 +2541,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories/$historyId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2132,7 +2553,8 @@ class PcoPeoplePerson extends PcoResource {
     String peopleImportId,
     String historyId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2150,7 +2572,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2174,15 +2597,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/reports/$reportId/created_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getCreatedByFromReport(
     String reportId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2200,7 +2627,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2223,15 +2651,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/reports/$reportId/updated_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getUpdatedByFromReport(
     String reportId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2249,7 +2681,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2272,15 +2705,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/social_profiles/$socialProfileId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getFromSocialProfile(
     String socialProfileId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2298,7 +2735,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2321,8 +2759,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/assignee`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2331,7 +2772,8 @@ class PcoPeoplePerson extends PcoResource {
     String personId,
     String workflowCardId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2349,7 +2791,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2373,8 +2816,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2382,7 +2828,8 @@ class PcoPeoplePerson extends PcoResource {
     String personId,
     String workflowCardId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2400,7 +2847,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2424,8 +2872,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_shares/$workflowShareId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2433,7 +2884,8 @@ class PcoPeoplePerson extends PcoResource {
     String personId,
     String workflowShareId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2451,7 +2903,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2475,15 +2928,19 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/shared_people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePerson>> getSharedPeopleFromWorkflow(
     String workflowId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2501,7 +2958,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2524,8 +2982,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps/$stepId/assignee_summaries/$assigneeSummaryId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2535,7 +2996,8 @@ class PcoPeoplePerson extends PcoResource {
     String stepId,
     String assigneeSummaryId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2553,7 +3015,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');
@@ -2577,8 +3040,11 @@ class PcoPeoplePerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeoplePerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeoplePerson] objects (expecting one)
   /// using a path like this: `/people/v2/workflows/$workflowId/steps/$stepId/default_assignee`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -2587,7 +3053,8 @@ class PcoPeoplePerson extends PcoResource {
     String workflowId,
     String stepId, {
     PcoPeoplePersonQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeAddresses = false,
     bool includeEmails = false,
     bool includeFieldData = false,
@@ -2605,7 +3072,8 @@ class PcoPeoplePerson extends PcoResource {
     bool includeSocialProfiles = false,
   }) async {
     query ??= PcoPeoplePersonQuery();
-    if (includeAll) query.include.addAll(PcoPeoplePerson.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeoplePerson.canInclude);
     if (includeAddresses) query.include.add('addresses');
     if (includeEmails) query.include.add('emails');
     if (includeFieldData) query.include.add('field_data');

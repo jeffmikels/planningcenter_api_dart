@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.204271
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.044949
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,7 +23,7 @@ enum PcoCalendarConflictFilter { future, resolved, unresolved }
 /// - `includeResolvedBy`: include associated resolved_by
 /// - `includeResource`: include associated resource
 /// - `includeWinner`: include associated winner
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -73,7 +73,7 @@ class PcoCalendarConflictQuery extends PlanningCenterApiQuery {
     bool includeWinner = false,
 
     /// when true, adds `?include=resolved_by,resource,winner` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
     PcoCalendarConflictFilter? filterBy,
     PcoCalendarConflictOrder? orderBy,
 
@@ -90,9 +90,9 @@ class PcoCalendarConflictQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeResolvedBy) include.add('resolved_by');
-    if (includeAll || includeResource) include.add('resource');
-    if (includeAll || includeWinner) include.add('winner');
+    if (includeAllRelated || includeResolvedBy) include.add('resolved_by');
+    if (includeAllRelated || includeResource) include.add('resource');
+    if (includeAllRelated || includeWinner) include.add('winner');
 
     if (orderBy != null) order = orderString(orderBy, reverse: reverse);
   }
@@ -324,7 +324,7 @@ class PcoCalendarConflict extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/conflicts`
   ///
   /// Available Query Filters:
@@ -332,18 +332,23 @@ class PcoCalendarConflict extends PcoResource {
   /// - `resolved`
   /// - `unresolved`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarConflict>> get({
     String? id,
     PcoCalendarConflictQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
     query ??= PcoCalendarConflictQuery();
-    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
     if (includeWinner) query.include.add('winner');
@@ -353,8 +358,72 @@ class PcoCalendarConflict extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
+  /// Will get a single [PcoCalendarConflict] object
+  /// using a path like this: `/calendar/v2/conflicts/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `resolved`
+  /// - `unresolved`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarConflict?> getSingle(
+    String id, {
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/conflicts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarConflict] objects (expecting many)
+  /// using a path like this: `/calendar/v2/conflicts`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `resolved`
+  /// - `unresolved`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarConflict>> getAll({
+    String? id,
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/conflicts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/conflicts`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -362,13 +431,15 @@ class PcoCalendarConflict extends PcoResource {
     String eventId, {
     String? id,
     PcoCalendarConflictQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
     query ??= PcoCalendarConflictQuery();
-    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
     if (includeWinner) query.include.add('winner');
@@ -378,8 +449,64 @@ class PcoCalendarConflict extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarConflict] objects (expecting many)
+  /// Will get a single [PcoCalendarConflict] object
+  /// using a path like this: `/calendar/v2/events/$eventId/conflicts/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarConflict?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/events/$eventId/conflicts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarConflict] objects (expecting many)
+  /// using a path like this: `/calendar/v2/events/$eventId/conflicts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarConflict>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/events/$eventId/conflicts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarConflict] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/conflicts`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -387,13 +514,68 @@ class PcoCalendarConflict extends PcoResource {
     String resourceId, {
     String? id,
     PcoCalendarConflictQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeResolvedBy = false,
     bool includeResource = false,
     bool includeWinner = false,
   }) async {
     query ??= PcoCalendarConflictQuery();
-    if (includeAll) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/resources/$resourceId/conflicts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarConflict] object
+  /// using a path like this: `/calendar/v2/resources/$resourceId/conflicts/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarConflict?> getSingleFromResource(
+    String resourceId,
+    String id, {
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
+    if (includeResolvedBy) query.include.add('resolved_by');
+    if (includeResource) query.include.add('resource');
+    if (includeWinner) query.include.add('winner');
+    var url = '/calendar/v2/resources/$resourceId/conflicts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarConflict>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarConflict] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resources/$resourceId/conflicts`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarConflict>> getAllFromResource(
+    String resourceId, {
+    String? id,
+    PcoCalendarConflictQuery? query,
+    bool includeAllRelated = false,
+    bool includeResolvedBy = false,
+    bool includeResource = false,
+    bool includeWinner = false,
+  }) async {
+    query ??= PcoCalendarConflictQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoCalendarConflict.canInclude);
     if (includeResolvedBy) query.include.add('resolved_by');
     if (includeResource) query.include.add('resource');
     if (includeWinner) query.include.add('winner');

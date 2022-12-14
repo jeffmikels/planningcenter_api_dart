@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.301135
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.145821
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -232,16 +232,58 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoWebhooksAvailableEvent] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoWebhooksAvailableEvent] objects (expecting many)
   /// using a path like this: `/webhooks/v2/available_events`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoWebhooksAvailableEvent>> get({
     String? id,
     PcoWebhooksAvailableEventQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoWebhooksAvailableEventQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/webhooks/v2/available_events';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoWebhooksAvailableEvent] object
+  /// using a path like this: `/webhooks/v2/available_events/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoWebhooksAvailableEvent?> getSingle(
+    String id, {
+    PcoWebhooksAvailableEventQuery? query,
+  }) async {
+    query ??= PcoWebhooksAvailableEventQuery();
+
+    var url = '/webhooks/v2/available_events/$id';
+    var retval = await PcoCollection.fromApiCall<PcoWebhooksAvailableEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoWebhooksAvailableEvent] objects (expecting many)
+  /// using a path like this: `/webhooks/v2/available_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoWebhooksAvailableEvent>> getAll({
+    String? id,
+    PcoWebhooksAvailableEventQuery? query,
+  }) async {
+    query ??= PcoWebhooksAvailableEventQuery();
+    query.getAll = true;
 
     var url = '/webhooks/v2/available_events';
     if (id != null) url += '/$id';

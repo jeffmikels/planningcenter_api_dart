@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.946868
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.818757
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -28,7 +28,7 @@ enum PcoServicesAttachmentFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeZooms`: include associated zooms
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -521,8 +521,11 @@ class PcoServicesAttachment extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -531,9 +534,11 @@ class PcoServicesAttachment extends PcoResource {
     String arrangementId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -543,8 +548,59 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromSongAndArrangement(
+    String songId,
+    String arrangementId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/songs/$songId/arrangements/$arrangementId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>>
+      getAllFromSongAndArrangement(
+    String songId,
+    String arrangementId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/songs/$songId/arrangements/$arrangementId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -555,9 +611,11 @@ class PcoServicesAttachment extends PcoResource {
     String itemId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -567,8 +625,61 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting one)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>>
+      getAllFromServiceTypeAndPlanAndItem(
+    String serviceTypeId,
+    String planId,
+    String itemId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_attachment`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -578,9 +689,11 @@ class PcoServicesAttachment extends PcoResource {
     String planId,
     String itemId, {
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -590,8 +703,11 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/items/$itemId/selected_background`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -601,9 +717,11 @@ class PcoServicesAttachment extends PcoResource {
     String planId,
     String itemId, {
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -613,8 +731,11 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -625,9 +746,11 @@ class PcoServicesAttachment extends PcoResource {
     String keyId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -637,8 +760,61 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromSongAndArrangementAndKey(
+    String songId,
+    String arrangementId,
+    String keyId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>>
+      getAllFromSongAndArrangementAndKey(
+    String songId,
+    String arrangementId,
+    String keyId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/songs/$songId/arrangements/$arrangementId/keys/$keyId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/media/$mediaId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -646,9 +822,11 @@ class PcoServicesAttachment extends PcoResource {
     String mediaId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/media/$mediaId/attachments';
@@ -657,7 +835,50 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting one)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/media/$mediaId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromMedia(
+    String mediaId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/media/$mediaId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/media/$mediaId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>> getAllFromMedia(
+    String mediaId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/media/$mediaId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/all_attachments`
   ///
   /// Available Query Filters:
@@ -671,6 +892,9 @@ class PcoServicesAttachment extends PcoResource {
   /// e.g. `?filter=extensions&extensions=pdf,txt`
   ///
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesAttachment>>
@@ -678,9 +902,11 @@ class PcoServicesAttachment extends PcoResource {
     String serviceTypeId,
     String planId, {
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -690,8 +916,11 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -700,9 +929,11 @@ class PcoServicesAttachment extends PcoResource {
     String planId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url =
@@ -712,8 +943,59 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>>
+      getAllFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -721,9 +1003,11 @@ class PcoServicesAttachment extends PcoResource {
     String serviceTypeId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/service_types/$serviceTypeId/attachments';
@@ -732,8 +1016,54 @@ class PcoServicesAttachment extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesAttachment] objects (expecting many)
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/service_types/$serviceTypeId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>> getAllFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/service_types/$serviceTypeId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesAttachment] objects (expecting many)
   /// using a path like this: `/services/v2/songs/$songId/attachments`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -741,9 +1071,54 @@ class PcoServicesAttachment extends PcoResource {
     String songId, {
     String? id,
     PcoServicesAttachmentQuery? query,
+    bool getAll = false,
     bool includeZooms = false,
   }) async {
     query ??= PcoServicesAttachmentQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/songs/$songId/attachments';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesAttachment] object
+  /// using a path like this: `/services/v2/songs/$songId/attachments/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAttachment?> getSingleFromSong(
+    String songId,
+    String id, {
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+
+    if (includeZooms) query.include.add('zooms');
+    var url = '/services/v2/songs/$songId/attachments/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAttachment>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAttachment] objects (expecting many)
+  /// using a path like this: `/services/v2/songs/$songId/attachments`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAttachment>> getAllFromSong(
+    String songId, {
+    String? id,
+    PcoServicesAttachmentQuery? query,
+    bool includeZooms = false,
+  }) async {
+    query ??= PcoServicesAttachmentQuery();
+    query.getAll = true;
 
     if (includeZooms) query.include.add('zooms');
     var url = '/services/v2/songs/$songId/attachments';

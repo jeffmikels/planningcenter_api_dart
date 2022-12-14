@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.147356
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.999576
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoPeopleHouseholdMembershipFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeHousehold`: include associated household
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -77,7 +77,7 @@ class PcoPeopleHouseholdMembershipQuery extends PlanningCenterApiQuery {
     bool includePerson = false,
 
     /// when true, adds `?include=household,person` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `pending`
     /// query on a specific pending, url example: ?where[pending]=true
@@ -102,8 +102,8 @@ class PcoPeopleHouseholdMembershipQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeHousehold) include.add('household');
-    if (includeAll || includePerson) include.add('person');
+    if (includeAllRelated || includeHousehold) include.add('household');
+    if (includeAllRelated || includePerson) include.add('person');
 
     if (wherePending != null)
       where.add(PlanningCenterApiWhere.parse('pending', wherePending));
@@ -329,8 +329,11 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `/people/v2/households/$householdId/household_memberships`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -338,12 +341,14 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     String householdId, {
     String? id,
     PcoPeopleHouseholdMembershipQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeHousehold = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleHouseholdMembershipQuery();
-    if (includeAll)
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
       query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
     if (includeHousehold) query.include.add('household');
     if (includePerson) query.include.add('person');
@@ -353,8 +358,65 @@ class PcoPeopleHouseholdMembership extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleHouseholdMembership] objects (expecting many)
+  /// Will get a single [PcoPeopleHouseholdMembership] object
+  /// using a path like this: `/people/v2/households/$householdId/household_memberships/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleHouseholdMembership?> getSingleFromHousehold(
+    String householdId,
+    String id, {
+    PcoPeopleHouseholdMembershipQuery? query,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/households/$householdId/household_memberships/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleHouseholdMembership] objects (expecting many)
+  /// using a path like this: `/people/v2/households/$householdId/household_memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleHouseholdMembership>>
+      getAllFromHousehold(
+    String householdId, {
+    String? id,
+    PcoPeopleHouseholdMembershipQuery? query,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/households/$householdId/household_memberships';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleHouseholdMembership] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/household_memberships`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -362,12 +424,67 @@ class PcoPeopleHouseholdMembership extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleHouseholdMembershipQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeHousehold = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleHouseholdMembershipQuery();
-    if (includeAll)
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/household_memberships';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleHouseholdMembership] object
+  /// using a path like this: `/people/v2/people/$personId/household_memberships/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleHouseholdMembership?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleHouseholdMembershipQuery? query,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people/$personId/household_memberships/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleHouseholdMembership>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleHouseholdMembership] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/household_memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleHouseholdMembership>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleHouseholdMembershipQuery? query,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleHouseholdMembershipQuery();
+    query.getAll = true;
+    if (includeAllRelated)
       query.include.addAll(PcoPeopleHouseholdMembership.canInclude);
     if (includeHousehold) query.include.add('household');
     if (includePerson) query.include.add('person');

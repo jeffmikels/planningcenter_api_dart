@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.132126
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.990481
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,16 +195,60 @@ class PcoPeopleAnniversaryCouple extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleAnniversaryCouple] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleAnniversaryCouple] objects (expecting many)
   /// using a path like this: `/people/v2/anniversary_couples`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleAnniversaryCouple>> get({
     String? id,
     PcoPeopleAnniversaryCoupleQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleAnniversaryCoupleQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/anniversary_couples';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleAnniversaryCouple] object
+  /// using a path like this: `/people/v2/anniversary_couples/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleAnniversaryCouple?> getSingle(
+    String id, {
+    PcoPeopleAnniversaryCoupleQuery? query,
+  }) async {
+    query ??= PcoPeopleAnniversaryCoupleQuery();
+
+    var url = '/people/v2/anniversary_couples/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleAnniversaryCouple>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleAnniversaryCouple] objects (expecting many)
+  /// using a path like this: `/people/v2/anniversary_couples`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleAnniversaryCouple>> getAll({
+    String? id,
+    PcoPeopleAnniversaryCoupleQuery? query,
+  }) async {
+    query ??= PcoPeopleAnniversaryCoupleQuery();
+    query.getAll = true;
 
     var url = '/people/v2/anniversary_couples';
     if (id != null) url += '/$id';

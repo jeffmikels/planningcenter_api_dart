@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.159901
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.011064
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -275,16 +275,21 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleNoteCategorySubscription] objects (expecting many)
   /// using a path like this: `/people/v2/note_category_subscriptions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> get({
     String? id,
     PcoPeopleNoteCategorySubscriptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleNoteCategorySubscriptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/note_category_subscriptions';
     if (id != null) url += '/$id';
@@ -292,8 +297,49 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleNoteCategorySubscription] objects (expecting one)
+  /// Will get a single [PcoPeopleNoteCategorySubscription] object
+  /// using a path like this: `/people/v2/note_category_subscriptions/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleNoteCategorySubscription?> getSingle(
+    String id, {
+    PcoPeopleNoteCategorySubscriptionQuery? query,
+  }) async {
+    query ??= PcoPeopleNoteCategorySubscriptionQuery();
+
+    var url = '/people/v2/note_category_subscriptions/$id';
+    var retval =
+        await PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url,
+            query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleNoteCategorySubscription] objects (expecting many)
+  /// using a path like this: `/people/v2/note_category_subscriptions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleNoteCategorySubscription>> getAll({
+    String? id,
+    PcoPeopleNoteCategorySubscriptionQuery? query,
+  }) async {
+    query ??= PcoPeopleNoteCategorySubscriptionQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/note_category_subscriptions';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleNoteCategorySubscription>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleNoteCategorySubscription] objects (expecting one)
   /// using a path like this: `/people/v2/note_categories/$noteCategoryId/subscriptions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -301,8 +347,10 @@ class PcoPeopleNoteCategorySubscription extends PcoResource {
       getSubscriptionsFromNoteCategory(
     String noteCategoryId, {
     PcoPeopleNoteCategorySubscriptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleNoteCategorySubscriptionQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/note_categories/$noteCategoryId/subscriptions';
 

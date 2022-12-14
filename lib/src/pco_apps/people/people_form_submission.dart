@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.145927
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.997092
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -23,7 +23,7 @@ enum PcoPeopleFormSubmissionFilter { none }
 /// - `includeFormFields`: include associated form_fields
 /// - `includeFormSubmissionValues`: include associated form_submission_values
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -77,7 +77,7 @@ class PcoPeopleFormSubmissionQuery extends PlanningCenterApiQuery {
     bool includePerson = false,
 
     /// when true, adds `?include=form,form_fields,form_submission_values,person` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
     PcoPeopleFormSubmissionOrder? orderBy,
 
     /// reverse the ordering
@@ -92,11 +92,11 @@ class PcoPeopleFormSubmissionQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeForm) include.add('form');
-    if (includeAll || includeFormFields) include.add('form_fields');
-    if (includeAll || includeFormSubmissionValues)
+    if (includeAllRelated || includeForm) include.add('form');
+    if (includeAllRelated || includeFormFields) include.add('form_fields');
+    if (includeAllRelated || includeFormSubmissionValues)
       include.add('form_submission_values');
-    if (includeAll || includePerson) include.add('person');
+    if (includeAllRelated || includePerson) include.add('person');
 
     if (orderBy != null) order = orderString(orderBy, reverse: reverse);
   }
@@ -315,8 +315,11 @@ class PcoPeopleFormSubmission extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleFormSubmission] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleFormSubmission] objects (expecting many)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -324,14 +327,78 @@ class PcoPeopleFormSubmission extends PcoResource {
     String formId, {
     String? id,
     PcoPeopleFormSubmissionQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeForm = false,
     bool includeFormFields = false,
     bool includeFormSubmissionValues = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeopleFormSubmissionQuery();
-    if (includeAll) query.include.addAll(PcoPeopleFormSubmission.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleFormSubmission.canInclude);
+    if (includeForm) query.include.add('form');
+    if (includeFormFields) query.include.add('form_fields');
+    if (includeFormSubmissionValues)
+      query.include.add('form_submission_values');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/forms/$formId/form_submissions';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleFormSubmission>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleFormSubmission] object
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleFormSubmission?> getSingleFromForm(
+    String formId,
+    String id, {
+    PcoPeopleFormSubmissionQuery? query,
+    bool includeAllRelated = false,
+    bool includeForm = false,
+    bool includeFormFields = false,
+    bool includeFormSubmissionValues = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleFormSubmissionQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleFormSubmission.canInclude);
+    if (includeForm) query.include.add('form');
+    if (includeFormFields) query.include.add('form_fields');
+    if (includeFormSubmissionValues)
+      query.include.add('form_submission_values');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/forms/$formId/form_submissions/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleFormSubmission>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleFormSubmission] objects (expecting many)
+  /// using a path like this: `/people/v2/forms/$formId/form_submissions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleFormSubmission>> getAllFromForm(
+    String formId, {
+    String? id,
+    PcoPeopleFormSubmissionQuery? query,
+    bool includeAllRelated = false,
+    bool includeForm = false,
+    bool includeFormFields = false,
+    bool includeFormSubmissionValues = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeopleFormSubmissionQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeopleFormSubmission.canInclude);
     if (includeForm) query.include.add('form');
     if (includeFormFields) query.include.add('form_fields');
     if (includeFormSubmissionValues)

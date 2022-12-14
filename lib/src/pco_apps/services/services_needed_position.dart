@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.964570
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.835900
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoServicesNeededPositionFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeTeam`: include associated team
 /// - `includeTime`: include associated time
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -47,7 +47,7 @@ class PcoServicesNeededPositionQuery extends PlanningCenterApiQuery {
     bool includeTime = false,
 
     /// when true, adds `?include=team,time` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -61,8 +61,8 @@ class PcoServicesNeededPositionQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeTeam) include.add('team');
-    if (includeAll || includeTime) include.add('time');
+    if (includeAllRelated || includeTeam) include.add('team');
+    if (includeAllRelated || includeTime) include.add('time');
   }
 }
 
@@ -315,8 +315,11 @@ class PcoServicesNeededPosition extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesNeededPosition] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesNeededPosition] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -326,12 +329,71 @@ class PcoServicesNeededPosition extends PcoResource {
     String planId, {
     String? id,
     PcoServicesNeededPositionQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeTeam = false,
     bool includeTime = false,
   }) async {
     query ??= PcoServicesNeededPositionQuery();
-    if (includeAll) query.include.addAll(PcoServicesNeededPosition.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesNeededPosition.canInclude);
+    if (includeTeam) query.include.add('team');
+    if (includeTime) query.include.add('time');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesNeededPosition>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesNeededPosition] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesNeededPosition?> getSingleFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId,
+    String id, {
+    PcoServicesNeededPositionQuery? query,
+    bool includeAllRelated = false,
+    bool includeTeam = false,
+    bool includeTime = false,
+  }) async {
+    query ??= PcoServicesNeededPositionQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesNeededPosition.canInclude);
+    if (includeTeam) query.include.add('team');
+    if (includeTime) query.include.add('time');
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesNeededPosition>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesNeededPosition] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/needed_positions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesNeededPosition>>
+      getAllFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesNeededPositionQuery? query,
+    bool includeAllRelated = false,
+    bool includeTeam = false,
+    bool includeTime = false,
+  }) async {
+    query ??= PcoServicesNeededPositionQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoServicesNeededPosition.canInclude);
     if (includeTeam) query.include.add('team');
     if (includeTime) query.include.add('time');
     var url =

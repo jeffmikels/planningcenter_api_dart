@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.144473
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.995832
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -45,7 +45,7 @@ enum PcoPeopleFormFilter {
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeCampus`: include associated campus
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -403,7 +403,66 @@ class PcoPeopleForm extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleForm] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleForm] objects (expecting many)
+  /// using a path like this: `/people/v2/forms`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `closed`
+  /// - `not_archived`
+  /// - `open`
+  /// - `recently_viewed`
+  /// - `with_recoverable`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleForm>> get({
+    String? id,
+    PcoPeopleFormQuery? query,
+    bool getAll = false,
+    bool includeCampus = false,
+  }) async {
+    query ??= PcoPeopleFormQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeCampus) query.include.add('campus');
+    var url = '/people/v2/forms';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleForm>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleForm] object
+  /// using a path like this: `/people/v2/forms/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `archived`
+  /// - `closed`
+  /// - `not_archived`
+  /// - `open`
+  /// - `recently_viewed`
+  /// - `with_recoverable`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleForm?> getSingle(
+    String id, {
+    PcoPeopleFormQuery? query,
+    bool includeCampus = false,
+  }) async {
+    query ??= PcoPeopleFormQuery();
+
+    if (includeCampus) query.include.add('campus');
+    var url = '/people/v2/forms/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleForm>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleForm] objects (expecting many)
   /// using a path like this: `/people/v2/forms`
   ///
   /// Available Query Filters:
@@ -416,12 +475,15 @@ class PcoPeopleForm extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleForm>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleForm>> getAll({
     String? id,
     PcoPeopleFormQuery? query,
     bool includeCampus = false,
   }) async {
     query ??= PcoPeopleFormQuery();
+    query.getAll = true;
 
     if (includeCampus) query.include.add('campus');
     var url = '/people/v2/forms';
@@ -430,8 +492,11 @@ class PcoPeopleForm extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleForm] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleForm] objects (expecting one)
   /// using a path like this: `/people/v2/forms/$formId/form_submissions/$formSubmissionId/form`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -439,9 +504,11 @@ class PcoPeopleForm extends PcoResource {
     String formId,
     String formSubmissionId, {
     PcoPeopleFormQuery? query,
+    bool getAll = false,
     bool includeCampus = false,
   }) async {
     query ??= PcoPeopleFormQuery();
+    if (getAll) query.getAll = true;
 
     if (includeCampus) query.include.add('campus');
     var url =

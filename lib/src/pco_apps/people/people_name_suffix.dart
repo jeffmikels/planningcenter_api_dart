@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.153681
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.005543
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -250,16 +250,21 @@ class PcoPeopleNameSuffix extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/name_suffixes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleNameSuffix>> get({
     String? id,
     PcoPeopleNameSuffixQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleNameSuffixQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/name_suffixes';
     if (id != null) url += '/$id';
@@ -267,8 +272,48 @@ class PcoPeopleNameSuffix extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleNameSuffix] objects (expecting many)
+  /// Will get a single [PcoPeopleNameSuffix] object
+  /// using a path like this: `/people/v2/name_suffixes/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleNameSuffix?> getSingle(
+    String id, {
+    PcoPeopleNameSuffixQuery? query,
+  }) async {
+    query ??= PcoPeopleNameSuffixQuery();
+
+    var url = '/people/v2/name_suffixes/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleNameSuffix] objects (expecting many)
+  /// using a path like this: `/people/v2/name_suffixes`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleNameSuffix>> getAll({
+    String? id,
+    PcoPeopleNameSuffixQuery? query,
+  }) async {
+    query ??= PcoPeopleNameSuffixQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/name_suffixes';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleNameSuffix] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/name_suffix`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -276,8 +321,49 @@ class PcoPeopleNameSuffix extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleNameSuffixQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleNameSuffixQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people/$personId/name_suffix';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleNameSuffix] object
+  /// using a path like this: `/people/v2/people/$personId/name_suffix/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleNameSuffix?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleNameSuffixQuery? query,
+  }) async {
+    query ??= PcoPeopleNameSuffixQuery();
+
+    var url = '/people/v2/people/$personId/name_suffix/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleNameSuffix>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleNameSuffix] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/name_suffix`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleNameSuffix>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleNameSuffixQuery? query,
+  }) async {
+    query ??= PcoPeopleNameSuffixQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people/$personId/name_suffix';
     if (id != null) url += '/$id';

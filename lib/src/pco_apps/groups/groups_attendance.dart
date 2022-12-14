@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.264967
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.135763
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -21,7 +21,7 @@ enum PcoGroupsAttendanceFilter { attended }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -295,11 +295,14 @@ class PcoGroupsAttendance extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsAttendance] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsAttendance] objects (expecting many)
   /// using a path like this: `/groups/v2/events/$eventId/attendances`
   ///
   /// Available Query Filters:
   /// - `attended`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -307,9 +310,60 @@ class PcoGroupsAttendance extends PcoResource {
     String eventId, {
     String? id,
     PcoGroupsAttendanceQuery? query,
+    bool getAll = false,
     bool includePerson = false,
   }) async {
     query ??= PcoGroupsAttendanceQuery();
+    if (getAll) query.getAll = true;
+
+    if (includePerson) query.include.add('person');
+    var url = '/groups/v2/events/$eventId/attendances';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsAttendance] object
+  /// using a path like this: `/groups/v2/events/$eventId/attendances/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `attended`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsAttendance?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoGroupsAttendanceQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoGroupsAttendanceQuery();
+
+    if (includePerson) query.include.add('person');
+    var url = '/groups/v2/events/$eventId/attendances/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsAttendance>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsAttendance] objects (expecting many)
+  /// using a path like this: `/groups/v2/events/$eventId/attendances`
+  ///
+  /// Available Query Filters:
+  /// - `attended`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsAttendance>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoGroupsAttendanceQuery? query,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoGroupsAttendanceQuery();
+    query.getAll = true;
 
     if (includePerson) query.include.add('person');
     var url = '/groups/v2/events/$eventId/attendances';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.976435
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.842278
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,7 +19,7 @@ enum PcoServicesPlanNoteFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includePlanNoteCategory`: include associated plan_note_category
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -319,8 +319,11 @@ class PcoServicesPlanNote extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesPlanNote] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlanNote] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -329,9 +332,11 @@ class PcoServicesPlanNote extends PcoResource {
     String serviceTypeId,
     String planId, {
     PcoServicesPlanNoteQuery? query,
+    bool getAll = false,
     bool includePlanNoteCategory = false,
   }) async {
     query ??= PcoServicesPlanNoteQuery();
+    if (getAll) query.getAll = true;
 
     if (includePlanNoteCategory) query.include.add('plan_note_category');
     var url = '/services/v2/service_types/$serviceTypeId/plans/$planId/notes';
@@ -340,8 +345,11 @@ class PcoServicesPlanNote extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesPlanNote] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesPlanNote] objects (expecting one)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plan_templates/$planTemplateId/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -350,9 +358,11 @@ class PcoServicesPlanNote extends PcoResource {
     String serviceTypeId,
     String planTemplateId, {
     PcoServicesPlanNoteQuery? query,
+    bool getAll = false,
     bool includePlanNoteCategory = false,
   }) async {
     query ??= PcoServicesPlanNoteQuery();
+    if (getAll) query.getAll = true;
 
     if (includePlanNoteCategory) query.include.add('plan_note_category');
     var url =

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.151213
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.003315
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,8 +229,11 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleMailchimpSyncStatus] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleMailchimpSyncStatus] objects (expecting many)
   /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -238,8 +241,51 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
     String listId, {
     String? id,
     PcoPeopleMailchimpSyncStatusQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleMailchimpSyncStatusQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/lists/$listId/mailchimp_sync_status';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleMailchimpSyncStatus] object
+  /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleMailchimpSyncStatus?> getSingleFromList(
+    String listId,
+    String id, {
+    PcoPeopleMailchimpSyncStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMailchimpSyncStatusQuery();
+
+    var url = '/people/v2/lists/$listId/mailchimp_sync_status/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleMailchimpSyncStatus>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleMailchimpSyncStatus] objects (expecting many)
+  /// using a path like this: `/people/v2/lists/$listId/mailchimp_sync_status`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleMailchimpSyncStatus>> getAllFromList(
+    String listId, {
+    String? id,
+    PcoPeopleMailchimpSyncStatusQuery? query,
+  }) async {
+    query ??= PcoPeopleMailchimpSyncStatusQuery();
+    query.getAll = true;
 
     var url = '/people/v2/lists/$listId/mailchimp_sync_status';
     if (id != null) url += '/$id';

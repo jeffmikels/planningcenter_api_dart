@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.242306
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.119776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoGivingDesignationRefundFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeDesignation`: include associated designation
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -240,8 +240,11 @@ class PcoGivingDesignationRefund extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingDesignationRefund] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingDesignationRefund] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/refund/$refundId/designation_refunds`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -251,9 +254,61 @@ class PcoGivingDesignationRefund extends PcoResource {
     String refundId, {
     String? id,
     PcoGivingDesignationRefundQuery? query,
+    bool getAll = false,
     bool includeDesignation = false,
   }) async {
     query ??= PcoGivingDesignationRefundQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeDesignation) query.include.add('designation');
+    var url =
+        '/giving/v2/donations/$donationId/refund/$refundId/designation_refunds';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDesignationRefund>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingDesignationRefund] object
+  /// using a path like this: `/giving/v2/donations/$donationId/refund/$refundId/designation_refunds/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDesignationRefund?> getSingleFromDonationAndRefund(
+    String donationId,
+    String refundId,
+    String id, {
+    PcoGivingDesignationRefundQuery? query,
+    bool includeDesignation = false,
+  }) async {
+    query ??= PcoGivingDesignationRefundQuery();
+
+    if (includeDesignation) query.include.add('designation');
+    var url =
+        '/giving/v2/donations/$donationId/refund/$refundId/designation_refunds/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDesignationRefund>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDesignationRefund] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations/$donationId/refund/$refundId/designation_refunds`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDesignationRefund>>
+      getAllFromDonationAndRefund(
+    String donationId,
+    String refundId, {
+    String? id,
+    PcoGivingDesignationRefundQuery? query,
+    bool includeDesignation = false,
+  }) async {
+    query ??= PcoGivingDesignationRefundQuery();
+    query.getAll = true;
 
     if (includeDesignation) query.include.add('designation');
     var url =

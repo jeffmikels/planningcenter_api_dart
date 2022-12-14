@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.209366
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.049831
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -29,7 +29,7 @@ enum PcoCalendarPersonFilter { eventOwners }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeOrganization`: include associated organization
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -467,20 +467,25 @@ class PcoCalendarPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/people`
   ///
   /// Available Query Filters:
   /// - `event_owners`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarPerson>> get({
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/people';
@@ -489,8 +494,58 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/people/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `event_owners`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingle(
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/people`
+  ///
+  /// Available Query Filters:
+  /// - `event_owners`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>> getAll({
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/conflicts/$conflictId/resolved_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -498,9 +553,11 @@ class PcoCalendarPerson extends PcoResource {
     String conflictId, {
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
@@ -509,8 +566,54 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/conflicts/$conflictId/resolved_by/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingleResolvedByFromConflict(
+    String conflictId,
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/conflicts/$conflictId/resolved_by/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/conflicts/$conflictId/resolved_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>> getAllResolvedByFromConflict(
+    String conflictId, {
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/conflicts/$conflictId/resolved_by';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/owner`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -518,9 +621,11 @@ class PcoCalendarPerson extends PcoResource {
     String eventId, {
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/calendar/v2/events/$eventId/owner';
@@ -529,8 +634,54 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/events/$eventId/owner/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingleOwnerFromEvent(
+    String eventId,
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/events/$eventId/owner/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/events/$eventId/owner`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>> getAllOwnerFromEvent(
+    String eventId, {
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/calendar/v2/events/$eventId/owner';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -539,9 +690,11 @@ class PcoCalendarPerson extends PcoResource {
     String eventResourceRequestId, {
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url =
@@ -551,8 +704,57 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingleCreatedByFromEventResourceRequest(
+    String eventResourceRequestId,
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>>
+      getAllCreatedByFromEventResourceRequest(
+    String eventResourceRequestId, {
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/created_by';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -561,9 +763,11 @@ class PcoCalendarPerson extends PcoResource {
     String eventResourceRequestId, {
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url =
@@ -573,8 +777,57 @@ class PcoCalendarPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarPerson] objects (expecting many)
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingleUpdatedByFromEventResourceRequest(
+    String eventResourceRequestId,
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>>
+      getAllUpdatedByFromEventResourceRequest(
+    String eventResourceRequestId, {
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/updated_by';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarPerson] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -582,9 +835,57 @@ class PcoCalendarPerson extends PcoResource {
     String resourceApprovalGroupId, {
     String? id,
     PcoCalendarPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCalendarPersonQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarPerson] object
+  /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarPerson?> getSingleFromResourceApprovalGroup(
+    String resourceApprovalGroupId,
+    String id, {
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarPerson] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resource_approval_groups/$resourceApprovalGroupId/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarPerson>>
+      getAllFromResourceApprovalGroup(
+    String resourceApprovalGroupId, {
+    String? id,
+    PcoCalendarPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCalendarPersonQuery();
+    query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url =

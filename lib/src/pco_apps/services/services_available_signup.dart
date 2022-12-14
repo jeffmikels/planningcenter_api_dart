@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.950158
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.821524
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoServicesAvailableSignupFilter { currentOrganization }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeSignupSheets`: include associated signup_sheets
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -275,11 +275,14 @@ class PcoServicesAvailableSignup extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesAvailableSignup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesAvailableSignup] objects (expecting many)
   /// using a path like this: `/services/v2/people/$personId/available_signups`
   ///
   /// Available Query Filters:
   /// - `current_organization`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -287,9 +290,62 @@ class PcoServicesAvailableSignup extends PcoResource {
     String personId, {
     String? id,
     PcoServicesAvailableSignupQuery? query,
+    bool getAll = false,
     bool includeSignupSheets = false,
   }) async {
     query ??= PcoServicesAvailableSignupQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeSignupSheets) query.include.add('signup_sheets');
+    var url = '/services/v2/people/$personId/available_signups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesAvailableSignup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesAvailableSignup] object
+  /// using a path like this: `/services/v2/people/$personId/available_signups/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `current_organization`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesAvailableSignup?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoServicesAvailableSignupQuery? query,
+    bool includeSignupSheets = false,
+  }) async {
+    query ??= PcoServicesAvailableSignupQuery();
+
+    if (includeSignupSheets) query.include.add('signup_sheets');
+    var url = '/services/v2/people/$personId/available_signups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesAvailableSignup>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesAvailableSignup] objects (expecting many)
+  /// using a path like this: `/services/v2/people/$personId/available_signups`
+  ///
+  /// Available Query Filters:
+  /// - `current_organization`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesAvailableSignup>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoServicesAvailableSignupQuery? query,
+    bool includeSignupSheets = false,
+  }) async {
+    query ??= PcoServicesAvailableSignupQuery();
+    query.getAll = true;
 
     if (includeSignupSheets) query.include.add('signup_sheets');
     var url = '/services/v2/people/$personId/available_signups';

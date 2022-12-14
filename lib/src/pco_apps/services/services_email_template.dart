@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.954199
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.826237
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -253,16 +253,58 @@ class PcoServicesEmailTemplate extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesEmailTemplate] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesEmailTemplate] objects (expecting many)
   /// using a path like this: `/services/v2/email_templates`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesEmailTemplate>> get({
     String? id,
     PcoServicesEmailTemplateQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesEmailTemplateQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/services/v2/email_templates';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesEmailTemplate] object
+  /// using a path like this: `/services/v2/email_templates/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesEmailTemplate?> getSingle(
+    String id, {
+    PcoServicesEmailTemplateQuery? query,
+  }) async {
+    query ??= PcoServicesEmailTemplateQuery();
+
+    var url = '/services/v2/email_templates/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesEmailTemplate>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesEmailTemplate] objects (expecting many)
+  /// using a path like this: `/services/v2/email_templates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesEmailTemplate>> getAll({
+    String? id,
+    PcoServicesEmailTemplateQuery? query,
+  }) async {
+    query ??= PcoServicesEmailTemplateQuery();
+    query.getAll = true;
 
     var url = '/services/v2/email_templates';
     if (id != null) url += '/$id';

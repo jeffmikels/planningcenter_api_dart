@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.162372
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.013590
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -309,7 +309,74 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeoplePeopleImportConflict] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePeopleImportConflict] objects (expecting many)
+  /// using a path like this: `/people/v2/people_imports/$peopleImportId/conflicts`
+  ///
+  /// Available Query Filters:
+  /// - `creates`
+  /// - `creates_and_updates`
+  /// - `errors`
+  /// - `household_creates`
+  /// - `household_updates`
+  /// - `identical`
+  /// - `ignored`
+  /// - `not_ignored`
+  /// - `updates`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePeopleImportConflict>>
+      getConflictsFromPeopleImport(
+    String peopleImportId, {
+    String? id,
+    PcoPeoplePeopleImportConflictQuery? query,
+    bool getAll = false,
+  }) async {
+    query ??= PcoPeoplePeopleImportConflictQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people_imports/$peopleImportId/conflicts';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeoplePeopleImportConflict] object
+  /// using a path like this: `/people/v2/people_imports/$peopleImportId/conflicts/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `creates`
+  /// - `creates_and_updates`
+  /// - `errors`
+  /// - `household_creates`
+  /// - `household_updates`
+  /// - `identical`
+  /// - `ignored`
+  /// - `not_ignored`
+  /// - `updates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeoplePeopleImportConflict?>
+      getSingleConflictsFromPeopleImport(
+    String peopleImportId,
+    String id, {
+    PcoPeoplePeopleImportConflictQuery? query,
+  }) async {
+    query ??= PcoPeoplePeopleImportConflictQuery();
+
+    var url = '/people/v2/people_imports/$peopleImportId/conflicts/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePeopleImportConflict>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePeopleImportConflict] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/conflicts`
   ///
   /// Available Query Filters:
@@ -325,13 +392,16 @@ class PcoPeoplePeopleImportConflict extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
   static Future<PcoCollection<PcoPeoplePeopleImportConflict>>
-      getConflictsFromPeopleImport(
+      getAllConflictsFromPeopleImport(
     String peopleImportId, {
     String? id,
     PcoPeoplePeopleImportConflictQuery? query,
   }) async {
     query ??= PcoPeoplePeopleImportConflictQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people_imports/$peopleImportId/conflicts';
     if (id != null) url += '/$id';

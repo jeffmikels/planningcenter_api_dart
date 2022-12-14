@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.213594
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.053116
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -44,7 +44,7 @@ enum PcoCalendarResourceBookingFilter {
 /// - `includeEventInstance`: include associated event_instance
 /// - `includeEventResourceRequest`: include associated event_resource_request
 /// - `includeResource`: include associated resource
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -123,7 +123,7 @@ class PcoCalendarResourceBookingQuery extends PlanningCenterApiQuery {
     bool includeResource = false,
 
     /// when true, adds `?include=event_instance,event_resource_request,resource` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -160,10 +160,11 @@ class PcoCalendarResourceBookingQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeEventInstance) include.add('event_instance');
-    if (includeAll || includeEventResourceRequest)
+    if (includeAllRelated || includeEventInstance)
+      include.add('event_instance');
+    if (includeAllRelated || includeEventResourceRequest)
       include.add('event_resource_request');
-    if (includeAll || includeResource) include.add('resource');
+    if (includeAllRelated || includeResource) include.add('resource');
 
     if (whereCreatedAt != null)
       where.add(PlanningCenterApiWhere.parse('created_at', whereCreatedAt));
@@ -413,7 +414,90 @@ class PcoCalendarResourceBooking extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarResourceBooking] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarResourceBooking] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resource_bookings`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCalendarResourceBooking>> get({
+    String? id,
+    PcoCalendarResourceBookingQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/resource_bookings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarResourceBooking] object
+  /// using a path like this: `/calendar/v2/resource_bookings/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceBooking?> getSingle(
+    String id, {
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/resource_bookings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceBooking>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceBooking] objects (expecting many)
   /// using a path like this: `/calendar/v2/resource_bookings`
   ///
   /// Available Query Filters:
@@ -430,16 +514,20 @@ class PcoCalendarResourceBooking extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarResourceBooking>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceBooking>> getAll({
     String? id,
     PcoCalendarResourceBookingQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
     query ??= PcoCalendarResourceBookingQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
       query.include.add('event_resource_request');
@@ -450,7 +538,7 @@ class PcoCalendarResourceBooking extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarResourceBooking] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarResourceBooking] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/resource_bookings`
   ///
   /// Available Query Filters:
@@ -458,19 +546,25 @@ class PcoCalendarResourceBooking extends PcoResource {
   /// - `resources`
   /// - `rooms`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarResourceBooking>> getFromEventInstance(
     String eventInstanceId, {
     String? id,
     PcoCalendarResourceBookingQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
     query ??= PcoCalendarResourceBookingQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
       query.include.add('event_resource_request');
@@ -481,11 +575,85 @@ class PcoCalendarResourceBooking extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarResourceBooking] objects (expecting many)
+  /// Will get a single [PcoCalendarResourceBooking] object
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/resource_bookings/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceBooking?> getSingleFromEventInstance(
+    String eventInstanceId,
+    String id, {
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url =
+        '/calendar/v2/event_instances/$eventInstanceId/resource_bookings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceBooking>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceBooking] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/resource_bookings`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  /// - `resources`
+  /// - `rooms`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceBooking>>
+      getAllFromEventInstance(
+    String eventInstanceId, {
+    String? id,
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/event_instances/$eventInstanceId/resource_bookings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarResourceBooking] objects (expecting many)
   /// using a path like this: `/calendar/v2/events/$eventId/resource_bookings`
   ///
   /// Available Query Filters:
   /// - `future`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -493,13 +661,16 @@ class PcoCalendarResourceBooking extends PcoResource {
     String eventId, {
     String? id,
     PcoCalendarResourceBookingQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
     query ??= PcoCalendarResourceBookingQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
       query.include.add('event_resource_request');
@@ -510,7 +681,156 @@ class PcoCalendarResourceBooking extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarResourceBooking] objects (expecting many)
+  /// Will get a single [PcoCalendarResourceBooking] object
+  /// using a path like this: `/calendar/v2/events/$eventId/resource_bookings/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceBooking?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/events/$eventId/resource_bookings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceBooking>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceBooking] objects (expecting many)
+  /// using a path like this: `/calendar/v2/events/$eventId/resource_bookings`
+  ///
+  /// Available Query Filters:
+  /// - `future`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceBooking>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/events/$eventId/resource_bookings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarResourceBooking] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/resource_bookings`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCalendarResourceBooking>>
+      getFromEventResourceRequest(
+    String eventResourceRequestId, {
+    String? id,
+    PcoCalendarResourceBookingQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/resource_bookings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarResourceBooking] object
+  /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/resource_bookings/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceBooking?> getSingleFromEventResourceRequest(
+    String eventResourceRequestId,
+    String id, {
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url =
+        '/calendar/v2/event_resource_requests/$eventResourceRequestId/resource_bookings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceBooking>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceBooking] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/resource_bookings`
   ///
   /// Available Query Filters:
@@ -525,18 +845,22 @@ class PcoCalendarResourceBooking extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
   static Future<PcoCollection<PcoCalendarResourceBooking>>
-      getFromEventResourceRequest(
+      getAllFromEventResourceRequest(
     String eventResourceRequestId, {
     String? id,
     PcoCalendarResourceBookingQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
     query ??= PcoCalendarResourceBookingQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
       query.include.add('event_resource_request');
@@ -548,7 +872,88 @@ class PcoCalendarResourceBooking extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarResourceBooking] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarResourceBooking] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resources/$resourceId/resource_bookings`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoCalendarResourceBooking>> getFromResource(
+    String resourceId, {
+    String? id,
+    PcoCalendarResourceBookingQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/resources/$resourceId/resource_bookings';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarResourceBooking>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarResourceBooking] object
+  /// using a path like this: `/calendar/v2/resources/$resourceId/resource_bookings/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `approved`
+  /// - `approved_pending`
+  /// - `approved_pending_rejected`
+  /// - `approved_rejected`
+  /// - `future`
+  /// - `pending`
+  /// - `pending_rejected`
+  /// - `rejected`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarResourceBooking?> getSingleFromResource(
+    String resourceId,
+    String id, {
+    PcoCalendarResourceBookingQuery? query,
+    bool includeAllRelated = false,
+    bool includeEventInstance = false,
+    bool includeEventResourceRequest = false,
+    bool includeResource = false,
+  }) async {
+    query ??= PcoCalendarResourceBookingQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    if (includeEventInstance) query.include.add('event_instance');
+    if (includeEventResourceRequest)
+      query.include.add('event_resource_request');
+    if (includeResource) query.include.add('resource');
+    var url = '/calendar/v2/resources/$resourceId/resource_bookings/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarResourceBooking>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarResourceBooking] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/resource_bookings`
   ///
   /// Available Query Filters:
@@ -563,17 +968,21 @@ class PcoCalendarResourceBooking extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoCalendarResourceBooking>> getFromResource(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarResourceBooking>> getAllFromResource(
     String resourceId, {
     String? id,
     PcoCalendarResourceBookingQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeEventInstance = false,
     bool includeEventResourceRequest = false,
     bool includeResource = false,
   }) async {
     query ??= PcoCalendarResourceBookingQuery();
-    if (includeAll) query.include.addAll(PcoCalendarResourceBooking.canInclude);
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarResourceBooking.canInclude);
     if (includeEventInstance) query.include.add('event_instance');
     if (includeEventResourceRequest)
       query.include.add('event_resource_request');

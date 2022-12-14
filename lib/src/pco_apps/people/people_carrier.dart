@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.135177
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.992320
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -239,16 +239,58 @@ class PcoPeopleCarrier extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleCarrier] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleCarrier] objects (expecting many)
   /// using a path like this: `/people/v2/carriers`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleCarrier>> get({
     String? id,
     PcoPeopleCarrierQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleCarrierQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/carriers';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleCarrier>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleCarrier] object
+  /// using a path like this: `/people/v2/carriers/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleCarrier?> getSingle(
+    String id, {
+    PcoPeopleCarrierQuery? query,
+  }) async {
+    query ??= PcoPeopleCarrierQuery();
+
+    var url = '/people/v2/carriers/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleCarrier>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleCarrier] objects (expecting many)
+  /// using a path like this: `/people/v2/carriers`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleCarrier>> getAll({
+    String? id,
+    PcoPeopleCarrierQuery? query,
+  }) async {
+    query ??= PcoPeopleCarrierQuery();
+    query.getAll = true;
 
     var url = '/people/v2/carriers';
     if (id != null) url += '/$id';

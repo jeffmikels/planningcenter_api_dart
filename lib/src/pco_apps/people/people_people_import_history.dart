@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.162964
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.014139
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -29,7 +29,7 @@ enum PcoPeoplePeopleImportHistoryFilter {
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeHousehold`: include associated household
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -76,7 +76,7 @@ class PcoPeoplePeopleImportHistoryQuery extends PlanningCenterApiQuery {
     bool includePerson = false,
 
     /// when true, adds `?include=household,person` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `name`
     /// query on a specific name, url example: ?where[name]=string
@@ -97,8 +97,8 @@ class PcoPeoplePeopleImportHistoryQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeHousehold) include.add('household');
-    if (includeAll || includePerson) include.add('person');
+    if (includeAllRelated || includeHousehold) include.add('household');
+    if (includeAllRelated || includePerson) include.add('person');
 
     if (whereName != null)
       where.add(PlanningCenterApiWhere.parse('name', whereName));
@@ -303,7 +303,78 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeoplePeopleImportHistory] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePeopleImportHistory] objects (expecting many)
+  /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories`
+  ///
+  /// Available Query Filters:
+  /// - `creates`
+  /// - `household_creates`
+  /// - `household_updates`
+  /// - `identical`
+  /// - `updates`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeoplePeopleImportHistory>>
+      getHistoriesFromPeopleImport(
+    String peopleImportId, {
+    String? id,
+    PcoPeoplePeopleImportHistoryQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeoplePeopleImportHistoryQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoPeoplePeopleImportHistory.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people_imports/$peopleImportId/histories';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeoplePeopleImportHistory] object
+  /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `creates`
+  /// - `household_creates`
+  /// - `household_updates`
+  /// - `identical`
+  /// - `updates`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeoplePeopleImportHistory?>
+      getSingleHistoriesFromPeopleImport(
+    String peopleImportId,
+    String id, {
+    PcoPeoplePeopleImportHistoryQuery? query,
+    bool includeAllRelated = false,
+    bool includeHousehold = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoPeoplePeopleImportHistoryQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoPeoplePeopleImportHistory.canInclude);
+    if (includeHousehold) query.include.add('household');
+    if (includePerson) query.include.add('person');
+    var url = '/people/v2/people_imports/$peopleImportId/histories/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePeopleImportHistory>(
+        url,
+        query: query,
+        apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePeopleImportHistory] objects (expecting many)
   /// using a path like this: `/people/v2/people_imports/$peopleImportId/histories`
   ///
   /// Available Query Filters:
@@ -315,17 +386,20 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
   static Future<PcoCollection<PcoPeoplePeopleImportHistory>>
-      getHistoriesFromPeopleImport(
+      getAllHistoriesFromPeopleImport(
     String peopleImportId, {
     String? id,
     PcoPeoplePeopleImportHistoryQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeHousehold = false,
     bool includePerson = false,
   }) async {
     query ??= PcoPeoplePeopleImportHistoryQuery();
-    if (includeAll)
+    query.getAll = true;
+    if (includeAllRelated)
       query.include.addAll(PcoPeoplePeopleImportHistory.canInclude);
     if (includeHousehold) query.include.add('household');
     if (includePerson) query.include.add('person');

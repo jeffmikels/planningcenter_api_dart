@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.268794
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.139510
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -347,8 +347,11 @@ class PcoGroupsMembership extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `/groups/v2/groups/$groupId/memberships`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -356,8 +359,10 @@ class PcoGroupsMembership extends PcoResource {
     String groupId, {
     String? id,
     PcoGroupsMembershipQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsMembershipQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/groups/v2/groups/$groupId/memberships';
     if (id != null) url += '/$id';
@@ -365,8 +370,50 @@ class PcoGroupsMembership extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGroupsMembership] objects (expecting many)
+  /// Will get a single [PcoGroupsMembership] object
+  /// using a path like this: `/groups/v2/groups/$groupId/memberships/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsMembership?> getSingleFromGroup(
+    String groupId,
+    String id, {
+    PcoGroupsMembershipQuery? query,
+  }) async {
+    query ??= PcoGroupsMembershipQuery();
+
+    var url = '/groups/v2/groups/$groupId/memberships/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsMembership>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsMembership] objects (expecting many)
+  /// using a path like this: `/groups/v2/groups/$groupId/memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsMembership>> getAllFromGroup(
+    String groupId, {
+    String? id,
+    PcoGroupsMembershipQuery? query,
+  }) async {
+    query ??= PcoGroupsMembershipQuery();
+    query.getAll = true;
+
+    var url = '/groups/v2/groups/$groupId/memberships';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGroupsMembership] objects (expecting many)
   /// using a path like this: `/groups/v2/people/$personId/memberships`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -374,8 +421,49 @@ class PcoGroupsMembership extends PcoResource {
     String personId, {
     String? id,
     PcoGroupsMembershipQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGroupsMembershipQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/groups/v2/people/$personId/memberships';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGroupsMembership>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGroupsMembership] object
+  /// using a path like this: `/groups/v2/people/$personId/memberships/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGroupsMembership?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoGroupsMembershipQuery? query,
+  }) async {
+    query ??= PcoGroupsMembershipQuery();
+
+    var url = '/groups/v2/people/$personId/memberships/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGroupsMembership>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGroupsMembership] objects (expecting many)
+  /// using a path like this: `/groups/v2/people/$personId/memberships`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGroupsMembership>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoGroupsMembershipQuery? query,
+  }) async {
+    query ??= PcoGroupsMembershipQuery();
+    query.getAll = true;
 
     var url = '/groups/v2/people/$personId/memberships';
     if (id != null) url += '/$id';

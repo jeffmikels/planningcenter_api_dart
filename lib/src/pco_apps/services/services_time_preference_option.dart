@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.001316
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.862603
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -270,8 +270,11 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesTimePreferenceOption] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesTimePreferenceOption] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/time_preference_options`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -280,8 +283,53 @@ class PcoServicesTimePreferenceOption extends PcoResource {
     String serviceTypeId, {
     String? id,
     PcoServicesTimePreferenceOptionQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesTimePreferenceOptionQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/time_preference_options';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesTimePreferenceOption] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/time_preference_options/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesTimePreferenceOption?> getSingleFromServiceType(
+    String serviceTypeId,
+    String id, {
+    PcoServicesTimePreferenceOptionQuery? query,
+  }) async {
+    query ??= PcoServicesTimePreferenceOptionQuery();
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/time_preference_options/$id';
+    var retval =
+        await PcoCollection.fromApiCall<PcoServicesTimePreferenceOption>(url,
+            query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesTimePreferenceOption] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/time_preference_options`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesTimePreferenceOption>>
+      getAllFromServiceType(
+    String serviceTypeId, {
+    String? id,
+    PcoServicesTimePreferenceOptionQuery? query,
+  }) async {
+    query ??= PcoServicesTimePreferenceOptionQuery();
+    query.getAll = true;
 
     var url =
         '/services/v2/service_types/$serviceTypeId/time_preference_options';

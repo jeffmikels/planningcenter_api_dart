@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.247382
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.124301
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -294,7 +294,56 @@ class PcoGivingPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingPerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingPerson] objects (expecting many)
+  /// using a path like this: `/giving/v2/people`
+  ///
+  /// Available Query Filters:
+  /// - `has_donated`
+  /// filter to people with at least one associated donation
+  ///
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoGivingPerson>> get({
+    String? id,
+    PcoGivingPersonQuery? query,
+    bool getAll = false,
+  }) async {
+    query ??= PcoGivingPersonQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/giving/v2/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingPerson] object
+  /// using a path like this: `/giving/v2/people/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `has_donated`
+  /// filter to people with at least one associated donation
+  ///
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingPerson?> getSingle(
+    String id, {
+    PcoGivingPersonQuery? query,
+  }) async {
+    query ??= PcoGivingPersonQuery();
+
+    var url = '/giving/v2/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingPerson] objects (expecting many)
   /// using a path like this: `/giving/v2/people`
   ///
   /// Available Query Filters:
@@ -304,11 +353,14 @@ class PcoGivingPerson extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingPerson>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingPerson>> getAll({
     String? id,
     PcoGivingPersonQuery? query,
   }) async {
     query ??= PcoGivingPersonQuery();
+    query.getAll = true;
 
     var url = '/giving/v2/people';
     if (id != null) url += '/$id';
@@ -316,16 +368,21 @@ class PcoGivingPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingPerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/owner`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getOwnerFromBatchGroup(
     String batchGroupId, {
     PcoGivingPersonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingPersonQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/batch_groups/$batchGroupId/owner';
 
@@ -333,16 +390,21 @@ class PcoGivingPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingPerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/batches/$batchId/owner`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getOwnerFromBatch(
     String batchId, {
     PcoGivingPersonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingPersonQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/batches/$batchId/owner';
 
@@ -350,16 +412,21 @@ class PcoGivingPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingPerson] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoGivingPerson] objects (expecting one)
   /// using a path like this: `/giving/v2/pledges/$pledgeId/joint_giver`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingPerson>> getJointGiverFromPledge(
     String pledgeId, {
     PcoGivingPersonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingPersonQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/pledges/$pledgeId/joint_giver';
 

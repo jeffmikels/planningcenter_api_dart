@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.986609
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.853685
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoServicesServiceTypeFilter { noParent }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeTimePreferenceOptions`: include associated time_preference_options
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -496,20 +496,25 @@ class PcoServicesServiceType extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `/services/v2/service_types`
   ///
   /// Available Query Filters:
   /// - `no_parent`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>> get({
     String? id,
     PcoServicesServiceTypeQuery? query,
+    bool getAll = false,
     bool includeTimePreferenceOptions = false,
   }) async {
     query ??= PcoServicesServiceTypeQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTimePreferenceOptions)
       query.include.add('time_preference_options');
@@ -519,8 +524,60 @@ class PcoServicesServiceType extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesServiceType] objects (expecting many)
+  /// Will get a single [PcoServicesServiceType] object
+  /// using a path like this: `/services/v2/service_types/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `no_parent`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesServiceType?> getSingle(
+    String id, {
+    PcoServicesServiceTypeQuery? query,
+    bool includeTimePreferenceOptions = false,
+  }) async {
+    query ??= PcoServicesServiceTypeQuery();
+
+    if (includeTimePreferenceOptions)
+      query.include.add('time_preference_options');
+    var url = '/services/v2/service_types/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesServiceType>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesServiceType] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types`
+  ///
+  /// Available Query Filters:
+  /// - `no_parent`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesServiceType>> getAll({
+    String? id,
+    PcoServicesServiceTypeQuery? query,
+    bool includeTimePreferenceOptions = false,
+  }) async {
+    query ??= PcoServicesServiceTypeQuery();
+    query.getAll = true;
+
+    if (includeTimePreferenceOptions)
+      query.include.add('time_preference_options');
+    var url = '/services/v2/service_types';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesServiceType] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/service_types`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -528,9 +585,11 @@ class PcoServicesServiceType extends PcoResource {
     String folderId, {
     String? id,
     PcoServicesServiceTypeQuery? query,
+    bool getAll = false,
     bool includeTimePreferenceOptions = false,
   }) async {
     query ??= PcoServicesServiceTypeQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTimePreferenceOptions)
       query.include.add('time_preference_options');
@@ -540,8 +599,56 @@ class PcoServicesServiceType extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
+  /// Will get a single [PcoServicesServiceType] object
+  /// using a path like this: `/services/v2/folders/$folderId/service_types/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesServiceType?> getSingleFromFolder(
+    String folderId,
+    String id, {
+    PcoServicesServiceTypeQuery? query,
+    bool includeTimePreferenceOptions = false,
+  }) async {
+    query ??= PcoServicesServiceTypeQuery();
+
+    if (includeTimePreferenceOptions)
+      query.include.add('time_preference_options');
+    var url = '/services/v2/folders/$folderId/service_types/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesServiceType>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesServiceType] objects (expecting many)
+  /// using a path like this: `/services/v2/folders/$folderId/service_types`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesServiceType>> getAllFromFolder(
+    String folderId, {
+    String? id,
+    PcoServicesServiceTypeQuery? query,
+    bool includeTimePreferenceOptions = false,
+  }) async {
+    query ??= PcoServicesServiceTypeQuery();
+    query.getAll = true;
+
+    if (includeTimePreferenceOptions)
+      query.include.add('time_preference_options');
+    var url = '/services/v2/folders/$folderId/service_types';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesServiceType>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/series/$seriesId/plans/$planId/live/$liveId/service_type`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -551,9 +658,11 @@ class PcoServicesServiceType extends PcoResource {
     String planId,
     String liveId, {
     PcoServicesServiceTypeQuery? query,
+    bool getAll = false,
     bool includeTimePreferenceOptions = false,
   }) async {
     query ??= PcoServicesServiceTypeQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTimePreferenceOptions)
       query.include.add('time_preference_options');
@@ -564,17 +673,22 @@ class PcoServicesServiceType extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesServiceType] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoServicesServiceType] objects (expecting one)
   /// using a path like this: `/services/v2/teams/$teamId/service_type`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesServiceType>> getFromTeam(
     String teamId, {
     PcoServicesServiceTypeQuery? query,
+    bool getAll = false,
     bool includeTimePreferenceOptions = false,
   }) async {
     query ??= PcoServicesServiceTypeQuery();
+    if (getAll) query.getAll = true;
 
     if (includeTimePreferenceOptions)
       query.include.add('time_preference_options');

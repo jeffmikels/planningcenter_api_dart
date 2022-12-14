@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.239729
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.117464
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoGivingBatchFilter { committed, inProgress }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeBatchGroup`: include associated batch_group
 /// - `includeOwner`: include associated owner
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -52,7 +52,7 @@ class PcoGivingBatchQuery extends PlanningCenterApiQuery {
     bool includeOwner = false,
 
     /// when true, adds `?include=batch_group,owner` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
     PcoGivingBatchFilter? filterBy,
 
     /// reverse the ordering
@@ -68,8 +68,8 @@ class PcoGivingBatchQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeBatchGroup) include.add('batch_group');
-    if (includeAll || includeOwner) include.add('owner');
+    if (includeAllRelated || includeBatchGroup) include.add('batch_group');
+    if (includeAllRelated || includeOwner) include.add('owner');
   }
 }
 
@@ -327,24 +327,29 @@ class PcoGivingBatch extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingBatch] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingBatch] objects (expecting many)
   /// using a path like this: `/giving/v2/batches`
   ///
   /// Available Query Filters:
   /// - `committed`
   /// - `in_progress`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingBatch>> get({
     String? id,
     PcoGivingBatchQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchQuery();
-    if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/batches';
@@ -353,8 +358,8 @@ class PcoGivingBatch extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingBatch] objects (expecting many)
-  /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/batches`
+  /// Will get a single [PcoGivingBatch] object
+  /// using a path like this: `/giving/v2/batches/[id]`
   ///
   /// Available Query Filters:
   /// - `committed`
@@ -362,16 +367,76 @@ class PcoGivingBatch extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingBatch>> getFromBatchGroup(
-    String batchGroupId, {
-    String? id,
+  static Future<PcoGivingBatch?> getSingle(
+    String id, {
     PcoGivingBatchQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchQuery();
-    if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batches/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatch] objects (expecting many)
+  /// using a path like this: `/giving/v2/batches`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatch>> getAll({
+    String? id,
+    PcoGivingBatchQuery? query,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batches';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingBatch] objects (expecting many)
+  /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/batches`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoGivingBatch>> getFromBatchGroup(
+    String batchGroupId, {
+    String? id,
+    PcoGivingBatchQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/batch_groups/$batchGroupId/batches';
@@ -380,7 +445,123 @@ class PcoGivingBatch extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingBatch] objects (expecting many)
+  /// Will get a single [PcoGivingBatch] object
+  /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/batches/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingBatch?> getSingleFromBatchGroup(
+    String batchGroupId,
+    String id, {
+    PcoGivingBatchQuery? query,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batch_groups/$batchGroupId/batches/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatch] objects (expecting many)
+  /// using a path like this: `/giving/v2/batch_groups/$batchGroupId/batches`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatch>> getAllFromBatchGroup(
+    String batchGroupId, {
+    String? id,
+    PcoGivingBatchQuery? query,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/batch_groups/$batchGroupId/batches';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingBatch] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/batches`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoGivingBatch>> getFromPerson(
+    String personId, {
+    String? id,
+    PcoGivingBatchQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/people/$personId/batches';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingBatch] object
+  /// using a path like this: `/giving/v2/people/$personId/batches/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `committed`
+  /// - `in_progress`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingBatch?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoGivingBatchQuery? query,
+    bool includeAllRelated = false,
+    bool includeBatchGroup = false,
+    bool includeOwner = false,
+  }) async {
+    query ??= PcoGivingBatchQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
+    if (includeBatchGroup) query.include.add('batch_group');
+    if (includeOwner) query.include.add('owner');
+    var url = '/giving/v2/people/$personId/batches/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingBatch>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingBatch] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/batches`
   ///
   /// Available Query Filters:
@@ -389,16 +570,19 @@ class PcoGivingBatch extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoGivingBatch>> getFromPerson(
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingBatch>> getAllFromPerson(
     String personId, {
     String? id,
     PcoGivingBatchQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeBatchGroup = false,
     bool includeOwner = false,
   }) async {
     query ??= PcoGivingBatchQuery();
-    if (includeAll) query.include.addAll(PcoGivingBatch.canInclude);
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingBatch.canInclude);
     if (includeBatchGroup) query.include.add('batch_group');
     if (includeOwner) query.include.add('owner');
     var url = '/giving/v2/people/$personId/batches';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.243204
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.120603
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -25,7 +25,7 @@ enum PcoGivingDonationFilter { succeeded }
 /// - `includeLabels`: include associated labels
 /// - `includeNote`: include associated note
 /// - `includeRefund`: include associated refund
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -99,7 +99,7 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
     bool includeRefund = false,
 
     /// when true, adds `?include=designations,labels,note,refund` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `completed_at`
     /// query on a specific completed_at, url example: ?where[completed_at]=2000-01-01T12:00:00Z
@@ -141,10 +141,10 @@ class PcoGivingDonationQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeDesignations) include.add('designations');
-    if (includeAll || includeLabels) include.add('labels');
-    if (includeAll || includeNote) include.add('note');
-    if (includeAll || includeRefund) include.add('refund');
+    if (includeAllRelated || includeDesignations) include.add('designations');
+    if (includeAllRelated || includeLabels) include.add('labels');
+    if (includeAllRelated || includeNote) include.add('note');
+    if (includeAllRelated || includeRefund) include.add('refund');
 
     if (whereCompletedAt != null)
       where.add(PlanningCenterApiWhere.parse('completed_at', whereCompletedAt));
@@ -690,25 +690,30 @@ class PcoGivingDonation extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingDonation] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/donations`
   ///
   /// Available Query Filters:
   /// - `succeeded`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingDonation>> get({
     String? id,
     PcoGivingDonationQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeNote = false,
     bool includeRefund = false,
   }) async {
     query ??= PcoGivingDonationQuery();
-    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeNote) query.include.add('note');
@@ -719,8 +724,72 @@ class PcoGivingDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingDonation] objects (expecting many)
+  /// Will get a single [PcoGivingDonation] object
+  /// using a path like this: `/giving/v2/donations/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `succeeded`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDonation?> getSingle(
+    String id, {
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations`
+  ///
+  /// Available Query Filters:
+  /// - `succeeded`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDonation>> getAll({
+    String? id,
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/batches/$batchId/donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -728,14 +797,16 @@ class PcoGivingDonation extends PcoResource {
     String batchId, {
     String? id,
     PcoGivingDonationQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeNote = false,
     bool includeRefund = false,
   }) async {
     query ??= PcoGivingDonationQuery();
-    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeNote) query.include.add('note');
@@ -746,8 +817,68 @@ class PcoGivingDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingDonation] objects (expecting many)
+  /// Will get a single [PcoGivingDonation] object
+  /// using a path like this: `/giving/v2/batches/$batchId/donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDonation?> getSingleFromBatch(
+    String batchId,
+    String id, {
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/batches/$batchId/donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/batches/$batchId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDonation>> getAllFromBatch(
+    String batchId, {
+    String? id,
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/batches/$batchId/donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/campuses/$campusId/donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -755,14 +886,16 @@ class PcoGivingDonation extends PcoResource {
     String campusId, {
     String? id,
     PcoGivingDonationQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeNote = false,
     bool includeRefund = false,
   }) async {
     query ??= PcoGivingDonationQuery();
-    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeNote) query.include.add('note');
@@ -773,8 +906,68 @@ class PcoGivingDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingDonation] objects (expecting many)
+  /// Will get a single [PcoGivingDonation] object
+  /// using a path like this: `/giving/v2/campuses/$campusId/donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDonation?> getSingleFromCampus(
+    String campusId,
+    String id, {
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/campuses/$campusId/donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/campuses/$campusId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDonation>> getAllFromCampus(
+    String campusId, {
+    String? id,
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/campuses/$campusId/donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/payment_sources/$paymentSourceId/donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -782,14 +975,16 @@ class PcoGivingDonation extends PcoResource {
     String paymentSourceId, {
     String? id,
     PcoGivingDonationQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeNote = false,
     bool includeRefund = false,
   }) async {
     query ??= PcoGivingDonationQuery();
-    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeNote) query.include.add('note');
@@ -800,8 +995,68 @@ class PcoGivingDonation extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingDonation] objects (expecting many)
+  /// Will get a single [PcoGivingDonation] object
+  /// using a path like this: `/giving/v2/payment_sources/$paymentSourceId/donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDonation?> getSingleFromPaymentSource(
+    String paymentSourceId,
+    String id, {
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/payment_sources/$paymentSourceId/donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/payment_sources/$paymentSourceId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDonation>> getAllFromPaymentSource(
+    String paymentSourceId, {
+    String? id,
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/payment_sources/$paymentSourceId/donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingDonation] objects (expecting many)
   /// using a path like this: `/giving/v2/people/$personId/donations`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -809,14 +1064,73 @@ class PcoGivingDonation extends PcoResource {
     String personId, {
     String? id,
     PcoGivingDonationQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeDesignations = false,
     bool includeLabels = false,
     bool includeNote = false,
     bool includeRefund = false,
   }) async {
     query ??= PcoGivingDonationQuery();
-    if (includeAll) query.include.addAll(PcoGivingDonation.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/people/$personId/donations';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingDonation] object
+  /// using a path like this: `/giving/v2/people/$personId/donations/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingDonation?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
+    if (includeDesignations) query.include.add('designations');
+    if (includeLabels) query.include.add('labels');
+    if (includeNote) query.include.add('note');
+    if (includeRefund) query.include.add('refund');
+    var url = '/giving/v2/people/$personId/donations/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingDonation>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingDonation] objects (expecting many)
+  /// using a path like this: `/giving/v2/people/$personId/donations`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingDonation>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoGivingDonationQuery? query,
+    bool includeAllRelated = false,
+    bool includeDesignations = false,
+    bool includeLabels = false,
+    bool includeNote = false,
+    bool includeRefund = false,
+  }) async {
+    query ??= PcoGivingDonationQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoGivingDonation.canInclude);
     if (includeDesignations) query.include.add('designations');
     if (includeLabels) query.include.add('labels');
     if (includeNote) query.include.add('note');

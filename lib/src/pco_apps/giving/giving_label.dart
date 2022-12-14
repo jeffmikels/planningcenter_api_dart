@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.244411
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.121742
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -227,16 +227,21 @@ class PcoGivingLabel extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoGivingLabel] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoGivingLabel] objects (expecting many)
   /// using a path like this: `/giving/v2/labels`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoGivingLabel>> get({
     String? id,
     PcoGivingLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingLabelQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/giving/v2/labels';
     if (id != null) url += '/$id';
@@ -244,8 +249,48 @@ class PcoGivingLabel extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoGivingLabel] objects (expecting many)
+  /// Will get a single [PcoGivingLabel] object
+  /// using a path like this: `/giving/v2/labels/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingLabel?> getSingle(
+    String id, {
+    PcoGivingLabelQuery? query,
+  }) async {
+    query ??= PcoGivingLabelQuery();
+
+    var url = '/giving/v2/labels/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingLabel] objects (expecting many)
+  /// using a path like this: `/giving/v2/labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingLabel>> getAll({
+    String? id,
+    PcoGivingLabelQuery? query,
+  }) async {
+    query ??= PcoGivingLabelQuery();
+    query.getAll = true;
+
+    var url = '/giving/v2/labels';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoGivingLabel] objects (expecting many)
   /// using a path like this: `/giving/v2/donations/$donationId/labels`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -253,8 +298,49 @@ class PcoGivingLabel extends PcoResource {
     String donationId, {
     String? id,
     PcoGivingLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoGivingLabelQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/giving/v2/donations/$donationId/labels';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoGivingLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoGivingLabel] object
+  /// using a path like this: `/giving/v2/donations/$donationId/labels/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoGivingLabel?> getSingleFromDonation(
+    String donationId,
+    String id, {
+    PcoGivingLabelQuery? query,
+  }) async {
+    query ??= PcoGivingLabelQuery();
+
+    var url = '/giving/v2/donations/$donationId/labels/$id';
+    var retval = await PcoCollection.fromApiCall<PcoGivingLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoGivingLabel] objects (expecting many)
+  /// using a path like this: `/giving/v2/donations/$donationId/labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoGivingLabel>> getAllFromDonation(
+    String donationId, {
+    String? id,
+    PcoGivingLabelQuery? query,
+  }) async {
+    query ??= PcoGivingLabelQuery();
+    query.getAll = true;
 
     var url = '/giving/v2/donations/$donationId/labels';
     if (id != null) url += '/$id';

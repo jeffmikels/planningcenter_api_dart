@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.179786
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.026772
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -258,8 +258,11 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleWorkflowCardNote] objects (expecting one)
+  /// Will get a [PcoCollection] of [PcoPeopleWorkflowCardNote] objects (expecting one)
   /// using a path like this: `/people/v2/people/$personId/workflow_cards/$workflowCardId/notes`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -268,8 +271,10 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
     String personId,
     String workflowCardId, {
     PcoPeopleWorkflowCardNoteQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleWorkflowCardNoteQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/people/v2/people/$personId/workflow_cards/$workflowCardId/notes';

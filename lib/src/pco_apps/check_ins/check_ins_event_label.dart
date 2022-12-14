@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.059986
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.924814
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoCheckInsEventLabelFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeEvent`: include associated event
 /// - `includeLabel`: include associated label
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -47,7 +47,7 @@ class PcoCheckInsEventLabelQuery extends PlanningCenterApiQuery {
     bool includeLabel = false,
 
     /// when true, adds `?include=event,label` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -61,8 +61,8 @@ class PcoCheckInsEventLabelQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeEvent) include.add('event');
-    if (includeAll || includeLabel) include.add('label');
+    if (includeAllRelated || includeEvent) include.add('event');
+    if (includeAllRelated || includeLabel) include.add('label');
   }
 }
 
@@ -272,8 +272,11 @@ class PcoCheckInsEventLabel extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -281,12 +284,15 @@ class PcoCheckInsEventLabel extends PcoResource {
     String eventId, {
     String? id,
     PcoCheckInsEventLabelQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEvent = false,
     bool includeLabel = false,
   }) async {
     query ??= PcoCheckInsEventLabelQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/events/$eventId/event_labels';
@@ -295,8 +301,62 @@ class PcoCheckInsEventLabel extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsEventLabel] objects (expecting many)
+  /// Will get a single [PcoCheckInsEventLabel] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEventLabel?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoCheckInsEventLabelQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
+    query ??= PcoCheckInsEventLabelQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
+    var url = '/check-ins/v2/events/$eventId/event_labels/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEventLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoCheckInsEventLabelQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
+    query ??= PcoCheckInsEventLabelQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
+    var url = '/check-ins/v2/events/$eventId/event_labels';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsEventLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/event_labels`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -304,12 +364,66 @@ class PcoCheckInsEventLabel extends PcoResource {
     String labelId, {
     String? id,
     PcoCheckInsEventLabelQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEvent = false,
     bool includeLabel = false,
   }) async {
     query ??= PcoCheckInsEventLabelQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
+    var url = '/check-ins/v2/labels/$labelId/event_labels';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsEventLabel] object
+  /// using a path like this: `/check-ins/v2/labels/$labelId/event_labels/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsEventLabel?> getSingleFromLabel(
+    String labelId,
+    String id, {
+    PcoCheckInsEventLabelQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
+    query ??= PcoCheckInsEventLabelQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeLabel) query.include.add('label');
+    var url = '/check-ins/v2/labels/$labelId/event_labels/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsEventLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsEventLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/labels/$labelId/event_labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsEventLabel>> getAllFromLabel(
+    String labelId, {
+    String? id,
+    PcoCheckInsEventLabelQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeLabel = false,
+  }) async {
+    query ??= PcoCheckInsEventLabelQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsEventLabel.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeLabel) query.include.add('label');
     var url = '/check-ins/v2/labels/$labelId/event_labels';

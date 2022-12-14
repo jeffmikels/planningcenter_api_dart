@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.998296
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.858835
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoServicesTagGroupFilter { arrangement, media, person, song }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeFolder`: include associated folder
 /// - `includeTags`: include associated tags
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -69,7 +69,7 @@ class PcoServicesTagGroupQuery extends PlanningCenterApiQuery {
     bool includeTags = false,
 
     /// when true, adds `?include=folder,tags` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `name`
     /// query on a specific name, url example: ?where[name]=string
@@ -95,8 +95,8 @@ class PcoServicesTagGroupQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeFolder) include.add('folder');
-    if (includeAll || includeTags) include.add('tags');
+    if (includeAllRelated || includeFolder) include.add('folder');
+    if (includeAllRelated || includeTags) include.add('tags');
 
     if (whereName != null)
       where.add(PlanningCenterApiWhere.parse('name', whereName));
@@ -306,7 +306,68 @@ class PcoServicesTagGroup extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesTagGroup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesTagGroup] objects (expecting many)
+  /// using a path like this: `/services/v2/tag_groups`
+  ///
+  /// Available Query Filters:
+  /// - `arrangement`
+  /// - `media`
+  /// - `person`
+  /// - `song`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoServicesTagGroup>> get({
+    String? id,
+    PcoServicesTagGroupQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeFolder = false,
+    bool includeTags = false,
+  }) async {
+    query ??= PcoServicesTagGroupQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesTagGroup.canInclude);
+    if (includeFolder) query.include.add('folder');
+    if (includeTags) query.include.add('tags');
+    var url = '/services/v2/tag_groups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesTagGroup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesTagGroup] object
+  /// using a path like this: `/services/v2/tag_groups/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `arrangement`
+  /// - `media`
+  /// - `person`
+  /// - `song`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesTagGroup?> getSingle(
+    String id, {
+    PcoServicesTagGroupQuery? query,
+    bool includeAllRelated = false,
+    bool includeFolder = false,
+    bool includeTags = false,
+  }) async {
+    query ??= PcoServicesTagGroupQuery();
+    if (includeAllRelated) query.include.addAll(PcoServicesTagGroup.canInclude);
+    if (includeFolder) query.include.add('folder');
+    if (includeTags) query.include.add('tags');
+    var url = '/services/v2/tag_groups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesTagGroup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesTagGroup] objects (expecting many)
   /// using a path like this: `/services/v2/tag_groups`
   ///
   /// Available Query Filters:
@@ -317,15 +378,18 @@ class PcoServicesTagGroup extends PcoResource {
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoServicesTagGroup>> get({
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesTagGroup>> getAll({
     String? id,
     PcoServicesTagGroupQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeFolder = false,
     bool includeTags = false,
   }) async {
     query ??= PcoServicesTagGroupQuery();
-    if (includeAll) query.include.addAll(PcoServicesTagGroup.canInclude);
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoServicesTagGroup.canInclude);
     if (includeFolder) query.include.add('folder');
     if (includeTags) query.include.add('tags');
     var url = '/services/v2/tag_groups';

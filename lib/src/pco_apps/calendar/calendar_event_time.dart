@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.207633
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.047993
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -19,7 +19,7 @@ enum PcoCalendarEventTimeFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeEvent`: include associated event
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -349,8 +349,11 @@ class PcoCalendarEventTime extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarEventTime] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarEventTime] objects (expecting many)
   /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/event_times`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -358,9 +361,54 @@ class PcoCalendarEventTime extends PcoResource {
     String eventInstanceId, {
     String? id,
     PcoCalendarEventTimeQuery? query,
+    bool getAll = false,
     bool includeEvent = false,
   }) async {
     query ??= PcoCalendarEventTimeQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeEvent) query.include.add('event');
+    var url = '/calendar/v2/event_instances/$eventInstanceId/event_times';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarEventTime>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarEventTime] object
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/event_times/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarEventTime?> getSingleFromEventInstance(
+    String eventInstanceId,
+    String id, {
+    PcoCalendarEventTimeQuery? query,
+    bool includeEvent = false,
+  }) async {
+    query ??= PcoCalendarEventTimeQuery();
+
+    if (includeEvent) query.include.add('event');
+    var url = '/calendar/v2/event_instances/$eventInstanceId/event_times/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarEventTime>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarEventTime] objects (expecting many)
+  /// using a path like this: `/calendar/v2/event_instances/$eventInstanceId/event_times`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarEventTime>> getAllFromEventInstance(
+    String eventInstanceId, {
+    String? id,
+    PcoCalendarEventTimeQuery? query,
+    bool includeEvent = false,
+  }) async {
+    query ??= PcoCalendarEventTimeQuery();
+    query.getAll = true;
 
     if (includeEvent) query.include.add('event');
     var url = '/calendar/v2/event_instances/$eventInstanceId/event_times';

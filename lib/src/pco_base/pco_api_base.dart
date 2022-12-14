@@ -355,7 +355,7 @@ class PlanningCenter {
 
     // fix params to be the correct type
     var params = <String, String>{};
-    query.asMap.forEach((k, v) => params[k.toString()] = v.toString());
+    query.asApiMap.forEach((k, v) => params[k.toString()] = v.toString());
 
     // if we are using app secret authentication, it will be embedded in the _baseUri.authority
     var uri = Uri.https(_baseUri.authority, _baseUri.path + endpoint, params);
@@ -574,9 +574,13 @@ class PlanningCenterApiQuery {
   final int perPage;
   int pageOffset;
 
+  /// Set this flag to automatically retrieve all possible items for this query
+  bool getAll = false;
+
   PlanningCenterApiQuery({
     this.perPage = 25,
     this.pageOffset = 0,
+    this.getAll = false,
     this.order,
     List<PlanningCenterApiWhere>? where,
     Iterable<String> filter = const <String>[],
@@ -587,12 +591,15 @@ class PlanningCenterApiQuery {
     this.include.addAll(include);
   }
 
+  Map<String, dynamic> get asApiMap => asMap..remove('_get_all');
+
   Map<String, dynamic> toJson() => asMap;
 
   Map<String, dynamic> get asMap {
     Map<String, dynamic> retval = {
       'per_page': perPage,
       'offset': pageOffset,
+      '_get_all': getAll,
     };
     if (order != null) retval['order'] = order;
 
@@ -625,6 +632,7 @@ class PlanningCenterApiQuery {
       include: Set.from(include),
       perPage: perPage,
       pageOffset: pageOffset,
+      getAll: getAll,
       order: order,
       where: where.toList(),
       extraParams: {...extraParams},

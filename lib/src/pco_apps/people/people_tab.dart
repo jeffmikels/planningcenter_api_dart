@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.174397
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.022773
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoPeopleTabFilter { withFieldDefinitions }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeFieldDefinitions`: include associated field_definitions
 /// - `includeFieldOptions`: include associated field_options
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -82,7 +82,7 @@ class PcoPeopleTabQuery extends PlanningCenterApiQuery {
     bool includeFieldOptions = false,
 
     /// when true, adds `?include=field_definitions,field_options` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `name`
     /// query on a specific name, url example: ?where[name]=string
@@ -114,8 +114,9 @@ class PcoPeopleTabQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeFieldDefinitions) include.add('field_definitions');
-    if (includeAll || includeFieldOptions) include.add('field_options');
+    if (includeAllRelated || includeFieldDefinitions)
+      include.add('field_definitions');
+    if (includeAllRelated || includeFieldOptions) include.add('field_options');
 
     if (whereName != null)
       where.add(PlanningCenterApiWhere.parse('name', whereName));
@@ -335,23 +336,28 @@ class PcoPeopleTab extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleTab] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleTab] objects (expecting many)
   /// using a path like this: `/people/v2/tabs`
   ///
   /// Available Query Filters:
   /// - `with_field_definitions`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleTab>> get({
     String? id,
     PcoPeopleTabQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
     query ??= PcoPeopleTabQuery();
-    if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
     var url = '/people/v2/tabs';
@@ -360,8 +366,64 @@ class PcoPeopleTab extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleTab] objects (expecting many)
+  /// Will get a single [PcoPeopleTab] object
+  /// using a path like this: `/people/v2/tabs/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `with_field_definitions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleTab?> getSingle(
+    String id, {
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/tabs/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleTab] objects (expecting many)
+  /// using a path like this: `/people/v2/tabs`
+  ///
+  /// Available Query Filters:
+  /// - `with_field_definitions`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleTab>> getAll({
+    String? id,
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/tabs';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleTab] objects (expecting many)
   /// using a path like this: `/people/v2/field_data/$fieldDataId/tab`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -369,12 +431,14 @@ class PcoPeopleTab extends PcoResource {
     String fieldDataId, {
     String? id,
     PcoPeopleTabQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
     query ??= PcoPeopleTabQuery();
-    if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
     var url = '/people/v2/field_data/$fieldDataId/tab';
@@ -383,8 +447,60 @@ class PcoPeopleTab extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleTab] objects (expecting many)
+  /// Will get a single [PcoPeopleTab] object
+  /// using a path like this: `/people/v2/field_data/$fieldDataId/tab/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleTab?> getSingleFromFieldData(
+    String fieldDataId,
+    String id, {
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/field_data/$fieldDataId/tab/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleTab] objects (expecting many)
+  /// using a path like this: `/people/v2/field_data/$fieldDataId/tab`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleTab>> getAllFromFieldData(
+    String fieldDataId, {
+    String? id,
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/field_data/$fieldDataId/tab';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleTab] objects (expecting many)
   /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/tab`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -392,12 +508,63 @@ class PcoPeopleTab extends PcoResource {
     String fieldDefinitionId, {
     String? id,
     PcoPeopleTabQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeFieldDefinitions = false,
     bool includeFieldOptions = false,
   }) async {
     query ??= PcoPeopleTabQuery();
-    if (includeAll) query.include.addAll(PcoPeopleTab.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/field_definitions/$fieldDefinitionId/tab';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleTab] object
+  /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/tab/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleTab?> getSingleFromFieldDefinition(
+    String fieldDefinitionId,
+    String id, {
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
+    if (includeFieldDefinitions) query.include.add('field_definitions');
+    if (includeFieldOptions) query.include.add('field_options');
+    var url = '/people/v2/field_definitions/$fieldDefinitionId/tab/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleTab>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleTab] objects (expecting many)
+  /// using a path like this: `/people/v2/field_definitions/$fieldDefinitionId/tab`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleTab>> getAllFromFieldDefinition(
+    String fieldDefinitionId, {
+    String? id,
+    PcoPeopleTabQuery? query,
+    bool includeAllRelated = false,
+    bool includeFieldDefinitions = false,
+    bool includeFieldOptions = false,
+  }) async {
+    query ??= PcoPeopleTabQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleTab.canInclude);
     if (includeFieldDefinitions) query.include.add('field_definitions');
     if (includeFieldOptions) query.include.add('field_options');
     var url = '/people/v2/field_definitions/$fieldDefinitionId/tab';

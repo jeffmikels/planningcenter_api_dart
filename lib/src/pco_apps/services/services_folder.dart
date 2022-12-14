@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.956151
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.827371
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -18,7 +18,7 @@ enum PcoServicesFolderFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeServiceTypes`: include associated service_types
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -311,17 +311,22 @@ class PcoServicesFolder extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesFolder] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesFolder>> get({
     String? id,
     PcoServicesFolderQuery? query,
+    bool getAll = false,
     bool includeServiceTypes = false,
   }) async {
     query ??= PcoServicesFolderQuery();
+    if (getAll) query.getAll = true;
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders';
@@ -330,8 +335,52 @@ class PcoServicesFolder extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesFolder] objects (expecting many)
+  /// Will get a single [PcoServicesFolder] object
+  /// using a path like this: `/services/v2/folders/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesFolder?> getSingle(
+    String id, {
+    PcoServicesFolderQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
+    query ??= PcoServicesFolderQuery();
+
+    if (includeServiceTypes) query.include.add('service_types');
+    var url = '/services/v2/folders/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesFolder>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesFolder] objects (expecting many)
+  /// using a path like this: `/services/v2/folders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesFolder>> getAll({
+    String? id,
+    PcoServicesFolderQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
+    query ??= PcoServicesFolderQuery();
+    query.getAll = true;
+
+    if (includeServiceTypes) query.include.add('service_types');
+    var url = '/services/v2/folders';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesFolder>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesFolder] objects (expecting many)
   /// using a path like this: `/services/v2/folders/$folderId/folders`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -339,9 +388,11 @@ class PcoServicesFolder extends PcoResource {
     String folderId, {
     String? id,
     PcoServicesFolderQuery? query,
+    bool getAll = false,
     bool includeServiceTypes = false,
   }) async {
     query ??= PcoServicesFolderQuery();
+    if (getAll) query.getAll = true;
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/folders/$folderId/folders';
@@ -350,17 +401,65 @@ class PcoServicesFolder extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoServicesFolder] objects (expecting one)
+  /// Will get a single [PcoServicesFolder] object
+  /// using a path like this: `/services/v2/folders/$folderId/folders/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesFolder?> getSingleFromFolder(
+    String folderId,
+    String id, {
+    PcoServicesFolderQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
+    query ??= PcoServicesFolderQuery();
+
+    if (includeServiceTypes) query.include.add('service_types');
+    var url = '/services/v2/folders/$folderId/folders/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesFolder>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesFolder] objects (expecting many)
+  /// using a path like this: `/services/v2/folders/$folderId/folders`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesFolder>> getAllFromFolder(
+    String folderId, {
+    String? id,
+    PcoServicesFolderQuery? query,
+    bool includeServiceTypes = false,
+  }) async {
+    query ??= PcoServicesFolderQuery();
+    query.getAll = true;
+
+    if (includeServiceTypes) query.include.add('service_types');
+    var url = '/services/v2/folders/$folderId/folders';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesFolder>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoServicesFolder] objects (expecting one)
   /// using a path like this: `/services/v2/tag_groups/$tagGroupId/folder`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoServicesFolder>> getFromTagGroup(
     String tagGroupId, {
     PcoServicesFolderQuery? query,
+    bool getAll = false,
     bool includeServiceTypes = false,
   }) async {
     query ??= PcoServicesFolderQuery();
+    if (getAll) query.getAll = true;
 
     if (includeServiceTypes) query.include.add('service_types');
     var url = '/services/v2/tag_groups/$tagGroupId/folder';

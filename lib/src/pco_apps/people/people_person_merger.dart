@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.167604
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.018019
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -289,16 +289,58 @@ class PcoPeoplePersonMerger extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeoplePersonMerger] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePersonMerger] objects (expecting many)
   /// using a path like this: `/people/v2/person_mergers`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeoplePersonMerger>> get({
     String? id,
     PcoPeoplePersonMergerQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeoplePersonMergerQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/person_mergers';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeoplePersonMerger] object
+  /// using a path like this: `/people/v2/person_mergers/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeoplePersonMerger?> getSingle(
+    String id, {
+    PcoPeoplePersonMergerQuery? query,
+  }) async {
+    query ??= PcoPeoplePersonMergerQuery();
+
+    var url = '/people/v2/person_mergers/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePersonMerger>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePersonMerger] objects (expecting many)
+  /// using a path like this: `/people/v2/person_mergers`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeoplePersonMerger>> getAll({
+    String? id,
+    PcoPeoplePersonMergerQuery? query,
+  }) async {
+    query ??= PcoPeoplePersonMergerQuery();
+    query.getAll = true;
 
     var url = '/people/v2/person_mergers';
     if (id != null) url += '/$id';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.072125
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.934446
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -26,7 +26,7 @@ enum PcoCheckInsPersonFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeOrganization`: include associated organization
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -462,17 +462,22 @@ class PcoCheckInsPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsPerson>> get({
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/check-ins/v2/people';
@@ -481,8 +486,52 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/people/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingle(
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAll({
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -490,9 +539,11 @@ class PcoCheckInsPerson extends PcoResource {
     String checkInId, {
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/check-ins/v2/check_ins/$checkInId/checked_in_by';
@@ -501,8 +552,54 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_by/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingleCheckedInByFromCheckIn(
+    String checkInId,
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/checked_in_by/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_in_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAllCheckedInByFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/checked_in_by';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_out_by`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -510,9 +607,11 @@ class PcoCheckInsPerson extends PcoResource {
     String checkInId, {
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/check-ins/v2/check_ins/$checkInId/checked_out_by';
@@ -521,8 +620,54 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_out_by/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingleCheckedOutByFromCheckIn(
+    String checkInId,
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/checked_out_by/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/checked_out_by`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAllCheckedOutByFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/checked_out_by';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/check_ins/$checkInId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -530,9 +675,11 @@ class PcoCheckInsPerson extends PcoResource {
     String checkInId, {
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/check-ins/v2/check_ins/$checkInId/person';
@@ -541,8 +688,54 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/person/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingleFromCheckIn(
+    String checkInId,
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/person/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/check_ins/$checkInId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAllFromCheckIn(
+    String checkInId, {
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/check_ins/$checkInId/person';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/passes/$passId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -550,9 +743,11 @@ class PcoCheckInsPerson extends PcoResource {
     String passId, {
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url = '/check-ins/v2/passes/$passId/person';
@@ -561,8 +756,54 @@ class PcoCheckInsPerson extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPerson] objects (expecting many)
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/passes/$passId/person/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingleFromPass(
+    String passId,
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/passes/$passId/person/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/passes/$passId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAllFromPass(
+    String passId, {
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url = '/check-ins/v2/passes/$passId/person';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPerson] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/person`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -571,9 +812,58 @@ class PcoCheckInsPerson extends PcoResource {
     String personEventId, {
     String? id,
     PcoCheckInsPersonQuery? query,
+    bool getAll = false,
     bool includeOrganization = false,
   }) async {
     query ??= PcoCheckInsPersonQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/check-ins/v2/events/$eventId/person_events/$personEventId/person';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsPerson] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/person/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPerson?> getSingleFromEventAndPersonEvent(
+    String eventId,
+    String personEventId,
+    String id, {
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+
+    if (includeOrganization) query.include.add('organization');
+    var url =
+        '/check-ins/v2/events/$eventId/person_events/$personEventId/person/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPerson] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events/$personEventId/person`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPerson>> getAllFromEventAndPersonEvent(
+    String eventId,
+    String personEventId, {
+    String? id,
+    PcoCheckInsPersonQuery? query,
+    bool includeOrganization = false,
+  }) async {
+    query ??= PcoCheckInsPersonQuery();
+    query.getAll = true;
 
     if (includeOrganization) query.include.add('organization');
     var url =

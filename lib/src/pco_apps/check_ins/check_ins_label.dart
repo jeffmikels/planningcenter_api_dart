@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.064025
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.927714
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -242,16 +242,21 @@ class PcoCheckInsLabel extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCheckInsLabel>> get({
     String? id,
     PcoCheckInsLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCheckInsLabelQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/check-ins/v2/labels';
     if (id != null) url += '/$id';
@@ -259,8 +264,48 @@ class PcoCheckInsLabel extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
+  /// Will get a single [PcoCheckInsLabel] object
+  /// using a path like this: `/check-ins/v2/labels/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsLabel?> getSingle(
+    String id, {
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+
+    var url = '/check-ins/v2/labels/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/labels`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsLabel>> getAll({
+    String? id,
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+    query.getAll = true;
+
+    var url = '/check-ins/v2/labels';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -269,8 +314,10 @@ class PcoCheckInsLabel extends PcoResource {
     String eventLabelId, {
     String? id,
     PcoCheckInsLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCheckInsLabelQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label';
     if (id != null) url += '/$id';
@@ -278,8 +325,53 @@ class PcoCheckInsLabel extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
+  /// Will get a single [PcoCheckInsLabel] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsLabel?> getSingleFromEventAndEventLabel(
+    String eventId,
+    String eventLabelId,
+    String id, {
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+
+    var url =
+        '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsLabel>> getAllFromEventAndEventLabel(
+    String eventId,
+    String eventLabelId, {
+    String? id,
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+    query.getAll = true;
+
+    var url = '/check-ins/v2/events/$eventId/event_labels/$eventLabelId/label';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -288,8 +380,10 @@ class PcoCheckInsLabel extends PcoResource {
     String locationLabelId, {
     String? id,
     PcoCheckInsLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCheckInsLabelQuery();
+    if (getAll) query.getAll = true;
 
     var url =
         '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label';
@@ -298,8 +392,55 @@ class PcoCheckInsLabel extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsLabel] objects (expecting many)
+  /// Will get a single [PcoCheckInsLabel] object
+  /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsLabel?> getSingleFromLabelAndLocationLabel(
+    String labelId,
+    String locationLabelId,
+    String id, {
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+
+    var url =
+        '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsLabel>>
+      getAllFromLabelAndLocationLabel(
+    String labelId,
+    String locationLabelId, {
+    String? id,
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+    query.getAll = true;
+
+    var url =
+        '/check-ins/v2/labels/$labelId/location_labels/$locationLabelId/label';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsLabel] objects (expecting many)
   /// using a path like this: `/check-ins/v2/options/$optionId/label`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -307,8 +448,49 @@ class PcoCheckInsLabel extends PcoResource {
     String optionId, {
     String? id,
     PcoCheckInsLabelQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoCheckInsLabelQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/check-ins/v2/options/$optionId/label';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsLabel] object
+  /// using a path like this: `/check-ins/v2/options/$optionId/label/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsLabel?> getSingleFromOption(
+    String optionId,
+    String id, {
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+
+    var url = '/check-ins/v2/options/$optionId/label/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsLabel>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsLabel] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/options/$optionId/label`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsLabel>> getAllFromOption(
+    String optionId, {
+    String? id,
+    PcoCheckInsLabelQuery? query,
+  }) async {
+    query ??= PcoCheckInsLabelQuery();
+    query.getAll = true;
 
     var url = '/check-ins/v2/options/$optionId/label';
     if (id != null) url += '/$id';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.148669
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.001157
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -42,7 +42,7 @@ enum PcoPeopleListFilter { canManage, recentlyViewed, starred }
 /// - `includeRules`: include associated rules
 /// - `includeShares`: include associated shares
 /// - `includeUpdatedBy`: include associated updated_by
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -138,7 +138,7 @@ class PcoPeopleListQuery extends PlanningCenterApiQuery {
     bool includeUpdatedBy = false,
 
     /// when true, adds `?include=campus,category,created_by,mailchimp_sync_status,people,rules,shares,updated_by` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `batch_completed_at`
     /// query on a specific batch_completed_at, url example: ?where[batch_completed_at]=2000-01-01T12:00:00Z
@@ -180,15 +180,15 @@ class PcoPeopleListQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeCampus) include.add('campus');
-    if (includeAll || includeCategory) include.add('category');
-    if (includeAll || includeCreatedBy) include.add('created_by');
-    if (includeAll || includeMailchimpSyncStatus)
+    if (includeAllRelated || includeCampus) include.add('campus');
+    if (includeAllRelated || includeCategory) include.add('category');
+    if (includeAllRelated || includeCreatedBy) include.add('created_by');
+    if (includeAllRelated || includeMailchimpSyncStatus)
       include.add('mailchimp_sync_status');
-    if (includeAll || includePeople) include.add('people');
-    if (includeAll || includeRules) include.add('rules');
-    if (includeAll || includeShares) include.add('shares');
-    if (includeAll || includeUpdatedBy) include.add('updated_by');
+    if (includeAllRelated || includePeople) include.add('people');
+    if (includeAllRelated || includeRules) include.add('rules');
+    if (includeAllRelated || includeShares) include.add('shares');
+    if (includeAllRelated || includeUpdatedBy) include.add('updated_by');
 
     if (whereBatchCompletedAt != null)
       where.add(PlanningCenterApiWhere.parse(
@@ -574,7 +574,7 @@ class PcoPeopleList extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleList] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleList] objects (expecting many)
   /// using a path like this: `/people/v2/lists`
   ///
   /// Available Query Filters:
@@ -582,12 +582,16 @@ class PcoPeopleList extends PcoResource {
   /// - `recently_viewed`
   /// - `starred`
   ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleList>> get({
     String? id,
     PcoPeopleListQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeCampus = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
@@ -598,7 +602,8 @@ class PcoPeopleList extends PcoResource {
     bool includeUpdatedBy = false,
   }) async {
     query ??= PcoPeopleListQuery();
-    if (includeAll) query.include.addAll(PcoPeopleList.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
     if (includeCampus) query.include.add('campus');
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
@@ -613,16 +618,20 @@ class PcoPeopleList extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleList] objects (expecting many)
-  /// using a path like this: `/people/v2/campuses/$campusId/lists`
+  /// Will get a single [PcoPeopleList] object
+  /// using a path like this: `/people/v2/lists/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `can_manage`
+  /// - `recently_viewed`
+  /// - `starred`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleList>> getFromCampus(
-    String campusId, {
-    String? id,
+  static Future<PcoPeopleList?> getSingle(
+    String id, {
     PcoPeopleListQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeCampus = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
@@ -633,7 +642,89 @@ class PcoPeopleList extends PcoResource {
     bool includeUpdatedBy = false,
   }) async {
     query ??= PcoPeopleListQuery();
-    if (includeAll) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/lists/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleList] objects (expecting many)
+  /// using a path like this: `/people/v2/lists`
+  ///
+  /// Available Query Filters:
+  /// - `can_manage`
+  /// - `recently_viewed`
+  /// - `starred`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleList>> getAll({
+    String? id,
+    PcoPeopleListQuery? query,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/lists';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleList] objects (expecting many)
+  /// using a path like this: `/people/v2/campuses/$campusId/lists`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleList>> getFromCampus(
+    String campusId, {
+    String? id,
+    PcoPeopleListQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
     if (includeCampus) query.include.add('campus');
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');
@@ -648,16 +739,16 @@ class PcoPeopleList extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleList] objects (expecting many)
-  /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists`
+  /// Will get a single [PcoPeopleList] object
+  /// using a path like this: `/people/v2/campuses/$campusId/lists/[id]`
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
-  static Future<PcoCollection<PcoPeopleList>> getFromListCategory(
-    String listCategoryId, {
-    String? id,
+  static Future<PcoPeopleList?> getSingleFromCampus(
+    String campusId,
+    String id, {
     PcoPeopleListQuery? query,
-    bool includeAll = false,
+    bool includeAllRelated = false,
     bool includeCampus = false,
     bool includeCategory = false,
     bool includeCreatedBy = false,
@@ -668,7 +759,158 @@ class PcoPeopleList extends PcoResource {
     bool includeUpdatedBy = false,
   }) async {
     query ??= PcoPeopleListQuery();
-    if (includeAll) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/campuses/$campusId/lists/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleList] objects (expecting many)
+  /// using a path like this: `/people/v2/campuses/$campusId/lists`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleList>> getAllFromCampus(
+    String campusId, {
+    String? id,
+    PcoPeopleListQuery? query,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/campuses/$campusId/lists';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleList] objects (expecting many)
+  /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCollection<PcoPeopleList>> getFromListCategory(
+    String listCategoryId, {
+    String? id,
+    PcoPeopleListQuery? query,
+    bool getAll = false,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/list_categories/$listCategoryId/lists';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleList] object
+  /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleList?> getSingleFromListCategory(
+    String listCategoryId,
+    String id, {
+    PcoPeopleListQuery? query,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
+    if (includeCampus) query.include.add('campus');
+    if (includeCategory) query.include.add('category');
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeMailchimpSyncStatus) query.include.add('mailchimp_sync_status');
+    if (includePeople) query.include.add('people');
+    if (includeRules) query.include.add('rules');
+    if (includeShares) query.include.add('shares');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/list_categories/$listCategoryId/lists/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleList>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleList] objects (expecting many)
+  /// using a path like this: `/people/v2/list_categories/$listCategoryId/lists`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleList>> getAllFromListCategory(
+    String listCategoryId, {
+    String? id,
+    PcoPeopleListQuery? query,
+    bool includeAllRelated = false,
+    bool includeCampus = false,
+    bool includeCategory = false,
+    bool includeCreatedBy = false,
+    bool includeMailchimpSyncStatus = false,
+    bool includePeople = false,
+    bool includeRules = false,
+    bool includeShares = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleListQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleList.canInclude);
     if (includeCampus) query.include.add('campus');
     if (includeCategory) query.include.add('category');
     if (includeCreatedBy) query.include.add('created_by');

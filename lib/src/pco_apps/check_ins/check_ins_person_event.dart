@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.072831
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.935397
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -20,7 +20,7 @@ enum PcoCheckInsPersonEventFilter { none }
 /// - `includeFirstCheckIn`: include associated first_check_in
 /// - `includeLastCheckIn`: include associated last_check_in
 /// - `includePerson`: include associated person
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -57,7 +57,7 @@ class PcoCheckInsPersonEventQuery extends PlanningCenterApiQuery {
     bool includePerson = false,
 
     /// when true, adds `?include=event,first_check_in,last_check_in,person` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// reverse the ordering
     bool reverse = false,
@@ -71,10 +71,10 @@ class PcoCheckInsPersonEventQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeEvent) include.add('event');
-    if (includeAll || includeFirstCheckIn) include.add('first_check_in');
-    if (includeAll || includeLastCheckIn) include.add('last_check_in');
-    if (includeAll || includePerson) include.add('person');
+    if (includeAllRelated || includeEvent) include.add('event');
+    if (includeAllRelated || includeFirstCheckIn) include.add('first_check_in');
+    if (includeAllRelated || includeLastCheckIn) include.add('last_check_in');
+    if (includeAllRelated || includePerson) include.add('person');
   }
 }
 
@@ -280,8 +280,11 @@ class PcoCheckInsPersonEvent extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCheckInsPersonEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/events/$eventId/person_events`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -289,14 +292,17 @@ class PcoCheckInsPersonEvent extends PcoResource {
     String eventId, {
     String? id,
     PcoCheckInsPersonEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEvent = false,
     bool includeFirstCheckIn = false,
     bool includeLastCheckIn = false,
     bool includePerson = false,
   }) async {
     query ??= PcoCheckInsPersonEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeFirstCheckIn) query.include.add('first_check_in');
     if (includeLastCheckIn) query.include.add('last_check_in');
@@ -307,8 +313,70 @@ class PcoCheckInsPersonEvent extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCheckInsPersonEvent] objects (expecting many)
+  /// Will get a single [PcoCheckInsPersonEvent] object
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPersonEvent?> getSingleFromEvent(
+    String eventId,
+    String id, {
+    PcoCheckInsPersonEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeFirstCheckIn = false,
+    bool includeLastCheckIn = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPersonEventQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeFirstCheckIn) query.include.add('first_check_in');
+    if (includeLastCheckIn) query.include.add('last_check_in');
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/events/$eventId/person_events/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPersonEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/events/$eventId/person_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPersonEvent>> getAllFromEvent(
+    String eventId, {
+    String? id,
+    PcoCheckInsPersonEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeFirstCheckIn = false,
+    bool includeLastCheckIn = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPersonEventQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeFirstCheckIn) query.include.add('first_check_in');
+    if (includeLastCheckIn) query.include.add('last_check_in');
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/events/$eventId/person_events';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCheckInsPersonEvent] objects (expecting many)
   /// using a path like this: `/check-ins/v2/people/$personId/person_events`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -316,14 +384,76 @@ class PcoCheckInsPersonEvent extends PcoResource {
     String personId, {
     String? id,
     PcoCheckInsPersonEventQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeEvent = false,
     bool includeFirstCheckIn = false,
     bool includeLastCheckIn = false,
     bool includePerson = false,
   }) async {
     query ??= PcoCheckInsPersonEventQuery();
-    if (includeAll) query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeFirstCheckIn) query.include.add('first_check_in');
+    if (includeLastCheckIn) query.include.add('last_check_in');
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/people/$personId/person_events';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCheckInsPersonEvent] object
+  /// using a path like this: `/check-ins/v2/people/$personId/person_events/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCheckInsPersonEvent?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoCheckInsPersonEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeFirstCheckIn = false,
+    bool includeLastCheckIn = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPersonEventQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
+    if (includeEvent) query.include.add('event');
+    if (includeFirstCheckIn) query.include.add('first_check_in');
+    if (includeLastCheckIn) query.include.add('last_check_in');
+    if (includePerson) query.include.add('person');
+    var url = '/check-ins/v2/people/$personId/person_events/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCheckInsPersonEvent>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCheckInsPersonEvent] objects (expecting many)
+  /// using a path like this: `/check-ins/v2/people/$personId/person_events`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCheckInsPersonEvent>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoCheckInsPersonEventQuery? query,
+    bool includeAllRelated = false,
+    bool includeEvent = false,
+    bool includeFirstCheckIn = false,
+    bool includeLastCheckIn = false,
+    bool includePerson = false,
+  }) async {
+    query ??= PcoCheckInsPersonEventQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCheckInsPersonEvent.canInclude);
     if (includeEvent) query.include.add('event');
     if (includeFirstCheckIn) query.include.add('first_check_in');
     if (includeLastCheckIn) query.include.add('last_check_in');

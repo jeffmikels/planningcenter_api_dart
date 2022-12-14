@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.215525
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.055705
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoCalendarRoomSetupFilter { sharedRoomSetups }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeContainingResource`: include associated containing_resource
 /// - `includeResourceSuggestions`: include associated resource_suggestions
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -84,7 +84,7 @@ class PcoCalendarRoomSetupQuery extends PlanningCenterApiQuery {
     bool includeResourceSuggestions = false,
 
     /// when true, adds `?include=containing_resource,resource_suggestions` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `created_at`
     /// query on a specific created_at, url example: ?where[created_at]=2000-01-01T12:00:00Z
@@ -116,9 +116,9 @@ class PcoCalendarRoomSetupQuery extends PlanningCenterApiQuery {
     super.include,
   }) : super() {
     if (filterBy != null) filter.add(filterString(filterBy));
-    if (includeAll || includeContainingResource)
+    if (includeAllRelated || includeContainingResource)
       include.add('containing_resource');
-    if (includeAll || includeResourceSuggestions)
+    if (includeAllRelated || includeResourceSuggestions)
       include.add('resource_suggestions');
 
     if (whereCreatedAt != null)
@@ -375,23 +375,29 @@ class PcoCalendarRoomSetup extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoCalendarRoomSetup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarRoomSetup] objects (expecting many)
   /// using a path like this: `/calendar/v2/room_setups`
   ///
   /// Available Query Filters:
   /// - `shared_room_setups`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoCalendarRoomSetup>> get({
     String? id,
     PcoCalendarRoomSetupQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContainingResource = false,
     bool includeResourceSuggestions = false,
   }) async {
     query ??= PcoCalendarRoomSetupQuery();
-    if (includeAll) query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
     if (includeContainingResource) query.include.add('containing_resource');
     if (includeResourceSuggestions) query.include.add('resource_suggestions');
     var url = '/calendar/v2/room_setups';
@@ -400,8 +406,66 @@ class PcoCalendarRoomSetup extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarRoomSetup] objects (expecting one)
+  /// Will get a single [PcoCalendarRoomSetup] object
+  /// using a path like this: `/calendar/v2/room_setups/[id]`
+  ///
+  /// Available Query Filters:
+  /// - `shared_room_setups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarRoomSetup?> getSingle(
+    String id, {
+    PcoCalendarRoomSetupQuery? query,
+    bool includeAllRelated = false,
+    bool includeContainingResource = false,
+    bool includeResourceSuggestions = false,
+  }) async {
+    query ??= PcoCalendarRoomSetupQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (includeContainingResource) query.include.add('containing_resource');
+    if (includeResourceSuggestions) query.include.add('resource_suggestions');
+    var url = '/calendar/v2/room_setups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarRoomSetup] objects (expecting many)
+  /// using a path like this: `/calendar/v2/room_setups`
+  ///
+  /// Available Query Filters:
+  /// - `shared_room_setups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarRoomSetup>> getAll({
+    String? id,
+    PcoCalendarRoomSetupQuery? query,
+    bool includeAllRelated = false,
+    bool includeContainingResource = false,
+    bool includeResourceSuggestions = false,
+  }) async {
+    query ??= PcoCalendarRoomSetupQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (includeContainingResource) query.include.add('containing_resource');
+    if (includeResourceSuggestions) query.include.add('resource_suggestions');
+    var url = '/calendar/v2/room_setups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoCalendarRoomSetup] objects (expecting one)
   /// using a path like this: `/calendar/v2/event_resource_requests/$eventResourceRequestId/room_setup`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -409,12 +473,15 @@ class PcoCalendarRoomSetup extends PcoResource {
       getFromEventResourceRequest(
     String eventResourceRequestId, {
     PcoCalendarRoomSetupQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContainingResource = false,
     bool includeResourceSuggestions = false,
   }) async {
     query ??= PcoCalendarRoomSetupQuery();
-    if (includeAll) query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
     if (includeContainingResource) query.include.add('containing_resource');
     if (includeResourceSuggestions) query.include.add('resource_suggestions');
     var url =
@@ -424,8 +491,11 @@ class PcoCalendarRoomSetup extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoCalendarRoomSetup] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoCalendarRoomSetup] objects (expecting many)
   /// using a path like this: `/calendar/v2/resources/$resourceId/room_setups`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -433,12 +503,66 @@ class PcoCalendarRoomSetup extends PcoResource {
     String resourceId, {
     String? id,
     PcoCalendarRoomSetupQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeContainingResource = false,
     bool includeResourceSuggestions = false,
   }) async {
     query ??= PcoCalendarRoomSetupQuery();
-    if (includeAll) query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (includeContainingResource) query.include.add('containing_resource');
+    if (includeResourceSuggestions) query.include.add('resource_suggestions');
+    var url = '/calendar/v2/resources/$resourceId/room_setups';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoCalendarRoomSetup] object
+  /// using a path like this: `/calendar/v2/resources/$resourceId/room_setups/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoCalendarRoomSetup?> getSingleFromResource(
+    String resourceId,
+    String id, {
+    PcoCalendarRoomSetupQuery? query,
+    bool includeAllRelated = false,
+    bool includeContainingResource = false,
+    bool includeResourceSuggestions = false,
+  }) async {
+    query ??= PcoCalendarRoomSetupQuery();
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
+    if (includeContainingResource) query.include.add('containing_resource');
+    if (includeResourceSuggestions) query.include.add('resource_suggestions');
+    var url = '/calendar/v2/resources/$resourceId/room_setups/$id';
+    var retval = await PcoCollection.fromApiCall<PcoCalendarRoomSetup>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoCalendarRoomSetup] objects (expecting many)
+  /// using a path like this: `/calendar/v2/resources/$resourceId/room_setups`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoCalendarRoomSetup>> getAllFromResource(
+    String resourceId, {
+    String? id,
+    PcoCalendarRoomSetupQuery? query,
+    bool includeAllRelated = false,
+    bool includeContainingResource = false,
+    bool includeResourceSuggestions = false,
+  }) async {
+    query ??= PcoCalendarRoomSetupQuery();
+    query.getAll = true;
+    if (includeAllRelated)
+      query.include.addAll(PcoCalendarRoomSetup.canInclude);
     if (includeContainingResource) query.include.add('containing_resource');
     if (includeResourceSuggestions) query.include.add('resource_suggestions');
     var url = '/calendar/v2/resources/$resourceId/room_setups';

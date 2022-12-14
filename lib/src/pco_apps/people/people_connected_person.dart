@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.137717
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.993214
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -255,8 +255,11 @@ class PcoPeopleConnectedPerson extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleConnectedPerson] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleConnectedPerson] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/connected_people`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -264,8 +267,49 @@ class PcoPeopleConnectedPerson extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleConnectedPersonQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleConnectedPersonQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people/$personId/connected_people';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleConnectedPerson] object
+  /// using a path like this: `/people/v2/people/$personId/connected_people/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleConnectedPerson?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleConnectedPersonQuery? query,
+  }) async {
+    query ??= PcoPeopleConnectedPersonQuery();
+
+    var url = '/people/v2/people/$personId/connected_people/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleConnectedPerson>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleConnectedPerson] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/connected_people`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleConnectedPerson>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleConnectedPersonQuery? query,
+  }) async {
+    query ??= PcoPeopleConnectedPersonQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people/$personId/connected_people';
     if (id != null) url += '/$id';

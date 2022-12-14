@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:25.953259
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.824598
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -279,8 +279,11 @@ class PcoServicesContributor extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoServicesContributor] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoServicesContributor] objects (expecting many)
   /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/contributors`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -290,8 +293,54 @@ class PcoServicesContributor extends PcoResource {
     String planId, {
     String? id,
     PcoServicesContributorQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoServicesContributorQuery();
+    if (getAll) query.getAll = true;
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoServicesContributor>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoServicesContributor] object
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/contributors/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoServicesContributor?> getSingleFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId,
+    String id, {
+    PcoServicesContributorQuery? query,
+  }) async {
+    query ??= PcoServicesContributorQuery();
+
+    var url =
+        '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors/$id';
+    var retval = await PcoCollection.fromApiCall<PcoServicesContributor>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoServicesContributor] objects (expecting many)
+  /// using a path like this: `/services/v2/service_types/$serviceTypeId/plans/$planId/contributors`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoServicesContributor>>
+      getAllFromServiceTypeAndPlan(
+    String serviceTypeId,
+    String planId, {
+    String? id,
+    PcoServicesContributorQuery? query,
+  }) async {
+    query ??= PcoServicesContributorQuery();
+    query.getAll = true;
 
     var url =
         '/services/v2/service_types/$serviceTypeId/plans/$planId/contributors';

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.132787
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.990875
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -261,16 +261,21 @@ class PcoPeopleApp extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleApp] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/apps`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleApp>> get({
     String? id,
     PcoPeopleAppQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleAppQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/apps';
     if (id != null) url += '/$id';
@@ -278,8 +283,48 @@ class PcoPeopleApp extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleApp] objects (expecting many)
+  /// Will get a single [PcoPeopleApp] object
+  /// using a path like this: `/people/v2/apps/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleApp?> getSingle(
+    String id, {
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+
+    var url = '/people/v2/apps/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleApp] objects (expecting many)
+  /// using a path like this: `/people/v2/apps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleApp>> getAll({
+    String? id,
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/apps';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/message_groups/$messageGroupId/app`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -287,8 +332,10 @@ class PcoPeopleApp extends PcoResource {
     String messageGroupId, {
     String? id,
     PcoPeopleAppQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleAppQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/message_groups/$messageGroupId/app';
     if (id != null) url += '/$id';
@@ -296,8 +343,50 @@ class PcoPeopleApp extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleApp] objects (expecting many)
+  /// Will get a single [PcoPeopleApp] object
+  /// using a path like this: `/people/v2/message_groups/$messageGroupId/app/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleApp?> getSingleFromMessageGroup(
+    String messageGroupId,
+    String id, {
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+
+    var url = '/people/v2/message_groups/$messageGroupId/app/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleApp] objects (expecting many)
+  /// using a path like this: `/people/v2/message_groups/$messageGroupId/app`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleApp>> getAllFromMessageGroup(
+    String messageGroupId, {
+    String? id,
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/message_groups/$messageGroupId/app';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/person_apps/$personAppId/app`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -306,8 +395,10 @@ class PcoPeopleApp extends PcoResource {
     String personAppId, {
     String? id,
     PcoPeopleAppQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleAppQuery();
+    if (getAll) query.getAll = true;
 
     var url = '/people/v2/people/$personId/person_apps/$personAppId/app';
     if (id != null) url += '/$id';
@@ -315,8 +406,52 @@ class PcoPeopleApp extends PcoResource {
         query: query, apiVersion: kApiVersion);
   }
 
-  /// Will get a collection of [PcoPeopleApp] objects (expecting many)
+  /// Will get a single [PcoPeopleApp] object
+  /// using a path like this: `/people/v2/people/$personId/person_apps/$personAppId/app/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleApp?> getSingleFromPersonAndPersonApp(
+    String personId,
+    String personAppId,
+    String id, {
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+
+    var url = '/people/v2/people/$personId/person_apps/$personAppId/app/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleApp] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/person_apps/$personAppId/app`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleApp>> getAllFromPersonAndPersonApp(
+    String personId,
+    String personAppId, {
+    String? id,
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+    query.getAll = true;
+
+    var url = '/people/v2/people/$personId/person_apps/$personAppId/app';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a [PcoCollection] of [PcoPeopleApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/apps`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -324,8 +459,49 @@ class PcoPeopleApp extends PcoResource {
     String personId, {
     String? id,
     PcoPeopleAppQuery? query,
+    bool getAll = false,
   }) async {
     query ??= PcoPeopleAppQuery();
+    if (getAll) query.getAll = true;
+
+    var url = '/people/v2/people/$personId/apps';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleApp] object
+  /// using a path like this: `/people/v2/people/$personId/apps/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleApp?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+
+    var url = '/people/v2/people/$personId/apps/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleApp>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleApp] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/apps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleApp>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeopleAppQuery? query,
+  }) async {
+    query ??= PcoPeopleAppQuery();
+    query.getAll = true;
 
     var url = '/people/v2/people/$personId/apps';
     if (id != null) url += '/$id';

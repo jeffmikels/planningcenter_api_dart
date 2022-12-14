@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.167106
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.017516
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -17,7 +17,7 @@ enum PcoPeoplePersonAppFilter { none }
 ///
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeApp`: include associated app
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -261,8 +261,11 @@ class PcoPeoplePersonApp extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeoplePersonApp] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeoplePersonApp] objects (expecting many)
   /// using a path like this: `/people/v2/people/$personId/person_apps`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
@@ -270,9 +273,54 @@ class PcoPeoplePersonApp extends PcoResource {
     String personId, {
     String? id,
     PcoPeoplePersonAppQuery? query,
+    bool getAll = false,
     bool includeApp = false,
   }) async {
     query ??= PcoPeoplePersonAppQuery();
+    if (getAll) query.getAll = true;
+
+    if (includeApp) query.include.add('app');
+    var url = '/people/v2/people/$personId/person_apps';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeoplePersonApp] object
+  /// using a path like this: `/people/v2/people/$personId/person_apps/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeoplePersonApp?> getSingleFromPerson(
+    String personId,
+    String id, {
+    PcoPeoplePersonAppQuery? query,
+    bool includeApp = false,
+  }) async {
+    query ??= PcoPeoplePersonAppQuery();
+
+    if (includeApp) query.include.add('app');
+    var url = '/people/v2/people/$personId/person_apps/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeoplePersonApp>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeoplePersonApp] objects (expecting many)
+  /// using a path like this: `/people/v2/people/$personId/person_apps`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeoplePersonApp>> getAllFromPerson(
+    String personId, {
+    String? id,
+    PcoPeoplePersonAppQuery? query,
+    bool includeApp = false,
+  }) async {
+    query ??= PcoPeoplePersonAppQuery();
+    query.getAll = true;
 
     if (includeApp) query.include.add('app');
     var url = '/people/v2/people/$personId/person_apps';

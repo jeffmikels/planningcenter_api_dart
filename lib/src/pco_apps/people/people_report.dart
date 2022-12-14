@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T18:08:26.169110
+/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.019586
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -22,7 +22,7 @@ enum PcoPeopleReportFilter { none }
 /// Related data may be included by marking desired `includeSomething` variables as true:
 /// - `includeCreatedBy`: include associated created_by
 /// - `includeUpdatedBy`: include associated updated_by
-/// - `includeAll`: include all related objects
+/// - `includeAllRelated`: include all related objects
 ///
 /// Alternatively, you may pass a list of strings to the `include` argument.
 ///
@@ -85,7 +85,7 @@ class PcoPeopleReportQuery extends PlanningCenterApiQuery {
     bool includeUpdatedBy = false,
 
     /// when true, adds `?include=created_by,updated_by` to url parameters
-    bool includeAll = false,
+    bool includeAllRelated = false,
 
     /// Query by `body`
     /// query on a specific body, url example: ?where[body]=string
@@ -120,8 +120,8 @@ class PcoPeopleReportQuery extends PlanningCenterApiQuery {
     super.order,
     super.include,
   }) : super() {
-    if (includeAll || includeCreatedBy) include.add('created_by');
-    if (includeAll || includeUpdatedBy) include.add('updated_by');
+    if (includeAllRelated || includeCreatedBy) include.add('created_by');
+    if (includeAllRelated || includeUpdatedBy) include.add('updated_by');
 
     if (whereBody != null)
       where.add(PlanningCenterApiWhere.parse('body', whereBody));
@@ -353,20 +353,72 @@ class PcoPeopleReport extends PcoResource {
   // ---------------------------------
   // Static functions to obtain instances of this class
 
-  /// Will get a collection of [PcoPeopleReport] objects (expecting many)
+  /// Will get a [PcoCollection] of [PcoPeopleReport] objects (expecting many)
   /// using a path like this: `/people/v2/reports`
+  ///
+  /// Getting a [PcoCollection] is useful even when retrieving a single object
+  /// because it contains error data and helper functions.
   ///
   /// Additional options may be specified by using the `query` argument, but some
   /// query options are also available as boolean flags in this function call too.
   static Future<PcoCollection<PcoPeopleReport>> get({
     String? id,
     PcoPeopleReportQuery? query,
-    bool includeAll = false,
+    bool getAll = false,
+    bool includeAllRelated = false,
     bool includeCreatedBy = false,
     bool includeUpdatedBy = false,
   }) async {
     query ??= PcoPeopleReportQuery();
-    if (includeAll) query.include.addAll(PcoPeopleReport.canInclude);
+    if (getAll) query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleReport.canInclude);
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/reports';
+    if (id != null) url += '/$id';
+    return PcoCollection.fromApiCall<PcoPeopleReport>(url,
+        query: query, apiVersion: kApiVersion);
+  }
+
+  /// Will get a single [PcoPeopleReport] object
+  /// using a path like this: `/people/v2/reports/[id]`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  static Future<PcoPeopleReport?> getSingle(
+    String id, {
+    PcoPeopleReportQuery? query,
+    bool includeAllRelated = false,
+    bool includeCreatedBy = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleReportQuery();
+    if (includeAllRelated) query.include.addAll(PcoPeopleReport.canInclude);
+    if (includeCreatedBy) query.include.add('created_by');
+    if (includeUpdatedBy) query.include.add('updated_by');
+    var url = '/people/v2/reports/$id';
+    var retval = await PcoCollection.fromApiCall<PcoPeopleReport>(url,
+        query: query, apiVersion: kApiVersion);
+    return retval.items.isEmpty ? null : retval.items.first;
+  }
+
+  /// Will get a [PcoCollection] containing ALL [PcoPeopleReport] objects (expecting many)
+  /// using a path like this: `/people/v2/reports`
+  ///
+  /// Additional options may be specified by using the `query` argument, but some
+  /// query options are also available as boolean flags in this function call too.
+  ///
+  /// This function forces the `query.getAll` to be true.
+  static Future<PcoCollection<PcoPeopleReport>> getAll({
+    String? id,
+    PcoPeopleReportQuery? query,
+    bool includeAllRelated = false,
+    bool includeCreatedBy = false,
+    bool includeUpdatedBy = false,
+  }) async {
+    query ??= PcoPeopleReportQuery();
+    query.getAll = true;
+    if (includeAllRelated) query.include.addAll(PcoPeopleReport.canInclude);
     if (includeCreatedBy) query.include.add('created_by');
     if (includeUpdatedBy) query.include.add('updated_by');
     var url = '/people/v2/reports';

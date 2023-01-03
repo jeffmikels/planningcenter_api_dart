@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.021601
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.124442
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -201,9 +201,9 @@ class PcoPeopleServiceTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get startTime => _attributes[kStartTime] ?? 0;
-  String get day => _attributes[kDay] ?? '';
-  String get description => _attributes[kDescription] ?? '';
+  int get startTime => _getAttribute<int>(kStartTime, 0);
+  String get day => _getAttribute<String>(kDay, '');
+  String get description => _getAttribute<String>(kDescription, '');
 
   // setters for object attributes
   ///

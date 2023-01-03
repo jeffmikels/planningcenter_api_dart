@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.918508
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.002264
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -218,9 +218,9 @@ class PcoCheckInsAttendanceType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get color => _attributes[kColor] ?? '';
-  int get limit => _attributes[kLimit] ?? 0;
+  String get name => _getAttribute<String>(kName, '');
+  String get color => _getAttribute<String>(kColor, '');
+  int get limit => _getAttribute<int>(kLimit, 0);
 
   // typed getters for each relationship
 

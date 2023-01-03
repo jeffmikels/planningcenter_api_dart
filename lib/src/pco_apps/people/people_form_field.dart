@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.996281
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.095628
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -244,12 +244,12 @@ class PcoPeopleFormField extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get fieldType => _attributes[kFieldType] ?? '';
-  String get label => _attributes[kLabel] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  bool get isRequired => _attributes[kRequired] == true;
-  String get settings => _attributes[kSettings] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
+  String get fieldType => _getAttribute<String>(kFieldType, '');
+  String get label => _getAttribute<String>(kLabel, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  bool get isRequired => _getAttribute<bool>(kRequired, false);
+  String get settings => _getAttribute<String>(kSettings, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
 
   // typed getters for each relationship
 

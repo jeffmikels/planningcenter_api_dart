@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.022144
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.124962
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -274,9 +274,9 @@ class PcoPeopleSocialProfile extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get site => _attributes[kSite] ?? '';
-  String get url => _attributes[kUrl] ?? '';
-  bool get isVerified => _attributes[kVerified] == true;
+  String get site => _getAttribute<String>(kSite, '');
+  String get url => _getAttribute<String>(kUrl, '');
+  bool get isVerified => _getAttribute<bool>(kVerified, false);
 
   // setters for object attributes
   ///

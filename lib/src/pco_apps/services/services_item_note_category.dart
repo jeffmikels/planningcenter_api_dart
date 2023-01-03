@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.830556
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.953897
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,10 +175,10 @@ class PcoServicesItemNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
-  String get name => _attributes[kName] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
-  bool get isFrequentlyUsed => _attributes[kFrequentlyUsed] == true;
+  DateTime get deletedAt => _getAttribute<DateTime>(kDeletedAt, DateTime(0));
+  String get name => _getAttribute<String>(kName, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  bool get isFrequentlyUsed => _getAttribute<bool>(kFrequentlyUsed, false);
 
   // Class Constructors
   PcoServicesItemNoteCategory.fromJson(Map<String, dynamic> data,

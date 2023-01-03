@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.047404
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.146476
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -314,10 +314,10 @@ class PcoCalendarEventResourceRequest extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isApprovalSent => _attributes[kApprovalSent] == true;
-  String get approvalStatus => _attributes[kApprovalStatus] ?? '';
-  String get notes => _attributes[kNotes] ?? '';
-  int get quantity => _attributes[kQuantity] ?? 0;
+  bool get isApprovalSent => _getAttribute<bool>(kApprovalSent, false);
+  String get approvalStatus => _getAttribute<String>(kApprovalStatus, '');
+  String get notes => _getAttribute<String>(kNotes, '');
+  int get quantity => _getAttribute<int>(kQuantity, 0);
 
   // typed getters for each relationship
 

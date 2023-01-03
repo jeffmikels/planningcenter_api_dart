@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.124930
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.182320
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,12 +268,13 @@ class PcoGivingPledge extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get amountCents => _attributes[kAmountCents] ?? 0;
-  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
-  int get jointGiverAmountCents => _attributes[kJointGiverAmountCents] ?? 0;
-  int get donatedTotalCents => _attributes[kDonatedTotalCents] ?? 0;
+  int get amountCents => _getAttribute<int>(kAmountCents, 0);
+  String get amountCurrency => _getAttribute<String>(kAmountCurrency, '');
+  int get jointGiverAmountCents =>
+      _getAttribute<int>(kJointGiverAmountCents, 0);
+  int get donatedTotalCents => _getAttribute<int>(kDonatedTotalCents, 0);
   int get jointGiverDonatedTotalCents =>
-      _attributes[kJointGiverDonatedTotalCents] ?? 0;
+      _getAttribute<int>(kJointGiverDonatedTotalCents, 0);
 
   // setters for object attributes
 
@@ -289,14 +290,14 @@ class PcoGivingPledge extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set pledgeCampaignId(String? x) => (x == null)
       ? _attributes.remove(kPledgeCampaignId)
       : _attributes[kPledgeCampaignId] = x;
-  String get pledgeCampaignId => _attributes[kPledgeCampaignId] ?? '';
+  String get pledgeCampaignId => _getAttribute<String>(kPledgeCampaignId, '');
 
   // typed getters for each relationship
 

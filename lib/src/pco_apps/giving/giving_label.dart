@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.121742
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.179659
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,7 +175,7 @@ class PcoGivingLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get slug => _attributes[kSlug] ?? '';
+  String get slug => _getAttribute<String>(kSlug, '');
 
   // Class Constructors
   PcoGivingLabel.fromJson(Map<String, dynamic> data,

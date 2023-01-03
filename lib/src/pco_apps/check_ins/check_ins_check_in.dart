@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.920969
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.004100
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -449,18 +449,21 @@ class PcoCheckInsCheckIn extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
-  int get number => _attributes[kNumber] ?? 0;
-  String get securityCode => _attributes[kSecurityCode] ?? '';
-  DateTime get checkedOutAt => DateTime.parse(_attributes[kCheckedOutAt] ?? '');
-  DateTime get confirmedAt => DateTime.parse(_attributes[kConfirmedAt] ?? '');
-  String get emergencyContactName => _attributes[kEmergencyContactName] ?? '';
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get medicalNotes => _getAttribute<String>(kMedicalNotes, '');
+  int get number => _getAttribute<int>(kNumber, 0);
+  String get securityCode => _getAttribute<String>(kSecurityCode, '');
+  DateTime get checkedOutAt =>
+      _getAttribute<DateTime>(kCheckedOutAt, DateTime(0));
+  DateTime get confirmedAt =>
+      _getAttribute<DateTime>(kConfirmedAt, DateTime(0));
+  String get emergencyContactName =>
+      _getAttribute<String>(kEmergencyContactName, '');
   String get emergencyContactPhoneNumber =>
-      _attributes[kEmergencyContactPhoneNumber] ?? '';
-  String get kind => _attributes[kKind] ?? '';
-  bool get isConfirmed => _attributes[kConfirmed] == true;
+      _getAttribute<String>(kEmergencyContactPhoneNumber, '');
+  String get kind => _getAttribute<String>(kKind, '');
+  bool get isConfirmed => _getAttribute<bool>(kConfirmed, false);
 
   // typed getters for each relationship
 

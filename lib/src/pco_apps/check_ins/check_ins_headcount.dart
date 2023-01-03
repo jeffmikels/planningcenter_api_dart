@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.927134
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.010090
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -257,7 +257,7 @@ class PcoCheckInsHeadcount extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get total => _attributes[kTotal] ?? 0;
+  int get total => _getAttribute<int>(kTotal, 0);
 
   // typed getters for each relationship
 

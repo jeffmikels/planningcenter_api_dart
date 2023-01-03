@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.926454
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.009301
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -295,17 +295,17 @@ class PcoCheckInsEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get totalCount => _attributes[kTotalCount] ?? 0;
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get showsAt => DateTime.parse(_attributes[kShowsAt] ?? '');
-  DateTime get hidesAt => DateTime.parse(_attributes[kHidesAt] ?? '');
-  int get regularCount => _attributes[kRegularCount] ?? 0;
-  int get guestCount => _attributes[kGuestCount] ?? 0;
-  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
-  String get name => _attributes[kName] ?? '';
-  int get hour => _attributes[kHour] ?? 0;
-  int get minute => _attributes[kMinute] ?? 0;
-  int get dayOfWeek => _attributes[kDayOfWeek] ?? 0;
+  int get totalCount => _getAttribute<int>(kTotalCount, 0);
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get showsAt => _getAttribute<DateTime>(kShowsAt, DateTime(0));
+  DateTime get hidesAt => _getAttribute<DateTime>(kHidesAt, DateTime(0));
+  int get regularCount => _getAttribute<int>(kRegularCount, 0);
+  int get guestCount => _getAttribute<int>(kGuestCount, 0);
+  int get volunteerCount => _getAttribute<int>(kVolunteerCount, 0);
+  String get name => _getAttribute<String>(kName, '');
+  int get hour => _getAttribute<int>(kHour, 0);
+  int get minute => _getAttribute<int>(kMinute, 0);
+  int get dayOfWeek => _getAttribute<int>(kDayOfWeek, 0);
 
   // typed getters for each relationship
 

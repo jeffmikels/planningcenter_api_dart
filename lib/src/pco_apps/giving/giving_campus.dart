@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.118987
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.176709
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -159,8 +159,8 @@ class PcoGivingCampus extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get address => _attributes[kAddress] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get address => _getAttribute<String>(kAddress, '');
 
   // Class Constructors
   PcoGivingCampus.fromJson(Map<String, dynamic> data,

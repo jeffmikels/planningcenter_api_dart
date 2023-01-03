@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.054367
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.152475
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -279,10 +279,10 @@ class PcoCalendarResourceFolder extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get ancestry => _attributes[kAncestry] ?? '';
-  String get kind => _attributes[kKind] ?? '';
-  String get pathName => _attributes[kPathName] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get ancestry => _getAttribute<String>(kAncestry, '');
+  String get kind => _getAttribute<String>(kKind, '');
+  String get pathName => _getAttribute<String>(kPathName, '');
 
   // setters for object attributes
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.856670
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.977705
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -161,10 +161,10 @@ class PcoServicesSongbookStatus extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get status => _attributes[kStatus] ?? '';
-  String get statusCode => _attributes[kStatusCode] ?? '';
-  String get statusToken => _attributes[kStatusToken] ?? '';
-  String get url => _attributes[kUrl] ?? '';
+  String get status => _getAttribute<String>(kStatus, '');
+  String get statusCode => _getAttribute<String>(kStatusCode, '');
+  String get statusToken => _getAttribute<String>(kStatusToken, '');
+  String get url => _getAttribute<String>(kUrl, '');
 
   // Class Constructors
   PcoServicesSongbookStatus.fromJson(Map<String, dynamic> data,

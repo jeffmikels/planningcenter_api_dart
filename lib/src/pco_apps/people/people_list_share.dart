@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.002711
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.102718
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -257,9 +257,9 @@ class PcoPeopleListShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get permission => _attributes[kPermission] ?? '';
-  String get group => _attributes[kGroup] ?? '';
-  String get name => _attributes[kName] ?? '';
+  String get permission => _getAttribute<String>(kPermission, '');
+  String get group => _getAttribute<String>(kGroup, '');
+  String get name => _getAttribute<String>(kName, '');
 
   // setters for object attributes
 
@@ -281,7 +281,7 @@ class PcoPeopleListShare extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // typed getters for each relationship
 

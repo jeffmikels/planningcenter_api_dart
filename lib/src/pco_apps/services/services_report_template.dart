@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.848126
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.969975
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,10 +174,10 @@ class PcoServicesReportTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
-  String get title => _attributes[kTitle] ?? '';
-  String get type => _attributes[kType] ?? '';
-  bool get isDefault => _attributes[kDefault] == true;
+  String get body => _getAttribute<String>(kBody, '');
+  String get title => _getAttribute<String>(kTitle, '');
+  String get type => _getAttribute<String>(kType, '');
+  bool get isDefault => _getAttribute<bool>(kDefault, false);
 
   // Class Constructors
   PcoServicesReportTemplate.fromJson(Map<String, dynamic> data,

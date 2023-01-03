@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.050350
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.149282
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -164,9 +164,9 @@ class PcoCalendarReportTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get title => _attributes[kTitle] ?? '';
+  String get body => _getAttribute<String>(kBody, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get title => _getAttribute<String>(kTitle, '');
 
   // setters for object attributes
 

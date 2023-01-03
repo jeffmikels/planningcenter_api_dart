@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.831048
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.954395
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,11 +185,12 @@ class PcoServicesItemTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get liveStartAt => DateTime.parse(_attributes[kLiveStartAt] ?? '');
-  DateTime get liveEndAt => DateTime.parse(_attributes[kLiveEndAt] ?? '');
-  bool get isExclude => _attributes[kExclude] == true;
-  int get length => _attributes[kLength] ?? 0;
-  int get lengthOffset => _attributes[kLengthOffset] ?? 0;
+  DateTime get liveStartAt =>
+      _getAttribute<DateTime>(kLiveStartAt, DateTime(0));
+  DateTime get liveEndAt => _getAttribute<DateTime>(kLiveEndAt, DateTime(0));
+  bool get isExclude => _getAttribute<bool>(kExclude, false);
+  int get length => _getAttribute<int>(kLength, 0);
+  int get lengthOffset => _getAttribute<int>(kLengthOffset, 0);
 
   // Class Constructors
   PcoServicesItemTime.fromJson(Map<String, dynamic> data,

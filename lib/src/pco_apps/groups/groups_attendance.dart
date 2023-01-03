@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.135763
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.226867
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,8 +235,8 @@ class PcoGroupsAttendance extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isAttended => _attributes[kAttended] == true;
-  String get role => _attributes[kRole] ?? '';
+  bool get isAttended => _getAttribute<bool>(kAttended, false);
+  String get role => _getAttribute<String>(kRole, '');
 
   // typed getters for each relationship
 

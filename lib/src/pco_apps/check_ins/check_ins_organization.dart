@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.931736
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.046593
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -186,12 +186,12 @@ class PcoCheckInsOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get dateFormatPattern => _attributes[kDateFormatPattern] ?? '';
-  String get timeZoneOlson => _attributes[kTimeZoneOlson] ?? '';
-  String get name => _attributes[kName] ?? '';
-  int get dailyCheckIns => _attributes[kDailyCheckIns] ?? 0;
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  String get dateFormatPattern => _getAttribute<String>(kDateFormatPattern, '');
+  String get timeZoneOlson => _getAttribute<String>(kTimeZoneOlson, '');
+  String get name => _getAttribute<String>(kName, '');
+  int get dailyCheckIns => _getAttribute<int>(kDailyCheckIns, 0);
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
 
   // Class Constructors
   PcoCheckInsOrganization.fromJson(Map<String, dynamic> data,

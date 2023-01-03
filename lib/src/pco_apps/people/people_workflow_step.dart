@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.028880
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.130518
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -286,17 +286,18 @@ class PcoPeopleWorkflowStep extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
-  String get description => _attributes[kDescription] ?? '';
-  int get autoSnoozeDays => _attributes[kAutoSnoozeDays] ?? 0;
-  int get autoSnoozeValue => _attributes[kAutoSnoozeValue] ?? 0;
-  String get autoSnoozeInterval => _attributes[kAutoSnoozeInterval] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  String get description => _getAttribute<String>(kDescription, '');
+  int get autoSnoozeDays => _getAttribute<int>(kAutoSnoozeDays, 0);
+  int get autoSnoozeValue => _getAttribute<int>(kAutoSnoozeValue, 0);
+  String get autoSnoozeInterval =>
+      _getAttribute<String>(kAutoSnoozeInterval, '');
   int get expectedResponseTimeInDays =>
-      _attributes[kExpectedResponseTimeInDays] ?? 0;
-  int get myReadyCardCount => _attributes[kMyReadyCardCount] ?? 0;
-  int get totalReadyCardCount => _attributes[kTotalReadyCardCount] ?? 0;
-  String get defaultAssigneeId => _attributes[kDefaultAssigneeId] ?? '';
+      _getAttribute<int>(kExpectedResponseTimeInDays, 0);
+  int get myReadyCardCount => _getAttribute<int>(kMyReadyCardCount, 0);
+  int get totalReadyCardCount => _getAttribute<int>(kTotalReadyCardCount, 0);
+  String get defaultAssigneeId => _getAttribute<String>(kDefaultAssigneeId, '');
 
   // setters for object attributes
   ///

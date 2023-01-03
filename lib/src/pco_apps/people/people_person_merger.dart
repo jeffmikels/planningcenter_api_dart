@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.018019
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.121490
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,8 +229,8 @@ class PcoPeoplePersonMerger extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get personToKeepId => _attributes[kPersonToKeepId] ?? '';
-  String get personToRemoveId => _attributes[kPersonToRemoveId] ?? '';
+  String get personToKeepId => _getAttribute<String>(kPersonToKeepId, '');
+  String get personToRemoveId => _getAttribute<String>(kPersonToRemoveId, '');
 
   // Class Constructors
   PcoPeoplePersonMerger.fromJson(Map<String, dynamic> data,

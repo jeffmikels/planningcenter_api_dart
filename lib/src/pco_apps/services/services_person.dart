@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.838550
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.962245
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -398,52 +398,56 @@ class PcoServicesPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get photoUrl => _attributes[kPhotoUrl] ?? '';
-  String get photoThumbnailUrl => _attributes[kPhotoThumbnailUrl] ?? '';
-  String get preferredApp => _attributes[kPreferredApp] ?? '';
+  String get photoUrl => _getAttribute<String>(kPhotoUrl, '');
+  String get photoThumbnailUrl => _getAttribute<String>(kPhotoThumbnailUrl, '');
+  String get preferredApp => _getAttribute<String>(kPreferredApp, '');
   bool get isAssignedToRehearsalTeam =>
-      _attributes[kAssignedToRehearsalTeam] == true;
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get namePrefix => _attributes[kNamePrefix] ?? '';
-  String get nameSuffix => _attributes[kNameSuffix] ?? '';
-  String get facebookId => _attributes[kFacebookId] ?? '';
-  String get legacyId => _attributes[kLegacyId] ?? '';
-  String get fullName => _attributes[kFullName] ?? '';
-  String get maxPermissions => _attributes[kMaxPermissions] ?? '';
-  String get permissions => _attributes[kPermissions] ?? '';
-  String get status => _attributes[kStatus] ?? '';
-  DateTime get anniversary => DateTime.parse(_attributes[kAnniversary] ?? '');
-  DateTime get birthdate => DateTime.parse(_attributes[kBirthdate] ?? '');
-  String get givenName => _attributes[kGivenName] ?? '';
-  String get middleName => _attributes[kMiddleName] ?? '';
-  String get nickname => _attributes[kNickname] ?? '';
+      _getAttribute<bool>(kAssignedToRehearsalTeam, false);
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get namePrefix => _getAttribute<String>(kNamePrefix, '');
+  String get nameSuffix => _getAttribute<String>(kNameSuffix, '');
+  String get facebookId => _getAttribute<String>(kFacebookId, '');
+  String get legacyId => _getAttribute<String>(kLegacyId, '');
+  String get fullName => _getAttribute<String>(kFullName, '');
+  String get maxPermissions => _getAttribute<String>(kMaxPermissions, '');
+  String get permissions => _getAttribute<String>(kPermissions, '');
+  String get status => _getAttribute<String>(kStatus, '');
+  DateTime get anniversary =>
+      _getAttribute<DateTime>(kAnniversary, DateTime(0));
+  DateTime get birthdate => _getAttribute<DateTime>(kBirthdate, DateTime(0));
+  String get givenName => _getAttribute<String>(kGivenName, '');
+  String get middleName => _getAttribute<String>(kMiddleName, '');
+  String get nickname => _getAttribute<String>(kNickname, '');
   bool get isAccessMediaAttachments =>
-      _attributes[kAccessMediaAttachments] == true;
+      _getAttribute<bool>(kAccessMediaAttachments, false);
   bool get isAccessPlanAttachments =>
-      _attributes[kAccessPlanAttachments] == true;
+      _getAttribute<bool>(kAccessPlanAttachments, false);
   bool get isAccessSongAttachments =>
-      _attributes[kAccessSongAttachments] == true;
-  bool get isArchived => _attributes[kArchived] == true;
-  bool get isSiteAdministrator => _attributes[kSiteAdministrator] == true;
-  DateTime get loggedInAt => DateTime.parse(_attributes[kLoggedInAt] ?? '');
-  String get notes => _attributes[kNotes] ?? '';
+      _getAttribute<bool>(kAccessSongAttachments, false);
+  bool get isArchived => _getAttribute<bool>(kArchived, false);
+  bool get isSiteAdministrator =>
+      _getAttribute<bool>(kSiteAdministrator, false);
+  DateTime get loggedInAt => _getAttribute<DateTime>(kLoggedInAt, DateTime(0));
+  String get notes => _getAttribute<String>(kNotes, '');
   bool get isPassedBackgroundCheck =>
-      _attributes[kPassedBackgroundCheck] == true;
-  String get icalCode => _attributes[kIcalCode] ?? '';
-  int get preferredMaxPlansPerDay => _attributes[kPreferredMaxPlansPerDay] ?? 0;
+      _getAttribute<bool>(kPassedBackgroundCheck, false);
+  String get icalCode => _getAttribute<String>(kIcalCode, '');
+  int get preferredMaxPlansPerDay =>
+      _getAttribute<int>(kPreferredMaxPlansPerDay, 0);
   int get preferredMaxPlansPerMonth =>
-      _attributes[kPreferredMaxPlansPerMonth] ?? 0;
-  bool get isPraiseChartsEnabled => _attributes[kPraiseChartsEnabled] == true;
-  String get meTab => _attributes[kMeTab] ?? '';
-  String get plansTab => _attributes[kPlansTab] ?? '';
-  String get songsTab => _attributes[kSongsTab] ?? '';
-  String get mediaTab => _attributes[kMediaTab] ?? '';
-  String get peopleTab => _attributes[kPeopleTab] ?? '';
-  bool get isCanEditAllPeople => _attributes[kCanEditAllPeople] == true;
-  bool get isCanViewAllPeople => _attributes[kCanViewAllPeople] == true;
-  List get onboardings => _attributes[kOnboardings] ?? [];
+      _getAttribute<int>(kPreferredMaxPlansPerMonth, 0);
+  bool get isPraiseChartsEnabled =>
+      _getAttribute<bool>(kPraiseChartsEnabled, false);
+  String get meTab => _getAttribute<String>(kMeTab, '');
+  String get plansTab => _getAttribute<String>(kPlansTab, '');
+  String get songsTab => _getAttribute<String>(kSongsTab, '');
+  String get mediaTab => _getAttribute<String>(kMediaTab, '');
+  String get peopleTab => _getAttribute<String>(kPeopleTab, '');
+  bool get isCanEditAllPeople => _getAttribute<bool>(kCanEditAllPeople, false);
+  bool get isCanViewAllPeople => _getAttribute<bool>(kCanViewAllPeople, false);
+  List get onboardings => _getAttribute<List>(kOnboardings, []);
 
   // setters for object attributes
   ///
@@ -488,7 +492,7 @@ class PcoServicesPerson extends PcoResource {
   set currentFolderId(String? x) => (x == null)
       ? _attributes.remove(kCurrentFolderId)
       : _attributes[kCurrentFolderId] = x;
-  String get currentFolderId => _attributes[kCurrentFolderId] ?? '';
+  String get currentFolderId => _getAttribute<String>(kCurrentFolderId, '');
 
   // typed getters for each relationship
 

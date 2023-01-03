@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.932272
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.047181
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -201,9 +201,9 @@ class PcoCheckInsPass extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get code => _attributes[kCode] ?? '';
-  String get kind => _attributes[kKind] ?? '';
-  String get sendTo => _attributes[kSendTo] ?? '';
+  String get code => _getAttribute<String>(kCode, '');
+  String get kind => _getAttribute<String>(kKind, '');
+  String get sendTo => _getAttribute<String>(kSendTo, '');
 
   // typed getters for each relationship
 

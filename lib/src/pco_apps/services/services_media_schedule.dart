@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.835346
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.958803
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,10 +174,11 @@ class PcoServicesMediaSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get planDates => _attributes[kPlanDates] ?? '';
-  String get planShortDates => _attributes[kPlanShortDates] ?? '';
-  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
-  DateTime get planSortDate => DateTime.parse(_attributes[kPlanSortDate] ?? '');
+  String get planDates => _getAttribute<String>(kPlanDates, '');
+  String get planShortDates => _getAttribute<String>(kPlanShortDates, '');
+  String get serviceTypeName => _getAttribute<String>(kServiceTypeName, '');
+  DateTime get planSortDate =>
+      _getAttribute<DateTime>(kPlanSortDate, DateTime(0));
 
   // Class Constructors
   PcoServicesMediaSchedule.fromJson(Map<String, dynamic> data,

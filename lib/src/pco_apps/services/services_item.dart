@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.829136
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.952373
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -343,20 +343,20 @@ class PcoServicesItem extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => _attributes[kTitle] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
-  int get length => _attributes[kLength] ?? 0;
-  String get itemType => _attributes[kItemType] ?? '';
-  String get htmlDetails => _attributes[kHtmlDetails] ?? '';
-  String get servicePosition => _attributes[kServicePosition] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get keyName => _attributes[kKeyName] ?? '';
+  String get title => _getAttribute<String>(kTitle, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  int get length => _getAttribute<int>(kLength, 0);
+  String get itemType => _getAttribute<String>(kItemType, '');
+  String get htmlDetails => _getAttribute<String>(kHtmlDetails, '');
+  String get servicePosition => _getAttribute<String>(kServicePosition, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get keyName => _getAttribute<String>(kKeyName, '');
   List get customArrangementSequence =>
-      _attributes[kCustomArrangementSequence] ?? [];
+      _getAttribute<List>(kCustomArrangementSequence, []);
   List get customArrangementSequenceShort =>
-      _attributes[kCustomArrangementSequenceShort] ?? [];
+      _getAttribute<List>(kCustomArrangementSequenceShort, []);
   List get customArrangementSequenceFull =>
-      _attributes[kCustomArrangementSequenceFull] ?? [];
+      _getAttribute<List>(kCustomArrangementSequenceFull, []);
 
   // setters for object attributes
   ///
@@ -430,26 +430,26 @@ class PcoServicesItem extends PcoResource {
   set arrangementId(String? x) => (x == null)
       ? _attributes.remove(kArrangementId)
       : _attributes[kArrangementId] = x;
-  String get arrangementId => _attributes[kArrangementId] ?? '';
+  String get arrangementId => _getAttribute<String>(kArrangementId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set keyId(String? x) =>
       (x == null) ? _attributes.remove(kKeyId) : _attributes[kKeyId] = x;
-  String get keyId => _attributes[kKeyId] ?? '';
+  String get keyId => _getAttribute<String>(kKeyId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set selectedLayoutId(String? x) => (x == null)
       ? _attributes.remove(kSelectedLayoutId)
       : _attributes[kSelectedLayoutId] = x;
-  String get selectedLayoutId => _attributes[kSelectedLayoutId] ?? '';
+  String get selectedLayoutId => _getAttribute<String>(kSelectedLayoutId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set songId(String? x) =>
       (x == null) ? _attributes.remove(kSongId) : _attributes[kSongId] = x;
-  String get songId => _attributes[kSongId] ?? '';
+  String get songId => _getAttribute<String>(kSongId, '');
 
   // typed getters for each relationship
 

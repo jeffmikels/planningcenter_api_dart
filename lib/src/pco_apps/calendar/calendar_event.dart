@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.045730
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.144794
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -331,16 +331,16 @@ class PcoCalendarEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get approvalStatus => _attributes[kApprovalStatus] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get imageUrl => _attributes[kImageUrl] ?? '';
-  String get name => _attributes[kName] ?? '';
-  int get percentApproved => _attributes[kPercentApproved] ?? 0;
-  int get percentRejected => _attributes[kPercentRejected] ?? 0;
-  String get registrationUrl => _attributes[kRegistrationUrl] ?? '';
-  String get summary => _attributes[kSummary] ?? '';
+  String get approvalStatus => _getAttribute<String>(kApprovalStatus, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get imageUrl => _getAttribute<String>(kImageUrl, '');
+  String get name => _getAttribute<String>(kName, '');
+  int get percentApproved => _getAttribute<int>(kPercentApproved, 0);
+  int get percentRejected => _getAttribute<int>(kPercentRejected, 0);
+  String get registrationUrl => _getAttribute<String>(kRegistrationUrl, '');
+  String get summary => _getAttribute<String>(kSummary, '');
   bool get isVisibleInChurchCenter =>
-      _attributes[kVisibleInChurchCenter] == true;
+      _getAttribute<bool>(kVisibleInChurchCenter, false);
 
   // typed getters for each relationship
 

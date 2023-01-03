@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.827371
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.950801
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -221,8 +221,8 @@ class PcoServicesFolder extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get container => _attributes[kContainer] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get container => _getAttribute<String>(kContainer, '');
 
   // setters for object attributes
   ///
@@ -235,13 +235,13 @@ class PcoServicesFolder extends PcoResource {
   /// pass `null` to remove key from attributes
   set parentId(String? x) =>
       (x == null) ? _attributes.remove(kParentId) : _attributes[kParentId] = x;
-  String get parentId => _attributes[kParentId] ?? '';
+  String get parentId => _getAttribute<String>(kParentId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
       (x == null) ? _attributes.remove(kCampusId) : _attributes[kCampusId] = x;
-  String get campusId => _attributes[kCampusId] ?? '';
+  String get campusId => _getAttribute<String>(kCampusId, '');
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.935397
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.048974
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -204,7 +204,7 @@ class PcoCheckInsPersonEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get checkInCount => _attributes[kCheckInCount] ?? 0;
+  int get checkInCount => _getAttribute<int>(kCheckInCount, 0);
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.824598
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.947788
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,11 +205,13 @@ class PcoServicesContributor extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get contributableAction => _attributes[kContributableAction] ?? '';
-  String get contributableCategory => _attributes[kContributableCategory] ?? '';
-  String get contributableType => _attributes[kContributableType] ?? '';
-  String get fullName => _attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => _attributes[kPhotoThumbnailUrl] ?? '';
+  String get contributableAction =>
+      _getAttribute<String>(kContributableAction, '');
+  String get contributableCategory =>
+      _getAttribute<String>(kContributableCategory, '');
+  String get contributableType => _getAttribute<String>(kContributableType, '');
+  String get fullName => _getAttribute<String>(kFullName, '');
+  String get photoThumbnailUrl => _getAttribute<String>(kPhotoThumbnailUrl, '');
 
   // Class Constructors
   PcoServicesContributor.fromJson(Map<String, dynamic> data,

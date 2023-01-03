@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.999996
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.099932
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -191,7 +191,7 @@ class PcoPeopleInactiveReason extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => _attributes[kValue] ?? '';
+  String get value => _getAttribute<String>(kValue, '');
 
   // setters for object attributes
   ///

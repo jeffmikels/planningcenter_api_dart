@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.824065
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.947319
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -219,18 +219,19 @@ class PcoServicesBlockoutScheduleConflict extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get dates => _attributes[kDates] ?? '';
-  String get organizationName => _attributes[kOrganizationName] ?? '';
-  String get personAvatar => _attributes[kPersonAvatar] ?? '';
-  String get personName => _attributes[kPersonName] ?? '';
-  String get positionDisplayTimes => _attributes[kPositionDisplayTimes] ?? '';
-  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
-  String get shortDates => _attributes[kShortDates] ?? '';
-  String get status => _attributes[kStatus] ?? '';
-  String get teamName => _attributes[kTeamName] ?? '';
-  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
-  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
-  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
+  String get dates => _getAttribute<String>(kDates, '');
+  String get organizationName => _getAttribute<String>(kOrganizationName, '');
+  String get personAvatar => _getAttribute<String>(kPersonAvatar, '');
+  String get personName => _getAttribute<String>(kPersonName, '');
+  String get positionDisplayTimes =>
+      _getAttribute<String>(kPositionDisplayTimes, '');
+  String get serviceTypeName => _getAttribute<String>(kServiceTypeName, '');
+  String get shortDates => _getAttribute<String>(kShortDates, '');
+  String get status => _getAttribute<String>(kStatus, '');
+  String get teamName => _getAttribute<String>(kTeamName, '');
+  String get teamPositionName => _getAttribute<String>(kTeamPositionName, '');
+  DateTime get sortDate => _getAttribute<DateTime>(kSortDate, DateTime(0));
+  bool get isCanAcceptPartial => _getAttribute<bool>(kCanAcceptPartial, false);
 
   // Class Constructors
   PcoServicesBlockoutScheduleConflict.fromJson(Map<String, dynamic> data,

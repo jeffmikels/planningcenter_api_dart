@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.851744
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.972515
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -222,15 +222,17 @@ class PcoServicesSeries extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get artworkFileName => _attributes[kArtworkFileName] ?? '';
-  String get artworkContentType => _attributes[kArtworkContentType] ?? '';
-  int get artworkFileSize => _attributes[kArtworkFileSize] ?? 0;
-  String get title => _attributes[kTitle] ?? '';
-  String get artworkForDashboard => _attributes[kArtworkForDashboard] ?? '';
-  String get artworkForMobile => _attributes[kArtworkForMobile] ?? '';
-  String get artworkForPlan => _attributes[kArtworkForPlan] ?? '';
-  String get artworkOriginal => _attributes[kArtworkOriginal] ?? '';
-  bool get isHasArtwork => _attributes[kHasArtwork] == true;
+  String get artworkFileName => _getAttribute<String>(kArtworkFileName, '');
+  String get artworkContentType =>
+      _getAttribute<String>(kArtworkContentType, '');
+  int get artworkFileSize => _getAttribute<int>(kArtworkFileSize, 0);
+  String get title => _getAttribute<String>(kTitle, '');
+  String get artworkForDashboard =>
+      _getAttribute<String>(kArtworkForDashboard, '');
+  String get artworkForMobile => _getAttribute<String>(kArtworkForMobile, '');
+  String get artworkForPlan => _getAttribute<String>(kArtworkForPlan, '');
+  String get artworkOriginal => _getAttribute<String>(kArtworkOriginal, '');
+  bool get isHasArtwork => _getAttribute<bool>(kHasArtwork, false);
 
   // Class Constructors
   PcoServicesSeries.fromJson(Map<String, dynamic> data,

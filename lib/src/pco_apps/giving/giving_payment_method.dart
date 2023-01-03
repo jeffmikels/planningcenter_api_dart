@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.123009
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.180830
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -176,12 +176,12 @@ class PcoGivingPaymentMethod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get methodType => _attributes[kMethodType] ?? '';
-  String get methodSubtype => _attributes[kMethodSubtype] ?? '';
-  String get last4 => _attributes[kLast4] ?? '';
-  String get brand => _attributes[kBrand] ?? '';
-  String get expiration => _attributes[kExpiration] ?? '';
-  bool get isVerified => _attributes[kVerified] == true;
+  String get methodType => _getAttribute<String>(kMethodType, '');
+  String get methodSubtype => _getAttribute<String>(kMethodSubtype, '');
+  String get last4 => _getAttribute<String>(kLast4, '');
+  String get brand => _getAttribute<String>(kBrand, '');
+  String get expiration => _getAttribute<String>(kExpiration, '');
+  bool get isVerified => _getAttribute<bool>(kVerified, false);
 
   // Class Constructors
   PcoGivingPaymentMethod.fromJson(Map<String, dynamic> data,

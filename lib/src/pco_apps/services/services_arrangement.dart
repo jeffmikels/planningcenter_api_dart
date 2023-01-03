@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.805443
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.928416
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -328,33 +328,35 @@ class PcoServicesArrangement extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get bpm => _attributes[kBpm]?.toDouble() ?? 0.0;
-  bool get isHasChords => _attributes[kHasChords] == true;
-  int get length => _attributes[kLength] ?? 0;
-  String get meter => _attributes[kMeter] ?? '';
-  String get name => _attributes[kName] ?? '';
-  String get notes => _attributes[kNotes] ?? '';
-  String get printMargin => _attributes[kPrintMargin] ?? '';
-  String get printOrientation => _attributes[kPrintOrientation] ?? '';
-  String get printPageSize => _attributes[kPrintPageSize] ?? '';
-  String get chordChart => _attributes[kChordChart] ?? '';
-  String get chordChartFont => _attributes[kChordChartFont] ?? '';
-  String get chordChartKey => _attributes[kChordChartKey] ?? '';
-  int get chordChartColumns => _attributes[kChordChartColumns] ?? 0;
-  int get chordChartFontSize => _attributes[kChordChartFontSize] ?? 0;
-  bool get isHasChordChart => _attributes[kHasChordChart] == true;
-  bool get isLyricsEnabled => _attributes[kLyricsEnabled] == true;
-  bool get isNumberChartEnabled => _attributes[kNumberChartEnabled] == true;
-  bool get isNumeralChartEnabled => _attributes[kNumeralChartEnabled] == true;
-  List get sequence => _attributes[kSequence] ?? [];
-  List get sequenceShort => _attributes[kSequenceShort] ?? [];
-  List get sequenceFull => _attributes[kSequenceFull] ?? [];
-  int get chordChartChordColor => _attributes[kChordChartChordColor] ?? 0;
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  String get lyrics => _attributes[kLyrics] ?? '';
-  int get isrc => _attributes[kIsrc] ?? 0;
-  String get mtid => _attributes[kMtid] ?? '';
-  String get rehearsalMixId => _attributes[kRehearsalMixId] ?? '';
+  double get bpm => _getAttribute<double>(kBpm, 0);
+  bool get isHasChords => _getAttribute<bool>(kHasChords, false);
+  int get length => _getAttribute<int>(kLength, 0);
+  String get meter => _getAttribute<String>(kMeter, '');
+  String get name => _getAttribute<String>(kName, '');
+  String get notes => _getAttribute<String>(kNotes, '');
+  String get printMargin => _getAttribute<String>(kPrintMargin, '');
+  String get printOrientation => _getAttribute<String>(kPrintOrientation, '');
+  String get printPageSize => _getAttribute<String>(kPrintPageSize, '');
+  String get chordChart => _getAttribute<String>(kChordChart, '');
+  String get chordChartFont => _getAttribute<String>(kChordChartFont, '');
+  String get chordChartKey => _getAttribute<String>(kChordChartKey, '');
+  int get chordChartColumns => _getAttribute<int>(kChordChartColumns, 0);
+  int get chordChartFontSize => _getAttribute<int>(kChordChartFontSize, 0);
+  bool get isHasChordChart => _getAttribute<bool>(kHasChordChart, false);
+  bool get isLyricsEnabled => _getAttribute<bool>(kLyricsEnabled, false);
+  bool get isNumberChartEnabled =>
+      _getAttribute<bool>(kNumberChartEnabled, false);
+  bool get isNumeralChartEnabled =>
+      _getAttribute<bool>(kNumeralChartEnabled, false);
+  List get sequence => _getAttribute<List>(kSequence, []);
+  List get sequenceShort => _getAttribute<List>(kSequenceShort, []);
+  List get sequenceFull => _getAttribute<List>(kSequenceFull, []);
+  int get chordChartChordColor => _getAttribute<int>(kChordChartChordColor, 0);
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  String get lyrics => _getAttribute<String>(kLyrics, '');
+  int get isrc => _getAttribute<int>(kIsrc, 0);
+  String get mtid => _getAttribute<String>(kMtid, '');
+  String get rehearsalMixId => _getAttribute<String>(kRehearsalMixId, '');
 
   // setters for object attributes
   ///

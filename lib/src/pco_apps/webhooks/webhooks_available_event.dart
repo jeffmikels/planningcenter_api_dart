@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.145821
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.236149
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -167,12 +167,12 @@ class PcoWebhooksAvailableEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get app => _attributes[kApp] ?? '';
-  String get version => _attributes[kVersion] ?? '';
-  String get type => _attributes[kType] ?? '';
-  String get resource => _attributes[kResource] ?? '';
-  String get action => _attributes[kAction] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get app => _getAttribute<String>(kApp, '');
+  String get version => _getAttribute<String>(kVersion, '');
+  String get type => _getAttribute<String>(kType, '');
+  String get resource => _getAttribute<String>(kResource, '');
+  String get action => _getAttribute<String>(kAction, '');
 
   // Class Constructors
   PcoWebhooksAvailableEvent.fromJson(Map<String, dynamic> data,

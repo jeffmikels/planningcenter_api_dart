@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.026772
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.128730
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,7 +183,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get note => _attributes[kNote] ?? '';
+  String get note => _getAttribute<String>(kNote, '');
 
   // setters for object attributes
   ///
@@ -197,7 +197,7 @@ class PcoPeopleWorkflowCardNote extends PcoResource {
   set noteCategoryId(String? x) => (x == null)
       ? _attributes.remove(kNoteCategoryId)
       : _attributes[kNoteCategoryId] = x;
-  String get noteCategoryId => _attributes[kNoteCategoryId] ?? '';
+  String get noteCategoryId => _getAttribute<String>(kNoteCategoryId, '');
 
   // Class Constructors
   PcoPeopleWorkflowCardNote.fromJson(Map<String, dynamic> data,

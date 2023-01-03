@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.138999
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.229776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -171,13 +171,14 @@ class PcoGroupsLocation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get displayPreference => _attributes[kDisplayPreference] ?? '';
-  String get fullFormattedAddress => _attributes[kFullFormattedAddress] ?? '';
-  double get latitude => _attributes[kLatitude]?.toDouble() ?? 0.0;
-  double get longitude => _attributes[kLongitude]?.toDouble() ?? 0.0;
-  String get name => _attributes[kName] ?? '';
-  String get radius => _attributes[kRadius] ?? '';
-  String get strategy => _attributes[kStrategy] ?? '';
+  String get displayPreference => _getAttribute<String>(kDisplayPreference, '');
+  String get fullFormattedAddress =>
+      _getAttribute<String>(kFullFormattedAddress, '');
+  double get latitude => _getAttribute<double>(kLatitude, 0);
+  double get longitude => _getAttribute<double>(kLongitude, 0);
+  String get name => _getAttribute<String>(kName, '');
+  String get radius => _getAttribute<String>(kRadius, '');
+  String get strategy => _getAttribute<String>(kStrategy, '');
 
   // Class Constructors
   PcoGroupsLocation.fromJson(Map<String, dynamic> data,

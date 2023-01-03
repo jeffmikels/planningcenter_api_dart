@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.845176
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.968121
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -251,14 +251,14 @@ class PcoServicesPlanTemplate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get itemCount => _attributes[kItemCount] ?? 0;
-  int get teamCount => _attributes[kTeamCount] ?? 0;
-  int get noteCount => _attributes[kNoteCount] ?? 0;
-  bool get isCanViewOrder => _attributes[kCanViewOrder] == true;
-  bool get isMultiDay => _attributes[kMultiDay] == true;
-  bool get isPrefersOrderView => _attributes[kPrefersOrderView] == true;
-  bool get isRehearsable => _attributes[kRehearsable] == true;
+  String get name => _getAttribute<String>(kName, '');
+  int get itemCount => _getAttribute<int>(kItemCount, 0);
+  int get teamCount => _getAttribute<int>(kTeamCount, 0);
+  int get noteCount => _getAttribute<int>(kNoteCount, 0);
+  bool get isCanViewOrder => _getAttribute<bool>(kCanViewOrder, false);
+  bool get isMultiDay => _getAttribute<bool>(kMultiDay, false);
+  bool get isPrefersOrderView => _getAttribute<bool>(kPrefersOrderView, false);
+  bool get isRehearsable => _getAttribute<bool>(kRehearsable, false);
 
   // Class Constructors
   PcoServicesPlanTemplate.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.023575
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.126459
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -400,19 +400,20 @@ class PcoPeopleWorkflow extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get myReadyCardCount => _attributes[kMyReadyCardCount] ?? 0;
-  int get totalReadyCardCount => _attributes[kTotalReadyCardCount] ?? 0;
-  int get completedCardCount => _attributes[kCompletedCardCount] ?? 0;
-  int get totalCardsCount => _attributes[kTotalCardsCount] ?? 0;
+  String get name => _getAttribute<String>(kName, '');
+  int get myReadyCardCount => _getAttribute<int>(kMyReadyCardCount, 0);
+  int get totalReadyCardCount => _getAttribute<int>(kTotalReadyCardCount, 0);
+  int get completedCardCount => _getAttribute<int>(kCompletedCardCount, 0);
+  int get totalCardsCount => _getAttribute<int>(kTotalCardsCount, 0);
   int get totalReadyAndSnoozedCardCount =>
-      _attributes[kTotalReadyAndSnoozedCardCount] ?? 0;
-  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
-  String get campusId => _attributes[kCampusId] ?? '';
-  String get workflowCategoryId => _attributes[kWorkflowCategoryId] ?? '';
-  int get myOverdueCardCount => _attributes[kMyOverdueCardCount] ?? 0;
-  int get myDueSoonCardCount => _attributes[kMyDueSoonCardCount] ?? 0;
-  bool get isRecentlyViewed => _attributes[kRecentlyViewed] == true;
+      _getAttribute<int>(kTotalReadyAndSnoozedCardCount, 0);
+  DateTime get deletedAt => _getAttribute<DateTime>(kDeletedAt, DateTime(0));
+  String get campusId => _getAttribute<String>(kCampusId, '');
+  String get workflowCategoryId =>
+      _getAttribute<String>(kWorkflowCategoryId, '');
+  int get myOverdueCardCount => _getAttribute<int>(kMyOverdueCardCount, 0);
+  int get myDueSoonCardCount => _getAttribute<int>(kMyDueSoonCardCount, 0);
+  bool get isRecentlyViewed => _getAttribute<bool>(kRecentlyViewed, false);
 
   // setters for object attributes
   ///

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.927714
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.010741
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,10 +175,10 @@ class PcoCheckInsLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get xml => _attributes[kXml] ?? '';
-  String get printsFor => _attributes[kPrintsFor] ?? '';
-  String get roll => _attributes[kRoll] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get xml => _getAttribute<String>(kXml, '');
+  String get printsFor => _getAttribute<String>(kPrintsFor, '');
+  String get roll => _getAttribute<String>(kRoll, '');
 
   // Class Constructors
   PcoCheckInsLabel.fromJson(Map<String, dynamic> data,

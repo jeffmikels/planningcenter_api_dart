@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.847734
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.969578
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -185,18 +185,19 @@ class PcoServicesPublicView extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isSeriesAndPlanTitles => _attributes[kSeriesAndPlanTitles] == true;
-  bool get isItemLengths => _attributes[kItemLengths] == true;
-  bool get isServiceTimes => _attributes[kServiceTimes] == true;
-  bool get isSongItems => _attributes[kSongItems] == true;
-  bool get isMediaItems => _attributes[kMediaItems] == true;
-  bool get isRegularItems => _attributes[kRegularItems] == true;
-  bool get isHeaders => _attributes[kHeaders] == true;
-  bool get isItunes => _attributes[kItunes] == true;
-  bool get isAmazon => _attributes[kAmazon] == true;
-  bool get isSpotify => _attributes[kSpotify] == true;
-  bool get isYoutube => _attributes[kYoutube] == true;
-  bool get isVimeo => _attributes[kVimeo] == true;
+  bool get isSeriesAndPlanTitles =>
+      _getAttribute<bool>(kSeriesAndPlanTitles, false);
+  bool get isItemLengths => _getAttribute<bool>(kItemLengths, false);
+  bool get isServiceTimes => _getAttribute<bool>(kServiceTimes, false);
+  bool get isSongItems => _getAttribute<bool>(kSongItems, false);
+  bool get isMediaItems => _getAttribute<bool>(kMediaItems, false);
+  bool get isRegularItems => _getAttribute<bool>(kRegularItems, false);
+  bool get isHeaders => _getAttribute<bool>(kHeaders, false);
+  bool get isItunes => _getAttribute<bool>(kItunes, false);
+  bool get isAmazon => _getAttribute<bool>(kAmazon, false);
+  bool get isSpotify => _getAttribute<bool>(kSpotify, false);
+  bool get isYoutube => _getAttribute<bool>(kYoutube, false);
+  bool get isVimeo => _getAttribute<bool>(kVimeo, false);
 
   // Class Constructors
   PcoServicesPublicView.fromJson(Map<String, dynamic> data,

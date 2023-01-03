@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.858835
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.979319
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -232,12 +232,13 @@ class PcoServicesTagGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  bool get isRequired => _attributes[kRequired] == true;
+  String get name => _getAttribute<String>(kName, '');
+  bool get isRequired => _getAttribute<bool>(kRequired, false);
   bool get isAllowMultipleSelections =>
-      _attributes[kAllowMultipleSelections] == true;
-  String get tagsFor => _attributes[kTagsFor] ?? '';
-  String get serviceTypeFolderName => _attributes[kServiceTypeFolderName] ?? '';
+      _getAttribute<bool>(kAllowMultipleSelections, false);
+  String get tagsFor => _getAttribute<String>(kTagsFor, '');
+  String get serviceTypeFolderName =>
+      _getAttribute<String>(kServiceTypeFolderName, '');
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.991864
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.090776
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -349,25 +349,28 @@ class PcoPeopleCampus extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get latitude => _attributes[kLatitude]?.toDouble() ?? 0.0;
-  double get longitude => _attributes[kLongitude]?.toDouble() ?? 0.0;
-  String get description => _attributes[kDescription] ?? '';
-  String get street => _attributes[kStreet] ?? '';
-  String get city => _attributes[kCity] ?? '';
-  String get state => _attributes[kState] ?? '';
-  String get zip => _attributes[kZip] ?? '';
-  String get country => _attributes[kCountry] ?? '';
-  String get phoneNumber => _attributes[kPhoneNumber] ?? '';
-  String get website => _attributes[kWebsite] ?? '';
-  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
-  int get dateFormat => _attributes[kDateFormat] ?? 0;
-  bool get isChurchCenterEnabled => _attributes[kChurchCenterEnabled] == true;
-  String get contactEmailAddress => _attributes[kContactEmailAddress] ?? '';
-  String get timeZone => _attributes[kTimeZone] ?? '';
+  double get latitude => _getAttribute<double>(kLatitude, 0);
+  double get longitude => _getAttribute<double>(kLongitude, 0);
+  String get description => _getAttribute<String>(kDescription, '');
+  String get street => _getAttribute<String>(kStreet, '');
+  String get city => _getAttribute<String>(kCity, '');
+  String get state => _getAttribute<String>(kState, '');
+  String get zip => _getAttribute<String>(kZip, '');
+  String get country => _getAttribute<String>(kCountry, '');
+  String get phoneNumber => _getAttribute<String>(kPhoneNumber, '');
+  String get website => _getAttribute<String>(kWebsite, '');
+  bool get isTwentyFourHourTime =>
+      _getAttribute<bool>(kTwentyFourHourTime, false);
+  int get dateFormat => _getAttribute<int>(kDateFormat, 0);
+  bool get isChurchCenterEnabled =>
+      _getAttribute<bool>(kChurchCenterEnabled, false);
+  String get contactEmailAddress =>
+      _getAttribute<String>(kContactEmailAddress, '');
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
   bool get isGeolocationSetManually =>
-      _attributes[kGeolocationSetManually] == true;
-  String get name => _attributes[kName] ?? '';
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+      _getAttribute<bool>(kGeolocationSetManually, false);
+  String get name => _getAttribute<String>(kName, '');
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
 
   // setters for object attributes
   ///

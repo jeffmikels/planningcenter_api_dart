@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.860195
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.980682
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -327,19 +327,19 @@ class PcoServicesTeam extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  bool get isRehearsalTeam => _attributes[kRehearsalTeam] == true;
-  int get sequence => _attributes[kSequence] ?? 0;
-  String get scheduleTo => _attributes[kScheduleTo] ?? '';
-  String get defaultStatus => _attributes[kDefaultStatus] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  bool get isRehearsalTeam => _getAttribute<bool>(kRehearsalTeam, false);
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  String get scheduleTo => _getAttribute<String>(kScheduleTo, '');
+  String get defaultStatus => _getAttribute<String>(kDefaultStatus, '');
   bool get isDefaultPrepareNotifications =>
-      _attributes[kDefaultPrepareNotifications] == true;
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  bool get isAssignedDirectly => _attributes[kAssignedDirectly] == true;
-  bool get isSecureTeam => _attributes[kSecureTeam] == true;
-  String get lastPlanFrom => _attributes[kLastPlanFrom] ?? '';
-  String get stageColor => _attributes[kStageColor] ?? '';
-  String get stageVariant => _attributes[kStageVariant] ?? '';
+      _getAttribute<bool>(kDefaultPrepareNotifications, false);
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  bool get isAssignedDirectly => _getAttribute<bool>(kAssignedDirectly, false);
+  bool get isSecureTeam => _getAttribute<bool>(kSecureTeam, false);
+  String get lastPlanFrom => _getAttribute<String>(kLastPlanFrom, '');
+  String get stageColor => _getAttribute<String>(kStageColor, '');
+  String get stageVariant => _getAttribute<String>(kStageVariant, '');
 
   // setters for object attributes
   ///

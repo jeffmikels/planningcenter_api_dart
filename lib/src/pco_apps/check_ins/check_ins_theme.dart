@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.936759
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.050370
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -177,13 +177,13 @@ class PcoCheckInsTheme extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get imageThumbnail => _attributes[kImageThumbnail] ?? '';
-  String get name => _attributes[kName] ?? '';
-  String get color => _attributes[kColor] ?? '';
-  String get textColor => _attributes[kTextColor] ?? '';
-  String get image => _attributes[kImage] ?? '';
-  String get backgroundColor => _attributes[kBackgroundColor] ?? '';
-  String get mode => _attributes[kMode] ?? '';
+  String get imageThumbnail => _getAttribute<String>(kImageThumbnail, '');
+  String get name => _getAttribute<String>(kName, '');
+  String get color => _getAttribute<String>(kColor, '');
+  String get textColor => _getAttribute<String>(kTextColor, '');
+  String get image => _getAttribute<String>(kImage, '');
+  String get backgroundColor => _getAttribute<String>(kBackgroundColor, '');
+  String get mode => _getAttribute<String>(kMode, '');
 
   // Class Constructors
   PcoCheckInsTheme.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.046606
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.145677
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -376,13 +376,14 @@ class PcoCalendarEventInstance extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isAllDayEvent => _attributes[kAllDayEvent] == true;
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  String get location => _attributes[kLocation] ?? '';
-  String get recurrence => _attributes[kRecurrence] ?? '';
-  String get recurrenceDescription => _attributes[kRecurrenceDescription] ?? '';
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  String get churchCenterUrl => _attributes[kChurchCenterUrl] ?? '';
+  bool get isAllDayEvent => _getAttribute<bool>(kAllDayEvent, false);
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  String get location => _getAttribute<String>(kLocation, '');
+  String get recurrence => _getAttribute<String>(kRecurrence, '');
+  String get recurrenceDescription =>
+      _getAttribute<String>(kRecurrenceDescription, '');
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  String get churchCenterUrl => _getAttribute<String>(kChurchCenterUrl, '');
 
   // typed getters for each relationship
 

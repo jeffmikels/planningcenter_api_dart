@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.124301
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.181779
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -223,13 +223,13 @@ class PcoGivingPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get permissions => _attributes[kPermissions] ?? '';
-  List get emailAddresses => _attributes[kEmailAddresses] ?? [];
-  List get addresses => _attributes[kAddresses] ?? [];
-  List get phoneNumbers => _attributes[kPhoneNumbers] ?? [];
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  int get donorNumber => _attributes[kDonorNumber] ?? 0;
+  String get permissions => _getAttribute<String>(kPermissions, '');
+  List get emailAddresses => _getAttribute<List>(kEmailAddresses, []);
+  List get addresses => _getAttribute<List>(kAddresses, []);
+  List get phoneNumbers => _getAttribute<List>(kPhoneNumbers, []);
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  int get donorNumber => _getAttribute<int>(kDonorNumber, 0);
 
   // Class Constructors
   PcoGivingPerson.fromJson(Map<String, dynamic> data,

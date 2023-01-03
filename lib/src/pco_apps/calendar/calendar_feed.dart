@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.048490
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.147564
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -215,11 +215,11 @@ class PcoCalendarFeed extends PcoResource {
 
   // getters for object attributes
   String get defaultChurchCenterVisibility =>
-      _attributes[kDefaultChurchCenterVisibility] ?? '';
-  String get feedType => _attributes[kFeedType] ?? '';
-  String get name => _attributes[kName] ?? '';
-  DateTime get importedAt => DateTime.parse(_attributes[kImportedAt] ?? '');
-  bool get isCanDelete => _attributes[kCanDelete] == true;
+      _getAttribute<String>(kDefaultChurchCenterVisibility, '');
+  String get feedType => _getAttribute<String>(kFeedType, '');
+  String get name => _getAttribute<String>(kName, '');
+  DateTime get importedAt => _getAttribute<DateTime>(kImportedAt, DateTime(0));
+  bool get isCanDelete => _getAttribute<bool>(kCanDelete, false);
 
   // setters for object attributes
 
@@ -242,7 +242,7 @@ class PcoCalendarFeed extends PcoResource {
   set eventOwnerId(String? x) => (x == null)
       ? _attributes.remove(kEventOwnerId)
       : _attributes[kEventOwnerId] = x;
-  String get eventOwnerId => _attributes[kEventOwnerId] ?? '';
+  String get eventOwnerId => _getAttribute<String>(kEventOwnerId, '');
 
   // Class Constructors
   PcoCalendarFeed.fromJson(Map<String, dynamic> data,

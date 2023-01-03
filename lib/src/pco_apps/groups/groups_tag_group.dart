@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.142453
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.232795
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -208,11 +208,11 @@ class PcoGroupsTagGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isDisplayPublicly => _attributes[kDisplayPublicly] == true;
+  bool get isDisplayPublicly => _getAttribute<bool>(kDisplayPublicly, false);
   bool get isMultipleOptionsEnabled =>
-      _attributes[kMultipleOptionsEnabled] == true;
-  String get name => _attributes[kName] ?? '';
-  int get position => _attributes[kPosition] ?? 0;
+      _getAttribute<bool>(kMultipleOptionsEnabled, false);
+  String get name => _getAttribute<String>(kName, '');
+  int get position => _getAttribute<int>(kPosition, 0);
 
   // Class Constructors
   PcoGroupsTagGroup.fromJson(Map<String, dynamic> data,

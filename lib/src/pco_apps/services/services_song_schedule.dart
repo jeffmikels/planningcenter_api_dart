@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.856301
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.977179
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -219,11 +219,11 @@ class PcoServicesSongSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get arrangementName => _attributes[kArrangementName] ?? '';
-  String get keyName => _attributes[kKeyName] ?? '';
-  String get planDates => _attributes[kPlanDates] ?? '';
-  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
-  String get planSortDate => _attributes[kPlanSortDate] ?? '';
+  String get arrangementName => _getAttribute<String>(kArrangementName, '');
+  String get keyName => _getAttribute<String>(kKeyName, '');
+  String get planDates => _getAttribute<String>(kPlanDates, '');
+  String get serviceTypeName => _getAttribute<String>(kServiceTypeName, '');
+  String get planSortDate => _getAttribute<String>(kPlanSortDate, '');
 
   // Class Constructors
   PcoServicesSongSchedule.fromJson(Map<String, dynamic> data,

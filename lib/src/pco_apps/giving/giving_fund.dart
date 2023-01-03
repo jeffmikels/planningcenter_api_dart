@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.121328
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.179256
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,14 +235,14 @@ class PcoGivingFund extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get ledgerCode => _attributes[kLedgerCode] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get visibility => _attributes[kVisibility] ?? '';
-  int get colorIdentifier => _attributes[kColorIdentifier] ?? 0;
-  bool get isDefault => _attributes[kDefault] == true;
-  String get color => _attributes[kColor] ?? '';
-  bool get isDeletable => _attributes[kDeletable] == true;
+  String get name => _getAttribute<String>(kName, '');
+  String get ledgerCode => _getAttribute<String>(kLedgerCode, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get visibility => _getAttribute<String>(kVisibility, '');
+  int get colorIdentifier => _getAttribute<int>(kColorIdentifier, 0);
+  bool get isDefault => _getAttribute<bool>(kDefault, false);
+  String get color => _getAttribute<String>(kColor, '');
+  bool get isDeletable => _getAttribute<bool>(kDeletable, false);
 
   // setters for object attributes
 

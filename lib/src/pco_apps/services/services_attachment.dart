@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.818757
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.941985
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -353,27 +353,28 @@ class PcoServicesAttachment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get pageOrder => _attributes[kPageOrder] ?? '';
-  String get filename => _attributes[kFilename] ?? '';
-  int get fileSize => _attributes[kFileSize] ?? 0;
-  int get licensesPurchased => _attributes[kLicensesPurchased] ?? 0;
-  int get licensesRemaining => _attributes[kLicensesRemaining] ?? 0;
-  int get licensesUsed => _attributes[kLicensesUsed] ?? 0;
-  String get contentType => _attributes[kContentType] ?? '';
-  String get displayName => _attributes[kDisplayName] ?? '';
-  String get filetype => _attributes[kFiletype] ?? '';
-  String get linkedUrl => _attributes[kLinkedUrl] ?? '';
-  String get pcoType => _attributes[kPcoType] ?? '';
-  String get remoteLink => _attributes[kRemoteLink] ?? '';
-  String get thumbnailUrl => _attributes[kThumbnailUrl] ?? '';
-  String get url => _attributes[kUrl] ?? '';
-  bool get isAllowMp3Download => _attributes[kAllowMp3Download] == true;
-  bool get isWebStreamable => _attributes[kWebStreamable] == true;
-  bool get isDownloadable => _attributes[kDownloadable] == true;
-  bool get isTransposable => _attributes[kTransposable] == true;
-  bool get isStreamable => _attributes[kStreamable] == true;
-  bool get isHasPreview => _attributes[kHasPreview] == true;
-  String get fileUploadIdentifier => _attributes[kFileUploadIdentifier] ?? '';
+  String get pageOrder => _getAttribute<String>(kPageOrder, '');
+  String get filename => _getAttribute<String>(kFilename, '');
+  int get fileSize => _getAttribute<int>(kFileSize, 0);
+  int get licensesPurchased => _getAttribute<int>(kLicensesPurchased, 0);
+  int get licensesRemaining => _getAttribute<int>(kLicensesRemaining, 0);
+  int get licensesUsed => _getAttribute<int>(kLicensesUsed, 0);
+  String get contentType => _getAttribute<String>(kContentType, '');
+  String get displayName => _getAttribute<String>(kDisplayName, '');
+  String get filetype => _getAttribute<String>(kFiletype, '');
+  String get linkedUrl => _getAttribute<String>(kLinkedUrl, '');
+  String get pcoType => _getAttribute<String>(kPcoType, '');
+  String get remoteLink => _getAttribute<String>(kRemoteLink, '');
+  String get thumbnailUrl => _getAttribute<String>(kThumbnailUrl, '');
+  String get url => _getAttribute<String>(kUrl, '');
+  bool get isAllowMp3Download => _getAttribute<bool>(kAllowMp3Download, false);
+  bool get isWebStreamable => _getAttribute<bool>(kWebStreamable, false);
+  bool get isDownloadable => _getAttribute<bool>(kDownloadable, false);
+  bool get isTransposable => _getAttribute<bool>(kTransposable, false);
+  bool get isStreamable => _getAttribute<bool>(kStreamable, false);
+  bool get isHasPreview => _getAttribute<bool>(kHasPreview, false);
+  String get fileUploadIdentifier =>
+      _getAttribute<String>(kFileUploadIdentifier, '');
 
   // setters for object attributes
   ///
@@ -405,7 +406,7 @@ class PcoServicesAttachment extends PcoResource {
   set attachmentTypeIds(String? x) => (x == null)
       ? _attributes.remove(kAttachmentTypeIds)
       : _attributes[kAttachmentTypeIds] = x;
-  String get attachmentTypeIds => _attributes[kAttachmentTypeIds] ?? '';
+  String get attachmentTypeIds => _getAttribute<String>(kAttachmentTypeIds, '');
 
   // typed getters for each relationship
 

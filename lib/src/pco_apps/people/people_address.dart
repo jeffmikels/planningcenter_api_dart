@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.990046
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.089088
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -313,12 +313,12 @@ class PcoPeopleAddress extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get city => _attributes[kCity] ?? '';
-  String get state => _attributes[kState] ?? '';
-  String get zip => _attributes[kZip] ?? '';
-  String get street => _attributes[kStreet] ?? '';
-  String get location => _attributes[kLocation] ?? '';
-  bool get isPrimary => _attributes[kPrimary] == true;
+  String get city => _getAttribute<String>(kCity, '');
+  String get state => _getAttribute<String>(kState, '');
+  String get zip => _getAttribute<String>(kZip, '');
+  String get street => _getAttribute<String>(kStreet, '');
+  String get location => _getAttribute<String>(kLocation, '');
+  bool get isPrimary => _getAttribute<bool>(kPrimary, false);
 
   // setters for object attributes
   ///

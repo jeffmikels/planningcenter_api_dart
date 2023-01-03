@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.831708
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.955074
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,12 +206,12 @@ class PcoServicesKey extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get alternateKeys => _attributes[kAlternateKeys] ?? '';
-  String get endingKey => _attributes[kEndingKey] ?? '';
-  String get startingKey => _attributes[kStartingKey] ?? '';
-  bool get isStartingMinor => _attributes[kStartingMinor] == true;
-  bool get isEndingMinor => _attributes[kEndingMinor] == true;
+  String get name => _getAttribute<String>(kName, '');
+  String get alternateKeys => _getAttribute<String>(kAlternateKeys, '');
+  String get endingKey => _getAttribute<String>(kEndingKey, '');
+  String get startingKey => _getAttribute<String>(kStartingKey, '');
+  bool get isStartingMinor => _getAttribute<bool>(kStartingMinor, false);
+  bool get isEndingMinor => _getAttribute<bool>(kEndingMinor, false);
 
   // setters for object attributes
   ///

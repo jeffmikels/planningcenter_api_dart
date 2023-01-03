@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.118426
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.176234
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -195,11 +195,11 @@ class PcoGivingBatchGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get description => _attributes[kDescription] ?? '';
-  bool get isCommitted => _attributes[kCommitted] == true;
-  int get totalCents => _attributes[kTotalCents] ?? 0;
-  String get totalCurrency => _attributes[kTotalCurrency] ?? '';
-  String get status => _attributes[kStatus] ?? '';
+  String get description => _getAttribute<String>(kDescription, '');
+  bool get isCommitted => _getAttribute<bool>(kCommitted, false);
+  int get totalCents => _getAttribute<int>(kTotalCents, 0);
+  String get totalCurrency => _getAttribute<String>(kTotalCurrency, '');
+  String get status => _getAttribute<String>(kStatus, '');
 
   // setters for object attributes
 

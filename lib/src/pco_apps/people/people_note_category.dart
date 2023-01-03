@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.009104
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.110807
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -316,9 +316,9 @@ class PcoPeopleNoteCategory extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  bool get isLocked => _attributes[kLocked] == true;
-  String get organizationId => _attributes[kOrganizationId] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  bool get isLocked => _getAttribute<bool>(kLocked, false);
+  String get organizationId => _getAttribute<String>(kOrganizationId, '');
 
   // setters for object attributes
   ///

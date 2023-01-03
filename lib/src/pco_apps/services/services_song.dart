@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.855865
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.976568
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -294,18 +294,18 @@ class PcoServicesSong extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => _attributes[kTitle] ?? '';
-  String get admin => _attributes[kAdmin] ?? '';
-  String get author => _attributes[kAuthor] ?? '';
-  String get copyright => _attributes[kCopyright] ?? '';
-  bool get isHidden => _attributes[kHidden] == true;
-  String get notes => _attributes[kNotes] ?? '';
-  String get themes => _attributes[kThemes] ?? '';
+  String get title => _getAttribute<String>(kTitle, '');
+  String get admin => _getAttribute<String>(kAdmin, '');
+  String get author => _getAttribute<String>(kAuthor, '');
+  String get copyright => _getAttribute<String>(kCopyright, '');
+  bool get isHidden => _getAttribute<bool>(kHidden, false);
+  String get notes => _getAttribute<String>(kNotes, '');
+  String get themes => _getAttribute<String>(kThemes, '');
   String get lastScheduledShortDates =>
-      _attributes[kLastScheduledShortDates] ?? '';
+      _getAttribute<String>(kLastScheduledShortDates, '');
   DateTime get lastScheduledAt =>
-      DateTime.parse(_attributes[kLastScheduledAt] ?? '');
-  int get ccliNumber => _attributes[kCcliNumber] ?? 0;
+      _getAttribute<DateTime>(kLastScheduledAt, DateTime(0));
+  int get ccliNumber => _getAttribute<int>(kCcliNumber, 0);
 
   // setters for object attributes
 

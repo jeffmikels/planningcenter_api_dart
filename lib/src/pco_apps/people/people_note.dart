@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.006055
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.106820
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -317,12 +317,13 @@ class PcoPeopleNote extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get note => _attributes[kNote] ?? '';
-  DateTime get displayDate => DateTime.parse(_attributes[kDisplayDate] ?? '');
-  String get noteCategoryId => _attributes[kNoteCategoryId] ?? '';
-  String get organizationId => _attributes[kOrganizationId] ?? '';
-  String get personId => _attributes[kPersonId] ?? '';
-  String get createdById => _attributes[kCreatedById] ?? '';
+  String get note => _getAttribute<String>(kNote, '');
+  DateTime get displayDate =>
+      _getAttribute<DateTime>(kDisplayDate, DateTime(0));
+  String get noteCategoryId => _getAttribute<String>(kNoteCategoryId, '');
+  String get organizationId => _getAttribute<String>(kOrganizationId, '');
+  String get personId => _getAttribute<String>(kPersonId, '');
+  String get createdById => _getAttribute<String>(kCreatedById, '');
 
   // setters for object attributes
   ///

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.840901
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.964401
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -441,30 +441,31 @@ class PcoServicesPlan extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get title => _attributes[kTitle] ?? '';
-  bool get isPublic => _attributes[kPublic] == true;
-  String get seriesTitle => _attributes[kSeriesTitle] ?? '';
-  int get planNotesCount => _attributes[kPlanNotesCount] ?? 0;
-  int get otherTimeCount => _attributes[kOtherTimeCount] ?? 0;
-  int get rehearsalTimeCount => _attributes[kRehearsalTimeCount] ?? 0;
-  int get serviceTimeCount => _attributes[kServiceTimeCount] ?? 0;
-  int get planPeopleCount => _attributes[kPlanPeopleCount] ?? 0;
-  int get neededPositionsCount => _attributes[kNeededPositionsCount] ?? 0;
-  int get itemsCount => _attributes[kItemsCount] ?? 0;
-  int get totalLength => _attributes[kTotalLength] ?? 0;
-  bool get isCanViewOrder => _attributes[kCanViewOrder] == true;
-  bool get isMultiDay => _attributes[kMultiDay] == true;
-  bool get isPrefersOrderView => _attributes[kPrefersOrderView] == true;
-  bool get isRehearsable => _attributes[kRehearsable] == true;
+  String get title => _getAttribute<String>(kTitle, '');
+  bool get isPublic => _getAttribute<bool>(kPublic, false);
+  String get seriesTitle => _getAttribute<String>(kSeriesTitle, '');
+  int get planNotesCount => _getAttribute<int>(kPlanNotesCount, 0);
+  int get otherTimeCount => _getAttribute<int>(kOtherTimeCount, 0);
+  int get rehearsalTimeCount => _getAttribute<int>(kRehearsalTimeCount, 0);
+  int get serviceTimeCount => _getAttribute<int>(kServiceTimeCount, 0);
+  int get planPeopleCount => _getAttribute<int>(kPlanPeopleCount, 0);
+  int get neededPositionsCount => _getAttribute<int>(kNeededPositionsCount, 0);
+  int get itemsCount => _getAttribute<int>(kItemsCount, 0);
+  int get totalLength => _getAttribute<int>(kTotalLength, 0);
+  bool get isCanViewOrder => _getAttribute<bool>(kCanViewOrder, false);
+  bool get isMultiDay => _getAttribute<bool>(kMultiDay, false);
+  bool get isPrefersOrderView => _getAttribute<bool>(kPrefersOrderView, false);
+  bool get isRehearsable => _getAttribute<bool>(kRehearsable, false);
   DateTime get filesExpireAt =>
-      DateTime.parse(_attributes[kFilesExpireAt] ?? '');
-  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
-  DateTime get lastTimeAt => DateTime.parse(_attributes[kLastTimeAt] ?? '');
-  String get permissions => _attributes[kPermissions] ?? '';
-  String get dates => _attributes[kDates] ?? '';
-  String get shortDates => _attributes[kShortDates] ?? '';
-  String get planningCenterUrl => _attributes[kPlanningCenterUrl] ?? '';
-  bool get isRemindersDisabled => _attributes[kRemindersDisabled] == true;
+      _getAttribute<DateTime>(kFilesExpireAt, DateTime(0));
+  DateTime get sortDate => _getAttribute<DateTime>(kSortDate, DateTime(0));
+  DateTime get lastTimeAt => _getAttribute<DateTime>(kLastTimeAt, DateTime(0));
+  String get permissions => _getAttribute<String>(kPermissions, '');
+  String get dates => _getAttribute<String>(kDates, '');
+  String get shortDates => _getAttribute<String>(kShortDates, '');
+  String get planningCenterUrl => _getAttribute<String>(kPlanningCenterUrl, '');
+  bool get isRemindersDisabled =>
+      _getAttribute<bool>(kRemindersDisabled, false);
 
   // setters for object attributes
   ///
@@ -495,7 +496,7 @@ class PcoServicesPlan extends PcoResource {
   /// pass `null` to remove key from attributes
   set seriesId(String? x) =>
       (x == null) ? _attributes.remove(kSeriesId) : _attributes[kSeriesId] = x;
-  String get seriesId => _attributes[kSeriesId] ?? '';
+  String get seriesId => _getAttribute<String>(kSeriesId, '');
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.928644
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.041628
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -296,23 +296,24 @@ class PcoCheckInsLocation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get kind => _attributes[kKind] ?? '';
-  bool get isOpened => _attributes[kOpened] == true;
-  String get questions => _attributes[kQuestions] ?? '';
-  int get ageMinInMonths => _attributes[kAgeMinInMonths] ?? 0;
-  int get ageMaxInMonths => _attributes[kAgeMaxInMonths] ?? 0;
-  String get ageRangeBy => _attributes[kAgeRangeBy] ?? '';
-  String get ageOn => _attributes[kAgeOn] ?? '';
-  String get childOrAdult => _attributes[kChildOrAdult] ?? '';
-  String get effectiveDate => _attributes[kEffectiveDate] ?? '';
-  String get gender => _attributes[kGender] ?? '';
-  int get gradeMin => _attributes[kGradeMin] ?? 0;
-  int get gradeMax => _attributes[kGradeMax] ?? 0;
-  int get maxOccupancy => _attributes[kMaxOccupancy] ?? 0;
-  int get minVolunteers => _attributes[kMinVolunteers] ?? 0;
-  int get attendeesPerVolunteer => _attributes[kAttendeesPerVolunteer] ?? 0;
-  int get position => _attributes[kPosition] ?? 0;
+  String get name => _getAttribute<String>(kName, '');
+  String get kind => _getAttribute<String>(kKind, '');
+  bool get isOpened => _getAttribute<bool>(kOpened, false);
+  String get questions => _getAttribute<String>(kQuestions, '');
+  int get ageMinInMonths => _getAttribute<int>(kAgeMinInMonths, 0);
+  int get ageMaxInMonths => _getAttribute<int>(kAgeMaxInMonths, 0);
+  String get ageRangeBy => _getAttribute<String>(kAgeRangeBy, '');
+  String get ageOn => _getAttribute<String>(kAgeOn, '');
+  String get childOrAdult => _getAttribute<String>(kChildOrAdult, '');
+  String get effectiveDate => _getAttribute<String>(kEffectiveDate, '');
+  String get gender => _getAttribute<String>(kGender, '');
+  int get gradeMin => _getAttribute<int>(kGradeMin, 0);
+  int get gradeMax => _getAttribute<int>(kGradeMax, 0);
+  int get maxOccupancy => _getAttribute<int>(kMaxOccupancy, 0);
+  int get minVolunteers => _getAttribute<int>(kMinVolunteers, 0);
+  int get attendeesPerVolunteer =>
+      _getAttribute<int>(kAttendeesPerVolunteer, 0);
+  int get position => _getAttribute<int>(kPosition, 0);
 
   // typed getters for each relationship
 

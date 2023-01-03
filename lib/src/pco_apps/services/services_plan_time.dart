@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.847202
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.968921
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -261,14 +261,15 @@ class PcoServicesPlanTime extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get timeType => _attributes[kTimeType] ?? '';
-  bool get isRecorded => _attributes[kRecorded] == true;
-  List get teamReminders => _attributes[kTeamReminders] ?? [];
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  DateTime get liveStartsAt => DateTime.parse(_attributes[kLiveStartsAt] ?? '');
-  DateTime get liveEndsAt => DateTime.parse(_attributes[kLiveEndsAt] ?? '');
+  String get name => _getAttribute<String>(kName, '');
+  String get timeType => _getAttribute<String>(kTimeType, '');
+  bool get isRecorded => _getAttribute<bool>(kRecorded, false);
+  List get teamReminders => _getAttribute<List>(kTeamReminders, []);
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  DateTime get liveStartsAt =>
+      _getAttribute<DateTime>(kLiveStartsAt, DateTime(0));
+  DateTime get liveEndsAt => _getAttribute<DateTime>(kLiveEndsAt, DateTime(0));
 
   // setters for object attributes
   ///

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.022773
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.125583
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -256,9 +256,9 @@ class PcoPeopleTab extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
-  String get slug => _attributes[kSlug] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  String get slug => _getAttribute<String>(kSlug, '');
 
   // setters for object attributes
   ///

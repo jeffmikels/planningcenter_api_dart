@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.020556
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.123959
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -257,11 +257,11 @@ class PcoPeopleSchoolOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => _attributes[kValue] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
-  String get beginningGrade => _attributes[kBeginningGrade] ?? '';
-  String get endingGrade => _attributes[kEndingGrade] ?? '';
-  List get schoolTypes => _attributes[kSchoolTypes] ?? [];
+  String get value => _getAttribute<String>(kValue, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
+  String get beginningGrade => _getAttribute<String>(kBeginningGrade, '');
+  String get endingGrade => _getAttribute<String>(kEndingGrade, '');
+  List get schoolTypes => _getAttribute<List>(kSchoolTypes, []);
 
   // setters for object attributes
   ///

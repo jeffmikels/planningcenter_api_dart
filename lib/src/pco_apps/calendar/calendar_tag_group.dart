@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.056873
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.155025
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -250,8 +250,8 @@ class PcoCalendarTagGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  bool get isRequired => _attributes[kRequired] == true;
+  String get name => _getAttribute<String>(kName, '');
+  bool get isRequired => _getAttribute<bool>(kRequired, false);
 
   // typed getters for each relationship
 

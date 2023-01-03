@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.054828
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.153066
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -222,13 +222,13 @@ class PcoCalendarResourceQuestion extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get kind => _attributes[kKind] ?? '';
-  String get choices => _attributes[kChoices] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  bool get isMultipleSelect => _attributes[kMultipleSelect] == true;
-  bool get isOptional => _attributes[kOptional] == true;
-  int get position => _attributes[kPosition] ?? 0;
-  String get question => _attributes[kQuestion] ?? '';
+  String get kind => _getAttribute<String>(kKind, '');
+  String get choices => _getAttribute<String>(kChoices, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  bool get isMultipleSelect => _getAttribute<bool>(kMultipleSelect, false);
+  bool get isOptional => _getAttribute<bool>(kOptional, false);
+  int get position => _getAttribute<int>(kPosition, 0);
+  String get question => _getAttribute<String>(kQuestion, '');
 
   // Class Constructors
   PcoCalendarResourceQuestion.fromJson(Map<String, dynamic> data,

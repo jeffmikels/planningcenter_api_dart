@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.992812
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.091597
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -354,12 +354,13 @@ class PcoPeopleCondition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get application => _attributes[kApplication] ?? '';
-  String get definitionClass => _attributes[kDefinitionClass] ?? '';
-  String get comparison => _attributes[kComparison] ?? '';
-  String get settings => _attributes[kSettings] ?? '';
-  String get definitionIdentifier => _attributes[kDefinitionIdentifier] ?? '';
-  String get description => _attributes[kDescription] ?? '';
+  String get application => _getAttribute<String>(kApplication, '');
+  String get definitionClass => _getAttribute<String>(kDefinitionClass, '');
+  String get comparison => _getAttribute<String>(kComparison, '');
+  String get settings => _getAttribute<String>(kSettings, '');
+  String get definitionIdentifier =>
+      _getAttribute<String>(kDefinitionIdentifier, '');
+  String get description => _getAttribute<String>(kDescription, '');
 
   // typed getters for each relationship
 

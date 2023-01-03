@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.862111
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.983449
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -176,14 +176,15 @@ class PcoServicesTextSetting extends PcoResource {
 
   // getters for object attributes
   bool get isSchedulingRequestsEnabled =>
-      _attributes[kSchedulingRequestsEnabled] == true;
-  bool get isGeneralEmailsEnabled => _attributes[kGeneralEmailsEnabled] == true;
+      _getAttribute<bool>(kSchedulingRequestsEnabled, false);
+  bool get isGeneralEmailsEnabled =>
+      _getAttribute<bool>(kGeneralEmailsEnabled, false);
   bool get isSchedulingRepliesEnabled =>
-      _attributes[kSchedulingRepliesEnabled] == true;
-  bool get isRemindersEnabled => _attributes[kRemindersEnabled] == true;
-  String get carrier => _attributes[kCarrier] ?? '';
-  String get displayNumber => _attributes[kDisplayNumber] ?? '';
-  String get normalizedNumber => _attributes[kNormalizedNumber] ?? '';
+      _getAttribute<bool>(kSchedulingRepliesEnabled, false);
+  bool get isRemindersEnabled => _getAttribute<bool>(kRemindersEnabled, false);
+  String get carrier => _getAttribute<String>(kCarrier, '');
+  String get displayNumber => _getAttribute<String>(kDisplayNumber, '');
+  String get normalizedNumber => _getAttribute<String>(kNormalizedNumber, '');
 
   // setters for object attributes
   ///

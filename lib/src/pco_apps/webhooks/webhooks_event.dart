@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.146874
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.237137
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -205,8 +205,8 @@ class PcoWebhooksEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get uuid => _attributes[kUuid] ?? '';
-  String get payload => _attributes[kPayload] ?? '';
+  String get uuid => _getAttribute<String>(kUuid, '');
+  String get payload => _getAttribute<String>(kPayload, '');
 
   // Class Constructors
   PcoWebhooksEvent.fromJson(Map<String, dynamic> data,

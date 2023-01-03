@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.861404
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.982866
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -232,10 +232,10 @@ class PcoServicesTeamPosition extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  List get tags => _attributes[kTags] ?? [];
-  List get negativeTagGroups => _attributes[kNegativeTagGroups] ?? [];
-  List get tagGroups => _attributes[kTagGroups] ?? [];
+  String get name => _getAttribute<String>(kName, '');
+  List get tags => _getAttribute<List>(kTags, []);
+  List get negativeTagGroups => _getAttribute<List>(kNegativeTagGroups, []);
+  List get tagGroups => _getAttribute<List>(kTagGroups, []);
 
   // typed getters for each relationship
 

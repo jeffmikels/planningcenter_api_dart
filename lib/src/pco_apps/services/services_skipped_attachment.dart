@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.855311
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.975615
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,7 +165,7 @@ class PcoServicesSkippedAttachment extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isSkipped => _attributes[kSkipped] == true;
+  bool get isSkipped => _getAttribute<bool>(kSkipped, false);
 
   // Class Constructors
   PcoServicesSkippedAttachment.fromJson(Map<String, dynamic> data,

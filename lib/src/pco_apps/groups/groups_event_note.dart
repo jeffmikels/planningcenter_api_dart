@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.137224
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.228112
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -182,7 +182,7 @@ class PcoGroupsEventNote extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
+  String get body => _getAttribute<String>(kBody, '');
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.835900
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.959443
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -217,9 +217,9 @@ class PcoServicesNeededPosition extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  int get quantity => _attributes[kQuantity] ?? 0;
-  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
-  String get scheduledTo => _attributes[kScheduledTo] ?? '';
+  int get quantity => _getAttribute<int>(kQuantity, 0);
+  String get teamPositionName => _getAttribute<String>(kTeamPositionName, '');
+  String get scheduledTo => _getAttribute<String>(kScheduledTo, '');
 
   // setters for object attributes
   ///
@@ -232,7 +232,7 @@ class PcoServicesNeededPosition extends PcoResource {
   /// pass `null` to remove key from attributes
   set timeId(String? x) =>
       (x == null) ? _attributes.remove(kTimeId) : _attributes[kTimeId] = x;
-  String get timeId => _attributes[kTimeId] ?? '';
+  String get timeId => _getAttribute<String>(kTimeId, '');
 
   ///
   /// pass `null` to remove key from attributes
@@ -240,7 +240,7 @@ class PcoServicesNeededPosition extends PcoResource {
       ? _attributes.remove(kTimePreferenceOptionId)
       : _attributes[kTimePreferenceOptionId] = x;
   String get timePreferenceOptionId =>
-      _attributes[kTimePreferenceOptionId] ?? '';
+      _getAttribute<String>(kTimePreferenceOptionId, '');
 
   // typed getters for each relationship
 

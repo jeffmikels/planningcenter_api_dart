@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.026350
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.128322
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -207,16 +207,17 @@ class PcoPeopleWorkflowCardActivity extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get comment => _attributes[kComment] ?? '';
-  String get content => _attributes[kContent] ?? '';
-  String get formSubmissionUrl => _attributes[kFormSubmissionUrl] ?? '';
-  String get personAvatarUrl => _attributes[kPersonAvatarUrl] ?? '';
-  String get personName => _attributes[kPersonName] ?? '';
-  String get reassignedToAvatarUrl => _attributes[kReassignedToAvatarUrl] ?? '';
-  String get reassignedToName => _attributes[kReassignedToName] ?? '';
-  String get subject => _attributes[kSubject] ?? '';
-  String get type => _attributes[kType] ?? '';
-  bool get isContentIsHtml => _attributes[kContentIsHtml] == true;
+  String get comment => _getAttribute<String>(kComment, '');
+  String get content => _getAttribute<String>(kContent, '');
+  String get formSubmissionUrl => _getAttribute<String>(kFormSubmissionUrl, '');
+  String get personAvatarUrl => _getAttribute<String>(kPersonAvatarUrl, '');
+  String get personName => _getAttribute<String>(kPersonName, '');
+  String get reassignedToAvatarUrl =>
+      _getAttribute<String>(kReassignedToAvatarUrl, '');
+  String get reassignedToName => _getAttribute<String>(kReassignedToName, '');
+  String get subject => _getAttribute<String>(kSubject, '');
+  String get type => _getAttribute<String>(kType, '');
+  bool get isContentIsHtml => _getAttribute<bool>(kContentIsHtml, false);
 
   // Class Constructors
   PcoPeopleWorkflowCardActivity.fromJson(Map<String, dynamic> data,

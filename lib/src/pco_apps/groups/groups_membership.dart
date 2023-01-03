@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.139510
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.230248
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -244,15 +244,15 @@ class PcoGroupsMembership extends PcoResource {
 
   // getters for object attributes
   String get accountCenterIdentifier =>
-      _attributes[kAccountCenterIdentifier] ?? '';
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
-  String get colorIdentifier => _attributes[kColorIdentifier] ?? '';
-  String get emailAddress => _attributes[kEmailAddress] ?? '';
-  String get firstName => _attributes[kFirstName] ?? '';
-  DateTime get joinedAt => DateTime.parse(_attributes[kJoinedAt] ?? '');
-  String get lastName => _attributes[kLastName] ?? '';
-  String get phoneNumber => _attributes[kPhoneNumber] ?? '';
-  String get role => _attributes[kRole] ?? '';
+      _getAttribute<String>(kAccountCenterIdentifier, '');
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
+  String get colorIdentifier => _getAttribute<String>(kColorIdentifier, '');
+  String get emailAddress => _getAttribute<String>(kEmailAddress, '');
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  DateTime get joinedAt => _getAttribute<DateTime>(kJoinedAt, DateTime(0));
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get phoneNumber => _getAttribute<String>(kPhoneNumber, '');
+  String get role => _getAttribute<String>(kRole, '');
 
   // setters for object attributes
   ///
@@ -272,7 +272,7 @@ class PcoGroupsMembership extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // Class Constructors
   PcoGroupsMembership.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.994258
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.093376
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -353,11 +353,11 @@ class PcoPeopleFieldDatum extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => _attributes[kValue] ?? '';
-  String get file => _attributes[kFile] ?? '';
-  int get fileSize => _attributes[kFileSize] ?? 0;
-  String get fileContentType => _attributes[kFileContentType] ?? '';
-  String get fileName => _attributes[kFileName] ?? '';
+  String get value => _getAttribute<String>(kValue, '');
+  String get file => _getAttribute<String>(kFile, '');
+  int get fileSize => _getAttribute<int>(kFileSize, 0);
+  String get fileContentType => _getAttribute<String>(kFileContentType, '');
+  String get fileName => _getAttribute<String>(kFileName, '');
 
   // setters for object attributes
   ///
@@ -371,7 +371,7 @@ class PcoPeopleFieldDatum extends PcoResource {
   set fieldDefinitionId(String? x) => (x == null)
       ? _attributes.remove(kFieldDefinitionId)
       : _attributes[kFieldDefinitionId] = x;
-  String get fieldDefinitionId => _attributes[kFieldDefinitionId] ?? '';
+  String get fieldDefinitionId => _getAttribute<String>(kFieldDefinitionId, '');
 
   // typed getters for each relationship
 

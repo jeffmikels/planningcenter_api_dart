@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.138588
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.229398
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -222,14 +222,16 @@ class PcoGroupsGroupType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isChurchCenterVisible => _attributes[kChurchCenterVisible] == true;
+  bool get isChurchCenterVisible =>
+      _getAttribute<bool>(kChurchCenterVisible, false);
   bool get isChurchCenterMapVisible =>
-      _attributes[kChurchCenterMapVisible] == true;
-  String get color => _attributes[kColor] ?? '';
-  String get defaultGroupSettings => _attributes[kDefaultGroupSettings] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get name => _attributes[kName] ?? '';
-  int get position => _attributes[kPosition] ?? 0;
+      _getAttribute<bool>(kChurchCenterMapVisible, false);
+  String get color => _getAttribute<String>(kColor, '');
+  String get defaultGroupSettings =>
+      _getAttribute<String>(kDefaultGroupSettings, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get name => _getAttribute<String>(kName, '');
+  int get position => _getAttribute<int>(kPosition, 0);
 
   // Class Constructors
   PcoGroupsGroupType.fromJson(Map<String, dynamic> data,

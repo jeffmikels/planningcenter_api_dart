@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.013036
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.116681
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -188,10 +188,11 @@ class PcoPeoplePeopleImport extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get attribs => _attributes[kAttribs] ?? '';
-  String get status => _attributes[kStatus] ?? '';
-  DateTime get processedAt => DateTime.parse(_attributes[kProcessedAt] ?? '');
-  DateTime get undoneAt => DateTime.parse(_attributes[kUndoneAt] ?? '');
+  String get attribs => _getAttribute<String>(kAttribs, '');
+  String get status => _getAttribute<String>(kStatus, '');
+  DateTime get processedAt =>
+      _getAttribute<DateTime>(kProcessedAt, DateTime(0));
+  DateTime get undoneAt => _getAttribute<DateTime>(kUndoneAt, DateTime(0));
 
   // Class Constructors
   PcoPeoplePeopleImport.fromJson(Map<String, dynamic> data,

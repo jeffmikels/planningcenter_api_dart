@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.025703
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.127518
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -352,18 +352,20 @@ class PcoPeopleWorkflowCard extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  DateTime get snoozeUntil => DateTime.parse(_attributes[kSnoozeUntil] ?? '');
-  bool get isOverdue => _attributes[kOverdue] == true;
-  String get stage => _attributes[kStage] ?? '';
+  DateTime get snoozeUntil =>
+      _getAttribute<DateTime>(kSnoozeUntil, DateTime(0));
+  bool get isOverdue => _getAttribute<bool>(kOverdue, false);
+  String get stage => _getAttribute<String>(kStage, '');
   int get calculatedDueAtInDaysAgo =>
-      _attributes[kCalculatedDueAtInDaysAgo] ?? 0;
-  bool get isStickyAssignment => _attributes[kStickyAssignment] == true;
-  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
+      _getAttribute<int>(kCalculatedDueAtInDaysAgo, 0);
+  bool get isStickyAssignment => _getAttribute<bool>(kStickyAssignment, false);
+  DateTime get completedAt =>
+      _getAttribute<DateTime>(kCompletedAt, DateTime(0));
   DateTime get flaggedForNotificationAt =>
-      DateTime.parse(_attributes[kFlaggedForNotificationAt] ?? '');
-  DateTime get removedAt => DateTime.parse(_attributes[kRemovedAt] ?? '');
+      _getAttribute<DateTime>(kFlaggedForNotificationAt, DateTime(0));
+  DateTime get removedAt => _getAttribute<DateTime>(kRemovedAt, DateTime(0));
   DateTime get movedToStepAt =>
-      DateTime.parse(_attributes[kMovedToStepAt] ?? '');
+      _getAttribute<DateTime>(kMovedToStepAt, DateTime(0));
 
   // setters for object attributes
   ///
@@ -378,13 +380,13 @@ class PcoPeopleWorkflowCard extends PcoResource {
   set assigneeId(String? x) => (x == null)
       ? _attributes.remove(kAssigneeId)
       : _attributes[kAssigneeId] = x;
-  String get assigneeId => _attributes[kAssigneeId] ?? '';
+  String get assigneeId => _getAttribute<String>(kAssigneeId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // typed getters for each relationship
 

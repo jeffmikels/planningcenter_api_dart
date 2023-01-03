@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.055220
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.153487
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -188,7 +188,7 @@ class PcoCalendarResourceSuggestion extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get quantity => _attributes[kQuantity] ?? 0;
+  int get quantity => _getAttribute<int>(kQuantity, 0);
 
   // typed getters for each relationship
 

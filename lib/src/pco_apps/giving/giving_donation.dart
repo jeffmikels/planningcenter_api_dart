@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.120603
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.178485
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -480,21 +480,23 @@ class PcoGivingDonation extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get paymentMethodSub => _attributes[kPaymentMethodSub] ?? '';
-  String get paymentLast4 => _attributes[kPaymentLast4] ?? '';
-  String get paymentBrand => _attributes[kPaymentBrand] ?? '';
-  int get paymentCheckNumber => _attributes[kPaymentCheckNumber] ?? 0;
-  String get paymentCheckDatedAt => _attributes[kPaymentCheckDatedAt] ?? '';
-  int get feeCents => _attributes[kFeeCents] ?? 0;
-  String get paymentMethod => _attributes[kPaymentMethod] ?? '';
-  DateTime get receivedAt => DateTime.parse(_attributes[kReceivedAt] ?? '');
-  int get amountCents => _attributes[kAmountCents] ?? 0;
-  String get paymentStatus => _attributes[kPaymentStatus] ?? '';
-  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
-  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
-  String get feeCurrency => _attributes[kFeeCurrency] ?? '';
-  bool get isRefunded => _attributes[kRefunded] == true;
-  bool get isRefundable => _attributes[kRefundable] == true;
+  String get paymentMethodSub => _getAttribute<String>(kPaymentMethodSub, '');
+  String get paymentLast4 => _getAttribute<String>(kPaymentLast4, '');
+  String get paymentBrand => _getAttribute<String>(kPaymentBrand, '');
+  int get paymentCheckNumber => _getAttribute<int>(kPaymentCheckNumber, 0);
+  String get paymentCheckDatedAt =>
+      _getAttribute<String>(kPaymentCheckDatedAt, '');
+  int get feeCents => _getAttribute<int>(kFeeCents, 0);
+  String get paymentMethod => _getAttribute<String>(kPaymentMethod, '');
+  DateTime get receivedAt => _getAttribute<DateTime>(kReceivedAt, DateTime(0));
+  int get amountCents => _getAttribute<int>(kAmountCents, 0);
+  String get paymentStatus => _getAttribute<String>(kPaymentStatus, '');
+  DateTime get completedAt =>
+      _getAttribute<DateTime>(kCompletedAt, DateTime(0));
+  String get amountCurrency => _getAttribute<String>(kAmountCurrency, '');
+  String get feeCurrency => _getAttribute<String>(kFeeCurrency, '');
+  bool get isRefunded => _getAttribute<bool>(kRefunded, false);
+  bool get isRefundable => _getAttribute<bool>(kRefundable, false);
 
   // setters for object attributes
 
@@ -562,20 +564,20 @@ class PcoGivingDonation extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set paymentSourceId(String? x) => (x == null)
       ? _attributes.remove(kPaymentSourceId)
       : _attributes[kPaymentSourceId] = x;
-  String get paymentSourceId => _attributes[kPaymentSourceId] ?? '';
+  String get paymentSourceId => _getAttribute<String>(kPaymentSourceId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set campusId(String? x) =>
       (x == null) ? _attributes.remove(kCampusId) : _attributes[kCampusId] = x;
-  String get campusId => _attributes[kCampusId] ?? '';
+  String get campusId => _getAttribute<String>(kCampusId, '');
 
   // typed getters for each relationship
 

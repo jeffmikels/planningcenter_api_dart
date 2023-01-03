@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.995340
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.094573
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -215,8 +215,8 @@ class PcoPeopleFieldOption extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get value => _attributes[kValue] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
+  String get value => _getAttribute<String>(kValue, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
 
   // setters for object attributes
   ///

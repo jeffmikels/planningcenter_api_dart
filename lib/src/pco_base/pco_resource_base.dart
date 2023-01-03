@@ -1,5 +1,28 @@
 part of pco;
 
+extension MapGetters on Map<String, dynamic> {
+  T? get<T>(String key) {
+    var val = this[key];
+    if (val == null) return null;
+    if (val is T) return val;
+    switch (T) {
+      case int:
+        if (val is num) return val.toInt() as T;
+        return int.tryParse(val.toString()) as T;
+      case double:
+        if (val is num) return val.toDouble() as T;
+        return double.tryParse(val.toString()) as T;
+      case String:
+        return val.toString() as T;
+      case List:
+        return [] as T;
+      case Map:
+        return {} as T;
+    }
+    return null;
+  }
+}
+
 class ReadOnlyMapView<K, V> extends Object {
   final Map<K, V> _internal;
 
@@ -113,6 +136,42 @@ abstract class PcoResource {
   // all planning center resources implement at least these fields
   DateTime get createdAt => DateTime.parse(_attributes[kCreatedAt]!);
   DateTime get updatedAt => DateTime.parse(_attributes[kUpdatedAt]!);
+
+  // helper functions used by child classes
+
+  /// Will return an attribute value guaranteed to be of the specified type
+  /// If the attribute doesn't exist, the `orElse` value will be returned.
+  T _getAttribute<T>(String key, T orElse) {
+    var val = _attributes[key];
+    if (val == null) return orElse;
+    if (val is T) return val;
+    switch (T) {
+      case int:
+        if (val is num) return val.toInt() as T;
+        return int.tryParse(val.toString()) as T ?? orElse;
+      case bool:
+        return (val == true || val == 'true' || val == '1') as T;
+      case double:
+        if (val is num) return val.toDouble() as T;
+        return double.tryParse(val.toString()) as T ?? orElse;
+      case String:
+        return val.toString() as T;
+      case DateTime:
+        return DateTime.tryParse(val.toString()) as T ?? orElse;
+    }
+    return orElse;
+  }
+
+  int coerceInt(dynamic a) => a == null
+      ? 0
+      : (a is num)
+          ? a.toInt()
+          : int.tryParse(a.toString()) ?? 0;
+  double coerceDouble(dynamic a) => a == null
+      ? 0.0
+      : (a is num)
+          ? a.toDouble()
+          : double.tryParse(a.toString()) ?? 0.0;
 
   @override
   toString() =>

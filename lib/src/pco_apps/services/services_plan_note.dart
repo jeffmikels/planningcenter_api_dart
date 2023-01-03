@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.842278
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.965413
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -243,8 +243,8 @@ class PcoServicesPlanNote extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get categoryName => _attributes[kCategoryName] ?? '';
-  String get content => _attributes[kContent] ?? '';
+  String get categoryName => _getAttribute<String>(kCategoryName, '');
+  String get content => _getAttribute<String>(kContent, '');
 
   // setters for object attributes
   ///

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.049831
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.148779
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -342,26 +342,31 @@ class PcoCalendarPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get middleName => _attributes[kMiddleName] ?? '';
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
-  bool get isChild => _attributes[kChild] == true;
-  String get contactData => _attributes[kContactData] ?? '';
-  String get gender => _attributes[kGender] ?? '';
-  bool get isHasAccess => _attributes[kHasAccess] == true;
-  String get namePrefix => _attributes[kNamePrefix] ?? '';
-  String get nameSuffix => _attributes[kNameSuffix] ?? '';
-  int get pendingRequestCount => _attributes[kPendingRequestCount] ?? 0;
-  int get permissions => _attributes[kPermissions] ?? 0;
-  bool get isResolvesConflicts => _attributes[kResolvesConflicts] == true;
-  bool get isSiteAdministrator => _attributes[kSiteAdministrator] == true;
-  String get status => _attributes[kStatus] ?? '';
-  String get eventPermissionsType => _attributes[kEventPermissionsType] ?? '';
-  String get peoplePermissionsType => _attributes[kPeoplePermissionsType] ?? '';
-  String get roomPermissionsType => _attributes[kRoomPermissionsType] ?? '';
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get middleName => _getAttribute<String>(kMiddleName, '');
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
+  bool get isChild => _getAttribute<bool>(kChild, false);
+  String get contactData => _getAttribute<String>(kContactData, '');
+  String get gender => _getAttribute<String>(kGender, '');
+  bool get isHasAccess => _getAttribute<bool>(kHasAccess, false);
+  String get namePrefix => _getAttribute<String>(kNamePrefix, '');
+  String get nameSuffix => _getAttribute<String>(kNameSuffix, '');
+  int get pendingRequestCount => _getAttribute<int>(kPendingRequestCount, 0);
+  int get permissions => _getAttribute<int>(kPermissions, 0);
+  bool get isResolvesConflicts =>
+      _getAttribute<bool>(kResolvesConflicts, false);
+  bool get isSiteAdministrator =>
+      _getAttribute<bool>(kSiteAdministrator, false);
+  String get status => _getAttribute<String>(kStatus, '');
+  String get eventPermissionsType =>
+      _getAttribute<String>(kEventPermissionsType, '');
+  String get peoplePermissionsType =>
+      _getAttribute<String>(kPeoplePermissionsType, '');
+  String get roomPermissionsType =>
+      _getAttribute<String>(kRoomPermissionsType, '');
   String get resourcesPermissionsType =>
-      _attributes[kResourcesPermissionsType] ?? '';
+      _getAttribute<String>(kResourcesPermissionsType, '');
 
   // typed getters for each relationship
 

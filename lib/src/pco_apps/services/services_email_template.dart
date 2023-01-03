@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.826237
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.949735
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,9 +172,9 @@ class PcoServicesEmailTemplate extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get kind => _attributes[kKind] ?? '';
-  String get htmlBody => _attributes[kHtmlBody] ?? '';
-  String get subject => _attributes[kSubject] ?? '';
+  String get kind => _getAttribute<String>(kKind, '');
+  String get htmlBody => _getAttribute<String>(kHtmlBody, '');
+  String get subject => _getAttribute<String>(kSubject, '');
 
   // setters for object attributes
   ///

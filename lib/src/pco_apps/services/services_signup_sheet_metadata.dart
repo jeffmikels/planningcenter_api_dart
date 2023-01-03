@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.855018
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.975162
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -169,10 +169,10 @@ class PcoServicesSignupSheetMetadatum extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get conflicts => _attributes[kConflicts] ?? '';
-  String get timeType => _attributes[kTimeType] ?? '';
-  String get timeName => _attributes[kTimeName] ?? '';
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  String get conflicts => _getAttribute<String>(kConflicts, '');
+  String get timeType => _getAttribute<String>(kTimeType, '');
+  String get timeName => _getAttribute<String>(kTimeName, '');
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
 
   // Class Constructors
   PcoServicesSignupSheetMetadatum.fromJson(Map<String, dynamic> data,

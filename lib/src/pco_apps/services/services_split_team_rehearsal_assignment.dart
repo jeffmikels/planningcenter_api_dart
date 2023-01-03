@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.857057
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.978176
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -173,7 +173,7 @@ class PcoServicesSplitTeamRehearsalAssignment extends PcoResource {
 
   // getters for object attributes
   bool get isScheduleSpecialServiceTimes =>
-      _attributes[kScheduleSpecialServiceTimes] == true;
+      _getAttribute<bool>(kScheduleSpecialServiceTimes, false);
 
   // setters for object attributes
 

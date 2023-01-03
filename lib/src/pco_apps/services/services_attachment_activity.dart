@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.819824
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.943114
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,9 +165,9 @@ class PcoServicesAttachmentActivity extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get date => _attributes[kDate] ?? '';
-  String get attachmentUrl => _attributes[kAttachmentUrl] ?? '';
-  String get activityType => _attributes[kActivityType] ?? '';
+  String get date => _getAttribute<String>(kDate, '');
+  String get attachmentUrl => _getAttribute<String>(kAttachmentUrl, '');
+  String get activityType => _getAttribute<String>(kActivityType, '');
 
   // Class Constructors
   PcoServicesAttachmentActivity.fromJson(Map<String, dynamic> data,

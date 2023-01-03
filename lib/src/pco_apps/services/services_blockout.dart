@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.822455
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.945645
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -256,19 +256,19 @@ class PcoServicesBlockout extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get description => _attributes[kDescription] ?? '';
-  String get groupIdentifier => _attributes[kGroupIdentifier] ?? '';
-  String get organizationName => _attributes[kOrganizationName] ?? '';
-  String get reason => _attributes[kReason] ?? '';
-  String get repeatFrequency => _attributes[kRepeatFrequency] ?? '';
-  String get repeatInterval => _attributes[kRepeatInterval] ?? '';
-  String get repeatPeriod => _attributes[kRepeatPeriod] ?? '';
-  String get settings => _attributes[kSettings] ?? '';
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  String get repeatUntil => _attributes[kRepeatUntil] ?? '';
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  bool get isShare => _attributes[kShare] == true;
+  String get description => _getAttribute<String>(kDescription, '');
+  String get groupIdentifier => _getAttribute<String>(kGroupIdentifier, '');
+  String get organizationName => _getAttribute<String>(kOrganizationName, '');
+  String get reason => _getAttribute<String>(kReason, '');
+  String get repeatFrequency => _getAttribute<String>(kRepeatFrequency, '');
+  String get repeatInterval => _getAttribute<String>(kRepeatInterval, '');
+  String get repeatPeriod => _getAttribute<String>(kRepeatPeriod, '');
+  String get settings => _getAttribute<String>(kSettings, '');
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  String get repeatUntil => _getAttribute<String>(kRepeatUntil, '');
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  bool get isShare => _getAttribute<bool>(kShare, false);
 
   // setters for object attributes
   ///

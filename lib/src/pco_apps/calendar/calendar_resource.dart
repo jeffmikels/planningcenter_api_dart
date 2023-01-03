@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.051454
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.150415
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -357,15 +357,15 @@ class PcoCalendarResource extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get kind => _attributes[kKind] ?? '';
-  String get name => _attributes[kName] ?? '';
-  String get serialNumber => _attributes[kSerialNumber] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  DateTime get expiresAt => DateTime.parse(_attributes[kExpiresAt] ?? '');
-  String get homeLocation => _attributes[kHomeLocation] ?? '';
-  String get image => _attributes[kImage] ?? '';
-  int get quantity => _attributes[kQuantity] ?? 0;
-  String get pathName => _attributes[kPathName] ?? '';
+  String get kind => _getAttribute<String>(kKind, '');
+  String get name => _getAttribute<String>(kName, '');
+  String get serialNumber => _getAttribute<String>(kSerialNumber, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  DateTime get expiresAt => _getAttribute<DateTime>(kExpiresAt, DateTime(0));
+  String get homeLocation => _getAttribute<String>(kHomeLocation, '');
+  String get image => _getAttribute<String>(kImage, '');
+  int get quantity => _getAttribute<int>(kQuantity, 0);
+  String get pathName => _getAttribute<String>(kPathName, '');
 
   // setters for object attributes
 

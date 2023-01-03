@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.047993
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.147058
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -276,12 +276,12 @@ class PcoCalendarEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get name => DateTime.parse(_attributes[kName] ?? '');
-  bool get isVisibleOnKiosks => _attributes[kVisibleOnKiosks] == true;
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get name => _getAttribute<DateTime>(kName, DateTime(0));
+  bool get isVisibleOnKiosks => _getAttribute<bool>(kVisibleOnKiosks, false);
   bool get isVisibleOnWidgetAndIcal =>
-      _attributes[kVisibleOnWidgetAndIcal] == true;
+      _getAttribute<bool>(kVisibleOnWidgetAndIcal, false);
 
   // typed getters for each relationship
 

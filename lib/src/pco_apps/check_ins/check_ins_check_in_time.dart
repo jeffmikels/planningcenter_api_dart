@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.923114
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.005798
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -181,10 +181,11 @@ class PcoCheckInsCheckInTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get kind => _attributes[kKind] ?? '';
-  bool get isHasValidated => _attributes[kHasValidated] == true;
-  List get errors => _attributes[kErrors] ?? [];
-  bool get isServicesIntegrated => _attributes[kServicesIntegrated] == true;
+  String get kind => _getAttribute<String>(kKind, '');
+  bool get isHasValidated => _getAttribute<bool>(kHasValidated, false);
+  List get errors => _getAttribute<List>(kErrors, []);
+  bool get isServicesIntegrated =>
+      _getAttribute<bool>(kServicesIntegrated, false);
 
   // Class Constructors
   PcoCheckInsCheckInTime.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.056384
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.154549
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -280,9 +280,9 @@ class PcoCalendarTag extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get color => _attributes[kColor] ?? '';
-  String get name => _attributes[kName] ?? '';
-  double get position => _attributes[kPosition]?.toDouble() ?? 0.0;
+  String get color => _getAttribute<String>(kColor, '');
+  String get name => _getAttribute<String>(kName, '');
+  double get position => _getAttribute<double>(kPosition, 0);
 
   // typed getters for each relationship
 

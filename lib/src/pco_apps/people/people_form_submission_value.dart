@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.997455
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.097464
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -174,8 +174,8 @@ class PcoPeopleFormSubmissionValue extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get displayValue => _attributes[kDisplayValue] ?? '';
-  List get attachments => _attributes[kAttachments] ?? [];
+  String get displayValue => _getAttribute<String>(kDisplayValue, '');
+  List get attachments => _getAttribute<List>(kAttachments, []);
 
   // Class Constructors
   PcoPeopleFormSubmissionValue.fromJson(Map<String, dynamic> data,

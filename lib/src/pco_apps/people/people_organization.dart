@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.012021
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.115802
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -201,12 +201,12 @@ class PcoPeopleOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get countryCode => _attributes[kCountryCode] ?? '';
-  int get dateFormat => _attributes[kDateFormat] ?? 0;
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  String get contactWebsite => _attributes[kContactWebsite] ?? '';
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get countryCode => _getAttribute<String>(kCountryCode, '');
+  int get dateFormat => _getAttribute<int>(kDateFormat, 0);
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  String get contactWebsite => _getAttribute<String>(kContactWebsite, '');
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
 
   // Class Constructors
   PcoPeopleOrganization.fromJson(Map<String, dynamic> data,

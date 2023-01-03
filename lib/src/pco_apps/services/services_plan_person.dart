@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.843787
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.966892
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -336,29 +336,30 @@ class PcoServicesPlanPerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get status => _attributes[kStatus] ?? '';
-  String get notes => _attributes[kNotes] ?? '';
-  String get declineReason => _attributes[kDeclineReason] ?? '';
-  String get name => _attributes[kName] ?? '';
+  String get status => _getAttribute<String>(kStatus, '');
+  String get notes => _getAttribute<String>(kNotes, '');
+  String get declineReason => _getAttribute<String>(kDeclineReason, '');
+  String get name => _getAttribute<String>(kName, '');
   String get notificationChangedByName =>
-      _attributes[kNotificationChangedByName] ?? '';
+      _getAttribute<String>(kNotificationChangedByName, '');
   String get notificationSenderName =>
-      _attributes[kNotificationSenderName] ?? '';
-  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
-  String get photoThumbnail => _attributes[kPhotoThumbnail] ?? '';
-  String get scheduledByName => _attributes[kScheduledByName] ?? '';
+      _getAttribute<String>(kNotificationSenderName, '');
+  String get teamPositionName => _getAttribute<String>(kTeamPositionName, '');
+  String get photoThumbnail => _getAttribute<String>(kPhotoThumbnail, '');
+  String get scheduledByName => _getAttribute<String>(kScheduledByName, '');
   DateTime get statusUpdatedAt =>
-      DateTime.parse(_attributes[kStatusUpdatedAt] ?? '');
+      _getAttribute<DateTime>(kStatusUpdatedAt, DateTime(0));
   DateTime get notificationChangedAt =>
-      DateTime.parse(_attributes[kNotificationChangedAt] ?? '');
+      _getAttribute<DateTime>(kNotificationChangedAt, DateTime(0));
   DateTime get notificationPreparedAt =>
-      DateTime.parse(_attributes[kNotificationPreparedAt] ?? '');
+      _getAttribute<DateTime>(kNotificationPreparedAt, DateTime(0));
   DateTime get notificationReadAt =>
-      DateTime.parse(_attributes[kNotificationReadAt] ?? '');
+      _getAttribute<DateTime>(kNotificationReadAt, DateTime(0));
   DateTime get notificationSentAt =>
-      DateTime.parse(_attributes[kNotificationSentAt] ?? '');
-  bool get isPrepareNotification => _attributes[kPrepareNotification] == true;
-  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
+      _getAttribute<DateTime>(kNotificationSentAt, DateTime(0));
+  bool get isPrepareNotification =>
+      _getAttribute<bool>(kPrepareNotification, false);
+  bool get isCanAcceptPartial => _getAttribute<bool>(kCanAcceptPartial, false);
 
   // setters for object attributes
 
@@ -402,14 +403,14 @@ class PcoServicesPlanPerson extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set respondsToId(String? x) => (x == null)
       ? _attributes.remove(kRespondsToId)
       : _attributes[kRespondsToId] = x;
-  String get respondsToId => _attributes[kRespondsToId] ?? '';
+  String get respondsToId => _getAttribute<String>(kRespondsToId, '');
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.004834
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.104917
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -349,12 +349,12 @@ class PcoPeopleMessageGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get uuid => _attributes[kUuid] ?? '';
-  String get messageType => _attributes[kMessageType] ?? '';
-  String get fromAddress => _attributes[kFromAddress] ?? '';
-  String get subject => _attributes[kSubject] ?? '';
-  int get messageCount => _attributes[kMessageCount] ?? 0;
-  bool get isSystemMessage => _attributes[kSystemMessage] == true;
+  String get uuid => _getAttribute<String>(kUuid, '');
+  String get messageType => _getAttribute<String>(kMessageType, '');
+  String get fromAddress => _getAttribute<String>(kFromAddress, '');
+  String get subject => _getAttribute<String>(kSubject, '');
+  int get messageCount => _getAttribute<int>(kMessageCount, 0);
+  bool get isSystemMessage => _getAttribute<bool>(kSystemMessage, false);
 
   // typed getters for each relationship
 

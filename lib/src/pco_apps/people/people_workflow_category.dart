@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.027148
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.129139
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -221,7 +221,7 @@ class PcoPeopleWorkflowCategory extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
+  String get name => _getAttribute<String>(kName, '');
 
   // setters for object attributes
   ///

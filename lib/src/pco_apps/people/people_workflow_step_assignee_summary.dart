@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.029276
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.130930
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -188,8 +188,8 @@ class PcoPeopleWorkflowStepAssigneeSummary extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get readyCount => _attributes[kReadyCount] ?? 0;
-  int get snoozedCount => _attributes[kSnoozedCount] ?? 0;
+  int get readyCount => _getAttribute<int>(kReadyCount, 0);
+  int get snoozedCount => _getAttribute<int>(kSnoozedCount, 0);
 
   // typed getters for each relationship
 

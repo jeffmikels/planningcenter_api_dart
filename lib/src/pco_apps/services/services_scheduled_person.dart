@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.850879
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.971516
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -171,9 +171,9 @@ class PcoServicesScheduledPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get fullName => _attributes[kFullName] ?? '';
-  String get status => _attributes[kStatus] ?? '';
-  String get thumbnail => _attributes[kThumbnail] ?? '';
+  String get fullName => _getAttribute<String>(kFullName, '');
+  String get status => _getAttribute<String>(kStatus, '');
+  String get thumbnail => _getAttribute<String>(kThumbnail, '');
 
   // Class Constructors
   PcoServicesScheduledPerson.fromJson(Map<String, dynamic> data,

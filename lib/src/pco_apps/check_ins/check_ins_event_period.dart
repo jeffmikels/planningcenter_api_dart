@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.925523
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.008309
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -235,12 +235,12 @@ class PcoCheckInsEventPeriod extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  int get regularCount => _attributes[kRegularCount] ?? 0;
-  int get guestCount => _attributes[kGuestCount] ?? 0;
-  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
-  String get note => _attributes[kNote] ?? '';
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  int get regularCount => _getAttribute<int>(kRegularCount, 0);
+  int get guestCount => _getAttribute<int>(kGuestCount, 0);
+  int get volunteerCount => _getAttribute<int>(kVolunteerCount, 0);
+  String get note => _getAttribute<String>(kNote, '');
 
   // typed getters for each relationship
 

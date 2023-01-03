@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.993214
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.091976
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -180,14 +180,14 @@ class PcoPeopleConnectedPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get givenName => _attributes[kGivenName] ?? '';
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get nickname => _attributes[kNickname] ?? '';
-  String get middleName => _attributes[kMiddleName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get gender => _attributes[kGender] ?? '';
-  String get organizationName => _attributes[kOrganizationName] ?? '';
-  String get organizationId => _attributes[kOrganizationId] ?? '';
+  String get givenName => _getAttribute<String>(kGivenName, '');
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get nickname => _getAttribute<String>(kNickname, '');
+  String get middleName => _getAttribute<String>(kMiddleName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get gender => _getAttribute<String>(kGender, '');
+  String get organizationName => _getAttribute<String>(kOrganizationName, '');
+  String get organizationId => _getAttribute<String>(kOrganizationId, '');
 
   // Class Constructors
   PcoPeopleConnectedPerson.fromJson(Map<String, dynamic> data,

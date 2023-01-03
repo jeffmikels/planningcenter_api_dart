@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.122057
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.179971
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -150,7 +150,7 @@ class PcoGivingNote extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
+  String get body => _getAttribute<String>(kBody, '');
 
   // Class Constructors
   PcoGivingNote.fromJson(Map<String, dynamic> data,

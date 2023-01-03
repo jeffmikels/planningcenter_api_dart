@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.019075
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.122444
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,7 +152,7 @@ class PcoPeoplePlatformNotification extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get html => _attributes[kHtml] ?? '';
+  String get html => _getAttribute<String>(kHtml, '');
 
   // Class Constructors
   PcoPeoplePlatformNotification.fromJson(Map<String, dynamic> data,

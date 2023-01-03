@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.936184
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.049818
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,14 +229,15 @@ class PcoCheckInsStation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isOnline => _attributes[kOnline] == true;
-  int get mode => _attributes[kMode] ?? 0;
-  String get name => _attributes[kName] ?? '';
-  int get timeoutSeconds => _attributes[kTimeoutSeconds] ?? 0;
-  String get inputType => _attributes[kInputType] ?? '';
-  String get inputTypeOptions => _attributes[kInputTypeOptions] ?? '';
-  DateTime get nextShowsAt => DateTime.parse(_attributes[kNextShowsAt] ?? '');
-  int get checkInCount => _attributes[kCheckInCount] ?? 0;
+  bool get isOnline => _getAttribute<bool>(kOnline, false);
+  int get mode => _getAttribute<int>(kMode, 0);
+  String get name => _getAttribute<String>(kName, '');
+  int get timeoutSeconds => _getAttribute<int>(kTimeoutSeconds, 0);
+  String get inputType => _getAttribute<String>(kInputType, '');
+  String get inputTypeOptions => _getAttribute<String>(kInputTypeOptions, '');
+  DateTime get nextShowsAt =>
+      _getAttribute<DateTime>(kNextShowsAt, DateTime(0));
+  int get checkInCount => _getAttribute<int>(kCheckInCount, 0);
 
   // typed getters for each relationship
 

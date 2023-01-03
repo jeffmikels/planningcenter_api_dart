@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.146301
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.236694
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -198,12 +198,12 @@ class PcoWebhooksDelivery extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get status => _attributes[kStatus] ?? 0;
-  String get requestHeaders => _attributes[kRequestHeaders] ?? '';
-  String get requestBody => _attributes[kRequestBody] ?? '';
-  String get responseHeaders => _attributes[kResponseHeaders] ?? '';
-  String get responseBody => _attributes[kResponseBody] ?? '';
-  double get timing => _attributes[kTiming]?.toDouble() ?? 0.0;
+  int get status => _getAttribute<int>(kStatus, 0);
+  String get requestHeaders => _getAttribute<String>(kRequestHeaders, '');
+  String get requestBody => _getAttribute<String>(kRequestBody, '');
+  String get responseHeaders => _getAttribute<String>(kResponseHeaders, '');
+  String get responseBody => _getAttribute<String>(kResponseBody, '');
+  double get timing => _getAttribute<double>(kTiming, 0);
 
   // Class Constructors
   PcoWebhooksDelivery.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.996659
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.096012
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -201,8 +201,8 @@ class PcoPeopleFormFieldOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get label => _attributes[kLabel] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
+  String get label => _getAttribute<String>(kLabel, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
 
   // Class Constructors
   PcoPeopleFormFieldOption.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.019586
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.122953
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -268,8 +268,8 @@ class PcoPeopleReport extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get body => _attributes[kBody] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get body => _getAttribute<String>(kBody, '');
 
   // setters for object attributes
   ///

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.004240
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.104263
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -477,21 +477,21 @@ class PcoPeopleMessage extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get kind => _attributes[kKind] ?? '';
-  String get toAddresses => _attributes[kToAddresses] ?? '';
-  String get subject => _attributes[kSubject] ?? '';
-  String get file => _attributes[kFile] ?? '';
-  String get deliveryStatus => _attributes[kDeliveryStatus] ?? '';
-  String get rejectReason => _attributes[kRejectReason] ?? '';
-  DateTime get sentAt => DateTime.parse(_attributes[kSentAt] ?? '');
-  DateTime get bouncedAt => DateTime.parse(_attributes[kBouncedAt] ?? '');
+  String get kind => _getAttribute<String>(kKind, '');
+  String get toAddresses => _getAttribute<String>(kToAddresses, '');
+  String get subject => _getAttribute<String>(kSubject, '');
+  String get file => _getAttribute<String>(kFile, '');
+  String get deliveryStatus => _getAttribute<String>(kDeliveryStatus, '');
+  String get rejectReason => _getAttribute<String>(kRejectReason, '');
+  DateTime get sentAt => _getAttribute<DateTime>(kSentAt, DateTime(0));
+  DateTime get bouncedAt => _getAttribute<DateTime>(kBouncedAt, DateTime(0));
   DateTime get rejectionNotificationSentAt =>
-      DateTime.parse(_attributes[kRejectionNotificationSentAt] ?? '');
-  String get fromName => _attributes[kFromName] ?? '';
-  String get fromAddress => _attributes[kFromAddress] ?? '';
-  DateTime get readAt => DateTime.parse(_attributes[kReadAt] ?? '');
-  String get appName => _attributes[kAppName] ?? '';
-  String get messageType => _attributes[kMessageType] ?? '';
+      _getAttribute<DateTime>(kRejectionNotificationSentAt, DateTime(0));
+  String get fromName => _getAttribute<String>(kFromName, '');
+  String get fromAddress => _getAttribute<String>(kFromAddress, '');
+  DateTime get readAt => _getAttribute<DateTime>(kReadAt, DateTime(0));
+  String get appName => _getAttribute<String>(kAppName, '');
+  String get messageType => _getAttribute<String>(kMessageType, '');
 
   // typed getters for each relationship
 

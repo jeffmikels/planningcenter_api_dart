@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.853685
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.973463
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -309,20 +309,21 @@ class PcoServicesServiceType extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
-  String get name => _attributes[kName] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  DateTime get deletedAt => _getAttribute<DateTime>(kDeletedAt, DateTime(0));
+  String get name => _getAttribute<String>(kName, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
   bool get isAttachmentTypesEnabled =>
-      _attributes[kAttachmentTypesEnabled] == true;
+      _getAttribute<bool>(kAttachmentTypesEnabled, false);
   String get backgroundCheckPermissions =>
-      _attributes[kBackgroundCheckPermissions] ?? '';
-  String get commentPermissions => _attributes[kCommentPermissions] ?? '';
-  String get customItemTypes => _attributes[kCustomItemTypes] ?? '';
-  String get frequency => _attributes[kFrequency] ?? '';
-  String get lastPlanFrom => _attributes[kLastPlanFrom] ?? '';
-  String get permissions => _attributes[kPermissions] ?? '';
-  String get standardItemTypes => _attributes[kStandardItemTypes] ?? '';
+      _getAttribute<String>(kBackgroundCheckPermissions, '');
+  String get commentPermissions =>
+      _getAttribute<String>(kCommentPermissions, '');
+  String get customItemTypes => _getAttribute<String>(kCustomItemTypes, '');
+  String get frequency => _getAttribute<String>(kFrequency, '');
+  String get lastPlanFrom => _getAttribute<String>(kLastPlanFrom, '');
+  String get permissions => _getAttribute<String>(kPermissions, '');
+  String get standardItemTypes => _getAttribute<String>(kStandardItemTypes, '');
 
   // setters for object attributes
   ///
@@ -398,7 +399,7 @@ class PcoServicesServiceType extends PcoResource {
   /// pass `null` to remove key from attributes
   set parentId(String? x) =>
       (x == null) ? _attributes.remove(kParentId) : _attributes[kParentId] = x;
-  String get parentId => _attributes[kParentId] ?? '';
+  String get parentId => _getAttribute<String>(kParentId, '');
 
   // typed getters for each relationship
 

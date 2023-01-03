@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.020032
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.123357
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -236,7 +236,7 @@ class PcoPeopleRule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get subset => _attributes[kSubset] ?? '';
+  String get subset => _getAttribute<String>(kSubset, '');
 
   // typed getters for each relationship
 

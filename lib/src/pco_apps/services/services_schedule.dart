@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.850327
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.970738
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -317,26 +317,28 @@ class PcoServicesSchedule extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
-  String get dates => _attributes[kDates] ?? '';
-  String get declineReason => _attributes[kDeclineReason] ?? '';
-  String get organizationName => _attributes[kOrganizationName] ?? '';
-  String get organizationTimeZone => _attributes[kOrganizationTimeZone] ?? '';
+  DateTime get sortDate => _getAttribute<DateTime>(kSortDate, DateTime(0));
+  String get dates => _getAttribute<String>(kDates, '');
+  String get declineReason => _getAttribute<String>(kDeclineReason, '');
+  String get organizationName => _getAttribute<String>(kOrganizationName, '');
+  String get organizationTimeZone =>
+      _getAttribute<String>(kOrganizationTimeZone, '');
   String get organizationTwentyFourHourTime =>
-      _attributes[kOrganizationTwentyFourHourTime] ?? '';
-  String get personName => _attributes[kPersonName] ?? '';
-  String get positionDisplayTimes => _attributes[kPositionDisplayTimes] ?? '';
-  String get respondsToName => _attributes[kRespondsToName] ?? '';
-  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
-  String get shortDates => _attributes[kShortDates] ?? '';
-  String get status => _attributes[kStatus] ?? '';
-  String get teamName => _attributes[kTeamName] ?? '';
-  String get teamPositionName => _attributes[kTeamPositionName] ?? '';
-  bool get isCanAcceptPartial => _attributes[kCanAcceptPartial] == true;
+      _getAttribute<String>(kOrganizationTwentyFourHourTime, '');
+  String get personName => _getAttribute<String>(kPersonName, '');
+  String get positionDisplayTimes =>
+      _getAttribute<String>(kPositionDisplayTimes, '');
+  String get respondsToName => _getAttribute<String>(kRespondsToName, '');
+  String get serviceTypeName => _getAttribute<String>(kServiceTypeName, '');
+  String get shortDates => _getAttribute<String>(kShortDates, '');
+  String get status => _getAttribute<String>(kStatus, '');
+  String get teamName => _getAttribute<String>(kTeamName, '');
+  String get teamPositionName => _getAttribute<String>(kTeamPositionName, '');
+  bool get isCanAcceptPartial => _getAttribute<bool>(kCanAcceptPartial, false);
   bool get isCanAcceptPartialOneTime =>
-      _attributes[kCanAcceptPartialOneTime] == true;
-  bool get isPlanVisible => _attributes[kPlanVisible] == true;
-  bool get isPlanVisibleToMe => _attributes[kPlanVisibleToMe] == true;
+      _getAttribute<bool>(kCanAcceptPartialOneTime, false);
+  bool get isPlanVisible => _getAttribute<bool>(kPlanVisible, false);
+  bool get isPlanVisibleToMe => _getAttribute<bool>(kPlanVisibleToMe, false);
 
   // typed getters for each relationship
 

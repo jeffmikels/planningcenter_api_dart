@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.018658
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.122079
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -303,15 +303,15 @@ class PcoPeoplePhoneNumber extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get number => _attributes[kNumber] ?? '';
-  String get carrier => _attributes[kCarrier] ?? '';
-  String get location => _attributes[kLocation] ?? '';
-  bool get isPrimary => _attributes[kPrimary] == true;
-  String get e164 => _attributes[kE164] ?? '';
-  String get international => _attributes[kInternational] ?? '';
-  String get national => _attributes[kNational] ?? '';
-  String get countryCode => _attributes[kCountryCode] ?? '';
-  String get formattedNumber => _attributes[kFormattedNumber] ?? '';
+  String get number => _getAttribute<String>(kNumber, '');
+  String get carrier => _getAttribute<String>(kCarrier, '');
+  String get location => _getAttribute<String>(kLocation, '');
+  bool get isPrimary => _getAttribute<bool>(kPrimary, false);
+  String get e164 => _getAttribute<String>(kE164, '');
+  String get international => _getAttribute<String>(kInternational, '');
+  String get national => _getAttribute<String>(kNational, '');
+  String get countryCode => _getAttribute<String>(kCountryCode, '');
+  String get formattedNumber => _getAttribute<String>(kFormattedNumber, '');
 
   // setters for object attributes
   ///

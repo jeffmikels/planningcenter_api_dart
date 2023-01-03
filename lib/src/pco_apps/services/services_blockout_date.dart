@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.823071
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.946328
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -186,14 +186,15 @@ class PcoServicesBlockoutDate extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get groupIdentifier => _attributes[kGroupIdentifier] ?? '';
-  String get reason => _attributes[kReason] ?? '';
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  bool get isShare => _attributes[kShare] == true;
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  DateTime get endsAtUtc => DateTime.parse(_attributes[kEndsAtUtc] ?? '');
-  DateTime get startsAtUtc => DateTime.parse(_attributes[kStartsAtUtc] ?? '');
+  String get groupIdentifier => _getAttribute<String>(kGroupIdentifier, '');
+  String get reason => _getAttribute<String>(kReason, '');
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  bool get isShare => _getAttribute<bool>(kShare, false);
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  DateTime get endsAtUtc => _getAttribute<DateTime>(kEndsAtUtc, DateTime(0));
+  DateTime get startsAtUtc =>
+      _getAttribute<DateTime>(kStartsAtUtc, DateTime(0));
 
   // Class Constructors
   PcoServicesBlockoutDate.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.140283
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.230912
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -158,9 +158,9 @@ class PcoGroupsOwner extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
 
   // Class Constructors
   PcoGroupsOwner.fromJson(Map<String, dynamic> data,

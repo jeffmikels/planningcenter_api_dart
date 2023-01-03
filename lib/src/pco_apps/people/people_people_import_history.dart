@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.014139
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.117720
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -231,9 +231,10 @@ class PcoPeoplePeopleImportHistory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get conflictingChanges => _attributes[kConflictingChanges] ?? '';
-  String get kind => _attributes[kKind] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get conflictingChanges =>
+      _getAttribute<String>(kConflictingChanges, '');
+  String get kind => _getAttribute<String>(kKind, '');
 
   // typed getters for each relationship
 

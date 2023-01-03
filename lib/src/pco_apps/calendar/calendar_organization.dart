@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.049044
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.148114
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -179,11 +179,12 @@ class PcoCalendarOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
-  String get dateFormat => _attributes[kDateFormat] ?? '';
-  bool get isOnboarding => _attributes[kOnboarding] == true;
+  String get name => _getAttribute<String>(kName, '');
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  bool get isTwentyFourHourTime =>
+      _getAttribute<bool>(kTwentyFourHourTime, false);
+  String get dateFormat => _getAttribute<String>(kDateFormat, '');
+  bool get isOnboarding => _getAttribute<bool>(kOnboarding, false);
 
   // Class Constructors
   PcoCalendarOrganization.fromJson(Map<String, dynamic> data,

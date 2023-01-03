@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.825086
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.948280
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -175,10 +175,10 @@ class PcoServicesCustomSlide extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
-  String get label => _attributes[kLabel] ?? '';
-  int get order => _attributes[kOrder] ?? 0;
-  bool get isEnabled => _attributes[kEnabled] == true;
+  String get body => _getAttribute<String>(kBody, '');
+  String get label => _getAttribute<String>(kLabel, '');
+  int get order => _getAttribute<int>(kOrder, 0);
+  bool get isEnabled => _getAttribute<bool>(kEnabled, false);
 
   // setters for object attributes
   ///

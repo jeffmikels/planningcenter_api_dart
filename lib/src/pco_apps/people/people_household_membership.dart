@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.999576
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.099324
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -248,8 +248,8 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get personName => _attributes[kPersonName] ?? '';
-  bool get isPending => _attributes[kPending] == true;
+  String get personName => _getAttribute<String>(kPersonName, '');
+  bool get isPending => _getAttribute<bool>(kPending, false);
 
   // setters for object attributes
 
@@ -264,7 +264,7 @@ class PcoPeopleHouseholdMembership extends PcoResource {
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // typed getters for each relationship
 

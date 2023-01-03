@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.924814
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.007597
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -197,10 +197,10 @@ class PcoCheckInsEventLabel extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get quantity => _attributes[kQuantity] ?? 0;
-  bool get isForRegular => _attributes[kForRegular] == true;
-  bool get isForGuest => _attributes[kForGuest] == true;
-  bool get isForVolunteer => _attributes[kForVolunteer] == true;
+  int get quantity => _getAttribute<int>(kQuantity, 0);
+  bool get isForRegular => _getAttribute<bool>(kForRegular, false);
+  bool get isForGuest => _getAttribute<bool>(kForGuest, false);
+  bool get isForVolunteer => _getAttribute<bool>(kForVolunteer, false);
 
   // typed getters for each relationship
 

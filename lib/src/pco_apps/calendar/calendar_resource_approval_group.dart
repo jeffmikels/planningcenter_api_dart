@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.052109
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.151097
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -260,10 +260,10 @@ class PcoCalendarResourceApprovalGroup extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get formCount => _attributes[kFormCount] ?? 0;
-  int get resourceCount => _attributes[kResourceCount] ?? 0;
-  int get roomCount => _attributes[kRoomCount] ?? 0;
+  String get name => _getAttribute<String>(kName, '');
+  int get formCount => _getAttribute<int>(kFormCount, 0);
+  int get resourceCount => _getAttribute<int>(kResourceCount, 0);
+  int get roomCount => _getAttribute<int>(kRoomCount, 0);
 
   // setters for object attributes
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.827704
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.951114
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,7 +152,7 @@ class PcoServicesFolderPath extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get path => _attributes[kPath] ?? [];
+  List get path => _getAttribute<List>(kPath, []);
 
   // Class Constructors
   PcoServicesFolderPath.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.839620
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.963254
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -254,8 +254,9 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get schedulePreference => _attributes[kSchedulePreference] ?? '';
-  List get preferredWeeks => _attributes[kPreferredWeeks] ?? [];
+  String get schedulePreference =>
+      _getAttribute<String>(kSchedulePreference, '');
+  List get preferredWeeks => _getAttribute<List>(kPreferredWeeks, []);
 
   // setters for object attributes
 
@@ -293,13 +294,13 @@ class PcoServicesPersonTeamPositionAssignment extends PcoResource {
       ? _attributes.remove(kTimePreferenceOptionIds)
       : _attributes[kTimePreferenceOptionIds] = x;
   String get timePreferenceOptionIds =>
-      _attributes[kTimePreferenceOptionIds] ?? '';
+      _getAttribute<String>(kTimePreferenceOptionIds, '');
 
   ///
   /// pass `null` to remove key from attributes
   set personId(String? x) =>
       (x == null) ? _attributes.remove(kPersonId) : _attributes[kPersonId] = x;
-  String get personId => _attributes[kPersonId] ?? '';
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // typed getters for each relationship
 

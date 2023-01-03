@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.998834
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.098391
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -321,11 +321,12 @@ class PcoPeopleHousehold extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get memberCount => _attributes[kMemberCount] ?? 0;
-  String get primaryContactName => _attributes[kPrimaryContactName] ?? '';
-  String get avatar => _attributes[kAvatar] ?? '';
-  String get primaryContactId => _attributes[kPrimaryContactId] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  int get memberCount => _getAttribute<int>(kMemberCount, 0);
+  String get primaryContactName =>
+      _getAttribute<String>(kPrimaryContactName, '');
+  String get avatar => _getAttribute<String>(kAvatar, '');
+  String get primaryContactId => _getAttribute<String>(kPrimaryContactId, '');
 
   // setters for object attributes
   ///

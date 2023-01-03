@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.016302
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.119881
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -932,41 +932,44 @@ class PcoPeoplePerson extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get givenName => _attributes[kGivenName] ?? '';
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get nickname => _attributes[kNickname] ?? '';
-  String get middleName => _attributes[kMiddleName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get birthdate => _attributes[kBirthdate] ?? '';
-  String get anniversary => _attributes[kAnniversary] ?? '';
-  String get gender => _attributes[kGender] ?? '';
-  int get grade => _attributes[kGrade] ?? 0;
-  bool get isChild => _attributes[kChild] == true;
-  int get graduationYear => _attributes[kGraduationYear] ?? 0;
-  bool get isSiteAdministrator => _attributes[kSiteAdministrator] == true;
+  String get givenName => _getAttribute<String>(kGivenName, '');
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get nickname => _getAttribute<String>(kNickname, '');
+  String get middleName => _getAttribute<String>(kMiddleName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get birthdate => _getAttribute<String>(kBirthdate, '');
+  String get anniversary => _getAttribute<String>(kAnniversary, '');
+  String get gender => _getAttribute<String>(kGender, '');
+  int get grade => _getAttribute<int>(kGrade, 0);
+  bool get isChild => _getAttribute<bool>(kChild, false);
+  int get graduationYear => _getAttribute<int>(kGraduationYear, 0);
+  bool get isSiteAdministrator =>
+      _getAttribute<bool>(kSiteAdministrator, false);
   bool get isAccountingAdministrator =>
-      _attributes[kAccountingAdministrator] == true;
-  String get peoplePermissions => _attributes[kPeoplePermissions] ?? '';
-  String get membership => _attributes[kMembership] ?? '';
+      _getAttribute<bool>(kAccountingAdministrator, false);
+  String get peoplePermissions => _getAttribute<String>(kPeoplePermissions, '');
+  String get membership => _getAttribute<String>(kMembership, '');
   DateTime get inactivatedAt =>
-      DateTime.parse(_attributes[kInactivatedAt] ?? '');
-  String get status => _attributes[kStatus] ?? '';
-  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
-  String get avatar => _attributes[kAvatar] ?? '';
-  String get name => _attributes[kName] ?? '';
-  String get demographicAvatarUrl => _attributes[kDemographicAvatarUrl] ?? '';
-  String get directoryStatus => _attributes[kDirectoryStatus] ?? '';
+      _getAttribute<DateTime>(kInactivatedAt, DateTime(0));
+  String get status => _getAttribute<String>(kStatus, '');
+  String get medicalNotes => _getAttribute<String>(kMedicalNotes, '');
+  String get avatar => _getAttribute<String>(kAvatar, '');
+  String get name => _getAttribute<String>(kName, '');
+  String get demographicAvatarUrl =>
+      _getAttribute<String>(kDemographicAvatarUrl, '');
+  String get directoryStatus => _getAttribute<String>(kDirectoryStatus, '');
   bool get isPassedBackgroundCheck =>
-      _attributes[kPassedBackgroundCheck] == true;
-  bool get isCanCreateForms => _attributes[kCanCreateForms] == true;
-  String get schoolType => _attributes[kSchoolType] ?? '';
-  int get remoteId => _attributes[kRemoteId] ?? 0;
-  String get searchName => _attributes[kSearchName] ?? '';
-  String get searchPhoneNumber => _attributes[kSearchPhoneNumber] ?? '';
-  String get searchPhoneNumberE164 => _attributes[kSearchPhoneNumberE164] ?? '';
-  String get searchNameOrEmail => _attributes[kSearchNameOrEmail] ?? '';
+      _getAttribute<bool>(kPassedBackgroundCheck, false);
+  bool get isCanCreateForms => _getAttribute<bool>(kCanCreateForms, false);
+  String get schoolType => _getAttribute<String>(kSchoolType, '');
+  int get remoteId => _getAttribute<int>(kRemoteId, 0);
+  String get searchName => _getAttribute<String>(kSearchName, '');
+  String get searchPhoneNumber => _getAttribute<String>(kSearchPhoneNumber, '');
+  String get searchPhoneNumberE164 =>
+      _getAttribute<String>(kSearchPhoneNumberE164, '');
+  String get searchNameOrEmail => _getAttribute<String>(kSearchNameOrEmail, '');
   String get searchNameOrEmailOrPhoneNumber =>
-      _attributes[kSearchNameOrEmailOrPhoneNumber] ?? '';
+      _getAttribute<String>(kSearchNameOrEmailOrPhoneNumber, '');
 
   // setters for object attributes
   ///
@@ -1087,13 +1090,13 @@ class PcoPeoplePerson extends PcoResource {
   set primaryCampusId(String? x) => (x == null)
       ? _attributes.remove(kPrimaryCampusId)
       : _attributes[kPrimaryCampusId] = x;
-  String get primaryCampusId => _attributes[kPrimaryCampusId] ?? '';
+  String get primaryCampusId => _getAttribute<String>(kPrimaryCampusId, '');
 
   ///
   /// pass `null` to remove key from attributes
   set genderId(String? x) =>
       (x == null) ? _attributes.remove(kGenderId) : _attributes[kGenderId] = x;
-  String get genderId => _attributes[kGenderId] ?? '';
+  String get genderId => _getAttribute<String>(kGenderId, '');
 
   // typed getters for each relationship
 

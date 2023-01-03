@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.862603
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.984042
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -196,12 +196,12 @@ class PcoServicesTimePreferenceOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get dayOfWeek => _attributes[kDayOfWeek] ?? 0;
-  String get description => _attributes[kDescription] ?? '';
-  String get sortIndex => _attributes[kSortIndex] ?? '';
-  String get timeType => _attributes[kTimeType] ?? '';
-  int get minuteOfDay => _attributes[kMinuteOfDay] ?? 0;
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
+  int get dayOfWeek => _getAttribute<int>(kDayOfWeek, 0);
+  String get description => _getAttribute<String>(kDescription, '');
+  String get sortIndex => _getAttribute<String>(kSortIndex, '');
+  String get timeType => _getAttribute<String>(kTimeType, '');
+  int get minuteOfDay => _getAttribute<int>(kMinuteOfDay, 0);
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
 
   // Class Constructors
   PcoServicesTimePreferenceOption.fromJson(Map<String, dynamic> data,

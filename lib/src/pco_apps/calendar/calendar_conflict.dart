@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.044949
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.143982
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -247,8 +247,8 @@ class PcoCalendarConflict extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get note => _attributes[kNote] ?? '';
-  DateTime get resolvedAt => DateTime.parse(_attributes[kResolvedAt] ?? '');
+  String get note => _getAttribute<String>(kNote, '');
+  DateTime get resolvedAt => _getAttribute<DateTime>(kResolvedAt, DateTime(0));
 
   // typed getters for each relationship
 

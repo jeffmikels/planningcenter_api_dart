@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.842767
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.965961
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,9 +172,9 @@ class PcoServicesPlanNoteCategory extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
-  String get name => _attributes[kName] ?? '';
-  int get sequence => _attributes[kSequence] ?? 0;
+  DateTime get deletedAt => _getAttribute<DateTime>(kDeletedAt, DateTime(0));
+  String get name => _getAttribute<String>(kName, '');
+  int get sequence => _getAttribute<int>(kSequence, 0);
 
   // Class Constructors
   PcoServicesPlanNoteCategory.fromJson(Map<String, dynamic> data,

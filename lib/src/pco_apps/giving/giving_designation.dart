@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.119352
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.177136
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -165,8 +165,8 @@ class PcoGivingDesignation extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get amountCents => _attributes[kAmountCents] ?? 0;
-  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
+  int get amountCents => _getAttribute<int>(kAmountCents, 0);
+  String get amountCurrency => _getAttribute<String>(kAmountCurrency, '');
 
   // Class Constructors
   PcoGivingDesignation.fromJson(Map<String, dynamic> data,

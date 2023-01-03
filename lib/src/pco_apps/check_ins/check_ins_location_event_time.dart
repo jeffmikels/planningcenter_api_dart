@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.929923
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.044146
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -224,9 +224,9 @@ class PcoCheckInsLocationEventTime extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get regularCount => _attributes[kRegularCount] ?? 0;
-  int get guestCount => _attributes[kGuestCount] ?? 0;
-  int get volunteerCount => _attributes[kVolunteerCount] ?? 0;
+  int get regularCount => _getAttribute<int>(kRegularCount, 0);
+  int get guestCount => _getAttribute<int>(kGuestCount, 0);
+  int get volunteerCount => _getAttribute<int>(kVolunteerCount, 0);
 
   // typed getters for each relationship
 

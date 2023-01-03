@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.044337
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.143389
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -318,11 +318,11 @@ class PcoCalendarAttachment extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get contentType => _attributes[kContentType] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  int get fileSize => _attributes[kFileSize] ?? 0;
-  String get name => _attributes[kName] ?? '';
-  String get url => _attributes[kUrl] ?? '';
+  String get contentType => _getAttribute<String>(kContentType, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  int get fileSize => _getAttribute<int>(kFileSize, 0);
+  String get name => _getAttribute<String>(kName, '');
+  String get url => _getAttribute<String>(kUrl, '');
 
   // typed getters for each relationship
 

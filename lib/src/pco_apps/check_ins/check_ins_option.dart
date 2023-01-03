@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.931033
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.045768
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -183,8 +183,8 @@ class PcoCheckInsOption extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
-  int get quantity => _attributes[kQuantity] ?? 0;
+  String get body => _getAttribute<String>(kBody, '');
+  int get quantity => _getAttribute<int>(kQuantity, 0);
 
   // typed getters for each relationship
 

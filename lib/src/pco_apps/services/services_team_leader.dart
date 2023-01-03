@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.860867
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.981824
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -229,11 +229,11 @@ class PcoServicesTeamLeader extends PcoResource {
 
   // getters for object attributes
   bool get isSendResponsesForAccepts =>
-      _attributes[kSendResponsesForAccepts] == true;
+      _getAttribute<bool>(kSendResponsesForAccepts, false);
   bool get isSendResponsesForDeclines =>
-      _attributes[kSendResponsesForDeclines] == true;
+      _getAttribute<bool>(kSendResponsesForDeclines, false);
   bool get isSendResponsesForBlockouts =>
-      _attributes[kSendResponsesForBlockouts] == true;
+      _getAttribute<bool>(kSendResponsesForBlockouts, false);
 
   // typed getters for each relationship
 

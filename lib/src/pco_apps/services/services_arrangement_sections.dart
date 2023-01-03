@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.815088
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.938068
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -152,7 +152,7 @@ class PcoServicesArrangementSection extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get sections => _attributes[kSections] ?? [];
+  List get sections => _getAttribute<List>(kSections, []);
 
   // Class Constructors
   PcoServicesArrangementSection.fromJson(Map<String, dynamic> data,

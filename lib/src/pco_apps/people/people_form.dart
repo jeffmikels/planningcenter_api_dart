@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.995832
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.095134
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -312,15 +312,15 @@ class PcoPeopleForm extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  bool get isActive => _attributes[kActive] == true;
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  DateTime get deletedAt => DateTime.parse(_attributes[kDeletedAt] ?? '');
-  int get submissionCount => _attributes[kSubmissionCount] ?? 0;
-  String get publicUrl => _attributes[kPublicUrl] ?? '';
-  bool get isRecentlyViewed => _attributes[kRecentlyViewed] == true;
-  bool get isArchived => _attributes[kArchived] == true;
+  String get name => _getAttribute<String>(kName, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  bool get isActive => _getAttribute<bool>(kActive, false);
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  DateTime get deletedAt => _getAttribute<DateTime>(kDeletedAt, DateTime(0));
+  int get submissionCount => _getAttribute<int>(kSubmissionCount, 0);
+  String get publicUrl => _getAttribute<String>(kPublicUrl, '');
+  bool get isRecentlyViewed => _getAttribute<bool>(kRecentlyViewed, false);
+  bool get isArchived => _getAttribute<bool>(kArchived, false);
 
   // typed getters for each relationship
 

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.820529
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.943771
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -201,15 +201,16 @@ class PcoServicesAttachmentType extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get aliases => _attributes[kAliases] ?? '';
-  bool get isCapoedChordCharts => _attributes[kCapoedChordCharts] == true;
-  bool get isChordCharts => _attributes[kChordCharts] == true;
-  String get exclusions => _attributes[kExclusions] ?? '';
-  bool get isLyrics => _attributes[kLyrics] == true;
-  bool get isNumberCharts => _attributes[kNumberCharts] == true;
-  bool get isNumeralCharts => _attributes[kNumeralCharts] == true;
-  bool get isBuiltIn => _attributes[kBuiltIn] == true;
+  String get name => _getAttribute<String>(kName, '');
+  String get aliases => _getAttribute<String>(kAliases, '');
+  bool get isCapoedChordCharts =>
+      _getAttribute<bool>(kCapoedChordCharts, false);
+  bool get isChordCharts => _getAttribute<bool>(kChordCharts, false);
+  String get exclusions => _getAttribute<String>(kExclusions, '');
+  bool get isLyrics => _getAttribute<bool>(kLyrics, false);
+  bool get isNumberCharts => _getAttribute<bool>(kNumberCharts, false);
+  bool get isNumeralCharts => _getAttribute<bool>(kNumeralCharts, false);
+  bool get isBuiltIn => _getAttribute<bool>(kBuiltIn, false);
 
   // Class Constructors
   PcoServicesAttachmentType.fromJson(Map<String, dynamic> data,

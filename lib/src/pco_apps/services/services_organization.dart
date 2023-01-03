@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.836950
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.960470
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -242,35 +242,42 @@ class PcoServicesOrganization extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get ccli => _attributes[kCcli] ?? '';
-  int get dateFormat => _attributes[kDateFormat] ?? 0;
-  bool get isMusicStandEnabled => _attributes[kMusicStandEnabled] == true;
-  String get name => _attributes[kName] ?? '';
-  bool get isProjectorEnabled => _attributes[kProjectorEnabled] == true;
-  String get timeZone => _attributes[kTimeZone] ?? '';
-  bool get isTwentyFourHourTime => _attributes[kTwentyFourHourTime] == true;
-  String get ownerName => _attributes[kOwnerName] ?? '';
+  String get ccli => _getAttribute<String>(kCcli, '');
+  int get dateFormat => _getAttribute<int>(kDateFormat, 0);
+  bool get isMusicStandEnabled =>
+      _getAttribute<bool>(kMusicStandEnabled, false);
+  String get name => _getAttribute<String>(kName, '');
+  bool get isProjectorEnabled => _getAttribute<bool>(kProjectorEnabled, false);
+  String get timeZone => _getAttribute<String>(kTimeZone, '');
+  bool get isTwentyFourHourTime =>
+      _getAttribute<bool>(kTwentyFourHourTime, false);
+  String get ownerName => _getAttribute<String>(kOwnerName, '');
   String get requiredToSetDownloadPermission =>
-      _attributes[kRequiredToSetDownloadPermission] ?? '';
-  String get secret => _attributes[kSecret] ?? '';
-  bool get isAllowMp3Download => _attributes[kAllowMp3Download] == true;
+      _getAttribute<String>(kRequiredToSetDownloadPermission, '');
+  String get secret => _getAttribute<String>(kSecret, '');
+  bool get isAllowMp3Download => _getAttribute<bool>(kAllowMp3Download, false);
   bool get isCalendarStartsOnSunday =>
-      _attributes[kCalendarStartsOnSunday] == true;
-  bool get isCcliConnected => _attributes[kCcliConnected] == true;
-  bool get isCcliReportingEnabled => _attributes[kCcliReportingEnabled] == true;
+      _getAttribute<bool>(kCalendarStartsOnSunday, false);
+  bool get isCcliConnected => _getAttribute<bool>(kCcliConnected, false);
+  bool get isCcliReportingEnabled =>
+      _getAttribute<bool>(kCcliReportingEnabled, false);
   bool get isExtraFileStorageAllowed =>
-      _attributes[kExtraFileStorageAllowed] == true;
-  bool get isFileStorageExceeded => _attributes[kFileStorageExceeded] == true;
-  bool get isFileStorageSize => _attributes[kFileStorageSize] == true;
-  bool get isFileStorageSizeUsed => _attributes[kFileStorageSizeUsed] == true;
+      _getAttribute<bool>(kExtraFileStorageAllowed, false);
+  bool get isFileStorageExceeded =>
+      _getAttribute<bool>(kFileStorageExceeded, false);
+  bool get isFileStorageSize => _getAttribute<bool>(kFileStorageSize, false);
+  bool get isFileStorageSizeUsed =>
+      _getAttribute<bool>(kFileStorageSizeUsed, false);
   bool get isFileStorageExtraEnabled =>
-      _attributes[kFileStorageExtraEnabled] == true;
-  bool get isRehearsalMixEnabled => _attributes[kRehearsalMixEnabled] == true;
-  String get legacyId => _attributes[kLegacyId] ?? '';
-  int get fileStorageExtraCharges => _attributes[kFileStorageExtraCharges] ?? 0;
-  int get peopleAllowed => _attributes[kPeopleAllowed] ?? 0;
-  int get peopleRemaining => _attributes[kPeopleRemaining] ?? 0;
-  bool get isBeta => _attributes[kBeta] == true;
+      _getAttribute<bool>(kFileStorageExtraEnabled, false);
+  bool get isRehearsalMixEnabled =>
+      _getAttribute<bool>(kRehearsalMixEnabled, false);
+  String get legacyId => _getAttribute<String>(kLegacyId, '');
+  int get fileStorageExtraCharges =>
+      _getAttribute<int>(kFileStorageExtraCharges, 0);
+  int get peopleAllowed => _getAttribute<int>(kPeopleAllowed, 0);
+  int get peopleRemaining => _getAttribute<int>(kPeopleRemaining, 0);
+  bool get isBeta => _getAttribute<bool>(kBeta, false);
 
   // Class Constructors
   PcoServicesOrganization.fromJson(Map<String, dynamic> data,

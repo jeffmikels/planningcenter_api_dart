@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.863171
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.984793
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -182,10 +182,10 @@ class PcoServicesZoom extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  double get aspectRatio => _attributes[kAspectRatio]?.toDouble() ?? 0.0;
-  double get zoomLevel => _attributes[kZoomLevel]?.toDouble() ?? 0.0;
-  double get xOffset => _attributes[kXOffset]?.toDouble() ?? 0.0;
-  double get yOffset => _attributes[kYOffset]?.toDouble() ?? 0.0;
+  double get aspectRatio => _getAttribute<double>(kAspectRatio, 0);
+  double get zoomLevel => _getAttribute<double>(kZoomLevel, 0);
+  double get xOffset => _getAttribute<double>(kXOffset, 0);
+  double get yOffset => _getAttribute<double>(kYOffset, 0);
 
   // setters for object attributes
 

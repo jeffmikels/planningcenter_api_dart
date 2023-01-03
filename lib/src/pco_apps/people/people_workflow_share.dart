@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.028321
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.129900
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -210,9 +210,9 @@ class PcoPeopleWorkflowShare extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get group => _attributes[kGroup] ?? '';
-  String get permission => _attributes[kPermission] ?? '';
-  String get personId => _attributes[kPersonId] ?? '';
+  String get group => _getAttribute<String>(kGroup, '');
+  String get permission => _getAttribute<String>(kPermission, '');
+  String get personId => _getAttribute<String>(kPersonId, '');
 
   // setters for object attributes
 

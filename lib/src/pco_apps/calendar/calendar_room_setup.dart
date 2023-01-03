@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.055705
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.154020
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -292,11 +292,12 @@ class PcoCalendarRoomSetup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  String get diagram => _attributes[kDiagram] ?? '';
-  String get diagramUrl => _attributes[kDiagramUrl] ?? '';
-  String get diagramThumbnailUrl => _attributes[kDiagramThumbnailUrl] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  String get diagram => _getAttribute<String>(kDiagram, '');
+  String get diagramUrl => _getAttribute<String>(kDiagramUrl, '');
+  String get diagramThumbnailUrl =>
+      _getAttribute<String>(kDiagramThumbnailUrl, '');
 
   // typed getters for each relationship
 

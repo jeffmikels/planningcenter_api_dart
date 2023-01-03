@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.126477
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.219172
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -210,15 +210,15 @@ class PcoGivingRecurringDonation extends PcoResource {
 
   // getters for object attributes
   DateTime get releaseHoldAt =>
-      DateTime.parse(_attributes[kReleaseHoldAt] ?? '');
-  int get amountCents => _attributes[kAmountCents] ?? 0;
-  String get status => _attributes[kStatus] ?? '';
+      _getAttribute<DateTime>(kReleaseHoldAt, DateTime(0));
+  int get amountCents => _getAttribute<int>(kAmountCents, 0);
+  String get status => _getAttribute<String>(kStatus, '');
   DateTime get lastDonationReceivedAt =>
-      DateTime.parse(_attributes[kLastDonationReceivedAt] ?? '');
+      _getAttribute<DateTime>(kLastDonationReceivedAt, DateTime(0));
   DateTime get nextOccurrence =>
-      DateTime.parse(_attributes[kNextOccurrence] ?? '');
-  String get schedule => _attributes[kSchedule] ?? '';
-  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
+      _getAttribute<DateTime>(kNextOccurrence, DateTime(0));
+  String get schedule => _getAttribute<String>(kSchedule, '');
+  String get amountCurrency => _getAttribute<String>(kAmountCurrency, '');
 
   // typed getters for each relationship
 

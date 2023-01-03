@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.997092
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.096442
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -243,8 +243,9 @@ class PcoPeopleFormSubmission extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isVerified => _attributes[kVerified] == true;
-  bool get isRequiresVerification => _attributes[kRequiresVerification] == true;
+  bool get isVerified => _getAttribute<bool>(kVerified, false);
+  bool get isRequiresVerification =>
+      _getAttribute<bool>(kRequiresVerification, false);
 
   // typed getters for each relationship
 

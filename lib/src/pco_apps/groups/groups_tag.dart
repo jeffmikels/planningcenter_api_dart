@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.141935
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.232287
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -210,8 +210,8 @@ class PcoGroupsTag extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  int get position => _attributes[kPosition] ?? 0;
+  String get name => _getAttribute<String>(kName, '');
+  int get position => _getAttribute<int>(kPosition, 0);
 
   // Class Constructors
   PcoGroupsTag.fromJson(Map<String, dynamic> data,

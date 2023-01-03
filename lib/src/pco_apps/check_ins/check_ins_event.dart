@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.924022
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.006822
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -282,15 +282,16 @@ class PcoCheckInsEvent extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get frequency => _attributes[kFrequency] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get frequency => _getAttribute<String>(kFrequency, '');
   bool get isEnableServicesIntegration =>
-      _attributes[kEnableServicesIntegration] == true;
-  DateTime get archivedAt => DateTime.parse(_attributes[kArchivedAt] ?? '');
-  String get integrationKey => _attributes[kIntegrationKey] ?? '';
-  bool get isLocationTimesEnabled => _attributes[kLocationTimesEnabled] == true;
-  bool get isPreSelectEnabled => _attributes[kPreSelectEnabled] == true;
-  String get appSource => _attributes[kAppSource] ?? '';
+      _getAttribute<bool>(kEnableServicesIntegration, false);
+  DateTime get archivedAt => _getAttribute<DateTime>(kArchivedAt, DateTime(0));
+  String get integrationKey => _getAttribute<String>(kIntegrationKey, '');
+  bool get isLocationTimesEnabled =>
+      _getAttribute<bool>(kLocationTimesEnabled, false);
+  bool get isPreSelectEnabled => _getAttribute<bool>(kPreSelectEnabled, false);
+  String get appSource => _getAttribute<String>(kAppSource, '');
 
   // typed getters for each relationship
 

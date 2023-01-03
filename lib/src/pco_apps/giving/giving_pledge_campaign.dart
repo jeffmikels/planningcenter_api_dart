@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.125740
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.217244
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -277,18 +277,18 @@ class PcoGivingPledgeCampaign extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get description => _attributes[kDescription] ?? '';
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  int get goalCents => _attributes[kGoalCents] ?? 0;
-  String get goalCurrency => _attributes[kGoalCurrency] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get description => _getAttribute<String>(kDescription, '');
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  int get goalCents => _getAttribute<int>(kGoalCents, 0);
+  String get goalCurrency => _getAttribute<String>(kGoalCurrency, '');
   bool get isShowGoalInChurchCenter =>
-      _attributes[kShowGoalInChurchCenter] == true;
+      _getAttribute<bool>(kShowGoalInChurchCenter, false);
   int get receivedTotalFromPledgesCents =>
-      _attributes[kReceivedTotalFromPledgesCents] ?? 0;
+      _getAttribute<int>(kReceivedTotalFromPledgesCents, 0);
   int get receivedTotalOutsideOfPledgesCents =>
-      _attributes[kReceivedTotalOutsideOfPledgesCents] ?? 0;
+      _getAttribute<int>(kReceivedTotalOutsideOfPledgesCents, 0);
 
   // setters for object attributes
   ///
@@ -333,7 +333,7 @@ class PcoGivingPledgeCampaign extends PcoResource {
   /// pass `null` to remove key from attributes
   set fundId(String? x) =>
       (x == null) ? _attributes.remove(kFundId) : _attributes[kFundId] = x;
-  String get fundId => _attributes[kFundId] ?? '';
+  String get fundId => _getAttribute<String>(kFundId, '');
 
   // typed getters for each relationship
 

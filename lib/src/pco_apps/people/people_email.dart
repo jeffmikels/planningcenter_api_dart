@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.993640
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.092397
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -276,10 +276,10 @@ class PcoPeopleEmail extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get address => _attributes[kAddress] ?? '';
-  String get location => _attributes[kLocation] ?? '';
-  bool get isPrimary => _attributes[kPrimary] == true;
-  bool get isBlocked => _attributes[kBlocked] == true;
+  String get address => _getAttribute<String>(kAddress, '');
+  String get location => _getAttribute<String>(kLocation, '');
+  bool get isPrimary => _getAttribute<bool>(kPrimary, false);
+  bool get isBlocked => _getAttribute<bool>(kBlocked, false);
 
   // setters for object attributes
   ///

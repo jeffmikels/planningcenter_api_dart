@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.834695
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.958195
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -345,25 +345,27 @@ class PcoServicesMedia extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get themes => _attributes[kThemes] ?? '';
-  String get title => _attributes[kTitle] ?? '';
-  String get thumbnailFileName => _attributes[kThumbnailFileName] ?? '';
-  String get thumbnailContentType => _attributes[kThumbnailContentType] ?? '';
-  int get thumbnailFileSize => _attributes[kThumbnailFileSize] ?? 0;
+  String get themes => _getAttribute<String>(kThemes, '');
+  String get title => _getAttribute<String>(kTitle, '');
+  String get thumbnailFileName => _getAttribute<String>(kThumbnailFileName, '');
+  String get thumbnailContentType =>
+      _getAttribute<String>(kThumbnailContentType, '');
+  int get thumbnailFileSize => _getAttribute<int>(kThumbnailFileSize, 0);
   DateTime get thumbnailUpdatedAt =>
-      DateTime.parse(_attributes[kThumbnailUpdatedAt] ?? '');
-  String get previewFileName => _attributes[kPreviewFileName] ?? '';
-  String get previewContentType => _attributes[kPreviewContentType] ?? '';
-  int get previewFileSize => _attributes[kPreviewFileSize] ?? 0;
+      _getAttribute<DateTime>(kThumbnailUpdatedAt, DateTime(0));
+  String get previewFileName => _getAttribute<String>(kPreviewFileName, '');
+  String get previewContentType =>
+      _getAttribute<String>(kPreviewContentType, '');
+  int get previewFileSize => _getAttribute<int>(kPreviewFileSize, 0);
   DateTime get previewUpdatedAt =>
-      DateTime.parse(_attributes[kPreviewUpdatedAt] ?? '');
-  int get length => _attributes[kLength] ?? 0;
-  String get mediaType => _attributes[kMediaType] ?? '';
-  String get mediaTypeName => _attributes[kMediaTypeName] ?? '';
-  String get thumbnailUrl => _attributes[kThumbnailUrl] ?? '';
-  String get creatorName => _attributes[kCreatorName] ?? '';
-  String get previewUrl => _attributes[kPreviewUrl] ?? '';
-  String get imageUrl => _attributes[kImageUrl] ?? '';
+      _getAttribute<DateTime>(kPreviewUpdatedAt, DateTime(0));
+  int get length => _getAttribute<int>(kLength, 0);
+  String get mediaType => _getAttribute<String>(kMediaType, '');
+  String get mediaTypeName => _getAttribute<String>(kMediaTypeName, '');
+  String get thumbnailUrl => _getAttribute<String>(kThumbnailUrl, '');
+  String get creatorName => _getAttribute<String>(kCreatorName, '');
+  String get previewUrl => _getAttribute<String>(kPreviewUrl, '');
+  String get imageUrl => _getAttribute<String>(kImageUrl, '');
 
   // setters for object attributes
   ///

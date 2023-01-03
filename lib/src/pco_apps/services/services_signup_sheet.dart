@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.854647
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.974526
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -220,13 +220,13 @@ class PcoServicesSignupSheet extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get sortDate => DateTime.parse(_attributes[kSortDate] ?? '');
-  String get groupKey => _attributes[kGroupKey] ?? '';
-  String get teamName => _attributes[kTeamName] ?? '';
-  String get displayTimes => _attributes[kDisplayTimes] ?? '';
-  String get positionName => _attributes[kPositionName] ?? '';
-  String get title => _attributes[kTitle] ?? '';
-  int get sortIndex => _attributes[kSortIndex] ?? 0;
+  DateTime get sortDate => _getAttribute<DateTime>(kSortDate, DateTime(0));
+  String get groupKey => _getAttribute<String>(kGroupKey, '');
+  String get teamName => _getAttribute<String>(kTeamName, '');
+  String get displayTimes => _getAttribute<String>(kDisplayTimes, '');
+  String get positionName => _getAttribute<String>(kPositionName, '');
+  String get title => _getAttribute<String>(kTitle, '');
+  int get sortIndex => _getAttribute<int>(kSortIndex, 0);
 
   // typed getters for each relationship
 

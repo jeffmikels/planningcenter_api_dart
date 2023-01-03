@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.823527
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.946745
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -166,7 +166,7 @@ class PcoServicesBlockoutException extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get date => _attributes[kDate] ?? '';
+  String get date => _getAttribute<String>(kDate, '');
 
   // setters for object attributes
   ///

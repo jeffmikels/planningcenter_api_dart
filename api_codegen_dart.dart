@@ -458,32 +458,32 @@ String fieldSetterOrGetterLine(String mode, Attribute attribute, {bool useAttrib
     case 'bool':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(bool? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'bool get $varName => $targetName == true;';
+          : 'bool get $varName => _getAttribute<bool>($keyName, false);';
       break;
     case 'double':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(double? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'double get $varName => $targetName?.toDouble() ?? 0.0;';
+          : 'double get $varName => _getAttribute<double>($keyName, 0);';
       break;
     case 'int':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(int? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'int get $varName => $targetName ?? 0;';
+          : 'int get $varName => _getAttribute<int>($keyName, 0);';
       break;
     case 'DateTime':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(DateTime? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x.toIso8601String();'
-          : 'DateTime get $varName => DateTime.parse($targetName ?? \'\');';
+          : 'DateTime get $varName => _getAttribute<DateTime>($keyName, DateTime(0));';
       break;
     case 'List':
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(List? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'List get $varName => $targetName ?? [];';
+          : 'List get $varName => _getAttribute<List>($keyName, []);';
       break;
     default:
       output += realMode == 'set'
           ? '$setterDoc\nset $varName(String? x) => (x == null) ? _attributes.remove($keyName) : $targetName = x;'
-          : 'String get $varName => $targetName ?? \'\';';
+          : 'String get $varName => _getAttribute<String>($keyName, \'\');';
       break;
   }
   if (mode == 'both') {

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.141470
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.231867
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -197,11 +197,12 @@ class PcoGroupsResource extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get description => _attributes[kDescription] ?? '';
-  DateTime get lastUpdated => DateTime.parse(_attributes[kLastUpdated] ?? '');
-  String get name => _attributes[kName] ?? '';
-  String get type => _attributes[kType] ?? '';
-  String get visibility => _attributes[kVisibility] ?? '';
+  String get description => _getAttribute<String>(kDescription, '');
+  DateTime get lastUpdated =>
+      _getAttribute<DateTime>(kLastUpdated, DateTime(0));
+  String get name => _getAttribute<String>(kName, '');
+  String get type => _getAttribute<String>(kType, '');
+  String get visibility => _getAttribute<String>(kVisibility, '');
 
   // Class Constructors
   PcoGroupsResource.fromJson(Map<String, dynamic> data,

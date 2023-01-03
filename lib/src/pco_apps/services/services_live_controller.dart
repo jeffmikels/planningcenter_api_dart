@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.833617
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.956999
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -190,8 +190,8 @@ class PcoServicesLiveController extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get fullName => _attributes[kFullName] ?? '';
-  String get photoThumbnailUrl => _attributes[kPhotoThumbnailUrl] ?? '';
+  String get fullName => _getAttribute<String>(kFullName, '');
+  String get photoThumbnailUrl => _getAttribute<String>(kPhotoThumbnailUrl, '');
 
   // Class Constructors
   PcoServicesLiveController.fromJson(Map<String, dynamic> data,

@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.922585
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.005275
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,10 +206,10 @@ class PcoCheckInsCheckInGroup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get nameLabelsCount => _attributes[kNameLabelsCount] ?? 0;
-  int get securityLabelsCount => _attributes[kSecurityLabelsCount] ?? 0;
-  int get checkInsCount => _attributes[kCheckInsCount] ?? 0;
-  String get printStatus => _attributes[kPrintStatus] ?? '';
+  int get nameLabelsCount => _getAttribute<int>(kNameLabelsCount, 0);
+  int get securityLabelsCount => _getAttribute<int>(kSecurityLabelsCount, 0);
+  int get checkInsCount => _getAttribute<int>(kCheckInsCount, 0);
+  String get printStatus => _getAttribute<String>(kPrintStatus, '');
 
   // typed getters for each relationship
 

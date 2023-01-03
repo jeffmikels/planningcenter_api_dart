@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.821524
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.944750
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -203,10 +203,10 @@ class PcoServicesAvailableSignup extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get organizationName => _attributes[kOrganizationName] ?? '';
-  String get planningCenterUrl => _attributes[kPlanningCenterUrl] ?? '';
-  String get serviceTypeName => _attributes[kServiceTypeName] ?? '';
-  bool get isSignupsAvailable => _attributes[kSignupsAvailable] == true;
+  String get organizationName => _getAttribute<String>(kOrganizationName, '');
+  String get planningCenterUrl => _getAttribute<String>(kPlanningCenterUrl, '');
+  String get serviceTypeName => _getAttribute<String>(kServiceTypeName, '');
+  bool get isSignupsAvailable => _getAttribute<bool>(kSignupsAvailable, false);
 
   // typed getters for each relationship
 

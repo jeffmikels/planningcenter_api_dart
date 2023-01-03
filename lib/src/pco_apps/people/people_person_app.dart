@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.017516
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.120961
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -188,15 +188,15 @@ class PcoPeoplePersonApp extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  bool get isAllowPcoLogin => _attributes[kAllowPcoLogin] == true;
-  String get peoplePermissions => _attributes[kPeoplePermissions] ?? '';
+  bool get isAllowPcoLogin => _getAttribute<bool>(kAllowPcoLogin, false);
+  String get peoplePermissions => _getAttribute<String>(kPeoplePermissions, '');
 
   // additional setters / getters for create/update attributes
   ///
   /// pass `null` to remove key from attributes
   set appId(String? x) =>
       (x == null) ? _attributes.remove(kAppId) : _attributes[kAppId] = x;
-  String get appId => _attributes[kAppId] ?? '';
+  String get appId => _getAttribute<String>(kAppId, '');
 
   // typed getters for each relationship
 

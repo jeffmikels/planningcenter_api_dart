@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.826582
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.950091
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -172,8 +172,8 @@ class PcoServicesEmailTemplateRenderedResponse extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get body => _attributes[kBody] ?? '';
-  String get subject => _attributes[kSubject] ?? '';
+  String get body => _getAttribute<String>(kBody, '');
+  String get subject => _getAttribute<String>(kSubject, '');
 
   // Class Constructors
   PcoServicesEmailTemplateRenderedResponse.fromJson(Map<String, dynamic> data,

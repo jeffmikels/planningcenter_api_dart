@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.003315
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.103337
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -164,11 +164,12 @@ class PcoPeopleMailchimpSyncStatus extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get status => _attributes[kStatus] ?? '';
-  String get error => _attributes[kError] ?? '';
-  int get progress => _attributes[kProgress] ?? 0;
-  DateTime get completedAt => DateTime.parse(_attributes[kCompletedAt] ?? '');
-  int get segmentId => _attributes[kSegmentId] ?? 0;
+  String get status => _getAttribute<String>(kStatus, '');
+  String get error => _getAttribute<String>(kError, '');
+  int get progress => _getAttribute<int>(kProgress, 0);
+  DateTime get completedAt =>
+      _getAttribute<DateTime>(kCompletedAt, DateTime(0));
+  int get segmentId => _getAttribute<int>(kSegmentId, 0);
 
   // Class Constructors
   PcoPeopleMailchimpSyncStatus.fromJson(Map<String, dynamic> data,

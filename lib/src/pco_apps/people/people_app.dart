@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.990875
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.089851
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -206,8 +206,8 @@ class PcoPeopleApp extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get url => _attributes[kUrl] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get url => _getAttribute<String>(kUrl, '');
 
   // Class Constructors
   PcoPeopleApp.fromJson(Map<String, dynamic> data,

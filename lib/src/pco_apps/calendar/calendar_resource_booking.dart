@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.053116
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.151783
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -339,9 +339,9 @@ class PcoCalendarResourceBooking extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  DateTime get endsAt => DateTime.parse(_attributes[kEndsAt] ?? '');
-  DateTime get startsAt => DateTime.parse(_attributes[kStartsAt] ?? '');
-  int get quantity => _attributes[kQuantity] ?? 0;
+  DateTime get endsAt => _getAttribute<DateTime>(kEndsAt, DateTime(0));
+  DateTime get startsAt => _getAttribute<DateTime>(kStartsAt, DateTime(0));
+  int get quantity => _getAttribute<int>(kQuantity, 0);
 
   // typed getters for each relationship
 

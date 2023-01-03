@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.147628
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.237829
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -192,11 +192,12 @@ class PcoWebhooksSubscription extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  String get name => _attributes[kName] ?? '';
-  String get url => _attributes[kUrl] ?? '';
-  bool get isActive => _attributes[kActive] == true;
-  String get authenticitySecret => _attributes[kAuthenticitySecret] ?? '';
-  String get applicationId => _attributes[kApplicationId] ?? '';
+  String get name => _getAttribute<String>(kName, '');
+  String get url => _getAttribute<String>(kUrl, '');
+  bool get isActive => _getAttribute<bool>(kActive, false);
+  String get authenticitySecret =>
+      _getAttribute<String>(kAuthenticitySecret, '');
+  String get applicationId => _getAttribute<String>(kApplicationId, '');
 
   // setters for object attributes
   ///

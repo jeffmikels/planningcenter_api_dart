@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.851266
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:20.971896
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -160,7 +160,7 @@ class PcoServicesSchedulingPreference extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  String get preference => _attributes[kPreference] ?? '';
+  String get preference => _getAttribute<String>(kPreference, '');
 
   // Class Constructors
   PcoServicesSchedulingPreference.fromJson(Map<String, dynamic> data,

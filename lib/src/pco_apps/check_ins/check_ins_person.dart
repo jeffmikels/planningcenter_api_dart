@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:37.934446
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.048196
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -326,31 +326,32 @@ class PcoCheckInsPerson extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  List get addresses => _attributes[kAddresses] ?? [];
-  List get emailAddresses => _attributes[kEmailAddresses] ?? [];
-  List get phoneNumbers => _attributes[kPhoneNumbers] ?? [];
-  String get avatarUrl => _attributes[kAvatarUrl] ?? '';
-  String get namePrefix => _attributes[kNamePrefix] ?? '';
-  String get firstName => _attributes[kFirstName] ?? '';
-  String get middleName => _attributes[kMiddleName] ?? '';
-  String get lastName => _attributes[kLastName] ?? '';
-  String get nameSuffix => _attributes[kNameSuffix] ?? '';
-  String get birthdate => _attributes[kBirthdate] ?? '';
-  int get grade => _attributes[kGrade] ?? 0;
-  String get gender => _attributes[kGender] ?? '';
-  String get medicalNotes => _attributes[kMedicalNotes] ?? '';
-  bool get isChild => _attributes[kChild] == true;
-  String get permission => _attributes[kPermission] ?? '';
-  bool get isHeadcounter => _attributes[kHeadcounter] == true;
+  List get addresses => _getAttribute<List>(kAddresses, []);
+  List get emailAddresses => _getAttribute<List>(kEmailAddresses, []);
+  List get phoneNumbers => _getAttribute<List>(kPhoneNumbers, []);
+  String get avatarUrl => _getAttribute<String>(kAvatarUrl, '');
+  String get namePrefix => _getAttribute<String>(kNamePrefix, '');
+  String get firstName => _getAttribute<String>(kFirstName, '');
+  String get middleName => _getAttribute<String>(kMiddleName, '');
+  String get lastName => _getAttribute<String>(kLastName, '');
+  String get nameSuffix => _getAttribute<String>(kNameSuffix, '');
+  String get birthdate => _getAttribute<String>(kBirthdate, '');
+  int get grade => _getAttribute<int>(kGrade, 0);
+  String get gender => _getAttribute<String>(kGender, '');
+  String get medicalNotes => _getAttribute<String>(kMedicalNotes, '');
+  bool get isChild => _getAttribute<bool>(kChild, false);
+  String get permission => _getAttribute<String>(kPermission, '');
+  bool get isHeadcounter => _getAttribute<bool>(kHeadcounter, false);
   DateTime get lastCheckedInAt =>
-      DateTime.parse(_attributes[kLastCheckedInAt] ?? '');
-  int get checkInCount => _attributes[kCheckInCount] ?? 0;
+      _getAttribute<DateTime>(kLastCheckedInAt, DateTime(0));
+  int get checkInCount => _getAttribute<int>(kCheckInCount, 0);
   bool get isPassedBackgroundCheck =>
-      _attributes[kPassedBackgroundCheck] == true;
-  String get demographicAvatarUrl => _attributes[kDemographicAvatarUrl] ?? '';
-  String get name => _attributes[kName] ?? '';
-  String get topPermission => _attributes[kTopPermission] ?? '';
-  String get searchName => _attributes[kSearchName] ?? '';
+      _getAttribute<bool>(kPassedBackgroundCheck, false);
+  String get demographicAvatarUrl =>
+      _getAttribute<String>(kDemographicAvatarUrl, '');
+  String get name => _getAttribute<String>(kName, '');
+  String get topPermission => _getAttribute<String>(kTopPermission, '');
+  String get searchName => _getAttribute<String>(kSearchName, '');
 
   // typed getters for each relationship
 

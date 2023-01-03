@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.127456
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.220490
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -187,11 +187,11 @@ class PcoGivingRefund extends PcoResource {
   bool get canDestroy => false;
 
   // getters for object attributes
-  int get amountCents => _attributes[kAmountCents] ?? 0;
-  String get amountCurrency => _attributes[kAmountCurrency] ?? '';
-  int get feeCents => _attributes[kFeeCents] ?? 0;
-  DateTime get refundedAt => DateTime.parse(_attributes[kRefundedAt] ?? '');
-  String get feeCurrency => _attributes[kFeeCurrency] ?? '';
+  int get amountCents => _getAttribute<int>(kAmountCents, 0);
+  String get amountCurrency => _getAttribute<String>(kAmountCurrency, '');
+  int get feeCents => _getAttribute<int>(kFeeCents, 0);
+  DateTime get refundedAt => _getAttribute<DateTime>(kRefundedAt, DateTime(0));
+  String get feeCurrency => _getAttribute<String>(kFeeCurrency, '');
 
   // typed getters for each relationship
 

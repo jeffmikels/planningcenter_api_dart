@@ -1,5 +1,5 @@
 /// =========================================================================
-/// AUTO-GENERATED FILE CREATED ON 2022-12-13T23:12:38.117464
+/// AUTO-GENERATED FILE CREATED ON 2023-01-02T22:03:21.175561
 /// THIS FILE WAS AUTOMATICALLY GENERATED, MODIFICATIONS WILL BE OVERWRITTEN.
 /// =========================================================================
 
@@ -231,12 +231,13 @@ class PcoGivingBatch extends PcoResource {
   bool get canDestroy => true;
 
   // getters for object attributes
-  DateTime get committedAt => DateTime.parse(_attributes[kCommittedAt] ?? '');
-  String get description => _attributes[kDescription] ?? '';
-  int get donationsCount => _attributes[kDonationsCount] ?? 0;
-  int get totalCents => _attributes[kTotalCents] ?? 0;
-  String get totalCurrency => _attributes[kTotalCurrency] ?? '';
-  String get status => _attributes[kStatus] ?? '';
+  DateTime get committedAt =>
+      _getAttribute<DateTime>(kCommittedAt, DateTime(0));
+  String get description => _getAttribute<String>(kDescription, '');
+  int get donationsCount => _getAttribute<int>(kDonationsCount, 0);
+  int get totalCents => _getAttribute<int>(kTotalCents, 0);
+  String get totalCurrency => _getAttribute<String>(kTotalCurrency, '');
+  String get status => _getAttribute<String>(kStatus, '');
 
   // setters for object attributes
 
